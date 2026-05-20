@@ -18,7 +18,13 @@ function onScroll() {
 }
 
 const scrambleEl = ref<HTMLElement | null>(null)
-const phrases = ['Bespoke Digital Systems', 'Workflows That Compound']
+const phrases = [
+  'Bespoke Digital Systems',
+  'Workflows That Compound',
+  'Operations Made Visible',
+  'Risk Caught Early',
+  'Systems Built To Scale',
+]
 let scrambleTimer: number | undefined
 let scrambleFrame: number | undefined
 
