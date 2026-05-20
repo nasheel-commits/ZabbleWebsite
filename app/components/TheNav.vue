@@ -105,18 +105,6 @@ function close() {
           class="absolute inset-0 grid-bg fade-mask opacity-50 pointer-events-none"
           aria-hidden="true"
         />
-        <div
-          class="absolute -top-32 -right-24 h-[440px] w-[440px] rounded-full bg-cyan-brand/15 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          class="absolute top-[42%] -left-28 h-[320px] w-[320px] rounded-full bg-cyan-brand/10 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
-        <div
-          class="absolute -bottom-24 right-[-20%] h-[300px] w-[300px] rounded-full bg-cyan-brand/8 blur-3xl pointer-events-none"
-          aria-hidden="true"
-        />
 
         <div class="relative h-full flex flex-col">
           <div class="flex items-center justify-between h-14 px-5 border-b border-line/70 bg-white/60 backdrop-blur-sm">
