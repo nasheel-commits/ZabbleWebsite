@@ -74,7 +74,7 @@ const finale = {
           >
             <div class="flex items-start gap-4 md:gap-5">
               <span
-                class="pain-icon shrink-0 inline-flex items-center justify-center h-11 w-11 md:h-12 md:w-12 rounded-xl bg-surface-alt text-ink-soft ring-1 ring-line"
+                class="pain-icon shrink-0 inline-flex items-center justify-center h-11 w-11 md:h-12 md:w-12 rounded-xl bg-surface-alt text-red-600 ring-1 ring-red-100"
               >
                 <component :is="c.icon" :size="20" :stroke-width="1.9" />
               </span>
@@ -107,14 +107,14 @@ const finale = {
               class="relative flex flex-col md:flex-row md:items-center gap-5 md:gap-8 p-6 md:p-10 pl-7 md:pl-12"
             >
               <span
-                class="pain-icon shrink-0 inline-flex items-center justify-center h-12 w-12 md:h-14 md:w-14 rounded-xl bg-ink text-white"
+                class="pain-icon shrink-0 inline-flex items-center justify-center h-12 w-12 md:h-14 md:w-14 rounded-xl bg-red-50 text-red-600 ring-1 ring-red-100"
               >
                 <component :is="finale.icon" :size="24" :stroke-width="1.9" />
               </span>
 
               <div class="flex-1 min-w-0">
                 <div
-                  class="inline-flex items-center gap-1.5 text-[11.5px] uppercase tracking-[0.22em] text-mute-2 font-semibold mb-2"
+                  class="inline-flex items-center gap-1.5 text-[11.5px] uppercase tracking-[0.22em] text-red-600 font-semibold mb-2"
                 >
                   <AlertTriangle :size="13" :stroke-width="2.2" />
                   The one that hurts most
@@ -184,10 +184,10 @@ const finale = {
   position: absolute;
   left: 0;
   top: 0.55em;
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
   border-radius: 9999px;
-  background: var(--color-mute-2);
+  background: rgb(220, 38, 38);
 }
 
 @media (prefers-reduced-motion: reduce) {

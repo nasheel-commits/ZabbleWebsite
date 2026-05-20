@@ -306,9 +306,19 @@ onBeforeUnmount(() => {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 60;
+  z-index: 40;
   opacity: 0;
   transition: opacity 900ms ease-out;
+}
+.cursor-arrow__svg,
+.cursor-arrow__path,
+.cursor-arrow__head {
+  pointer-events: none;
+}
+@media (hover: none) {
+  .cursor-arrow {
+    display: none !important;
+  }
 }
 .cursor-arrow.is-visible {
   opacity: 0.55;
