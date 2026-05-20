@@ -51,10 +51,10 @@ onBeforeUnmount(() => {
       <div class="mx-auto max-w-4xl text-center">
         <div
           v-reveal
-          class="inline-flex items-center gap-2 rounded-full border border-line bg-white/80 backdrop-blur-sm px-4 py-2 text-[13px] font-medium text-mute"
+          class="inline-flex items-center gap-2.5 text-[12.5px] uppercase tracking-[0.24em] text-cyan-brand-deep font-semibold"
         >
           <span class="dot" />
-          Zabble · Bespoke Digital Systems
+          Bespoke Digital Systems
         </div>
 
         <h1
@@ -101,7 +101,7 @@ onBeforeUnmount(() => {
       </div>
 
       <div
-        class="relative mt-16 md:mt-20"
+        class="relative mt-16 md:mt-20 hidden md:block"
         :style="{ transform: `translate3d(0, ${scrollY * -0.06}px, 0)` }"
       >
         <div
