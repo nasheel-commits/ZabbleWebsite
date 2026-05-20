@@ -118,7 +118,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <section id="home" class="relative overflow-hidden pt-32 md:pt-40 pb-20 md:pb-28">
+  <section id="home" class="relative overflow-hidden pt-20 md:pt-40 pb-14 md:pb-28">
     <div
       class="absolute inset-0 grid-bg fade-mask pointer-events-none"
       aria-hidden="true"
@@ -147,16 +147,16 @@ onBeforeUnmount(() => {
 
         <h1
           v-reveal:blur="80"
-          class="mt-8 font-display text-[42px] leading-[1.06] sm:text-[56px] md:text-[70px] lg:text-[78px] tracking-tight text-ink"
+          class="mt-6 md:mt-8 font-display text-[40px] leading-[1.06] sm:text-[56px] md:text-[70px] lg:text-[78px] tracking-tight text-ink"
         >
-          Every business has its most expensive problem.
+          Your business has a system or workflow that's costing you.
           <span class="block mt-2">
             We build the system that
             <span class="relative inline-block">
               <span class="cyan-underline">solves it.</span>
             </span>
           </span>
-          <span class="block mt-6 md:mt-8 font-display text-[24px] leading-[1.2] sm:text-[30px] md:text-[36px] lg:text-[40px] text-ink/85">
+          <span class="block mt-5 md:mt-8 font-display text-[22px] leading-[1.2] sm:text-[30px] md:text-[36px] lg:text-[40px] text-ink/85">
             A system shaped to your business.
             <span class="block text-ink">Built for no one else.</span>
           </span>
@@ -164,13 +164,13 @@ onBeforeUnmount(() => {
 
         <p
           v-reveal="220"
-          class="mx-auto mt-8 max-w-2xl text-[17px] md:text-[19px] leading-[1.65] text-mute"
+          class="mx-auto mt-6 md:mt-8 max-w-2xl text-[16px] md:text-[19px] leading-[1.6] md:leading-[1.65] text-mute"
         >
           Zabble designs bespoke operational systems: automation, audit trails, anomaly detection,
           and analytics. Built around the specific problem that's slowing your business down.
         </p>
 
-        <div v-reveal="320" class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <div v-reveal="320" class="mt-8 md:mt-10 flex flex-col sm:flex-row items-center justify-center gap-3">
           <NuxtLink
             to="/diagnose"
             class="group inline-flex items-center justify-center gap-2 rounded-full bg-ink hover:bg-ink-soft text-white text-[16px] lg:text-[15.5px] font-medium pl-6 pr-5 py-3.5 transition shadow-[0_10px_30px_-12px_rgba(1,219,241,0.55)]"

@@ -76,11 +76,11 @@ function close() {
         </div>
 
         <button
-          class="md:hidden inline-flex items-center justify-center h-11 w-11 rounded-lg border border-line bg-white/80 backdrop-blur-sm text-ink shadow-[0_1px_0_0_rgba(15,23,42,0.04)]"
+          class="md:hidden -mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors"
           @click="open = true"
           aria-label="Open menu"
         >
-          <Menu :size="20" />
+          <Menu :size="22" :stroke-width="1.75" />
         </button>
       </nav>
     </div>
@@ -119,27 +119,27 @@ function close() {
         />
 
         <div class="relative h-full flex flex-col">
-          <div class="flex items-center justify-between h-16 px-5 border-b border-line/70 bg-white/60 backdrop-blur-sm">
+          <div class="flex items-center justify-between h-14 px-5 border-b border-line/70 bg-white/60 backdrop-blur-sm">
             <a
               href="#home"
               @click="close"
               class="inline-flex items-center py-3 -my-3"
               aria-label="Zabble home"
             >
-              <span class="font-display text-ink text-[26px] leading-none tracking-[-0.02em]">Zabble</span>
+              <span class="font-display text-ink text-[24px] leading-none tracking-[-0.02em]">Zabble</span>
             </a>
             <button
-              class="inline-flex items-center justify-center h-11 w-11 rounded-lg border border-line bg-white text-ink shadow-[0_1px_0_0_rgba(15,23,42,0.04)]"
+              class="-mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors"
               @click="close"
               aria-label="Close menu"
             >
-              <X :size="20" />
+              <X :size="22" :stroke-width="1.75" />
             </button>
           </div>
 
           <div class="relative flex-1 overflow-y-auto">
             <nav aria-label="Mobile">
-              <ul class="px-5 pt-3 pb-2">
+              <ul class="px-5 pt-2 pb-1">
                 <li
                   v-for="(t, i) in tabs"
                   :key="t.href"
@@ -149,33 +149,33 @@ function close() {
                   <a
                     :href="t.href"
                     @click="close"
-                    class="group flex items-center justify-between gap-4 py-5 border-b border-line/70"
+                    class="group flex items-center justify-between gap-4 py-3.5 border-b border-line/70"
                   >
                     <span class="flex items-center gap-4 min-w-0">
                       <span
-                        class="font-semibold text-[12px] uppercase tracking-[0.22em] text-cyan-brand-deep/80 tabular-nums shrink-0"
+                        class="font-semibold text-[11px] uppercase tracking-[0.22em] text-cyan-brand-deep/80 tabular-nums shrink-0"
                       >
                         0{{ i + 1 }}
                       </span>
                       <span
-                        class="font-display text-[32px] leading-[1.05] tracking-tight text-ink truncate"
+                        class="font-display text-[26px] leading-[1.05] tracking-tight text-ink truncate"
                       >
                         {{ t.label }}
                       </span>
                     </span>
                     <span
-                      class="nav-arrow shrink-0 inline-flex items-center justify-center h-10 w-10 rounded-full border border-line bg-white text-mute"
+                      class="nav-arrow shrink-0 inline-flex items-center justify-center h-9 w-9 rounded-full border border-line bg-white text-mute"
                     >
-                      <ArrowUpRight :size="18" />
+                      <ArrowUpRight :size="16" />
                     </span>
                   </a>
                 </li>
               </ul>
             </nav>
 
-            <div class="px-5 mt-6">
+            <div class="px-5 mt-5">
               <div
-                class="cta-card relative rounded-2xl border border-cyan-brand/25 bg-white p-6 overflow-hidden"
+                class="cta-card relative rounded-2xl border border-cyan-brand/25 bg-white p-5 overflow-hidden"
               >
                 <div
                   class="absolute -top-20 -right-16 h-[200px] w-[200px] rounded-full bg-cyan-brand/15 blur-3xl pointer-events-none"
@@ -183,30 +183,30 @@ function close() {
                 />
                 <div class="relative">
                   <div
-                    class="inline-flex items-center gap-2 text-[12px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold"
+                    class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold"
                   >
                     <span class="dot" />
                     Start here
                   </div>
-                  <p class="mt-4 font-display text-[22px] leading-[1.2] text-ink">
+                  <p class="mt-3 font-display text-[19px] leading-[1.25] text-ink">
                     Find your most expensive operational problem in 2 minutes.
                   </p>
                   <NuxtLink
                     to="/diagnose"
                     @click="close"
-                    class="mt-5 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink hover:bg-ink-soft text-white text-[15.5px] font-semibold py-4 transition shadow-[0_18px_40px_-12px_rgba(1,219,241,0.45)]"
+                    class="mt-4 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink hover:bg-ink-soft text-white text-[15px] font-semibold py-3.5 transition shadow-[0_18px_40px_-12px_rgba(1,219,241,0.45)]"
                   >
                     Book a discovery call
-                    <ArrowRight :size="18" class="transition group-hover:translate-x-0.5" />
+                    <ArrowRight :size="17" class="transition group-hover:translate-x-0.5" />
                   </NuxtLink>
                 </div>
               </div>
             </div>
 
-            <div class="h-8" aria-hidden="true" />
+            <div class="h-4" aria-hidden="true" />
           </div>
 
-          <div class="relative px-5 py-5 border-t border-line/70 bg-white/70 backdrop-blur-sm">
+          <div class="relative px-5 py-3.5 border-t border-line/70 bg-white/70 backdrop-blur-sm">
             <a
               href="mailto:analytics@zabble.org"
               @click="close"
@@ -214,15 +214,15 @@ function close() {
             >
               <span class="flex items-center gap-3 min-w-0">
                 <span
-                  class="inline-flex items-center justify-center h-10 w-10 rounded-full bg-cyan-brand/10 text-cyan-brand-deep ring-1 ring-cyan-brand/25 shrink-0"
+                  class="inline-flex items-center justify-center h-9 w-9 rounded-full bg-cyan-brand/10 text-cyan-brand-deep ring-1 ring-cyan-brand/25 shrink-0"
                 >
-                  <Mail :size="16" />
+                  <Mail :size="15" />
                 </span>
                 <span class="flex flex-col min-w-0">
-                  <span class="text-[12px] uppercase tracking-[0.18em] text-mute-2 font-semibold">
+                  <span class="text-[10.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">
                     Get in touch
                   </span>
-                  <span class="text-[15px] text-ink font-medium truncate">
+                  <span class="text-[14px] text-ink font-medium truncate">
                     analytics@zabble.org
                   </span>
                 </span>
