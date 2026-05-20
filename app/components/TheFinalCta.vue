@@ -311,7 +311,7 @@ onBeforeUnmount(() => {
   transition: opacity 900ms ease-out;
 }
 .cursor-arrow.is-visible {
-  opacity: 0.42;
+  opacity: 0.55;
   animation: cursor-arrow-breathe 4.2s ease-in-out infinite;
 }
 .cursor-arrow__svg {
@@ -342,10 +342,10 @@ onBeforeUnmount(() => {
 @keyframes cursor-arrow-breathe {
   0%,
   100% {
-    opacity: 0.32;
+    opacity: 0.4;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.6;
   }
 }
 
