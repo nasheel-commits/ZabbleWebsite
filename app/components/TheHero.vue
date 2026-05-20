@@ -147,14 +147,18 @@ onBeforeUnmount(() => {
 
         <h1
           v-reveal:blur="80"
-          class="mt-8 font-display text-[46px] leading-[1.06] sm:text-[60px] md:text-[74px] lg:text-[82px] tracking-tight text-ink"
+          class="mt-8 font-display text-[42px] leading-[1.06] sm:text-[56px] md:text-[70px] lg:text-[78px] tracking-tight text-ink"
         >
-          Your business has a system that's costing you.
+          Every business has its most expensive problem.
           <span class="block mt-2">
-            We build the one that
+            We build the system that
             <span class="relative inline-block">
-              <span class="cyan-underline">fixes it.</span>
+              <span class="cyan-underline">solves it.</span>
             </span>
+          </span>
+          <span class="block mt-6 md:mt-8 font-display text-[24px] leading-[1.2] sm:text-[30px] md:text-[36px] lg:text-[40px] text-ink/85">
+            A system shaped to your business.
+            <span class="block text-ink">Built for no one else.</span>
           </span>
         </h1>
 
