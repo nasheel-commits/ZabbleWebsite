@@ -381,26 +381,26 @@ const stepFrame = computed(
 
     <header class="relative z-10">
       <div
-        class="mx-auto w-full max-w-3xl px-5 md:px-8 py-5 flex items-center gap-3 md:gap-5"
+        class="mx-auto w-full max-w-3xl px-5 md:px-8 pt-4 pb-3 md:py-5 flex items-center gap-3 md:gap-5"
       >
         <NuxtLink
           to="/"
-          class="inline-flex items-center group shrink-0 py-3 lg:py-0"
+          class="inline-flex items-center group shrink-0 py-2 lg:py-0"
           aria-label="Zabble home"
         >
-          <span class="font-display text-ink text-[26px] sm:text-[28px] leading-none tracking-[-0.02em] transition-colors group-hover:text-ink-soft">
+          <span class="font-display text-ink text-[22px] sm:text-[28px] leading-none tracking-[-0.02em] transition-colors group-hover:text-ink-soft">
             Zabble
           </span>
         </NuxtLink>
 
         <div class="flex-1 min-w-0">
           <div
-            class="flex items-center justify-between text-[12.5px] text-mute-2 mb-1.5 font-semibold"
+            class="flex items-center justify-between text-[11.5px] md:text-[12.5px] text-mute-2 mb-1 md:mb-1.5 font-semibold"
           >
             <span>{{ progressLabel }}</span>
             <span class="tabular-nums">{{ progress }}%</span>
           </div>
-          <div class="relative h-1.5 rounded-full bg-line/80 overflow-hidden">
+          <div class="relative h-1 md:h-1.5 rounded-full bg-line/80 overflow-hidden">
             <div
               class="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-cyan-brand to-cyan-brand-deep transition-[width] duration-700 ease-out shadow-[0_0_14px_rgba(1,219,241,0.55)]"
               :style="{ width: progress + '%' }"
@@ -410,10 +410,10 @@ const stepFrame = computed(
 
         <NuxtLink
           to="/"
-          class="inline-flex items-center justify-center h-11 w-11 lg:h-10 lg:w-10 rounded-full border border-line text-mute hover:text-ink hover:bg-surface-alt transition shrink-0"
+          class="-mr-1.5 md:mr-0 inline-flex items-center justify-center h-10 w-10 lg:h-10 lg:w-10 rounded-full text-mute hover:text-ink hover:bg-ink/5 transition shrink-0"
           aria-label="Close and return home"
         >
-          <X :size="18" />
+          <X :size="20" :stroke-width="1.75" />
         </NuxtLink>
       </div>
     </header>
@@ -421,10 +421,10 @@ const stepFrame = computed(
     <Transition name="fade">
       <div
         v-if="currentStep === 1 && !completed"
-        class="mx-auto max-w-3xl w-full px-5 md:px-8 pt-2 pb-4 text-center"
+        class="mx-auto max-w-3xl w-full px-5 md:px-8 pt-1 pb-2 md:pt-2 md:pb-4 text-center"
       >
         <p
-          class="text-[16px] md:text-[15px] text-mute font-medium tracking-[-0.005em]"
+          class="text-[13.5px] md:text-[15px] text-mute font-medium tracking-[-0.005em]"
         >
           {{ stepFrame }}
         </p>
@@ -433,37 +433,37 @@ const stepFrame = computed(
 
     <main class="flex-1 flex flex-col items-stretch">
       <div
-        class="mx-auto w-full max-w-3xl px-5 md:px-8 py-6 md:py-12 flex-1 flex flex-col"
+        class="mx-auto w-full max-w-3xl px-5 md:px-8 py-4 md:py-12 flex-1 flex flex-col"
       >
         <div class="relative flex-1">
           <Transition :name="transitionName" mode="out-in">
             <div
               v-if="!completed && currentDef.key !== 'contact'"
               :key="`q-${currentStep}`"
-              class="space-y-7 md:space-y-9"
+              class="space-y-5 md:space-y-9"
             >
               <div>
                 <h1
-                  class="font-display text-[32px] sm:text-[40px] md:text-[48px] leading-[1.1] tracking-tight text-ink"
+                  class="font-display text-[26px] sm:text-[34px] md:text-[44px] lg:text-[48px] leading-[1.12] tracking-tight text-ink"
                 >
                   {{ currentDef.question }}
                 </h1>
                 <p
                   v-if="currentDef.helper"
-                  class="mt-4 text-[16px] md:text-[16.5px] text-mute leading-[1.6]"
+                  class="mt-2.5 md:mt-4 text-[14.5px] md:text-[16.5px] text-mute leading-[1.55] md:leading-[1.6]"
                 >
                   {{ currentDef.helper }}
                 </p>
               </div>
 
-              <div class="grid grid-cols-1 gap-3">
+              <div class="grid grid-cols-1 gap-2.5 md:gap-3">
                 <button
                   v-for="(opt, i) in currentDef.options"
                   :key="opt.value"
                   type="button"
                   :disabled="isAdvancing"
                   :class="[
-                    'option-card group flex items-start gap-4 text-left rounded-2xl border bg-white px-5 md:px-6 py-5 md:py-5 transition-all duration-200 disabled:cursor-default',
+                    'option-card group flex items-start gap-3 md:gap-4 text-left rounded-xl md:rounded-2xl border bg-white px-3.5 md:px-6 py-3.5 md:py-5 transition-all duration-200 disabled:cursor-default',
                     isSelected(opt.value)
                       ? 'border-cyan-brand ring-2 ring-cyan-brand/30 shadow-[0_18px_50px_-22px_rgba(1,219,241,0.55)]'
                       : 'border-line hover:border-cyan-brand/55 hover:bg-cyan-brand/[0.02] hover:shadow-[0_18px_45px_-30px_rgba(15,23,42,0.18)] hover:-translate-y-px',
@@ -473,33 +473,33 @@ const stepFrame = computed(
                 >
                   <span
                     :class="[
-                      'mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[13.5px] font-semibold transition-all',
+                      'mt-0.5 inline-flex h-8 w-8 md:h-9 md:w-9 shrink-0 items-center justify-center rounded-lg text-[12.5px] md:text-[13.5px] font-semibold transition-all',
                       isSelected(opt.value)
                         ? 'bg-cyan-brand text-ink ring-1 ring-cyan-brand'
                         : 'bg-surface-alt text-mute group-hover:bg-cyan-brand/10 group-hover:text-cyan-brand-deep ring-1 ring-line',
                     ]"
                     aria-hidden="true"
                   >
-                    <Check v-if="isSelected(opt.value)" :size="17" />
+                    <Check v-if="isSelected(opt.value)" :size="15" />
                     <span v-else class="tabular-nums">{{ i + 1 }}</span>
                   </span>
                   <span class="flex-1 min-w-0">
                     <span
-                      class="block text-[16.5px] md:text-[17.5px] font-semibold text-ink leading-snug"
+                      class="block text-[15.5px] md:text-[17.5px] font-semibold text-ink leading-snug"
                     >
                       {{ opt.label }}
                     </span>
                     <span
                       v-if="opt.sub"
-                      class="block mt-1 text-[16px] md:text-[15px] text-mute leading-[1.55]"
+                      class="block mt-0.5 md:mt-1 text-[13.5px] md:text-[15px] text-mute leading-[1.45] md:leading-[1.55]"
                     >
                       {{ opt.sub }}
                     </span>
                   </span>
                   <ArrowRight
-                    :size="18"
+                    :size="16"
                     :class="[
-                      'mt-1.5 shrink-0 transition-all',
+                      'mt-1 md:mt-1.5 shrink-0 transition-all',
                       isSelected(opt.value)
                         ? 'text-cyan-brand-deep translate-x-0.5'
                         : 'text-mute-2 group-hover:text-ink group-hover:translate-x-0.5',
@@ -699,7 +699,7 @@ const stepFrame = computed(
 
         <div
           v-if="!completed"
-          class="mt-10 md:mt-12 flex items-center justify-between gap-4"
+          class="mt-6 md:mt-12 flex items-center justify-between gap-4"
         >
           <button
             type="button"
