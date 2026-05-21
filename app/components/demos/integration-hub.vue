@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
-import { ArrowRight, Award, BarChart3, Boxes, Cable, CalendarCheck, CalendarClock, CheckCircle2, ChevronRight, FileText, GitBranch, LifeBuoy, Megaphone, MessageSquare, Plus, Receipt, ShoppingCart, Sparkles, Star, Trash2, Users, Workflow, X, Zap } from '@lucide/vue'
+import { AlertTriangle, ArrowRight, Award, BarChart3, Boxes, Cable, CalendarCheck, CalendarClock, CheckCircle2, ChevronRight, CreditCard, FileText, GitBranch, LifeBuoy, Megaphone, MessageSquare, Plus, Receipt, RotateCw, ShoppingCart, Sparkles, Star, Trash2, Truck, Users, Workflow, X, Zap } from '@lucide/vue'
 
 type ToolId = string
-type TriggerKey = 'booking' | 'order' | 'lead'
+type CompareTriggerKey = 'booking' | 'order' | 'lead'
+type TriggerKey = CompareTriggerKey | 'outage'
 
 interface ToolKind {
   key: string
@@ -33,7 +34,7 @@ interface Bridge {
 
 interface LogEntry {
   id: number
-  kind: 'emit' | 'fire' | 'note' | 'dedupe'
+  kind: 'emit' | 'fire' | 'note' | 'retry'
   origin?: ToolId
   bridgeId?: string
   title: string
@@ -182,16 +183,32 @@ const TOOL_KINDS: Record<string, ToolKind> = {
     emits: ['quote.drafted', 'quote.sent', 'quote.accepted'],
     actions: ['draft quote', 'send quote', 'mark accepted'],
   },
+  payments: {
+    key: 'payments',
+    name: 'Payments',
+    category: 'Finance',
+    icon: CreditCard,
+    emits: ['payment.received', 'payout.scheduled', 'chargeback.opened'],
+    actions: ['charge card', 'refund payment', 'reconcile payout'],
+  },
+  shipping: {
+    key: 'shipping',
+    name: 'Shipping',
+    category: 'Operations',
+    icon: Truck,
+    emits: ['shipment.created', 'parcel.scanned', 'delivery.confirmed'],
+    actions: ['create label', 'request pickup', 'notify customer'],
+  },
 }
 
-const ADDABLE_KEYS = ['reviews', 'loyalty', 'analytics', 'sms', 'quoting']
+const ADDABLE_KEYS = ['reviews', 'loyalty', 'analytics', 'sms', 'quoting', 'payments', 'shipping']
 
 // Which actions emit a downstream event (so cascades happen)?
 const ACTION_EMITS: Record<string, string | null> = {
   'upsert contact': 'contact.upserted',
   'create lead': 'lead.created',
   'add to segment': 'segment.changed',
-  'log activity': 'contact.upserted',
+  'log activity': null,
   'open ticket': 'ticket.opened',
   'decrement stock': 'stock.changed',
   'reserve stock': 'stock.changed',
@@ -246,7 +263,7 @@ const INITIAL_BRIDGES: Bridge[] = [
   mkBridge('b7',  'marketing', 'crm',        'lead.captured',    'create lead'),
   mkBridge('b8',  'helpdesk',  'crm',        'ticket.opened',    'log activity'),
   mkBridge('b9',  'crm',       'marketing',  'contact.upserted', 'add to nurture'),
-  mkBridge('b10', 'crm',       'calendar',   'contact.upserted', 'block slot'),
+  mkBridge('b10', 'crm',       'marketing',  'lead.created',     'add to nurture'),
 ]
 
 // ---- reactive state -------------------------------------------------------
@@ -482,7 +499,17 @@ function addToolFromTemplate(kindKey: string) {
     { x: baseX - 220,  y: baseY - 80 },
   ]
   const existingKinds = nodes.value.map((n) => n.kindKey)
-  let pos = offsetSlots[Math.min(nodes.value.length - 8, offsetSlots.length - 1)] ?? offsetSlots[0]!
+  // Cycle through the offset slots, nudging each cycle by ~18px so chips
+  // added past the first cycle don't perfectly stack on the previous ones.
+  const addedCount = Math.max(0, nodes.value.length - 8)
+  const slotIdx = addedCount % offsetSlots.length
+  const cycle = Math.floor(addedCount / offsetSlots.length)
+  const baseSlot = offsetSlots[slotIdx]!
+  const jitter = cycle * 18
+  const pos = {
+    x: Math.max(0, Math.min(CANVAS_W - CHIP_W, baseSlot.x + jitter)),
+    y: Math.max(0, Math.min(CANVAS_H - CHIP_H, baseSlot.y + jitter)),
+  }
   // Generate a unique id: kindKey + suffix if needed
   let nid: ToolId = kindKey
   if (existingKinds.includes(kindKey)) {
@@ -520,7 +547,7 @@ const TRIGGERS: TriggerDef[] = [
     shortLabel: 'New booking',
     originId: 'booking',
     eventName: 'booking.created',
-    subject: 'Sarah Chen · Thu 10:30',
+    subject: 'Lerato Mokoena · Thu 10:30',
   },
   {
     key: 'order',
@@ -538,16 +565,33 @@ const TRIGGERS: TriggerDef[] = [
     eventName: 'lead.captured',
     subject: 'Adriaan Smit · Cape Bulk Handling',
   },
+  {
+    key: 'outage',
+    label: 'Simulate booking · Accounting outage',
+    shortLabel: 'Booking · outage',
+    originId: 'booking',
+    eventName: 'booking.created',
+    subject: 'Lerato Mokoena · Thu 10:30',
+  },
 ]
+
+// The accounting outage trigger reuses the booking event but the hub
+// pretends accounting is briefly down. The bridge into accounting fails
+// once, queues, then retries successfully — the rest of the cascade is
+// unaffected. Set per-fire by `fireTrigger`.
+const failingToolForFire = ref<ToolId | null>(null)
 
 const firing = ref(false)
 const lastTrigger = ref<TriggerKey | null>(null)
+
+const RETRY_DELAY_MS = 1400
 
 async function fireTrigger(trig: TriggerDef) {
   if (firing.value) return
   if (!nodeById.value[trig.originId]) return
   firing.value = true
   lastTrigger.value = trig.key
+  failingToolForFire.value = trig.key === 'outage' ? 'accounting' : null
   resetClock()
   pushLog({
     kind: 'emit',
@@ -575,11 +619,15 @@ async function fireTrigger(trig: TriggerDef) {
       firedEdges.add(b.id)
       const hopDelay = 220 + Math.floor(Math.random() * 80)
       const fireAt = atMs + hopDelay
-      scheduleHop(b, fireAt, trig)
-      lastWaveEndsAt = Math.max(lastWaveEndsAt, fireAt + 820)
+      const willRetry = b.to === failingToolForFire.value
+      scheduleHop(b, fireAt, trig, willRetry)
+      const tailMs = willRetry ? RETRY_DELAY_MS + 820 : 820
+      lastWaveEndsAt = Math.max(lastWaveEndsAt, fireAt + tailMs)
       const emitted = ACTION_EMITS[b.action] ?? null
       if (emitted) {
-        queue.push({ fromId: b.to, eventName: emitted, atMs: fireAt + 200 })
+        // Cascade waits for the (retried) success before continuing.
+        const cascadeAt = fireAt + (willRetry ? RETRY_DELAY_MS : 0) + 200
+        queue.push({ fromId: b.to, eventName: emitted, atMs: cascadeAt })
       }
     }
   }
@@ -596,39 +644,62 @@ async function fireTrigger(trig: TriggerDef) {
   // Clear "firing" flag a little after the last packet lands
   setTimeout(() => {
     firing.value = false
+    failingToolForFire.value = null
   }, lastWaveEndsAt + 200)
 }
 
-function scheduleHop(b: Bridge, atMs: number, trig: TriggerDef) {
+function firePacketAndLog(b: Bridge, atMs: number, trig: TriggerDef, retried: boolean) {
+  const f = nodeById.value[b.from]
+  const t = nodeById.value[b.to]
+  if (!f || !t) return
+  const a = nodeCenter(f)
+  const c = nodeCenter(t)
+  const pid = packetId++
+  packets.value.push({
+    id: pid,
+    bridgeId: b.id,
+    fromX: a.x,
+    fromY: a.y,
+    toX: c.x,
+    toY: c.y,
+  })
+  nowSec = atMs
+  pushLog({
+    kind: 'fire',
+    origin: b.from,
+    bridgeId: b.id,
+    title: `${TOOL_KINDS[nodeById.value[b.from]!.kindKey]!.name} → ${TOOL_KINDS[nodeById.value[b.to]!.kindKey]!.name}`,
+    body: retried
+      ? `${b.action} · subject: ${trig.subject} · retry succeeded`
+      : `${b.action} · subject: ${trig.subject}`,
+  })
+  // Mid-flight target flash
+  setTimeout(() => flashTool(b.to, 700), 500)
+  // Remove the packet when its CSS animation ends
   setTimeout(() => {
-    const f = nodeById.value[b.from]
-    const t = nodeById.value[b.to]
-    if (!f || !t) return
-    const a = nodeCenter(f)
-    const c = nodeCenter(t)
-    const pid = packetId++
-    packets.value.push({
-      id: pid,
-      bridgeId: b.id,
-      fromX: a.x,
-      fromY: a.y,
-      toX: c.x,
-      toY: c.y,
-    })
-    nowSec = atMs
-    pushLog({
-      kind: 'fire',
-      origin: b.from,
-      bridgeId: b.id,
-      title: `${TOOL_KINDS[nodeById.value[b.from]!.kindKey]!.name} → ${TOOL_KINDS[nodeById.value[b.to]!.kindKey]!.name}`,
-      body: `${b.action} · subject: ${trig.subject}`,
-    })
-    // Mid-flight target flash
-    setTimeout(() => flashTool(b.to, 700), 500)
-    // Remove the packet when its CSS animation ends
-    setTimeout(() => {
-      packets.value = packets.value.filter((p) => p.id !== pid)
-    }, 860)
+    packets.value = packets.value.filter((p) => p.id !== pid)
+  }, 860)
+}
+
+function scheduleHop(b: Bridge, atMs: number, trig: TriggerDef, willRetry: boolean) {
+  setTimeout(() => {
+    if (willRetry) {
+      // First attempt fails; queue a retry.
+      nowSec = atMs
+      const targetName = TOOL_KINDS[nodeById.value[b.to]!.kindKey]!.name
+      pushLog({
+        kind: 'retry',
+        origin: b.from,
+        bridgeId: b.id,
+        title: `${targetName} · 503 · queued for retry`,
+        body: `${b.action} · subject: ${trig.subject} · retrying in ~${Math.round(RETRY_DELAY_MS / 100) / 10}s`,
+      })
+      setTimeout(() => {
+        firePacketAndLog(b, atMs + RETRY_DELAY_MS, trig, true)
+      }, RETRY_DELAY_MS)
+    } else {
+      firePacketAndLog(b, atMs, trig, false)
+    }
   }, atMs)
 }
 
@@ -638,7 +709,13 @@ const beforeSteps = ref<BeforeStep[]>([])
 const afterSteps = ref<BeforeStep[]>([])
 const afterPackets = ref<ActivePacket[]>([])
 const compareFiring = ref(false)
-const compareTrigger = ref<TriggerKey>('booking')
+const compareTrigger = ref<CompareTriggerKey>('booking')
+
+// Compare view only handles the three "real" triggers — outage doesn't
+// have a before-recipe and would be meaningless side-by-side.
+const COMPARE_TRIGGERS = computed(() =>
+  TRIGGERS.filter((t): t is TriggerDef & { key: CompareTriggerKey } => t.key !== 'outage'),
+)
 
 let stepIdCounter = 1
 
@@ -648,7 +725,7 @@ interface BeforeRecipe {
   errorRate: string
 }
 
-const BEFORE_RECIPES: Record<TriggerKey, BeforeRecipe> = {
+const BEFORE_RECIPES: Record<CompareTriggerKey, BeforeRecipe> = {
   booking: {
     steps: [
       { who: 'Sue (admin)', afterSec: 240,  text: 'Sees booking email · opens CRM, types contact details' },
@@ -657,7 +734,7 @@ const BEFORE_RECIPES: Record<TriggerKey, BeforeRecipe> = {
       { who: 'Marie (marketing)', afterSec: 1560, text: 'Picks up handover note, adds contact to nurture list' },
     ],
     totalMinutes: 26,
-    errorRate: '1 in 9 bookings copied wrong',
+    errorRate: 'a few bookings a month copied wrong',
   },
   order: {
     steps: [
@@ -667,17 +744,17 @@ const BEFORE_RECIPES: Record<TriggerKey, BeforeRecipe> = {
       { who: 'Lebo (finance)', afterSec: 1320, text: 'Reconciles invoice against stock movement the next morning' },
     ],
     totalMinutes: 22,
-    errorRate: '1 in 12 orders missing a CRM update',
+    errorRate: 'a handful of orders a week with the CRM out of sync',
   },
   lead: {
     steps: [
-      { who: 'Marie (marketing)', afterSec: 300,  text: 'Sees the form fill · downloads CSV, opens CRM' },
-      { who: 'Marie (marketing)', afterSec: 780,  text: 'Re-types lead into CRM, tags the source by hand' },
+      { who: 'Marie (marketing)', afterSec: 300,  text: 'Sees the form notification · waits till morning to grab the lead' },
+      { who: 'Marie (marketing)', afterSec: 780,  text: 'Re-types the lead into Pipedrive, tags the source by hand' },
       { who: 'Sales',             afterSec: 1320, text: 'Lead surfaces in Monday standup — three days late' },
       { who: 'Sales',             afterSec: 1740, text: 'Books follow-up call after another two days of email tag' },
     ],
     totalMinutes: 29,
-    errorRate: 'half the leads chase too late to convert',
+    errorRate: 'half the leads die before sales calls them back',
   },
 }
 
@@ -701,7 +778,7 @@ function clearCompareTimers() {
   compareTimers = []
 }
 
-function fireCompare(key: TriggerKey) {
+function fireCompare(key: CompareTriggerKey) {
   if (compareFiring.value) return
   clearCompareTimers()
   compareFiring.value = true
@@ -884,10 +961,20 @@ function toolIconOf(id: ToolId | null): Component | null {
 
 // Reset everything to scaffolding state
 function resetAll() {
+  // Wipe in-flight fires + compare timelines so the reset is clean even if
+  // the user clicked mid-cascade.
+  clearCompareTimers()
+  firing.value = false
+  compareFiring.value = false
+  failingToolForFire.value = null
   nodes.value = JSON.parse(JSON.stringify(INITIAL_NODES))
   bridges.value = JSON.parse(JSON.stringify(INITIAL_BRIDGES))
   log.value = []
   packets.value = []
+  beforeSteps.value = []
+  afterSteps.value = []
+  afterPackets.value = []
+  packetId = 1
   pushLog({
     kind: 'note',
     title: 'Hub reset',
@@ -910,7 +997,7 @@ function resetAll() {
             <span class="font-display text-[18px] leading-none text-ink">Integration Hub</span>
             <span class="inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-2 py-0.5 text-[10px] uppercase tracking-[0.18em] font-semibold text-mute-2">
               <span class="h-1.5 w-1.5 rounded-full bg-cyan-brand" aria-hidden="true" />
-              Live demo
+              Example wiring
             </span>
           </div>
           <p class="mt-1 text-[12px] leading-tight text-mute truncate">
@@ -1116,10 +1203,14 @@ function resetAll() {
               >
                 <span class="inline-flex items-center gap-2">
                   <span
-                    class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-cyan-brand/12 text-cyan-brand-deep ring-1 ring-cyan-brand/25"
+                    class="inline-flex h-6 w-6 items-center justify-center rounded-md ring-1"
+                    :class="t.key === 'outage'
+                      ? 'bg-white text-ink ring-ink/40'
+                      : 'bg-cyan-brand/12 text-cyan-brand-deep ring-cyan-brand/25'"
                     aria-hidden="true"
                   >
-                    <Zap :size="12" :stroke-width="2.2" />
+                    <AlertTriangle v-if="t.key === 'outage'" :size="12" :stroke-width="2.2" />
+                    <Zap v-else :size="12" :stroke-width="2.2" />
                   </span>
                   {{ t.label }}
                 </span>
@@ -1127,7 +1218,7 @@ function resetAll() {
               </button>
             </div>
             <p class="mt-3 text-[11.5px] text-mute-2 leading-snug">
-              Origin emits its event; the hub fans it across every matching bridge, then cascades through any tool whose action emits a downstream event.
+              The source fires. The hub forwards every wired bridge. If a target's action emits, the next wave runs.
             </p>
           </div>
 
@@ -1193,16 +1284,19 @@ function resetAll() {
                 ? 'bg-cyan-brand/15 text-cyan-brand-deep ring-1 ring-cyan-brand/25'
                 : entry.kind === 'emit'
                 ? 'bg-ink text-white'
+                : entry.kind === 'retry'
+                ? 'bg-white text-ink ring-1 ring-ink/40'
                 : 'bg-surface-alt text-ink ring-1 ring-line'"
               aria-hidden="true"
             >
               <Zap v-if="entry.kind === 'emit'" :size="12" :stroke-width="2" />
               <ArrowRight v-else-if="entry.kind === 'fire'" :size="12" :stroke-width="2" />
+              <RotateCw v-else-if="entry.kind === 'retry'" :size="12" :stroke-width="2" />
               <Sparkles v-else :size="12" :stroke-width="2" />
             </span>
             <div class="min-w-0 grow">
               <div class="flex items-center gap-1.5 text-[10.5px] text-mute-2 uppercase tracking-[0.12em]">
-                <span class="font-semibold">{{ entry.kind === 'emit' ? 'Emit' : entry.kind === 'fire' ? 'Bridge fire' : 'Note' }}</span>
+                <span class="font-semibold">{{ entry.kind === 'emit' ? 'Emit' : entry.kind === 'fire' ? 'Bridge fire' : entry.kind === 'retry' ? 'Retry' : 'Note' }}</span>
                 <span class="text-mute-2/60">·</span>
                 <span>{{ entry.at }}</span>
               </div>
@@ -1230,7 +1324,7 @@ function resetAll() {
         </div>
         <div class="flex flex-wrap gap-1.5">
           <button
-            v-for="t in TRIGGERS"
+            v-for="t in COMPARE_TRIGGERS"
             :key="t.key"
             type="button"
             :disabled="compareFiring"

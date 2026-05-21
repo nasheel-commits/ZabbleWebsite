@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, h, onUnmounted, reactive, ref, watch } from 'vue'
-import { BarChart3, BookMarked, Calculator, Check, ChevronDown, Database, Download, FileText, FileType2, Hourglass, Paperclip, PenLine, Receipt, RotateCcw, ScrollText, Sparkles } from '@lucide/vue'
+import { computed, onUnmounted, reactive, ref, watch, type Component } from 'vue'
+import { AlertTriangle, BarChart3, BookMarked, Briefcase, Calculator, Check, ChevronDown, Database, Download, FileText, FileType2, Hourglass, Paperclip, PenLine, Receipt, RotateCcw, ScrollText, Sparkles } from '@lucide/vue'
 
 type Source = 'crm' | 'pricing' | 'case-study' | 'template'
 
@@ -63,6 +63,8 @@ const SOURCE_META: Record<Source, SourceMeta> = {
 // Sample deals — three live CRM records.
 // ---------------------------------------------------------------------------
 
+type FeeModel = 'milestone' | 'retainer' | 'phased'
+
 interface Deal {
   id: string
   // CRM facets
@@ -79,13 +81,22 @@ interface Deal {
   engagementSummary: string
   feeTotal: string
   feeStructure: string
-  monthlyRetainer: string
+  /** Drives the statement template — milestone, retainer, or phased schedules. */
+  feeModel: FeeModel
+  /** Only meaningful when feeModel === 'retainer'. */
+  monthlyRetainer?: string
+  /** Settled-to-date line on milestone/phased statements. */
+  statementPaidLine?: string
+  /** Open / next-due line on milestone/phased statements. */
+  statementDueLine?: string
   outstandingBalance: string
   lineItems: { label: string; qty: string; rate: string; amount: string }[]
   // Case study facet (chosen by industry match)
   caseRef: string
   caseOutcome: string
   caseBlurb: string
+  /** Optional staleness flag on the case-study reference (drives a "Review" pill). */
+  caseFlag?: { label: string; reason: string }
   // Generated CRM fields for reports
   dealAgeWeeks: string
   pipelineValue: string
@@ -102,11 +113,13 @@ const DEALS: Deal[] = [
     industry: 'Banking & financial services',
     billingAddress: '14 Maude Street, Sandton, 2196',
     stage: 'Proposal sent',
-    engagementName: 'Series B capital strategy review',
-    engagementSummary: 'Six-week capital-raise readiness review across capital structure, investor materials, and roadshow plan.',
+    engagementName: 'Capital raise readiness review',
+    engagementSummary: 'Six-week readiness review across capital structure, investor materials, and roadshow plan.',
     feeTotal: 'R 2,400,000',
-    feeStructure: 'Fixed fee, 50% on signing, 50% on delivery',
-    monthlyRetainer: 'R 400,000',
+    feeStructure: 'Fixed fee — 50% on signing, 50% on delivery',
+    feeModel: 'milestone',
+    statementPaidLine: 'Signing invoice of R 1,200,000 — settled 21 March',
+    statementDueLine: 'Delivery invoice of R 1,200,000 — due on countersign of the final deliverables',
     outstandingBalance: 'R 1,200,000',
     lineItems: [
       { label: 'Capital structure review', qty: '1', rate: 'R 720,000',   amount: 'R 720,000' },
@@ -114,7 +127,7 @@ const DEALS: Deal[] = [
       { label: 'Roadshow design',          qty: '1', rate: 'R 480,000',   amount: 'R 480,000' },
       { label: 'Advisory hours (60h)',     qty: '60', rate: 'R 11,000/h', amount: 'R 660,000' },
     ],
-    caseRef: 'Helix Capital · Series A, 2025',
+    caseRef: 'Helix Capital · private placement, 2025',
     caseOutcome: 'Closed 14% above target valuation in 11 weeks.',
     caseBlurb: 'A directly comparable engagement: ZAR-denominated raise, three-investor syndicate, identical board structure.',
     dealAgeWeeks: '3 weeks',
@@ -134,6 +147,7 @@ const DEALS: Deal[] = [
     engagementSummary: 'Network redesign across four distribution centres and a SKU rationalisation programme.',
     feeTotal: 'R 1,180,000',
     feeStructure: 'Fixed fee plus success share on landed-cost reduction',
+    feeModel: 'retainer',
     monthlyRetainer: 'R 295,000',
     outstandingBalance: 'R 295,000',
     lineItems: [
@@ -145,6 +159,7 @@ const DEALS: Deal[] = [
     caseRef: 'PrimeRetail · DC consolidation, 2024',
     caseOutcome: 'Landed cost down 11.4%, on-shelf availability up 3.2 pts.',
     caseBlurb: 'A national grocer with the same four-DC footprint. Same network-redesign approach, same eight-week sprint.',
+    caseFlag: { label: 'Review', reason: 'Case study is 17 months old — confirm the comparison still holds before sending.' },
     dealAgeWeeks: '5 weeks',
     pipelineValue: 'R 1.2m · weighted R 0.5m',
   },
@@ -160,9 +175,11 @@ const DEALS: Deal[] = [
     stage: 'Negotiation',
     engagementName: 'ESG reporting framework programme',
     engagementSummary: 'Implementation of a JSE- and IFRS S2-aligned ESG reporting framework with assurance-ready evidence chains.',
-    feeTotal: 'R 3,650,000',
-    feeStructure: 'Phased — R 1.6m setup, R 510,000 quarterly for four quarters',
-    monthlyRetainer: 'R 170,000',
+    feeTotal: 'R 3,850,000',
+    feeStructure: 'Phased — R 1.6m setup, R 510,000 per quarterly assurance pack, plus stakeholder workshops as delivered',
+    feeModel: 'phased',
+    statementPaidLine: 'Setup invoice of R 1,600,000 — paid 12 February',
+    statementDueLine: 'Next quarterly assurance pack of R 510,000 — due on the first of the next quarter',
     outstandingBalance: 'R 2,040,000',
     lineItems: [
       { label: 'Framework setup',          qty: '1', rate: 'R 1,600,000', amount: 'R 1,600,000' },
@@ -173,7 +190,7 @@ const DEALS: Deal[] = [
     caseOutcome: 'First-year audit cleared on first submission; JSE rating upgraded.',
     caseBlurb: 'A JSE-listed mining major. Same framework backbone, same assurance-evidence design, twelve-month rollout.',
     dealAgeWeeks: '8 weeks',
-    pipelineValue: 'R 3.7m · weighted R 2.6m',
+    pipelineValue: 'R 3.9m · weighted R 2.7m',
   },
 ]
 
@@ -189,6 +206,8 @@ interface Field {
   source: Source
   // Where the value would come from in a real system — shown in the tooltip.
   sourceRecord: string
+  /** Optional review/conflict pill alongside the chip — e.g. stale case study. */
+  flag?: { label: string; reason: string }
 }
 
 interface Block {
@@ -215,12 +234,18 @@ interface TemplateMeta {
 const TEMPLATES: TemplateMeta[] = [
   { key: 'proposal',      label: 'Proposal',       short: 'Proposal',  icon: FileText,   blurb: 'CRM · pricing · case study · template' },
   { key: 'contract',      label: 'Contract',       short: 'Contract',  icon: ScrollText, blurb: 'CRM · pricing · template' },
-  { key: 'statement',     label: 'Monthly statement', short: 'Statement', icon: Receipt,  blurb: 'CRM · pricing · template' },
+  { key: 'statement',     label: 'Statement',      short: 'Statement', icon: Receipt,    blurb: 'CRM · pricing · template' },
   { key: 'board-report',  label: 'Board report',   short: 'Board',     icon: BarChart3,  blurb: 'CRM · pricing · case study · template' },
 ]
 
-function f(id: string, value: string, source: Source, sourceRecord: string): Field {
-  return { id, value, source, sourceRecord }
+function f(
+  id: string,
+  value: string,
+  source: Source,
+  sourceRecord: string,
+  flag?: { label: string; reason: string },
+): Field {
+  return { id, value, source, sourceRecord, flag }
 }
 
 function makeProposal(d: Deal): Block[] {
@@ -248,7 +273,7 @@ function makeProposal(d: Deal): Block[] {
       heading: 'Investment',
       fragments: [
         { text: 'Total engagement value of ' },
-        { field: f('fee-total', d.feeTotal, 'pricing', 'Pricing engine · Quote line subtotal') },
+        { field: f('fee-total', d.feeTotal, 'pricing', 'Pricing engine · Engagement quote total') },
         { text: ', billed as ' },
         { field: f('fee-structure', d.feeStructure, 'pricing', 'Pricing engine · Fee structure rules') },
         { text: '. Net 30 from invoice date, in line with our ' },
@@ -260,7 +285,7 @@ function makeProposal(d: Deal): Block[] {
       heading: 'Why we are well placed',
       fragments: [
         { text: 'Comparable engagement: ' },
-        { field: f('case-ref', d.caseRef, 'case-study', 'Case study library · ' + d.industry) },
+        { field: f('case-ref', d.caseRef, 'case-study', 'Case study library · ' + d.industry, d.caseFlag) },
         { text: '. ' },
         { field: f('case-outcome', d.caseOutcome, 'case-study', 'Case study library · Outcome metric') },
         { text: ' ' },
@@ -311,43 +336,69 @@ function makeContract(d: Deal): Block[] {
     {
       heading: '3. Confidentiality and term',
       fragments: [
-        { field: f('confidentiality', 'Each party shall keep confidential all non-public information received in connection with this engagement, for a period of five years from termination.', 'template', 'Template · §3 Confidentiality (standard)') },
+        { field: f('confidentiality', 'Each party keeps non-public information confidential for five years after termination.', 'template', 'Template · §3 Confidentiality (standard)') },
       ],
     },
   ]
 }
 
 function makeStatement(d: Deal): Block[] {
-  return [
-    {
-      fragments: [
-        { text: 'Statement for ' },
-        { field: f('client-name', d.clientName, 'crm', 'CRM · Account name') },
-        { text: ' · Account no. ' },
-        { field: f('account-no', d.id.toUpperCase(), 'crm', 'CRM · Account number') },
-        { text: '.' },
-      ],
-    },
-    {
+  const header: Block = {
+    fragments: [
+      { text: 'Statement for ' },
+      { field: f('client-name', d.clientName, 'crm', 'CRM · Account name') },
+      { text: ' · Account no. ' },
+      { field: f('account-no', d.id.toUpperCase(), 'crm', 'CRM · Account number') },
+      { text: '.' },
+    ],
+  }
+
+  let period: Block
+  if (d.feeModel === 'retainer') {
+    period = {
       heading: 'This month',
       fragments: [
         { text: 'Monthly retainer of ' },
-        { field: f('monthly-retainer', d.monthlyRetainer, 'pricing', 'Pricing engine · Retainer schedule') },
+        { field: f('monthly-retainer', d.monthlyRetainer ?? '', 'pricing', 'Pricing engine · Retainer schedule') },
         { text: ' invoiced on the first of the month. ' },
         { field: f('payment-method', 'Payment due by EFT, 30 days from invoice date.', 'template', 'Template · Statement footer') },
       ],
-    },
-    {
-      heading: 'Outstanding',
+    }
+  } else if (d.feeModel === 'milestone') {
+    period = {
+      heading: 'Milestone schedule',
       fragments: [
-        { text: 'Outstanding balance: ' },
-        { field: f('outstanding', d.outstandingBalance, 'pricing', 'Pricing engine · Open AR') },
-        { text: '. Please contact your account manager, ' },
-        { field: f('contact-name', d.contactName, 'crm', 'CRM · Account contact') },
-        { text: ', with any queries.' },
+        { text: 'Two-milestone billing. ' },
+        { field: f('milestone-paid', d.statementPaidLine ?? '', 'pricing', 'Pricing engine · Milestone 1 (settled)') },
+        { text: '. ' },
+        { field: f('milestone-due', d.statementDueLine ?? '', 'pricing', 'Pricing engine · Milestone 2 (open)') },
+        { text: '.' },
       ],
-    },
-  ]
+    }
+  } else {
+    period = {
+      heading: 'Phased schedule',
+      fragments: [
+        { field: f('phase-paid', d.statementPaidLine ?? '', 'pricing', 'Pricing engine · Phase invoiced (paid)') },
+        { text: '. ' },
+        { field: f('phase-due', d.statementDueLine ?? '', 'pricing', 'Pricing engine · Phase invoiced (open)') },
+        { text: '.' },
+      ],
+    }
+  }
+
+  const outstanding: Block = {
+    heading: 'Outstanding',
+    fragments: [
+      { text: 'Outstanding balance: ' },
+      { field: f('outstanding', d.outstandingBalance, 'pricing', 'Pricing engine · Open AR') },
+      { text: '. Please contact your account manager, ' },
+      { field: f('contact-name', d.contactName, 'crm', 'CRM · Account contact') },
+      { text: ', with any queries.' },
+    ],
+  }
+
+  return [header, period, outstanding]
 }
 
 function makeBoardReport(d: Deal): Block[] {
@@ -377,7 +428,7 @@ function makeBoardReport(d: Deal): Block[] {
         { text: 'Pipeline value: ' },
         { field: f('pipeline', d.pipelineValue, 'pricing', 'Pricing engine · Probability-weighted value') },
         { text: '. Total engagement value: ' },
-        { field: f('fee-total', d.feeTotal, 'pricing', 'Pricing engine · Quote total') },
+        { field: f('fee-total', d.feeTotal, 'pricing', 'Pricing engine · Engagement quote total') },
         { text: '. Outstanding: ' },
         { field: f('outstanding', d.outstandingBalance, 'pricing', 'Pricing engine · Open AR') },
         { text: '.' },
@@ -386,7 +437,7 @@ function makeBoardReport(d: Deal): Block[] {
     {
       heading: 'Comparable',
       fragments: [
-        { field: f('case-ref', d.caseRef, 'case-study', 'Case study library · ' + d.industry) },
+        { field: f('case-ref', d.caseRef, 'case-study', 'Case study library · ' + d.industry, d.caseFlag) },
         { text: ' — ' },
         { field: f('case-outcome', d.caseOutcome, 'case-study', 'Case study library · Outcome metric') },
       ],
@@ -431,7 +482,7 @@ const lastAction = ref<{ kind: OutputKind; at: number } | null>(null)
 // Timer animation
 let rafHandle: number | null = null
 let assembleStart = 0
-const ASSEMBLE_MS = 3000
+const ASSEMBLE_MS = 4000
 
 const selectedDeal = computed(() =>
   DEALS.find((d) => d.id === selectedDealId.value) ?? DEALS[0],
@@ -496,6 +547,15 @@ function fmtTimer(secs: number): string {
   return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
 }
 
+function fmtRemaining(secs: number): string {
+  const h = Math.floor(secs / 3600)
+  const m = Math.floor((secs % 3600) / 60)
+  if (h > 0) return `${h}h ${m.toString().padStart(2, '0')}m`
+  return `${m}m`
+}
+
+const oldSecondsRemaining = computed(() => Math.max(0, oldSecondsTotal - oldSeconds.value))
+
 // ---------------------------------------------------------------------------
 // Actions
 // ---------------------------------------------------------------------------
@@ -538,22 +598,40 @@ function resetDemo() {
   hasAssembled.value = false
 }
 
-function startEdit(id: string) {
+const editingDraft = ref<string>('')
+
+function startEdit(id: string, initial: string) {
   if (!hasAssembled.value) return
   editingFieldId.value = id
+  editingDraft.value = initial
 }
 
-function commitEdit(id: string, ev: Event) {
-  const value = (ev.target as HTMLInputElement).value
+function commitEdit(id: string) {
+  const value = editingDraft.value
   if (value.trim().length > 0) {
     overrides[id] = value
   }
   editingFieldId.value = null
+  editingDraft.value = ''
 }
 
 function cancelEdit() {
   editingFieldId.value = null
+  editingDraft.value = ''
 }
+
+const editingFieldSourceRecord = computed<string | null>(() => {
+  const id = editingFieldId.value
+  if (!id) return null
+  for (const b of blocks.value) {
+    for (const fr of b.fragments) {
+      if ('field' in fr && fr.field.id === id) {
+        return `${SOURCE_META[fr.field.source].label} — ${fr.field.sourceRecord}`
+      }
+    }
+  }
+  return null
+})
 
 const OUTPUT_LABELS: Record<OutputKind, string> = {
   'pdf':    'PDF exported',
@@ -630,17 +708,21 @@ function isFieldEdited(id: string): boolean {
               <div class="text-[13.5px] text-mute">
                 Pick a deal, pick a template, hit Assemble.
               </div>
+              <div class="mt-1 text-[12px] text-mute-2">
+                One example. Yours would map to your sources, your templates, your sign-off.
+              </div>
             </div>
           </div>
         </div>
 
         <button
+          v-if="hasAssembled || isAssembling"
           type="button"
           class="inline-flex items-center justify-center gap-1.5 rounded-lg border border-line bg-white px-3.5 py-2 text-[13px] font-semibold text-ink hover:border-ink/30 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 self-start md:self-auto"
           @click="resetDemo"
         >
           <RotateCcw :size="14" :stroke-width="2" aria-hidden="true" />
-          Reset
+          Start over
         </button>
       </div>
     </div>
@@ -765,6 +847,9 @@ function isFieldEdited(id: string): boolean {
             <div class="mt-1.5 text-[11.5px] text-mute">
               Target: ~8 minutes from CRM to PDF
             </div>
+            <div v-if="hasAssembled" class="mt-1 text-[11.5px] font-semibold text-cyan-brand-deep">
+              Done.
+            </div>
           </div>
           <!-- Old way -->
           <div>
@@ -782,6 +867,9 @@ function isFieldEdited(id: string): boolean {
             </div>
             <div class="mt-1.5 text-[11.5px] text-mute">
               Copy-paste from CRM, pricing sheet, case-study folder
+            </div>
+            <div v-if="hasAssembled || isAssembling" class="mt-1 text-[11.5px] font-semibold text-ink-soft">
+              Still {{ fmtRemaining(oldSecondsRemaining) }} of copy-paste to go
             </div>
           </div>
         </div>
@@ -892,44 +980,63 @@ function isFieldEdited(id: string): boolean {
               <p class="text-[15px] leading-[1.7] text-ink-soft">
                 <template v-for="(fr, fi) in b.fragments" :key="fi">
                   <template v-if="'text' in fr">{{ fr.text }}</template>
-                  <span
-                    v-else
-                    :class="fieldChipClass(fr.field)"
-                    :title="`${SOURCE_META[fr.field.source].label} — ${fr.field.sourceRecord}`"
-                    @click="startEdit(fr.field.id)"
-                  >
+                  <template v-else>
                     <span
-                      :class="['h-1.5 w-1.5 rounded-full', SOURCE_META[fr.field.source].dot]"
-                      aria-hidden="true"
-                    />
-                    <template v-if="editingFieldId === fr.field.id">
-                      <input
-                        :value="fr.field.value"
-                        class="bg-transparent outline-none min-w-[6rem]"
-                        :style="{ width: Math.max(6, fr.field.value.length / 1.4) + 'ch' }"
-                        @blur="commitEdit(fr.field.id, $event)"
-                        @keydown.enter.prevent="commitEdit(fr.field.id, $event)"
-                        @keydown.esc.prevent="cancelEdit"
-                        autofocus
-                      >
-                    </template>
-                    <template v-else>
-                      {{ fr.field.value }}
-                    </template>
-                    <span
-                      v-if="isFieldEdited(fr.field.id)"
-                      class="text-[10px] uppercase tracking-[0.16em] font-semibold ml-0.5"
+                      :class="fieldChipClass(fr.field)"
+                      :title="`${SOURCE_META[fr.field.source].label} — ${fr.field.sourceRecord}`"
+                      @click="startEdit(fr.field.id, fr.field.value)"
                     >
-                      · edited
+                      <span
+                        :class="['h-1.5 w-1.5 rounded-full', SOURCE_META[fr.field.source].dot]"
+                        aria-hidden="true"
+                      />
+                      <template v-if="editingFieldId === fr.field.id">
+                        <input
+                          v-model="editingDraft"
+                          class="bg-transparent outline-none"
+                          :size="Math.max(8, editingDraft.length + 1)"
+                          @blur="commitEdit(fr.field.id)"
+                          @keydown.enter.prevent="commitEdit(fr.field.id)"
+                          @keydown.esc.prevent="cancelEdit"
+                          @click.stop
+                          autofocus
+                        >
+                      </template>
+                      <template v-else>
+                        {{ fr.field.value }}
+                      </template>
+                      <span
+                        v-if="isFieldEdited(fr.field.id)"
+                        class="text-[10px] uppercase tracking-[0.16em] font-semibold ml-0.5"
+                      >
+                        · edited
+                      </span>
                     </span>
-                  </span>
+                    <span
+                      v-if="fr.field.flag"
+                      :title="fr.field.flag.reason"
+                      class="ml-1 inline-flex items-center gap-1 rounded-full bg-amber-50 text-amber-800 ring-1 ring-amber-200 px-1.5 py-0.5 text-[10.5px] uppercase tracking-[0.16em] font-semibold align-middle cursor-help"
+                    >
+                      <AlertTriangle :size="10" :stroke-width="2.4" aria-hidden="true" />
+                      {{ fr.field.flag.label }}
+                    </span>
+                  </template>
                 </template>
               </p>
             </div>
 
+            <!-- Source caption when editing a chip (touch-friendly audit-trail surface) -->
+            <div
+              v-if="editingFieldId && editingFieldSourceRecord"
+              class="-mt-2 mb-4 text-[11.5px] text-mute-2"
+              aria-live="polite"
+            >
+              Editing · source: {{ editingFieldSourceRecord }}. Enter saves · Esc cancels.
+            </div>
+
             <!-- Line items table for proposal + contract -->
             <div
-              v-if="selectedTemplate === 'proposal' || selectedTemplate === 'contract' || selectedTemplate === 'statement'"
+              v-if="selectedTemplate === 'proposal' || selectedTemplate === 'contract'"
               class="mt-6 rounded-xl border border-line overflow-x-auto"
             >
               <table class="w-full min-w-[480px] text-[13.5px]">
@@ -947,12 +1054,7 @@ function isFieldEdited(id: string): boolean {
                     :key="idx"
                     class="border-t border-line"
                   >
-                    <td class="px-3 py-2">
-                      <span class="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 bg-sky-50 text-sky-800 ring-1 ring-sky-200">
-                        <span class="h-1.5 w-1.5 rounded-full bg-sky-500" aria-hidden="true" />
-                        {{ li.label }}
-                      </span>
-                    </td>
+                    <td class="px-3 py-2 text-ink">{{ li.label }}</td>
                     <td class="px-3 py-2 text-right tabular-nums">{{ li.qty }}</td>
                     <td class="px-3 py-2 text-right tabular-nums">{{ li.rate }}</td>
                     <td class="px-3 py-2 text-right tabular-nums font-semibold">{{ li.amount }}</td>
@@ -965,6 +1067,9 @@ function isFieldEdited(id: string): boolean {
                   </tr>
                 </tbody>
               </table>
+              <p class="px-3 py-2 text-[11.5px] text-mute-2 border-t border-line">
+                Line items pulled from the pricing engine.
+              </p>
             </div>
 
             <!-- Output action toast -->
@@ -1047,7 +1152,7 @@ function isFieldEdited(id: string): boolean {
             </li>
           </ul>
           <p class="mt-3 text-[12px] text-mute">
-            Hover any field in the document to see the exact source record. Click to edit — the tag stays so the team can see where a human overrode the engine.
+            Click any field to edit. The source shows beneath the input, and the tag stays so the team can see where a human overrode the engine.
           </p>
         </div>
 
