@@ -46,9 +46,12 @@ const finale = {
     <div class="relative mx-auto max-w-6xl px-5 md:px-8 lg:px-12">
       <div v-reveal class="max-w-3xl">
         <div
-          class="inline-flex items-center gap-2 text-[12.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold"
+          class="inline-flex items-center gap-2 text-[12.5px] uppercase tracking-[0.22em] text-red-600 font-semibold"
         >
-          <span class="dot" />
+          <span
+            class="inline-block h-1.5 w-1.5 rounded-full bg-red-600 shadow-[0_0_0_4px_rgba(220,38,38,0.15)]"
+            aria-hidden="true"
+          />
           The Cost of Waiting
         </div>
         <h2
