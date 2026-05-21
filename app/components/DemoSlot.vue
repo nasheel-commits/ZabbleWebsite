@@ -1,4 +1,5 @@
 <script setup lang="ts">
+
 // Placeholder slot for a system's interactive demo on /systems/[slug].
 //
 // =============================================================================
@@ -11,14 +12,17 @@
 //    e.g. for the "legal-intake-automation" system:
 //      app/components/demos/legal-intake-automation.vue
 //
-// 2. Add an entry to the `demoRegistry` map below:
+// 2. Add an entry to the `demoRegistry` map in `app/utils/demoRegistry.ts`:
 //
 //      'legal-intake-automation': defineAsyncComponent(
 //        () => import('~/components/demos/legal-intake-automation.vue'),
 //      ),
 //
+//    The same registry is used here AND by SystemDemoThumbnail to render
+//    a scaled, non-interactive snapshot of the demo as the gallery thumbnail.
+//
 // 3. The demo component will be lazy-loaded only when its detail page renders
-//    — it is NOT shipped in the initial bundle for /systems or any other page.
+//    — or when its gallery card scrolls into view on /systems.
 //
 // 4. Demo components should:
 //    - Be self-contained (no required props).
@@ -33,19 +37,14 @@
 //
 // =============================================================================
 
-import { defineAsyncComponent, computed, shallowRef, watch, type Component } from 'vue'
+
+import { computed, shallowRef, type Component, watch } from 'vue'
 import { Sparkles } from '@lucide/vue'
+
 import { systemBySlug } from '~/data/systems'
+import { resolveDemoComponent } from '~/utils/demoRegistry'
 
 const props = defineProps<{ systemSlug: string }>()
-
-// Add real demos here as they're built. Empty registry = "Interactive demo
-// coming soon" placeholder for every system, which is the scaffolding state.
-const demoRegistry: Record<string, Component> = {
-  // 'legal-intake-automation': defineAsyncComponent(
-  //   () => import('~/components/demos/legal-intake-automation.vue'),
-  // ),
-}
 
 const resolved = shallowRef<Component | null>(null)
 
@@ -53,13 +52,13 @@ watch(
   () => props.systemSlug,
   (slug) => {
     const sys = systemBySlug(slug)
-    const key = sys?.demoComponent ?? slug
-    resolved.value = demoRegistry[key] ?? null
+    resolved.value = resolveDemoComponent(slug, sys?.demoComponent)
   },
   { immediate: true },
 )
 
 const hasDemo = computed(() => resolved.value !== null)
+
 </script>
 
 <template>

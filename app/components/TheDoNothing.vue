@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  TrendingDown,
-  Flame,
-  HelpCircle,
-  BatteryLow,
-  CloudLightning,
-  ArrowRight,
-  AlertTriangle,
-} from '@lucide/vue'
+import { AlertTriangle, ArrowRight, BatteryLow, CloudLightning, Flame, HelpCircle, TrendingDown } from '@lucide/vue'
 
 const costs = [
   {
@@ -37,11 +29,12 @@ const finale = {
   text: "The problems you can't see today become the crises you can't ignore tomorrow.",
   impact: 'And tomorrow always comes faster than you think.',
 }
+
 </script>
 
 <template>
   <section
-    class="cow-section relative py-24 md:py-32 lg:py-36 bg-surface-alt/60 border-y border-line/70"
+    class="cow-section lazy-section relative py-24 md:py-32 lg:py-36 bg-surface-alt/60 border-y border-line/70"
   >
     <div class="relative mx-auto max-w-6xl px-5 md:px-8 lg:px-12">
       <div v-reveal class="max-w-3xl">

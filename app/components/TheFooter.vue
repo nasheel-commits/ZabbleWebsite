@@ -11,9 +11,9 @@ const year = new Date().getFullYear()
       </div>
 
       <nav class="flex flex-wrap items-center gap-x-7 gap-y-2 text-[16px] lg:text-[14.5px] font-medium text-mute">
-        <a href="#home" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Home</a>
-        <a href="#what-we-build" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">What We Build</a>
-        <a href="#meet" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Use Cases</a>
+        <NuxtLink to="/#home" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Home</NuxtLink>
+        <NuxtLink to="/#what-we-build" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">What We Build</NuxtLink>
+        <NuxtLink to="/#meet" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Use Cases</NuxtLink>
         <a href="mailto:analytics@zabble.org" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Contact</a>
       </nav>
 

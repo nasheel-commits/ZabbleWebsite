@@ -45,8 +45,12 @@ function setActive(next: PillarSlug[]) {
   })
 }
 
+// Only `live` systems are surfaced in the gallery — concept/in-progress
+// entries stay in the data file but are hidden until their copy is signed off.
+const liveSystems = computed(() => SYSTEMS.filter((s) => s.status === 'live'))
+
 const visibleSystems = computed(() =>
-  filterSystemsByPillars(SYSTEMS, activePillars.value),
+  filterSystemsByPillars(liveSystems.value, activePillars.value),
 )
 
 // Defensive: if the URL is hand-edited to all-unknown slugs we end up with []

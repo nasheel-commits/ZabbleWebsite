@@ -116,7 +116,7 @@ withDefaults(
         x="92"
         y="52.5"
         font-size="7"
-        :fill="animateText ? 'url(#cpu-text-gradient)' : 'white'"
+        fill="url(#cpu-text-gradient)"
         font-weight="600"
         letter-spacing="0.05em"
       >
@@ -227,6 +227,7 @@ withDefaults(
       <linearGradient id="cpu-text-gradient" x1="0" y1="0" x2="1" y2="0">
         <stop offset="0%" stop-color="#94a3b8">
           <animate
+            v-if="animateText"
             attributeName="offset"
             values="-2; -1; 0"
             dur="5s"
@@ -238,6 +239,7 @@ withDefaults(
         </stop>
         <stop offset="25%" stop-color="white">
           <animate
+            v-if="animateText"
             attributeName="offset"
             values="-1; 0; 1"
             dur="5s"
@@ -249,6 +251,7 @@ withDefaults(
         </stop>
         <stop offset="50%" stop-color="#94a3b8">
           <animate
+            v-if="animateText"
             attributeName="offset"
             values="0; 1; 2;"
             dur="5s"

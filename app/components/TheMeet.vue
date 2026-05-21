@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { ArrowRight } from '@lucide/vue'
+
+import { useInView } from '~/composables/useInView'
 
 const industries = [
   'NGOs',
@@ -10,10 +13,17 @@ const industries = [
   'Marketing agencies',
   'Small businesses',
 ]
+
+// Gate the CPU SVG's continuous animations (stroke gradient on text + marker
+// pulse) so they only run while the section is on-screen. Visual result is
+// identical when the user is looking; CPU is idle when they aren't.
+const meetRef = ref<HTMLElement | null>(null)
+const { visible: meetVisible } = useInView(meetRef, { threshold: 0.1, rootMargin: '100px 0px' })
+
 </script>
 
 <template>
-  <section id="meet" class="relative py-28 md:py-36">
+  <section id="meet" ref="meetRef" class="relative py-28 md:py-36">
     <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
       <div v-reveal class="max-w-4xl">
         <div class="text-[13px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
@@ -72,7 +82,12 @@ const industries = [
             </div>
 
             <div class="mt-4 rounded-xl bg-gradient-to-br from-cyan-brand/8 via-surface-alt to-cyan-brand/5 ring-1 ring-line p-4 md:p-5">
-              <CpuArchitecture text="OPS" class="text-slate-400" />
+              <CpuArchitecture
+                text="OPS"
+                class="text-slate-400"
+                :animate-text="meetVisible"
+                :animate-markers="meetVisible"
+              />
             </div>
 
             <p class="mt-5 text-[16px] lg:text-[15px] leading-[1.7] text-ink">

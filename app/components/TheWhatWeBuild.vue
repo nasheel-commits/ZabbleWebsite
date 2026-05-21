@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { Workflow, ShieldCheck, Radar, BarChart3, ArrowRight } from '@lucide/vue'
+import { watch } from 'vue'
+import { ArrowRight, BarChart3, Radar, ShieldCheck, Workflow } from '@lucide/vue'
 
 const pillars = [
   {
@@ -27,6 +28,7 @@ const pillars = [
     body: "We turn yours into a clear picture of what's happening and what matters, so you can stop making decisions on hunches and start making them on facts.",
   },
 ]
+
 </script>
 
 <template>

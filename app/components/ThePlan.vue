@@ -1,6 +1,8 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { Search, Hammer, Activity } from '@lucide/vue'
+import { onMounted, ref, watch } from 'vue'
+import { Activity, Hammer, Search } from '@lucide/vue'
+
+import { useInView } from '~/composables/useInView'
 
 const steps = [
   {
@@ -25,40 +27,30 @@ const steps = [
 
 const sectionRef = ref<HTMLElement | null>(null)
 const drawn = ref(false)
-let observer: IntersectionObserver | null = null
+const { visible } = useInView(sectionRef, { threshold: 0.25 })
 
 onMounted(() => {
   const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
-  if (reduced || !sectionRef.value || typeof IntersectionObserver === 'undefined') {
-    drawn.value = true
-    return
-  }
-  observer = new IntersectionObserver(
-    (entries) => {
-      for (const e of entries) {
-        if (e.isIntersecting) {
-          drawn.value = true
-          observer?.disconnect()
-          break
-        }
-      }
-    },
-    { threshold: 0.25 },
-  )
-  observer.observe(sectionRef.value)
+  if (reduced) drawn.value = true
 })
 
-onBeforeUnmount(() => observer?.disconnect())
+watch(visible, (v) => {
+  if (v) drawn.value = true
+})
 
 const connectorPath =
   'M 60 39 L 188 39 C 320 -21, 480 99, 600 39 C 720 -21, 880 99, 1012 39 L 1140 39'
+
 </script>
 
 <template>
   <section
     id="plan"
     ref="sectionRef"
-    class="relative py-28 md:py-36 overflow-hidden bg-gradient-to-b from-white via-cyan-brand/[0.05] to-white"
+    :class="[
+      'relative py-28 md:py-36 overflow-hidden bg-gradient-to-b from-white via-cyan-brand/[0.05] to-white',
+      visible ? 'plan-active' : '',
+    ]"
   >
     <div class="absolute inset-0 grid-bg fade-mask pointer-events-none" aria-hidden="true" />
     <div
@@ -240,7 +232,11 @@ const connectorPath =
     #01DBF1 360deg
   );
   animation: plan-badge-spin 5s linear infinite;
+  animation-play-state: paused;
   filter: drop-shadow(0 10px 22px rgba(1, 219, 241, 0.4));
+}
+.plan-active .plan-badge__ring {
+  animation-play-state: running;
 }
 .plan-badge__ring::after {
   content: '';

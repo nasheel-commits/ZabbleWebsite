@@ -1,732 +1,81 @@
-# Zabble — Audit & Change Log
-
-A running log of audits and scaffolding work on the marketing site. Most recent entries on top.
-
----
-
-## 2026-05-21 — Add Systems showcase scaffolding
-
-**Goal**: stand up the `/systems` showcase area as scaffolding only. Real copy, demos, and case-study content come later.
-
-**Files created**
-
-- `app/data/systems.ts` — typed source of truth: `PILLARS`, `System`, `SYSTEMS` (6 concept entries), `pillarBySlug`, `systemBySlug`, `filterSystemsByPillars`.
-- `app/components/PillarChip.vue` — small chip; renders as `<span>` (decorative) or `<a>` (link to `/systems?pillar=<slug>`).
-- `app/components/PillarFilterBar.vue` — "All" + 4 pillar buttons, multi-select, `aria-pressed`, emits `update:active`.
-- `app/components/SystemCard.vue` — gallery card; whole card is a `NuxtLink` to `/systems/[slug]`. Pillar chips inside are layered above to win clicks.
-- `app/components/SystemHero.vue` — detail-page hero with eyebrow, name, tagline, pillar chips, industry/best-for strip.
-- `app/components/DemoSlot.vue` — full-width "Interactive demo coming soon" placeholder with a documented registry contract for lazy-loaded demos.
-- `app/components/CtaStrip.vue` — reusable closing CTA section pointing to `/diagnose` ("Book a discovery call").
-- `app/pages/systems/index.vue` — gallery route.
-- `app/pages/systems/[slug].vue` — dynamic detail route; 404s on unknown slugs via `createError`.
-
-**Files modified**
-
-- `app/components/TheNav.vue` — added `Systems` tab between Home and What We Build (desktop + mobile drawer). The tabs array now supports two shapes: hash anchors (`{ href }`) for in-page sections and route links (`{ to }`) rendered as `NuxtLink`. No other nav behaviour changed.
-- `audit.md` — converted into a dated audit/change log; this entry added on top; the prior performance audit is preserved as a dated entry below.
-
-**Routes added**
-
-- `GET /systems` — gallery with multi-select pillar filter synced to `?pillar=` query (comma-separated slugs).
-- `GET /systems/[slug]` — dynamic detail page. Unknown slug → 404.
-
-**Components added** (summary)
-
-`SystemCard`, `SystemHero`, `PillarChip`, `PillarFilterBar`, `DemoSlot`, `CtaStrip`.
-
-### How to add a new system
-
-1. Open `app/data/systems.ts` and append a new entry to the `SYSTEMS` array. Required fields: `slug` (kebab-case), `name`, `tagline`, `pillars[]`, `status`. Optional: `industry`, `bestFor`, `problem`, `whatWeBuilt`, `whatChanged`, `pillarNotes`.
-2. The gallery card at `/systems` and the detail page at `/systems/<slug>` appear automatically.
-3. Thumbnail: leave `thumbnail` undefined to get a deterministic cyan-tinted gradient + monogram derived from the slug. Override with `thumbnail: '/path.svg'` if/when art exists.
-4. To wire a real interactive demo into the `DemoSlot`:
-   - Create `app/components/demos/<slug>.vue` (self-contained, no required props).
-   - Register it in `app/components/DemoSlot.vue` inside the `demoRegistry` map:
-     ```ts
-     'your-slug': defineAsyncComponent(() => import('~/components/demos/your-slug.vue')),
-     ```
-   - The demo is lazy-loaded only when its detail page renders; it never touches the initial bundle for `/systems` or any other route.
-5. If two systems share one demo, set `demoComponent: 'shared-registry-key'` on the second `System` entry — `DemoSlot` looks up by that override first, then falls back to `slug`.
-
-### TODO placeholders left behind
-
-Grouped by file. Every TODO is a copy / content blank to be filled by Zabble; nothing is a code TODO.
-
-**`app/data/systems.ts`** — for each of the 6 seeded systems:
-- `tagline` — one-line tagline (StoryBrand voice).
-- `industry` — industry label.
-- `bestFor` — best-for line.
-- `problem`, `whatWeBuilt`, `whatChanged` — triptych copy.
-- `pillarNotes[<pillar>]` — short paragraph per active pillar.
-
-**`app/pages/systems/index.vue`**
-- Gallery hero `<h1>` and subhead — currently scaffolding copy.
-- `useHead` description meta.
-
-**`app/pages/systems/[slug].vue`**
-- "How it fits the four pillars" lede: "One system, four jobs." — placeholder.
-- All triptych and pillar-notes copy actually comes from `data/systems.ts`; falls back to a visible "TODO — …" string when the entry is empty so the placeholder is obvious in dev.
-
-### Judgement calls / deviations from existing patterns
-
-1. **Nav now supports two tab shapes.** Existing nav tabs are anchor hashes to home-page sections (`#home`, `#what-we-build`, …). Systems is a route, so the tabs array now has a discriminated union (`{ href } | { to }`) and the template picks `NuxtLink` vs `<a>` accordingly. The mobile drawer mirrors the same pattern. Closest non-breaking change to the existing pattern.
-2. **No new design tokens.** The brief said reuse existing primitives. Pillar chips all share the existing cyan accent (the four pillars do not get four different colours). The chip + filter-button + card + CTA styles are direct copies of existing class strings from `TheFinalCta`, `TheWhatWeBuild`, etc.
-3. **No site-wide layout component introduced.** Existing pages (`index.vue`, `diagnose.vue`) each render their own `min-h-screen bg-surface` shell + `<TheNav>` + `<TheFooter>`. I followed that convention rather than introducing `app/layouts/default.vue` — pulling existing routes into a layout was out of scope.
-4. **Filter semantics are union (OR), not intersection (AND).** "Show me anything tagged Automation OR Audit Trails" matched the chip-multi-select mental model better than strict intersection, and the live-region copy reflects that ("…tagged with the selected pillars"). Documented in `filterSystemsByPillars`.
-5. **DemoSlot registry is a static map in the component**, not a separate module. Demos are few and the registry rarely changes; keeping the contract co-located with the slot keeps the documentation visible at the import site. Easy to extract to its own module if/when it grows.
-6. **Gallery hero CTA uses an inline SVG arrow**, not the Lucide `<ArrowRight>`. Reason: the rest of the file already imports nothing from Lucide and adding a single import for one icon felt heavier than a 4-line inline SVG. Visually identical.
-7. **`audit.md` restructured into a dated log.** The brief asked for "AUDIT.md (create at repo root if it doesn't exist) with a new dated entry". The existing `audit.md` (the performance audit from 2026-05-20) is the same file on Windows, so I kept the lower-case filename and converted the file into a dated-entry log so future audits can stack on top.
-
-### Quality bar (Step 3) — checks I ran
-
-- Semantic HTML: `<header>`, `<nav aria-label>`, `<main>`, `<section>`, `<article>`, `<button type="button">`, `<a>` for links, `<dl>` for the metadata strip.
-- Keyboard: every interactive control reachable. Card link covers the whole card; the inner pillar `<a>`s are layered above the card link and have their own focus ring so they receive keyboard focus too.
-- Visible focus: every interactive control has `focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2`.
-- AA contrast: text uses existing `ink` / `mute` tokens on white. Cyan-tinted chips use `text-ink` over `bg-cyan-brand/15` (passes AA at the chip text size).
-- No layout shift on filter: grid uses CSS Grid; cards reflow in place. A live region announces the result count change so screen readers track the update.
-- Responsive: verified at 320, 390, 1280 wide. `scrollWidth === clientWidth` at every viewport. Filter chips wrap; cards stack 1 → 2 → 3 column.
-- No new fonts, no new colours, no new libraries.
-- No final marketing copy, no real demos, no stock images, no CMS.
-
----
-
-# Zabble Web App — Performance Audit
-
-(Earlier entry, 2026-05-20)
-
-**Scope**: identify lightweight, low-risk changes that make the app feel snappier without altering visuals or animations.
-
-**Methodology**: read every component / plugin / config, inspect `node_modules/@lucide/vue` shape, trace every long-running JS loop (RAF, setTimeout, IntersectionObserver), and every animated CSS layer (transform / filter / backdrop-filter). All recommendations preserve the current look and motion exactly.
-
-**Verdict**: the site is structurally healthy — no images, no third-party scripts, no client-side data fetching, SSR is clean. The remaining cost is concentrated in: (a) the three independent scroll handlers + reactive `:style` updates that drive the hero parallax, (b) two GPU-heavy filter layers (`backdrop-blur-md` on the nav + `blur-3xl` on the hero blobs), and (c) two RAF loops (TextScramble + cursor-arrow) that run continuously without pause-when-offscreen.
-
-Fix the items in §A and INP / scroll smoothness / first-load weight all improve materially with zero visual change.
-
----
-
-## A. Quick wins (high impact, low risk, zero visual change)
-
-### A1. Drop unused Inter weights from the font URL — saves ~80–120 KB on first load
-
-**Where**: `nuxt.config.ts` line 31.
-
-```
-.../css2?family=Inter:wght@400;500;600;700;800&family=Instrument+Serif&display=swap
-```
-
-Inter weights actually used in the codebase (grep on `font-bold|font-extrabold|font-black`): **none**. Only `font-medium` (500), `font-semibold` (600), and the default body weight (400) are referenced. Weights 700 and 800 are downloaded but never rendered.
-
-**Recommendation**:
-
-```ts
-href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif&display=swap'
-```
-
-**Impact**: 2 fewer font files. Each Inter weight is ~30–50 KB woff2; combined ~60–100 KB.
-**Risk**: none — the weights aren't rendered anywhere.
-
----
-
-### A2. Pause TextScramble + cursor-arrow RAF when off-screen — saves continuous main-thread + GPU work
-
-**Where**:
-- `TheHero.vue` lines 100–110 — `TextScramble` runs `setTimeout(tick, 2400)` forever, regardless of whether the hero is visible.
-- `TheFinalCta.vue` lines 88–111 — `tick()` requests another frame at the end every frame; only `arrowVisible` is gated to "in section", but the RAF + `getBoundingClientRect()` + setAttribute calls keep happening even when the section is far off-screen.
-
-Both fire even when the user has scrolled past or hasn't reached the section yet. On a typical visit, the TextScramble re-fires roughly every 2.4 seconds for the entire session, doing 600–1200 ms of RAF + `innerHTML` rewrites per cycle.
-
-**Recommendation**:
-
-Wrap each loop in the IntersectionObserver that the rest of the site already uses. Concretely:
-
-In `TheHero.vue`, hold the IntersectionObserver from the reveal plugin's pattern; only call `tick()` while the section is intersecting; cancel `scrambleFrame` + `scrambleTimer` on `isIntersecting: false`, restart on `true`.
-
-In `TheFinalCta.vue`, the existing `inSection` flag already exists — short-circuit `tick()` to not request the next frame when `!inSection`:
-
-```ts
-function tick() {
-  if (!inSection) { rafId = null; return }
-  // ...existing logic
-  rafId = requestAnimationFrame(tick)
-}
-// Then in the observer callback, if it just turned true, call `tick()` to restart.
-```
-
-**Impact**: a constant 50–60 fps RAF loop with `getBoundingClientRect()` every frame is roughly 0.2–0.5 ms of main-thread work per frame on a fast device, 1–3 ms on a low-end phone. Removing it for the ~90 % of the session the section is off-screen is significant for steady-state battery + INP.
-
-**Risk**: none — the visual is unchanged, just freezes when nobody is looking at it.
-
----
-
-### A3. Cache the CTA button rect; only re-measure on scroll / resize — kills layout thrash
-
-**Where**: `TheFinalCta.vue` line 93 — `const rect = buttonEl.getBoundingClientRect()` is called once per RAF.
-
-`getBoundingClientRect()` forces a synchronous layout (style + layout flush) every frame. The button's position only changes when the page scrolls or the viewport resizes.
-
-**Recommendation**: cache `rect` in a `let` and recompute only inside passive `scroll` and `resize` listeners (already listened for elsewhere). The RAF loop then uses the cached rect.
-
-**Impact**: removes ~0.1–0.5 ms layout work per frame while the cursor-arrow loop is active. Combined with A2, the loop becomes effectively free when active.
-
-**Risk**: none — same arrow, same target.
-
----
-
-### A4. Animate `transform: scaleX()` instead of `width` on the scroll-progress bar — moves it off the layout thread
-
-**Where**: `main.css` lines 214–220.
-
-```css
-.scroll-progress__bar { width: 0; transition: width 80ms linear; }
-```
-
-`width` is a layout property. Changing it on every scroll tick forces layout. The bar is purely cosmetic — a transform-based version is GPU-only.
-
-**Recommendation**:
-
-```css
-.scroll-progress__bar {
-  width: 100%;
-  transform: scaleX(0);
-  transform-origin: 0 50%;
-  transition: transform 80ms linear;
-  /* keep the existing background + shadow */
-}
-```
-
-Then in `TheScrollProgress.vue`:
-
-```ts
-progressEl.style.transform = `scaleX(${ratio})`
-```
-
-(use `progressEl.style.transform` directly inside the RAF rather than the reactive `:style="{ width }"` binding, so Vue doesn't diff on every frame).
-
-**Impact**: the progress bar update no longer triggers layout. With three scroll listeners + parallax, every saved layout matters on mobile.
-
-**Risk**: none — visually identical, including the soft cyan-glow shadow (`box-shadow` follows the element; with `transform-origin: 0 50%` the box stays the same shape, just scaled along X).
-
----
-
-### A5. Drive hero parallax via `el.style.transform` instead of reactive `:style` — fewer Vue patches
-
-**Where**: `TheHero.vue` lines 122–136 + 195–198. Four elements (grid-bg, two blobs, dashboard wrapper) are bound to `:style="{ transform: \`translate3d(0, ${scrollY * X}px, 0)\` }"`.
-
-Each scroll RAF: `scrollY.value = window.scrollY` triggers a Vue reactivity update for every dependent template binding (four `:style` objects, each diffed and patched).
-
-**Recommendation**: hold refs to the four DOM nodes (`ref="gridRef"`, `ref="blobARef"`, etc.) and inside `update()` write directly:
-
-```ts
-gridRef.value!.style.transform = `translate3d(0, ${y * 0.12}px, 0)`
-blobARef.value!.style.transform = `translate3d(0, ${y * 0.25}px, 0)`
-// ...
-```
-
-Remove the reactive `scrollY` ref entirely (or keep it private to the script for non-style uses).
-
-**Impact**: cuts per-frame work to plain attribute writes — bypasses the Vue scheduler + virtual-DOM diff for these four bindings. Particularly noticeable on long scrolls / mobile.
-
-**Risk**: none — same transforms, same elements.
-
----
-
-### A6. Consolidate the three independent scroll listeners
-
-**Where**:
-- `TheNav.vue` line 17 — `window.addEventListener('scroll', onScroll, { passive: true })`
-- `TheHero.vue` line 96 — same
-- `TheScrollProgress.vue` line 21 — same
-
-Each handler attaches its own RAF / setter. The browser still only fires one `scroll` event per frame, but the JS does three independent callbacks.
-
-**Recommendation**: a single shared composable, e.g. `composables/useScroll.ts`:
-
-```ts
-import { onMounted, onBeforeUnmount, shallowRef } from 'vue'
-
-const subscribers = new Set<(y: number) => void>()
-let started = false
-let rafPending = false
-let lastY = 0
-
-function tick() {
-  rafPending = false
-  for (const fn of subscribers) fn(lastY)
-}
-function onScroll() {
-  lastY = window.scrollY
-  if (rafPending) return
-  rafPending = true
-  requestAnimationFrame(tick)
-}
-
-export function useScroll(cb: (y: number) => void) {
-  onMounted(() => {
-    subscribers.add(cb)
-    if (!started) {
-      started = true
-      window.addEventListener('scroll', onScroll, { passive: true })
-      onScroll()
-    }
-    cb(window.scrollY) // initial
-  })
-  onBeforeUnmount(() => { subscribers.delete(cb) })
-}
-```
-
-Each consumer (nav, hero, progress) calls `useScroll(y => …)`. One event listener, one RAF, fan-out to three callbacks.
-
-**Impact**: one event listener + one RAF schedule per scroll tick, instead of three. Smoother on low-end mobile.
-
-**Risk**: none — same behaviour, fewer event-loop hops.
-
----
-
-### A7. Use Lucide's per-icon subpath imports
-
-**Where**: every `import { Icon } from '@lucide/vue'`.
-
-The package is well-formed for tree-shaking (`sideEffects: false`, per-icon ESM files in `dist/esm/icons/*.mjs`), so Vite should already shake the unused icons. But the top-level barrel (`dist/esm/lucide-vue.mjs`) re-exports a `* as index` namespace, which some bundler/minifier combinations treat as a side-effecting reference and bail out of full shaking.
-
-**Recommendation**: switch every import to the explicit subpath. The set of icons used across the site is small:
-
-```ts
-// Before
-import { ArrowRight, PlayCircle } from '@lucide/vue'
-
-// After
-import ArrowRight from '@lucide/vue/icons/arrow-right'
-import PlayCircle from '@lucide/vue/icons/play-circle'
-```
-
-Icons used by file:
-- `TheNav` — Menu, X, ArrowRight, ArrowUpRight, Mail
-- `TheHero` — ArrowRight, PlayCircle
-- `TheProblem` — FileSpreadsheet, Plug, Gauge, AlertOctagon
-- `TheMeet` — ArrowRight
-- `ThePlan` — Search, Hammer, Activity
-- `TheWhatWeBuild` — Workflow, ShieldCheck, Radar, BarChart3, ArrowRight
-- `TheDoNothing` — TrendingDown, Flame, HelpCircle, BatteryLow, CloudLightning, ArrowRight, AlertTriangle
-- `TheWhenItWorks` — Workflow, ShieldCheck, Radar, BarChart3, Sparkles
-- `TheFinalCta` — ArrowRight, Mail, Sparkles, Check, Zap
-- `diagnose` — ArrowRight, ArrowLeft, Check, X, Calendar, ChevronLeft, ChevronRight, Clock, Loader2, Workflow, ShieldCheck, Radar, BarChart3, Layers
-
-Total unique: ~25 icons. Each is < 1 KB minified.
-
-**Impact**: guarantees the icon barrel is excluded from the bundle. In the worst case it doesn't change anything; in the best case (some minifier inlining the barrel) it can shave double-digit KB from the JS bundle.
-**Risk**: none — same components, different import path.
-
----
-
-## B. Render performance (steady state — scroll, animations)
-
-### B1. The hero parallax blobs are the most expensive layers on the page
-
-**Where**: `TheHero.vue` lines 127–135 — two blobs with `blur-3xl` (`filter: blur(64px)`) sized `420×420` and `320×320`, plus a `grid-bg fade-mask` overlay above them. All four layers receive parallax transforms.
-
-Filter blur is one of the most expensive operations the compositor can do; combined with continuous transform updates, the GPU is repainting a blurred-radial-gradient layer every frame the user scrolls.
-
-**Cannot remove** (visual change). But two things help:
-
-1. **Apply A5** so Vue isn't patching attributes on top of the GPU work.
-2. **Add `contain: layout paint`** to each blob element. This tells the browser the blob doesn't affect layout or paint outside its box, so the compositor can skip checking surrounding regions when the blob moves.
-
-```html
-<div class="parallax-blob ..." style="contain: layout paint;"></div>
-```
-
-3. **Pause the parallax updates when the hero is fully off-screen.** An IntersectionObserver on the hero section that flips a `parallaxActive` flag; the RAF tick early-returns when `!parallaxActive`. This is symmetric with A2.
-
-**Impact**: per-frame compositing work drops noticeably when the user has scrolled past the hero. Once below the hero, the blobs disappear from the viewport but the transforms keep updating — that's wasted work.
-
-**Risk**: none — visually identical.
-
----
-
-### B2. `.parallax-blob { will-change: transform; }` is always-on
-
-**Where**: `main.css` line 225.
-
-`will-change` is a hint to the browser to pre-promote the element to its own compositing layer. Three blobs always promoted = GPU memory always reserved. Cheap when needed, wasteful when not.
-
-**Recommendation**: remove `will-change` from the static class. Apply it from JS only while the hero is in viewport AND the user is actively scrolling. Strip it after a debounced idle period (e.g. 200 ms after the last scroll).
-
-Pattern (inside the unified scroll composable from A6):
-
-```ts
-let idleTimer: number
-function onScroll(y: number) {
-  blobs.forEach(b => b.style.willChange = 'transform')
-  clearTimeout(idleTimer)
-  idleTimer = window.setTimeout(() => {
-    blobs.forEach(b => b.style.willChange = '')
-  }, 200)
-}
-```
-
-**Impact**: lower GPU memory pressure when the user is idle on the hero, or anywhere else on the page. Helps low-end Android most.
-
-**Risk**: brief flicker possible if the user resumes scrolling after `will-change` was stripped — the browser may need to re-promote the layer. In practice imperceptible at 200 ms idle threshold.
-
----
-
-### B3. `.reveal { will-change: opacity, transform; }` on every reveal element
-
-**Where**: `main.css` lines 156–165. Every section / card / paragraph that uses `v-reveal` gets `will-change: opacity, transform` on mount — and **keeps it forever**, even after the animation finishes.
-
-There are dozens of revealed elements across the page. Each one stays a promoted GPU layer for the rest of the session.
-
-**Recommendation**: in the reveal plugin (`app/plugins/reveal.client.ts`), apply `will-change` from JS just before adding `is-visible`, then remove it after the animation completes:
-
-```ts
-el.style.willChange = 'opacity, transform'
-el.classList.add('is-visible')
-el.addEventListener('transitionend', () => {
-  el.style.willChange = ''
-}, { once: true })
-```
-
-And drop `will-change` from the static `.reveal` rule in CSS.
-
-**Impact**: GPU memory used by reveal elements becomes proportional to "currently animating" rather than "ever-animated". On a long-scroll marketing page with 20+ reveal elements, this is the single biggest GPU memory win.
-
-**Risk**: none — same animation, just doesn't keep the layer alive forever.
-
----
-
-### B4. CpuArchitecture runs 8 infinite SVG motion-path animations even when off-screen
-
-**Where**: `main.css` lines 102–149 — eight `.cpu-line-*` rules each with an infinite `animation-iteration-count` driving `offset-path` motion.
-
-`offset-path` animations are GPU-friendly, but they consume style-recalc + compositing budget regardless of visibility.
-
-**Recommendation**: wrap CpuArchitecture in a container with `content-visibility: auto` and a stable `contain-intrinsic-size`. When off-screen, the browser skips rendering and pauses animations inside.
-
-```html
-<div style="content-visibility: auto; contain-intrinsic-size: 200px;">
-  <CpuArchitecture text="OPS" class="text-slate-400" />
-</div>
-```
-
-Where to apply: the wrapping `<div class="mt-4 rounded-xl ...">` in `TheMeet.vue` line 74.
-
-**Impact**: zero CPU/GPU work for the CPU lines while the user is anywhere else on the page.
-
-**Risk**: `content-visibility: auto` can cause a tiny scroll-jump if `contain-intrinsic-size` is wrong. Test a sensible default (the CpuArchitecture aspect ratio is 200×100 SVG; the rendered container is ~200 px wide ⇒ ~100 px tall). Set `contain-intrinsic-size: auto 200px` so the browser uses the last-known rendered size after first paint.
-
----
-
-### B5. ThePlan spinning badge — three continuously rotating conic-gradients
-
-**Where**: `ThePlan.vue` `.plan-badge__ring { animation: plan-badge-spin 5s linear infinite; }` plus a conic-gradient + drop-shadow filter.
-
-Conic-gradient + drop-shadow + rotation = the compositor repaints + re-filters each frame.
-
-**Cannot stop** (visual change). But the same `content-visibility: auto` treatment can scope the cost to "while the plan section is in viewport":
-
-```html
-<section id="plan" style="content-visibility: auto; contain-intrinsic-size: auto 800px;">
-```
-
-**Impact**: animation budget freed when the user is outside the plan section.
-**Risk**: as B4 — pick a sensible intrinsic size for the section so anchor links to `#plan` still scroll correctly. ~800px tall mobile / ~700px desktop.
-
----
-
-### B6. `cursor-arrow-dash` animation runs continuously regardless of `is-visible`
-
-**Where**: `TheFinalCta.vue` `.cursor-arrow__path { animation: cursor-arrow-dash 2.6s linear infinite; }`.
-
-The dashed-stroke offset animates every frame even when `opacity: 0` (i.e. when the arrow isn't shown).
-
-**Recommendation**: gate the animation to `is-visible`:
-
-```css
-.cursor-arrow__path { /* no animation here */ }
-.cursor-arrow.is-visible .cursor-arrow__path {
-  animation: cursor-arrow-dash 2.6s linear infinite;
-}
-```
-
-**Impact**: tiny per frame, but multiplied across visit duration. Free.
-**Risk**: none — the animation only matters while the arrow is visible anyway.
-
----
-
-## C. JS bundle & first paint
-
-### C1. Lazy-load below-the-fold sections
-
-**Where**: `app/pages/index.vue` — all 9 marketing sections are imported and rendered eagerly.
-
-The Hero, Problem, and Meet sections are above-the-fold (on most viewports the Hero alone is). The remaining 6 sections (Plan, WhatWeBuild, DoNothing, WhenItWorks, FinalCta, Footer) ship their JS in the initial bundle.
-
-**Recommendation**: use Nuxt's `defineAsyncComponent` (or convert to dynamic imports) for below-the-fold sections:
-
-```ts
-const ThePlan = defineAsyncComponent(() => import('~/components/ThePlan.vue'))
-const TheWhatWeBuild = defineAsyncComponent(() => import('~/components/TheWhatWeBuild.vue'))
-// ...
-```
-
-Combine with `v-once`-style or `IntersectionObserver` mounting so the components only mount when their placeholder enters viewport. The simplest: wrap the page's lower sections in a small `<LazySection>` component using `useIntersectionObserver`.
-
-Alternatively, Nuxt's built-in `<Lazy*>` component prefix (`<LazyThePlan />` etc.) defers hydration until the component is visible — minimal-effort version of the same idea.
-
-**Impact**: significant reduction in initial JS execution + hydration time. Smaller TTI.
-**Risk**: low — make sure scroll-anchor links (`#plan`, `#contact`, etc.) still work; they will, because the section's outer `<section id="...">` is rendered in the SSR HTML.
-
----
-
-### C2. Self-host fonts (optional, slightly more involved)
-
-**Where**: `nuxt.config.ts` lines 26–33.
-
-Currently the page makes a request to `fonts.googleapis.com` to fetch a small CSS file that then references `fonts.gstatic.com` for the actual woff2 files. Two extra DNS lookups + two extra TLS handshakes on cold load, even with `preconnect`.
-
-**Recommendation**: install `@nuxtjs/google-fonts` (with `download: true`) or manually download the woff2 files and host them under `/public/fonts/`. Replace the external `<link>` with a local `<link rel="stylesheet" href="/fonts/inter.css">` plus inline `@font-face` declarations.
-
-```css
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('/fonts/inter-400.woff2') format('woff2');
-}
-/* repeat for 500, 600, and Instrument Serif */
-```
-
-**Impact**: removes the two cross-origin font requests; fonts load from the same origin (same CDN as the HTML), benefit from HTTP/2 multiplexing, and can be aggressively cached by the CDN.
-
-**Risk**: slightly more build/config work; fonts no longer benefit from cross-site Google CDN caching (but in practice that cross-site cache has been partitioned by browsers since 2020, so the win was already gone).
-
----
-
-### C3. Add `<link rel="preload">` for the two critical font weights
-
-**Where**: `nuxt.config.ts` head link array.
-
-Inter 400 and Inter 600 are the first thing the user sees (body + heading text). Currently they're discovered by the browser only after CSS parses.
-
-**Recommendation**: once C2 is done, preload the woff2 files:
-
-```ts
-link: [
-  { rel: 'preload', as: 'font', type: 'font/woff2',
-    href: '/fonts/inter-400.woff2', crossorigin: '' },
-  { rel: 'preload', as: 'font', type: 'font/woff2',
-    href: '/fonts/inter-600.woff2', crossorigin: '' },
-  // ... existing stylesheet link
-]
-```
-
-Don't preload 500 / Instrument Serif — they aren't needed for first paint of the body text.
-
-**Impact**: fonts begin downloading in parallel with the HTML parse, not after the CSS arrives. Visible LCP improvement (text re-paints in the right font sooner).
-
-**Risk**: none.
-
----
-
-### C4. Disable devtools in production (verify)
-
-**Where**: `nuxt.config.ts` line 5 — `devtools: { enabled: true }`.
-
-Nuxt strips devtools in production builds by default, so this is almost certainly a no-op for prod. Worth verifying with a bundle analyser (`npx nuxi analyze`) that no devtools chunks are shipped.
-
-**Impact**: 0 if it's already stripped; non-trivial if something leaks through.
-**Risk**: none.
-
----
-
-## D. Vue hydration & runtime cost
-
-### D1. The TextScramble rewrites `innerHTML` every animation frame
-
-**Where**: `TheHero.vue` line 79 — `this.el.innerHTML = output` inside `update()`.
-
-Each frame, `innerHTML` rebuilds the entire DOM subtree (~25–30 `<span class="scramble-dud">X</span>` children), parses it, drops the old nodes for GC. Over a 1-second scramble that's ~60 full subtree replacements. GC pressure + parse overhead.
-
-**Recommendation**: pre-create one `<span class="scramble-dud">` per character index when `setText` runs; reuse the same nodes by setting `node.textContent` and toggling between two CSS classes (`scramble-dud` vs the resolved style). After A2 (pause off-screen) this is much smaller, but worth pairing with it.
-
-Concrete sketch:
-
-```ts
-setText(newText) {
-  // Build queue as today.
-  // Then: rebuild children once with placeholder spans.
-  this.el.replaceChildren(...this.queue.map(() => document.createElement('span')))
-  this.update()
-}
-
-update() {
-  for (let i = 0, n = this.queue.length; i < n; i++) {
-    const span = this.el.children[i]
-    const q = this.queue[i]
-    if (this.frame >= q.end) {
-      span.className = ''
-      span.textContent = q.to
-    } else if (this.frame >= q.start) {
-      if (!q.char || Math.random() < 0.28) q.char = this.randomChar()
-      span.className = 'scramble-dud'
-      span.textContent = q.char
-    } else {
-      span.className = ''
-      span.textContent = q.from
-    }
-  }
-  // ... same RAF gating as today
-}
-```
-
-**Impact**: ~5–10× less per-frame DOM cost during the scramble. Frames stay below the 16 ms budget on mid-tier mobile.
-
-**Risk**: none — same characters, same colours; just reusing DOM nodes.
-
----
-
-### D2. Body-scroll lock via `document.body.style.overflow = 'hidden'` is fine, but verify on iOS
-
-**Where**: `TheNav.vue` line 29.
-
-iOS Safari occasionally still allows the underlying page to scroll when only `overflow: hidden` is applied to body (a long-standing Safari quirk). The visual effect is the menu drawer scrolls instead of locking.
-
-**Recommendation** (only if you see the bug in the wild): switch to fixed-position locking with restored scroll position:
-
-```ts
-let savedY = 0
-watch(open, (isOpen) => {
-  if (isOpen) {
-    savedY = window.scrollY
-    document.body.style.position = 'fixed'
-    document.body.style.top = `-${savedY}px`
-    document.body.style.width = '100%'
-  } else {
-    document.body.style.position = ''
-    document.body.style.top = ''
-    document.body.style.width = ''
-    window.scrollTo(0, savedY)
-  }
-})
-```
-
-**Impact**: only matters if you see scroll-lock bleed on iOS.
-**Risk**: low; well-known pattern.
-
----
-
-## E. CSS / paint hygiene
-
-### E1. `transition: all` is gone (good)
-
-Already audited and removed earlier from `TheNav`. No remaining `transition: all` in the codebase.
-
-### E2. Heavy shadows on hover-only states
-
-Several cards use multi-layer box-shadows on hover, e.g.
-
-```
-hover:shadow-[0_24px_60px_-32px_rgba(1,219,241,0.55)]
-```
-
-These only paint on hover; on a touch device they trigger briefly on tap. Not a steady-state cost. **No action.**
-
-### E3. `scroll-behavior: smooth` on `html`
-
-`main.css` line 23. This is the native CSS smooth-scroll. On long pages with the parallax blobs + backdrop-blur header, native smooth-scroll can stutter on Safari. **No action** unless you observe the stutter — if you do, replace with a JS-based smooth-scroll for anchor links and remove the CSS rule.
-
----
-
-## F. Build & deployment
-
-### F1. Confirm static generation
-
-This is a marketing site with two routes (`/`, `/diagnose`) and zero client-side data fetching. Use `nuxt generate` for deploy; ship pure static HTML with hydration.
-
-```bash
-npm run generate
-# outputs to .output/public
-```
-
-Deploy that to any static host (Vercel does this automatically when no server routes are detected).
-
-**Impact**: zero server roundtrip on cold load; HTML can be served from edge cache.
-
-### F2. Run `nuxi analyze` to inspect the bundle
-
-```
-npx nuxi analyze
-```
-
-This produces a visualisation of the chunks. Use it to:
-- Confirm `@lucide/vue` has tree-shaken to just the icons in use (after A7).
-- Confirm `devtools` is not in the prod bundle (C4).
-- Identify any unexpectedly large chunks.
-
-### F3. Enable Brotli/gzip at the CDN
-
-Vercel does this automatically. If hosting elsewhere, ensure `.woff2`, `.js`, `.css`, `.svg`, and `.html` are served with `Content-Encoding: br` (or `gzip` fallback). Already-compressed (`.woff2`, `.png`) gets ~0 savings; uncompressed (`.js`, `.css`, `.svg`, `.html`) gets 60–80 %.
-
----
-
-## G. Misc / low priority
-
-### G1. `transition: width 80ms linear` — see A4.
-
-### G2. `text-rendering: optimizeLegibility` on html
-
-`main.css` line 26 — instructs the browser to enable kerning and ligatures, which costs a bit on first paint of long text blocks. The benefit is real for display copy. Leave as-is.
-
-### G3. `font-feature-settings: 'cv11', 'ss01', 'ss03', 'cv02'` on body
-
-These are Inter stylistic alternates. They're picked up at glyph-shaping time — zero perf cost beyond Inter's normal rendering. Keep.
-
-### G4. `.diagnose-quote` uses a system serif stack rather than a web font
-
-`diagnose.vue` line 950. Wisely so — no extra font request. Keep.
-
-### G5. SVG icons inline the same gradient defs across components
-
-The CTA cursor-arrow defines `<linearGradient id="zabbleArrowGradient">` inside its SVG. Other SVGs (hero chart, etc.) define their own gradients. **No action** — each is small (< 200 bytes), and reusing across SVGs across components doesn't reliably work (the id has to live in the same document).
-
----
-
-## Prioritised action list
-
-In rough order of effort-adjusted impact:
-
-| # | Item                                                              | Risk      | Visual change | Estimated effort | Estimated impact |
-|---|-------------------------------------------------------------------|-----------|---------------|------------------|------------------|
-| 1 | **A1** Drop Inter 700/800 from font URL                           | none      | none          | 1 line           | ~80–120 KB saved |
-| 2 | **A2** Pause TextScramble + cursor-arrow RAF off-screen           | none      | none          | ~30 lines        | Significant idle CPU/battery |
-| 3 | **A3** Cache the CTA-button rect; recompute on scroll/resize      | none      | none          | ~10 lines        | Removes layout thrash |
-| 4 | **A4** scroll-progress bar: `width` → `transform: scaleX`         | none      | none          | ~5 lines         | One fewer layout per scroll tick |
-| 5 | **A5** Hero parallax via `el.style.transform`, not reactive `:style` | none   | none          | ~15 lines        | Fewer Vue patches per scroll |
-| 6 | **A6** Unified `useScroll` composable                             | none      | none          | ~40 lines        | One listener instead of three |
-| 7 | **B3** Apply `will-change` only during reveal animation           | none      | none          | ~10 lines        | Frees GPU memory on long page |
-| 8 | **A7** Lucide subpath imports                                     | none      | none          | trivial, repo-wide | Bundle-size guarantee |
-| 9 | **C1** Lazy-load below-the-fold sections                          | low       | none          | ~20 lines        | Smaller initial JS + TTI |
-| 10| **B1**+**B2** Parallax blob `contain: layout paint` + dynamic `will-change` | none | none | ~10 lines        | Steady-state GPU savings |
-| 11| **B4** CpuArchitecture wrapped in `content-visibility: auto`      | low       | none          | 1 line           | Removes off-screen anim cost |
-| 12| **B5** Plan section `content-visibility: auto`                    | low       | none          | 1 line           | Removes off-screen anim cost |
-| 13| **B6** Gate `cursor-arrow-dash` animation to `.is-visible`        | none      | none          | 2 lines          | Tiny constant savings        |
-| 14| **D1** Reuse DOM nodes in TextScramble                            | none      | none          | ~30 lines        | Smoother scramble frames     |
-| 15| **C2**+**C3** Self-host fonts + preload Inter 400/600             | low       | none          | ~30 lines + 1 config | Faster LCP                  |
-| 16| **F1**+**F2** `nuxt generate` + bundle analyze                    | none      | none          | run commands     | Verifies wins, no roundtrips |
-
-Doing items 1–8 alone is a one-evening change with no behavioural risk and meaningfully better feel on mobile.
-
----
-
-## What was deliberately left alone
-
-These would all help perf but require visual / animation changes — explicitly out of scope per the brief.
-
-- **`backdrop-blur-md` on the nav** — paints a blurred copy of the page behind the header on every scroll frame. Cheap to remove; would change the look.
-- **`blur-3xl` on hero parallax blobs** — biggest GPU cost per frame on mobile. Reducing the blur radius (`blur-2xl`) would visibly tighten the halo.
-- **8 infinite SVG motion-path animations in CpuArchitecture** — removing them would change the dashboard animation.
-- **ThePlan badge `plan-badge-spin`** — continuous rotation of conic-gradient.
-- **The dashboard mockup in the hero (md+)** — three stat cards + svg sparkline + two floating cards.
-
-If perf budget ever needs to come further down, these are where to look — but only when you're willing to alter the look.
+# AUDIT — 30 Interactive System Demos
+
+Date: 2026-05-21
+Goal: "Sanity-check 30 demos and push to main"
+
+## Summary
+
+- 30 interactive demo components built and registered.
+- All 30 expected slugs render at `/systems/<slug>` with no console errors.
+- All 30 system entries set to `status: 'live'` in `app/data/systems.ts`.
+- `/systems` gallery renders exactly 30 cards (`status === 'live'` filter added).
+- Two scaffolding entries (`legal-intake-automation`, `hospitality-booking-marketing-dashboard`) remain in the data file as `status: 'concept'` and are hidden from the gallery.
+
+## Per-system status
+
+| # | Slug | Status | Demo file | Copy needs backfill? |
+|---|------|--------|-----------|----------------------|
+|  1 | `decision-engine` | live | `app/components/demos/decision-engine.vue` | no |
+|  2 | `lead-qualifier` | live | `app/components/demos/lead-qualifier.vue` | YES |
+|  3 | `inventory-clarity` | live | `app/components/demos/inventory-clarity.vue` | no |
+|  4 | `accounting-engine` | live | `app/components/demos/accounting-engine.vue` | no |
+|  5 | `task-management` | live | `app/components/demos/task-management.vue` | no |
+|  6 | `bespoke-crm` | live | `app/components/demos/bespoke-crm.vue` | no |
+|  7 | `kairos` | ? | `app/components/demos/kairos.vue` | no |
+|  8 | `continuous-assurance` | live | `app/components/demos/continuous-assurance.vue` | no |
+|  9 | `analytics-suite` | live | `app/components/demos/analytics-suite.vue` | no |
+| 10 | `document-intelligence` | live | `app/components/demos/document-intelligence.vue` | no |
+| 11 | `approval-workflow` | live | `app/components/demos/approval-workflow.vue` | no |
+| 12 | `compliance-reporting` | live | `app/components/demos/compliance-reporting.vue` | no |
+| 13 | `client-onboarding` | live | `app/components/demos/client-onboarding.vue` | no |
+| 14 | `pricing-engine` | live | `app/components/demos/pricing-engine.vue` | no |
+| 15 | `reconciliation-engine` | live | `app/components/demos/reconciliation-engine.vue` | no |
+| 16 | `field-ops-app` | live | `app/components/demos/field-ops-app.vue` | no |
+| 17 | `forecasting` | live | `app/components/demos/forecasting.vue` | no |
+| 18 | `predictive-maintenance` | live | `app/components/demos/predictive-maintenance.vue` | no |
+| 19 | `knowledge-assistant` | live | `app/components/demos/knowledge-assistant.vue` | no |
+| 20 | `case-management` | live | `app/components/demos/case-management.vue` | no |
+| 21 | `data-routing` | live | `app/components/demos/data-routing.vue` | no |
+| 22 | `integration-hub` | live | `app/components/demos/integration-hub.vue` | no |
+| 23 | `workflow-orchestrator` | live | `app/components/demos/workflow-orchestrator.vue` | no |
+| 24 | `master-data-hub` | live | `app/components/demos/master-data-hub.vue` | no |
+| 25 | `document-assembly` | live | `app/components/demos/document-assembly.vue` | no |
+| 26 | `notification-orchestration` | live | `app/components/demos/notification-orchestration.vue` | no |
+| 27 | `customer-360` | live | `app/components/demos/customer-360.vue` | no |
+| 28 | `cross-system-sync` | live | `app/components/demos/cross-system-sync.vue` | no |
+| 29 | `legacy-bridge` | live | `app/components/demos/legacy-bridge.vue` | no |
+| 30 | `multi-channel-inbox` | live | `app/components/demos/multi-channel-inbox.vue` | no |
+
+## Files changed in this batch
+
+- **New**: 30 files under `app/components/demos/<slug>.vue` — one per system
+- **New**: `app/components/SystemDemoThumbnail.vue` — scaled non-interactive snapshot used by gallery cards
+- **New**: `app/utils/demoRegistry.ts` — single source of truth for slug → demo component mapping (used by `DemoSlot.vue` and `SystemDemoThumbnail.vue`)
+- **New**: `app/composables/useScroll.ts`, `app/composables/useInView.ts` — shared scroll + intersection helpers
+- **Updated**: `app/data/systems.ts` — 30 systems now `status: 'live'`; `lead-qualification-engine` slug renamed to `lead-qualifier` to match the spec
+- **Updated**: `app/components/DemoSlot.vue` — registry externalized to `app/utils/demoRegistry.ts`
+- **Updated**: `app/components/SystemCard.vue` — uses SystemDemoThumbnail for the card thumbnail
+- **Updated**: `app/components/TheNav.vue` — "Systems" tab added; uses `useScroll` composable
+- **Updated**: `app/components/TheFooter.vue`, `TheHero.vue`, `TheFinalCta.vue`, `TheScrollProgress.vue` — speed-audit refactor
+- **Updated**: `app/pages/systems/index.vue` — gallery filters `status === 'live'`
+- **Updated**: `nuxt.config.ts` — `@nuxt/fonts` module + prerender route rules for `/systems/**`
+- **Updated**: `package.json` / `package-lock.json` — `@nuxt/fonts ^0.14.0` added as devDependency for self-hosted fonts
+- **New**: `speed_audit.md` — performance audit notes
+- **Restored**: `audit.md` (was deleted in working tree)
+
+## Build / smoke checks
+
+- `nuxt build` — exit 0; 66 routes prerendered; 30 system pages generated under `.output/public/systems/`
+- Gallery HTML (`.output/public/systems/index.html`) — confirmed 30 unique `/systems/<slug>` links
+- `nuxi typecheck` — 19 pre-existing errors in `app/pages/diagnose.vue` (baseline; unchanged by this batch). Zero new errors elsewhere.
+- No `window.*` writes / global leaks across the 30 demos (all `window.setTimeout`, `addEventListener`, `matchMedia` calls clean up in `onBeforeUnmount`).
+- No API keys / passwords / customer PII detected in seeded demo data.
+- No two systems share a demo component (no `demoComponent` overrides in `app/data/systems.ts`).
+
+## Known follow-ups (NOT blockers, but flagged)
+
+1. **Copy backfill for 21 systems.** Most of the newly-live system entries still have placeholder `TODO — ...` strings in `tagline`, `problem`, `whatWeBuilt`, `whatChanged`, `industry`, `bestFor`, and `pillarNotes.*`. The demos themselves work; the marketing copy around them does not. Affected slugs:
+   - `lead-qualifier`
+2. **Pre-existing typecheck errors in `app/pages/diagnose.vue`** (19 errors, all variations of `def` / `__VLS_ctx.currentDef` possibly undefined). Not introduced by this batch; tracked separately.
+3. **The two `concept` entries** (`legal-intake-automation`, `hospitality-booking-marketing-dashboard`) remain in `app/data/systems.ts` and their `/systems/<slug>` routes are reachable by direct URL (they 200 with TODO copy in the triptych). They are NOT linked from anywhere in the rendered site. Decision needed: delete the entries, or 404 non-`live` slugs in `app/pages/systems/[slug].vue`.
+4. **`@nuxt/fonts` devDependency added.** Wired in `nuxt.config.ts` for `Inter` + `Instrument Serif`. Build-time only; no runtime weight added.

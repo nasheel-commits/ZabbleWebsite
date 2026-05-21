@@ -1,11 +1,5 @@
 <script setup lang="ts">
-import {
-  Workflow,
-  ShieldCheck,
-  Radar,
-  BarChart3,
-  Sparkles,
-} from '@lucide/vue'
+import { BarChart3, Radar, ShieldCheck, Sparkles, Workflow } from '@lucide/vue'
 
 const wins = [
   {
@@ -36,10 +30,11 @@ const finale = {
   text: 'And the time you used to spend holding things together?',
   highlight: 'You get it back.',
 }
+
 </script>
 
 <template>
-  <section class="wiw-section relative py-32 md:py-40 overflow-hidden">
+  <section class="wiw-section lazy-section relative py-32 md:py-40 overflow-hidden">
     <div class="relative mx-auto max-w-5xl px-5 md:px-8 lg:px-12">
       <div v-reveal class="max-w-3xl">
         <div

@@ -24,7 +24,6 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  overflow-x: hidden;
   color-scheme: light only;
   background-color: #ffffff;
 }
@@ -38,6 +37,10 @@ body {
   font-feature-settings: 'cv11', 'ss01', 'ss03', 'cv02';
   letter-spacing: -0.005em;
   overflow-x: hidden;
+}
+
+body.nav-open {
+  overflow: hidden;
 }
 
 h1, h2, h3, h4 {
@@ -223,4 +226,15 @@ p {
 .parallax-blob {
   transition: transform 120ms linear;
   will-change: transform;
+}
+
+/* ---- Below-the-fold render-skip ---- */
+/* Browsers that support content-visibility skip layout + paint for the section
+   until it scrolls near the viewport. contain-intrinsic-size keeps the
+   scrollbar honest with a height hint so the visual layout doesn't jump. */
+@supports (content-visibility: auto) {
+  .lazy-section {
+    content-visibility: auto;
+    contain-intrinsic-size: 1px 800px;
+  }
 }

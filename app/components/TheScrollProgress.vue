@@ -1,32 +1,19 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, watch, onMounted } from 'vue'
+import { useScroll } from '~/composables/useScroll'
 
+const { scrollY } = useScroll()
 const progress = ref(0)
-let ticking = false
 
-function update() {
+function recompute() {
+  if (typeof document === 'undefined') return
   const doc = document.documentElement
   const max = doc.scrollHeight - doc.clientHeight
   progress.value = max > 0 ? Math.min(100, Math.max(0, (doc.scrollTop / max) * 100)) : 0
-  ticking = false
 }
 
-function onScroll() {
-  if (ticking) return
-  ticking = true
-  window.requestAnimationFrame(update)
-}
-
-onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
-  window.addEventListener('resize', onScroll, { passive: true })
-  update()
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll)
-  window.removeEventListener('resize', onScroll)
-})
+watch(scrollY, recompute)
+onMounted(recompute)
 </script>
 
 <template>

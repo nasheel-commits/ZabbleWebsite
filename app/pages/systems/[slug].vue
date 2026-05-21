@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { ArrowLeft } from '@lucide/vue'
+
 import { PILLARS, systemBySlug } from '~/data/systems'
 
 const route = useRoute()
@@ -32,6 +33,7 @@ useHead({
     },
   ],
 })
+
 </script>
 
 <template>

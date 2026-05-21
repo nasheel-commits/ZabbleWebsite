@@ -1,52 +1,58 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, watch } from 'vue'
-import { Menu, X, ArrowRight, ArrowUpRight, Mail } from '@lucide/vue'
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue'
+import { ArrowRight, ArrowUpRight, Mail, Menu, X } from '@lucide/vue'
+
+import { useScroll } from '~/composables/useScroll'
 
 const open = ref(false)
-const scrolled = ref(false)
-
-function onScroll() {
-  scrolled.value = window.scrollY > 12
-}
+const { scrollY } = useScroll()
+const scrolled = computed(() => scrollY.value > 12)
+const route = useRoute()
 
 function onKey(e: KeyboardEvent) {
   if (e.key === 'Escape') open.value = false
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('keydown', onKey)
-  onScroll()
 })
 onUnmounted(() => {
-  window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', onKey)
-  if (typeof document !== 'undefined') document.body.style.overflow = ''
+  if (typeof document !== 'undefined') document.body.classList.remove('nav-open')
 })
 
 watch(open, (isOpen) => {
   if (typeof document === 'undefined') return
-  document.body.style.overflow = isOpen ? 'hidden' : ''
+  document.body.classList.toggle('nav-open', isOpen)
 })
 
-// Tabs render as <NuxtLink> when `to` is set (cross-route), else <a> with a
-// hash href (home-page section anchor). The route tabs (Systems) keep working
-// from any page; the hash tabs only resolve on the home page.
-type NavTab =
-  | { label: string; href: string; to?: never }
-  | { label: string; to: string; href?: never }
+// Close the mobile menu when the URL changes — covers route changes (/systems)
+// and in-page hash changes (/#what-we-build). Doing it via a route watcher
+// instead of @click="close" on every link avoids the race where setting
+// open=false in the click handler tears the dialog down (v-if + Transition)
+// in the same tick as NuxtLink's async router.push, which on iOS Safari can
+// drop the navigation entirely.
+watch(() => route.fullPath, () => {
+  if (open.value) open.value = false
+})
+
+// All tabs render as <NuxtLink> so they work from any route. Hash tabs use
+// `/#anchor` form so the router navigates to the home page and scrolls to the
+// section even when the user is on /systems or another sub-route.
+type NavTab = { label: string; to: string }
 
 const tabs: NavTab[] = [
-  { label: 'Home', href: '#home' },
+  { label: 'Home', to: '/#home' },
   { label: 'Systems', to: '/systems' },
-  { label: 'What We Build', href: '#what-we-build' },
-  { label: 'Use Cases', href: '#meet' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'What We Build', to: '/#what-we-build' },
+  { label: 'Use Cases', to: '/#meet' },
+  { label: 'Contact', to: '/#contact' },
 ]
 
 function close() {
   open.value = false
 }
+
 </script>
 
 <template>
@@ -64,23 +70,17 @@ function close() {
     </div>
     <div class="relative mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
       <nav class="flex items-center justify-between h-16 md:h-20">
-        <a href="#home" class="group inline-flex items-center py-3 lg:py-0" aria-label="Zabble home">
+        <NuxtLink to="/#home" class="group inline-flex items-center py-3 lg:py-0" aria-label="Zabble home">
           <span class="font-display text-ink text-[28px] md:text-[30px] leading-none tracking-[-0.02em] transition-colors group-hover:text-ink-soft">Zabble</span>
-        </a>
+        </NuxtLink>
 
         <ul class="hidden md:flex items-center gap-10">
           <li v-for="t in tabs" :key="t.label">
             <NuxtLink
-              v-if="t.to"
               :to="t.to"
               class="text-[15px] font-medium text-mute hover:text-ink transition-colors"
               active-class="text-ink"
             >{{ t.label }}</NuxtLink>
-            <a
-              v-else
-              :href="t.href"
-              class="text-[15px] font-medium text-mute hover:text-ink transition-colors"
-            >{{ t.label }}</a>
           </li>
         </ul>
 
@@ -128,14 +128,13 @@ function close() {
 
         <div class="relative h-full flex flex-col">
           <div class="flex items-center justify-between h-14 px-5 border-b border-line/70 bg-white/60 backdrop-blur-sm">
-            <a
-              href="#home"
-              @click="close"
-              class="inline-flex items-center py-3 -my-3"
+            <NuxtLink
+              to="/#home"
+              class="inline-flex items-center py-3 -my-3 touch-manipulation"
               aria-label="Zabble home"
             >
               <span class="font-display text-ink text-[24px] leading-none tracking-[-0.02em]">Zabble</span>
-            </a>
+            </NuxtLink>
             <button
               type="button"
               class="-mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors touch-manipulation"
@@ -155,11 +154,9 @@ function close() {
                   class="nav-row"
                   :style="{ '--i': i }"
                 >
-                  <component
-                    :is="t.to ? 'NuxtLink' : 'a'"
-                    v-bind="t.to ? { to: t.to } : { href: t.href }"
-                    @click="close"
-                    class="group flex items-center justify-between gap-4 py-3.5 border-b border-line/70"
+                  <NuxtLink
+                    :to="t.to"
+                    class="group flex items-center justify-between gap-4 py-3.5 border-b border-line/70 touch-manipulation"
                   >
                     <span class="flex items-center gap-4 min-w-0">
                       <span
@@ -178,7 +175,7 @@ function close() {
                     >
                       <ArrowUpRight :size="16" />
                     </span>
-                  </component>
+                  </NuxtLink>
                 </li>
               </ul>
             </nav>
@@ -203,8 +200,7 @@ function close() {
                   </p>
                   <NuxtLink
                     to="/diagnose"
-                    @click="close"
-                    class="mt-4 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink hover:bg-ink-soft text-white text-[15px] font-semibold py-3.5 transition shadow-[0_18px_40px_-12px_rgba(1,219,241,0.45)]"
+                    class="mt-4 group inline-flex w-full items-center justify-center gap-2 rounded-full bg-ink hover:bg-ink-soft text-white text-[15px] font-semibold py-3.5 transition shadow-[0_18px_40px_-12px_rgba(1,219,241,0.45)] touch-manipulation"
                   >
                     Book a discovery call
                     <ArrowRight :size="17" class="transition group-hover:translate-x-0.5" />
@@ -220,7 +216,7 @@ function close() {
             <a
               href="mailto:analytics@zabble.org"
               @click="close"
-              class="group flex items-center justify-between gap-3"
+              class="group flex items-center justify-between gap-3 touch-manipulation"
             >
               <span class="flex items-center gap-3 min-w-0">
                 <span

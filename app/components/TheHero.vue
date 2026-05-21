@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { ArrowRight, PlayCircle } from '@lucide/vue'
 
-const scrollY = ref(0)
-let ticking = false
-let reduced = false
+import { useScroll } from '~/composables/useScroll'
+import { useInView } from '~/composables/useInView'
 
-function update() {
-  scrollY.value = window.scrollY
-  ticking = false
-}
+const heroRef = ref<HTMLElement | null>(null)
+const { scrollY: globalScrollY, reduced: reducedRef } = useScroll()
+const { visible: heroVisible } = useInView(heroRef, { threshold: 0, rootMargin: '200px 0px' })
 
-function onScroll() {
-  if (ticking || reduced) return
-  ticking = true
-  window.requestAnimationFrame(update)
-}
+// Only feed parallax inline styles while the hero is on-screen and motion
+// is not reduced — outside that window the elements are static, so writing
+// transforms each rAF only repaints work nobody can see.
+const scrollY = computed(() => {
+  if (reducedRef.value) return 0
+  if (!heroVisible.value) return 0
+  return globalScrollY.value
+})
 
 const scrambleEl = ref<HTMLElement | null>(null)
 const phrases = [
@@ -91,13 +92,7 @@ class TextScramble {
 }
 
 onMounted(() => {
-  reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false
-  if (!reduced) {
-    window.addEventListener('scroll', onScroll, { passive: true })
-    update()
-  }
-
-  if (scrambleEl.value && !reduced) {
+  if (scrambleEl.value && !reducedRef.value) {
     const fx = new TextScramble(scrambleEl.value)
     let counter = 0
     const tick = () => {
@@ -111,14 +106,18 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', onScroll)
   if (scrambleTimer) clearTimeout(scrambleTimer)
   if (scrambleFrame) cancelAnimationFrame(scrambleFrame)
 })
+
 </script>
 
 <template>
-  <section id="home" class="relative overflow-hidden pt-20 md:pt-40 pb-14 md:pb-28">
+  <section
+    id="home"
+    ref="heroRef"
+    class="relative overflow-hidden pt-20 md:pt-40 pb-14 md:pb-28"
+  >
     <div
       class="absolute inset-0 grid-bg fade-mask pointer-events-none"
       aria-hidden="true"

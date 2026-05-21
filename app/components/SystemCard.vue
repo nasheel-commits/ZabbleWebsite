@@ -1,20 +1,21 @@
 <script setup lang="ts">
+
 // Card for a system in the gallery grid.
 // The whole card is one keyboard-accessible link to /systems/[slug].
 // Pillar chips inside the card are <a> links to the filtered gallery —
 // they intercept clicks so the chip link wins over the card link.
 
+
 import { computed } from 'vue'
 import { ArrowRight } from '@lucide/vue'
-import { PILLARS, type System } from '~/data/systems'
+
+import { pillarMetasForSystem, type System } from '~/data/systems'
 
 const props = defineProps<{ system: System }>()
 
 const cardHref = computed(() => `/systems/${props.system.slug}`)
 
-const pillarChipsForCard = computed(() =>
-  PILLARS.filter((p) => props.system.pillars.includes(p.slug)),
-)
+const pillarChipsForCard = computed(() => pillarMetasForSystem(props.system))
 
 const statusLabel = computed(() => {
   switch (props.system.status) {
@@ -24,28 +25,6 @@ const statusLabel = computed(() => {
   }
 })
 
-// Deterministic "thumbnail" gradient: hash the slug to pick an angle / offset.
-// Stays inside the cyan-brand / surface-alt palette — no new colours.
-const thumbnailStyle = computed(() => {
-  if (props.system.thumbnail) {
-    return { backgroundImage: `url("${props.system.thumbnail}")`, backgroundSize: 'cover', backgroundPosition: 'center' }
-  }
-  let h = 0
-  for (const ch of props.system.slug) h = (h * 31 + ch.charCodeAt(0)) >>> 0
-  const angle = h % 360
-  const offset = 40 + (h % 30)
-  return {
-    backgroundImage: `linear-gradient(${angle}deg, rgba(1,219,241,0.18) 0%, rgba(246,248,251,1) ${offset}%, #ffffff 100%)`,
-  }
-})
-
-// First letter of each significant word, capped at 3 characters.
-const monogram = computed(() => {
-  const parts = props.system.name
-    .split(/[\s&]+/)
-    .filter((w) => w && !/^(and|the|&)$/i.test(w))
-  return parts.slice(0, 3).map((w) => w[0]?.toUpperCase()).join('')
-})
 </script>
 
 <template>
@@ -60,19 +39,16 @@ const monogram = computed(() => {
       class="absolute inset-0 z-0 rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
     />
 
-    <!-- Thumbnail slot -->
-    <div
-      class="relative aspect-[16/9] border-b border-line"
-      :style="thumbnailStyle"
-      aria-hidden="true"
-    >
-      <div class="absolute inset-0 flex items-center justify-center">
-        <span class="font-display text-[44px] leading-none tracking-tight text-ink/30">
-          {{ monogram }}
-        </span>
-      </div>
+    <!-- Thumbnail: live snapshot of the demo, scaled to fit. Falls back to a
+         gradient + monogram for systems without a registered demo. -->
+    <div class="relative border-b border-line">
+      <SystemDemoThumbnail
+        :slug="system.slug"
+        :demo-component="system.demoComponent"
+        :name="system.name"
+      />
       <div
-        class="absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-white/85 backdrop-blur-sm border border-line px-2.5 py-1 text-[10.5px] uppercase tracking-[0.18em] font-semibold text-mute-2"
+        class="absolute top-3 right-3 inline-flex items-center gap-1.5 rounded-full bg-white/85 backdrop-blur-sm border border-line px-2.5 py-1 text-[10.5px] uppercase tracking-[0.18em] font-semibold text-mute-2 z-10"
       >
         <span
           :class="[

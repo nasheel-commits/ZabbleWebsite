@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { FileSpreadsheet, Plug, Gauge, AlertOctagon } from '@lucide/vue'
+import { AlertOctagon, FileSpreadsheet, Gauge, Plug } from '@lucide/vue'
 
 const symptoms = [
   {
@@ -23,6 +23,7 @@ const symptoms = [
     body: 'You find out after the customer does. After the payment goes out. After the audit.',
   },
 ]
+
 </script>
 
 <template>

@@ -1,7 +1,9 @@
 <script setup lang="ts">
+
 // Lightweight reusable bottom-of-page CTA. Lives at /systems and /systems/[slug].
 // Matches the simpler "First Step" treatment from TheFinalCta but without the
 // section-opener heavy heading scale — these are mid-page closers.
+
 
 import { ArrowRight, Mail } from '@lucide/vue'
 
@@ -29,6 +31,7 @@ withDefaults(
     showEmail: true,
   },
 )
+
 </script>
 
 <template>

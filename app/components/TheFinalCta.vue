@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ArrowRight, Mail, Sparkles, Check, Zap } from '@lucide/vue'
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { ArrowRight, Check, Mail, Sparkles, Zap } from '@lucide/vue'
 
 const sectionRef = ref<HTMLElement | null>(null)
 const pathRef = ref<SVGPathElement | null>(null)
@@ -86,6 +86,13 @@ function buildHead(x: number, y: number, angle: number) {
 }
 
 function tick() {
+  // Bail when off-screen: stop scheduling rAF entirely until we re-enter
+  // the section. The intersection observer below resumes the loop.
+  if (!inSection) {
+    rafId = null
+    arrowVisible.value = false
+    return
+  }
   if (!buttonEl || !pathRef.value || !headRef.value) {
     rafId = requestAnimationFrame(tick)
     return
@@ -104,7 +111,7 @@ function tick() {
   headRef.value.setAttribute('d', buildHead(pointerX, pointerY, angle))
 
   const dist = distanceToRect(mouseX, mouseY, rect)
-  const shouldShow = inSection && dist > HIDE_NEAR && dist < HIDE_FAR
+  const shouldShow = dist > HIDE_NEAR && dist < HIDE_FAR
   if (arrowVisible.value !== shouldShow) arrowVisible.value = shouldShow
 
   rafId = requestAnimationFrame(tick)
@@ -124,13 +131,19 @@ function start() {
 
   observer = new IntersectionObserver(
     (entries) => {
-      for (const entry of entries) inSection = entry.isIntersecting
+      for (const entry of entries) {
+        const wasIn = inSection
+        inSection = entry.isIntersecting
+        // Resume the rAF loop only on re-entry; tick() returns early when
+        // inSection flips false, so no extra work happens while scrolled away.
+        if (inSection && !wasIn && rafId === null) {
+          rafId = requestAnimationFrame(tick)
+        }
+      }
     },
     { threshold: 0.2 },
   )
   if (sectionRef.value) observer.observe(sectionRef.value)
-
-  rafId = requestAnimationFrame(tick)
 
   cleanup = () => {
     if (rafId) cancelAnimationFrame(rafId)
@@ -174,13 +187,14 @@ onBeforeUnmount(() => {
   for (const { mq, handler } of mediaQueries) mq.removeEventListener('change', handler)
   mediaQueries = []
 })
+
 </script>
 
 <template>
   <section
     id="contact"
     ref="sectionRef"
-    class="relative py-24 md:py-32 lg:py-36 overflow-hidden"
+    class="lazy-section relative py-24 md:py-32 lg:py-36 overflow-hidden"
   >
     <div
       class="absolute inset-0 grid-bg fade-mask opacity-40 pointer-events-none"

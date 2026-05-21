@@ -28,7 +28,15 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
 
   nuxtApp.vueApp.directive('reveal', {
+    // SSR pass: emit the reveal classes so the server-rendered HTML matches
+    // what the client directive will add on mount. Without this hook Vue's
+    // server renderer crashes when it encounters v-reveal.
+    getSSRProps(binding: { arg?: string }) {
+      const cls = binding.arg ? `reveal reveal-${binding.arg}` : 'reveal'
+      return { class: cls }
+    },
     mounted(el: HTMLElement, binding: { value: RevealValue; arg?: string }) {
+      if (typeof window === 'undefined') return
       const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches
       el.classList.add('reveal')
       if (binding.arg) el.classList.add(`reveal-${binding.arg}`)
