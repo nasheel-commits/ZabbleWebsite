@@ -29,8 +29,16 @@ watch(open, (isOpen) => {
   document.body.style.overflow = isOpen ? 'hidden' : ''
 })
 
-const tabs = [
+// Tabs render as <NuxtLink> when `to` is set (cross-route), else <a> with a
+// hash href (home-page section anchor). The route tabs (Systems) keep working
+// from any page; the hash tabs only resolve on the home page.
+type NavTab =
+  | { label: string; href: string; to?: never }
+  | { label: string; to: string; href?: never }
+
+const tabs: NavTab[] = [
   { label: 'Home', href: '#home' },
+  { label: 'Systems', to: '/systems' },
   { label: 'What We Build', href: '#what-we-build' },
   { label: 'Use Cases', href: '#meet' },
   { label: 'Contact', href: '#contact' },
@@ -61,8 +69,15 @@ function close() {
         </a>
 
         <ul class="hidden md:flex items-center gap-10">
-          <li v-for="t in tabs" :key="t.href">
+          <li v-for="t in tabs" :key="t.label">
+            <NuxtLink
+              v-if="t.to"
+              :to="t.to"
+              class="text-[15px] font-medium text-mute hover:text-ink transition-colors"
+              active-class="text-ink"
+            >{{ t.label }}</NuxtLink>
             <a
+              v-else
               :href="t.href"
               class="text-[15px] font-medium text-mute hover:text-ink transition-colors"
             >{{ t.label }}</a>
@@ -136,12 +151,13 @@ function close() {
               <ul class="px-5 pt-2 pb-1">
                 <li
                   v-for="(t, i) in tabs"
-                  :key="t.href"
+                  :key="t.label"
                   class="nav-row"
                   :style="{ '--i': i }"
                 >
-                  <a
-                    :href="t.href"
+                  <component
+                    :is="t.to ? 'NuxtLink' : 'a'"
+                    v-bind="t.to ? { to: t.to } : { href: t.href }"
                     @click="close"
                     class="group flex items-center justify-between gap-4 py-3.5 border-b border-line/70"
                   >
@@ -162,7 +178,7 @@ function close() {
                     >
                       <ArrowUpRight :size="16" />
                     </span>
-                  </a>
+                  </component>
                 </li>
               </ul>
             </nav>

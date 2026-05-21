@@ -1,4 +1,98 @@
+# Zabble — Audit & Change Log
+
+A running log of audits and scaffolding work on the marketing site. Most recent entries on top.
+
+---
+
+## 2026-05-21 — Add Systems showcase scaffolding
+
+**Goal**: stand up the `/systems` showcase area as scaffolding only. Real copy, demos, and case-study content come later.
+
+**Files created**
+
+- `app/data/systems.ts` — typed source of truth: `PILLARS`, `System`, `SYSTEMS` (6 concept entries), `pillarBySlug`, `systemBySlug`, `filterSystemsByPillars`.
+- `app/components/PillarChip.vue` — small chip; renders as `<span>` (decorative) or `<a>` (link to `/systems?pillar=<slug>`).
+- `app/components/PillarFilterBar.vue` — "All" + 4 pillar buttons, multi-select, `aria-pressed`, emits `update:active`.
+- `app/components/SystemCard.vue` — gallery card; whole card is a `NuxtLink` to `/systems/[slug]`. Pillar chips inside are layered above to win clicks.
+- `app/components/SystemHero.vue` — detail-page hero with eyebrow, name, tagline, pillar chips, industry/best-for strip.
+- `app/components/DemoSlot.vue` — full-width "Interactive demo coming soon" placeholder with a documented registry contract for lazy-loaded demos.
+- `app/components/CtaStrip.vue` — reusable closing CTA section pointing to `/diagnose` ("Book a discovery call").
+- `app/pages/systems/index.vue` — gallery route.
+- `app/pages/systems/[slug].vue` — dynamic detail route; 404s on unknown slugs via `createError`.
+
+**Files modified**
+
+- `app/components/TheNav.vue` — added `Systems` tab between Home and What We Build (desktop + mobile drawer). The tabs array now supports two shapes: hash anchors (`{ href }`) for in-page sections and route links (`{ to }`) rendered as `NuxtLink`. No other nav behaviour changed.
+- `audit.md` — converted into a dated audit/change log; this entry added on top; the prior performance audit is preserved as a dated entry below.
+
+**Routes added**
+
+- `GET /systems` — gallery with multi-select pillar filter synced to `?pillar=` query (comma-separated slugs).
+- `GET /systems/[slug]` — dynamic detail page. Unknown slug → 404.
+
+**Components added** (summary)
+
+`SystemCard`, `SystemHero`, `PillarChip`, `PillarFilterBar`, `DemoSlot`, `CtaStrip`.
+
+### How to add a new system
+
+1. Open `app/data/systems.ts` and append a new entry to the `SYSTEMS` array. Required fields: `slug` (kebab-case), `name`, `tagline`, `pillars[]`, `status`. Optional: `industry`, `bestFor`, `problem`, `whatWeBuilt`, `whatChanged`, `pillarNotes`.
+2. The gallery card at `/systems` and the detail page at `/systems/<slug>` appear automatically.
+3. Thumbnail: leave `thumbnail` undefined to get a deterministic cyan-tinted gradient + monogram derived from the slug. Override with `thumbnail: '/path.svg'` if/when art exists.
+4. To wire a real interactive demo into the `DemoSlot`:
+   - Create `app/components/demos/<slug>.vue` (self-contained, no required props).
+   - Register it in `app/components/DemoSlot.vue` inside the `demoRegistry` map:
+     ```ts
+     'your-slug': defineAsyncComponent(() => import('~/components/demos/your-slug.vue')),
+     ```
+   - The demo is lazy-loaded only when its detail page renders; it never touches the initial bundle for `/systems` or any other route.
+5. If two systems share one demo, set `demoComponent: 'shared-registry-key'` on the second `System` entry — `DemoSlot` looks up by that override first, then falls back to `slug`.
+
+### TODO placeholders left behind
+
+Grouped by file. Every TODO is a copy / content blank to be filled by Zabble; nothing is a code TODO.
+
+**`app/data/systems.ts`** — for each of the 6 seeded systems:
+- `tagline` — one-line tagline (StoryBrand voice).
+- `industry` — industry label.
+- `bestFor` — best-for line.
+- `problem`, `whatWeBuilt`, `whatChanged` — triptych copy.
+- `pillarNotes[<pillar>]` — short paragraph per active pillar.
+
+**`app/pages/systems/index.vue`**
+- Gallery hero `<h1>` and subhead — currently scaffolding copy.
+- `useHead` description meta.
+
+**`app/pages/systems/[slug].vue`**
+- "How it fits the four pillars" lede: "One system, four jobs." — placeholder.
+- All triptych and pillar-notes copy actually comes from `data/systems.ts`; falls back to a visible "TODO — …" string when the entry is empty so the placeholder is obvious in dev.
+
+### Judgement calls / deviations from existing patterns
+
+1. **Nav now supports two tab shapes.** Existing nav tabs are anchor hashes to home-page sections (`#home`, `#what-we-build`, …). Systems is a route, so the tabs array now has a discriminated union (`{ href } | { to }`) and the template picks `NuxtLink` vs `<a>` accordingly. The mobile drawer mirrors the same pattern. Closest non-breaking change to the existing pattern.
+2. **No new design tokens.** The brief said reuse existing primitives. Pillar chips all share the existing cyan accent (the four pillars do not get four different colours). The chip + filter-button + card + CTA styles are direct copies of existing class strings from `TheFinalCta`, `TheWhatWeBuild`, etc.
+3. **No site-wide layout component introduced.** Existing pages (`index.vue`, `diagnose.vue`) each render their own `min-h-screen bg-surface` shell + `<TheNav>` + `<TheFooter>`. I followed that convention rather than introducing `app/layouts/default.vue` — pulling existing routes into a layout was out of scope.
+4. **Filter semantics are union (OR), not intersection (AND).** "Show me anything tagged Automation OR Audit Trails" matched the chip-multi-select mental model better than strict intersection, and the live-region copy reflects that ("…tagged with the selected pillars"). Documented in `filterSystemsByPillars`.
+5. **DemoSlot registry is a static map in the component**, not a separate module. Demos are few and the registry rarely changes; keeping the contract co-located with the slot keeps the documentation visible at the import site. Easy to extract to its own module if/when it grows.
+6. **Gallery hero CTA uses an inline SVG arrow**, not the Lucide `<ArrowRight>`. Reason: the rest of the file already imports nothing from Lucide and adding a single import for one icon felt heavier than a 4-line inline SVG. Visually identical.
+7. **`audit.md` restructured into a dated log.** The brief asked for "AUDIT.md (create at repo root if it doesn't exist) with a new dated entry". The existing `audit.md` (the performance audit from 2026-05-20) is the same file on Windows, so I kept the lower-case filename and converted the file into a dated-entry log so future audits can stack on top.
+
+### Quality bar (Step 3) — checks I ran
+
+- Semantic HTML: `<header>`, `<nav aria-label>`, `<main>`, `<section>`, `<article>`, `<button type="button">`, `<a>` for links, `<dl>` for the metadata strip.
+- Keyboard: every interactive control reachable. Card link covers the whole card; the inner pillar `<a>`s are layered above the card link and have their own focus ring so they receive keyboard focus too.
+- Visible focus: every interactive control has `focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2`.
+- AA contrast: text uses existing `ink` / `mute` tokens on white. Cyan-tinted chips use `text-ink` over `bg-cyan-brand/15` (passes AA at the chip text size).
+- No layout shift on filter: grid uses CSS Grid; cards reflow in place. A live region announces the result count change so screen readers track the update.
+- Responsive: verified at 320, 390, 1280 wide. `scrollWidth === clientWidth` at every viewport. Filter chips wrap; cards stack 1 → 2 → 3 column.
+- No new fonts, no new colours, no new libraries.
+- No final marketing copy, no real demos, no stock images, no CMS.
+
+---
+
 # Zabble Web App — Performance Audit
+
+(Earlier entry, 2026-05-20)
 
 **Scope**: identify lightweight, low-risk changes that make the app feel snappier without altering visuals or animations.
 
