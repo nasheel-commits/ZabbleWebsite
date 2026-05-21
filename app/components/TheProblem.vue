@@ -57,7 +57,7 @@ const symptoms = [
         </div>
       </div>
 
-      <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div class="mt-20 hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         <div
           v-for="(s, i) in symptoms"
           :key="s.title"
