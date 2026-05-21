@@ -82,26 +82,28 @@ export const SYSTEMS: System[] = [
     slug: 'kairos',
     name: 'Kairos',
     tagline:
-      'The coordinator that never sleeps. Outreach before, traffic-control during, follow-up after — the administrative work that normally consumes a person runs itself.',
+      'Your team stops being a switchboard. Outreach, day-of orchestration and follow-up run themselves — so they can do the work humans should.',
     pillars: ['automation', 'audit-trails', 'analytics'],
     industry: 'Events, conferences, service businesses, clinics',
     bestFor:
       'Operators whose calendars, inboxes, and phone lines outpace a single coordinator',
     status: 'live',
     problem:
-      'A conference with 800 registrants needs a coordinator chasing confirmations, fielding calls, calming no-shows, and running follow-up — for weeks. Calendars and inboxes outpace the people staffing them, and the work that gets dropped is the work that costs you the next event.',
+      'A conference with hundreds of registrants needs a coordinator chasing confirmations, fielding calls, calming no-shows, and running follow-up — for weeks. By Thursday you\'re the bottleneck — answering inbound while the next sponsor email sits unread, watching the no-show risk grow and not knowing who to call first. The work that gets dropped is the work that costs you the next event.',
     whatWeBuilt:
-      'Built in partnership with KnvilLabs. Kairos runs a 21-day arc — pre-event outreach, day-of orchestration, post-event re-engagement — and the same engine answers the phone as an AI receptionist. Every message, call, and CRM update is logged with the reasoning that triggered it.',
+      'Kairos runs the full 21-day arc: pre-event outreach, day-of orchestration, post-event re-engagement. The same engine answers the phone as an AI receptionist. Every message, call and CRM update is logged with the reasoning that fired it. Built with KnvilLabs.',
     whatChanged:
       'Coordinators stopped being switchboards. No-show rates dropped because the system called every at-risk attendee on the morning of the event. Inbound calls to the business stopped going to voicemail. The administrative work that normally consumes a person now runs itself.',
     pillarNotes: {
       'automation':
-        'Touchpoints fire on time, in order, without a human in the loop — confirmations, reminders, last-mile directions, recovery calls, follow-up sequences. The same engine handles inbound calls, books appointments, and updates the CRM.',
+        'Touchpoints fire on time, in order, without a human in the loop. Confirmations, reminders, last-mile directions, recovery calls, follow-up sequences — all on rails. The same engine handles inbound calls, books appointments and updates the CRM.',
       'audit-trails':
-        'Every outbound message, every inbound call, every CRM mutation is logged with the reasoning that triggered it. A coordinator can replay the system\'s decisions end to end.',
+        'The system logs every outbound message, every inbound call and every CRM mutation with the reasoning that fired it. A coordinator can replay the system\'s decisions end to end.',
       'analytics':
-        'Live attendance, RSVP conversion, call outcomes, and recovery rates feed a single dashboard — so the next event is planned against what actually happened, not what was hoped for.',
+        'Live attendance, RSVP conversion, call outcomes and recovery rates feed one dashboard. The next event is planned against what actually happened, not what was hoped for.',
     },
+    demoFraming:
+      'One example deployment — a UK financial-adviser forum running on Kairos. Yours would be shaped to the work your business actually does.',
   },
   {
     slug: 'approval-workflow',
