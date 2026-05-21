@@ -10,13 +10,18 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'Zabble · Bespoke Digital Systems',
+      htmlAttrs: {
+        lang: 'en',
+      },
       meta: [
         {
           name: 'description',
           content:
             'Zabble designs bespoke operational systems: automation, audit trails, anomaly detection, and analytics. Built around the specific problem slowing your business down.',
         },
-        { name: 'theme-color', content: '#01DBF1' },
+        { name: 'color-scheme', content: 'light only' },
+        { name: 'theme-color', content: '#ffffff' },
+        { name: 'supported-color-schemes', content: 'light' },
       ],
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },

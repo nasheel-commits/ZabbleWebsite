@@ -17,6 +17,21 @@ Zabble builds **bespoke operational systems** — automation, audit trails, anom
 
 What it is not: dark-mode-first, gradient-heavy, glassmorphic, "playful", or stock-SaaS-pastel.
 
+**Light-mode only.** Zabble surfaces never opt into dark mode, even when the user's OS or browser is set to dark. Always lock the page to light so colours stay consistent across every device and every system preference:
+
+```css
+:root, html { color-scheme: light only; }
+html        { background-color: #ffffff; }
+```
+
+```html
+<meta name="color-scheme" content="light only">
+<meta name="theme-color"   content="#ffffff">
+<meta name="supported-color-schemes" content="light">
+```
+
+Never write `@media (prefers-color-scheme: dark)` rules. Never add Tailwind `dark:` variants.
+
 ---
 
 ## 2. Colour

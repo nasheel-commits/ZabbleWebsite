@@ -15,12 +15,18 @@
   --font-display: 'Instrument Serif', 'Inter', serif;
 }
 
+:root {
+  color-scheme: light only;
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  color-scheme: light only;
+  background-color: #ffffff;
 }
 
 body {
