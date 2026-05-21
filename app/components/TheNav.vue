@@ -42,15 +42,19 @@ function close() {
 </script>
 
 <template>
-  <header
-    :class="[
-      'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-      scrolled
-        ? 'bg-white/85 backdrop-blur-md border-b border-line shadow-[0_1px_0_0_rgba(15,23,42,0.04)]'
-        : 'bg-transparent',
-    ]"
-  >
-    <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
+  <header class="fixed top-0 left-0 right-0 z-50">
+    <div
+      :class="[
+        'absolute inset-0 -z-10 pointer-events-none transition-opacity duration-300',
+        scrolled ? 'opacity-100' : 'opacity-0',
+      ]"
+      aria-hidden="true"
+    >
+      <div class="absolute inset-0 bg-white/85 backdrop-blur-md" />
+      <div class="absolute inset-x-0 bottom-0 h-px bg-line" />
+      <div class="absolute inset-x-0 -bottom-px h-px shadow-[0_1px_0_0_rgba(15,23,42,0.04)]" />
+    </div>
+    <div class="relative mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
       <nav class="flex items-center justify-between h-16 md:h-20">
         <a href="#home" class="group inline-flex items-center py-3 lg:py-0" aria-label="Zabble home">
           <span class="font-display text-ink text-[28px] md:text-[30px] leading-none tracking-[-0.02em] transition-colors group-hover:text-ink-soft">Zabble</span>
@@ -76,7 +80,8 @@ function close() {
         </div>
 
         <button
-          class="md:hidden -mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors"
+          type="button"
+          class="md:hidden relative z-10 -mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors touch-manipulation"
           @click="open = true"
           aria-label="Open menu"
         >
@@ -117,7 +122,8 @@ function close() {
               <span class="font-display text-ink text-[24px] leading-none tracking-[-0.02em]">Zabble</span>
             </a>
             <button
-              class="-mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors"
+              type="button"
+              class="-mr-1.5 inline-flex items-center justify-center h-11 w-11 rounded-full text-ink hover:bg-ink/5 active:bg-ink/10 transition-colors touch-manipulation"
               @click="close"
               aria-label="Close menu"
             >
