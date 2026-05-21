@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, ref, watch } from 'vue'
 import { Activity, AlertCircle, Brain, Building2, Calendar, CalendarCheck, CheckCircle2, Database, Headphones, Mail, MessageSquare, Pause, Phone, PhoneCall, PhoneIncoming, Play, Radio, RotateCcw, Send, Sparkles, TrendingUp, UserCheck, Users, Workflow } from '@lucide/vue'
 
 type Mode = 'event' | 'receptionist'
@@ -29,150 +29,197 @@ interface TimelineDay {
   description: string
   touchpoints: Touchpoint[]
   metric?: { label: string; value: string; sub?: string }
+  /** Hard-confirmed count for the pre-event "Confirmed" tile. */
+  confirmed?: number
+  /** Open rate of the most recent send. Only set on days that did a send. */
+  openRatePct?: number
+  /** No-show-risk count from the model. Null until the model has signal. */
+  riskFlagged?: number
 }
 
-// Conference: AccelerateX 2026 — 800 registrants, day-of on 2026-06-04 (Thu).
+// Conference: Adviser Forum 2026 — 783 registrants, day-of on 2026-06-04 (Thu).
 // Dates are illustrative; the system runs the same arc regardless of date.
+// Counts are deliberately un-rounded — this is one real-shaped example, not a brochure.
 const TIMELINE: TimelineDay[] = [
   {
     day: -14, label: 'T-14', date: 'Thu 21 May', phase: 'pre',
     headline: 'Onboarding wave',
-    description: 'Confirmation, calendar invite, and pre-read pushed to every registrant. Bounces get re-routed to alternate channels.',
+    description: 'Confirmation, calendar invite and pre-read pushed to every registrant. Bounces re-route to alternate channels.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Confirmation + agenda', count: 800, reason: 'Registration intake closed at midnight' },
-      { time: '09:00', channel: 'calendar', label: 'Calendar invites attached', count: 800 },
-      { time: '13:42', channel: 'system', label: 'Bounces routed to SMS fallback', count: 12, reason: 'Hard-bounce flag from ESP' },
+      { time: '09:00', channel: 'email', label: 'Confirmation + agenda', count: 783, reason: 'Registration intake closed at midnight' },
+      { time: '09:00', channel: 'calendar', label: 'Calendar invites attached', count: 783 },
+      { time: '13:42', channel: 'system', label: 'Bounces routed to SMS fallback', count: 14, reason: 'Hard-bounce flag from ESP' },
     ],
-    metric: { label: 'Opens · day one', value: '64%', sub: '512 of 800' },
+    metric: { label: 'Opens · day one', value: '61%', sub: '478 of 783' },
+    confirmed: 0,
+    openRatePct: 61,
   },
   {
     day: -13, label: 'T-13', date: 'Fri 22 May', phase: 'pre',
-    headline: 'Quiet day · system monitoring',
-    description: 'Engagement window open. The system watches for opens, replies, and bookings.',
+    headline: 'Inbound parsing · first replies',
+    description: 'Reply-to parser turns email replies into structured intent — RSVPs, reschedules, declines.',
     touchpoints: [
-      { time: '11:18', channel: 'crm', label: '47 RSVPs locked in', reason: 'Reply-to parser matched intent' },
-      { time: '16:30', channel: 'sms', label: 'SMS fallback delivered', count: 12, reason: 'Email bounces from prior day' },
+      { time: '11:18', channel: 'crm', label: '51 RSVPs locked in', reason: 'Reply-to parser matched intent' },
+      { time: '12:47', channel: 'crm', label: '2 reschedule requests auto-applied', reason: 'Free-text matched a known reschedule pattern' },
+      { time: '16:30', channel: 'sms', label: 'SMS fallback delivered', count: 14, reason: 'Email bounces from prior day' },
     ],
-    metric: { label: 'RSVPs', value: '47', sub: 'Hard yes' },
+    metric: { label: 'RSVPs', value: '51', sub: 'Hard yes' },
+    confirmed: 51,
   },
   {
     day: -12, label: 'T-12', date: 'Sat 23 May', phase: 'pre',
-    headline: 'Weekend hold',
-    description: 'No outbound sends on the weekend per the firm\'s contact policy.',
+    headline: 'Weekend send-quiet · inbound only',
+    description: 'No outbound on the weekend per the firm\'s contact policy. Inbound is still parsed and logged.',
     touchpoints: [
       { time: '—', channel: 'system', label: 'Policy: weekend send-quiet active' },
+      { time: '09:14', channel: 'system', label: 'Corporate auto-responders parsed · ignored', count: 23, reason: 'Out-of-office detected · no follow-up triggered' },
     ],
-    metric: { label: 'RSVPs', value: '58' },
+    metric: { label: 'RSVPs', value: '63' },
+    confirmed: 63,
   },
   {
     day: -11, label: 'T-11', date: 'Sun 24 May', phase: 'pre',
-    headline: 'Weekend hold',
-    description: 'Inbound replies still parsed and logged. No outbound.',
+    headline: 'Weekend send-quiet · inbound only',
+    description: 'No outbound. The system still reads what lands and updates the record.',
     touchpoints: [
       { time: '—', channel: 'system', label: 'Inbound-only mode' },
+      { time: '14:02', channel: 'crm', label: '4 reschedules logged · 1 corporate-policy decline', reason: 'Free-text intent matched' },
     ],
-    metric: { label: 'RSVPs', value: '64' },
+    metric: { label: 'RSVPs', value: '71' },
+    confirmed: 71,
   },
   {
     day: -10, label: 'T-10', date: 'Mon 25 May', phase: 'pre',
     headline: 'Reminder one',
-    description: 'Soft reminder to non-responders, segmented by industry track.',
+    description: 'Soft reminder to non-responders, segmented by adviser specialism.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Reminder one · track-segmented', count: 736, reason: '64 non-responder filter applied' },
-      { time: '14:12', channel: 'whatsapp', label: 'WhatsApp reminders · intl. attendees', count: 312 },
+      { time: '09:00', channel: 'email', label: 'Reminder one · specialism-segmented', count: 712, reason: '71 non-responder filter applied' },
+      { time: '14:12', channel: 'whatsapp', label: 'WhatsApp reminders · intl. attendees', count: 287 },
+      { time: '15:36', channel: 'crm', label: 'Ambiguous replies · sent to review queue', count: 4, reason: 'Confidence below threshold · human triage' },
     ],
     metric: { label: 'RSVPs', value: '184' },
+    confirmed: 184,
+    openRatePct: 38,
   },
   {
     day: -9, label: 'T-9', date: 'Tue 26 May', phase: 'pre',
     headline: 'Speaker bios + session selection',
-    description: 'Personalised agenda goes out; attendees can pick the two breakout sessions that match their role.',
+    description: 'Personalised agenda goes out; attendees pick the two breakout sessions that match their book.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Personalised agenda', count: 800 },
-      { time: '15:48', channel: 'crm', label: 'Session preferences captured', count: 412 },
+      { time: '09:00', channel: 'email', label: 'Personalised agenda', count: 783 },
+      { time: '15:48', channel: 'crm', label: 'Session preferences captured', count: 397 },
     ],
-    metric: { label: 'Sessions picked', value: '412' },
+    metric: { label: 'Sessions picked', value: '397' },
+    confirmed: 247,
+    openRatePct: 47,
+    riskFlagged: 158,
   },
   {
     day: -8, label: 'T-8', date: 'Wed 27 May', phase: 'pre',
-    headline: 'Quiet day · system monitoring',
-    description: 'Watching for inbound; preparing the next nudge.',
+    headline: 'Inbound triage · clarifications',
+    description: 'Free-text replies parsed; the ones that need a person land in a tray with the reason already attached.',
     touchpoints: [
-      { time: '10:04', channel: 'crm', label: '12 reschedules processed', reason: 'Free-text replies matched reschedule intent' },
+      { time: '10:04', channel: 'crm', label: '14 reschedules processed', reason: 'Free-text matched reschedule intent' },
+      { time: '13:22', channel: 'email', label: 'Wrong-date clarifications sent', count: 3, reason: 'Reply implied 11 Jun, not 4 Jun' },
     ],
-    metric: { label: 'RSVPs', value: '298' },
+    metric: { label: 'RSVPs', value: '312' },
+    confirmed: 312,
+    riskFlagged: 144,
   },
   {
     day: -7, label: 'T-7', date: 'Thu 28 May', phase: 'pre',
     headline: 'One-week-out push',
     description: 'Multi-channel reminder; non-responders get a phone call from the AI agent.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'One-week-out reminder', count: 800 },
-      { time: '11:30', channel: 'call', label: 'Outbound reminder calls · non-responders', count: 168, reason: 'No engagement in 14 days' },
-      { time: '16:22', channel: 'sms', label: 'SMS follow-up · voicemails', count: 94, reason: 'Call routed to voicemail' },
+      { time: '09:00', channel: 'email', label: 'One-week-out reminder', count: 783 },
+      { time: '11:30', channel: 'call', label: 'Outbound reminder calls · non-responders', count: 142, reason: 'No engagement in 14 days' },
+      { time: '16:22', channel: 'sms', label: 'SMS follow-up · voicemails', count: 87, reason: 'Call routed to voicemail' },
     ],
-    metric: { label: 'RSVPs', value: '512' },
+    metric: { label: 'RSVPs', value: '484' },
+    confirmed: 484,
+    openRatePct: 52,
+    riskFlagged: 142,
   },
   {
     day: -6, label: 'T-6', date: 'Fri 29 May', phase: 'pre',
     headline: 'Hotel + travel logistics',
-    description: 'Travel and accommodation guide pushed to attendees flagged as out-of-state.',
+    description: 'Travel and accommodation guide pushed to attendees flagged as out-of-region.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Travel + hotel block', count: 274 },
-      { time: '14:00', channel: 'whatsapp', label: 'Accessibility offer · opt-in', count: 800 },
+      { time: '09:00', channel: 'email', label: 'Travel + hotel block', count: 258 },
+      { time: '14:00', channel: 'whatsapp', label: 'Accessibility offer · opt-in', count: 783 },
     ],
-    metric: { label: 'RSVPs', value: '548' },
+    metric: { label: 'RSVPs', value: '521' },
+    confirmed: 521,
+    openRatePct: 44,
+    riskFlagged: 128,
   },
   {
     day: -5, label: 'T-5', date: 'Sat 30 May', phase: 'pre',
-    headline: 'Weekend hold',
-    description: 'Inbound parsing only.',
+    headline: 'Weekend send-quiet · inbound only',
+    description: 'Inbound parsed; declines and dietary updates logged. No outbound.',
     touchpoints: [
       { time: '—', channel: 'system', label: 'Policy: weekend send-quiet active' },
+      { time: '10:46', channel: 'system', label: 'Corporate auto-replies ignored · 2 hard declines logged', count: 18 },
     ],
-    metric: { label: 'RSVPs', value: '562' },
+    metric: { label: 'RSVPs', value: '538' },
+    confirmed: 538,
+    riskFlagged: 112,
   },
   {
     day: -4, label: 'T-4', date: 'Sun 31 May', phase: 'pre',
-    headline: 'Weekend hold',
-    description: 'Inbound parsing only.',
+    headline: 'Weekend send-quiet · inbound only',
+    description: 'Inbound only. A dietary update on a Sunday gets the same handling as one on a Tuesday.',
     touchpoints: [
       { time: '—', channel: 'system', label: 'Inbound-only mode' },
+      { time: '11:09', channel: 'crm', label: 'Dietary preference updated · 1', reason: 'Reply parsed · field auto-merged' },
     ],
-    metric: { label: 'RSVPs', value: '579' },
+    metric: { label: 'RSVPs', value: '548' },
+    confirmed: 548,
+    riskFlagged: 104,
   },
   {
     day: -3, label: 'T-3', date: 'Mon 1 Jun', phase: 'pre',
     headline: 'Final RSVP nudge',
-    description: 'Last call for non-responders. The system escalates from email → SMS → call.',
+    description: 'Last call for non-responders. The system escalates email → SMS → call.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Final RSVP nudge', count: 221 },
-      { time: '13:00', channel: 'sms', label: 'SMS escalation · email un-opened', count: 94 },
-      { time: '16:30', channel: 'call', label: 'Outbound calls · still silent', count: 42 },
+      { time: '09:00', channel: 'email', label: 'Final RSVP nudge', count: 213 },
+      { time: '11:48', channel: 'system', label: 'Calendar invites bounced from Microsoft tenant · routed to ICS attachment', count: 19, reason: 'Tenant policy blocked external organiser · fallback fired' },
+      { time: '13:00', channel: 'sms', label: 'SMS escalation · email un-opened', count: 87 },
+      { time: '16:30', channel: 'call', label: 'Outbound calls · still silent', count: 38 },
     ],
-    metric: { label: 'RSVPs', value: '634' },
+    metric: { label: 'RSVPs', value: '612' },
+    confirmed: 612,
+    openRatePct: 28,
+    riskFlagged: 94,
   },
   {
     day: -2, label: 'T-2', date: 'Tue 2 Jun', phase: 'pre',
     headline: 'Parking, venue, accessibility',
     description: 'Practical logistics: parking codes, venue address, accessibility lanes, dietary confirmations.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Parking + venue map', count: 720 },
-      { time: '11:00', channel: 'crm', label: 'Dietary preferences locked in', count: 658 },
-      { time: '15:18', channel: 'system', label: 'Catering numbers handed off to venue', reason: 'Threshold reached: 90% confirmed' },
+      { time: '09:00', channel: 'email', label: 'Parking + venue map', count: 691 },
+      { time: '11:00', channel: 'crm', label: 'Dietary preferences locked in', count: 624 },
+      { time: '15:18', channel: 'system', label: 'Catering numbers handed off to venue', reason: 'Threshold reached: 88% confirmed' },
     ],
-    metric: { label: 'Hard-confirmed', value: '720' },
+    metric: { label: 'Hard-confirmed', value: '691' },
+    confirmed: 691,
+    openRatePct: 67,
+    riskFlagged: 86,
   },
   {
     day: -1, label: 'T-1', date: 'Wed 3 Jun', phase: 'pre',
     headline: 'Day-before reminders + at-risk calls',
-    description: 'Final reminder to everyone; AI agent calls the 84 attendees the model flagged as no-show-risk.',
+    description: 'Final reminder to everyone; AI agent calls the 79 attendees the model flagged as no-show-risk.',
     touchpoints: [
-      { time: '08:30', channel: 'sms', label: 'Day-before SMS · all confirmed', count: 720 },
-      { time: '10:00', channel: 'call', label: 'At-risk reminder calls', count: 84, reason: 'No-show risk score ≥ 0.62' },
-      { time: '17:00', channel: 'email', label: 'Last-mile directions + QR pass', count: 720 },
+      { time: '08:30', channel: 'sms', label: 'Day-before SMS · all confirmed', count: 691 },
+      { time: '10:00', channel: 'call', label: 'At-risk reminder calls', count: 79, reason: 'No-show risk score ≥ 0.62' },
+      { time: '14:08', channel: 'system', label: 'WhatsApp delivery failed · fell back to SMS', count: 11, reason: 'Number not on WhatsApp · channel fallback fired' },
+      { time: '17:00', channel: 'email', label: 'Last-mile directions + QR pass', count: 691 },
     ],
-    metric: { label: 'Risk-flagged', value: '84' },
+    metric: { label: 'Risk-flagged', value: '79' },
+    confirmed: 691,
+    openRatePct: 71,
+    riskFlagged: 79,
   },
   {
     day: 0, label: 'T-0', date: 'Thu 4 Jun', phase: 'day-of',
@@ -180,85 +227,115 @@ const TIMELINE: TimelineDay[] = [
     description: 'Doors open. The system runs the registration feed, fires no-show recovery calls in real time, and updates the live dashboard.',
     touchpoints: [
       { time: '07:55', channel: 'system', label: 'Day-of ops switched on' },
-      { time: '08:00', channel: 'sms', label: 'Doors-open SMS', count: 720 },
+      { time: '08:00', channel: 'sms', label: 'Doors-open SMS', count: 691 },
       { time: '08:42', channel: 'call', label: 'Recovery calls placed · running', count: 47, reason: 'Not checked in within 30 min of arrival window' },
+      { time: '09:31', channel: 'system', label: 'Declined help on recovery call · marked no-show', count: 16, reason: 'Caller stated they could no longer attend' },
     ],
-    metric: { label: 'Checked in', value: '612' },
+    metric: { label: 'Checked in', value: '597' },
   },
   {
     day: 1, label: 'T+1', date: 'Fri 5 Jun', phase: 'post',
     headline: 'Thank-you + feedback survey',
-    description: 'Personalised thank-you with the specific sessions each attendee actually went to. NPS survey + one open question.',
+    description: 'Personalised thank-you naming the sessions each attendee actually went to. NPS survey + one open question.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Thank-you · personalised', count: 612 },
-      { time: '09:00', channel: 'crm', label: 'NPS survey attached', count: 612 },
-      { time: '14:30', channel: 'crm', label: 'Survey responses parsed · sentiment scored', count: 384, reason: 'Free-text classified · sentiment + topic' },
+      { time: '09:00', channel: 'email', label: 'Thank-you · personalised', count: 597 },
+      { time: '09:00', channel: 'crm', label: 'NPS survey attached', count: 597 },
+      { time: '14:30', channel: 'crm', label: 'Survey responses parsed · sentiment scored', count: 376, reason: 'Free-text classified · sentiment + topic' },
+      { time: '15:42', channel: 'crm', label: 'Replies the classifier couldn\'t place · queued for a human', count: 6, reason: 'Confidence below threshold' },
     ],
     metric: { label: 'Survey response', value: '63%' },
   },
   {
     day: 2, label: 'T+2', date: 'Sat 6 Jun', phase: 'post',
-    headline: 'Weekend hold',
-    description: 'Recap email queued; weekend send-quiet active.',
+    headline: 'Weekend send-quiet · recap queued',
+    description: 'Recap queued for Monday send. Inbound replies still parsed.',
     touchpoints: [
       { time: '—', channel: 'system', label: 'Recap queued for Monday send' },
+      { time: '12:14', channel: 'crm', label: '7 late survey replies parsed', reason: 'Sentiment scored · attached to attendee record' },
     ],
-    metric: { label: 'NPS', value: '+58' },
+    metric: { label: 'NPS', value: '+56' },
   },
   {
     day: 3, label: 'T+3', date: 'Sun 7 Jun', phase: 'post',
-    headline: 'Weekend hold',
-    description: 'Inbound parsing only.',
+    headline: 'Weekend send-quiet · inbound only',
+    description: 'Inbound parsed and routed. Things that need a human land in a small tray.',
     touchpoints: [
       { time: '—', channel: 'system', label: 'Inbound-only mode' },
+      { time: '13:48', channel: 'crm', label: 'Photo permission queries · routed to ops manager', count: 3, reason: 'Intent matched · not auto-resolvable' },
     ],
-    metric: { label: 'NPS', value: '+58' },
+    metric: { label: 'NPS', value: '+56' },
   },
   {
     day: 4, label: 'T+4', date: 'Mon 8 Jun', phase: 'post',
     headline: 'Recap + hot-attendee detection',
     description: 'Recap email with photos and session recordings. Engagement signals + sentiment classify "hot" attendees for re-engagement.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Recap · photos + recordings', count: 612 },
-      { time: '15:18', channel: 'crm', label: 'Hot attendees flagged', count: 43, reason: 'NPS ≥ 9 + 2+ session-replay clicks' },
+      { time: '09:00', channel: 'email', label: 'Recap · photos + recordings', count: 597 },
+      { time: '15:18', channel: 'crm', label: 'Hot attendees flagged', count: 39, reason: 'NPS ≥ 9 + 2+ session-replay clicks' },
     ],
-    metric: { label: 'Hot leads', value: '43' },
+    metric: { label: 'Hot leads', value: '39' },
   },
   {
     day: 5, label: 'T+5', date: 'Tue 9 Jun', phase: 'post',
     headline: 'Re-engagement sequence kicks off',
     description: 'Each hot attendee gets a tailored follow-up referencing the sessions they attended. AI agent books discovery calls.',
     touchpoints: [
-      { time: '09:00', channel: 'email', label: 'Personalised follow-up · hot 43', count: 43 },
-      { time: '14:00', channel: 'call', label: 'Outbound discovery booking calls', count: 28, reason: 'Email open + role match' },
+      { time: '09:00', channel: 'email', label: 'Personalised follow-up · hot 39', count: 39 },
+      { time: '14:00', channel: 'call', label: 'Outbound discovery booking calls', count: 24, reason: 'Email open + role match' },
     ],
-    metric: { label: 'Calls booked', value: '17' },
+    metric: { label: 'Calls booked', value: '15' },
   },
   {
     day: 6, label: 'T+6', date: 'Wed 10 Jun', phase: 'post',
     headline: 'Inbound + reschedule handling',
     description: 'The AI receptionist (same engine, different deployment) handles the inbound spillover from re-engagement.',
     touchpoints: [
-      { time: '10:00', channel: 'call', label: 'Inbound calls handled · receptionist', count: 22 },
-      { time: '15:00', channel: 'crm', label: 'Calendar adjustments processed', count: 9 },
+      { time: '10:00', channel: 'call', label: 'Inbound calls handled · receptionist', count: 19 },
+      { time: '15:00', channel: 'crm', label: 'Calendar adjustments processed', count: 7 },
     ],
-    metric: { label: 'Calls booked', value: '26' },
+    metric: { label: 'Calls booked', value: '22' },
   },
   {
     day: 7, label: 'T+7', date: 'Thu 11 Jun', phase: 'post',
     headline: 'Sales handoff',
-    description: 'Fully-qualified hot attendees handed off to the sales team with the full Kairos audit trail attached to each record.',
+    description: 'Fully-qualified hot attendees handed off to the partnerships team with the full Kairos audit trail attached.',
     touchpoints: [
-      { time: '09:00', channel: 'crm', label: 'Qualified accounts handed off', count: 12, reason: 'Sales-ready: booked discovery + budget signal' },
-      { time: '09:00', channel: 'email', label: 'Internal: pipeline notes to sales', count: 12 },
+      { time: '09:00', channel: 'crm', label: 'Qualified accounts handed off', count: 11, reason: 'Sales-ready: booked discovery + budget signal' },
+      { time: '09:00', channel: 'email', label: 'Internal: pipeline notes to partnerships', count: 11 },
     ],
-    metric: { label: 'Pipeline added', value: '£412k' },
+    metric: { label: 'Pipeline added', value: '£387k' },
   },
 ]
 
 const dayIndex = ref(0) // 0..21 — index into TIMELINE
 const currentDay = computed(() => TIMELINE[dayIndex.value]!)
 const phase = computed(() => currentDay.value.phase)
+
+// ---- "Vs. last forum" comparator (small analytics surface) ----
+// Q1 Adviser Forum tracked about 11% slower at the same arc point. This is
+// the honest comparison the planning team uses to gauge whether the next
+// event is on track. Hard-coded ratio — the prior event is fixed history.
+const PRIOR_TRACKING_FACTOR = 0.89
+const priorConfirmedForDay = computed(() => {
+  const c = currentDay.value.confirmed
+  return c != null ? Math.round(c * PRIOR_TRACKING_FACTOR).toLocaleString() : '—'
+})
+const comparePct = computed(() => {
+  const c = currentDay.value.confirmed ?? 0
+  if (c <= 0) return ''
+  const prior = Math.max(1, Math.round(c * PRIOR_TRACKING_FACTOR))
+  const delta = c - prior
+  const pct = Math.round((delta / prior) * 100)
+  return (pct >= 0 ? '▲ +' : '▼ ') + pct + '%'
+})
+
+// Cumulative discovery calls booked over the post-event arc. 15 land on T+5,
+// another 7 on T+6 → 22 by T+7. Rendered as a running total.
+const callsBookedRunning = computed(() => {
+  if (dayIndex.value >= 20) return 22
+  if (dayIndex.value >= 19) return 15
+  return 0
+})
 
 function setDayByValue(d: number) {
   const idx = TIMELINE.findIndex((t) => t.day === d)
@@ -299,7 +376,7 @@ onBeforeUnmount(() => {
 const checkedIn = ref(0)
 const recoveryRunning = ref(0)
 const recoverySuccess = ref(0)
-const noShowDrift = ref(188)
+const recoveryDeclined = ref(0)
 
 watch(phase, (p) => {
   if (p === 'day-of') {
@@ -308,12 +385,17 @@ watch(phase, (p) => {
     checkedIn.value = 0
     recoveryRunning.value = 0
     recoverySuccess.value = 0
+    recoveryDeclined.value = 0
   }
 }, { immediate: false })
 
 function animateDayOf() {
-  const targetCheckedIn = 612
-  const targetRecoverySuccess = 47
+  // 47 recovery calls placed. 31 attendees said "yes, I am coming" and showed
+  // up; 16 said they couldn't make it and were marked no-show. Real recovery
+  // hovers around two-thirds — not 100% — so that is what the demo shows.
+  const targetCheckedIn = 597
+  const targetRecoverySuccess = 31
+  const targetRecoveryDeclined = 16
   const start = performance.now()
   const dur = 1400
   const tick = (now: number) => {
@@ -321,6 +403,7 @@ function animateDayOf() {
     const eased = 1 - Math.pow(1 - t, 3)
     checkedIn.value = Math.round(targetCheckedIn * eased)
     recoverySuccess.value = Math.round(targetRecoverySuccess * eased)
+    recoveryDeclined.value = Math.round(targetRecoveryDeclined * eased)
     recoveryRunning.value = Math.max(0, 5 - Math.floor(eased * 5)) + (t < 1 ? 5 : 0)
     if (t < 1) requestAnimationFrame(tick)
   }
@@ -335,9 +418,9 @@ interface TranscriptLine {
 }
 
 const RECOVERY_TRANSCRIPT: TranscriptLine[] = [
-  { speaker: 'ai',    delay: 0,    text: 'Hi Maria, this is Kairos calling on behalf of AccelerateX. We had you confirmed for today\'s keynote — are you still able to make it?' },
+  { speaker: 'ai',    delay: 0,    text: 'Hi Maria, this is Kairos calling on behalf of Adviser Forum. We had you confirmed for today\'s keynote — are you still able to make it?' },
   { speaker: 'human', delay: 2400, text: 'Oh — I\'m running late. Traffic is awful and I can\'t find parking.' },
-  { speaker: 'ai',    delay: 2200, text: 'No problem. The keynote starts in 35 minutes. Building 4, doors C — I\'ll text you turn-by-turn directions and a parking code for the overflow lot. Sound good?' },
+  { speaker: 'ai',    delay: 2200, text: 'No problem. The keynote starts in 35 minutes. Building 4, doors C — I\'ll text you directions and a code for the overflow lot. Sound good?' },
   { speaker: 'human', delay: 2300, text: 'Yes please, that would help.' },
   { speaker: 'ai',    delay: 1800, text: 'Sent. The host knows you\'re en route. See you there, Maria.' },
 ]
@@ -447,15 +530,32 @@ const RECEPTIONIST_SCRIPT: ReceptionistLine[] = [
   },
   {
     speaker: 'caller',
-    delay: 1600,
-    text: 'That\'s all, thanks.',
+    delay: 1900,
+    text: 'Actually — could I bring my son in too? He\'s eight and overdue.',
   },
   {
     speaker: 'ai',
-    delay: 1100,
-    text: 'Brilliant. See you Tuesday, Mr. Hassan.',
+    delay: 2200,
+    text: 'I can hold the 14:30 slot for him on the same Tuesday, but a child needs an adult on the account first. I\'ll text you the form and have a coordinator confirm by 5pm today. Shall I hold it?',
     actions: [
-      { time: '14:02:18', label: 'Call ended · 1m 17s', detail: 'Sentiment: positive · resolved: true', icon: 'check' },
+      { time: '14:02:24', label: 'Intent classified', detail: 'add_dependent · paediatric', icon: 'reason' },
+      { time: '14:02:24', label: 'Confidence below threshold', detail: 'No paediatric flag on account · cannot auto-resolve', icon: 'reason' },
+      { time: '14:02:25', label: 'Tentative slot held', detail: 'Tue 2 Jun · 14:30 · expires 17:00 if unconfirmed', icon: 'calendar' },
+      { time: '14:02:25', label: 'Escalated to human', detail: 'Coordinator queue · SLA: same-day', icon: 'send' },
+    ],
+  },
+  {
+    speaker: 'caller',
+    delay: 1800,
+    text: 'Yes please. Thanks.',
+  },
+  {
+    speaker: 'ai',
+    delay: 1300,
+    text: 'Held. The form is on its way, and you\'ll hear from us by five. See you Tuesday, Mr. Hassan.',
+    actions: [
+      { time: '14:02:30', label: 'Form sent', detail: 'paed_consent_v2 · SMS link · expires 48h', icon: 'send' },
+      { time: '14:02:31', label: 'Call ended · 1m 38s', detail: 'Sentiment: positive · resolved: partial · 1 follow-up', icon: 'check' },
     ],
   },
 ]
@@ -521,11 +621,6 @@ watch(mode, (m, prev) => {
   }
 })
 
-onMounted(() => {
-  // Pre-fire the day-of dashboard once on mount so the user sees the live state
-  // immediately if they happen to drag to T0 quickly.
-})
-
 // =============================================================================
 // Channel chip / icon helpers
 // =============================================================================
@@ -574,11 +669,11 @@ function actionIcon(k: ActionEvent['icon']) {
       <div class="kairos-head__lede">
         <span class="kairos-eyebrow">
           <span class="dot" />
-          Interactive Demo · Kairos × KnvilLabs
+          Interactive Demo · Kairos
         </span>
         <p class="kairos-head__sub">
           Same engine. Two deployments. The administrative work runs itself —
-          you handle the work humans should.
+          your team handles the work humans should.
         </p>
       </div>
 
@@ -618,11 +713,11 @@ function actionIcon(k: ActionEvent['icon']) {
       <div class="kairos-event__strip">
         <div class="kairos-strip__group">
           <span class="kairos-strip__label">Event</span>
-          <span class="kairos-strip__value">AccelerateX 2026 · Conference</span>
+          <span class="kairos-strip__value">Adviser Forum 2026 · UK</span>
         </div>
         <div class="kairos-strip__group">
           <span class="kairos-strip__label">Registrants</span>
-          <span class="kairos-strip__value">800</span>
+          <span class="kairos-strip__value">783</span>
         </div>
         <div class="kairos-strip__group">
           <span class="kairos-strip__label">Day of</span>
@@ -777,7 +872,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 <div>
                   <div class="kairos-stat__label">Confirmed</div>
                   <div class="kairos-stat__value">
-                    {{ currentDay.metric?.value ?? '—' }}
+                    {{ currentDay.confirmed != null ? currentDay.confirmed.toLocaleString() : '—' }}
                   </div>
                 </div>
               </div>
@@ -785,7 +880,9 @@ function actionIcon(k: ActionEvent['icon']) {
                 <TrendingUp :size="16" :stroke-width="1.9" class="kairos-stat__icon" />
                 <div>
                   <div class="kairos-stat__label">Open rate · last send</div>
-                  <div class="kairos-stat__value">{{ 54 + Math.round(dayIndex * 1.4) }}%</div>
+                  <div class="kairos-stat__value">
+                    {{ currentDay.openRatePct != null ? currentDay.openRatePct + '%' : '—' }}
+                  </div>
                 </div>
               </div>
               <div class="kairos-stat">
@@ -793,7 +890,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 <div>
                   <div class="kairos-stat__label">No-show risk flagged</div>
                   <div class="kairos-stat__value">
-                    {{ Math.max(0, 168 - dayIndex * 6) }}
+                    {{ currentDay.riskFlagged != null ? currentDay.riskFlagged : '—' }}
                   </div>
                 </div>
               </div>
@@ -828,6 +925,18 @@ function actionIcon(k: ActionEvent['icon']) {
                 <span class="kairos-channel__pct">6%</span>
               </div>
             </div>
+
+            <!-- Small "vs. last forum" analytics comparator — an honest read on
+                 whether this campaign is tracking ahead of the last one. -->
+            <div v-if="(currentDay.confirmed ?? 0) >= 100" class="kairos-compare">
+              <TrendingUp :size="13" :stroke-width="2" aria-hidden="true" />
+              <span class="kairos-compare__text">
+                <strong>{{ comparePct }}</strong>
+                vs. Q1 Adviser Forum at the same day — last event had
+                <strong>{{ priorConfirmedForDay }}</strong>
+                confirmed by {{ currentDay.label }}.
+              </span>
+            </div>
           </template>
 
           <!-- DAY-OF: live ops -->
@@ -844,7 +953,7 @@ function actionIcon(k: ActionEvent['icon']) {
               <div class="kairos-dayof__row">
                 <div class="kairos-dayof__stat">
                   <div class="kairos-dayof__stat-label">Expected</div>
-                  <div class="kairos-dayof__stat-value">800</div>
+                  <div class="kairos-dayof__stat-value">691</div>
                 </div>
                 <div class="kairos-dayof__stat kairos-dayof__stat--accent">
                   <div class="kairos-dayof__stat-label">Checked in</div>
@@ -853,6 +962,11 @@ function actionIcon(k: ActionEvent['icon']) {
                 <div class="kairos-dayof__stat">
                   <div class="kairos-dayof__stat-label">Recovered</div>
                   <div class="kairos-dayof__stat-value">{{ recoverySuccess }}</div>
+                  <div class="kairos-dayof__stat-sub">of 47 called</div>
+                </div>
+                <div class="kairos-dayof__stat">
+                  <div class="kairos-dayof__stat-label">Declined · no-show</div>
+                  <div class="kairos-dayof__stat-value">{{ recoveryDeclined }}</div>
                 </div>
                 <div class="kairos-dayof__stat">
                   <div class="kairos-dayof__stat-label">Calls live</div>
@@ -927,22 +1041,26 @@ function actionIcon(k: ActionEvent['icon']) {
               <div class="kairos-post__row">
                 <div class="kairos-post__cell">
                   <div class="kairos-post__cell-label">NPS</div>
-                  <div class="kairos-post__cell-value">+58</div>
+                  <div class="kairos-post__cell-value">+56</div>
                   <div class="kairos-post__cell-sub">63% response</div>
                 </div>
                 <div class="kairos-post__cell">
                   <div class="kairos-post__cell-label">Hot attendees</div>
-                  <div class="kairos-post__cell-value">43</div>
-                  <div class="kairos-post__cell-sub">Engagement + sentiment</div>
+                  <div class="kairos-post__cell-value">{{ dayIndex >= 18 ? 39 : '—' }}</div>
+                  <div class="kairos-post__cell-sub">
+                    {{ dayIndex >= 18 ? 'Engagement + sentiment' : 'Flagged on T+4' }}
+                  </div>
                 </div>
                 <div class="kairos-post__cell">
                   <div class="kairos-post__cell-label">Calls booked</div>
-                  <div class="kairos-post__cell-value">{{ dayIndex >= 19 ? 17 : 0 }}{{ dayIndex >= 20 ? '+9' : '' }}</div>
-                  <div class="kairos-post__cell-sub">By AI agent</div>
+                  <div class="kairos-post__cell-value">{{ callsBookedRunning }}</div>
+                  <div class="kairos-post__cell-sub">
+                    {{ dayIndex >= 20 ? '+7 today · by AI agent' : (dayIndex >= 19 ? 'By AI agent' : 'Pending T+5') }}
+                  </div>
                 </div>
                 <div class="kairos-post__cell">
                   <div class="kairos-post__cell-label">Pipeline added</div>
-                  <div class="kairos-post__cell-value">{{ dayIndex >= 21 ? '£412k' : '—' }}</div>
+                  <div class="kairos-post__cell-value">{{ dayIndex >= 21 ? '£387k' : '—' }}</div>
                   <div class="kairos-post__cell-sub">Sales-ready</div>
                 </div>
               </div>
@@ -1060,7 +1178,7 @@ function actionIcon(k: ActionEvent['icon']) {
             </li>
             <li v-if="!receptionistRunning && visibleCallLines.length === 0" class="kairos-callempty">
               <Phone :size="18" :stroke-width="1.9" aria-hidden="true" />
-              <span>Ready when you are — press Play to hear the system handle a real-shaped inbound call.</span>
+              <span>Ready when you are — press Play to hear how the system handles an inbound call, partial escalation and all.</span>
             </li>
           </ul>
         </article>
@@ -1103,12 +1221,13 @@ function actionIcon(k: ActionEvent['icon']) {
           <div v-if="receptionistDone" class="kairos-summary">
             <div class="kairos-summary__head">
               <CheckCircle2 :size="14" :stroke-width="2" aria-hidden="true" />
-              Resolved · 1m 17s
+              Partially resolved · 1m 38s · 1 follow-up open
             </div>
             <ul>
               <li><Calendar :size="12" :stroke-width="2" aria-hidden="true" />Appointment booked: Tue 2 Jun, 14:00 · Dr. Patel</li>
+              <li><Calendar :size="12" :stroke-width="2" aria-hidden="true" />Tentative slot held: Tue 2 Jun, 14:30 · paediatric · expires 17:00</li>
               <li><Database :size="12" :stroke-width="2" aria-hidden="true" />CRM updated: next_appointment, notes, last_contact</li>
-              <li><Send :size="12" :stroke-width="2" aria-hidden="true" />Confirmation queued · reminder SMS scheduled 1 Jun 09:00</li>
+              <li><Send :size="12" :stroke-width="2" aria-hidden="true" />Coordinator queued: same-day SLA · paed_consent_v2 sent to caller</li>
             </ul>
           </div>
         </article>
@@ -1561,7 +1680,7 @@ function actionIcon(k: ActionEvent['icon']) {
   height: fit-content;
 }
 .kairos-feed__chip--email    { color: var(--kairos-cyan-deep); border-color: rgba(1, 219, 241, 0.25); background: rgba(1, 219, 241, 0.08); }
-.kairos-feed__chip--call     { color: var(--kairos-ink); background: var(--kairos-ink); color: white; border-color: var(--kairos-ink); }
+.kairos-feed__chip--call     { background: var(--kairos-ink); color: white; border-color: var(--kairos-ink); }
 .kairos-feed__chip--sms,
 .kairos-feed__chip--whatsapp { background: rgba(15, 23, 42, 0.04); }
 .kairos-feed__chip--crm      { color: var(--kairos-cyan-deep); border-color: rgba(0, 184, 204, 0.3); background: rgba(1, 219, 241, 0.06); }
@@ -1631,6 +1750,30 @@ function actionIcon(k: ActionEvent['icon']) {
   flex-direction: column;
   gap: 8px;
 }
+
+/* "vs. last forum" comparator — small analytics surface */
+.kairos-compare {
+  margin-top: 14px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  padding: 10px 12px;
+  border: 1px solid var(--kairos-line);
+  border-radius: 10px;
+  background: var(--kairos-surface-alt);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--kairos-mute);
+}
+.kairos-compare svg {
+  color: var(--kairos-cyan-deep);
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+.kairos-compare__text strong {
+  color: var(--kairos-ink);
+  font-weight: 600;
+}
 .kairos-channel {
   display: grid;
   grid-template-columns: 70px 1fr 40px;
@@ -1665,8 +1808,14 @@ function actionIcon(k: ActionEvent['icon']) {
 .kairos-dayof { display: flex; flex-direction: column; gap: 14px; }
 .kairos-dayof__row {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 8px;
+}
+.kairos-dayof__stat-sub {
+  margin-top: 4px;
+  font-size: 10.5px;
+  color: var(--kairos-mute-2);
+  letter-spacing: 0.04em;
 }
 .kairos-dayof__stat {
   padding: 10px 12px;
