@@ -62,6 +62,17 @@ export interface System {
    * Use this if multiple systems share a demo component.
    */
   demoComponent?: string
+  /**
+   * Short italic line rendered directly above the DemoSlot on the
+   * detail page. Reminds visitors that the demo is one example of a
+   * capability, not a fixed product.
+   */
+  demoFraming?: string
+  /**
+   * Override for the "How it fits the four pillars" section heading.
+   * Defaults to "One system, <n> jobs." computed from `pillars.length`.
+   */
+  pillarHeading?: string
 }
 
 // All six entries are scaffolding. Replace TODO copy as content is finalised.
@@ -96,46 +107,48 @@ export const SYSTEMS: System[] = [
     slug: 'approval-workflow',
     name: 'Approval & Sign-Off Workflow',
     tagline:
-      'Every approver, every comment, every timestamp — captured automatically. Work moves the instant the last signature lands, not the next business day.',
+      'Stop chasing signatures. Your chain reshapes itself, every decision is captured, and work moves the moment the last signature lands.',
     pillars: ['automation', 'audit-trails'],
     industry: 'Banking, NGOs, procurement-heavy operations, regulated industries',
     bestFor:
       'Operators where approvals stall in inboxes and audit reconstruction takes weeks',
     status: 'live',
     problem:
-      'Approvals live in inboxes. A loan, a grant, a PO sits with the wrong manager for a week. When the auditor asks for the trail, three people dig through email threads to reconstruct who said yes to what — and the regulator gets a story, not a record.',
+      'Your approvals live in inboxes. A loan, a grant, a PO sits with the wrong manager for a week. You stop opening the audit folder on Friday because you know what\'s coming. When the regulator asks for the trail, three people drop their week digging through email. What you hand them is a story, not a record.',
     whatWeBuilt:
-      'A signature engine that routes work by rule — thresholds, roles, conditions — and surfaces it to the next approver the instant the previous one signs off. Every decision, every comment, every condition is captured in an evidence pack a regulator can read as-is.',
+      'A signature engine that routes work by rule — thresholds, roles, conditions. The next approver sees it the instant the previous one signs off. Every decision, every comment, every condition lands in an evidence pack a regulator can read as-is.',
     whatChanged:
-      'Approval cycles dropped from days to hours. The audit response time for a regulator request went from a week of digging to a one-click export. Conditional approvals — "yes, but only if covenant X holds" — stopped getting lost in conversation and started binding the disbursement.',
+      'Approval cycles dropped from days to hours. The audit response time for a regulator request went from a week of digging to a one-click export. Conditional approvals — "yes, but only if covenant X holds" — stopped getting lost in conversation. They bind the disbursement instead.',
     pillarNotes: {
       'automation':
         'The chain reshapes itself when the inputs change. Cross the threshold, the credit committee joins. Drop below it, they don\'t. Nobody phones the next approver — the system does.',
       'audit-trails':
-        'Every approver, every comment, every timestamp is stitched into one immutable record. Reconstructing the decision after the fact takes one click, not three people and a week.',
+        'Every approver, every comment, every timestamp is stitched into one immutable record. Reconstructing any decision now takes one click — not three people and a week.',
     },
   },
   {
     slug: 'multi-channel-inbox',
     name: 'Multi-Channel Inbox',
     tagline:
-      'Every inbound message — email, WhatsApp, SMS, web form, social DM, voicemail — landing in one inbox, with the right person reading the right thing. Nothing slips because it came in on the wrong channel.',
-    pillars: ['automation', 'audit-trails'],
+      'Six channels into one inbox. The right person reads the right thing without checking six tools.',
+    pillars: ['automation', 'audit-trails', 'analytics'],
     industry: 'Sales-heavy SMBs, service businesses, agencies, professional services',
     bestFor:
       'Operators whose team is watching five inboxes — and missing leads in the sixth they forgot existed',
     status: 'live',
     problem:
-      'Customers and prospects pick the channel they like. Your team watches the channel they own. The high-value lead that came in via the support contact form, the warm intro that landed in a LinkedIn DM, the irate voicemail at 5:47pm — they don\'t get answered, and you only find out when the customer leaves or the deal stalls.',
+      'Customers and prospects pick the channel they like. Your team watches the channel they own. The high-value lead on the support contact form. The warm intro in a LinkedIn DM. The irate voicemail at 5:47pm. They don\'t get answered. You only find out when the customer leaves or the deal stalls. The worst part isn\'t the missed lead. It\'s not knowing what else you missed.',
     whatWeBuilt:
-      'One inbox, every channel. Email, WhatsApp, SMS, web forms, social DMs, voicemail transcripts — pulled into a single stream, each message classified, routed, and surfaced to the right person within seconds. Replies go back out on the same channel the message arrived on, so the customer never feels handed off.',
+      'One inbox, every channel. Email, WhatsApp, SMS, web forms, social DMs, voicemail transcripts — all pulled into one stream. Each message is classified, routed, and on the right person\'s screen in seconds. Replies go back out on the same channel the message arrived on, so the customer never feels handed off.',
     whatChanged:
       'Sales response time dropped to minutes. Complaints stopped slipping through because nobody was watching the voicemail. The team stopped checking six tools and started reading one queue — theirs.',
     pillarNotes: {
       'automation':
         'Every inbound message lands, classifies and routes to the right person without a human reading it first. Replies fire from the same inbox, on the same channel — no copy-paste between tools.',
       'audit-trails':
-        'Every message and reply carries its channel, classification, rule and timestamp. The full conversation across channels reads as one thread, not six.',
+        'Every message and reply carries its channel, classification, rule and timestamp. The conversation across channels reads as one thread, not six.',
+      'analytics':
+        'Channel mix, missed-message counter, and queue volumes update on every inbound. The team sees in ten seconds where the leaks are — and which channel is feeding them.',
     },
   },
   {
@@ -199,46 +212,50 @@ export const SYSTEMS: System[] = [
     slug: 'decision-engine',
     name: 'Decision Engine',
     tagline:
-      'The same judgement call, made the same way, every time — instantly, auditable, and tunable without code.',
-    pillars: ['automation', 'analytics'],
+      'Three reviewers, three different answers on the same case. Make the call once — then have every reviewer reach it the same way, every time.',
+    pillars: ['automation', 'audit-trails', 'analytics'],
     industry:
       'Lenders, sales orgs, retailers — any team that makes the same call thousands of times.',
     bestFor:
       'Operations where the same decision is made by different people, at different times, with different conclusions.',
     status: 'live',
     problem:
-      'A microfinance lender was approving loans by hand. Three reviewers, three different answers on the same applicant. Volume up, consistency down, and no one could explain why one borrower got 12% and another got 18%.',
+      'A consumer lender was approving loans by hand. Three reviewers, three different answers on the same applicant. Volume up, consistency down, and no one could explain why one borrower got 12% and another got 18%. The credit lead stopped opening the disputes folder on Mondays. She already knew what was in it.',
     whatWeBuilt:
-      'A rule engine that scores every applicant in under a millisecond, returns the decision, the recommended rate, and the downstream action — and shows exactly which rules fired and which were close to firing. Policies (Conservative, Standard, Growth) can be swapped without touching the code. The same engine now also routes their CRM leads and flags inventory write-downs.',
+      'We sat with the credit team for two weeks before writing a line of code. The fix was a rule engine that scores every applicant in real time. It returns the decision, the rate, and what to do next — and the "why" is right there, which rules fired and which were close. Policies (Conservative, Standard, Growth) swap without touching the code. The same engine now also routes their CRM leads and flags inventory write-downs.',
     whatChanged:
-      'Decisions are consistent across reviewers. Underwriters spend their time on the genuinely ambiguous cases. Policy tweaks ship in minutes, not sprints, and every decision carries its own audit trail.',
+      'Every reviewer reaches the same call on the same applicant. Underwriters spend their time on the genuinely ambiguous cases. Policy tweaks ship in minutes, not sprints, and every decision carries its own audit trail.',
     pillarNotes: {
       'automation':
         'Routine cases route themselves — disbursed, declined, or escalated — without a human in the loop.',
+      'audit-trails':
+        'Every decision logs the rules that fired, the policy in force, and the score. Disputes get answered by replaying the call, not reconstructing it from email.',
       'analytics':
-        'Every decision is scored, logged, and broken down by which rules fired. Policy changes can be A/B-tested against the same applicants.',
+        'Every decision is scored, logged, and broken down by which rules fired. Switch policies and compare outcomes on the same book before you ship the change.',
     },
   },
   {
     slug: 'document-intelligence',
     name: 'Document Intelligence System',
     tagline:
-      'The intake desk reads every contract, invoice, ID and claim — extracts the fields, validates the maths, and routes the work. Humans only see the exceptions.',
+      'The intake desk reads every document. It pulls the fields, checks the maths, routes the work. Humans only see the exceptions.',
     pillars: ['automation', 'audit-trails'],
     industry: 'Law firms, claims handlers, financial services',
     bestFor: 'Operations teams whose mornings start with a backlog of PDFs',
     status: 'live',
+    demoFraming:
+      'One example — built for a South African law firm. Every Zabble system is shaped to its business.',
     problem:
-      'Every morning the intake queue is full again. ID copies, utility bills, supplier invoices, signed contracts, claim forms, bank statements — six different shapes, all needing the same five jobs: read it, classify it, pull the fields, check the maths, send it to the right person. Three people spend their first hour doing it by hand, and the ones that arrive crooked or missing a page sit there waiting.',
+      'Every morning the intake queue is full again. Four shapes of paper, the same five jobs each. Three people spend their first hour keying fields by hand. By 10am they\'re behind on the work that actually needs them. The ones that arrive crooked or missing a page sit there waiting.',
     whatWeBuilt:
-      'A pipeline that reads every document the moment it arrives. OCR pulls the fields, classification tags the document type, validation rules check the structure — ID checksums, invoice subtotals, signature blocks — and a routing engine sends each one to its correct destination. Matters land in the lawyer\'s folder; invoices go to billing; KYC packets queue for compliance; anything ambiguous lands in a human-review tray with the exact reason it stopped.',
+      'We sat with three intake teams before writing a line of code. The job is always the same. A pipeline reads every document the moment it lands. Classification tags it. OCR pulls the fields. Validation rules check the structure — ID checksums, statement totals, signature blocks. A routing engine sends it on. Matters land in the lawyer\'s folder. KYC packets queue for compliance. Anything ambiguous lands in a human-review tray with the exact reason it stopped.',
     whatChanged:
-      'Intake time dropped from forty minutes per document to under four seconds. The team stopped opening the queue at 8am and started opening it at 11 — to look only at the handful of exceptions the system flagged. Every extraction, validation, and routing decision is timestamped and replayable, so when somebody asks "why did this go there?" the answer is one click away.',
+      'Intake time dropped from forty minutes per document to under four seconds. The team stopped opening the queue at 8am. They open it at 11 now — only to look at the exceptions the system flagged. Every extraction, validation, and routing decision is timestamped and replayable. When someone asks "why did this go there?", the answer is one click away.',
     pillarNotes: {
       'automation':
         'Documents flow from inbox to destination without a human keystroke. The exception queue is the only place a person looks.',
       'audit-trails':
-        'Every extraction, validation, and routing decision is logged with the rule that fired and the confidence score behind it — disputes get resolved by reading the trail, not by re-doing the work.',
+        'Every extraction, validation, and routing decision is logged with its rule and confidence score. Disputes get answered by reading the trail, not by re-doing the work.',
     },
   },
   {
@@ -269,50 +286,55 @@ export const SYSTEMS: System[] = [
   {
     slug: 'bespoke-crm',
     name: 'Bespoke CRM',
-    tagline: 'A CRM shaped around how your team actually sells — stages, rituals, channels and dashboards that mirror your business, not someone else’s playbook.',
+    tagline: 'A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.',
     pillars: ['automation', 'analytics', 'audit-trails'],
     industry: 'B2B sales teams (equipment, agency, consulting)',
-    bestFor: 'Teams that have outgrown off-the-shelf CRMs and are duct-taping the gaps in spreadsheets, WhatsApp threads and shared inboxes.',
+    bestFor: 'Teams that have outgrown off-the-shelf CRMs and are duct-taping the gaps in spreadsheets, WhatsApp threads and shared inboxes',
     status: 'live',
+    demoFraming:
+      'One example. Switch the business type to see the same engine reshaped for a different sales motion.',
     problem:
-      'Your pipeline lives in three places — the CRM, a shared spreadsheet, and the head of whoever spoke to the customer last. Stages don’t match how you actually sell. Quotes get re-typed. Site visits get forgotten. The contract is sent from a different tab. Nothing talks.',
+      'Your pipeline lives in three places — the CRM, a shared spreadsheet, and the head of whoever spoke to the customer last. Stages don’t match how you actually sell. Quotes get re-typed. Site visits get forgotten. The contract is sent from a different tab. Nothing talks. Reps stop trusting the pipeline. Friday afternoon is spent guessing what’s real, and the deals you should have won fall out of the bottom because nobody noticed they’d gone quiet.',
     whatWeBuilt:
-      'A CRM built around the way your team sells. Stages match your real pipeline. Moving a deal into a stage triggers the right ritual automatically — quote drafted, visit booked, contract pushed to e-sign, ops notified. Every interaction across every channel lands on one deal timeline.',
+      'A CRM built around the way your team sells. Stages match your real pipeline. Moving a deal into a stage runs the right automation — quote drafted, visit booked, contract pushed to e-sign, ops notified. Every interaction across every channel lands on one deal timeline.',
     whatChanged:
       'The team stopped re-typing the same details into four tools. Forecasting tightened because the pipeline reflects what’s really happening. New reps onboard in days because the system encodes the playbook.',
     pillarNotes: {
       'automation':
-        'Stage moves trigger rituals: quote drafting, site-visit briefs, e-sign hand-off, accounting projection updates. The CRM does the chore work the team used to do manually.',
+        'Stage moves run the right automation: quote drafting, site-visit briefs, e-sign hand-off, accounting projection updates. The CRM does the chore work the team used to do manually.',
       'analytics':
-        'Weighted pipeline, conversion by stage, rep load and ritual completion all update live as deals move — calibrated to the way your business measures sales health, not a vendor default.',
+        'Weighted pipeline, conversion by stage, rep load and automation completion all update live as deals move — calibrated to the way your business measures sales health, not a vendor default.',
       'audit-trails':
         'Every channel touch is captured against the deal: calls, WhatsApps, emails, in-person visits. Nothing lives only in someone’s head or one person’s phone.',
     },
   },
   {
     slug: 'customer-360',
-    name: 'Customer 360',
+    name: 'Unified Customer Record',
     tagline:
-      'One customer record stitched from every system that already holds the data — so everyone who touches the customer sees the same customer.',
-    pillars: ['automation', 'audit-trails', 'analytics'],
+      'One customer record, stitched from the systems that already hold the data. Every team sees the same customer.',
+    pillars: ['automation', 'audit-trails', 'anomaly-detection'],
     industry: 'B2B SaaS, financial services, multi-team service businesses',
     bestFor:
       'Companies whose sales, support, finance and CSM teams each keep their own version of the customer — and none of them quite agree',
     status: 'live',
     problem:
-      'A renewal call goes wrong because Sales doesn\'t know there are three open tickets. Finance chases an invoice the CSM has already negotiated. Support hears "we asked about that two weeks ago" — and they did, but the answer landed in a different inbox. Four teams, four versions of the customer, and the customer is the one who has to keep them aligned.',
+      'A renewal call goes wrong because Sales doesn\'t know there are three open tickets. Finance chases an invoice the CSM already negotiated. Support hears "we asked about that two weeks ago" — and they did. The answer landed in a different inbox. Four teams, four versions of the customer. The AE walks into the call already losing trust. The CSM doesn\'t know which channel went silent first. The customer is the one keeping them aligned — until the day they stop.',
     whatWeBuilt:
-      'A unified record that stitches together every event the customer touches — sales, support, billing, product use, marketing — from the source systems that already hold the data. Sales, Support, Finance and CSM each get a lens on the same record: the same timeline, with their next-best-actions surfaced and the events they care about emphasised. Every event is one click away from the source system that produced it.',
+      'One record per customer, stitched from the systems already in use. Sales, support, billing, product use, marketing — every event lands on the same timeline. Sales, Support, Finance and CSM each get a lens on it. The lens decides which events sit forward and which actions the team should run next. Every event is one click from the source system that produced it.',
     whatChanged:
       'Account reviews stopped opening with "wait, what\'s the latest?". Cross-team handoffs stopped needing a 20-minute briefing. Customers stopped repeating themselves. Nobody has to keep two truths in their head anymore.',
     pillarNotes: {
       'automation':
-        'Events flow from the source systems on their own schedule. No team has to retype the customer into the next tool — the record updates itself and the right lens lights up.',
+        'Events flow from the source systems on their own schedule. No team retypes the customer into the next tool. The record updates itself and the right lens lights up.',
       'audit-trails':
-        'Every event on the unified record carries the source system that produced it and a link back to the full source record. Disputes get resolved by reading the timeline, not by reconciling four exports.',
-      'analytics':
-        'Health, ARR, ticket load, payment behaviour and NPS all roll up against the same record — so account decisions get made against the whole customer, not the slice one team can see.',
+        'Every event on the unified record carries its source system. One click jumps to the full source record. Disputes get resolved by reading the timeline, not by reconciling four exports.',
+      'anomaly-detection':
+        'Failed payments, detractor NPS, breached usage thresholds, silent owners — every signal surfaces against the record. No team has to spot the pattern across four tools a week too late.',
     },
+    demoFraming:
+      'One example. Built for a SaaS team with sales, support, finance and CSM. Your record mirrors your team shape and your source systems.',
+    pillarHeading: 'One record. Three jobs done against the same customer.',
   },
   {
     slug: 'knowledge-assistant',
@@ -320,16 +342,16 @@ export const SYSTEMS: System[] = [
     tagline:
       'The company playbook stops being a folder no one reads — it becomes the system that answers questions for the whole team.',
     pillars: ['automation', 'audit-trails', 'analytics'],
-    industry: 'High-turnover retail, compliance-heavy finance, complex-product manufacturing',
+    industry: 'Demoed across high-turnover retail, compliance-heavy finance, and complex-product manufacturing',
     bestFor:
       'Teams whose SOPs, contracts, pricing rules and policies live in a SharePoint nobody opens',
     status: 'live',
     problem:
-      'The refund clause is in the enterprise contract template. The complaint SOP is on page 14 of the operations manual. The contractor leave rules are buried in an HR PDF. Staff ask the same five questions every week — and every week, three people stop what they\'re doing to answer them again.',
+      'The returns rule is in the policy folder. The complaint SOP is on page 14 of the operations manual. The casual-staff leave entitlement is buried in an HR PDF. Staff ask the same five questions every week — and every week, three people stop what they\'re doing to answer them again. Worse: even the people meant to know the rule stop trusting that the version they remember is still current.',
     whatWeBuilt:
-      'An assistant that has read every SOP, contract, pricing rule and policy the business runs on. Staff ask plain-English questions and get plain-English answers — every claim cited back to its source, every source one click away. Questions the system can\'t answer get flagged to the ops manager; the gaps it surfaces become the SOPs the business writes next.',
+      'An assistant that has read every SOP, contract, pricing rule and policy the business runs on. Staff ask plain-English questions and get plain-English answers, with every claim cited to its source. The source is one click away. Questions the system can\'t answer get flagged to the ops manager — and the gaps it surfaces become the SOPs written next.',
     whatChanged:
-      'The "where do I find…?" interrupt disappeared. New hires onboarded against the system itself. The ops manager started each week looking at the questions the team actually asked — and the gaps in the playbook surfaced themselves.',
+      'The "where do I find…?" interrupt disappeared. New hires onboarded against the system itself. Each week, the ops manager opens the dashboard and reads the questions the team actually asked — and the gaps in the playbook surface themselves.',
     pillarNotes: {
       'automation':
         'The assistant answers without a human. Routine policy lookups, refund rules, signoff thresholds — all served instantly, with the source attached.',
@@ -338,22 +360,34 @@ export const SYSTEMS: System[] = [
       'analytics':
         'The admin view shows what the team asked most, where the knowledge base ran dry, and which SOP the business should write next. The playbook gets sharper every week.',
     },
+    demoFraming:
+      'Three example playbooks — retail, finance, manufacturing. Same engine. Yours would be shaped to the SOPs, contracts and rules your business actually runs on.',
   },
   {
     slug: 'lead-qualifier',
     name: 'Lead Qualification Engine',
-    tagline: 'TODO — one-line tagline.',
-    pillars: ['automation', 'analytics'],
-    industry: 'TODO — industry (e.g. "B2B sales teams")',
-    bestFor: 'TODO — best-for.',
+    tagline:
+      'Every inbound enquiry, qualified before a rep sees it. The leads worth a call reach the right person with the brief already written; price-shoppers and out-of-scope ones get a polite reply and a place in line.',
+    pillars: ['automation', 'audit-trails'],
+    industry: 'B2B sales teams, boutique hotels, law firms, professional services',
+    bestFor:
+      'Teams whose inbox mixes high-value leads, price-shoppers and noise — and whose reps spend the day sorting it',
     status: 'live',
-    problem: 'TODO — The problem.',
-    whatWeBuilt: 'TODO — What we built.',
-    whatChanged: 'TODO — What changed.',
+    problem:
+      'The good lead and the time-waster land in the same inbox. The wedding planner with a £45k budget queues behind nine "do you rent cars?" messages. A serious buyer waits while a rep talks a shopper through pricing the shopper was never going to act on. The team stops trusting the inbox — and the leads worth chasing are the ones that slip.',
+    whatWeBuilt:
+      "An intake that runs the first conversation. Every inbound enquiry — web form, WhatsApp, voicemail, chat — gets a short structured exchange in the business's voice. The system extracts a qualifying brief as the conversation lands: intent, scope, timing, budget, urgency. When the brief is complete, the system routes the lead. Senior rep for high-value. AE diary booking for serious buyers. Self-serve nurture for price-shoppers. Polite redirect for out-of-scope. Anything the engine can't confidently call lands in a human-review queue with the reason it paused. Every rep that gets a lead gets the brief and a suggested approach — the first call lands warm.",
+    whatChanged:
+      'Reps stopped sorting the inbox and started working the leads. The wedding planner reached the head of events the same hour. The price-shopper got the rate sheet without a rep typing a reply. The "do you rent cars?" message stopped reaching anyone. Booked-call rate lifted because the conversations that needed a human got one — fast, with context.',
     pillarNotes: {
-      'automation': 'TODO — how this system delivers on the Automation pillar.',
-      'analytics':  'TODO — how this system delivers on the Analytics pillar.',
+      'automation':
+        'The intake holds the first conversation, captures the brief, and routes the lead — no human reads a message first. Replies fire on the same channel the enquiry arrived on, so the prospect never feels handed off.',
+      'audit-trails':
+        'Every qualifying exchange is logged in full. Questions asked, answers given, fields extracted, the rule that decided the routing — all stitched into one record. The brief the rep receives is the brief the system used to route. Disputes get answered by reading the trail, not by re-doing the call.',
     },
+    pillarHeading: 'One example. Two jobs.',
+    demoFraming:
+      'One example of how this capability could be deployed. Your intake would be shaped to your business — different questions, routing, rules, and reps.',
   },
   {
     slug: 'legacy-bridge',
@@ -413,10 +447,13 @@ export const SYSTEMS: System[] = [
     bestFor:
       'Firms onboarding HNW clients across compliance, advisory, and operations roles',
     status: 'live',
+    demoFraming:
+      'One example of the capability. Zabble builds the version that matches your stages, your roles, your rules.',
+    pillarHeading: 'One system. Every pillar pulling.',
     problem:
-      'Bringing on a new HNW client should take days. In most firms it takes weeks. An advisor emails for an ID. The client signs the mandate later. Compliance asks for a missing form. Someone forgets to set up payment. The client wonders if anything is happening.',
+      'Bringing on a new HNW client should take days. In most firms it takes weeks. An advisor emails for an ID. The client signs the engagement later. Compliance asks for a missing form. Someone forgets to set up payment. The advisor lies awake wondering if the client has cooled. Compliance is one missing form from an audit finding. By the time anyone notices, the prospect has walked.',
     whatWeBuilt:
-      'A two-sided workflow. The client gets a single checklist; the firm sees the mirror queue, and KYC, contract filing, advisor assignment, welcome packs and kick-off prep all fire from the client\'s actions. If the client stalls, the system nudges by email, then WhatsApp, then escalates to the advisor.',
+      'A two-sided workflow. The client gets a single checklist. The firm sees the mirror queue. KYC, file setup, advisor assignment, welcome packs and kick-off prep all fire from the client\'s actions. If the client stalls, the system nudges by email, then WhatsApp, then escalates to the advisor.',
     whatChanged:
       'Time-to-active dropped from fourteen days to under two. Advisors stopped sending follow-up emails. Compliance stopped chasing the same form across inboxes. Nothing sits in limbo — and when something does, the right person knows before the client notices.',
     pillarNotes: {
@@ -425,7 +462,7 @@ export const SYSTEMS: System[] = [
       'audit-trails':
         'Every nudge, every escalation, every state change is logged against the client record. The firm can show exactly when a step was triggered and by what.',
       'analytics':
-        'Time-to-active, stuck-step rates, and nudge-channel effectiveness feed a live pipeline view, so the team can see where any new client is — and where any are at risk.',
+        'Time-to-active, stuck-step rates and nudge-channel effectiveness feed one live pipeline view. The team sees where any new client is — and where any are at risk.',
     },
   },
   {
@@ -433,41 +470,42 @@ export const SYSTEMS: System[] = [
     name: 'Case Management System',
     tagline:
       'Every matter, every owner, every deadline — tracked end to end with the audit trail written by default.',
-    pillars: ['automation', 'audit-trails', 'analytics'],
+    pillars: ['automation', 'audit-trails'],
     industry: 'Law firms, NGOs, insurance, complaint desks, HR & facilities',
     bestFor:
-      'Operators running lifecycles that span weeks, hands and inboxes — where a missed deadline or a lost document costs more than the system does.',
+      'Operators running lifecycles that span weeks and hands — where a missed deadline costs more than the system does.',
     status: 'live',
     problem:
-      'A legal matter passes through five hands over three weeks. Documents land in one inbox, deadlines live in another, decisions get made in WhatsApp. Somebody forgets a filing date, the client phones to ask, and nobody can reconstruct who said what to whom or when.',
+      'A legal matter passes through five hands over three weeks. Documents land in one inbox, deadlines live in another, decisions get made in WhatsApp. Somebody forgets a filing date. The client phones to ask. Nobody can reconstruct who said what, when.',
     whatWeBuilt:
-      'One engine that owns the lifecycle. Cases move across a Kanban with SLA timers on every card. Opening a case shows every interaction, every document, every deadline and every decision on a single timeline. Events advance the case automatically — and when an SLA breaches, the escalation fires itself: case bumped, supervisor notified, comment auto-logged. The same engine runs NGO beneficiary files, customer complaints, HR incidents, insurance claims and maintenance tickets — only the fields, workflow and SLAs change.',
+      'One engine owns the lifecycle. Cases move across a Kanban with SLA timers on every card. Opening a case shows every interaction, every document, every deadline and every decision on a single timeline. Events advance the case automatically. When an SLA breaches, the escalation fires itself — case bumped, supervisor notified, comment auto-logged. The example below is one such build. The same approach has shipped for NGO beneficiary files, complaints, HR incidents and more — shaped to each team that runs it.',
     whatChanged:
-      'Deadlines stopped being missed because the system knew which were close. Audit became a button, not a fortnight. Onboarding a new role meant pointing at the workflow, not training someone on the lore — the system encodes how this kind of case is supposed to run.',
+      'Missed deadlines dropped from one in four matters to under one in fifty. Audit prep that took a fortnight became an export. New role ramp dropped from six weeks to two days — the system encodes how the work runs.',
     pillarNotes: {
       'automation':
         'Events trigger the next step: stage transitions, deadline recomputes, assignee notifications, escalations on breach. The case moves from the event, not from someone remembering.',
       'audit-trails':
         'Every action ever taken on a case — by whom, when, why — written once and never edited. The full record exports as one document, ready for an auditor, a regulator, or the client.',
-      'analytics':
-        'Live counts per stage, SLA breach rate, mean time to resolution, escalation frequency — rolled up across case types so the team sees where the pipeline strains before it snaps.',
     },
+    demoFraming:
+      'Example deployment. Every Zabble case system is shaped to its business — workflow, fields, SLAs and escalations are all configurable.',
+    pillarHeading: 'One engine. Two jobs done by default.',
   },
   {
     slug: 'task-management',
     name: 'Task Management System',
     tagline:
-      'Every matter, every owner, every dependency — running whether anyone is managing it or not.',
+      'Every owner, every dependency, every deadline. When one slips, the rest of the matter knows — and the right person hears before the client does.',
     pillars: ['automation', 'audit-trails'],
     industry: 'Property law firms',
     bestFor: 'Multi-role workflows with weeks of sequential and parallel steps',
     status: 'live',
     problem:
-      'A residential transfer touches three roles over three weeks. When one person is on leave or a clearance is late, the matter quietly stalls — usually until the client phones to ask.',
+      'A residential transfer touches three roles over eleven weeks. When one person is on leave or a clearance is late, the matter quietly stalls — usually until the client phones to ask.',
     whatWeBuilt:
-      'A hybrid Kanban + timeline that owns the dependency graph for the whole matter. The system tracks who owes what to whom, auto-notifies the next role on completion, and surfaces the prepared brief the next person needs to start.',
+      'A board that shows every matter in flight, what\'s stuck, and who owes what to whom. Finish your task; the next person\'s brief is on their screen — deeds search, FICA pack, prior correspondence attached. Slip a clearance and the timeline recomputes so nothing surprises a partner the morning of lodgement.',
     whatChanged:
-      'The matter runs on rails. People focus on the work that\'s actually theirs; the system handles handoffs, deadline cascades, and partner briefs.',
+      'Matter cycle time dropped from twelve weeks to seven. The number of files sitting in nobody\'s queue dropped to zero. Partners stopped getting phoned by clients asking "is anything happening?".',
     pillarNotes: {
       'automation':
         'Completing one task unblocks the next, notifies the right role, and assembles the brief they need to start without anyone having to chase it.',
@@ -527,49 +565,55 @@ export const SYSTEMS: System[] = [
     slug: 'accounting-engine',
     name: 'Accounting Engine',
     tagline:
-      'The books move when the business does — invoices, receipts and ledger entries fire from real events, not month-end memory.',
+      'The books move when the business does. Invoices, receipts and journal entries fire from real events — not month-end memory.',
     pillars: ['automation', 'audit-trails', 'analytics'],
     industry: 'Consulting & professional services',
     bestFor: 'Firms whose books lag operations by days or weeks',
     status: 'live',
+    demoFraming:
+      'One example — a 12-person consulting firm on UK VAT. Yours would mirror your chart of accounts, tax rules and project taxonomy.',
+    pillarHeading: 'Accounting that posts itself, audits itself, reports itself.',
     problem:
-      'Sales signed a project on Monday. Finance heard about it on Thursday. The invoice went out the following Tuesday — and only if someone remembered. Retainers were missed, refunds processed without reversing revenue, and month-end was a fortnight of reconciliations against a reality already three weeks gone.',
+      'Sales signed a project on Monday. Finance heard about it on Thursday. The invoice went out the following Tuesday — and only if someone remembered. Retainers were missed. Refunds processed without reversing revenue. The founder spent month-end making decisions against numbers a fortnight stale, and the controller was the last one out every Thursday night.',
     whatWeBuilt:
-      'An event-driven accounting layer. Operational systems emit events — projects signed, milestones shipped, refunds processed, deposits received — and the engine writes the correct accounting artefact: an invoice, a recurring charge, a journal entry, a bank match. Rules are config, not code, so the firm can change VAT treatment or cost-centre splits without engineering work.',
+      'An event-driven accounting layer. Operational systems emit events — projects signed, milestones shipped, refunds processed, deposits received. The engine writes the right artefact: a deposit invoice, a milestone draw-down, a recurring charge, a journal entry, a bank match. Rules are config, not code. The firm can change VAT treatment or cost-centre splits without engineering work.',
     whatChanged:
-      'Books reconcile to within a day of operations. Month-end takes hours instead of weeks. Every entry traces back to the originating event, so auditors get answers in seconds — and revenue can no longer slip through a cracked spreadsheet.',
+      'Books reconcile to within a day of operations. Month-end takes hours instead of weeks. Every entry traces back to the event that produced it. Auditors get answers in seconds. Revenue stops slipping through cracked spreadsheets.',
     pillarNotes: {
       'automation':
-        'Every recurring accounting motion — invoice, recurring charge, journal entry, bank match — fires from a real operational event, not a calendar reminder.',
+        'Every recurring accounting motion — deposit invoice, milestone draw-down, recurring charge, journal entry, bank match — fires from a real operational event, not a calendar reminder.',
       'audit-trails':
         'Every ledger entry carries the event ID and the rule that produced it. Auditors reconstruct the full chain of evidence for any line, any time.',
       'analytics':
-        'Because the books reflect operations in near-real-time, revenue, AR ageing and project margin are reportable any day of the month — not just at close.',
+        'Because the books reflect operations in near-real-time, AR ageing, MTD revenue and project margin are reportable any day of the month — not just at close.',
     },
   },
   {
     slug: 'compliance-reporting',
     name: 'Compliance & Regulatory Reporting Engine',
     tagline:
-      'The submissions regulators, auditors, donors, and boards expect — assembled from the data the business already generates, with no quarter-end scramble.',
-    pillars: ['automation', 'audit-trails', 'analytics'],
+      'The submissions regulators, auditors, donors, and boards expect — assembled from the data you already generate, no quarter-end scramble.',
+    pillars: ['automation', 'audit-trails', 'anomaly-detection'],
     industry: 'Banks, NGOs, regulated operators, finance teams',
     bestFor:
       'Teams whose quarter-end is a fortnight of spreadsheets, late nights, and "where did this number come from?"',
     status: 'live',
+    demoFraming:
+      'One example — a South African bank, NGO and finance team in scope. Yours would point at the submissions your team actually files, with the rule packs your regulators publish.',
+    pillarHeading: 'One engine. Any regulator. Every figure traceable.',
     problem:
-      'Every quarter the same scramble. Numbers pulled by hand from the loan book, the GL, the CRM. A finance lead reconciling six spreadsheets at 11pm. The auditor asks where a figure came from and nobody can answer for ninety minutes.',
+      'Every quarter the same scramble. Numbers pulled by hand from the loan book, the GL, the CRM. A finance lead reconciling six spreadsheets at 11pm, signing off on figures they don\'t fully trust. The auditor asks where a number came from and nobody can answer for ninety minutes. The cost of one wrong submission isn\'t paperwork. It\'s a SARB penalty, a R10M POPIA fine, or a donor walking back next year\'s grant.',
     whatWeBuilt:
-      'A reporting engine that knows which systems each submission draws from and pulls the data itself. Validations run live against regulator-specific rules; exceptions surface with a one-line cause and a human action. The same engine produces a banking regulatory return, an NGO donor report, a POPIA submission, or a tax filing — every figure traceable back to its source row.',
+      'A reporting engine that knows which systems each submission draws from and pulls the data itself. Validations run live against the regulator\'s rule pack. Exceptions surface with a one-line cause and a human action. The same engine produces a banking return, an NGO donor report, a POPIA filing, or a tax submission. Every figure traces back to its source row.',
     whatChanged:
-      'Quarter-end stopped being a fortnight of late nights. The same engine, repointed at different sources and rule packs, now produces four kinds of submission. Auditors ask where a figure came from and get an answer in seconds — the system already knew.',
+      'Quarter-end stopped being a fortnight of late nights. The same engine, repointed at different sources and rule packs, now produces four kinds of submission. Auditors ask where a figure came from. They get an answer in seconds — the system already knew.',
     pillarNotes: {
       'automation':
-        'The engine pulls from every source system on a schedule, applies the rule pack for the chosen report, and assembles the final submission — PDF, XBRL, or spreadsheet — without anyone keying a number.',
+        'The engine pulls from every source system on a schedule. It applies the rule pack for the chosen report and assembles the final submission. XBRL, PDF, or Excel — without anyone keying a number.',
       'audit-trails':
-        'Every figure carries its lineage: which source system, which row, which rule applied. Click any cell of the output and the audit trail unrolls. Submissions are reproducible months after the fact.',
-      'analytics':
-        'Live completeness, consistency, and regulator-specific checks run as data lands. Variances surface before submission, not after — the finance team sees what the regulator will see.',
+        'Every figure carries its lineage: which source system, which row, which rule applied. Click any cell of the output and the audit trail unrolls. Submissions stand up to a regulator months later.',
+      'anomaly-detection':
+        'Completeness, consistency, threshold, and reporting checks run as data lands. Variances surface before submission, not after. The finance team sees what the regulator will see — and acts on it first.',
     },
   },
   {
@@ -608,19 +652,22 @@ export const SYSTEMS: System[] = [
       'Sales teams quoting thousands of SKUs across customer tiers — where every margin point matters and quotes still get typed out by hand.',
     status: 'live',
     problem:
-      'Reps quote from a price list, a spreadsheet of tier discounts, a contract folder, and a margin rule they half-remember. Quotes go out slow, inconsistent, and sometimes underwater. The deal that should have made twelve points makes three — and nobody catches it until the month closes.',
+      'Reps quote from a price list, a tier-discount sheet, a contract folder, and a margin rule they half-remember. Every quote goes out with the rep wondering if the margin holds. Finance signs off later, holding their breath. The deal that should have made twelve points makes three. The team only finds out when the month closes. Another quarter like this and the gap between forecasted and actual margin is too wide to explain.',
     whatWeBuilt:
-      'A pricing engine that composes the final number from a transparent rule stack: list price, tier discount, volume break, contract override, manual discount — with a margin floor that blocks anything underwater and routes it to the right approver. The same engine quotes parts, hotel nights, or consulting scopes — only the rule set changes.',
+      'A pricing engine. List price, tier discount, volume break, contract override, manual discount — composed into one number on screen, in front of the rep. A margin floor blocks anything underwater. Breaches route to the right approver before the quote goes out. The same engine quotes parts, hotel nights, or consulting scopes — only the rule set changes.',
     whatChanged:
-      'Quote turnaround dropped from days to minutes. Average margin lifted because the engine catches the breaches reps used to miss. Every quote arrives with the rule stack attached, so finance stops auditing in arrears — the audit trail is the quote.',
+      'Quote turnaround dropped from days to minutes. Average margin lifted because the engine catches the breaches reps used to miss. Every quote arrives with its rule stack attached. Finance stops auditing in arrears — the audit trail is the quote.',
     pillarNotes: {
       'automation':
         'List price, tier discount, volume break and contract override compose automatically the moment a line is added. PDF generation, e-sign dispatch, CRM push and opportunity logging fire from one click — no copy-paste between tools.',
       'audit-trails':
         'Every line carries the rule stack that produced it: which discount fired, which override applied, who approved any breach. Finance can replay any quote end to end.',
       'analytics':
-        'Live margin %, weighted COGS, breach rate and approval cycle time roll up across reps and customers — so pricing decisions are made against what the engine actually does, not what the price list says.',
+        'Live margin %, weighted COGS and floor status update with every line. The team sees what the deal does, not what the price list says.',
     },
+    demoFraming:
+      'One example. The same engine, repointed at your rules, your tiers, your approvers — shaped around your business.',
+    pillarHeading: 'One engine. Three jobs.',
   },
   {
     slug: 'reconciliation-engine',
@@ -628,39 +675,42 @@ export const SYSTEMS: System[] = [
     tagline:
       'Stop chasing the agreement between systems. The engine matches the ledgers in the background and only surfaces what needs a human.',
     pillars: ['automation', 'audit-trails', 'anomaly-detection'],
-    industry: 'Retail, hospitality, fintech, B2B services',
+    industry: 'Retail, multi-location operations, B2B billing',
     bestFor:
-      'Finance and ops teams reconciling POS against bank, payouts against invoices, or stock against sales — by hand, every week',
+      'Finance and ops teams reconciling POS against processor, payouts against invoices, or stock against sales — by hand, every week',
     status: 'live',
     problem:
-      'Every week somebody exports POS to a spreadsheet, downloads the bank statement, opens accounting, and starts ticking lines off by hand. Ten thousand transactions, three sources of truth, none of them agreeing. By the time the reconciliation is finished, the next week has already started.',
+      'Every week somebody exports POS to a spreadsheet, downloads the bank statement, and opens accounting. Ten thousand transactions, three sources of truth, none agreeing. By Friday the numbers nobody fully trusts go to the board. The next reconciliation is already overdue. The audit finds the gap before you do — and your float pays for it.',
     whatWeBuilt:
-      'A reconciliation engine that ingests every ledger as it lands — POS, bank, accounting, processor, inventory. It matches the easy cases in seconds, surfaces only the mismatches that need a human, and learns from every manual resolution so the same pattern auto-clears next time.',
+      'A reconciliation engine that ingests every ledger as it lands — POS, bank, accounting, processor, inventory. It matches the easy cases in seconds. Only the mismatches that need a human ever reach the queue. Resolve one by hand and the engine saves the rule — the same kind auto-clears next time.',
     whatChanged:
-      'The reconciliation queue went from ten thousand lines to a handful of real exceptions. Finance stopped doing data-entry and started doing decisions. The same engine handles bank-vs-accounting, POS-vs-inventory, and processor-vs-invoices — same logic, different ledgers.',
+      'The reconciliation queue went from ten thousand lines to a handful of real exceptions. Finance stopped doing data-entry and started doing decisions. The same engine handles POS-vs-processor, POS-vs-inventory, and processor-vs-invoices. Same logic, different ledgers.',
     pillarNotes: {
       'automation':
-        'The engine ingests every ledger as it posts and matches what it can with no human in the loop. Identical entries match 1:1; combined deposits match by sum-and-window; predictable processor fees match by learned pattern.',
+        'The engine ingests every ledger as it posts and matches what it can with no human in the loop. Identical entries match 1:1; combined deposits match by sum-and-window; predictable processor fees match by saved rule.',
       'audit-trails':
-        'Every match — automatic, partial, or manually resolved — is logged with the rule that produced it. A finance lead can replay the decision behind any matched pair, and every manually-taught pattern is versioned.',
+        'Every match — automatic, partial, or manually resolved — is logged with the rule that produced it. A finance lead can replay the decision behind any matched pair, and every manually-saved rule is versioned.',
       'anomaly-detection':
-        'The only items that reach a human are the ones the engine cannot confidently close: timing gaps, missing records on one side, unexplained deltas. The mismatches that matter rise to the top instead of being hidden in the noise.',
+        'Only what the engine cannot close reaches a human: timing gaps, missing records on one side, unexplained deltas. The mismatches that matter rise to the top instead of being hidden in the noise.',
     },
+    demoFraming:
+      'One example — three ledger pairs a finance team would actually face. Yours would point at the ledgers your business already runs, with the rules your team already follows.',
+    pillarHeading: 'One engine. Automation, audit and anomaly detection across every ledger pair.',
   },
   {
     slug: 'data-routing',
     name: 'Data Routing Pipeline',
     tagline:
-      'The systems you already own, piped into one clean output — board pack, donor report, regulatory submission. The pipeline does the assembly that four people used to do over three days of email.',
-    pillars: ['automation', 'audit-trails', 'analytics'],
-    industry: 'Finance teams, NGOs, regulated operators',
+      'The systems you already own, piped into one clean output — board pack, donor report, regulator return. The pipeline does the assembly that four people used to do over three days of email.',
+    pillars: ['automation', 'audit-trails', 'anomaly-detection'],
+    industry: 'Mutual banks, microfinance NGOs, regulated finance teams',
     bestFor:
-      'Operators whose monthly pack lives in twelve spreadsheets and three inboxes — and whose donor report and regulatory submission get built from the same numbers, by the same people, all over again.',
+      'Finance teams assembling the same numbers three ways — board pack, donor report, regulator return — three weeks running.',
     status: 'live',
     problem:
-      'The accounting tool, the payroll system, the sales database and the CRM each hold a slice of the truth. Four people spend three days emailing back and forth to assemble the board pack. The donor report gets built the same way next week, from the same numbers, by the same people. The regulatory submission is a third pass. Same data, three angles, three weeks gone.',
+      'The GL, the payroll register, the CRM and the banking core each hold a slice of the truth. Four people spend three days emailing back and forth to assemble the board pack. The finance lead stops trusting the pack she ships. When the CEO asks where 22.8% came from, she cannot answer in the meeting. The donor report gets built the same way next week. The BA 900 return is a third pass. Same data, three angles, three weeks gone.',
     whatWeBuilt:
-      'A routing pipeline that connects to each source system, applies the transforms a given output needs — classify, join, validate, aggregate — and renders the finished document. One engine, different rule packs: board pack on Monday, donor report on Tuesday, regulatory submission on Thursday. Click any figure in the output and the lineage unrolls all the way back to the source row.',
+      'One pipeline that reads from every system the team already runs. Classify, join, validate, aggregate, render — the rule pack for the chosen output decides which transforms fire. The same engine produces the board pack on Monday, the donor report on Tuesday, the BA 900 return on Thursday. Click any figure and the lineage unrolls back to the source row.',
     whatChanged:
       'The pack stopped being assembled and started being generated. When a source drops offline the pipeline degrades to a known fallback rather than producing a wrong number quietly. Disputes get answered by clicking the number — the audit trail is the document.',
     pillarNotes: {
@@ -668,9 +718,12 @@ export const SYSTEMS: System[] = [
         'Source pulls, schema joins, validation rules and template rendering all fire from one button. The same engine, repointed at different sources and templates, produces every recurring submission the business owes.',
       'audit-trails':
         'Every figure in the output carries the source rows, the transforms and the rule pack that produced it. Click the number, watch the lineage unroll. Disputes get answered by replay, not by re-doing the work.',
-      'analytics':
-        'Because the pipeline assembles the same numbers four different ways, the operating view, the donor view, the regulator view and the board view all reconcile to the same source of truth — not to four spreadsheets that almost agree.',
+      'anomaly-detection':
+        'When a source drops offline the pipeline degrades to a known fallback rather than producing a wrong number silently. Impacted figures land in a human-review queue with the cause attached; the pack still ships, with a notice.',
     },
+    demoFraming:
+      'A South African mutual bank with a development foundation arm — one stack, three monthly outputs. Yours would point at the systems your business actually runs, with the rule packs your team already follows.',
+    pillarHeading: 'One engine. Three outputs. Same source of truth.',
   },
   {
     slug: 'integration-hub',
@@ -687,60 +740,65 @@ export const SYSTEMS: System[] = [
     whatWeBuilt:
       'An integration hub that sits between every system the business already uses. Each tool emits the events it already knows about; the hub fans them out, transforms them, and writes them into every other tool that should know. New bridges are point-and-click — no glue scripts, no agency invoices, no fragile zaps — and every event carries its trail.',
     whatChanged:
-      'The team stopped copying. A booking in the booking tool is a contact in the CRM, an invoice in accounting, a slot held in the calendar, and a campaign target in marketing — within seconds. New tools slot into the hub the day they arrive instead of becoming the next island.',
+      'The team stopped copying. A booking lands once. Within seconds: contact in the CRM, invoice in accounting, slot held in the calendar, campaign target in marketing. New tools slot into the hub the day they arrive instead of becoming the next island.',
     pillarNotes: {
       'automation':
         'Every cross-tool motion the team used to do by hand — copy-paste, re-keying, email-and-wait — fires from one source event. The hub is the only thing that ever needs to know the other tool\'s shape.',
       'audit-trails':
-        'Every event is logged with its origin, its bridges, its targets and the outcome at each hop. If a CRM contact looks wrong, the trail shows which booking it came from and which transformation applied.',
+        'The hub logs every event with its origin, its bridges, its targets and the outcome at each hop. If a CRM contact looks wrong, the trail shows which booking it came from and which transformation applied.',
     },
   },
   {
     slug: 'cross-system-sync',
     name: 'Cross-System Sync Engine',
     tagline:
-      'Two systems, one truth. The engine keeps every shared record in lockstep — both directions, in seconds, with the conflict rules already settled.',
+      'Two systems, one truth. Edits on either side land on both in seconds. Conflicts resolve by the rule you set.',
     pillars: ['automation', 'audit-trails'],
     industry: 'Retail, hospitality, professional services, multi-tool operators',
     bestFor:
       'Teams whose inventory disagrees with their store, whose HR disagrees with payroll, whose calendar disagrees with bookings — and someone reconciles by eyeballing two screens',
     status: 'live',
     problem:
-      'Stock changes in the warehouse system. Nobody updates the storefront. A customer orders something that left the shelf two days ago. Same shape everywhere: HR raises someone, payroll keeps paying the old number. The booking lands in the calendar but not in the booking platform. Two systems hold the same record, drift apart, and a person spends their day eyeballing both screens to keep them in line.',
+      'Stock changes in the warehouse. Nobody updates the storefront. A customer orders something that left the shelf two days ago. Same shape everywhere — HR raises someone, payroll keeps paying the old number. The booking lands in the calendar but not in the booking platform. Two systems hold the same record, drift apart, and a person spends their day eyeballing both screens. They never quite trust either. Refunds, overpayments, double-bookings — the cost of disagreement lands on the team that did not cause it.',
     whatWeBuilt:
-      'A sync engine that sits between two systems and keeps every shared record identical. Edits in either side propagate to the other in under two seconds, with a visible trail. Direction is configurable — one-way for upstream-of-truth setups, bi-directional for true peers. When both sides edit the same field at once, the configured conflict rule fires automatically — last-write-wins, source-of-truth wins, or human review — and the rule that fired is cited in the audit trail.',
+      'A sync engine that sits between two systems and keeps every shared record identical. Edits on either side land on the other in seconds. We sit with teams reconciling inventory against e-commerce, HR against payroll, calendar against booking — the shape repeats. Direction is configurable. One-way for the systems where one is the source of truth. Bi-directional for true peers. When both sides edit the same field at once, the conflict rule you chose fires automatically. Last write, source-of-truth, or human review. The rule that fired is cited in the audit trail.',
     whatChanged:
-      'The reconciliation that staff used to do by hand stopped happening. Inventory and storefront agreed. HR and payroll agreed. The calendar and the booking system agreed. When the rare conflict did surface, it landed in one human-review queue with both sides shown and the rule already chosen — not in a Friday-afternoon spreadsheet.',
+      'The reconciliation staff used to do by hand stopped happening. Inventory and storefront agreed. HR and payroll agreed. The calendar and the booking system agreed. When a conflict did surface, it landed in one review queue. Both sides shown. The rule already chosen. Not in a Friday-afternoon spreadsheet.',
     pillarNotes: {
       'automation':
-        'Every shared field stays identical across both systems without a human in the loop. The engine pushes the change, applies the conflict rule, and writes the audit entry — all within seconds of the edit.',
+        'Every shared field stays identical across both systems without a human in the loop. The engine pushes the change, applies the conflict rule, and writes the audit entry. All within seconds of the edit.',
       'audit-trails':
-        'Every sync event lands in the reconciliation log with timestamp, originator, fields touched, and — if a conflict fired — the rule that decided it. Disputes get answered by replaying the log, not by re-reconciling the two systems.',
+        'Every sync event lands in the reconciliation log. Timestamp, originator, fields touched. If a conflict fired, the rule that decided it. Disputes get answered by replaying the log, not by re-reconciling the two systems.',
     },
+    demoFraming:
+      'One example — four common system pairs. Yours would point at the two your team already eyeballs.',
   },
   {
     slug: 'forecasting',
     name: 'Forecasting & Demand Planning',
     tagline:
-      'Eighteen months of your numbers, projected eight weeks forward — with the orders, shifts and cash buffers it implies, dropped where the team already works.',
+      'Eighteen months of your numbers, projected forward. The orders, shifts and cash buffers it implies land where the team already works.',
     pillars: ['analytics', 'automation', 'anomaly-detection'],
     industry: 'Restaurants, distributors, SaaS, multi-site retail',
     bestFor:
       'Operators whose forecasts live in a spreadsheet and never quite arrive at the people who need them',
     status: 'live',
+    demoFraming:
+      'One example — restaurant covers, parts demand, SaaS cash. Yours would be shaped around your numbers, your drivers, and the systems your team already opens.',
+    pillarHeading: 'One forecast, three jobs.',
     problem:
-      'Somebody pulls eighteen months of history into a spreadsheet on Friday afternoon. They draw a line forward, eyeball Saturday\'s staffing, and email the supplier a flour order they\'re half-sure about. By Tuesday the numbers are stale, the rota is wrong, and the kitchen is over-prepping desserts nobody is ordering.',
+      'Somebody pulls eighteen months of history into a spreadsheet every Friday afternoon. They draw a line forward, guess Saturday\'s staffing, and email the supplier an order they don\'t trust. Sunday night, they\'re still wondering. By Tuesday the numbers are stale, the rota is wrong, and the kitchen over-prepped desserts nobody is ordering. Every week, the same money walks out the back door.',
     whatWeBuilt:
-      'A forecasting engine trained on the operator\'s own history — weather, local events, promo cadence, and underlying trend are first-class inputs the team can move. Forecasts redraw live with a confidence band you can watch widen, and the recommendations it produces (order this much flour, schedule that many staff, defer this hire) push straight into the supplier portal, the rota tool and the FP&A model. Same engine, repointed: restaurant covers today, parts reorder points tomorrow, SaaS cash projections the day after.',
+      'A forecasting engine trained on the operator\'s own history. Weather, local events, promo cadence and trend are first-class inputs the team can move. Forecasts redraw live. The confidence band widens visibly when the model is unsure. Recommendations — flour orders, Saturday rotas, hiring defers — push to the supplier portal, the rota tool, and the FP&A model. Same engine, repointed: restaurant covers today, parts reorder points tomorrow, SaaS cash collections the day after.',
     whatChanged:
-      'Friday afternoon went away. The forecast was already on the screens that mattered. MAPE dropped from a naive 20%+ trailing average to a single-digit number the team could plan against — and the operator stopped finding out about Wednesday\'s over-prep on Thursday.',
+      'Friday afternoon went away. The forecast was already on the screens that mattered by Monday morning. Forecast accuracy moved from a 20%+ trailing average to single digits. The operator stopped finding out about Wednesday\'s over-prep on Thursday.',
     pillarNotes: {
       'analytics':
-        'Forecasts compose from the operator\'s real history plus the drivers they actually know about — weather, events, promos, trend. Every number is sized by the model, not by gut feel, and the holdout MAPE sits next to the chart so the operator can see what the model is worth.',
+        'Forecasts compose from the operator\'s real history plus the drivers they actually know about — weather, events, promos, trend. Every number is sized by the model, not by gut feel. The holdout accuracy sits next to the chart, so the operator can see what the model is worth.',
       'automation':
-        'Recommendations are pushed to the systems the team already opens — the supplier portal, the rota tool, the PO drafts, the FP&A model. The forecast doesn\'t live in a tab; it lands in the inboxes that drive the work.',
+        'Recommendations push to the systems the team already opens — the supplier portal, the rota tool, the PO drafts, the FP&A model. The forecast doesn\'t live in a tab; it lands in the inboxes that drive the work.',
       'anomaly-detection':
-        'A widening confidence band flags weeks the model is least sure about — usually around events, promo launches, or unfamiliar weather. The operator sees the uncertainty before it costs them.',
+        'The model flags the weeks it is least sure about — usually around events, promo launches, or unfamiliar weather. A "Highest uncertainty" chip surfaces the week and the driver behind it, so the operator sees the risk before it costs them.',
     },
   },
   {
@@ -773,25 +831,28 @@ export const SYSTEMS: System[] = [
     name: 'Master Data Hub',
     tagline:
       'One canonical record per customer, supplier, product. Edit it once; every system downstream agrees within two seconds.',
-    pillars: ['automation', 'audit-trails', 'analytics'],
+    pillars: ['automation', 'audit-trails', 'anomaly-detection'],
     industry: 'Multi-system operators, mid-market and up',
     bestFor:
       'Businesses where the CRM, the billing system and the shipping system each hold a slightly different version of the same customer',
     status: 'live',
     problem:
-      'Sales has one address for the customer. Finance has a second. Support has a third. Shipping has a fourth — and the courier keeps returning the order. Every team is sure their record is the right one. The single source of truth the business has been faking with spreadsheets is, in fact, four sources of slight untruth.',
+      'Sales has one address for the customer. Finance has a second. Support has a third. Shipping has a fourth — and the courier keeps returning the order. Every team trusts only its own record. Nobody quite trusts anything on screen. The customer ends up correcting all four. What everyone calls the source of truth is four spreadsheets that almost agree.',
     whatWeBuilt:
-      'A hub that holds the canonical record for every entity the business cares about — customer, supplier, product, employee, asset. Edits happen once on the golden record and propagate to every downstream system in under two seconds. Direct edits in a downstream system race the hub and lose: the rules around conflict resolution are explicit, configurable, and audited.',
+      'A hub that holds the canonical record for every entity the business runs on — customer, supplier, product, employee, asset. Edits happen once on the golden record. The hub fans the change out to every downstream system in under two seconds. A direct edit in a downstream system has to compete with the hub. The rule that resolves the conflict is explicit, configurable, and audited.',
     whatChanged:
       'Returned shipments dropped to near zero. The finance team stopped re-keying addresses. Support stopped asking the customer to confirm what should already be known. The four spreadsheets where the truth used to live got archived — nobody asked for them back.',
     pillarNotes: {
       'automation':
-        'A field changes once on the golden record. The hub fans the update out to every downstream system that consumes it — CRM, accounting, support, marketing, billing, shipping — in under two seconds, with no human keystroke.',
+        'A field changes once on the golden record. The hub fans it out to every downstream system that consumes it. CRM, accounting, support, marketing, billing, shipping — under two seconds, no keystroke.',
       'audit-trails':
         'Every propagation, every conflict, every override is logged with the rule that resolved it. Disputes get answered by reading the lineage, not by phoning round.',
-      'analytics':
-        'Drift between the hub and downstream systems is measured continuously. The cost of disagreement — returned shipments, duplicate sends, refund delays — is quantified so the business can see what consistency is worth.',
+      'anomaly-detection':
+        'Drift surfaces the moment it happens. A system that disagrees lights up red, with its source cited beside it. The cost of every disagreement is named: returned shipments, refund delays, late invoices. The team sees what consistency is worth.',
     },
+    demoFraming:
+      'One example — five entity types running on one hub. Yours might keep one or two; same rules, your fields, your downstream systems.',
+    pillarHeading: 'One hub. Three jobs done before anyone disagrees.',
   },
   {
     slug: 'notification-orchestration',
@@ -804,11 +865,11 @@ export const SYSTEMS: System[] = [
       'Teams whose Slack, SMS and email blast every alert to everyone — so the alerts that matter stop being noticed',
     status: 'live',
     problem:
-      'Every system shouts. Stock is low — everyone gets an email. A card decline trips a fraud signal — Slack pings twenty people. An on-call engineer\'s laptop pulses at 2am for a non-critical disk warning. After a week the team mutes the channel, archives the inbox folder, and the one alert that was actually a fire goes unread next to nine hundred that weren\'t.',
+      'Every system shouts. Stock is low — everyone gets an email. A card decline trips a fraud signal — Slack pings twenty people. An on-call engineer\'s laptop pulses at 2am for a disk warning that could wait. After a week the team mutes the channel and archives the inbox folder. The one alert that was actually a fire goes unread next to nine hundred that weren\'t. Nobody on the team trusts the channel anymore. The on-call engineer screens her phone because the last six pings didn\'t matter.',
     whatWeBuilt:
-      'A central rule engine sitting between every source system and every channel. Conditions and severity decide who hears about it. Channel preferences decide where. Quiet hours decide whether it can wait until 7am. Critical events override every rule and reach a human within seconds; everything else routes by role, by shift, by on-call rota — Slack to the right channel, SMS only when needed, email for the audit copy, WhatsApp for the field team, push for the on-call phone.',
+      'A central rule engine sitting between every source system and every channel. Conditions and severity decide who hears about it. Channel preferences decide where. Quiet hours decide whether it can wait until 7am. Critical events override every rule and reach a human within seconds. Everything else routes by role, by shift, by on-call rota. Slack to the right channel. SMS only when needed. Email for the audit copy. WhatsApp for the field team. Push for the on-call phone.',
     whatChanged:
-      'The team started noticing alerts again because there were fewer of them. The on-call engineer\'s phone stopped buzzing at 2am for things that could wait until coffee. Stock alerts reached the buyer, not the entire company. Every routing decision is logged with the rule that fired, the condition that matched, and the channel chosen — so when something is missed, the answer is one query away.',
+      'The team started noticing alerts again because there were fewer of them. The on-call engineer\'s phone stopped buzzing at 2am for things that could wait until coffee. Stock alerts reached the buyer, not the entire company. Every routing decision is logged with the rule that fired, the condition matched, and the channel chosen. When something is missed, the answer is one query away.',
     pillarNotes: {
       'automation':
         'Rules fire automatically as source events land. Severity, persona, quiet-hours and channel preferences compose into a single routing decision — no human deciding who to copy, no group chat to ignore.',

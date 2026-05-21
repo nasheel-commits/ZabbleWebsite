@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onUnmounted, reactive, ref } from 'vue'
-import { AlertTriangle, ArrowRight, Bell, Calendar, CalendarCheck, Check, ClipboardList, Clock, CreditCard, FolderPlus, Mail, MessageCircle, Pause, PenLine, Play, RotateCcw, ShieldCheck, Sparkles, Upload, User, UserPlus } from '@lucide/vue'
+import { AlertTriangle, ArrowRight, Bell, Calendar, CalendarCheck, Check, ClipboardList, Clock, CreditCard, Eye, FolderPlus, Mail, MessageCircle, Pause, PenLine, Play, RotateCcw, ShieldCheck, Sparkles, Upload, User, UserPlus } from '@lucide/vue'
 
 import type { Component } from 'vue'
 
@@ -16,13 +16,15 @@ interface FirmStep {
   id: FirmStepId
   label: string
   sub: string
+  role: string
   icon: Component
   triggerSource: ClientStepId
+  processMs: number
 }
 
 type ClientStepId =
   | 'upload-id'
-  | 'esign-mandate'
+  | 'esign-engagement'
   | 'risk-profile'
   | 'payment-setup'
   | 'pick-kickoff'
@@ -35,22 +37,20 @@ type FirmStepId =
   | 'kickoff-prep'
 
 const CLIENT_STEPS: ClientStep[] = [
-  { id: 'upload-id',      label: 'Upload ID',              sub: 'Passport or driver licence', icon: Upload,         triggers: 'kyc-verify' },
-  { id: 'esign-mandate',  label: 'E-sign mandate',         sub: 'Investment mandate & disclosures', icon: PenLine, triggers: 'file-setup' },
-  { id: 'risk-profile',   label: 'Complete risk profile',  sub: '12 questions, about three minutes', icon: ClipboardList, triggers: 'advisor-assign' },
-  { id: 'payment-setup',  label: 'Set up payment',         sub: 'Debit order or once-off transfer', icon: CreditCard,  triggers: 'welcome-pack' },
-  { id: 'pick-kickoff',   label: 'Pick kick-off date',     sub: 'Choose first advisor meeting',     icon: Calendar,    triggers: 'kickoff-prep' },
+  { id: 'upload-id',         label: 'Upload ID',              sub: 'Passport or driver licence',            icon: Upload,        triggers: 'kyc-verify' },
+  { id: 'esign-engagement',  label: 'Sign engagement letter', sub: 'Services agreement & FICA disclosures', icon: PenLine,       triggers: 'file-setup' },
+  { id: 'risk-profile',      label: 'Complete risk profile',  sub: '12 questions, ~3 minutes',              icon: ClipboardList, triggers: 'advisor-assign' },
+  { id: 'payment-setup',     label: 'Set up payment',         sub: 'Debit order or once-off transfer',      icon: CreditCard,    triggers: 'welcome-pack' },
+  { id: 'pick-kickoff',      label: 'Pick kick-off date',     sub: 'Choose first advisor meeting',          icon: Calendar,      triggers: 'kickoff-prep' },
 ]
 
 const FIRM_STEPS: FirmStep[] = [
-  { id: 'kyc-verify',      label: 'KYC verification',         sub: 'AML, sanctions, PEP screening',          icon: ShieldCheck,    triggerSource: 'upload-id' },
-  { id: 'file-setup',      label: 'Contract & file setup',    sub: 'Mandate filed, client folder created',   icon: FolderPlus,     triggerSource: 'esign-mandate' },
-  { id: 'advisor-assign',  label: 'Advisor assignment',       sub: 'Matched to risk band and sector',        icon: UserPlus,       triggerSource: 'risk-profile' },
-  { id: 'welcome-pack',    label: 'Welcome pack sent',        sub: 'Branded portfolio and portal login',     icon: Mail,           triggerSource: 'payment-setup' },
-  { id: 'kickoff-prep',    label: 'Kick-off prep',            sub: 'Advisor briefed, meeting confirmed',     icon: CalendarCheck,  triggerSource: 'pick-kickoff' },
+  { id: 'kyc-verify',      label: 'KYC verification',         sub: 'AML, sanctions, PEP screening',           role: 'Compliance team',  icon: ShieldCheck,   triggerSource: 'upload-id',        processMs: 1800 },
+  { id: 'file-setup',      label: 'Contract & file setup',    sub: 'Engagement filed, client folder created', role: 'Ops admin',        icon: FolderPlus,    triggerSource: 'esign-engagement', processMs: 900 },
+  { id: 'advisor-assign',  label: 'Advisor assignment',       sub: 'Matched to risk band and sector',         role: 'Manager',          icon: UserPlus,      triggerSource: 'risk-profile',     processMs: 1100 },
+  { id: 'welcome-pack',    label: 'Welcome pack sent',        sub: 'Branded portfolio and portal login',      role: 'Client services',  icon: Mail,          triggerSource: 'payment-setup',    processMs: 700 },
+  { id: 'kickoff-prep',    label: 'Kick-off prep',            sub: 'Advisor briefed, meeting confirmed',      role: 'Advisor',          icon: CalendarCheck, triggerSource: 'pick-kickoff',     processMs: 1500 },
 ]
-
-const FIRM_PROCESS_MS = 1400
 
 // ---------------------------------------------------------------------------
 // Reactive state — the focus onboarding
@@ -60,11 +60,11 @@ type ClientStatus = 'pending' | 'done'
 type FirmStatus = 'pending' | 'processing' | 'done'
 
 const clientState = reactive<Record<ClientStepId, ClientStatus>>({
-  'upload-id':      'pending',
-  'esign-mandate':  'pending',
-  'risk-profile':   'pending',
-  'payment-setup':  'pending',
-  'pick-kickoff':   'pending',
+  'upload-id':        'pending',
+  'esign-engagement': 'pending',
+  'risk-profile':     'pending',
+  'payment-setup':    'pending',
+  'pick-kickoff':     'pending',
 })
 
 const firmState = reactive<Record<FirmStepId, FirmStatus>>({
@@ -74,6 +74,13 @@ const firmState = reactive<Record<FirmStepId, FirmStatus>>({
   'welcome-pack':   'pending',
   'kickoff-prep':   'pending',
 })
+
+interface ActivityEntry {
+  t: number
+  label: string
+  action: 'started' | 'complete'
+}
+const firmActivityLog = ref<ActivityEntry[]>([])
 
 const startedAt = ref<number | null>(null)
 const now = ref(Date.now())
@@ -95,6 +102,10 @@ const elapsedSeconds = computed(() => {
   return Math.floor((now.value - startedAt.value) / 1000)
 })
 
+function logFirmActivity(label: string, action: ActivityEntry['action']) {
+  firmActivityLog.value.push({ t: elapsedSeconds.value, label, action })
+}
+
 const clientDoneCount = computed(() =>
   CLIENT_STEPS.filter((s) => clientState[s.id] === 'done').length,
 )
@@ -111,6 +122,12 @@ function formatElapsed(secs: number): string {
   return `${m}m ${s.toString().padStart(2, '0')}s`
 }
 
+function formatClock(secs: number): string {
+  const m = Math.floor(secs / 60)
+  const s = secs % 60
+  return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`
+}
+
 // ---------------------------------------------------------------------------
 // Actions
 // ---------------------------------------------------------------------------
@@ -124,20 +141,21 @@ function completeClientStep(id: ClientStepId) {
   }
   clientState[id] = 'done'
 
-  // The matching firm step starts processing immediately, then completes.
-  const firmId = CLIENT_STEPS.find((s) => s.id === id)!.triggers
-  firmState[firmId] = 'processing'
+  const firmStep = FIRM_STEPS.find(
+    (s) => s.id === CLIENT_STEPS.find((c) => c.id === id)!.triggers,
+  )!
+  firmState[firmStep.id] = 'processing'
+  logFirmActivity(firmStep.label, 'started')
   const t = setTimeout(() => {
-    firmState[firmId] = 'done'
+    firmState[firmStep.id] = 'done'
+    logFirmActivity(firmStep.label, 'complete')
     if (isActive.value && finalElapsedSeconds.value === null) {
       finalElapsedSeconds.value = elapsedSeconds.value
       stopTick()
     }
-  }, FIRM_PROCESS_MS)
+  }, firmStep.processMs)
   firmTimers.push(t)
 
-  // If the user is mid-nudge simulation, completing a step "un-sticks" the
-  // client — close the simulator.
   if (stuckRunning.value) stopStuckScenario()
 }
 
@@ -152,6 +170,7 @@ function resetOnboarding() {
   firmTimers.length = 0
   stopStuckScenario()
   nudgeLog.value = []
+  firmActivityLog.value = []
 }
 
 // ---------------------------------------------------------------------------
@@ -182,9 +201,7 @@ function startStuckScenario() {
   const step = firstPendingClientStep.value
   if (!step) return
   stuckRunning.value = true
-  nudgeLog.value = [
-    { t: 0, channel: 'email', text: `Client idle on "${step.label}". Watching for activity.` },
-  ]
+  nudgeLog.value = []
   stuckNudgeCount = 0
   scheduleNextNudge(step.label)
 }
@@ -239,32 +256,33 @@ type BoardState = 'in-progress' | 'active' | 'stuck'
 interface BoardRow {
   name: string
   context: string
+  advisor: string
   doneClient: number
   doneFirm: number
   state: BoardState
   note?: string
 }
 
-const board: BoardRow[] = [
-  { name: 'Asha Patel',       context: 'Private equity exec',     doneClient: 5, doneFirm: 4, state: 'in-progress', note: 'Kick-off prep finalising' },
-  { name: 'Marcus Vellios',   context: 'Family office trustee',   doneClient: 5, doneFirm: 5, state: 'active' },
-  { name: 'Yuki Hong',        context: 'Tech founder, post-exit', doneClient: 2, doneFirm: 2, state: 'stuck', note: 'E-sign idle 3d · advisor notified' },
-  { name: 'David Okonkwo',    context: 'Property developer',      doneClient: 1, doneFirm: 1, state: 'in-progress', note: 'KYC running' },
-  { name: 'Sophia Hartmann',  context: 'Surgeon, retiring',       doneClient: 5, doneFirm: 5, state: 'active' },
-]
+const board: readonly BoardRow[] = [
+  { name: 'Asha Patel',       context: 'Private equity exec',     advisor: 'Priya Reddy',     doneClient: 5, doneFirm: 4, state: 'in-progress', note: 'Kick-off prep finalising' },
+  { name: 'Marcus Vellios',   context: 'Family office trustee',   advisor: 'Tariq Hendricks', doneClient: 5, doneFirm: 5, state: 'active' },
+  { name: 'Yuki Hong',        context: 'Tech founder, post-exit', advisor: 'Sarah K',         doneClient: 1, doneFirm: 1, state: 'stuck', note: 'Engagement letter idle 3d · advisor notified' },
+  { name: 'David Okonkwo',    context: 'Property developer',      advisor: 'Priya Reddy',     doneClient: 1, doneFirm: 0, state: 'in-progress', note: 'KYC running' },
+  { name: 'Sophia Hartmann',  context: 'Surgeon, retiring',       advisor: 'Tariq Hendricks', doneClient: 5, doneFirm: 5, state: 'active' },
+] as const
 
 const boardSummary = computed(() => {
   const stuck = board.filter((r) => r.state === 'stuck').length
   const active = board.filter((r) => r.state === 'active').length
-  const live = board.length - active
-  return { stuck, active, live }
+  const inProgress = board.length - active - stuck
+  return { stuck, active, inProgress }
 })
 
 // ---------------------------------------------------------------------------
 // Visual helpers
 // ---------------------------------------------------------------------------
 
-function clientStepClasses(status: ClientStatus, _disabled: boolean): string {
+function clientStepClasses(status: ClientStatus): string {
   if (status === 'done') {
     return 'border-cyan-brand/40 ring-1 ring-cyan-brand/20 bg-white'
   }
@@ -314,9 +332,16 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
     <div class="relative border-b border-line bg-surface-alt/60">
       <div class="px-5 md:px-7 py-5 md:py-6 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
         <div>
-          <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
-            <span class="dot" />
-            Interactive demo
+          <div class="flex flex-wrap items-center gap-2">
+            <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
+              <span class="dot" />
+              Interactive demo
+            </div>
+            <span
+              class="inline-flex items-center rounded-full border border-line bg-white px-2 py-0.5 text-[10.5px] uppercase tracking-[0.18em] font-semibold text-mute-2"
+            >
+              Example scenario
+            </span>
           </div>
           <div class="mt-2 flex items-center gap-3">
             <span class="inline-flex h-9 w-9 items-center justify-center rounded-lg bg-white text-cyan-brand-deep ring-1 ring-line">
@@ -327,7 +352,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
                 Aria Pillay · joining today
               </div>
               <div class="text-[13.5px] text-mute">
-                HNW client onboarding · Pinnacle Wealth Advisors
+                HNW client onboarding · Pinnacle Wealth Advisors · Advisor: Sarah K
               </div>
             </div>
           </div>
@@ -361,15 +386,15 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
         >
           <Clock :size="13" :stroke-width="2" aria-hidden="true" />
           Old way:&nbsp;<span class="text-ink font-semibold">~14 days</span>&nbsp;of email chase.
-          <span class="text-cyan-brand-deep font-semibold ml-1">This run is live.</span>
+          <span class="text-cyan-brand-deep font-semibold ml-1">This is a sped-up demo of the live workflow.</span>
         </div>
         <div
           v-else
           class="inline-flex items-center gap-2 rounded-full border border-cyan-brand/40 bg-cyan-brand/8 px-3 py-1.5 text-[12.5px] text-ink"
         >
           <Sparkles :size="13" :stroke-width="2" aria-hidden="true" class="text-cyan-brand-deep" />
-          Active in&nbsp;<span class="font-semibold tabular-nums">{{ formatElapsed(finalElapsedSeconds) }}</span>.
-          Old way: ~14 days. <span class="text-cyan-brand-deep font-semibold ml-1">Days saved: ~14.</span>
+          Workflow complete.
+          <span class="text-cyan-brand-deep font-semibold ml-1">In production: time-to-active under 2 days, down from ~14.</span>
         </div>
       </div>
     </div>
@@ -406,7 +431,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
               :disabled="clientState[step.id] === 'done'"
               :class="[
                 'group w-full flex items-center gap-3 rounded-xl border px-3.5 py-3 text-left transition-colors',
-                clientStepClasses(clientState[step.id], false),
+                clientStepClasses(clientState[step.id]),
                 clientState[step.id] === 'done' ? 'cursor-default' : 'cursor-pointer',
               ]"
               @click="completeClientStep(step.id)"
@@ -490,7 +515,10 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
               <span class="block text-[14.5px] font-semibold text-ink leading-tight">
                 {{ step.label }}
               </span>
-              <span class="block text-[12.5px] text-mute mt-0.5">{{ step.sub }}</span>
+              <span class="block text-[12.5px] text-mute mt-0.5">
+                <span class="font-semibold text-ink-soft">{{ step.role }}</span>
+                <span class="text-mute-2"> · {{ step.sub }}</span>
+              </span>
             </span>
             <span
               :class="[
@@ -506,6 +534,31 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
         <p class="mt-4 text-[12.5px] text-mute-2">
           Each firm step starts the moment the matching client step finishes — no inbox in between.
         </p>
+
+        <!-- Activity log — every firm-step transition lands here with a
+             relative timestamp. Makes the audit-trail pillar visible. -->
+        <div
+          v-if="firmActivityLog.length"
+          class="mt-4 rounded-xl border border-line bg-surface-alt/60 p-3"
+        >
+          <div class="flex items-center gap-2 text-[10.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">
+            <Eye :size="12" :stroke-width="2" aria-hidden="true" />
+            Activity log
+          </div>
+          <ul class="mt-2 space-y-1">
+            <li
+              v-for="(a, i) in firmActivityLog"
+              :key="i"
+              class="flex items-baseline gap-3 text-[12.5px] text-ink"
+            >
+              <span class="text-mute-2 tabular-nums shrink-0">{{ formatClock(a.t) }}</span>
+              <span class="min-w-0">
+                {{ a.label }}
+                <span class="text-mute-2"> · {{ a.action }}</span>
+              </span>
+            </li>
+          </ul>
+        </div>
       </section>
     </div>
 
@@ -609,7 +662,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
             </span>
             <span class="inline-flex items-center gap-1.5">
               <span class="h-1.5 w-1.5 rounded-full bg-mute-2/60" />
-              {{ boardSummary.live - boardSummary.active }} in progress
+              {{ boardSummary.inProgress }} in progress
             </span>
             <span class="inline-flex items-center gap-1.5">
               <span class="h-1.5 w-1.5 rounded-full bg-[#DC2626]" />
@@ -617,6 +670,27 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
             </span>
           </div>
         </header>
+
+        <!-- KPI strip — surfaces the analytics pillar with the metrics the
+             pillar note promises. Static illustrative figures. -->
+        <div class="px-5 py-3 border-b border-line bg-surface-alt/40 grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div>
+            <div class="text-[10.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Median time-to-active</div>
+            <div class="mt-0.5 font-display text-[18px] leading-[1.1] text-ink tabular-nums">1.7 days</div>
+          </div>
+          <div>
+            <div class="text-[10.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Stuck rate (30d)</div>
+            <div class="mt-0.5 font-display text-[18px] leading-[1.1] text-ink tabular-nums">6%</div>
+          </div>
+          <div>
+            <div class="text-[10.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Nudge → resolved</div>
+            <div class="mt-0.5 font-display text-[18px] leading-[1.1] text-ink tabular-nums">78%</div>
+          </div>
+          <div>
+            <div class="text-[10.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Mean nudges / client</div>
+            <div class="mt-0.5 font-display text-[18px] leading-[1.1] text-ink tabular-nums">1.4</div>
+          </div>
+        </div>
 
         <ul class="divide-y divide-line">
           <li
@@ -626,7 +700,10 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
           >
             <div class="md:col-span-3 min-w-0">
               <div class="text-[14.5px] font-semibold text-ink truncate">{{ row.name }}</div>
-              <div class="text-[12.5px] text-mute truncate">{{ row.context }}</div>
+              <div class="text-[12.5px] text-mute truncate">
+                {{ row.context }}
+                <span class="text-mute-2"> · {{ row.advisor }}</span>
+              </div>
             </div>
 
             <div class="md:col-span-3 flex items-center gap-2">
@@ -676,7 +753,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
         </ul>
 
         <div class="px-5 py-3 border-t border-line bg-surface-alt/50 text-[12.5px] text-mute">
-          One client stuck — escalated automatically. The other four are running on rails.
+          One client stuck — escalated automatically. The other four advance without intervention.
         </div>
       </section>
     </div>
