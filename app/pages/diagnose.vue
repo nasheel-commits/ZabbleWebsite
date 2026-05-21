@@ -6,6 +6,9 @@ import {
   Check,
   X,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
+  Clock,
   Loader2,
   Workflow,
   ShieldCheck,
@@ -185,7 +188,97 @@ const answers = reactive({
     company: '',
     phone: '',
     walkAway: '',
+    preferredDate: null as Date | null,
+    preferredTime: null as string | null,
   },
+})
+
+const today = new Date()
+today.setHours(0, 0, 0, 0)
+const calendarMonth = ref(new Date(today.getFullYear(), today.getMonth(), 1))
+
+const monthLabel = computed(() =>
+  calendarMonth.value.toLocaleDateString('en-US', { month: 'long', year: 'numeric' }),
+)
+
+const calendarDays = computed(() => {
+  const year = calendarMonth.value.getFullYear()
+  const month = calendarMonth.value.getMonth()
+  const firstWeekday = new Date(year, month, 1).getDay()
+  const totalDays = new Date(year, month + 1, 0).getDate()
+  const cells: (Date | null)[] = []
+  for (let i = 0; i < firstWeekday; i++) cells.push(null)
+  for (let d = 1; d <= totalDays; d++) cells.push(new Date(year, month, d))
+  return cells
+})
+
+const canPrevMonth = computed(() => {
+  const cur = calendarMonth.value
+  return (
+    cur.getFullYear() > today.getFullYear() ||
+    (cur.getFullYear() === today.getFullYear() && cur.getMonth() > today.getMonth())
+  )
+})
+
+function isPast(date: Date) {
+  return date < today
+}
+function isWeekend(date: Date) {
+  const d = date.getDay()
+  return d === 0 || d === 6
+}
+function isToday(date: Date) {
+  return date.getTime() === today.getTime()
+}
+function isDateSelected(date: Date) {
+  const sd = answers.contact.preferredDate
+  return !!sd && sd.getTime() === date.getTime()
+}
+function isUnavailable(date: Date) {
+  return isPast(date) || isWeekend(date)
+}
+function selectDate(date: Date) {
+  if (isUnavailable(date)) return
+  answers.contact.preferredDate = new Date(date)
+}
+function prevMonth() {
+  if (!canPrevMonth.value) return
+  calendarMonth.value = new Date(
+    calendarMonth.value.getFullYear(),
+    calendarMonth.value.getMonth() - 1,
+    1,
+  )
+}
+function nextMonth() {
+  calendarMonth.value = new Date(
+    calendarMonth.value.getFullYear(),
+    calendarMonth.value.getMonth() + 1,
+    1,
+  )
+}
+function selectTime(slot: string) {
+  answers.contact.preferredTime = slot
+}
+
+const timeSlots = [
+  '9:00 AM', '9:30 AM',
+  '10:00 AM', '10:30 AM',
+  '11:00 AM', '11:30 AM',
+  '12:00 PM', '12:30 PM',
+  '1:00 PM', '1:30 PM',
+  '2:00 PM', '2:30 PM',
+  '3:00 PM', '3:30 PM',
+  '4:00 PM', '4:30 PM',
+]
+
+const selectedDateLabel = computed(() => {
+  const sd = answers.contact.preferredDate
+  if (!sd) return ''
+  return sd.toLocaleDateString('en-US', {
+    weekday: 'long',
+    month: 'long',
+    day: 'numeric',
+  })
 })
 
 const currentDef = computed(() => stepDefs[currentStep.value - 1])
@@ -313,6 +406,12 @@ const profile = computed(() => {
 })
 
 const calendarUrl = computed(() => {
+  const preferredWhen =
+    answers.contact.preferredDate && answers.contact.preferredTime
+      ? `${selectedDateLabel.value} at ${answers.contact.preferredTime}`
+      : answers.contact.preferredDate
+        ? selectedDateLabel.value
+        : ''
   const summary = [
     `Name: ${answers.contact.name}`,
     `Company: ${answers.contact.company}`,
@@ -322,6 +421,7 @@ const calendarUrl = computed(() => {
     `Tried so far: ${answers.tried ?? '(not specified)'}`,
     `Timeline: ${answers.timeline ?? '(not specified)'}`,
     `Decision: ${answers.decisionAuthority ?? '(not specified)'}`,
+    preferredWhen ? `Preferred call time: ${preferredWhen}` : '',
     answers.contact.walkAway
       ? `Wants to walk away with: ${answers.contact.walkAway}`
       : '',
@@ -581,6 +681,111 @@ const stepFrame = computed(
                       class="form-field"
                     />
                   </label>
+                </div>
+
+                <div>
+                  <div class="flex items-baseline justify-between gap-3 mb-2.5">
+                    <span class="block text-[13px] font-semibold text-ink tracking-[0.01em]">
+                      Preferred call time
+                      <span class="font-normal text-mute-2">(optional)</span>
+                    </span>
+                    <span
+                      v-if="answers.contact.preferredDate && answers.contact.preferredTime"
+                      class="inline-flex items-center gap-1.5 text-[12.5px] text-cyan-brand-deep font-semibold"
+                    >
+                      <Check :size="13" :stroke-width="2.4" />
+                      {{ selectedDateLabel }} · {{ answers.contact.preferredTime }}
+                    </span>
+                  </div>
+                  <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                    <div class="rounded-xl border border-line bg-white p-4">
+                      <div class="flex items-center justify-between mb-3">
+                        <button
+                          type="button"
+                          @click="prevMonth"
+                          :disabled="!canPrevMonth"
+                          aria-label="Previous month"
+                          class="inline-flex items-center justify-center h-8 w-8 rounded-md text-mute hover:text-ink hover:bg-surface-alt disabled:text-mute-2/40 disabled:cursor-not-allowed transition"
+                        >
+                          <ChevronLeft :size="18" />
+                        </button>
+                        <span class="text-[13.5px] font-semibold text-ink">{{ monthLabel }}</span>
+                        <button
+                          type="button"
+                          @click="nextMonth"
+                          aria-label="Next month"
+                          class="inline-flex items-center justify-center h-8 w-8 rounded-md text-mute hover:text-ink hover:bg-surface-alt transition"
+                        >
+                          <ChevronRight :size="18" />
+                        </button>
+                      </div>
+                      <div class="grid grid-cols-7 gap-1 text-center text-[11px] uppercase tracking-[0.1em] text-mute-2 font-semibold mb-1.5">
+                        <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+                      </div>
+                      <div class="grid grid-cols-7 gap-1">
+                        <template v-for="(day, i) in calendarDays" :key="i">
+                          <span v-if="!day" class="h-9" aria-hidden="true" />
+                          <button
+                            v-else
+                            type="button"
+                            @click="selectDate(day)"
+                            :disabled="isUnavailable(day)"
+                            :aria-pressed="isDateSelected(day)"
+                            :class="[
+                              'h-9 w-full inline-flex items-center justify-center rounded-md text-[13.5px] font-medium transition',
+                              isDateSelected(day)
+                                ? 'bg-cyan-brand text-ink ring-1 ring-cyan-brand-deep'
+                                : isUnavailable(day)
+                                ? 'text-mute-2/40 cursor-not-allowed'
+                                : isToday(day)
+                                ? 'text-ink ring-1 ring-line hover:bg-surface-alt'
+                                : 'text-ink hover:bg-surface-alt',
+                            ]"
+                          >
+                            {{ day.getDate() }}
+                          </button>
+                        </template>
+                      </div>
+                      <p class="mt-3 text-[11.5px] text-mute-2 leading-relaxed">
+                        Weekends and past dates are unavailable.
+                      </p>
+                    </div>
+
+                    <div class="rounded-xl border border-line bg-white p-4">
+                      <div
+                        v-if="!answers.contact.preferredDate"
+                        class="flex flex-col items-center justify-center text-center min-h-[200px] text-mute-2"
+                      >
+                        <Clock :size="22" :stroke-width="1.7" class="mb-2" />
+                        <p class="text-[13.5px]">Pick a date to see available times.</p>
+                      </div>
+                      <div v-else>
+                        <div class="flex items-center gap-2 mb-3">
+                          <Clock :size="14" :stroke-width="2" class="text-cyan-brand-deep" />
+                          <span class="text-[13px] font-semibold text-ink">
+                            {{ selectedDateLabel }}
+                          </span>
+                        </div>
+                        <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 gap-2">
+                          <button
+                            v-for="slot in timeSlots"
+                            :key="slot"
+                            type="button"
+                            @click="selectTime(slot)"
+                            :aria-pressed="answers.contact.preferredTime === slot"
+                            :class="[
+                              'py-2 rounded-md text-[12.5px] font-semibold transition',
+                              answers.contact.preferredTime === slot
+                                ? 'bg-cyan-brand text-ink ring-1 ring-cyan-brand-deep'
+                                : 'border border-line text-ink hover:border-cyan-brand/55 hover:bg-cyan-brand/[0.04]',
+                            ]"
+                          >
+                            {{ slot }}
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <label class="block">
