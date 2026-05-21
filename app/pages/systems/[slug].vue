@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ArrowLeft } from '@lucide/vue'
+import { ArrowLeft, ArrowRight } from '@lucide/vue'
 
 import { PILLARS, systemBySlug } from '~/data/systems'
 
@@ -22,6 +22,11 @@ const sys = computed(() => system.value!)
 
 const pillarMetas = computed(() =>
   PILLARS.filter((p) => sys.value.pillars.includes(p.slug)),
+)
+
+const PILLAR_WORDS = ['no', 'one', 'two', 'three', 'four']
+const pillarJobsWord = computed(
+  () => PILLAR_WORDS[pillarMetas.value.length] ?? 'four',
 )
 
 useHead({
@@ -61,6 +66,15 @@ useHead({
 
       <!-- Triptych -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24">
+        <div v-reveal class="mb-7 md:mb-9 max-w-2xl">
+          <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
+            <span class="dot" />
+            How we work
+          </div>
+          <p class="mt-3 text-[15.5px] md:text-[16px] leading-[1.65] text-ink">
+            We sit with your business. We find the operational problem costing you the most. We build the system that fixes it.
+          </p>
+        </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
           <article
             v-reveal:scale
@@ -70,8 +84,7 @@ useHead({
               The Problem
             </div>
             <p class="mt-3 text-[15.5px] md:text-[16px] leading-[1.65] text-ink">
-              <!-- TODO: replace with sys.problem once content is written. -->
-              {{ sys.problem ?? 'TODO — Describe the operational problem the client was living with.' }}
+              {{ sys.problem }}
             </p>
           </article>
 
@@ -83,8 +96,7 @@ useHead({
               What We Built
             </div>
             <p class="mt-3 text-[15.5px] md:text-[16px] leading-[1.65] text-ink">
-              <!-- TODO: replace with sys.whatWeBuilt. -->
-              {{ sys.whatWeBuilt ?? 'TODO — Describe the system we built, in plain language.' }}
+              {{ sys.whatWeBuilt }}
             </p>
           </article>
 
@@ -96,8 +108,7 @@ useHead({
               What Changed
             </div>
             <p class="mt-3 text-[15.5px] md:text-[16px] leading-[1.65] text-ink">
-              <!-- TODO: replace with sys.whatChanged. -->
-              {{ sys.whatChanged ?? 'TODO — What changed for the business after we shipped.' }}
+              {{ sys.whatChanged }}
             </p>
           </article>
         </div>
@@ -105,7 +116,34 @@ useHead({
 
       <!-- Interactive demo placeholder -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24">
+        <div v-reveal class="mb-5 md:mb-6 max-w-2xl">
+          <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
+            <span class="dot" />
+            Example deployment
+          </div>
+          <p class="mt-2 text-[14.5px] md:text-[15px] leading-[1.55] text-mute">
+            {{ sys.demoFraming ?? "One example of how we'd wire this capability. We'd shape it to your business." }}
+          </p>
+        </div>
         <DemoSlot :system-slug="sys.slug" />
+
+        <!-- Mid-page conversion exit after the demo. -->
+        <div
+          v-reveal
+          class="mt-6 md:mt-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-2xl border border-line bg-white px-5 md:px-6 py-4 md:py-5"
+        >
+          <p class="text-[14.5px] md:text-[15px] leading-snug text-ink">
+            <span class="font-semibold">Want one built for your business?</span>
+            <span class="text-mute"> The first conversation is free.</span>
+          </p>
+          <NuxtLink
+            to="/diagnose"
+            class="group inline-flex items-center justify-center gap-2 rounded-lg bg-ink hover:bg-ink-soft text-white text-[14px] font-semibold px-4 py-2.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white shrink-0"
+          >
+            Book a discovery call
+            <ArrowRight :size="15" :stroke-width="2" class="transition-transform duration-200 group-hover:translate-x-0.5" />
+          </NuxtLink>
+        </div>
       </section>
 
       <!-- How it fits the four pillars -->
@@ -113,13 +151,12 @@ useHead({
         <div v-reveal class="max-w-3xl">
           <div class="inline-flex items-center gap-2 text-[12.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
             <span class="dot" />
-            How it fits the four pillars
+            How it fits the {{ pillarJobsWord }} pillar{{ pillarMetas.length === 1 ? '' : 's' }}
           </div>
           <h2
             class="mt-4 font-display text-[28px] sm:text-[34px] md:text-[40px] leading-[1.1] tracking-tight text-ink"
           >
-            <!-- TODO: signed-off lede. -->
-            One system, four jobs.
+            {{ sys.pillarHeading ?? `One system, ${pillarJobsWord} job${pillarMetas.length === 1 ? '' : 's'}.` }}
           </h2>
         </div>
 
@@ -151,7 +188,6 @@ useHead({
               <span class="font-display text-[19px] leading-[1.1] text-ink">{{ p.label }}</span>
             </div>
             <p class="mt-3 text-[14.5px] leading-[1.55] text-mute">
-              <!-- TODO: replace with sys.pillarNotes[p.slug] once content is written. -->
               {{
                 sys.pillarNotes?.[p.slug]
                   ?? (sys.pillars.includes(p.slug)

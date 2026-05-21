@@ -157,25 +157,23 @@ export const SYSTEMS: System[] = [
     slug: 'workflow-orchestrator',
     name: 'Event-Driven Workflow Orchestrator',
     tagline:
-      'When X happens, Y and Z follow — across every downstream system, without anyone touching anything.',
-    pillars: ['automation', 'audit-trails', 'anomaly-detection'],
+      'When one event happens, the right thing happens in every other system — without your team touching anything.',
+    pillars: ['automation', 'audit-trails'],
     industry: 'E-commerce, professional services, multi-system operations',
     bestFor:
       'Operators where one business event has to land cleanly in five or six other systems — and the handoffs live in someone\'s head',
     status: 'live',
     problem:
-      'A new order should kick invoicing, deduct stock, raise a fulfilment ticket, schedule dispatch, email the customer, and update the CRM — all of which live in different tools. In most businesses, somebody copy-pastes between them the next morning, and the handoff that gets forgotten is the one that costs the most.',
+      'A new order should fan out across six systems — invoice, stock, ticket, dispatch, email, CRM. In most businesses, someone copy-pastes between them the next morning. The ops manager refreshes the dashboard at 9pm, wondering if Tuesday\'s order went out. The founder finds out at month-end about an invoice no one sent. The handoff that gets forgotten is the one that costs the most.',
     whatWeBuilt:
-      'An orchestrator that listens for business events and fans them out across every downstream system. Each step retries on transient failure, falls back when retries are exhausted, and escalates to a human only when both fail. Every signal — fired, succeeded, failed, retried, fallen-back, escalated — lands in an immutable event log. Workflows reshape from config: add a "notify supplier" step after dispatch and the next run includes it, no engineering work.',
+      'An orchestrator that listens for business events and fans them out across every downstream system. Each step retries on transient failure. Failed retries fall back. If both fail, a human gets paged — with the reason already attached. Every signal — fired, succeeded, failed, retried, fallen-back, escalated — lands in an immutable event log. Workflows reshape from config. Add a "notify supplier" step after dispatch; the next run includes it. No engineering work.',
     whatChanged:
-      'Order-to-dispatch lag dropped from a day to seconds. Failed steps stopped going unnoticed because the orchestrator surfaced them with their trace. The team stopped doing copy-paste between systems and started looking at the small queue of cases that genuinely needed a human.',
+      'Order-to-dispatch lag dropped from a day to seconds. Failed steps stopped going unnoticed because the orchestrator surfaced them with their trace. Copy-paste between systems stopped. The team started looking at the small queue of cases that genuinely needed a human.',
     pillarNotes: {
       'automation':
         'One event fans out across six systems in seconds — invoice raised, stock deducted, ticket opened, dispatch booked, customer emailed, CRM updated. No human keystroke between trigger and outcome.',
       'audit-trails':
         'Every signal carries its event ID, the rule that fired, and the timestamp. Disputes get answered by replaying the chain, not by reconstructing it from email.',
-      'anomaly-detection':
-        'Retries and fallbacks fire silently. The only thing that reaches a human is the case both attempts failed on — with the reason already attached.',
     },
   },
   {
@@ -264,25 +262,23 @@ export const SYSTEMS: System[] = [
     slug: 'document-assembly',
     name: 'Document Assembly System',
     tagline:
-      'Proposals, contracts, statements, board reports — assembled from CRM, pricing engine, and case-study library in seconds. Every field traceable to the source it came from.',
-    pillars: ['automation', 'audit-trails', 'analytics'],
+      'Proposals, contracts, statements, board reports — assembled from the CRM, pricing engine, and case-study library in seconds. Every field traceable to the source it came from.',
+    pillars: ['automation', 'audit-trails'],
     industry: 'Consulting, professional services, finance, B2B sales',
     bestFor:
       'Teams whose proposals, contracts, and statements get rebuilt from scratch every time, by copy-paste, with no audit trail',
     status: 'live',
     problem:
-      'A consulting partner builds a proposal by opening last quarter\'s deck, the CRM tab, the pricing sheet, the case-study folder, and three Slack threads — then copy-pastes for two hours. The contract that follows is rebuilt again. The monthly statement is rebuilt again. Nothing pulls from the same source twice, and when a number is wrong, nobody can say which version of which sheet it came from.',
+      'A consulting partner copy-pastes a proposal for two hours. The CRM, the pricing sheet, the case-study folder, three Slack threads — all open at once. The contract gets rebuilt from scratch. So does the monthly statement. By the third document, the partner has stopped trusting their own numbers. When a client queries the fee, nobody can say which version of which sheet it came from. Each rebuild costs an hour. And the next time the contract and the proposal disagree, the client is the first to notice.',
     whatWeBuilt:
-      'A single assembly engine. Pick the deal, pick the template — proposal, contract, statement, board report — and the engine pulls every field from its live source: client details from the CRM, line items from the pricing engine, success stories from the case-study library, boilerplate from the template itself. Every field is colour-tagged by its source. Any override stays tagged so the team can see exactly where a human stepped in.',
+      'A single assembly engine. Pick the deal. Pick the template — proposal, contract, statement, board report. The engine pulls every field from its live source. Client details from the CRM. Line items from the pricing engine. Success stories from the case-study library. Boilerplate from the template itself. Every field is colour-tagged by its source. Any override stays tagged so the team can see where a human stepped in.',
     whatChanged:
-      'A two-hour proposal became an eight-minute one. The contract behind the proposal stopped contradicting it because both pulled from the same record. Statements went out on time because nobody had to "find" the right numbers anymore. The board report assembled itself on the first of the month from the systems already in place.',
+      'A two-hour proposal became an eight-minute one. The contract stopped contradicting the proposal because both pulled from the same record. Statements went out on time because nobody had to "find" the right numbers. The board report assembled itself on the first of the month. And the partner stopped second-guessing the numbers.',
     pillarNotes: {
       'automation':
-        'The same engine produces a proposal, a contract, a statement or a board report — only the template and the source mix change. Export to PDF, send to e-sign, attach to the deal in the CRM, all from one click.',
+        'The same engine produces a proposal, a contract, a statement, or a board report. Only the template and the source mix change. Export to PDF, send to e-sign, or attach to the deal in the CRM — all from one click.',
       'audit-trails':
-        'Every field carries the source it came from — CRM record, pricing engine line, case-study entry, template constant — and any human override stays tagged. Disputes get resolved by reading the document, not by recreating it.',
-      'analytics':
-        'Time-to-document, override rate, and source-system usage all roll up — so the team can see which templates are doing the work and which sources are most often wrong.',
+        'Every field carries the source it came from. CRM record, pricing engine line, case-study entry, template constant. Human overrides stay tagged. Disputes get resolved by reading the document, not by recreating it.',
     },
   },
   {
@@ -525,19 +521,22 @@ export const SYSTEMS: System[] = [
     bestFor:
       'Operators whose value is created in the field but whose records still live on paper, in WhatsApp, or in someone\'s head until the van gets back to the depot',
     status: 'live',
+    demoFraming:
+      'One example — five trades on one shell. Your trade gets its own forms, checklists and back-office view.',
+    pillarHeading: 'One shell. Forms, audit and analytics shaped to your trade.',
     problem:
-      'The job happens at a customer\'s site, in a basement, on a rooftop, in a van — wherever signal drops out. So the data of the day shows up later, on paper, retyped by an admin, in the wrong order, with the photo missing. Bills go out wrong. Disputes can\'t be resolved. Tomorrow gets planned against yesterday\'s guess.',
+      'The job happens at a customer\'s site, in a basement, on a rooftop, in a van — wherever signal drops out. The data lands later — on paper, retyped by an admin, in the wrong order, the photo missing. Dispatch reads the calendar and guesses where the crews actually are. Bills go out wrong. Disputes can\'t be resolved. Tomorrow gets planned against yesterday\'s guess.',
     whatWeBuilt:
-      'A field app shaped around the role. Same shell, role-specific forms — installer, inspector, driver, social worker, field agent. Offline by default: every action queues locally and syncs the moment connectivity returns. The back office sees the work as it happens — or as the van rolls back into range.',
+      'A field app shaped around the role. Same shell, role-specific forms — installer, inspector, driver, social worker, meter reader. Offline by default: every action queues locally and syncs the moment connectivity returns. The back office sees the work as it happens — or as the van rolls back into range.',
     whatChanged:
-      'Field crews stopped doing double-entry at the end of the day. Disputes get resolved from the timeline, not from memory. Tomorrow\'s schedule is planned against what actually happened today, with the photo, the geo-stamp, and the signature already on file.',
+      'Field crews stopped doing double-entry at the end of the day. Disputes get resolved from the timeline, not from memory. Tomorrow\'s schedule plans against what actually happened today — photo, geo-stamp and signature on file.',
     pillarNotes: {
       'automation':
-        'Job dispatch, route order, post-visit forms, customer notifications and invoicing are triggered by the field events themselves — no admin retyping the day into a back-office system after the fact.',
+        'Field events trigger the back office. Dispatch, route, post-visit forms, customer notifications and invoicing fire from the visit itself. No admin retypes the day.',
       'audit-trails':
-        'Every visit lands as a complete record: who, where (geo-stamped), when, what was checked, what was found, photos, signature. Any job is reconstructable from one timeline.',
+        'Every visit lands as one record: who, where (geo-stamped), when, every check, every finding, photos, signature. The timeline reconstructs the job for any dispute.',
       'analytics':
-        'Live view of crew location, jobs completed, jobs flagged, exception rates and end-of-day rollups — so dispatch and planning stop being a guessing game.',
+        'Live counts of crews on site, jobs completed, jobs flagged and exception rates roll up to dispatch. Planning runs on what\'s actually happening — not on yesterday\'s guess.',
     },
   },
   {
@@ -550,12 +549,15 @@ export const SYSTEMS: System[] = [
     bestFor:
       'Operators whose execs, directors and floor managers all open the same dashboard and find nothing useful on it',
     status: 'live',
+    demoFraming:
+      'One example deployment. Yours would compose around the systems and decisions your business actually runs on.',
+    pillarHeading: 'Two jobs, one platform.',
     problem:
-      'The fleet manager wants driver hours and route exceptions. The CEO wants runway and gross margin. The board wants quarter-on-quarter trend. They all open the same 47-widget dashboard, hunt for two minutes, and give up. Reports get requested instead — and nobody reads those either.',
+      'Four people open the same 47-widget dashboard at 06:30. They hunt for two minutes and close the tab no more informed than when they opened it. Reports get requested instead — and nobody reads those either. The dashboard was supposed to feed the decision; somewhere along the way it became the decision people kept avoiding. The cost lands in the calls that did not get made and the windows that closed while the team was scrolling.',
     whatWeBuilt:
-      'A unified layer that pulls from every operational system in the business, then composes the view by role. Each person sees only the KPIs that feed the decisions they actually make — at the time horizon those decisions live on. Every number is one click away from its calculation, its source systems, the decision it informs, and the action it suggests.',
+      'A unified layer pulls from every operational system in the business, then composes the view by role. Each person sees only the KPIs that feed the decisions they actually make. The time horizon matches the cadence of those decisions. Every number opens its calculation, its source systems, the decision it informs, and the next action. Built for a logistics operator. Same engine, different sources — now also serving a hospitality group and a retail chain.',
     whatChanged:
-      'Each role opens one screen and sees the three decisions they have to make today. The 06:00 briefing arrives in Slack before the operator does — yesterday\'s anomalies, today\'s risks, this morning\'s calls. The old dashboard got archived. Nobody asked for it back.',
+      'Each role opens one screen and sees the decisions they have to make today. The 06:00 briefing arrives in Slack before the operator does — yesterday\'s anomalies, today\'s risks, this morning\'s calls. The old dashboard got archived. Nobody asked for it back.',
     pillarNotes: {
       'analytics':
         'KPIs are chosen by the decision they support, not by what was easy to chart. Same underlying data, four compositions — fleet manager, operations director, CEO, board.',
@@ -629,19 +631,21 @@ export const SYSTEMS: System[] = [
       'Operators sitting on a firehose of events where the costly few are buried among the routine many',
     status: 'live',
     problem:
-      'Fraud, drift and equipment failure all share the same shape: the signal is tiny, it arrives inside an ocean of normal activity, and by the time a human notices, the damage is already booked. Most teams cope by sampling — and the things they miss are exactly the things that hurt.',
+      'Fraud, drift and equipment failure share one shape — a tiny signal inside an ocean of normal activity. By the time a human notices, the damage is already booked. The analyst, the engineer, the data lead — all of them dread finding out too late. Most teams cope by sampling, and the things they miss are the things that hurt.',
     whatWeBuilt:
-      'A single engine that ingests the live stream — card transactions, CRM events, sensor telemetry — and applies the right detector per source. Every event is scored, every flag carries its rule, its history and its suggested action, and every decision lands in an immutable audit trail keyed by case ID.',
+      'A single engine ingests the live stream — card transactions, CRM events, sensor telemetry. The right detector picks up each event by source. Every flag carries its rule, its history, and the suggested action. Every decision lands in an immutable audit trail, keyed by case ID.',
     whatChanged:
-      'The risks that hurt most — fraud, drift, equipment failure — started getting caught at volume. Investigators stopped triaging false positives by hand and started receiving cases with their evidence already attached. Mean time to detection dropped from days to seconds.',
+      'The risks that hurt most — fraud, drift, equipment failure — started getting caught at volume. Investigators stopped triaging false positives by hand. They now receive cases with their evidence already attached. Mean time to detection dropped from days to seconds.',
     pillarNotes: {
       'anomaly-detection':
-        'The same engine runs four detector families in parallel: rules for hard thresholds, statistical models for drift, ML scoring for fraud, and signal-processing on vibration data. Each event picks the right detector for its source.',
+        'Four detector families run in parallel. Rules catch hard thresholds. Statistical models catch drift. Pattern scoring catches fraud. Signal-processing reads vibration data. Each event picks the right detector for its source.',
       'audit-trails':
-        'Every flag opens a case with the rule that fired, the surrounding history, the suggested action and the operator who reviewed it — written once and never edited. Disputes get answered by replay, not by recollection.',
+        'Every flag opens a case. The case holds the rule that fired, the surrounding history, the suggested action, and the operator who reviewed it. Written once, never edited. Disputes get answered by replay, not by recollection.',
       'analytics':
-        'A live sensitivity dial shows the trade-off between coverage and false positives in real time. Weekly replays let the team count what would have been caught, and tune the dial against what the business actually wants to see.',
+        'A live sensitivity dial shows the trade-off between coverage and false positives. Weekly replays let the team count what would have been caught. The dial gets tuned against what the business actually wants to see.',
     },
+    demoFraming:
+      'Three example deployments — same engine. Yours would be one of them, shaped to your business alone.',
   },
   {
     slug: 'pricing-engine',
@@ -738,9 +742,9 @@ export const SYSTEMS: System[] = [
       'Operators whose CRM, accounting, calendar and inventory only ever agree because someone is copying between them by hand',
     status: 'live',
     problem:
-      'You bought eight tools and they pretend not to know each other. The booking platform talks to nobody. Accounting hears about new revenue when the bookkeeper opens the invoices folder. The CRM has yesterday\'s contacts and marketing is emailing customers who churned a month ago. The business runs as eight islands with a person paddling between them.',
+      'You bought eight tools and they pretend not to know each other. The booking platform talks to nobody. Accounting hears about new revenue when the bookkeeper opens the invoices folder. The CRM has yesterday\'s contacts and marketing is emailing customers who churned a month ago. You stopped trusting any single dashboard because you know what didn\'t get copied across. The business runs as eight islands with a person paddling between them.',
     whatWeBuilt:
-      'An integration hub that sits between every system the business already uses. Each tool emits the events it already knows about; the hub fans them out, transforms them, and writes them into every other tool that should know. New bridges are point-and-click — no glue scripts, no agency invoices, no fragile zaps — and every event carries its trail.',
+      'An integration hub that sits between every system the business already uses. Each tool emits the events it already knows about. The hub forwards each one to every other tool that should know — transformed on the way. New bridges are point-and-click — no glue scripts, no agency invoices, no fragile zaps — and every event carries its trail.',
     whatChanged:
       'The team stopped copying. A booking lands once. Within seconds: contact in the CRM, invoice in accounting, slot held in the calendar, campaign target in marketing. New tools slot into the hub the day they arrive instead of becoming the next island.',
     pillarNotes: {
@@ -880,6 +884,9 @@ export const SYSTEMS: System[] = [
       'audit-trails':
         'Every alert carries its rule, the matched condition, the chosen channel, and the recipient set. Missed-alert post-mortems read the trail instead of guessing where the message went.',
     },
+    demoFraming:
+      'One example — five channels, four personas, one rota. Yours would use the channels your team already lives in, with the rules your business already follows.',
+    pillarHeading: 'One engine. Three jobs done before anyone is woken up for nothing.',
   },
 ]
 
