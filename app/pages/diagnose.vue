@@ -168,7 +168,7 @@ const stepDefs: StepDef[] = [
   },
   {
     key: 'contact',
-    question: 'Last step, your details and a time that works.',
+    question: 'Last step: your details and a time that works.',
     helper:
       "We'll book the call, send a calendar invite with a Google Meet link, and email you your Operational Pain Profile. Nothing else.",
   },
@@ -539,7 +539,7 @@ const profileMap = {
   automation: {
     title: 'Too much of your week goes to work a system should be doing.',
     icon: Workflow,
-    body: "When the same manual steps repeat every week, the cost compounds quietly. It's rarely just the hours, it's the focus those hours pull away from the work only your team can do.",
+    body: "When the same manual steps repeat every week, the cost compounds quietly. It's rarely just the hours; it's the focus those hours pull away from the work only your team can do.",
     quote:
       '“Three people were spending half their week on the same spreadsheet. We replaced that whole flow with one system, and those hours came straight back to the business.”',
   },
@@ -565,7 +565,7 @@ const profileMap = {
       '“For the first time, every meeting starts with the same numbers. Decisions take half as long.”',
   },
   all: {
-    title: "The strain isn't in one place, it's in how the whole operation runs.",
+    title: "The strain isn't in one place; it's in how the whole operation runs.",
     icon: Layers,
     body: "Past a certain scale, manual work, blind spots, risk, and thin reporting stop being separate problems and start feeding each other. The work is sequencing the fix, starting where the impact is biggest, not attempting all of it at once.",
     quote:
@@ -586,7 +586,7 @@ const costPhrase: Record<string, string> = {
   money: 'the cost is landing mostly as money',
   risk: "the cost is mostly risk you can't afford to carry",
   opportunity: 'the cost is mostly opportunities slipping past',
-  unsure: "you're not yet sure where the cost is hiding, itself a telling sign",
+  unsure: "you're not yet sure where the cost is hiding, which is itself a telling sign",
 }
 const triedPhrase: Record<string, string> = {
   saas: "off-the-shelf tools haven't quite fit",
@@ -620,7 +620,8 @@ const synthesis = computed(() => {
       ? parts[0]
       : `${parts.slice(0, -1).join(', ')}, and ${parts[parts.length - 1]}`
   const sentence = joined.charAt(0).toUpperCase() + joined.slice(1)
-  return `${sentence}. That's a starting point, not a verdict, ${tail}`
+  const Tail = tail.charAt(0).toUpperCase() + tail.slice(1)
+  return `${sentence}. That's a starting point, not a verdict. ${Tail}`
 })
 
 // --- Readable summary of every answer, for the API / email / calendar -------
@@ -650,7 +651,7 @@ const fallbackMailto = computed(() => {
   const summary = summaryLines.value.join('\n')
   const body =
     `Hi Zabble,\n\nI just completed the Operational Pain Profile and I'd like to book the 30-minute discovery call` +
-    `${preferredWhen ? `, my preferred time is ${preferredWhen}` : ''}.\n\n` +
+    `${preferredWhen ? `; my preferred time is ${preferredWhen}` : ''}.\n\n` +
     `My answers:\n${summary}\n\n` +
     `Name: ${answers.contact.name}\nCompany: ${answers.contact.company}` +
     `${answers.contact.phone ? `\nPhone: ${answers.contact.phone}` : ''}` +
@@ -1026,13 +1027,13 @@ const stepFrame = computed(
                           v-if="!slotsLoading && allSlotsUnavailable"
                           class="mt-2.5 text-[11.5px] text-mute-2 leading-relaxed"
                         >
-                          No more times available on this day, please pick another date.
+                          No more times available on this day. Please pick another date.
                         </p>
                         <p
                           v-else-if="!slotsLoading && blockedSlotsOnDate > 0"
                           class="mt-2.5 text-[11.5px] text-mute-2 leading-relaxed"
                         >
-                          Crossed-out times aren't available, already booked, or less than an
+                          Crossed-out times aren't available: already booked, or less than an
                           hour away.
                         </p>
                       </div>
@@ -1057,7 +1058,7 @@ const stepFrame = computed(
                   v-if="slotConflict"
                   class="rounded-xl border border-cyan-brand/40 bg-cyan-brand/[0.06] px-4 py-3 text-[13.5px] text-ink leading-[1.55]"
                 >
-                  That time just became unavailable, we've refreshed the calendar,
+                  That time just became unavailable. We've refreshed the calendar, so
                   please pick another slot.
                 </p>
 
@@ -1179,7 +1180,7 @@ const stepFrame = computed(
                   We couldn't lock the time in automatically.
                 </p>
                 <p class="mx-auto mt-2 max-w-md text-[14px] text-mute leading-[1.6]">
-                  No problem, your profile is ready below. Send us one click and we'll
+                  No problem. Your profile is ready below. Send us one click and we'll
                   confirm your call by hand, usually within a few hours.
                 </p>
                 <a
