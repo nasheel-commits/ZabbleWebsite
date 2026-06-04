@@ -1,0 +1,45 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0 sec.",
+    "cost": 0,
+    "tasks_count": 1,
+    "tasks_error": 1,
+    "tasks": [
+        {
+            "id": "06041503-1876-0347-0000-31a3c5826a56",
+            "status_code": 40204,
+            "status_message": "Access denied. Visit Plans and Subscriptions to activate your subscription and get access to this API: https:\/\/app.dataforseo.com\/backlinks-subscription .",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "backlinks",
+                "bulk_ranks",
+                "live"
+            ],
+            "data": {
+                "api": "backlinks",
+                "function": "bulk_ranks",
+                "targets": [
+                    "zabble.org",
+                    "scrums.com",
+                    "synthesis.co.za",
+                    "dvt.co.za",
+                    "specno.com",
+                    "platform45.com",
+                    "runninghill.co.za",
+                    "gendac.co.za",
+                    "smudge.co.za",
+                    "bbdsoftware.com",
+                    "iqbusiness.net",
+                    "webtonic.co.za",
+                    "quadrantsystems.co.za"
+                ]
+            },
+            "result": null
+        }
+    ]
+}

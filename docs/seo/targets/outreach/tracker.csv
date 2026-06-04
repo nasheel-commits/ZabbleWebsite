@@ -1,0 +1,16 @@
+date_added,prospect,type,priority,url,contact,angle,anchor_type,destination_url,status,date_contacted,date_live,live_link_url,notes
+2026-06-04,Google Business Profile,Foundation,P0,business.google.com,,Foundation,Branded,https://zabble.org,prospect,,,,Anchor citation. Needs B6 NAP + owner login.
+2026-06-04,LinkedIn Company Page,Foundation,P0,linkedin.com/company,,Foundation,Branded,https://zabble.org,prospect,,,,Highest-trust entity; sameAs for S08.
+2026-06-04,Crunchbase,Foundation,P0,crunchbase.com,,Foundation,Branded,https://zabble.org,prospect,,,,Company entity; AI-ingested.
+2026-06-04,Clutch.co,B2B review,P1,clutch.co,,Foundation,Branded,https://zabble.org,prospect,,,,Claim profile; gather 2-3 reviews then list inclusion.
+2026-06-04,GoodFirms,B2B review,P1,goodfirms.co,,Foundation,Branded,https://zabble.org,prospect,,,,SA software listings.
+2026-06-04,DesignRush,B2B directory,P1,designrush.com,,Foundation,Branded,https://zabble.org,prospect,,,,Agency/dev-firm directory; ranks SA.
+2026-06-04,BusinessTech,SA media,P1,businesstech.co.za,,Angle 1 - reference asset,Generic,https://zabble.org/insights/south-african-operations-software-landscape,prospect,,,,Pitch landscape asset / automation-ROI angle.
+2026-06-04,MyBroadband,SA media,P1,mybroadband.co.za,,Angle 2 - build vs buy,Generic,https://zabble.org/insights/south-african-operations-software-landscape,prospect,,,,SA tech audience.
+2026-06-04,ITWeb,SA media,P1,itweb.co.za,,Angle 2 - build vs buy,Partial,https://zabble.org/insights/south-african-operations-software-landscape,prospect,,,,Enterprise IT; bespoke-vs-buy.
+2026-06-04,Ventureburn,SA media,P1,ventureburn.com,,Angle 5 - founder story,Branded,https://zabble.org/about,prospect,,,,SA startup/tech.
+2026-06-04,Bizcommunity,SA media,P1,bizcommunity.com,,Angle 1 - reference asset,Branded,https://zabble.org,prospect,,,,Company profile + op-eds; also a citation.
+2026-06-04,Brabys,SA directory,P1,brabys.com,,Foundation,Branded,https://zabble.org,prospect,,,,SA business directory. Needs B6 NAP.
+2026-06-04,Nichemarket,SA directory,P1,nichemarket.co.za,,Foundation,Branded,https://zabble.org,prospect,,,,SA directory + possible guest content.
+2026-06-04,KnvilLabs,Partner,P1,,,Angle 5 - partner,Branded,https://zabble.org/about,prospect,,,,Kairos co-build; reciprocal link.
+2026-06-04,Hotfrog SA,SA directory,P2,hotfrog.co.za,,Foundation,Branded,https://zabble.org,prospect,,,,Aggregator citation.

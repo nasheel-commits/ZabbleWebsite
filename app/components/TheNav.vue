@@ -45,6 +45,7 @@ const tabs: NavTab[] = [
   { label: 'Home', to: '/#home' },
   { label: 'Systems', to: '/systems' },
   { label: 'What We Build', to: '/what-we-build' },
+  { label: 'Industries', to: '/industries' },
   { label: 'Insights', to: '/blog' },
   { label: 'Use Cases', to: '/#meet' },
   { label: 'Contact', to: '/#contact' },

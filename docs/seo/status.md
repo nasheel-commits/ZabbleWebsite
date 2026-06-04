@@ -37,6 +37,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 > `seo/10-content` (≠ the conventions' `seo/06-content`). Delivered there to
 > satisfy the issued goal; functionally this is session 06. See
 > `audits/10-content.md` §0 for the reconciliation. Off-page (true S10) untouched.
+| 10 | Off-Page, Local SEO & Measurement | `seo/04-offpage-local` | S04 | **done** (audit + **on-site implementation**) | 00, 05 | **Audit:** competitor map, content/link gaps, digital-PR + velocity plan. **Built + tested:** 5 ZA metro landings + 8 industry pages + linkbait asset + About/Press (all server-rendered, 52 pages, `nuxt generate` clean, `test:seo` 26/26, 0 broken links); outreach + GBP/citation kits; LocalBusiness fields handed to S08. Branch `seo/04-offpage-local`. Spend ~$0.18 (no new spend this session). _B4/B5/B6 still owner-gated._ |
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;
@@ -174,6 +175,62 @@ DataForSEO account verified + funded ($50.998), live + sandbox calls return
 - **S01:** confirm `site.url`, robots `Sitemap:` line, **staging `noindex`**, and the generated `sitemap.xml` path (IndexNow ping + GSC submit read it; never submit staging).
 - **S02/S06 + owner:** add a **`/privacy`** POPIA/cookie policy page for the CMP + footer to link.
 - **S10:** fold S09a's 6 key events + AI-referral channel into the launch KPI set.
+| B4 | **GSC + Bing + analytics access** (DNS for `zabble.org` domain verification; POPIA-compliant analytics choice). | User → S04/S01 | S04 measurement, launch indexing | `reference/measurement-indexing.md` §7 |
+| B5 | **DataForSEO Backlinks API not subscribed** — `40204 Access denied` on `backlinks/*`. It's a separate paid subscription (the "higher minimum commitment"). Decide whether to activate to unlock competitor referring-domain intel + link-velocity tracking. S04's digital-PR plan was built from observable competitor link-*assets* in the meantime. | User → S04 | S04 backlink data (not the plan) | `audits/04-offpage-local.md` §1,§4 F7; `_evidence/04/README.note.md` |
+| B6 | **NAP inputs for local SEO** — confirm exact registered business name, a verifiable SA address (or service-area), a `+27` phone, and the public contact email. Required before GBP creation + citation build. | User → S04 | GBP, citations, local pages | `targets/local-seo.md` §2,§3 |
+
+### S04 → S08 hand-off — LocalBusiness/Organization schema + `sameAs` (GEO entity)
+**S04 built the local/industry/entity pages and left a marked `SCHEMA SLOT (S08)` in
+each** (`app/pages/locations/[city].vue`, `industries/[industry].vue`, `about.vue`,
+`press.vue`, `insights/…landscape.vue`). The **exact JSON-LD + every field source** is
+specified in **`targets/localbusiness-schema-fields.md`** — S08 emits the schema;
+S04 deliberately did not (schema write-ownership). All entity fields live in one place:
+`app/data/nap.ts` (`NAP`), with `app/data/locations.ts` / `industries.ts` for page data.
+- **Organization** (`/about`, home, `/press`): name, `NAP.description`, areaServed,
+  `sameAs = NAP.sameAs[].url` (fill as profiles go live), `knowsAbout`.
+- **LocalBusiness/ProfessionalService** per `/locations/<city>`: areaServed + `geo`
+  from `locationBySlug`; omit address/phone until B6 (`napHasAddress()` guard).
+- **Service** per `/industries/<slug>`; **Article** on the landscape asset;
+  **BreadcrumbList** on every detail page. (All in the field doc.)
+- **`sameAs` set:** LinkedIn, Crunchbase, GBP, Bing Places, Apple, Clutch, GoodFirms,
+  DesignRush, Brabys, Nichemarket, X — full list with submit URLs in
+  `targets/local-kit/citation-checklist.csv` (`sameas_for_s08 = yes`).
+- **Never emit a `NAP_PENDING` value** — guard with `napReady()`/`napHasAddress()`.
+
+### Cross-session coordination notes (new pages I added)
+- **S01 / deployment (canonical host):** the live site has an apex↔www split
+  (deployment B5). All new pages emit canonical/og/schema URLs from **one knob** —
+  `NAP.url` in `app/data/nap.ts` (currently `https://zabble.org`). If www is the
+  canonical host, change that single value to `https://www.zabble.org` and the whole
+  landing system follows. (Flagged, not guessed — host canonicalisation is S01/deploy.)
+- **S01 (nuxt.config):** the new routes prerender via `crawlLinks` (reached from the
+  rebuilt footer) — **`nuxt.config.ts` left untouched.** If you change prerender
+  config, keep `crawlLinks: true` (or add `/locations/**`, `/industries/**`,
+  `/insights/**`, `/about`, `/press` to `prerender.routes`). Add them to the sitemap.
+- **S02 (metadata):** new pages set their own unique `useSeoMeta` title/description +
+  canonical (required for the build to pass `test:seo`). Fold into your sitewide
+  meta strategy if/when you standardise it.
+- **S03 (schema composable):** if you own a `useSchemaOrg`/`nuxt-schema-org` wiring,
+  S08's emission should plug into it; field doc above is composable-agnostic.
+- **S06 (content):** owns ongoing editorial for `/insights` (the landscape asset is
+  live and citable; expand the hub).
+
+### ⬇ Consolidated owner asks (one list — what S04 needs from you)
+1. **NAP details (B6)** — exact registered name, a verifiable SA address *or*
+   service-area confirmation, a `+27` phone, public email. Unblocks: GBP, all
+   citations, address/phone in schema, page contact blocks. Edit one file:
+   `app/data/nap.ts`.
+2. **GBP creation + verification** — owner login. Spec ready:
+   `targets/local-kit/gbp-profile-spec.md`.
+3. **Backlinks subscription decision (B5)** — optional; activates competitor
+   referring-domain export + link-velocity monitoring.
+4. (Pre-existing) **Staging URL (B3)** and **GSC/Bing/analytics (B4)** — S01/measurement.
+
+### Still needed from the user (not blocking session start)
+1. **Staging URL** (B3) — for S01's pre-launch `noindex` guard.
+2. **GSC / Bing / analytics access** (B4) — for S04 + launch indexing.
+3. **Backlinks subscription decision** (B5) — to unlock competitor link data.
+4. **NAP inputs** (B6) — to start GBP + local SEO + emit address/phone in schema.
 
 DataForSEO access is fully live — all 10 sessions can start. **Each new Claude
 Code session must launch with env loaded** (access doc §3) so the MCP tools

@@ -1,0 +1,101 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1840 sec.",
+    "cost": 0.0101,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041501-1876-0388-0000-264c14c5fdbe",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.1719 sec.",
+            "cost": 0.0101,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "specno.com",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "target": "specno.com",
+                    "location_code": 2710,
+                    "language_code": "en",
+                    "total_count": 1,
+                    "items_count": 1,
+                    "items": [
+                        {
+                            "se_type": "google",
+                            "location_code": 2710,
+                            "language_code": "en",
+                            "metrics": {
+                                "organic": {
+                                    "pos_1": 1,
+                                    "pos_2_3": 1,
+                                    "pos_4_10": 5,
+                                    "pos_11_20": 22,
+                                    "pos_21_30": 5,
+                                    "pos_31_40": 9,
+                                    "pos_41_50": 2,
+                                    "pos_51_60": 3,
+                                    "pos_61_70": 0,
+                                    "pos_71_80": 0,
+                                    "pos_81_90": 0,
+                                    "pos_91_100": 0,
+                                    "etv": 327.5599947273731,
+                                    "count": 48,
+                                    "estimated_paid_traffic_cost": 992.659299723804,
+                                    "is_new": 34,
+                                    "is_up": 6,
+                                    "is_down": 7,
+                                    "is_lost": 59,
+                                    "clickstream_etv": null,
+                                    "clickstream_gender_distribution": null,
+                                    "clickstream_age_distribution": null
+                                },
+                                "paid": {
+                                    "pos_1": 0,
+                                    "pos_2_3": 0,
+                                    "pos_4_10": 0,
+                                    "pos_11_20": 0,
+                                    "pos_21_30": 0,
+                                    "pos_31_40": 0,
+                                    "pos_41_50": 0,
+                                    "pos_51_60": 0,
+                                    "pos_61_70": 0,
+                                    "pos_71_80": 0,
+                                    "pos_81_90": 0,
+                                    "pos_91_100": 0,
+                                    "etv": 0,
+                                    "count": 0,
+                                    "estimated_paid_traffic_cost": 0,
+                                    "is_new": 0,
+                                    "is_up": 0,
+                                    "is_down": 0,
+                                    "is_lost": 0,
+                                    "clickstream_etv": null,
+                                    "clickstream_gender_distribution": null,
+                                    "clickstream_age_distribution": null
+                                }
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

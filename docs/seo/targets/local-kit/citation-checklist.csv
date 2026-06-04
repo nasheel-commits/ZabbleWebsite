@@ -1,0 +1,17 @@
+priority,directory,type,submit_url,nap_fields_needed,sameas_for_s08,status,date_submitted,live_url,notes
+P0,Google Business Profile,Maps,business.google.com/create,"name,address_or_servicearea,phone,hours,categories,description",yes,pending,,,Anchor citation. Owner login + verification. Spec: gbp-profile-spec.md
+P0,Bing Places,Maps,bingplaces.com,"name,address_or_servicearea,phone,hours,categories",yes,pending,,,Can import from GBP. Feeds Bing/Copilot.
+P0,Apple Business Connect,Maps,businessconnect.apple.com,"name,address_or_servicearea,phone",no,pending,,,Apple Maps / Siri.
+P0,LinkedIn Company Page,Entity,linkedin.com/company/setup/new,"name,description,website,industry",yes,pending,,,Highest-trust sameAs. Use NAP.description verbatim.
+P1,Crunchbase,Entity,crunchbase.com/add-new,"name,description,website,location",yes,pending,,,Company entity; AI-ingested.
+P1,Clutch.co,B2B review,clutch.co/get-listed,"name,description,website,services,location",yes,pending,,,Review-gated authority; ranks SA. Gather 2-3 reviews.
+P1,GoodFirms,B2B review,goodfirms.co/get-listed,"name,description,website,services,location",yes,pending,,,SA software listings.
+P1,DesignRush,B2B directory,designrush.com/agency/submit,"name,description,website,services,location",no,pending,,,Ranks SA software queries.
+P1,Brabys,SA directory,brabys.com/add-business,"name,address,phone,category",no,pending,,,Long-standing SA directory. Needs full address (B6).
+P1,Nichemarket,SA directory,nichemarket.co.za/list-your-business,"name,description,website,phone,category",no,pending,,,SA directory + guest-content option.
+P2,Hotfrog South Africa,SA directory,hotfrog.co.za,"name,address,phone,website",no,pending,,,Aggregator citation.
+P2,Yellow Pages SA,SA directory,yellowpages.co.za,"name,address,phone,category",no,pending,,,Legacy but indexed.
+P2,Cylex South Africa,SA directory,cylex.co.za,"name,address,phone,website",no,pending,,,Aggregator citation.
+P2,TechBehemoths,B2B directory,techbehemoths.com,"name,description,website,services",no,pending,,,Free IT-company directory.
+P2,Facebook (business),Social,facebook.com/pages/create,"name,description,website,phone",yes,pending,,,NAP consistency + brand.
+P2,X / Twitter,Social,x.com,"name,bio,website",yes,pending,,,Brand handle; entity corroboration.

@@ -1,13 +1,30 @@
 <script setup lang="ts">
 // Site footer. Carries the sitewide internal-link block that flattens crawl
-// depth (internal-linking rule L7): /systems + the four pillar hubs appear on
-// every page, so every money page and hub sits <=2 clicks from anywhere.
-
+// depth (internal-linking rule L7): /systems + the four pillar hubs + the
+// local/industry/entity hubs appear on every page, so every money page and hub
+// sits <=2 clicks from anywhere. Owners: S04 (architecture/local) + S02 (hubs)
+// + S09 (POPIA legal links + consent re-open).
+import { Mail } from '@lucide/vue'
 import { PILLAR_HUBS } from '~/data/pillars'
+import { LOCATIONS } from '~/data/locations'
+import { NAP } from '~/data/nap'
 import { useAnalytics } from '~/composables/useAnalytics'
 
 const year = new Date().getFullYear()
 const analytics = useAnalytics()
+
+const explore = [
+  { to: '/systems', label: 'All systems' },
+  { to: '/industries', label: 'Industries' },
+  { to: '/locations', label: 'Locations' },
+  { to: '/insights', label: 'Insights' },
+]
+const company = [
+  { to: '/about', label: 'About' },
+  { to: '/press', label: 'Press' },
+  { to: '/blog', label: 'Blog' },
+  { to: '/diagnose', label: 'Book a call' },
+]
 </script>
 
 <template>
@@ -19,13 +36,20 @@ const analytics = useAnalytics()
           <NuxtLink to="/#home" class="inline-flex items-center" aria-label="Zabble home">
             <span class="font-display text-ink text-[30px] leading-none tracking-[-0.02em]">Zabble</span>
           </NuxtLink>
-          <p class="text-[16px] lg:text-[14px] text-mute-2 mt-3 max-w-xs leading-relaxed">
-            Bespoke operational systems — automation, audit trails, anomaly detection, and analytics — built around your business.
+          <p class="text-[15px] lg:text-[14px] text-mute mt-3 max-w-xs leading-[1.6]">
+            {{ NAP.description }}
           </p>
+          <a
+            :href="`mailto:${NAP.email}`"
+            class="mt-4 inline-flex items-center gap-2 text-[14px] font-medium text-ink hover:text-ink-soft transition-colors"
+          >
+            <Mail :size="15" class="text-mute" />
+            {{ NAP.email }}
+          </a>
         </div>
 
         <!-- What we build (pillar hubs) -->
-        <nav class="md:col-span-3" aria-label="What we build">
+        <nav class="md:col-span-2" aria-label="What we build">
           <p class="text-[11.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">What we build</p>
           <ul class="mt-4 space-y-2.5 text-[15px] lg:text-[14.5px] font-medium text-mute">
             <li v-for="hub in PILLAR_HUBS" :key="hub.slug">
@@ -35,21 +59,32 @@ const analytics = useAnalytics()
         </nav>
 
         <!-- Explore -->
-        <nav class="md:col-span-3" aria-label="Explore">
+        <nav class="md:col-span-2" aria-label="Explore">
           <p class="text-[11.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Explore</p>
-          <ul class="mt-4 space-y-2.5 text-[15px] lg:text-[14.5px] font-medium text-mute">
-            <li><NuxtLink to="/systems" class="hover:text-ink transition">All systems</NuxtLink></li>
-            <li><NuxtLink to="/#what-we-build" class="hover:text-ink transition">What We Build</NuxtLink></li>
-            <li><NuxtLink to="/#meet" class="hover:text-ink transition">Use Cases</NuxtLink></li>
-            <li><NuxtLink to="/diagnose" class="hover:text-ink transition">Book a discovery call</NuxtLink></li>
+          <ul class="mt-4 space-y-2.5">
+            <li v-for="l in explore" :key="l.to">
+              <NuxtLink :to="l.to" class="text-[15px] lg:text-[14.5px] font-medium text-mute hover:text-ink transition">{{ l.label }}</NuxtLink>
+            </li>
           </ul>
         </nav>
 
-        <!-- Contact -->
-        <nav class="md:col-span-2" aria-label="Contact">
-          <p class="text-[11.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Get in touch</p>
-          <ul class="mt-4 space-y-2.5 text-[15px] lg:text-[14.5px] font-medium text-mute">
-            <li><a href="mailto:analytics@zabble.org" class="hover:text-ink transition break-all">analytics@zabble.org</a></li>
+        <!-- Company -->
+        <nav class="md:col-span-2" aria-label="Company">
+          <p class="text-[11.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Company</p>
+          <ul class="mt-4 space-y-2.5">
+            <li v-for="l in company" :key="l.to">
+              <NuxtLink :to="l.to" class="text-[15px] lg:text-[14.5px] font-medium text-mute hover:text-ink transition">{{ l.label }}</NuxtLink>
+            </li>
+          </ul>
+        </nav>
+
+        <!-- Cities -->
+        <nav class="md:col-span-2" aria-label="Locations">
+          <p class="text-[11.5px] uppercase tracking-[0.18em] text-mute-2 font-semibold">Cities</p>
+          <ul class="mt-4 space-y-2.5">
+            <li v-for="l in LOCATIONS" :key="l.slug">
+              <NuxtLink :to="`/locations/${l.slug}`" class="text-[15px] lg:text-[14.5px] font-medium text-mute hover:text-ink transition">{{ l.city }}</NuxtLink>
+            </li>
           </ul>
         </nav>
       </div>

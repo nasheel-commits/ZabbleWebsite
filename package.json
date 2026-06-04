@@ -13,7 +13,7 @@
     "test": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && npm run test:vitest && npm run test:node && npm run test:scripts",
     "test:vitest": "vitest run",
     "test:node": "node --test tests/architecture.test.mjs tests/geo.test.mjs tests/analytics-source.test.mjs tests/indexnow.test.mjs tests/static-html.test.mjs",
-    "test:scripts": "node scripts/seo-metadata.test.mjs",
+    "test:scripts": "node scripts/seo-metadata.test.mjs && node scripts/check-seo.mjs",
     "test:watch": "vitest",
     "test:unit": "vitest run tests/seo/seo-logic.test.ts",
     "test:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run",
@@ -23,6 +23,8 @@
     "test:geo": "node --test tests/geo.test.mjs",
     "test:source": "node --test tests/analytics-source.test.mjs tests/indexnow.test.mjs",
     "test:metadata": "node scripts/seo-metadata.test.mjs",
+    "link-check": "node scripts/check-seo.mjs",
+    "verify": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && node scripts/check-seo.mjs",
     "verify:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && node scripts/seo-metadata.test.mjs"
   },
   "dependencies": {
