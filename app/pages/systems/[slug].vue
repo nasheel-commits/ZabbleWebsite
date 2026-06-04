@@ -38,6 +38,7 @@ usePageSeo(() => ({
   description: sys.value.seoDescription ?? sys.value.tagline,
   path: `/systems/${sys.value.slug}`,
   ogType: 'article',
+  primaryKeyword: sys.value.keywords?.[0],
 }))
 
 </script>
@@ -77,7 +78,7 @@ usePageSeo(() => ({
           <h2 class="font-display text-[26px] sm:text-[32px] md:text-[38px] leading-[1.12] tracking-tight text-ink">
             What is {{ sys.name }}?
           </h2>
-          <p class="mt-4 text-[16px] md:text-[17px] leading-[1.65] text-ink">
+          <p data-answer-first class="mt-4 text-[16px] md:text-[17px] leading-[1.65] text-ink">
             {{ sys.definition }}
           </p>
         </div>

@@ -22,9 +22,10 @@ import {
 usePageSeo({
   title: 'Diagnose Your Operations',
   description:
-    "A free 2-minute diagnostic that finds the operational problem costing your business the most — and the kind of system that fixes it. Built by Zabble, South Africa.",
+    "A free 2-minute diagnostic that finds the operational problem costing your business the most — and the kind of system that fixes it.",
   path: '/diagnose',
   ogType: 'website',
+  primaryKeyword: 'business operations diagnostic',
 })
 
 type StepKey =
@@ -523,6 +524,7 @@ const stepFrame = computed(
         class="mx-auto max-w-3xl w-full px-5 md:px-8 pt-1 pb-2 md:pt-2 md:pb-4 text-center"
       >
         <p
+          data-answer-first
           class="text-[13.5px] md:text-[15px] text-mute font-medium tracking-[-0.005em]"
         >
           {{ stepFrame }}

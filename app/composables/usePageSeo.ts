@@ -48,6 +48,14 @@ export interface PageSeoInput {
   ogType?: 'website' | 'article'
   /** Absolute or site-relative social image. Falls back to DEFAULT_OG_IMAGE. */
   image?: string
+  /**
+   * The single primary keyword/intent this page owns. Emitted as a
+   * `<meta name="zabble:primary-kw">` so the metadata regression test can assert
+   * **no two pages share a primary intent** (the cannibalisation guard) straight
+   * from the prerendered HTML. Sourced from targets/keyword-map.md (S03). Omit on
+   * pure index/utility pages that don't own a commercial head term.
+   */
+  primaryKeyword?: string
 }
 
 /**
@@ -81,5 +89,10 @@ export function usePageSeo(input: PageSeoInput | (() => PageSeoInput)): void {
 
   useHead({
     link: [{ rel: 'canonical', href: canonical }],
+    meta: [
+      // QA signal for the cannibalisation guard — see PageSeoInput.primaryKeyword.
+      // Rendered only when a primary keyword is declared.
+      { name: 'zabble:primary-kw', content: () => get().primaryKeyword ?? '' },
+    ],
   })
 }

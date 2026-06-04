@@ -8,6 +8,8 @@ usePageSeo({
     'Zabble builds bespoke operational systems — automation, audit trails, anomaly detection and analytics — around the one problem slowing your business down.',
   path: '/',
   ogType: 'website',
+  // Primary intent for the home/offering page (keyword-map.md core cluster, S03).
+  primaryKeyword: 'software development company south africa',
 })
 </script>
 

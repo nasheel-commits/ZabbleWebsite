@@ -14,14 +14,27 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/systems', '/diagnose'],
+      // Entry points; crawlLinks discovers the dynamic children (/systems/<slug>,
+      // /pillars/<slug>, /industries/<slug>, /insights/<slug>) from the hubs +
+      // footer links. Listed explicitly so a hub is never missed (S02 on-page).
+      routes: [
+        '/', '/systems', '/diagnose', '/contact',
+        '/pillars', '/industries', '/insights',
+      ],
     },
   },
   routeRules: {
-    '/':           { prerender: true },
-    '/systems':    { prerender: true },
-    '/systems/**': { prerender: true },
-    '/diagnose':   { prerender: true },
+    '/':             { prerender: true },
+    '/systems':      { prerender: true },
+    '/systems/**':   { prerender: true },
+    '/pillars':      { prerender: true },
+    '/pillars/**':   { prerender: true },
+    '/industries':   { prerender: true },
+    '/industries/**':{ prerender: true },
+    '/insights':     { prerender: true },
+    '/insights/**':  { prerender: true },
+    '/diagnose':     { prerender: true },
+    '/contact':      { prerender: true },
   },
   vite: {
     plugins: [tailwindcss()],
