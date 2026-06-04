@@ -168,11 +168,16 @@ export default defineNuxtConfig({
 
     public: {
       analytics: {
-        gtmId: '',       // GTM-XXXXXXX
-        ga4Id: '',       // G-XXXXXXXXXX  (used only when no GTM container is set)
-        clarityId: '',   // Microsoft Clarity project id
+        // GTM is the hub. The container loads GA4 (G-3KGPF6HDT2) via a GA4 tag
+        // configured inside it, so ga4Id stays empty — the plugin skips
+        // GA4-direct whenever a GTM container is present. Clarity loads
+        // first-party. Any of these can be overridden per-env via the matching
+        // NUXT_PUBLIC_ANALYTICS_* var in Vercel.
+        gtmId: 'GTM-MCVWLFV8',   // GTM-XXXXXXX
+        ga4Id: '',               // G-XXXXXXXXXX — direct mode only; GA4 lives in GTM here
+        clarityId: 'x1tgkds45o', // Microsoft Clarity project id
         consentRegions: ['ZA'],
-        debug: false,    // NUXT_PUBLIC_ANALYTICS_DEBUG=true → console tracing
+        debug: false,            // NUXT_PUBLIC_ANALYTICS_DEBUG=true → console tracing
       },
       // Search-engine site verification (rendered into <head> by
       // app/plugins/seo-verification.ts). DNS TXT is preferred; these meta-tag
