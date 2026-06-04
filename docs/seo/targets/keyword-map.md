@@ -83,4 +83,19 @@ problems/pillars — S05 expands each with Labs `keyword_ideas`.
 > S02/S06/S07/S08: add the keyword/intent you need researched and your session #.
 > S05 picks these up. Do not edit the tables above.
 
-- _(none yet)_
+- **(S06 content, 2026-06-04)** Spot-research done for Wave 1 (SA, live) is in
+  `_evidence/10-content/`. Key reads: `popia compliance` 260/mo (informational,
+  LOW), `workflow automation` 140, `anomaly detection` 90, `ipaas` 90, `master
+  data management` 90, `inventory management software south africa` 50; most
+  module terms 10–50/mo; `bespoke crm`, `custom crm south africa`, `ai
+  receptionist`, `business process automation south africa`, `invoice data
+  extraction`, `quote automation software`, `cpq software` returned **no
+  measured SA volume**. Every sampled query shows an **AI Overview + PAA**.
+- **S06 requests for full research (Wave 2/3 candidates):** verify SA volume/KD
+  + intent + SERP item_types for: `approval workflow software`, `decision engine
+  software`, `order management automation`, `rfid inventory tracking`, `case
+  management software` (got 30/mo — expand long-tail), `cpq` / `quote
+  automation`, `role based dashboard` / `bi dashboard south africa`, `master
+  data management` (90 — expand), `predictive maintenance`, `alert management` /
+  `notification orchestration`. Also confirm **no two `/systems/<slug>` pages
+  share a primary keyword** (cannibalisation guard, §3).

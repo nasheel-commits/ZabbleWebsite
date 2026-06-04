@@ -19,11 +19,16 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
-| 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
+| 06 | Content Strategy & Editorial | `seo/10-content`¹ | Content strategist | **done** | 00, 05 (used spot-research) | Editorial engine: topical-authority model + sequenced calendar (`content/editorial-calendar.md`), 15 Wave-1 briefs (`content/briefs/`), audit + coverage matrix (`audits/10-content.md`). DataForSEO SA evidence in `_evidence/10-content/`. **Key finding:** SA volume thin but AI Overview + PAA on every query → AEO/GEO-native. |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
+
+> ¹ The content-strategy task was **issued as "S10 content"** on branch
+> `seo/10-content` (≠ the conventions' `seo/06-content`). Delivered there to
+> satisfy the issued goal; functionally this is session 06. See
+> `audits/10-content.md` §0 for the reconciliation. Off-page (true S10) untouched.
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;
