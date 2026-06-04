@@ -52,7 +52,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <p>
             Zabble is the <em>responsible party</em> (the equivalent of a "data controller") for the
             personal information described here. You can reach our Information Officer at
-            <a href="mailto:analytics@zabble.org">analytics@zabble.org</a> for any privacy question,
+            <a href="mailto:sales@zabble.org">sales@zabble.org</a> for any privacy question,
             request, or complaint.
           </p>
         </section>
@@ -156,7 +156,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
             <li>Lodge a complaint with the Information Regulator.</li>
           </ul>
           <p>
-            To exercise any of these, email <a href="mailto:analytics@zabble.org">analytics@zabble.org</a>.
+            To exercise any of these, email <a href="mailto:sales@zabble.org">sales@zabble.org</a>.
             Withdrawing analytics consent is one click — use
             <button type="button" class="link-button" @click="analytics.openSettings()">cookie settings</button>
             or the control on our <NuxtLink to="/cookie-policy">Cookie Policy</NuxtLink> page.
@@ -187,7 +187,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <h2>12. Contact</h2>
           <p>
             Questions? Email our Information Officer at
-            <a href="mailto:analytics@zabble.org">analytics@zabble.org</a>. We'd rather you ask than wonder.
+            <a href="mailto:sales@zabble.org">sales@zabble.org</a>. We'd rather you ask than wonder.
           </p>
         </section>
 

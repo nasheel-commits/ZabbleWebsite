@@ -263,11 +263,11 @@ onBeforeUnmount(() => {
                 />
               </NuxtLink>
               <a
-                href="mailto:analytics@zabble.org"
+                href="mailto:sales@zabble.org"
                 class="group inline-flex items-center justify-center gap-2 rounded-lg border border-line hover:border-ink/30 bg-white hover:bg-surface-alt text-ink text-[15px] font-medium px-5 py-3.5 transition"
               >
                 <Mail :size="16" class="text-mute" />
-                analytics@zabble.org
+                sales@zabble.org
               </a>
             </div>
 

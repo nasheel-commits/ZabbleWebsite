@@ -4,7 +4,7 @@ import { ArrowRight, Mail } from '@lucide/vue'
 usePageSeo({
   title: 'Contact Zabble',
   description:
-    'Talk to Zabble about a bespoke system for your South African business. The first conversation is free. Email analytics@zabble.org or book a call.',
+    'Talk to Zabble about a bespoke system for your South African business. The first conversation is free. Email sales@zabble.org or book a call.',
   path: '/contact',
   ogType: 'website',
   primaryKeyword: 'zabble contact',
@@ -26,7 +26,7 @@ usePageSeo({
             Talk to Zabble.
           </h1>
           <p data-answer-first class="mt-6 text-[16px] md:text-[18px] leading-[1.6] text-ink">
-            Zabble is a bespoke systems firm based in South Africa. The first conversation is free and useful either way: we listen for the operational problem costing you the most and tell you honestly whether a system can fix it. Reach us at analytics@zabble.org or run the two-minute diagnostic.
+            Zabble is a bespoke systems firm based in South Africa. The first conversation is free and useful either way: we listen for the operational problem costing you the most and tell you honestly whether a system can fix it. Reach us at sales@zabble.org or run the two-minute diagnostic.
           </p>
         </div>
 
@@ -46,7 +46,7 @@ usePageSeo({
           </NuxtLink>
 
           <a
-            href="mailto:analytics@zabble.org"
+            href="mailto:sales@zabble.org"
             class="group rounded-2xl border border-line bg-white p-6 md:p-7 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-brand/40 hover:shadow-[0_24px_60px_-32px_rgba(15,23,42,0.18)]"
           >
             <div class="font-display text-[20px] text-ink">Email us directly</div>
@@ -55,7 +55,7 @@ usePageSeo({
             </p>
             <span class="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-ink">
               <Mail :size="15" class="text-mute" />
-              analytics@zabble.org
+              sales@zabble.org
             </span>
           </a>
         </div>

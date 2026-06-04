@@ -216,12 +216,12 @@ shape (40–60 words, declarative, liftable) — final copy is S06/S07.
 - **Intent / layer:** navigational/local → SEO + **GEO/local entity**. **Primary
   kw:** `zabble contact` / `bespoke software company south africa contact`.
 - **H1:** "Talk to Zabble." **Sections:** what to expect from the first call ·
-  email `analytics@zabble.org` · the diagnostic as an alternative entry · NAP
+  email `sales@zabble.org` · the diagnostic as an alternative entry · NAP
   (name/SA location) for the local/GEO entity.
 - **Answer-first intro (example):** "Zabble is a bespoke systems firm based in
   South Africa. The first conversation is free and useful either way: we listen for
   the operational problem costing you the most and tell you whether a system can fix
-  it. Reach us at analytics@zabble.org or run the two-minute diagnostic."
+  it. Reach us at sales@zabble.org or run the two-minute diagnostic."
 - **Schema (S03):** `ContactPage` + `Organization` (consistent NAP — GEO infra).
 
 ---

@@ -37,7 +37,7 @@ Zabble (South Africa)
 | `headquarters location` (P159) | South Africa (or the city, once public) | |
 | `official website` (P856) | `https://zabble.org` | |
 | `industry` (P452) | `software industry` (Q880371) / `management consulting` (Q2920921) | |
-| `email address` (P968) | `analytics@zabble.org` | optional |
+| `email address` (P968) | `sales@zabble.org` | optional |
 | **`different from` (P1889)** | **the Zabble, Inc. item (§B)** | **the key disambiguation statement** |
 | `inception` (P571) | founding year | add once confirmed |
 

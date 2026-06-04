@@ -132,7 +132,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <h2>6. Changes &amp; contact</h2>
           <p>
             We'll update this page when our cookie use changes and revise the date above. Questions go
-            to <a href="mailto:analytics@zabble.org">analytics@zabble.org</a>.
+            to <a href="mailto:sales@zabble.org">sales@zabble.org</a>.
           </p>
         </section>
 

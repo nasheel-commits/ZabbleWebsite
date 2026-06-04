@@ -140,7 +140,7 @@ useSchemaOrg([
       'Zabble builds bespoke operational systems — automation, audit trails, ' +
       'anomaly detection, and analytics — for South African businesses.',
     url: 'https://zabble.org',
-    email: 'analytics@zabble.org',
+    email: 'sales@zabble.org',
     sameAs: [/* LinkedIn, directories — fill from S10 */],
     address: { '@type': 'PostalAddress', addressCountry: 'ZA' },
   }),

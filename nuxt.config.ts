@@ -109,7 +109,7 @@ export default defineNuxtConfig({
         'waste-management software company.',
       slogan:
         'We don’t sell software. We build the system your business actually needs.',
-      email: 'analytics@zabble.org',
+      email: 'sales@zabble.org',
       address: {
         '@type': 'PostalAddress',
         addressCountry: 'ZA',

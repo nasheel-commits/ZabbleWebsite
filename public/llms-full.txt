@@ -1,6 +1,6 @@
 # Zabble — Full Reference for Language Models
 
-> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software; it assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: analytics@zabble.org
+> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software; it assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org
 
 Zabble (South Africa) is an operations-systems consultancy. It is not affiliated with Zabble, Inc., the United States waste-management software company. This file lists Zabble’s four pillars and every live system with a one-line, self-contained definition and its canonical URL.
 
@@ -182,7 +182,7 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 
 ## Contact
 
-- Email: analytics@zabble.org
+- Email: sales@zabble.org
 - Location: South Africa
 - Pillars: https://zabble.org/what-we-build
 - Systems library: https://zabble.org/systems

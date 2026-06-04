@@ -34,7 +34,7 @@ Site-wide entity. `/about` is the canonical Organization page.
   "legalName": "<NAP.legalName when B6 lands>",
   "url": "https://zabble.org",
   "description": "<NAP.description>",
-  "email": "analytics@zabble.org",
+  "email": "sales@zabble.org",
   "areaServed": [ "Johannesburg", "Sandton", "Cape Town", "Pretoria", "Durban", "South Africa" ],
   "knowsAbout": [ "business automation", "custom software", "operational systems",
                   "compliance reporting", "reconciliation", "document automation" ],

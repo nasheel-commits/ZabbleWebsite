@@ -18,13 +18,13 @@
     },
     "TheFooter": {
       "present_on": ["/", "/systems", "/systems/[slug]", "/diagnose"],
-      "edges": ["/#home", "/#what-we-build", "/#meet", "mailto:analytics@zabble.org"],
+      "edges": ["/#home", "/#what-we-build", "/#meet", "mailto:sales@zabble.org"],
       "note": "CRITICAL: footer has NO link to /systems and NO module links. Footer link equity never reaches the money-page cluster."
     }
   },
   "page_edges": {
     "/": {
-      "body_edges": ["/diagnose", "mailto:analytics@zabble.org", "/#plan", "/#contact"],
+      "body_edges": ["/diagnose", "mailto:sales@zabble.org", "/#plan", "/#contact"],
       "note": "Home BODY links only to /diagnose + same-page anchors. TheWhatWeBuild (the 4-pillar section) links to NOTHING. Only Home->/systems edge is the global nav. No body link to any module or pillar.",
       "out_to_modules": 0,
       "out_to_pillars": 0

@@ -18,7 +18,7 @@ SPA** — NOT this Nuxt repo. Key markers in the served HTML:
   `meta description = "Smart Data-Driven Digital Marketing & Real-Time Analytics"`.
 - JSON-LD `Organization` with `email: sales@zabble.org`, `addressCountry: US`,
   `areaServed: Worldwide` — **wrong positioning** (US digital-marketing, not
-  SA bespoke-operational-systems; contact should be analytics@zabble.org).
+  SA bespoke-operational-systems; contact should be sales@zabble.org).
 
 ### On-Page instant_pages (POST /v3/on_page/instant_pages, live)
 - `cost`: 0.000125

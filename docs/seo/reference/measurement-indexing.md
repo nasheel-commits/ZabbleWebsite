@@ -46,7 +46,7 @@ South Africa = **POPIA** applies. Default to a privacy-respecting setup:
   a consent path and a privacy policy reference (POPIA). Record the choice as an
   ADR.
 - Tag the **conversion** that matters: the `/diagnose` completion and any contact
-  action to `analytics@zabble.org` are the business goals — instrument those, not
+  action to `sales@zabble.org` are the business goals — instrument those, not
   vanity pageviews.
 - Capture **referrer/source** so we can see AI-engine referrals (see §4).
 

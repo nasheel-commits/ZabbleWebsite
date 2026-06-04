@@ -26,7 +26,7 @@ answer1st: present
 
 ==== /contact ====
 title    : Contact Zabble · Zabble
-desc     : Talk to Zabble about a bespoke system for your South African business. The first conversation is free. Email analytics@zabble.org or book a call.
+desc     : Talk to Zabble about a bespoke system for your South African business. The first conversation is free. Email sales@zabble.org or book a call.
 canonical: https://zabble.org/contact
 primary  : zabble contact
 og:type  : website

@@ -51,7 +51,7 @@ export const ORGANIZATION: OrgEntity = {
   alternateName: 'Zabble (South Africa)',
   legalName: null, // set to the registered entity name once confirmed (S10).
   url: 'https://zabble.org',
-  email: 'analytics@zabble.org',
+  email: 'sales@zabble.org',
   description:
     'Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.',
   disambiguatingDescription:

@@ -216,7 +216,7 @@ function close() {
 
           <div class="relative px-5 py-3.5 border-t border-line/70 bg-white/70 backdrop-blur-sm">
             <a
-              href="mailto:analytics@zabble.org"
+              href="mailto:sales@zabble.org"
               @click="close"
               class="group flex items-center justify-between gap-3 touch-manipulation"
             >
@@ -231,7 +231,7 @@ function close() {
                     Get in touch
                   </span>
                   <span class="text-[14px] text-ink font-medium truncate">
-                    analytics@zabble.org
+                    sales@zabble.org
                   </span>
                 </span>
               </span>

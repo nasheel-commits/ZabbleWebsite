@@ -60,7 +60,7 @@ gtag-direct mode (no GTM container) they are also sent via `gtag('event', …)`.
 | `generate_lead` | Diagnose contact form submitted (name+email+company) | `currency:'ZAR'`, `value:0`, `lead_source`, `business_type`, `primary_pain`, `timeline` | conversion |
 | `schedule_call` | "Book your 30-minute call" on the diagnose result | `lead_source:'diagnose_result'`, `link_url` | conversion |
 | `schedule_click` | Any link to `/diagnose` ("Book a discovery call" etc.) | `link_url`, `link_text` | intent |
-| `email_click` | Any `mailto:` (analytics@zabble.org) | `link_url`, `email_address` | intent |
+| `email_click` | Any `mailto:` (sales@zabble.org) | `link_url`, `email_address` | intent |
 | `phone_call_click` | Any `tel:` link (none today; future-proofed) | `link_url`, `phone_number` | intent |
 | `file_download` | Link with `download` attr or a file extension (none today; future-proofed) | `file_name`, `file_extension`, `link_url` | intent |
 | `scroll` | 90% depth reached on a money page | `percent_scrolled:90`, `page_path` | engagement |

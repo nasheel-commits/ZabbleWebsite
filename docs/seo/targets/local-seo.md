@@ -23,7 +23,7 @@ captured 2026-06-04. Zabble is **pre-launch with no GBP**, so this is a build pl
 > 2. **Address** — a real, verifiable SA address (or a service-area designation if
 >    no public office; GBP allows hiding the address for service-area businesses).
 > 3. **Primary phone** (a SA number, +27).
-> 4. **Public contact email** — `analytics@zabble.org` is on file; confirm it's the
+> 4. **Public contact email** — `sales@zabble.org` is on file; confirm it's the
 >    public-facing one or provide a `hello@`/`info@`.
 > These are recorded as blocker **B6** in `status.md`.
 
@@ -81,7 +81,7 @@ local-ranking and entity-confusion killer (also hurts GEO — see
 Name:    Zabble            (use the exact registered form once confirmed — B6)
 Address: <street>, <suburb>, <city>, <province>, <postal>, South Africa
 Phone:   +27 <number>      (one canonical number, international format)
-Email:   analytics@zabble.org   (confirm public-facing — B6)
+Email:   sales@zabble.org   (confirm public-facing — B6)
 Web:     https://zabble.org
 Hours:   Mon–Fri 08:00–17:00 SAST
 ```

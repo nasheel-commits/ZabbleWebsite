@@ -14,7 +14,7 @@ URL to `app/data/organization.ts` → `sameAs` and to `public/llms.txt`.
   > sell off-the-shelf software; it assembles a library of 30 modules into one
   > operating system, built for one business and no other.
 - **Website:** `https://zabble.org`
-- **Email:** `analytics@zabble.org`
+- **Email:** `sales@zabble.org`
 - **Location/Country:** `South Africa`
 - **Industry/Category:** Software / IT consulting / business process automation
 

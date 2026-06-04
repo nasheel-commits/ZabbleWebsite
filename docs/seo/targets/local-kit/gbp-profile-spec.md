@@ -16,7 +16,7 @@ the site, the schema (S08) and the directories all agree.
 | Primary phone | `{{NAP.phone}}` — international `+27` form (B6) |
 | Website | `https://zabble.org` |
 | Address | `{{NAP street/suburb/city/province/postal}}` (B6) — or hide if service-area (see §3) |
-| Email (contact) | `analytics@zabble.org` |
+| Email (contact) | `sales@zabble.org` |
 | Hours | Mon–Fri 08:00–17:00 (SAST) |
 
 ## 2. Categories

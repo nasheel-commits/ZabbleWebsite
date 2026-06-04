@@ -23,7 +23,7 @@ Divergent descriptions split the entity; identical ones corroborate it.
 - One-liner: *Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.*
 - Location: **South Africa**
 - Website: **https://zabble.org**
-- Contact: **analytics@zabble.org**
+- Contact: **sales@zabble.org**
 - Disambiguation: *Not affiliated with Zabble, Inc. (US waste-management software).*
 
 After each step, mirror the live URL into:

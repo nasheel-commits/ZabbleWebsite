@@ -1,6 +1,6 @@
 # Zabble
 
-> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software. It assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: analytics@zabble.org
+> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software. It assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org
 
 Zabble sits with a business until it can name the one operational problem costing the most — the spreadsheet three people fill in by hand, the data trapped across tools that never talk, the error caught only when it is already too late — then designs and builds the exact system that fixes it. We have built for NGOs, banks, hotels, law firms, parts suppliers, marketing agencies, and small businesses. The four pillars below are the objective; the modules are how we get there.
 
@@ -37,6 +37,6 @@ Zabble sits with a business until it can name the one operational problem costin
 
 ## Contact
 
-- Email: analytics@zabble.org
+- Email: sales@zabble.org
 - Location: South Africa
 - All 30 systems: https://zabble.org/systems

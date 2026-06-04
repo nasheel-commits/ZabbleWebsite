@@ -46,7 +46,7 @@ and (where space allows) disambiguates from the US firm.
   registered legal name — S10 to confirm the registered entity and then use it
   consistently).
 - **Location:** South Africa. *(Add city + registered address once available — S10.)*
-- **Contact:** `analytics@zabble.org`. *(Add a public phone once available — S10;
+- **Contact:** `sales@zabble.org`. *(Add a public phone once available — S10;
   NAP consistency matters for the local-pack signal seen in `[E:
   07/serp-ai-overview__automation-company-za.json]`.)*
 - **Website:** `https://zabble.org`.
@@ -76,7 +76,7 @@ live** — a dead/wrong `sameAs` weakens the entity; promote each from
   "url": "https://zabble.org",
   "description": "Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.",
   "slogan": "We don't sell software. We build the system your business actually needs.",
-  "email": "analytics@zabble.org",
+  "email": "sales@zabble.org",
   "areaServed": { "@type": "Country", "name": "South Africa" },
   "address": { "@type": "PostalAddress", "addressCountry": "ZA" },
   "knowsAbout": [

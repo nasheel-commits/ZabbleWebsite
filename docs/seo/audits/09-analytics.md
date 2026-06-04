@@ -50,7 +50,7 @@
   conversion surfaces (`TheFinalCta.vue`, `CtaStrip.vue`, `TheNav.vue`,
   `TheFooter.vue`), and the primary conversion flow `app/pages/diagnose.vue`
   (contact submit + book-call CTA). Confirmed all contact actions are
-  `mailto:analytics@zabble.org`; the booking CTA is a `mailto:` deep-link; there
+  `mailto:sales@zabble.org`; the booking CTA is a `mailto:` deep-link; there
   is currently **no `tel:`** and **no file download** on the site (handlers added
   for future-proofing).
 - Implemented a hand-rolled, env-driven, consent-first measurement layer (see
@@ -67,7 +67,7 @@
 | # | Finding | Evidence |
 |---|---------|----------|
 | F1 | Baseline had **zero** measurement: only a static `app.head` title + 1 meta description; no GA4/GTM/Clarity, no consent, no analytics IDs. | `nuxt.config.ts` (read) |
-| F2 | All contact CTAs are `mailto:analytics@zabble.org`; the diagnose "Book your 30-minute call" is a `mailto:` deep-link; **no phone or downloads** exist yet. | components read; `[E: 09/static-html-and-consent.note.md]` |
+| F2 | All contact CTAs are `mailto:sales@zabble.org`; the diagnose "Book your 30-minute call" is a `mailto:` deep-link; **no phone or downloads** exist yet. | components read; `[E: 09/static-html-and-consent.note.md]` |
 | F3 | The diagnose flow is the **primary B2B conversion** (collects name/email/company) — the correct `generate_lead` trigger. | `app/pages/diagnose.vue:340` |
 | F4 | Statically prerendered (Nitro). Analytics MUST be client-side; nothing analytics-related should bake into HTML — verified it doesn't. | `[E: 09/static-html-and-consent.note.md]` |
 | F5 | No real GA4/GTM/Clarity IDs or DNS access available pre-launch → wired the full machinery to no-op safely until ids/env are provided. | `[E: 09/static-html-and-consent.note.md]` |
