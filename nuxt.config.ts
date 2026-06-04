@@ -13,7 +13,11 @@ import { REDIRECTS, buildRedirectRouteRules } from './app/data/redirects'
 //  • liveSystemRoutes — published money pages: prerendered, in sitemap, 200.
 //  • goneSystemRoutes — concept/in-progress (thin/orphan): NOT prerendered, NOT
 //    in sitemap, noindex, and served 410 by the [slug].vue gate (OR-4).
-const priorityRoutes = ['/', '/systems', '/diagnose', ...liveSystemRoutes]
+const priorityRoutes = [
+  '/', '/systems', '/diagnose', '/contact',
+  '/pillars', '/industries', '/insights',
+  ...liveSystemRoutes,
+]
 
 // noindex + 410-defence routeRules for every un-published system page (OR-4).
 // `prerender: false` overrides the '/systems/**' prerender glob so these are
@@ -132,6 +136,10 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,             // discover any linked routes automatically
+      // priorityRoutes (top of file) now includes the S02 hub entry points
+      // (/contact, /pillars, /industries, /insights) alongside the live system
+      // money pages — so prerender + sitemap never miss a hub. crawlLinks then
+      // discovers the dynamic children from those hubs + footer links.
       routes: priorityRoutes,       // belt-and-suspenders explicit list (live only)
       ignore: goneSystemRoutes,     // never prerender concept pages, even if linked
       // A single broken link should not fail the whole static build.
@@ -140,11 +148,18 @@ export default defineNuxtConfig({
   },
 
   routeRules: {
-    // Marketing / module / tool pages → static HTML.
-    '/':           { prerender: true },
-    '/systems':    { prerender: true },
-    '/systems/**': { prerender: true },
-    '/diagnose':   { prerender: true },
+    // Marketing / module / tool / hub pages → static HTML.
+    '/':              { prerender: true },
+    '/systems':       { prerender: true },
+    '/systems/**':    { prerender: true },
+    '/pillars':       { prerender: true },
+    '/pillars/**':    { prerender: true },
+    '/industries':    { prerender: true },
+    '/industries/**': { prerender: true },
+    '/insights':      { prerender: true },
+    '/insights/**':   { prerender: true },
+    '/diagnose':      { prerender: true },
+    '/contact':       { prerender: true },
 
     // Un-published system pages → not prerendered, noindex, served 410 (OR-4).
     ...goneRouteRules,
@@ -167,13 +182,18 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'Zabble · Bespoke Digital Systems',
+      // Global title template (S02 / on-page). Pages set a bare, distinct `title`
+      // via usePageSeo / useSeoMeta; this appends the brand → "<title> · Zabble".
+      // The bare `title` below is only the fallback for a route that sets none.
+      titleTemplate: '%s · Zabble',
+      title: 'Bespoke Digital Systems',
       htmlAttrs: {
-        // South-Africa market locale signal.
+        // en-ZA: English, South Africa primary market (conventions §7).
         lang: 'en-ZA',
       },
       meta: [
         {
+          // Fallback description only. Per-page descriptions come from usePageSeo.
           name: 'description',
           content:
             'Zabble designs bespoke operational systems: automation, audit trails, anomaly detection, and analytics. Built around the specific problem slowing your business down.',

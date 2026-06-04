@@ -1,0 +1,4 @@
+SEO metadata test — 52 prerendered routes checked.
+  unique titles: 52 · unique descriptions: 52 · primary intents: 52
+
+✓ All metadata assertions passed.

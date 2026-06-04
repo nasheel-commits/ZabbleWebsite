@@ -32,6 +32,71 @@ export function pillarBySlug(slug: PillarSlug): PillarMeta | undefined {
   return PILLARS.find((p) => p.slug === slug)
 }
 
+// Pillar-hub SEO (S02, from targets/keyword-map.md + intent-clusters.md, S03).
+// Each pillar gets a `/pillars/<slug>` hub that gathers its member modules and
+// owns a distinct commercial head term + the pillar's "what is" answer.
+export interface PillarSeo {
+  /** Page H1 (the pillar framed as a category). */
+  h1: string
+  /** Intro/blurb under the H1 (answer-first context, Zabble voice). */
+  blurb: string
+  /** Bare title (titleTemplate appends " · Zabble"). */
+  seoTitle: string
+  /** Meta description, ~150–160 chars. */
+  seoDescription: string
+  /** Primary intent first (cannibalisation guard), then supporting heads. */
+  keywords: string[]
+  /** Answer-first, liftable definition of the pillar (AEO/GEO + schema). */
+  definition: string
+}
+
+export const PILLAR_SEO: Record<PillarSlug, PillarSeo> = {
+  'automation': {
+    h1: 'Business Process Automation',
+    blurb:
+      'Every business runs on workflows — the spreadsheet filled in by hand every week, the data copied between tools that don’t talk. Zabble automates the parts that shouldn’t need a person anymore, so your team does the work only people can do. These are the systems that deliver it.',
+    seoTitle: 'Business Process Automation',
+    seoDescription:
+      'Automate the manual workflows running your South African business — the spreadsheets, the re-keying, the copy-paste. Built around how you actually work.',
+    keywords: ['business process automation', 'robotic process automation', 'intelligent automation', 'how to automate business processes'],
+    definition:
+      'Business process automation is replacing the manual steps in a workflow — data entry, approvals, hand-offs between tools — with software that runs them automatically and on time. Zabble builds bespoke automation around one business’s real processes, so the work that shouldn’t need a person no longer does.',
+  },
+  'audit-trails': {
+    h1: 'Audit Trails & Governance',
+    blurb:
+      'You can’t manage what you can’t see. Zabble builds visibility and governance into operations, so you know who did what, when, and why — and audit season stops being a fire drill. These are the systems that write the record by default.',
+    seoTitle: 'Audit Trail Software',
+    seoDescription:
+      'Know who did what, when and why. Zabble builds tamper-evident audit trails into your operations: faster reviews, cleaner audits, a record ready on demand.',
+    keywords: ['audit trail software', 'audit management software', 'compliance audit software', 'what is an audit trail'],
+    definition:
+      'An audit trail is a tamper-evident record of who did what, when and why across a system. Audit-trail software captures every action, decision and change as it happens, so reviews, disputes and regulator requests get answered by reading the record instead of reconstructing it from email weeks later.',
+  },
+  'anomaly-detection': {
+    h1: 'Anomaly & Fraud Detection',
+    blurb:
+      'The risks that hurt most are the ones you don’t see coming. Zabble builds systems that watch operations in the background and flag what’s unusual — the fraud, the error, the drift — before it becomes a problem you can’t ignore. These are the systems that catch it early.',
+    seoTitle: 'Anomaly & Fraud Detection Software',
+    seoDescription:
+      'Catch fraud, error and drift before they cost you. Zabble builds anomaly detection that watches a stream no human could and surfaces only the cases that matter.',
+    keywords: ['fraud detection software', 'anomaly detection software', 'anomaly detection', 'what is anomaly detection'],
+    definition:
+      'Anomaly detection is software that watches a stream of activity and flags the unusual — the fraud, the error, the drift, the outlier — before it becomes a problem. Zabble builds detectors tuned to what counts as abnormal for one business, surfacing only the cases that matter, with their evidence already attached.',
+  },
+  'analytics': {
+    h1: 'Operational Analytics & Decision Support',
+    blurb:
+      'Every business has more data than it uses. Zabble turns yours into a clear picture of what’s happening and what matters — composed for the people who actually make the decisions, not a 47-widget dashboard nobody opens. These are the systems that make decisions easier.',
+    seoTitle: 'Operational Analytics & Decision Support',
+    seoDescription:
+      'Stop deciding on gut feel. Zabble builds analytics composed by role and decision — each number opens its calculation, its source and the next action.',
+    keywords: ['decision support system', 'business intelligence software', 'data analytics software', 'operational analytics'],
+    definition:
+      'A decision support system turns a business’s operational data into the specific view each role needs to make a decision. Zabble composes analytics by role and by decision — not a 47-widget dashboard nobody reads — so every number opens its calculation, its source systems and the next action.',
+  },
+}
+
 export type SystemStatus = 'live' | 'in-progress' | 'concept'
 
 export interface System {
@@ -73,6 +138,42 @@ export interface System {
    * Defaults to "One system, <n> jobs." computed from `pillars.length`.
    */
   pillarHeading?: string
+
+  // ── SEO / AEO slots (added by S02 on-page; populated by S05/S06/S07) ──
+  // All optional and additive: when absent the page falls back to existing copy,
+  // so existing entries keep working unchanged. See docs/seo/audits/05-onpage.md.
+
+  /**
+   * SEO: distinct `<title>` + OG-title fragment for this module page. The global
+   * titleTemplate appends " · Zabble". Falls back to `name`. Keep ≤ ~45 chars so
+   * the full tag stays under ~60. Intent-bearing where it helps (e.g.
+   * "Bespoke CRM, built to your pipeline"). Owned by content (S06), targets from S05.
+   */
+  seoTitle?: string
+  /**
+   * SEO: meta description, 150–160 chars, answer-first, one concrete benefit, ZA
+   * voice. Falls back to `tagline`. Distinct per module (duplicate descriptions
+   * across 30 pages are the #1 on-page risk). Owned by content (S06).
+   */
+  seoDescription?: string
+  /**
+   * SEO: primary + secondary keyword targets for this page, from
+   * targets/keyword-map.md (S05). Reference/QA only — not rendered. First entry
+   * is the canonical primary intent for the cannibalisation guard.
+   */
+  keywords?: string[]
+  /**
+   * AEO: answer-first definition — 40–60 words answering "What is <name>?" in
+   * plain, declarative, liftable language (featured-snippet / AI-overview shape).
+   * Rendered above the demo when present. Owned by content (S06/S07).
+   */
+  definition?: string
+  /**
+   * AEO: FAQ pairs rendered on the page AND mirrored 1:1 into FAQPage JSON-LD by
+   * S08 (schema). Only mark up questions that are visibly on the page. Question
+   * text should match real PAA / SERP phrasing from S05. Owned by content (S06/S07).
+   */
+  faqs?: { q: string; a: string }[]
 }
 
 // All six entries are scaffolding. Replace TODO copy as content is finalised.
@@ -889,6 +990,330 @@ export const SYSTEMS: System[] = [
     pillarHeading: 'One engine. Three jobs done before anyone is woken up for nothing.',
   },
 ]
+
+// ───────────────────────────────────────────────────────────────────────────
+// SEO / AEO data (owned by S02 on-page, sourced from targets/keyword-map.md +
+// intent-clusters.md, S03 keyword research — verified ZA metrics, 2026-06-04).
+//
+// Kept in one keyed map rather than inline on each entry so SEO copy lives
+// together, stays DRY, and is easy to diff against the keyword map. Merged onto
+// the live SYSTEMS entries once at module load (below). `keywords[0]` is the
+// page's single PRIMARY intent (the cannibalisation guard asserts these are
+// unique across all pages). `definition` is the answer-first, liftable
+// "X is a system that …" used for the AEO/GEO answer block + (by S08) schema.
+// Final long-form body copy remains S10's; these are the structural SEO assets.
+// ───────────────────────────────────────────────────────────────────────────
+type SystemSeo = Pick<
+  System,
+  'seoTitle' | 'seoDescription' | 'keywords' | 'definition' | 'faqs'
+>
+
+const SYSTEM_SEO: Record<string, SystemSeo> = {
+  'kairos': {
+    seoTitle: 'Kairos — AI Receptionist & Event Engine',
+    seoDescription:
+      'An AI voice agent and event-orchestration engine that answers every call, chases confirmations and recovers no-shows — so your team stops being the switchboard.',
+    keywords: ['event management software', 'ai receptionist', 'virtual receptionist software', 'ai voice agent'],
+    definition:
+      'Kairos is a voice-first automation engine that answers the phone as an AI receptionist, runs the full arc around an event — pre-event outreach, day-of orchestration and post-event follow-up — and logs every call and message with the reasoning that fired it, so no booking is lost to a missed call.',
+    faqs: [
+      { q: 'What is an AI receptionist?', a: 'An AI receptionist is software that answers inbound calls in a natural voice, handles routine requests — bookings, questions, routing — and escalates to a person when needed, so calls never go to voicemail. Kairos does this and also makes outbound calls and updates your CRM.' },
+      { q: 'Can Kairos handle both inbound and outbound calls?', a: 'Yes. The same engine answers inbound as a receptionist and runs outbound sequences — confirmations, reminders, no-show recovery — around an event or appointment, logging every call with the reason it was made.' },
+    ],
+  },
+  'approval-workflow': {
+    seoTitle: 'Approval & Sign-Off Workflow Software',
+    seoDescription:
+      'Route approvals by rule instead of by inbox — thresholds, roles and conditions decide who signs next, and every decision lands in an audit-ready evidence pack.',
+    keywords: ['approval workflow software', 'approval management software', 'loan approval workflow', 'sign off workflow software'],
+    definition:
+      'An approval workflow system routes a decision — a loan, a grant, a purchase order — to the right people in the right order by rule, advances the moment each person signs, and records every approver, comment and condition as an immutable trail a regulator can read as-is.',
+  },
+  'multi-channel-inbox': {
+    seoTitle: 'Multi-Channel Inbox',
+    seoDescription:
+      'Email, WhatsApp, SMS, web forms, DMs and voicemail in one classified, routed queue — so no lead or complaint slips because nobody watched that channel.',
+    keywords: ['omnichannel inbox', 'shared inbox software', 'unified inbox software', 'multichannel customer support software'],
+    definition:
+      'A multi-channel inbox pulls every inbound channel — email, WhatsApp, SMS, web forms, social DMs, voicemail — into one stream, classifies and routes each message to the right person in seconds, and replies on the channel the message arrived on, so nothing is missed and the customer never feels handed off.',
+  },
+  'workflow-orchestrator': {
+    seoTitle: 'Event-Driven Workflow Orchestrator',
+    seoDescription:
+      'One business event fans out across every downstream system in seconds, with retries, fallbacks and human escalation — instead of next-morning copy-paste.',
+    keywords: ['workflow orchestration software', 'workflow automation software', 'business workflow software', 'event driven automation'],
+    definition:
+      'A workflow orchestrator listens for a business event — a new order, a signed deal — and fans it out across every downstream system automatically, retrying on failure, falling back when needed and paging a human as a last resort, with every signal recorded in an immutable event log.',
+  },
+  'decision-engine': {
+    seoTitle: 'Decision Engine',
+    seoDescription:
+      'Codify a judgment call once, then have every reviewer reach it the same way — each decision scored, explained and logged, only the hard cases reaching a human.',
+    keywords: ['decision engine software', 'decision management software', 'rules engine software', 'loan decisioning software'],
+    definition:
+      'A decision engine encodes a policy as a weighted, branching rule set, scores each case in real time and returns the decision, the rate and the reasoning behind it. Routine cases clear automatically; only genuinely ambiguous ones reach a human, and every decision carries its own audit trail.',
+    faqs: [
+      { q: 'What is a decision engine?', a: 'A decision engine is software that turns a repeated judgment call — approve or decline, what rate, what next — into a consistent, explainable output by applying a defined policy to each case. The rules are configuration the business owns, so policy changes ship without re-engineering.' },
+    ],
+  },
+  'document-intelligence': {
+    seoTitle: 'Document Intelligence System',
+    seoDescription:
+      'An intake pipeline that reads every document, extracts and validates the fields, and routes the work — so your team only ever sees the exceptions.',
+    keywords: ['intelligent document processing', 'ocr automation software', 'invoice data capture software', 'document data extraction'],
+    definition:
+      'A document intelligence system is an intake pipeline that reads each document as it arrives, classifies it, extracts the fields with OCR, validates the structure — ID checksums, statement totals, signature blocks — and routes it where it belongs, sending only the ambiguous cases to a human review tray with the reason it stopped.',
+    faqs: [
+      { q: 'What is intelligent document processing?', a: 'Intelligent document processing (IDP) is the automated reading of documents — classifying them, extracting the fields, checking them against rules, and routing the result — so a back office stops keying data by hand and only handles the exceptions the system flags.' },
+      { q: 'How do you automate document processing?', a: 'You put a pipeline in front of the inbox: it classifies each document, runs OCR to pull the fields, validates them against rules, and routes the work automatically. Anything it can’t confidently process lands in a review queue with the exact reason attached.' },
+    ],
+  },
+  'document-assembly': {
+    seoTitle: 'Document Assembly System',
+    seoDescription:
+      'Proposals, contracts, statements and board reports assembled from your live systems — every field traceable to the source it came from.',
+    keywords: ['document assembly software', 'document generation software', 'contract generation software', 'proposal automation software'],
+    definition:
+      'A document assembly system builds proposals, contracts, statements and reports from the systems that already hold the data — the CRM, the pricing engine, the case-study library — instead of copy-paste and memory. Every field is tagged to its source, so versions stop contradicting each other.',
+  },
+  'bespoke-crm': {
+    seoTitle: 'Bespoke CRM — Built to Your Pipeline',
+    seoDescription:
+      'A CRM shaped to how your team actually sells — stages, automations and dashboards that mirror your pipeline, not a vendor’s template. Built in South Africa.',
+    keywords: ['crm software in south africa', 'crm software south africa', 'custom crm', 'bespoke crm', 'custom crm development'],
+    definition:
+      'A bespoke CRM is a customer-relationship system built around one team’s real sales process — its stages, automations and channels — rather than a generic template. Moving a deal between stages fires the right work automatically, and every interaction across every channel lands on one deal timeline.',
+    faqs: [
+      { q: 'What is CRM software?', a: 'CRM (customer relationship management) software is a system that records every interaction with a customer or prospect — calls, emails, deals, tasks — in one place, so a team can see the full relationship and move deals through a pipeline without losing track.' },
+      { q: 'How is a bespoke CRM different from off-the-shelf?', a: 'An off-the-shelf CRM makes you fit your sales process to its template. A bespoke CRM is built around how your team actually sells — your stages, your automations, your channels — so reps stop re-typing into four tools and the pipeline reflects what is really happening.' },
+      { q: 'Is a custom CRM worth it for a South African business?', a: 'When a team has outgrown an off-the-shelf CRM and is patching the gaps with spreadsheets, WhatsApp and shared inboxes, a CRM shaped to its real pipeline usually pays back fast in cleaner forecasting, faster onboarding and deals that stop slipping through the cracks.' },
+    ],
+  },
+  'customer-360': {
+    seoTitle: 'Unified Customer Record (Customer 360)',
+    seoDescription:
+      'One customer record stitched from the systems you already run, with a lens for sales, support, finance and CSM — so every team sees the same customer.',
+    keywords: ['customer data platform', 'single customer view', 'unified customer view', 'customer 360 software'],
+    definition:
+      'A unified customer record (Customer 360) stitches one timeline per customer from the systems already in use — sales, support, billing, product, marketing — and gives each team a lens on it. Every event is one click from its source system, so four teams stop keeping four versions of the customer.',
+  },
+  'knowledge-assistant': {
+    seoTitle: 'Internal Knowledge & SOP Assistant',
+    seoDescription:
+      'An assistant that has read every SOP, contract and policy you run on — it answers staff questions in plain English, cites each claim, and flags the gaps.',
+    keywords: ['internal knowledge base software', 'sop software', 'company wiki software', 'ai knowledge assistant'],
+    definition:
+      'An internal knowledge assistant is a system that has read every SOP, contract, pricing rule and policy a business runs on, answers plain-English questions with each claim cited to its source one click away, and flags the questions it cannot answer so the gaps become the next SOPs written.',
+  },
+  'lead-qualifier': {
+    seoTitle: 'Lead Qualification Engine',
+    seoDescription:
+      'Every inbound enquiry qualified before a rep sees it — leads worth a call routed with the brief written, price-shoppers and out-of-scope handled automatically.',
+    keywords: ['lead qualification automation', 'automated lead qualification', 'lead scoring software', 'lead qualification software'],
+    definition:
+      'A lead qualification engine runs the first conversation with every inbound enquiry across web form, WhatsApp, voicemail and chat, extracts a qualifying brief — intent, scope, timing, budget, urgency — and routes the lead: high-value to a senior rep with context, serious buyers to a booked call, price-shoppers to self-serve.',
+    faqs: [
+      { q: 'How do you automate lead qualification?', a: 'You put an intake in front of the inbox that holds a short structured conversation with each enquiry, extracts the qualifying details, and routes by rule — senior rep for high value, a booked call for serious buyers, self-serve for price-shoppers — so reps only work the leads worth working.' },
+    ],
+  },
+  'legacy-bridge': {
+    seoTitle: 'Legacy Bridge — Connect Old Systems',
+    seoDescription:
+      'Connect the spreadsheet, the old ERP and the bespoke tool to modern AI workflows through their existing surfaces — no migration, no rewrite of legacy code.',
+    keywords: ['legacy system integration', 'legacy system modernization', 'erp integration software', 'legacy modernization'],
+    definition:
+      'A legacy bridge reads and writes through each old system’s existing surface — a file watcher on the Excel workbook, an ODBC read against the ERP, an API wrapper around the bespoke tool — so legacy systems join modern AI workflows without a migration and without touching their code.',
+  },
+  'inventory-clarity': {
+    seoTitle: 'Inventory Clarity — RFID Stock System',
+    seoDescription:
+      'RFID readers turn every stock movement into a digital event, so the warehouse, the ledger and the order system always agree. No more clipboard counts.',
+    keywords: ['inventory management software', 'stock management software', 'rfid inventory system', 'rfid asset tracking'],
+    definition:
+      'An inventory management system tracks stock levels and movements so the warehouse, the books and the order system stay in agreement. Zabble’s Inventory Clarity System uses RFID readers at every gate and bay to turn each physical movement into a digital event in under two seconds — counted by the building itself.',
+    faqs: [
+      { q: 'What are the main types of inventory management?', a: 'Common approaches include periodic counts, perpetual (real-time) tracking, just-in-time, and ABC analysis. An RFID-driven perpetual system removes manual counting entirely: each physical movement posts itself, so the count is always live.' },
+      { q: 'Can you track inventory with RFID?', a: 'Yes. RFID readers at gates, bays and dispatch lanes detect tagged items as they move, updating the floor plan, the journal entry and the linked order automatically — turning a full-day cycle count into about ten minutes.' },
+    ],
+  },
+  'client-onboarding': {
+    seoTitle: 'Client Onboarding System',
+    seoDescription:
+      'A two-sided onboarding workflow: the client works their checklist while KYC, file setup and assignment fire in lockstep — escalating the moment anything stalls.',
+    keywords: ['client onboarding software', 'customer onboarding software', 'kyc onboarding software', 'digital onboarding software'],
+    definition:
+      'A client onboarding system runs the client’s steps and the firm’s steps as one mirrored workflow: a completed client action fires the matching firm action — KYC, file setup, advisor assignment, welcome pack — and the system nudges, then escalates, the moment something stalls, so no one sits in limbo.',
+  },
+  'case-management': {
+    seoTitle: 'Case Management System',
+    seoDescription:
+      'Every matter, owner and deadline tracked on a board with SLA timers — cases advance automatically, escalate on breach, and the audit trail writes itself.',
+    keywords: ['case management system', 'case management software', 'legal case management software', 'matter management software'],
+    definition:
+      'A case management system owns the full lifecycle of a matter: cases move across a board with SLA timers on every card, advance automatically as events fire, and escalate themselves when a deadline breaches. Every interaction, document and decision lands on one timeline — the audit trail is a by-product of the work.',
+    faqs: [
+      { q: 'What is a case management system?', a: 'A case management system tracks a matter — a legal case, a complaint, a beneficiary file — from open to close, holding every document, deadline, owner and decision on one timeline and advancing the work automatically as events happen, so nothing falls through the cracks.' },
+    ],
+  },
+  'task-management': {
+    seoTitle: 'Task Management for Multi-Step Matters',
+    seoDescription:
+      'A dependency-aware board for multi-role matters — finish a task and the next brief is ready; slip a deadline and the timeline recomputes automatically.',
+    keywords: ['conveyancing software', 'task management software', 'workflow task management'],
+    definition:
+      'This task management system runs multi-step, multi-role matters — like a property transfer — on a dependency-aware board: completing one task unblocks the next, assembles the brief the next person needs, and recomputes the timeline when something slips, so a late clearance never surprises anyone at lodgement.',
+  },
+  'field-ops-app': {
+    seoTitle: 'Field Operations App (Offline-First)',
+    seoDescription:
+      'A role-shaped, offline-first field app that captures clean data where signal drops and syncs the moment connectivity returns — the office sees the work live.',
+    keywords: ['field service management software', 'field operations software', 'field service app', 'offline data collection app'],
+    definition:
+      'A field service management system gives field crews role-specific forms on an offline-first app: every action queues locally and syncs the moment connectivity returns. The back office sees the work as it happens — photo, geo-stamp and signature on file — so tomorrow is planned against what actually happened today.',
+    faqs: [
+      { q: 'What is field service management?', a: 'Field service management is the software a business uses to schedule, dispatch, capture and bill work done away from the office — installs, inspections, deliveries. An offline-first app lets crews record clean data on-site even with no signal, syncing automatically when they reconnect.' },
+    ],
+  },
+  'analytics-suite': {
+    seoTitle: 'Analytics & Decision Support Suite',
+    seoDescription:
+      'One analytics layer pulling from every operational system, composed by role — each person sees only the KPIs that feed the decisions they actually make.',
+    keywords: ['business analytics software', 'business intelligence dashboard', 'decision support software', 'operational analytics software'],
+    definition:
+      'This analytics and decision-support suite pulls from every operational system in a business and composes the view by role, so each person sees only the KPIs that feed the decisions they make, at the cadence those decisions live on. Every number opens its calculation, its source systems and the next action.',
+  },
+  'accounting-engine': {
+    seoTitle: 'Accounting Engine — Books That Post Themselves',
+    seoDescription:
+      'Event-driven accounting for South African firms: invoices and journal entries fire from real operational events, so the books reconcile within a day.',
+    keywords: ['accounting software south africa', 'accounting automation software', 'automated accounting software', 'event driven accounting'],
+    definition:
+      'Zabble’s Accounting Engine is an event-driven accounting layer: operational systems emit events — projects signed, milestones shipped, deposits received — and the engine writes the right artefact, from a deposit invoice to a journal entry to a bank match. Rules are configuration, so VAT treatment and cost-centre splits change without engineering.',
+    faqs: [
+      { q: 'Can accounting be automated?', a: 'Much of it can. When operational systems emit events — a signed project, a shipped milestone, a received deposit — an event-driven engine writes the matching invoice, journal entry or bank match automatically, so the books reconcile to within a day of operations instead of waiting for month-end.' },
+      { q: 'What is event-driven accounting?', a: 'Event-driven accounting posts entries from real business events as they happen, rather than from someone remembering at month-end. Each ledger entry carries the event ID and rule that produced it, so auditors can trace any figure back to what caused it.' },
+    ],
+  },
+  'compliance-reporting': {
+    seoTitle: 'Compliance & Regulatory Reporting Engine',
+    seoDescription:
+      'POPIA filings, SARB returns and donor reports — assembled from data you already generate, validated against the rule pack, every figure traced to source.',
+    keywords: ['popia compliance', 'regulatory reporting software', 'regulatory reporting automation', 'compliance reporting software'],
+    definition:
+      'A regulatory reporting engine knows which systems each submission draws from, pulls the data itself, validates it live against the regulator’s rule pack, and traces every figure back to its source row. The same engine produces a SARB banking return, a POPIA filing, an NGO donor report or a tax submission.',
+    faqs: [
+      { q: 'What is POPIA?', a: 'POPIA is South Africa’s Protection of Personal Information Act — the law governing how organisations collect, store, use and share personal data. It requires lawful, transparent, secure processing and gives people rights over their own information; non-compliance can carry heavy fines.' },
+      { q: 'What are the main principles of the POPI Act?', a: 'POPIA is built on eight conditions for lawful processing: accountability, processing limitation, purpose specification, further-processing limitation, information quality, openness, security safeguards, and data-subject participation.' },
+      { q: 'How do you become POPIA compliant?', a: 'In practice: appoint an Information Officer, map what personal data you hold and why, secure it, limit processing to stated purposes, enable data-subject requests, and keep records you can produce on demand. A reporting engine makes the last part — evidencing compliance — routine rather than a scramble.' },
+    ],
+  },
+  'continuous-assurance': {
+    seoTitle: 'Continuous Assurance Engine',
+    seoDescription:
+      'Background monitoring across a stream no human could watch — fraud, drift and failure surfaced with evidence attached, detection cut from days to seconds.',
+    keywords: ['transaction monitoring software', 'continuous monitoring software', 'aml transaction monitoring'],
+    definition:
+      'A continuous assurance engine monitors a high-traffic stream of activity — card transactions, CRM events, sensor telemetry — applies the right detector to each event, and surfaces only the cases that matter, each with its rule, history and suggested action recorded in an immutable, case-keyed audit trail.',
+    faqs: [
+      { q: 'What is anomaly detection?', a: 'Anomaly detection is software that learns the shape of normal activity and flags the unusual — fraud, error, drift, equipment failure — before it becomes a problem. It lets a team monitor a stream too large to watch by hand, surfacing only the cases that need a human.' },
+      { q: 'What is transaction monitoring?', a: 'Transaction monitoring continuously screens transactions for suspicious patterns — fraud, AML red flags, anomalies — and raises a case with the rule that fired and the surrounding history, so investigators receive evidence rather than raw alerts.' },
+    ],
+  },
+  'pricing-engine': {
+    seoTitle: 'Pricing & Quote Engine (CPQ)',
+    seoDescription:
+      'List price, tier discount, volume break and override composed into one number — a margin floor blocks underwater deals and routes breaches for sign-off.',
+    keywords: ['cpq software', 'pricing engine software', 'quote management software', 'quoting software'],
+    definition:
+      'A pricing and quote (CPQ) engine composes the correct price from every rule that applies — list price, tier discount, volume break, contract override, manual discount — blocks anything below the margin floor, and routes breaches to the right approver before the quote goes out. The audit trail is the quote.',
+    faqs: [
+      { q: 'What is CPQ software?', a: 'CPQ stands for Configure, Price, Quote. It is software that assembles an accurate, approved price for a deal from all the rules that apply — discounts, volume breaks, contract terms — so reps quote fast and finance stops auditing margin after the fact.' },
+    ],
+  },
+  'reconciliation-engine': {
+    seoTitle: 'Reconciliation Engine',
+    seoDescription:
+      'Ingests POS, bank, processor and accounting ledgers, auto-matches the routine cases, and surfaces only the exceptions that need a person.',
+    keywords: ['bank reconciliation software', 'reconciliation software', 'automated bank reconciliation', 'account reconciliation software'],
+    definition:
+      'A reconciliation engine ingests every ledger as it lands — POS, bank, accounting, processor, inventory — matches the easy cases in seconds, and sends only the mismatches that need a human to the queue. Resolve one by hand and it saves the rule, so the same kind of exception auto-clears next time.',
+    faqs: [
+      { q: 'What is reconciliation in accounting?', a: 'Reconciliation is the process of checking that two records of the same transactions agree — for example a bank statement against the accounting ledger — and explaining any differences. Automating it means the system matches the routine entries and only the real exceptions reach a person.' },
+      { q: 'How do you automate bank reconciliation?', a: 'You feed each ledger into an engine that matches entries by rule — identical entries 1:1, combined deposits by sum-and-window, predictable fees by saved rule — and routes only unmatched items to a review queue. Manual resolutions are saved as rules that auto-clear similar cases next time.' },
+    ],
+  },
+  'data-routing': {
+    seoTitle: 'Data Routing Pipeline',
+    seoDescription:
+      'One pipeline that reads from every system you run and generates the board pack, donor report or regulator return — every figure traceable to its source.',
+    keywords: ['data pipeline software', 'data integration platform', 'automated reporting software', 'regulatory reporting pipeline'],
+    definition:
+      'A data routing pipeline reads from every system a team already runs and assembles a clean, governed output — a board pack, a donor report, a regulator return. Classify, join, validate, aggregate, render: the rule pack for the chosen output decides which transforms fire, and every figure’s lineage unrolls back to its source row.',
+  },
+  'integration-hub': {
+    seoTitle: 'Integration Hub',
+    seoDescription:
+      'The connective tissue between the tools you already run — a new booking, order or lead reaches every system that should know, the moment it happens.',
+    keywords: ['integration platform', 'system integration software', 'api integration platform', 'business systems integration'],
+    definition:
+      'An integration hub sits between every tool a business runs and forwards each event to every other system that should hear about it — transformed on the way, with its trail attached. New bridges are point-and-click, so the stack stops being eight islands with a person paddling between them.',
+  },
+  'cross-system-sync': {
+    seoTitle: 'Cross-System Sync Engine',
+    seoDescription:
+      'Keeps every shared record identical across two systems — edits on either side land on both in seconds, and conflicts resolve by the rule you set.',
+    keywords: ['data synchronization software', 'real time data sync', 'system sync software', 'two way data sync'],
+    definition:
+      'A cross-system sync engine keeps every shared record identical across two systems: an edit on either side lands on the other in seconds. Direction is configurable — one-way where one system is the source of truth, bi-directional for true peers — and field-level conflicts resolve by an explicit, audited rule.',
+  },
+  'forecasting': {
+    seoTitle: 'Forecasting & Demand Planning',
+    seoDescription:
+      'A forecast trained on your own history, with weather, events and promos as inputs you can move — and recommendations that push to the systems you already use.',
+    keywords: ['demand forecasting software', 'demand planning software', 'sales forecasting software', 'inventory forecasting software'],
+    definition:
+      'A demand forecasting system projects a business’s own history forward, taking weather, local events, promotions and trend as inputs the team can adjust, and shows a confidence band that widens when the model is unsure. Its recommendations — orders, rotas, cash buffers — push to the systems the team already uses.',
+    faqs: [
+      { q: 'What is demand forecasting?', a: 'Demand forecasting is predicting future demand — covers, orders, sales, cash — from historical data and known drivers like seasonality, promotions and events, so a business can plan stock, staffing and cash instead of guessing. A good forecast also shows how confident it is.' },
+    ],
+  },
+  'predictive-maintenance': {
+    seoTitle: 'Predictive Maintenance System',
+    seoDescription:
+      'Pulls vibration, temperature and oil data into one model per asset class, predicts days-to-failure, and books the repair before the breakdown happens.',
+    keywords: ['predictive maintenance software', 'condition monitoring software', 'predictive maintenance system', 'machine failure prediction'],
+    definition:
+      'A predictive maintenance system pulls vibration, temperature, oil-analysis and run-hour data into one model per asset class, predicts days-to-failure with a confidence band, and auto-schedules the intervention at the lowest-cost downtime window — shifting maintenance from calendar-driven to condition-driven.',
+    faqs: [
+      { q: 'What is predictive maintenance?', a: 'Predictive maintenance uses sensor data — vibration, temperature, oil analysis — to predict when a machine will fail and schedule the repair just before it does, instead of on a fixed calendar or after a breakdown. One prevented failure often pays for the system.' },
+    ],
+  },
+  'master-data-hub': {
+    seoTitle: 'Master Data Hub (MDM)',
+    seoDescription:
+      'One canonical record per customer, supplier and product — edit it once and every downstream system agrees within two seconds, by an explicit, audited rule.',
+    keywords: ['mdm software', 'master data management', 'master data management software', 'golden record software'],
+    definition:
+      'A master data hub holds the golden record for every entity a business runs on — customer, supplier, product, employee, asset — and fans each edit out to every downstream system in under two seconds. A direct edit downstream competes with the hub, and the rule that resolves the conflict is explicit, configurable and audited.',
+    faqs: [
+      { q: 'What is master data management?', a: 'Master data management (MDM) keeps one authoritative record — a golden record — for each core business entity like a customer or product, and synchronises it across every system, so teams stop trusting four slightly different versions of the same data.' },
+    ],
+  },
+  'notification-orchestration': {
+    seoTitle: 'Notification & Alert Orchestration',
+    seoDescription:
+      'One rule engine decides who hears about what, on which channel, at what hour — critical events override everything; the rest route by role and quiet hours.',
+    keywords: ['alert management software', 'notification management software', 'incident alerting software', 'alert orchestration software'],
+    definition:
+      'A notification orchestration engine sits between every source system and every channel, deciding who hears about what, where and when. Severity and conditions decide the recipient, channel preferences decide where, and quiet hours decide whether it can wait — while critical events override every rule and reach a human in seconds.',
+  },
+}
+
+// Merge SEO data onto the live SYSTEMS entries once, at module load.
+for (const sys of SYSTEMS) {
+  const seo = SYSTEM_SEO[sys.slug]
+  if (seo) Object.assign(sys, seo)
+}
 
 export function systemBySlug(slug: string): System | undefined {
   return SYSTEMS.find((s) => s.slug === slug)

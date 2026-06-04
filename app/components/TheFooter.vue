@@ -52,9 +52,20 @@ const year = new Date().getFullYear()
         </nav>
       </div>
 
-      <div class="mt-12 pt-7 border-t border-line flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-        <p class="text-[15px] lg:text-[13px] text-mute-2">© {{ year }} Zabble. All rights reserved.</p>
-        <p class="text-[15px] lg:text-[13px] text-mute-2">Bespoke digital systems · South Africa</p>
+      <div class="mt-12 pt-7 border-t border-line flex flex-col gap-5">
+        <!-- Footer nav (S02): hub links for crawl depth + internal linking (OR-6). -->
+        <nav class="flex flex-wrap items-center gap-x-7 gap-y-2 text-[16px] lg:text-[14.5px] font-medium text-mute" aria-label="Footer">
+          <NuxtLink to="/" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Home</NuxtLink>
+          <NuxtLink to="/systems" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Systems</NuxtLink>
+          <NuxtLink to="/pillars" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Pillars</NuxtLink>
+          <NuxtLink to="/industries" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Industries</NuxtLink>
+          <NuxtLink to="/insights" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Insights</NuxtLink>
+          <NuxtLink to="/contact" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Contact</NuxtLink>
+        </nav>
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <p class="text-[15px] lg:text-[13px] text-mute-2">© {{ year }} Zabble. All rights reserved.</p>
+          <p class="text-[15px] lg:text-[13px] text-mute-2">Bespoke digital systems · South Africa</p>
+        </div>
       </div>
     </div>
   </footer>

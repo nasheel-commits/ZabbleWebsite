@@ -1,0 +1,70 @@
+Rendered <head> tags from prerendered .output/public (nuxt generate) — captured 2026-06-04
+Verifies goal condition 2: unique, correct, server-rendered tags incl. dynamic /systems/[slug].
+
+==== / (home)  [index.html] ====
+lang        : en-ZA
+title       : Bespoke Business Systems, Built in South Africa · Zabble
+description : Zabble builds bespoke operational systems — automation, audit trails, anomaly detection and analytics — around the one problem slowing your business down.
+canonical   : https://zabble.org/
+og:title    : Bespoke Business Systems, Built in South Africa · Zabble
+og:type     : website
+og:url      : https://zabble.org/
+og:locale   : en_ZA
+twitter:card: summary_large_image
+
+==== /systems (hub)  [systems/index.html] ====
+lang        : en-ZA
+title       : Operational Systems We Build · Zabble
+description : The building blocks Zabble assembles into bespoke operating systems for South African businesses — automation, audit trails, anomaly detection and analytics.
+canonical   : https://zabble.org/systems
+og:title    : Operational Systems We Build · Zabble
+og:type     : website
+og:url      : https://zabble.org/systems
+og:locale   : en_ZA
+twitter:card: summary_large_image
+
+==== /systems/reconciliation-engine  [systems/reconciliation-engine/index.html] ====
+lang        : en-ZA
+title       : Reconciliation Engine · Zabble
+description : Stop chasing the agreement between systems. The engine matches the ledgers in the background and only surfaces what needs a human.
+canonical   : https://zabble.org/systems/reconciliation-engine
+og:title    : Reconciliation Engine · Zabble
+og:type     : article
+og:url      : https://zabble.org/systems/reconciliation-engine
+og:locale   : en_ZA
+twitter:card: summary_large_image
+
+==== /systems/bespoke-crm  [systems/bespoke-crm/index.html] ====
+lang        : en-ZA
+title       : Bespoke CRM · Zabble
+description : A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.
+canonical   : https://zabble.org/systems/bespoke-crm
+og:title    : Bespoke CRM · Zabble
+og:type     : article
+og:url      : https://zabble.org/systems/bespoke-crm
+og:locale   : en_ZA
+twitter:card: summary_large_image
+
+==== /systems/document-intelligence  [systems/document-intelligence/index.html] ====
+lang        : en-ZA
+title       : Document Intelligence System · Zabble
+description : The intake desk reads every document. It pulls the fields, checks the maths, routes the work. Humans only see the exceptions.
+canonical   : https://zabble.org/systems/document-intelligence
+og:title    : Document Intelligence System · Zabble
+og:type     : article
+og:url      : https://zabble.org/systems/document-intelligence
+og:locale   : en_ZA
+twitter:card: summary_large_image
+
+==== /diagnose  [diagnose/index.html] ====
+lang        : en-ZA
+title       : Diagnose Your Operations · Zabble
+description : A free 2-minute diagnostic that finds the operational problem costing your business the most — and the kind of system that fixes it. Built by Zabble, South Africa.
+canonical   : https://zabble.org/diagnose
+og:title    : Diagnose Your Operations · Zabble
+og:type     : website
+og:url      : https://zabble.org/diagnose
+og:locale   : en_ZA
+twitter:card: summary_large_image
+
+NOTE: /systems/index.html carries rel=canonical https://zabble.org/systems, so /systems?pillar=* filtered variants (client-side query) canonicalise to /systems — no self-cannibalisation.

@@ -11,10 +11,12 @@
     "test": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && npm run test:vitest && npm run test:node && npm run test:scripts",
     "test:vitest": "vitest run",
     "test:node": "node --test tests/architecture.test.mjs",
-    "test:scripts": "echo no-standalone-scripts-yet",
+    "test:scripts": "node scripts/seo-metadata.test.mjs",
     "test:unit": "vitest run tests/seo/seo-logic.test.ts",
     "test:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run",
-    "test:arch": "node --test tests/architecture.test.mjs"
+    "test:arch": "node --test tests/architecture.test.mjs",
+    "test:metadata": "node scripts/seo-metadata.test.mjs",
+    "verify:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && node scripts/seo-metadata.test.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.16.0",

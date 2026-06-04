@@ -163,6 +163,7 @@ onBeforeUnmount(() => {
 
         <p
           v-reveal="220"
+          data-answer-first
           class="mx-auto mt-6 md:mt-8 max-w-2xl text-[16px] md:text-[19px] leading-[1.6] md:leading-[1.65] text-mute"
         >
           Zabble designs bespoke operational systems: automation, audit trails, anomaly detection,

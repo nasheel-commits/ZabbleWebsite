@@ -1,0 +1,10 @@
+nuxt generate — tail (captured 2026-06-04). Exit code 0; clean prerender.
+---
+[nitro]   ├─ /systems/integration-hub/_payload.json (6ms)
+[nitro]   ├─ /systems/kairos/_payload.json (3ms)
+[nitro]   ├─ /systems/bespoke-crm/_payload.json (14ms)
+[nitro] ℹ Prerendered 68 routes in 7.752 seconds
+[nitro] ✔ Generated public .output/public
+[nitro] ✔ You can preview this build using npx serve .output/public
+│
+└  ✨ You can now deploy .output/public to any static hosting!

@@ -51,15 +51,18 @@ const breadcrumbs = computed(() => [
   { label: sys.value.name },
 ])
 
-useHead({
-  title: () => `${sys.value.name} · Zabble`,
-  meta: [
-    {
-      name: 'description',
-      content: () => sys.value.tagline,
-    },
-  ],
-})
+// Per-page SEO (S02 on-page, owner of per-page meta). Distinct title +
+// description per module, derived from the data file: SEO-specific overrides
+// (seoTitle/seoDescription from S06) when present, else name/tagline. ogType
+// 'article' — a specific offering page; canonical to the clean slug URL. The
+// global titleTemplate appends " · Zabble".
+usePageSeo(() => ({
+  title: sys.value.seoTitle ?? sys.value.name,
+  description: sys.value.seoDescription ?? sys.value.tagline,
+  path: `/systems/${sys.value.slug}`,
+  ogType: 'article',
+  primaryKeyword: sys.value.keywords?.[0],
+}))
 
 </script>
 
@@ -76,6 +79,24 @@ useHead({
       <!-- Hero -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
         <SystemHero :system="sys" />
+      </section>
+
+      <!-- AEO: answer-first definition. Renders only when content (S06/S07) supplies
+           `definition`. Question-led H2 + a 40–60 word liftable answer (featured-snippet
+           / AI-overview shape). Placed high on the page so the answer sits in the first
+           screenful. Mirrored into schema by S08. See audits/05-onpage.md. -->
+      <section
+        v-if="sys.definition"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-12 md:mt-16"
+      >
+        <div v-reveal class="max-w-3xl">
+          <h2 class="font-display text-[26px] sm:text-[32px] md:text-[38px] leading-[1.12] tracking-tight text-ink">
+            What is {{ sys.name }}?
+          </h2>
+          <p data-answer-first class="mt-4 text-[16px] md:text-[17px] leading-[1.65] text-ink">
+            {{ sys.definition }}
+          </p>
+        </div>
       </section>
 
       <!-- Triptych -->
@@ -222,6 +243,35 @@ useHead({
             </span>
           </component>
         </div>
+      </section>
+
+      <!-- AEO: FAQ block. Renders only when content (S06/S07) supplies `faqs`.
+           The visible Q&A here is mirrored 1:1 into FAQPage JSON-LD by S08 (schema) —
+           never mark up a question that isn't on the page. Question text should match
+           real PAA / SERP phrasing from S05. See audits/05-onpage.md. -->
+      <section
+        v-if="sys.faqs?.length"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24"
+      >
+        <div v-reveal class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
+            <span class="dot" />
+            Questions
+          </div>
+          <h2 class="mt-4 font-display text-[28px] sm:text-[34px] md:text-[40px] leading-[1.1] tracking-tight text-ink">
+            Frequently asked questions
+          </h2>
+        </div>
+        <dl class="mt-8 md:mt-10 max-w-3xl divide-y divide-line border-t border-line">
+          <div v-for="(item, i) in sys.faqs" :key="i" class="py-5 md:py-6">
+            <dt class="font-display text-[18px] md:text-[20px] leading-snug text-ink">
+              {{ item.q }}
+            </dt>
+            <dd class="mt-2 text-[15.5px] md:text-[16px] leading-[1.65] text-mute">
+              {{ item.a }}
+            </dd>
+          </div>
+        </dl>
       </section>
 
       <!-- Related systems: links each module to shared-pillar siblings so no

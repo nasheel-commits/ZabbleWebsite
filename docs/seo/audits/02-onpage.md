@@ -1,9 +1,15 @@
 # Audit 02 — On-Page & Metadata
 
-- **Session:** 02
-- **Branch:** seo/02-onpage
-- **Owner:** _unassigned_
-- **Status:** pending
+> ✅ **DELIVERED as [`audits/05-onpage.md`](05-onpage.md).** The on-page &
+> metadata discipline was run under the brief's "S05 on-page" numbering on branch
+> `seo/05-onpage`. See that file for the page blueprints, keyword→page mapping,
+> title/description formulas, and the implemented `useSeoMeta`/`useHead` wiring.
+> This placeholder is retained only as a board-number pointer.
+
+- **Session:** 02 (delivered as 05-onpage)
+- **Branch:** seo/05-onpage
+- **Owner:** on-page agent
+- **Status:** done — see `05-onpage.md`
 - **Date:** _TODO_
 - **Depends on:** 00, 05 (keyword targets — soft)
 - **Layer(s):** SEO
