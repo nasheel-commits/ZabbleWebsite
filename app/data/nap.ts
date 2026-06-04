@@ -75,6 +75,10 @@ export const NAP: Nap = {
   longDescription:
     'Zabble is a South African software consultancy that builds bespoke operational systems — custom software designed around the specific problem slowing a business down. Every build rests on four pillars: automation that removes manual work, audit trails that make every decision replayable, anomaly detection that surfaces the costly few events inside the routine many, and analytics that turn operational data into decisions. Rather than forcing a business onto off-the-shelf software, Zabble sits with the team, finds the most expensive operational problem, and builds the system that fixes it.',
   email: 'analytics@zabble.org',
+  // CANONICAL HOST: this is the ONE knob for every canonical/og/schema URL on the
+  // new pages. The live site has an apex↔www host split (deployment blocker B5). If
+  // www becomes the canonical host, change this to 'https://www.zabble.org' and the
+  // whole landing system follows. See status.md cross-session coordination.
   url: 'https://zabble.org',
   phone: NAP_PENDING,
   street: NAP_PENDING,

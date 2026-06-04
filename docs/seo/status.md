@@ -83,6 +83,11 @@ S04 deliberately did not (schema write-ownership). All entity fields live in one
 - **Never emit a `NAP_PENDING` value** — guard with `napReady()`/`napHasAddress()`.
 
 ### Cross-session coordination notes (new pages I added)
+- **S01 / deployment (canonical host):** the live site has an apex↔www split
+  (deployment B5). All new pages emit canonical/og/schema URLs from **one knob** —
+  `NAP.url` in `app/data/nap.ts` (currently `https://zabble.org`). If www is the
+  canonical host, change that single value to `https://www.zabble.org` and the whole
+  landing system follows. (Flagged, not guessed — host canonicalisation is S01/deploy.)
 - **S01 (nuxt.config):** the new routes prerender via `crawlLinks` (reached from the
   rebuilt footer) — **`nuxt.config.ts` left untouched.** If you change prerender
   config, keep `crawlLinks: true` (or add `/locations/**`, `/industries/**`,
