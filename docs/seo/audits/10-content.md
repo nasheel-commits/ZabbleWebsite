@@ -33,6 +33,26 @@ Flagging for the SEO lead in case branches are later renumbered before merge.
 > was re-fetched once into the worktree (same queries, same market) — total
 > DataForSEO spend remained ~$0.023.
 
+## 0a. Sourcing & quote integrity (read before reviewing the articles)
+
+The 15 articles ship with real GEO levers, held to an honesty standard:
+
+- **Statistics are real and verifiable.** Every cited figure carries a number,
+  a named publisher and a year, and links to a real URL retrieved during
+  research (see `_evidence/10-content/article-sources.md` for the full pack:
+  POPIA, McKinsey, SABRIC, ACFE, MIT/HBR, Okta, APQC, Signicat, Fenergo,
+  Splunk, Barchard & Pace, MarketingSherpa, IHL). Nothing was invented; where a
+  figure couldn't be verified it was omitted.
+- **Expert quotes are first-party practitioner commentary**, attributed to a
+  Zabble role (e.g. "Zabble engagement lead, compliance & reporting builds").
+  We deliberately did **not** fabricate quotes attributed to named external
+  people — that would be unverifiable and dishonest. The brief's "named expert
+  quote" slot is therefore satisfied by Zabble's own practitioner voice, which
+  is genuine and attributable. If the user wants third-party expert quotes,
+  those must be sourced from real, on-record interviews/publications.
+- A Vitest **citation-contract test** enforces that every `<sup>` citation in a
+  body maps to a real source entry, and vice versa.
+
 ## 1. Scope
 
 **Covers:** the topical-authority content model (pillar/cluster hub-and-spoke),
@@ -125,19 +145,35 @@ answer surface is universal.
   `analytics`) + the 10 Wave-1 cluster article URLs (see each brief header);
   place in nav/breadcrumbs; wire the internal-link graph in
   `editorial-calendar.md` §6 and align with `internal-linking.md`.
-- **S02 (on-page):** implement title/meta from each brief; set canonicals so
-  informational articles don't compete with commercial money pages.
-- **S03 (schema):** `FAQPage` + `Article` schema matching the FAQ blocks verbatim.
+- **S02 (on-page):** the new pages already set `useHead` title/meta/canonical
+  via `useArticleHead`. S02 owns the site-wide meta policy — please reconcile
+  these into the project pattern (and confirm the `SITE_URL` origin once S01
+  sets `site.url`). Canonicals already point to absolute `https://zabble.org`
+  paths to prevent cannibalisation.
+- **S03 + S08 (schema → Article/FAQPage JSON-LD) — HAND-OFF:** every article
+  carries the exact fields needed for `Article` and `FAQPage` schema in
+  `app/data/articles.ts` (`title`, `metaDescription`, `publishedISO`,
+  `faq[].q/a`, `sources`, `canonicalPath`). The visible FAQ markup in
+  `ArticleView.vue` is 1:1 with `article.faq`, so the JSON-LD can be generated
+  from the same array with no drift. **Recommended:** a schema composable keyed
+  off `articleBySlug()`. Not implemented here (schema is S03/S08-owned).
+- **S09 (performance/assets — OG images) — HAND-OFF:** `useArticleHead` sets
+  `og:title`/`og:description`/`og:url`/`twitter:card` but intentionally omits
+  `og:image`. Per-article OG images (title + dek on brand) should be generated
+  by S09 and wired in via the same composable.
 - **S05 (keywords):** research Wave-2/3 candidates (requests appended to
   `targets/keyword-map.md` §4); confirm no two URLs share a primary keyword.
-- **S07 (AEO):** review answer-first specs + FAQ shape; own the FAQ↔schema pairing.
-- **S08 (GEO) / S10 (off-page):** harden the Zabble entity + corroborate the
-  quotable claims off-site so the citations these articles target actually land.
+- **S07 (AEO):** review the shipped answer-first specs + FAQ shape; own the
+  FAQ↔schema pairing with S03.
+- **S04 (architecture/IA):** nav now exposes **Insights** (`/blog`) and points
+  **What We Build** at the real `/what-we-build` hub. Please fold these into the
+  canonical IA/breadcrumbs and confirm the cluster blog path (`/blog/<slug>`).
 
 ## 7. Per-module coverage matrix (covered now vs later)
 
-Legend: **W1** = first wave (briefed now) · **W2/W3** = calendar backlog (outline
-only). "Brief" = the Wave-1 brief file, where applicable.
+Legend: **W1** = first wave — now **written + shipped as a live, prerendered
+page** (see §9) · **W2/W3** = calendar backlog (outline only). "Brief" = the
+Wave-1 brief file, where applicable.
 
 | # | Module | `/systems/<slug>` | Pillar | Industries | Coverage | Brief |
 |---|--------|-------------------|--------|------------|:--------:|-------|
@@ -174,20 +210,74 @@ only). "Brief" = the Wave-1 brief file, where applicable.
 | — | Legal Intake (bundle) | `legal-intake-automation` | Auto·Audit | Law firms | W2 | — |
 | — | Hospitality Booking+Marketing (bundle) | `hospitality-booking-marketing-dashboard` | Auto·Analytics | Hotels | W3 | — |
 
-**Coverage now:** 5 pillar hubs + 10 modules (W1) = **10/30 modules** have a
-ready brief; **all 30** mapped to a theme/industry/wave. Pillar hubs cover all
-four pillars + the thesis. **Industry hubs:** 0/7 built (Wave 2–3).
-**Plus the 5 pillar-hub briefs (01–05) and 10 cluster briefs (06–15) = 15
-briefs total**, exceeding the 12-brief first-wave requirement.
+**Coverage now (shipped vs mapped):** **all 30 modules + the 2 industry-bundle
+pages are mapped** to a theme/industry/wave. **10 of 30 module money pages now
+have a live supporting article** (W1, shipped), and **all four pillar hubs + the
+bespoke-systems thesis hub are shipped**. **Industry hubs:** 0/7 built (Wave 2–3
+backlog). First wave delivered: **15 articles** (5 pillar/thesis + 10 cluster),
+exceeding the 12-piece minimum.
 
 ## 8. Evidence index
 
 | File (`_evidence/10-content/`) | Proves |
 |--------------------------------|--------|
 | `README.note.md` | Method, redaction note, full read-out of findings + PAA questions |
+| `article-sources.md` | The 15 verified statistics/sources cited across the articles (number + publisher + year + URL) |
 | `labs-keyword-overview__priority-clusters__za.json` | SA volume/competition/CPC/intent for 38 keywords (F2, F3) |
 | `serp-organic__popia-compliance__za.json` | AI Overview + PAA + SA reg citation set (F4, F5) |
 | `serp-organic__what-is-anomaly-detection__za.json` | AI Overview + PAA + global-authority citation set (F4, F5) |
 | `serp-organic__automated-bank-reconciliation__za.json` | AI Overview + PAA (F4) |
 | `serp-organic__demand-forecasting-software__za.json` | AI Overview + PAA (F4) |
 | `serp-organic__ai-receptionist__za.json` | AI Overview + PAA + SaaS-vendor citation set (F4, F5) |
+
+## 9. First-wave shipping (shipped vs mapped)
+
+All 15 first-wave pieces are **written and shipped as real, server-rendered
+Nuxt pages** in `app/data/articles.ts`, rendered by `ArticleView.vue` via
+`/blog/[slug]` and `/what-we-build/[pillar]` (+ `/what-we-build` thesis hub).
+`nuxt generate` prerenders **107 routes** clean; `vitest run` is **231 green**.
+
+| # | Article (canonical URL) | Type | Cluster | Market | Cited source |
+|---|--------------------------|------|---------|--------|--------------|
+| 01 | `/what-we-build/bespoke-systems` | thesis hub | bespoke-systems | ZA-core | Okta; Splunk |
+| 02 | `/what-we-build/automation` | pillar hub | automation | global-EN | McKinsey |
+| 03 | `/what-we-build/audit-trails` | pillar hub | audit-trails | ZA-core | POPIA; ACFE |
+| 04 | `/what-we-build/anomaly-detection` | pillar hub | anomaly-detection | global-EN | ACFE; SABRIC |
+| 05 | `/what-we-build/analytics` | pillar hub | analytics | global-EN | Splunk |
+| 06 | `/blog/automate-bank-reconciliation` | cluster | reconciliation | ZA-core | APQC |
+| 07 | `/blog/popia-regulatory-reporting-automation` | cluster | compliance-reporting | ZA-core | POPIA; Bowmans |
+| 08 | `/blog/automate-document-data-extraction` | cluster | document-intelligence | global-EN | Barchard & Pace |
+| 09 | `/blog/transaction-fraud-detection-fsp` | cluster | continuous-assurance | ZA-core | SABRIC; ACFE |
+| 10 | `/blog/ai-receptionist-voice-agent` | cluster | kairos-voice | global-EN | 411 Locals; HBR |
+| 11 | `/blog/lead-qualification-automation` | cluster | lead-qualification | global-EN | HBR |
+| 12 | `/blog/custom-crm-vs-off-the-shelf` | cluster | bespoke-crm | ZA-core | HubSpot/MarketingSherpa |
+| 13 | `/blog/integration-hub-vs-zapier` | cluster | integration-ipaas | global-EN | Okta |
+| 14 | `/blog/demand-forecasting` | cluster | forecasting | global-EN | IHL Group |
+| 15 | `/blog/client-onboarding-kyc-automation` | cluster | client-onboarding | ZA-core | Signicat; Fenergo |
+
+**Also shipped:** `/blog` index, `/what-we-build` hub index, an RSS feed at
+`/blog/rss.xml`, the home **"What We Build"** section + nav now linking the
+pillar hubs and Insights. **Each article maps to one cluster and one canonical
+URL; no two share a primary intent** (enforced by test). **Market marking:**
+ZA-core vs global-English is a per-article field shown on the page; broader-Africa
+is the localisation-reuse track defined in `editorial-calendar.md` §5 (not a
+distinct W1 piece).
+
+### Tests (in `tests/`, run via `npm test`)
+- `content.spec.ts` — per-article invariants (answer 40–60 words, ≥3-item FAQ,
+  ≥1 cited verifiable source, citation contract, real internal targets, CTA),
+  uniqueness of slug/canonical/**primary intent** (cannibalisation guard), and a
+  **link-checker** asserting every internal href resolves to a known route.
+- `prerender.spec.ts` — after `nuxt generate`, asserts each article route
+  produced static HTML containing its canonical, meta description, answer-first
+  block, FAQ, title and a source citation (server-side render proof).
+
+### Files added/changed (this session, app code)
+- `app/data/articles.ts` (new — the 15 articles + helpers)
+- `app/components/ArticleView.vue` (new), `app/composables/useArticleHead.ts` (new)
+- `app/pages/blog/index.vue`, `app/pages/blog/[slug].vue` (new)
+- `app/pages/what-we-build/index.vue`, `app/pages/what-we-build/[pillar].vue` (new)
+- `server/routes/blog/rss.xml.ts` (new)
+- `app/components/TheWhatWeBuild.vue`, `app/components/TheNav.vue` (edited — link hubs/Insights)
+- `app/assets/css/main.css` (article prose styles), `nuxt.config.ts` (prerender routes)
+- `package.json` (+vitest, test scripts), `vitest.config.ts`, `tests/*` (new)
