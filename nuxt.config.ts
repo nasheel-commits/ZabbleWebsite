@@ -1,17 +1,31 @@
 import tailwindcss from '@tailwindcss/vite'
-import { SYSTEMS } from './app/data/systems'
+import { liveSystemRoutes, goneSystemRoutes, computeIndexable } from './app/utils/seo'
+import { REDIRECTS, buildRedirectRouteRules } from './app/data/redirects'
 
 // ---------------------------------------------------------------------------
 // SEO foundation wiring — owned by S01 (Technical SEO & Crawlability).
-// See docs/seo/audits/01-technical.md and docs/seo/decisions/0002-ai-crawler-policy.md
+// See docs/seo/audits/01-technical.md and docs/seo/decisions/*
 // ---------------------------------------------------------------------------
 
-// The 32 system detail routes, sourced from the single source of truth
-// (app/data/systems.ts) so the prerender list + sitemap never drift from the data.
-const systemRoutes = SYSTEMS.map((s) => `/systems/${s.slug}`)
+// System detail routes are sourced from the single source of truth
+// (app/data/systems.ts) and split by publish status so prerender + sitemap never
+// drift from the data:
+//  • liveSystemRoutes — published money pages: prerendered, in sitemap, 200.
+//  • goneSystemRoutes — concept/in-progress (thin/orphan): NOT prerendered, NOT
+//    in sitemap, noindex, and served 410 by the [slug].vue gate (OR-4).
+const priorityRoutes = ['/', '/systems', '/diagnose', ...liveSystemRoutes]
 
-// Every route that must emit full server-rendered HTML and appear in the sitemap.
-const priorityRoutes = ['/', '/systems', '/diagnose', ...systemRoutes]
+// noindex + 410-defence routeRules for every un-published system page (OR-4).
+// `prerender: false` overrides the '/systems/**' prerender glob so these are
+// served on demand by Nitro (→ [slug].vue → createError 410) instead of baked
+// as static 200s. `X-Robots-Tag` + meta-robots keep them out of the index even
+// on the 410 response.
+const goneRouteRules = Object.fromEntries(
+  goneSystemRoutes.map((p) => [
+    p,
+    { prerender: false, robots: 'noindex, nofollow', headers: { 'X-Robots-Tag': 'noindex' } },
+  ]),
+)
 
 // Pre-launch indexing guard (reference/measurement-indexing.md §1.3):
 // FAIL-CLOSED. The build is NON-indexable unless explicitly flipped at launch.
@@ -21,9 +35,7 @@ const priorityRoutes = ['/', '/systems', '/diagnose', ...systemRoutes]
 // NON-indexable: `Disallow: /` + noindex, so a staging domain never indexes.
 // Explicit override for non-Vercel hosts: NUXT_SITE_INDEXABLE=true.
 const SITE_URL = process.env.NUXT_SITE_URL || 'https://zabble.org'
-const INDEXABLE =
-  process.env.NUXT_SITE_INDEXABLE === 'true' ||
-  process.env.VERCEL_ENV === 'production'
+const INDEXABLE = computeIndexable(process.env)
 
 export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
@@ -33,7 +45,17 @@ export default defineNuxtConfig({
     '@nuxt/fonts',
     '@nuxtjs/sitemap',
     '@nuxtjs/robots',
+    'nuxt-link-checker',
   ],
+
+  // --- Broken-link detection (build-time report; never fails the build) -------
+  linkChecker: {
+    enabled: true,
+    failOnError: false,
+    report: { html: true, markdown: true },
+    // Concept/410 pages are intentionally unreachable — don't flag them.
+    excludeLinks: goneSystemRoutes,
+  },
 
   css: ['~/assets/css/main.css'],
 
@@ -100,17 +122,18 @@ export default defineNuxtConfig({
   sitemap: {
     // Explicit URLs for reliability (in addition to prerender auto-discovery).
     urls: priorityRoutes,
-    // Never expose internal/build/api routes.
-    exclude: ['/_**', '/api/**', '/200.html', '/404.html'],
+    // Never expose internal/build/api routes — or the un-published system pages.
+    exclude: ['/_**', '/api/**', '/200.html', '/404.html', ...goneSystemRoutes],
     autoLastmod: true,
     defaults: { changefreq: 'monthly', priority: 0.7 },
   },
 
-  // --- Nitro: full static prerender of every priority route ------------------
+  // --- Nitro: prerender every live priority route to full static HTML ---------
   nitro: {
     prerender: {
-      crawlLinks: true,           // discover any linked routes automatically
-      routes: priorityRoutes,     // belt-and-suspenders explicit list
+      crawlLinks: true,             // discover any linked routes automatically
+      routes: priorityRoutes,       // belt-and-suspenders explicit list (live only)
+      ignore: goneSystemRoutes,     // never prerender concept pages, even if linked
       // A single broken link should not fail the whole static build.
       failOnError: false,
     },
@@ -123,12 +146,19 @@ export default defineNuxtConfig({
     '/systems/**': { prerender: true },
     '/diagnose':   { prerender: true },
 
+    // Un-published system pages → not prerendered, noindex, served 410 (OR-4).
+    ...goneRouteRules,
+
+    // 301 redirect map for retired/renamed paths (OR-2). Empty until a published
+    // slug actually changes; the slug-immutability policy (ADR-0004) guarantees
+    // these `from` paths never overlap a live page, so the stub-clobber hazard
+    // (ADR-0003) does not apply.
+    ...buildRedirectRouteRules(REDIRECTS),
+
     // NOTE: structural canonicalisation (trailing-slash, clean URLs, www→apex)
     // is handled at the host layer (vercel.json + Vercel domain settings), NOT
-    // here. A `redirect` routeRule on a static path emits a meta-refresh stub at
-    // that path's index.html, which would CLOBBER the real prerendered page
-    // (e.g. '/systems/' and '/systems' share systems/index.html). The redirect
-    // map lives in docs/seo/decisions/0003-redirect-map.md.
+    // here — a `redirect` routeRule on a LIVE static path emits a meta-refresh
+    // stub that clobbers the real page. See docs/seo/decisions/0003-redirect-map.md.
   },
 
   vite: {

@@ -145,6 +145,49 @@ Severity-ranked. `[E: 01/<file>]` = evidence ref.
   `@nuxtjs/seo` suite in your sessions.
 - **S04/S05/S06 (R9/R10):** thin-content + internal-link depth (F6).
 
+## 10. Implementation pass — Open Requests (OR-1..OR-4) + regression suite
+
+This pass closes the cross-session Open Requests S01 owns (from S04's audit /
+`status.md`) and hardens the foundation with an automated test suite + link
+checker. **Everything is driven off one rule** — a system page is published
+(indexable/prerendered/200) iff `status === 'live'` — so the behaviour is
+self-maintaining as the catalogue grows (`app/utils/seo.ts`).
+
+| OR | Pri | Resolution | Files | Verified |
+|----|-----|-----------|-------|----------|
+| **OR-4** | **P0** | The 2 concept pages (`legal-intake-automation`, `hospitality-booking-marketing-dashboard`) are **excluded from prerender + sitemap**, carry `X-Robots-Tag: noindex`, and the `[slug].vue` gate returns **410 Gone** for any non-`live` slug. Self-maintaining via `status==='live'`. | `nuxt.config.ts`, `app/pages/systems/[slug].vue`, `app/utils/seo.ts`, `app/error.vue` (410 copy) | Hybrid server: concept→**410** + `X-Robots-Tag`, live→200, unknown→404 `[E: http-status__hybrid-preview.txt, http-410-headers__concept-page.txt]`; sitemap excludes both `[E: built-sitemap__launch-indexable.xml]` |
+| **OR-3** | P1 | Faceted `/systems?pillar=` **canonicalises to `/systems`** — `canonicalUrl()` strips query/hash; the facet UI uses buttons (not crawlable `<a href>`), so facet URLs are never in the crawl graph and `/systems` is the hub. | `app/utils/seo.ts`, `app/app.vue` | Unit test asserts `?pillar=` → `/systems` |
+| **OR-2** | P1 | **Slug-immutability + 301 redirect-map mechanism** (ADR-0004): typed `REDIRECTS` map → `routeRules`, validated for self-loops/duplicates/chains at build time. Empty today (no renames). | `app/data/redirects.ts`, `nuxt.config.ts`, `decisions/0004-slug-immutability.md` | Unit tests: valid map, rejects self-loop/dup/chain, no chains in output |
+| **OR-1** | P2 | **One trailing-slash policy**: no trailing slash (except root), enforced at canonical (`canonicalUrl`), `site.trailingSlash:false`, and host (`vercel.json trailingSlash:false`). | `app/utils/seo.ts`, `nuxt.config.ts`, `vercel.json` | Unit + built-output canonical tests |
+| **www** | P1 | Canonical, sitemap, robots `Sitemap:` line, and `vercel.json` are **all non-www**. The apex→www host redirect is the one human action (B5); no `vercel.json` host redirect added — it would **loop** against the current www-primary setting. | all of the above | Tests assert no `://www.` anywhere; `[E: redirect-chains…]` |
+
+**Tooling added:**
+- **`nuxt-link-checker`** wired (build-time inspection, non-failing): "Running link
+  inspections… Total errors: 0" `[E: link-checker-report.md]`.
+- **SEO-regression suite (vitest)** — `npm test` (29 assertions) + `npm run test:seo`
+  (generate-indexable + assert). Covers: canonical present/non-www/trailing-slash;
+  facet→hub; thin-page partition + sitemap exclusion + not-prerendered; redirect map
+  no-loops; sitemap has live URLs + lastmod; robots correct per `VERCEL_ENV`;
+  prerender emits real HTML; `en-ZA` lang. `[E: _test-seo.log]`
+
+**Verification (this pass):**
+- `npm run test:seo` → **29 passed, 1 skipped**; **33** sitemap URLs (30 live + 3),
+  concept pages absent. `[E: _test-seo.log, built-sitemap__launch-indexable.xml]`
+- Hybrid `nuxt build` + Nitro server: `/`=200, live systems=200, **both concept
+  pages=410** (+`X-Robots-Tag: noindex, nofollow`), unknown=404, robots/sitemap=200.
+  `[E: http-status__hybrid-preview.txt]`
+- Fresh production Lighthouse (mobile): Perf 98, **LCP 1.97 s / CLS 0 / TBT 0 ms —
+  all good**. `[E: lighthouse__home__production-recheck-mobile.json]`
+
+## 11. One owner action (B5)
+
+> **Vercel → Settings → Domains → set `zabble.org` (apex) as the Primary Domain.**
+> This makes `www.zabble.org → zabble.org` (301) and serves the apex 200, aligning
+> the served host with the non-www canonical. It is the **only** human action; all
+> code is non-www-consistent and a `vercel.json` host redirect is deliberately
+> omitted (it would loop against the current www-primary). After the toggle,
+> re-capture `redirect-chains__key-paths__production.txt`.
+
 ## 9. Evidence index (`_evidence/01/`)
 
 | File | Proves |
@@ -152,9 +195,13 @@ Severity-ranked. `[E: 01/<file>]` = evidence ref.
 | `baseline__legacy-spa__session-start.note.md` | Legacy SPA: 0 words, no H1, wrong positioning; CWV CLS 0.205/TBT 235 ms (historic) |
 | `onpage-instant__home__production-now.json` (+`.note.md`) | Our Nuxt app renders full HTML in prod (1004 words, H1, score 100) |
 | `lighthouse__home__production-now-mobile.json` (+`.note.md`) | Production CWV all "good": LCP 1.77 s, CLS 0, TBT 137 ms; Perf 98 |
-| `robots__production-now.txt` | Pre-fix production robots (bare, no Sitemap) |
-| `redirect-chains__key-paths__production.txt` | apex→www split (F2) |
-| `built-robots__launch-indexable.txt` | Post-fix launch robots (AI bots + Sitemap line) |
+| `lighthouse__home__production-recheck-mobile.json` (+`.note.md`) | Post-implementation CWV still good: LCP 1.97 s, CLS 0, TBT 0 ms; Perf 98 |
+| `http-status__hybrid-preview.txt` | OR-4 410 proof: concept→410, live→200, unknown→404 |
+| `http-410-headers__concept-page.txt` | 410 + `X-Robots-Tag: noindex, nofollow` on concept page |
+| `redirect-chains__key-paths__production.txt` | apex→www split (F2 / B5) |
+| `built-robots__launch-indexable.txt` | Launch robots (AI bots + Sitemap line) |
 | `built-robots__staging-guard.txt` | Staging guard (`Disallow: /`) |
-| `built-sitemap__launch-indexable.xml` | 35 priority URLs + lastmod |
-| `_generate-indexable.log` / `_generate-staging-guard.log` / `_npm-install.log` | Clean builds; module install |
+| `built-sitemap__launch-indexable.xml` | 33 priority URLs (live only) + lastmod; concept excluded |
+| `link-checker-report.md` | nuxt-link-checker wired; 0 broken links |
+| `_test-seo.log` | SEO-regression suite: 29 passed / 1 skipped |
+| `_generate-final-indexable.log` / `_build-hybrid.log` / `_npm-install*.log` | Clean builds; module + test-dep installs |

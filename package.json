@@ -7,7 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "vitest run",
+    "test:unit": "vitest run tests/seo/seo-logic.test.ts",
+    "test:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run"
   },
   "dependencies": {
     "@lucide/vue": "^1.16.0",
@@ -19,6 +22,9 @@
     "vue-router": "^5.0.7"
   },
   "devDependencies": {
-    "@nuxt/fonts": "^0.14.0"
+    "@nuxt/fonts": "^0.14.0",
+    "cross-env": "^7.0.3",
+    "nuxt-link-checker": "^5.0.10",
+    "vitest": "^3.0.0"
   }
 }

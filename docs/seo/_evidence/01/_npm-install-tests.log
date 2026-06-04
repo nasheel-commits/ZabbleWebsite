@@ -1,0 +1,18 @@
+
+> postinstall
+> nuxt prepare
+
+│
+◆  Types generated in [36m.nuxt[39m.
+
+added 30 packages, and audited 894 packages in 12s
+
+273 packages are looking for funding
+  run `npm fund` for details
+
+1 critical severity vulnerability
+
+To address all issues (including breaking changes), run:
+  npm audit fix --force
+
+Run `npm audit` for details.

@@ -1,0 +1,602 @@
+
+> test:seo
+> cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run
+
+┌  [36mBuilding Nuxt for production...[39m
+│
+●  [32mNuxt [1m4.4.6[22m[39m[90m (with [39m[90mNitro [1m2.13.4[22m[39m[90m, Vite [1m7.3.3[22m[39m[90m and Vue [1m3.5.34[22m[39m[90m)[39m
+[90m[[90m@nuxtjs/sitemap[90m][39m [36mℹ[39m No dynamic sources detected. Consider enabling [36mzeroRuntime[39m to reduce server bundle size. See https://nuxtseo.com/sitemap/guides/zero-runtime
+│
+●  Nitro preset: [36mstatic[39m
+[36mℹ[39m Building client...
+[36mℹ[39m [36mvite v7.3.3 [32mbuilding client environment for production...[36m[39m
+
+[43m[30m WARN [39m[49m [33m[plugin nuxt:module-preload-polyfill] Sourcemap is likely to be incorrect: a plugin (nuxt:module-preload-polyfill) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m
+
+[36mℹ[39m transforming...
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x2)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x3)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x4)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x5)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x6)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x7)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x8)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x9)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x10)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x11)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x12)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x13)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x14)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x15)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x16)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x17)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x18)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x19)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x20)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x21)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x22)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x23)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x24)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x25)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x26)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x27)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x28)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x29)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x30)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x31)[22m
+
+[36mℹ[39m [32m✓[39m 2022 modules transformed.
+[36mℹ[39m rendering chunks...
+[36mℹ[39m computing gzip size...
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[32mmanifest.json                                  [39m[1m[2m 40.00 kB[22m[1m[22m[2m │ gzip:   5.17 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/legacy-bridge.B6uRNbS8.css               [39m[1m[2m  0.10 kB[22m[1m[22m[2m │ gzip:   0.11 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/task-management._lpTBZBu.css             [39m[1m[2m  0.65 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/field-ops-app.B8mxI1mT.css               [39m[1m[2m  0.78 kB[22m[1m[22m[2m │ gzip:   0.36 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/continuous-assurance.BAVRxXfc.css        [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:   0.34 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/predictive-maintenance.C79S0gSy.css      [39m[1m[2m  0.84 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/bespoke-crm.BTdNPgwp.css                 [39m[1m[2m  0.89 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/customer-360.Sv8rZ7bC.css                [39m[1m[2m  1.00 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/master-data-hub.B14rFqFF.css             [39m[1m[2m  1.08 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/case-management.BjisYJej.css             [39m[1m[2m  1.17 kB[22m[1m[22m[2m │ gzip:   0.41 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/compliance-reporting.DjQGmnjF.css        [39m[1m[2m  1.21 kB[22m[1m[22m[2m │ gzip:   0.48 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/multi-channel-inbox.DRgmFMu2.css         [39m[1m[2m  1.34 kB[22m[1m[22m[2m │ gzip:   0.55 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/lead-qualifier.CyA2cm8t.css              [39m[1m[2m  1.47 kB[22m[1m[22m[2m │ gzip:   0.49 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/forecasting.bsZYySqH.css                 [39m[1m[2m  1.54 kB[22m[1m[22m[2m │ gzip:   0.54 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/decision-engine.D7t4D83L.css             [39m[1m[2m  1.56 kB[22m[1m[22m[2m │ gzip:   0.50 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/notification-orchestration.BpPbbgDr.css  [39m[1m[2m  1.82 kB[22m[1m[22m[2m │ gzip:   0.81 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/approval-workflow.DKAD8ik3.css           [39m[1m[2m  2.46 kB[22m[1m[22m[2m │ gzip:   0.71 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/document-intelligence.DpbOEpyP.css       [39m[1m[2m  2.78 kB[22m[1m[22m[2m │ gzip:   0.94 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/diagnose.DtmhewcO.css                    [39m[1m[2m  2.81 kB[22m[1m[22m[2m │ gzip:   0.86 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/knowledge-assistant.AbqnYiAg.css         [39m[1m[2m  3.16 kB[22m[1m[22m[2m │ gzip:   0.90 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/pricing-engine.De2lZIbM.css              [39m[1m[2m  3.28 kB[22m[1m[22m[2m │ gzip:   0.82 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/integration-hub.BzriYACr.css             [39m[1m[2m  5.08 kB[22m[1m[22m[2m │ gzip:   1.46 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/index.NscShmY2.css                       [39m[1m[2m  6.72 kB[22m[1m[22m[2m │ gzip:   1.78 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/kairos.35FKm3ZM.css                      [39m[1m[2m 28.15 kB[22m[1m[22m[2m │ gzip:   4.77 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[35m_nuxt/entry.Cie1gDHs.css                       [39m[1m[2m137.96 kB[22m[1m[22m[2m │ gzip:  21.76 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CXnTjG95.js                              [39m[1m[2m  0.06 kB[22m[1m[22m[2m │ gzip:   0.08 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BVKN4Ujt.js                              [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:   0.13 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/LdA7uGdX.js                              [39m[1m[2m  0.12 kB[22m[1m[22m[2m │ gzip:   0.14 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/B7aiufT9.js                              [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:   0.14 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Dpq86mqB.js                              [39m[1m[2m  0.13 kB[22m[1m[22m[2m │ gzip:   0.14 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CxIXJaze.js                              [39m[1m[2m  0.14 kB[22m[1m[22m[2m │ gzip:   0.15 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BealVrhy.js                              [39m[1m[2m  0.15 kB[22m[1m[22m[2m │ gzip:   0.15 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/B2L3rTPR.js                              [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BEspUA9P.js                              [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DO0zK3C8.js                              [39m[1m[2m  0.16 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DiZrntnV.js                              [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CwIlNMGB.js                              [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BHRVKiAR.js                              [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C5xm0uWR.js                              [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C-aH042F.js                              [39m[1m[2m  0.17 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DsuMn7_k.js                              [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.15 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C10G5BhJ.js                              [39m[1m[2m  0.18 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CyJuqMTs.js                              [39m[1m[2m  0.19 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Bmd5Lwmj.js                              [39m[1m[2m  0.19 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/B6F2cJL-.js                              [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DSg7KyzR.js                              [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Czj2nzCV.js                              [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DuWgLv5Q.js                              [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C25siQYz.js                              [39m[1m[2m  0.20 kB[22m[1m[22m[2m │ gzip:   0.17 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DmvJCW5p.js                              [39m[1m[2m  0.21 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/9dp9AAkM.js                              [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CTK2SDS4.js                              [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:   0.16 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DPzL-Ici.js                              [39m[1m[2m  0.22 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BqfbRU9U.js                              [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/P03CwJ0p.js                              [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DLXBd6w8.js                              [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BPR81QJI.js                              [39m[1m[2m  0.23 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DgJjlgD8.js                              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/uudQ4Kuu.js                              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DbQz4Rde.js                              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DUax5fiW.js                              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CtWuGVSh.js                              [39m[1m[2m  0.24 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DWwqF4zS.js                              [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DxNYPeUw.js                              [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CV4DAo59.js                              [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/D9KZSEEA.js                              [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DOY3TIv2.js                              [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BtYRqv3a.js                              [39m[1m[2m  0.25 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/D2xkXcBG.js                              [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C_MM0Hxc.js                              [39m[1m[2m  0.26 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BUaF4Ggk.js                              [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CSPOa0IP.js                              [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CzSYFjt2.js                              [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Da3p3KVx.js                              [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.18 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DuQPVq9Q.js                              [39m[1m[2m  0.27 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/ZhX4G3zi.js                              [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/B-aZhHCl.js                              [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CXQShdAQ.js                              [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BybHY5S7.js                              [39m[1m[2m  0.28 kB[22m[1m[22m[2m │ gzip:   0.20 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DKfrYoMn.js                              [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Cja-OfnK.js                              [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BvNiKUnd.js                              [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/7NTlIkEl.js                              [39m[1m[2m  0.29 kB[22m[1m[22m[2m │ gzip:   0.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CfqfengJ.js                              [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BhPmbhP7.js                              [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C2Tc7Bjx.js                              [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CJ5J_ueq.js                              [39m[1m[2m  0.30 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/-5WmoXlA.js                              [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Bw6tK3Co.js                              [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/AABsG7hn.js                              [39m[1m[2m  0.31 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CbX--FC8.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Dj8ewXVZ.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/F04f0A-y.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Cwg3UtfI.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/D6QDurbm.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BaHdodnj.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Cg02Wg1g.js                              [39m[1m[2m  0.32 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/D-4yx37V.js                              [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CKaVFRwr.js                              [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CoXDNt5d.js                              [39m[1m[2m  0.33 kB[22m[1m[22m[2m │ gzip:   0.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/MCR5dvVv.js                              [39m[1m[2m  0.34 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/ErBhJnps.js                              [39m[1m[2m  0.34 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/KByhzRr_.js                              [39m[1m[2m  0.35 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CwPSwLGZ.js                              [39m[1m[2m  0.36 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/k7u39CDw.js                              [39m[1m[2m  0.37 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DxHIwPL_.js                              [39m[1m[2m  0.37 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C9PSAXW9.js                              [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:   0.22 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/pqmkklYx.js                              [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CPgGXU16.js                              [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:   0.23 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BfGZTk4f.js                              [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:   0.25 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C0ny4kS8.js                              [39m[1m[2m  0.38 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Dx97rh4B.js                              [39m[1m[2m  0.40 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/p1_dIzGV.js                              [39m[1m[2m  0.41 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DWodmbTG.js                              [39m[1m[2m  0.41 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Cs25QI0k.js                              [39m[1m[2m  0.42 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BbnlkNCa.js                              [39m[1m[2m  0.42 kB[22m[1m[22m[2m │ gzip:   0.24 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/AuE9LUqY.js                              [39m[1m[2m  0.42 kB[22m[1m[22m[2m │ gzip:   0.26 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/yoXFNYpV.js                              [39m[1m[2m  0.44 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/5s44axBs.js                              [39m[1m[2m  0.45 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DZ85pthB.js                              [39m[1m[2m  0.47 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Bw-gcWU4.js                              [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:   0.27 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/do58IWwN.js                              [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CstZ8Oqy.js                              [39m[1m[2m  0.49 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/VHbACMaJ.js                              [39m[1m[2m  0.51 kB[22m[1m[22m[2m │ gzip:   0.29 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BuujmloE.js                              [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BoYoXN_n.js                              [39m[1m[2m  0.53 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CVD6UE8D.js                              [39m[1m[2m  0.62 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/D0yYxDBs.js                              [39m[1m[2m  0.65 kB[22m[1m[22m[2m │ gzip:   0.28 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/AuSSj_yz.js                              [39m[1m[2m  0.67 kB[22m[1m[22m[2m │ gzip:   0.32 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BPnCTYoe.js                              [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:   0.39 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DlWWmxRs.js                              [39m[1m[2m  0.90 kB[22m[1m[22m[2m │ gzip:   0.42 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DGJLWffF.js                              [39m[1m[2m  9.83 kB[22m[1m[22m[2m │ gzip:   4.02 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/VCEoaPNC.js                              [39m[1m[2m 10.05 kB[22m[1m[22m[2m │ gzip:   3.43 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DEzkdfNA.js                              [39m[1m[2m 10.92 kB[22m[1m[22m[2m │ gzip:   4.46 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DAe9fEA9.js                              [39m[1m[2m 21.65 kB[22m[1m[22m[2m │ gzip:   6.32 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DHJuZdG7.js                              [39m[1m[2m 24.69 kB[22m[1m[22m[2m │ gzip:   7.65 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BBE7BzsV.js                              [39m[1m[2m 24.74 kB[22m[1m[22m[2m │ gzip:   8.65 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/4nEn71kJ.js                              [39m[1m[2m 24.76 kB[22m[1m[22m[2m │ gzip:   7.82 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/kyX44jpU.js                              [39m[1m[2m 25.62 kB[22m[1m[22m[2m │ gzip:   8.05 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C_DaEV_t.js                              [39m[1m[2m 26.05 kB[22m[1m[22m[2m │ gzip:   8.35 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Bg6LrVUP.js                              [39m[1m[2m 26.86 kB[22m[1m[22m[2m │ gzip:   8.50 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DK99Fe44.js                              [39m[1m[2m 27.38 kB[22m[1m[22m[2m │ gzip:   8.19 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CE1xgwHj.js                              [39m[1m[2m 29.10 kB[22m[1m[22m[2m │ gzip:   7.58 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DxbTsJ9f.js                              [39m[1m[2m 29.64 kB[22m[1m[22m[2m │ gzip:   8.17 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/D7fxlGwQ.js                              [39m[1m[2m 30.02 kB[22m[1m[22m[2m │ gzip:   8.81 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/C9lVC63h.js                              [39m[1m[2m 30.40 kB[22m[1m[22m[2m │ gzip:  10.05 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Bl_pVCH8.js                              [39m[1m[2m 32.98 kB[22m[1m[22m[2m │ gzip:   9.91 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Drakpw1i.js                              [39m[1m[2m 33.23 kB[22m[1m[22m[2m │ gzip:  11.07 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Ta635ea0.js                              [39m[1m[2m 33.36 kB[22m[1m[22m[2m │ gzip:   9.95 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BS-VcoQ8.js                              [39m[1m[2m 34.91 kB[22m[1m[22m[2m │ gzip:  10.60 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/B8C51DUd.js                              [39m[1m[2m 34.99 kB[22m[1m[22m[2m │ gzip:  10.48 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DsGRw8eS.js                              [39m[1m[2m 35.03 kB[22m[1m[22m[2m │ gzip:   9.33 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BJ8bI_YR.js                              [39m[1m[2m 35.15 kB[22m[1m[22m[2m │ gzip:  10.88 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/z9_ACWH7.js                              [39m[1m[2m 35.47 kB[22m[1m[22m[2m │ gzip:  10.56 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CQaWyxi1.js                              [39m[1m[2m 36.50 kB[22m[1m[22m[2m │ gzip:   9.73 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CaEIW2BB.js                              [39m[1m[2m 36.57 kB[22m[1m[22m[2m │ gzip:   9.06 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CIMJX1ow.js                              [39m[1m[2m 38.00 kB[22m[1m[22m[2m │ gzip:  10.79 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CEMDkQka.js                              [39m[1m[2m 39.49 kB[22m[1m[22m[2m │ gzip:  11.71 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BLQCbDBD.js                              [39m[1m[2m 41.84 kB[22m[1m[22m[2m │ gzip:  12.21 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/CrOK2Z9_.js                              [39m[1m[2m 42.19 kB[22m[1m[22m[2m │ gzip:  10.07 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/Cdjvz-iB.js                              [39m[1m[2m 42.23 kB[22m[1m[22m[2m │ gzip:  13.26 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DQKcuh97.js                              [39m[1m[2m 43.36 kB[22m[1m[22m[2m │ gzip:  12.97 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/DPlyvTtg.js                              [39m[1m[2m 44.60 kB[22m[1m[22m[2m │ gzip:  13.47 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/ocm3uQyq.js                              [39m[1m[2m 49.04 kB[22m[1m[22m[2m │ gzip:  14.66 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/ClpxnEHn.js                              [39m[1m[2m 50.16 kB[22m[1m[22m[2m │ gzip:  15.12 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/BRGCXt_g.js                              [39m[1m[2m 57.24 kB[22m[1m[22m[2m │ gzip:  14.54 kB[22m
+[36mℹ[39m [2m../node_modules/.cache/nuxt/.nuxt/dist/client/[22m[36m_nuxt/3c2nDbGL.js                              [39m[1m[2m285.25 kB[22m[1m[22m[2m │ gzip: 104.95 kB[22m
+[36mℹ[39m [32m✓ built in 12.79s[39m
+[32m✔[39m Client built in 12809ms
+[36mℹ[39m Building server...
+[36mℹ[39m [36mvite v7.3.3 [32mbuilding ssr environment for production...[36m[39m
+[36mℹ[39m transforming...
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x2)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x3)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x4)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x5)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x6)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x7)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x8)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x9)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x10)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x11)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x12)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x13)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x14)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x15)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x16)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x17)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x18)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x19)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x20)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x21)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x22)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x23)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x24)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x25)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x26)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x27)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x28)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x29)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x30)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x31)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x32)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x33)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x34)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x35)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x36)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x37)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x38)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x39)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x40)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x41)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x42)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x43)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x44)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x45)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x46)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x47)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x48)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x49)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x50)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x51)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x52)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x53)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x54)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x55)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x56)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x57)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x58)[22m
+
+
+[43m[30m WARN [39m[49m [33m[plugin @tailwindcss/vite:generate:build] Sourcemap is likely to be incorrect: a plugin (@tailwindcss/vite:generate:build) was used to transform files, but didn't generate a sourcemap for the transformation. Consult the plugin documentation for help[39m[2m (x59)[22m
+
+[36mℹ[39m [32m✓[39m 261 modules transformed.
+[36mℹ[39m rendering chunks...
+[36mℹ[39m [32m✓ built in 6.14s[39m
+[32m✔[39m Server built in 6168ms
+[90m[[90mnitro[90m][39m [36mℹ[39m Initializing prerenderer
+
+[43m[30m WARN [39m[49m "file:///C:/Users/nashe/zabble-seo-01-technical/node_modules/@nuxt/nitro-server/dist/runtime/utils/cache-driver.js" is imported by " virtual:#nitro-internal-virtual/storage", but could not be resolved – treating it as an external dependency.
+
+[90m[[90mnitro[90m][39m [36mℹ[39m Prerendering 37 initial routes with crawler
+[90m[[90mnitro[90m][39m [90m  ├─ /__sitemap__/style.xsl (628ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /robots.txt (629ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /200.html (629ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /404.html (629ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ / (831ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (5ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /diagnose (845ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/workflow-orchestrator (634ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /diagnose/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (27ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/workflow-orchestrator/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (22ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/client-onboarding (671ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems (848ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/inventory-clarity (676ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/analytics-suite (687ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/reconciliation-engine (691ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/document-assembly (668ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/accounting-engine (695ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/data-routing (702ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/cross-system-sync (708ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/approval-workflow (716ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/multi-channel-inbox (720ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/document-intelligence (728ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/customer-360 (733ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/decision-engine (723ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/knowledge-assistant (741ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/lead-qualifier (747ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/legacy-bridge (752ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/task-management (760ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/case-management (757ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/pricing-engine (775ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/forecasting (784ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/field-ops-app (766ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/compliance-reporting (770ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/continuous-assurance (781ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/predictive-maintenance (788ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/notification-orchestration (800ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/bespoke-crm (808ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/client-onboarding/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (181ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (166ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/inventory-clarity/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (155ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/analytics-suite/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (149ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/reconciliation-engine/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (144ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/document-assembly/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (138ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/accounting-engine/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (132ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/data-routing/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (127ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/cross-system-sync/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (120ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/approval-workflow/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (115ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/multi-channel-inbox/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (110ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/document-intelligence/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (104ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/customer-360/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (98ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/decision-engine/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (93ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/knowledge-assistant/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (88ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/lead-qualifier/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (83ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/legacy-bridge/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (77ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/task-management/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (67ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/case-management/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (62ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/pricing-engine/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (56ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/forecasting/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (50ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/field-ops-app/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (44ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/compliance-reporting/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (38ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/continuous-assurance/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (33ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/predictive-maintenance/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (26ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/notification-orchestration/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (19ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/bespoke-crm/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (13ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/master-data-hub (795ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/integration-hub (814ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/kairos (825ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/master-data-hub/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (18ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/integration-hub/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (10ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/kairos/_payload.json?670e4d2a-dbd0-4189-9bbf-e2d44f7a8805 (5ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems?pillar=audit-trails (238ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems?pillar=automation (251ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems?pillar=analytics (238ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems?pillar=anomaly-detection (230ms)[90m (skipped)[90m[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /_payload.json (6ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /diagnose/_payload.json (28ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/workflow-orchestrator/_payload.json (22ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/client-onboarding/_payload.json (181ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/inventory-clarity/_payload.json (155ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/analytics-suite/_payload.json (149ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/_payload.json (167ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/accounting-engine/_payload.json (133ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/document-assembly/_payload.json (138ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/reconciliation-engine/_payload.json (144ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/data-routing/_payload.json (127ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/cross-system-sync/_payload.json (120ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/approval-workflow/_payload.json (116ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/document-intelligence/_payload.json (104ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/multi-channel-inbox/_payload.json (110ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/customer-360/_payload.json (98ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/decision-engine/_payload.json (93ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/lead-qualifier/_payload.json (83ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/legacy-bridge/_payload.json (77ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/knowledge-assistant/_payload.json (88ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/case-management/_payload.json (61ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/pricing-engine/_payload.json (56ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/task-management/_payload.json (67ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/forecasting/_payload.json (50ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/field-ops-app/_payload.json (44ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/compliance-reporting/_payload.json (38ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/continuous-assurance/_payload.json (33ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/predictive-maintenance/_payload.json (26ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/notification-orchestration/_payload.json (20ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/bespoke-crm/_payload.json (13ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/master-data-hub/_payload.json (18ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/integration-hub/_payload.json (11ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /systems/kairos/_payload.json (5ms)[39m
+[90m[[90mnitro[90m][39m [90m  ├─ /sitemap.xml (16ms)[39m
+[90m[[90mnitro[90m][39m [36mℹ[39m Running link inspections...
+[90m[[90mnitro[90m][39m [36mℹ[39m Nuxt Link Checker Summary
+[90m[[90mnitro[90m][39m   [37mFailing Pages:[39m 0 of 37
+[90m[[90mnitro[90m][39m   [37mTotal errors:[39m 0
+[90m[[90mnitro[90m][39m   [37mTotal warnings:[39m 0
+[90m[[90mnitro[90m][39m [36mℹ[39m [2mNuxt Link Checker[22m Reports written to:
+[90m[[90mnitro[90m][39m   • [36m.output/link-checker-report.html[39m
+[90m[[90mnitro[90m][39m   • [36m.output/link-checker-report.md[39m
+[90m[[90mnitro[90m][39m [36mℹ[39m Prerendered 71 routes in 22.039 seconds
+[90m[[90mnitro[90m][39m [32m✔[39m Generated public [36m.output/public[39m
+[90m[[90mnitro[90m][39m [32m✔[39m You can preview this build using [36mnpx serve .output/public[39m
+│
+└  ✨ You can now deploy [36m.output/public[39m to any static hosting!
+
+[1m[46m RUN [49m[22m [36mv3.2.6 [39m[90mC:/Users/nashe/zabble-seo-01-technical[39m
+
+ [32m✓[39m tests/seo/seo-logic.test.ts [2m([22m[2m21 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/seo/prerender.test.ts [2m([22m[2m9 tests[22m[2m | [22m[33m1 skipped[39m[2m)[22m[32m 11[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m      Tests [22m [1m[32m29 passed[39m[22m[2m | [22m[33m1 skipped[39m[90m (30)[39m
+[2m   Start at [22m 15:14:52
+[2m   Duration [22m 761ms[2m (transform 121ms, setup 0ms, collect 500ms, tests 20ms, environment 1ms, prepare 330ms)[22m
+

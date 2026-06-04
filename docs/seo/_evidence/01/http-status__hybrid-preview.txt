@@ -1,0 +1,10 @@
+/                                                       200
+/systems                                                200
+/diagnose                                               200
+/systems/bespoke-crm                                    200
+/systems/reconciliation-engine                          200
+/systems/legal-intake-automation                        410
+/systems/hospitality-booking-marketing-dashboard        410
+/systems/does-not-exist-xyz                             404
+/robots.txt                                             200
+/sitemap.xml                                            200

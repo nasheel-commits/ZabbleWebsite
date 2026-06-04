@@ -52,9 +52,15 @@ slash-stripped URL.
 | `www.zabble.org/*` | `zabble.org/*` | 301/308 | **Vercel domain settings** (set apex as *primary domain*) | **⚠ PENDING (P1)** — currently REVERSED (apex→www) |
 | `/path/` (trailing slash) | `/path` | 308 | `vercel.json` `trailingSlash:false` + canonical tag | ✅ in-repo |
 | `/path/index.html`, `/path.html` | `/path` | 308 | `vercel.json` `cleanUrls:true` | ✅ in-repo |
-| Legacy SPA content routes | new equivalents | 301 | **TBD** — capture from GSC/analytics at cutover | ⏳ deferred |
+| Renamed *published* slugs | new slug | 301 | **`app/data/redirects.ts` → routeRules** (code mechanism, ADR-0004) | ✅ mechanism live (map empty) |
+| Legacy SPA content routes | new equivalents | 301 | add to `redirects.ts` once known | ⏳ deferred — capture from GSC at cutover |
 
-### Why redirects are NOT done in `nuxt.config` `routeRules`
+> **Slug renames** are content-coupled and handled by the typed redirect map in
+> `app/data/redirects.ts` (validated for chains/loops at build time) — see
+> **ADR-0004**. This is distinct from the *structural* host redirects above.
+> The map is empty today (pre-launch, no renames).
+
+### Why redirects are NOT done in `nuxt.config` `routeRules` for live paths
 
 A `redirect` routeRule on a static path makes Nitro emit a `meta http-equiv=refresh`
 **stub** at that path's `index.html`. For paths that overlap a real page this

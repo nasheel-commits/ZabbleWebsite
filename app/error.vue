@@ -7,14 +7,19 @@ import { ArrowRight } from '@lucide/vue'
 // sets the correct status code, and is never indexed.
 const props = defineProps<{ error: NuxtError }>()
 
-const is404 = computed(() => props.error?.statusCode === 404)
-const heading = computed(() => (is404.value ? 'Page not found' : 'Something went wrong'))
 const code = computed(() => props.error?.statusCode ?? 500)
-const message = computed(() =>
-  is404.value
-    ? "That page doesn't exist — it may have moved, or the link was mistyped."
-    : "An unexpected error occurred on our side. Try again, or head back to safe ground.",
-)
+const is404 = computed(() => code.value === 404)
+const isGone = computed(() => code.value === 410)
+const heading = computed(() => {
+  if (is404.value) return 'Page not found'
+  if (isGone.value) return 'Page no longer available'
+  return 'Something went wrong'
+})
+const message = computed(() => {
+  if (is404.value) return "That page doesn't exist — it may have moved, or the link was mistyped."
+  if (isGone.value) return "This page has been retired or isn't published yet. Browse the systems we've built, or tell us what you need."
+  return 'An unexpected error occurred on our side. Try again, or head back to safe ground.'
+})
 
 useHead({
   title: () => `${code.value} · ${heading.value} · Zabble`,

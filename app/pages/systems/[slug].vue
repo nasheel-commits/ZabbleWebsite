@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { ArrowLeft, ArrowRight } from '@lucide/vue'
 
 import { PILLARS, systemBySlug } from '~/data/systems'
+import { isSystemPublished } from '~/utils/seo'
 
 const route = useRoute()
 
@@ -14,6 +15,18 @@ if (!system.value) {
   throw createError({
     statusCode: 404,
     statusMessage: 'System not found',
+    fatal: true,
+  })
+}
+
+// OR-4 (S01): concept / in-progress systems are thin and de-indexed. They are
+// excluded from prerender + sitemap and return **410 Gone** so search engines
+// drop them, rather than serving a 200 page full of TODO placeholders.
+// Promoting a system to status `'live'` re-activates its page automatically.
+if (!isSystemPublished(system.value)) {
+  throw createError({
+    statusCode: 410,
+    statusMessage: 'System not published',
     fatal: true,
   })
 }
