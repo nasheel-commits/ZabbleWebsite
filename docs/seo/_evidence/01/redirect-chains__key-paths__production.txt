@@ -1,0 +1,15 @@
+# Redirect chains on key paths — captured 2026-06-04
+
+## apex http -> ?
+HTTP/1.0 308 Permanent Redirect
+Location: https://zabble.org/
+
+## apex https -> ?
+HTTP/1.1 308 Permanent Redirect
+Location: https://www.zabble.org/
+
+## www https (canonical-served)
+HTTP/1.1 200 OK
+
+## a system page (www)
+HTTP/1.1 200 OK

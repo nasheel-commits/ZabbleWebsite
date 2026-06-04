@@ -1,0 +1,8 @@
+- **Endpoint:** POST /v3/serp/google/organic/live/regular
+- **Request body:** `[{ "language_code": "en", "location_name": "South Africa", "keyword": "bespoke business systems" }]`
+- **Auth:** Basic (redacted)
+- **Captured:** 2026-06-04 (after account verification + funding)
+- **Mode:** live
+- **Cost (response.cost):** 0.002
+- **Read:** Top + task `status_code` 20000; 10 organic items returned for the SA SERP. Confirms the **live data path works** post-verification. A parallel sandbox call (`sandbox.dataforseo.com`, same body) also returned 20000 — wiring confirmed without spend.
+- **Balance after this call:** $50.998 (see `user_data__zabble__live-verified.json`).

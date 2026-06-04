@@ -1,0 +1,26 @@
+npm warn deprecated glob@10.5.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+
+> postinstall
+> nuxt prepare
+
+
+[90m[[90m@nuxt/robots[90m][39m [43m[30m WARN [39m[49m Your robots.txt file was moved to [36m./public/_robots.txt[39m to avoid conflicts.
+
+[90m[[90m@nuxt/robots[90m][39m [36mℹ[39m The following paths are also valid for your robots.txt:
+ - ./assets/robots.txt
+ - ./public/_robots.txt
+ - ./public/_robots.txt
+ - ./public/_dir/robots.txt
+ - ./pages/_dir/robots.txt
+ - ./pages/robots.txt
+ - ./robots.txt
+
+│
+◆  Types generated in [36m.nuxt[39m.
+
+added 862 packages, and audited 864 packages in 58s
+
+264 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities

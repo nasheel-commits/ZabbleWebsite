@@ -23,5 +23,8 @@ logs
 .env.*
 !.env.example
 
+# Claude Code local (machine-specific) settings — may contain local overrides
+.claude/settings.local.json
+
 # Local mobile audit scratch
 _mobile_audit/
