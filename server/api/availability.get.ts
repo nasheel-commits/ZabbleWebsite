@@ -5,7 +5,7 @@
 //
 // Response (configured):  { ok: true, offset, durationMin, busy: [{start,end}] }
 // Response (no creds):    { ok: false, reason: 'not_configured' }
-// On any lookup failure it returns ok:false and the UI leaves all slots open —
+// On any lookup failure it returns ok:false and the UI leaves all slots open -
 // availability is a convenience guard; the booking endpoint re-checks for real.
 // ---------------------------------------------------------------------------
 

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Cornerstone thesis hub — "Why bespoke beats off-the-shelf" (S10 content).
+// Cornerstone thesis hub, "Why bespoke beats off-the-shelf" (S10 content).
 // A dedicated static route so it coexists with the four pillar hubs served by
 // what-we-build/[pillar].vue (S04): a static page always wins over the dynamic
 // segment, so /what-we-build/bespoke-systems renders this thesis while

@@ -53,7 +53,7 @@ const FIRM_STEPS: FirmStep[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// Reactive state — the focus onboarding
+// Reactive state, the focus onboarding
 // ---------------------------------------------------------------------------
 
 type ClientStatus = 'pending' | 'done'
@@ -174,7 +174,7 @@ function resetOnboarding() {
 }
 
 // ---------------------------------------------------------------------------
-// Stuck-client simulator — picks the first pending client step and walks
+// Stuck-client simulator, picks the first pending client step and walks
 // through an email nudge, a WhatsApp nudge, then an advisor escalation.
 // ---------------------------------------------------------------------------
 
@@ -214,21 +214,21 @@ function scheduleNextNudge(stepLabel: string) {
       nudgeLog.value.push({
         t,
         channel: 'email',
-        text: `Email nudge sent — "${stepLabel}" still pending.`,
+        text: `Email nudge sent, "${stepLabel}" still pending.`,
       })
       scheduleNextNudge(stepLabel)
     } else if (stuckNudgeCount === 2) {
       nudgeLog.value.push({
         t,
         channel: 'whatsapp',
-        text: `WhatsApp nudge sent — same step, friendly tone.`,
+        text: `WhatsApp nudge sent, same step, friendly tone.`,
       })
       scheduleNextNudge(stepLabel)
     } else {
       nudgeLog.value.push({
         t,
         channel: 'advisor',
-        text: `Escalated to advisor Sarah K — two nudges ignored, client may need a call.`,
+        text: `Escalated to advisor Sarah K, two nudges ignored, client may need a call.`,
       })
       stuckTimer = null
     }
@@ -248,7 +248,7 @@ onUnmounted(() => {
 })
 
 // ---------------------------------------------------------------------------
-// Pipeline board — five mock onboardings, one of them stuck.
+// Pipeline board, five mock onboardings, one of them stuck.
 // ---------------------------------------------------------------------------
 
 type BoardState = 'in-progress' | 'active' | 'stuck'
@@ -532,10 +532,10 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
         </ul>
 
         <p class="mt-4 text-[12.5px] text-mute-2">
-          Each firm step starts the moment the matching client step finishes — no inbox in between.
+          Each firm step starts the moment the matching client step finishes, no inbox in between.
         </p>
 
-        <!-- Activity log — every firm-step transition lands here with a
+        <!-- Activity log, every firm-step transition lands here with a
              relative timestamp. Makes the audit-trail pillar visible. -->
         <div
           v-if="firmActivityLog.length"
@@ -575,7 +575,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
               If the client stalls, the system nudges. Then escalates.
             </h4>
             <p class="mt-2 text-[14px] text-mute max-w-prose">
-              Email nudge first. WhatsApp nudge if that's ignored. Advisor escalation after two ignored nudges — without anyone watching.
+              Email nudge first. WhatsApp nudge if that's ignored. Advisor escalation after two ignored nudges, without anyone watching.
             </p>
           </div>
 
@@ -671,7 +671,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
           </div>
         </header>
 
-        <!-- KPI strip — surfaces the analytics pillar with the metrics the
+        <!-- KPI strip, surfaces the analytics pillar with the metrics the
              pillar note promises. Static illustrative figures. -->
         <div class="px-5 py-3 border-b border-line bg-surface-alt/40 grid grid-cols-2 md:grid-cols-4 gap-3">
           <div>
@@ -753,7 +753,7 @@ function boardChip(state: BoardState): { dot: string; chip: string; label: strin
         </ul>
 
         <div class="px-5 py-3 border-t border-line bg-surface-alt/50 text-[12.5px] text-mute">
-          One client stuck — escalated automatically. The other four advance without intervention.
+          One client stuck, escalated automatically. The other four advance without intervention.
         </div>
       </section>
     </div>

@@ -1,8 +1,8 @@
 /**
- * Zabble — search-engine site verification (S09 indexing).
+ * Zabble, search-engine site verification (S09 indexing).
  *
  * UNIVERSAL plugin (no .client/.server suffix) so the meta tags render into the
- * prerendered SSR HTML — which is what Google Search Console and Bing Webmaster
+ * prerendered SSR HTML, which is what Google Search Console and Bing Webmaster
  * Tools read for the "HTML tag" verification method.
  *
  * DNS TXT is the preferred verification (covers the whole Domain property and

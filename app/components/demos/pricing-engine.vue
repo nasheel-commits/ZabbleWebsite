@@ -13,7 +13,7 @@ interface SKU {
   unit: string          // 'each', 'night', 'sprint', etc.
   list: number
   cost: number
-  // Optional fixed override per tier — when present, overrides the composed
+  // Optional fixed override per tier, when present, overrides the composed
   // price after the volume break (still subject to manual discount + margin).
   contractOverrides?: Partial<Record<Tier, number>>
   // Optional tag shown in the catalogue card (e.g. "Anchor SKU").
@@ -306,7 +306,7 @@ const filteredCatalogue = computed(() => {
 })
 
 // ============================================================================
-// Pricing engine — core composition
+// Pricing engine, core composition
 // ============================================================================
 
 type VolumeBreak = { threshold: number; pct: number; basisLabel: string }
@@ -492,7 +492,7 @@ function bumpQty(line: QuoteLine, delta: number) {
   const newQty = clamp(line.qty + delta, 1, 9999)
   if (newQty === line.qty) return
   line.qty = newQty
-  // Manual discounts re-evaluated against floor — but qty change alone
+  // Manual discounts re-evaluated against floor, but qty change alone
   // generally improves margin via volume breaks. No breach check needed.
   resetArtefacts()
 }
@@ -580,7 +580,7 @@ const artefactCount = computed(() =>
   (Object.keys(artefacts) as ArtefactKey[]).filter((k) => artefacts[k].done).length,
 )
 
-// Convenience context for the breach modal — keeps template free of '!' asserts.
+// Convenience context for the breach modal, keeps template free of '!' asserts.
 const breachContext = computed(() => {
   const b = breach.value
   if (!b) return null
@@ -1063,7 +1063,7 @@ const TIER_ORDER: Tier[] = ['t1', 't2', 't3', 'strategic']
 
                   <p class="mt-3 text-[12px] text-mute italic flex items-start gap-1.5">
                     <Sparkles :size="12" :stroke-width="2" class="mt-0.5 text-cyan-brand-deep shrink-0" />
-                    Same stack, every line, every quote — change the tier and watch every row recompose.
+                    Same stack, every line, every quote, change the tier and watch every row recompose.
                   </p>
                 </div>
               </transition>
@@ -1138,7 +1138,7 @@ const TIER_ORDER: Tier[] = ['t1', 't2', 't3', 'strategic']
             Quote actions
           </div>
           <p class="mt-1 text-[13px] text-mute">
-            One click each. The engine emits the artefact to its destination — audit-trail attached.
+            One click each. The engine emits the artefact to its destination, audit-trail attached.
           </p>
         </div>
         <span
@@ -1284,7 +1284,7 @@ const TIER_ORDER: Tier[] = ['t1', 't2', 't3', 'strategic']
               <p class="mt-1.5 text-[13.5px] text-mute leading-[1.5]">
                 A {{ breachContext.breach.attemptedPct }}% manual discount would drop this line's margin to
                 <span class="font-semibold text-red-600">{{ breachContext.breach.attemptedMarginPct.toFixed(1) }}%</span>
-                — below the {{ cfg.marginFloorPct }}% floor for {{ cfg.label }}.
+               , below the {{ cfg.marginFloorPct }}% floor for {{ cfg.label }}.
               </p>
             </div>
           </div>
@@ -1308,7 +1308,7 @@ const TIER_ORDER: Tier[] = ['t1', 't2', 't3', 'strategic']
             </div>
 
             <p class="mt-3 text-[12.5px] text-mute-2 italic">
-              The line is blocked until approval lands. The full rule stack — including this attempted discount — is attached to the approval request.
+              The line is blocked until approval lands. The full rule stack, including this attempted discount, is attached to the approval request.
             </p>
           </div>
 
@@ -1410,7 +1410,7 @@ const TIER_ORDER: Tier[] = ['t1', 't2', 't3', 'strategic']
   40%           { transform: translateY(-3px); opacity: 1; }
 }
 
-/* Flying artefact chip — rises out of the destination card */
+/* Flying artefact chip, rises out of the destination card */
 @keyframes pe-fly {
   0%   { transform: translate(-50%, 80%) scale(0.85); opacity: 0; }
   30%  { transform: translate(-50%, 0%)  scale(1.0);  opacity: 1; }

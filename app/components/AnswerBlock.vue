@@ -2,7 +2,7 @@
 // Reusable AEO answer-first block (S07).
 //
 // Renders a question-led heading followed by a single self-contained answer
-// paragraph — the shape an answer engine (featured snippet, People Also Ask,
+// paragraph, the shape an answer engine (featured snippet, People Also Ask,
 // AI Overview) lifts verbatim. Pure server-rendered semantic HTML: the heading
 // and answer are present in the prerendered DOM with no client JS required to
 // read them. See docs/seo/content/aeo-standard.md for the pattern.

@@ -26,7 +26,7 @@ watch(open, (isOpen) => {
   document.body.classList.toggle('nav-open', isOpen)
 })
 
-// Close the mobile menu when the URL changes — covers route changes (/systems)
+// Close the mobile menu when the URL changes, covers route changes (/systems)
 // and in-page hash changes (/#what-we-build). Doing it via a route watcher
 // instead of @click="close" on every link avoids the race where setting
 // open=false in the click handler tears the dialog down (v-if + Transition)

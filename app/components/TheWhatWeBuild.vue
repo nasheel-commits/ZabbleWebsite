@@ -49,8 +49,8 @@ const pillars = [
           <span class="cyan-underline">We build them around yours.</span>
         </h2>
         <p class="mt-6 max-w-2xl text-[16.5px] md:text-[17px] leading-[1.65] text-mute">
-          We don't sell software. We assemble the system your business actually needs — from a library of
-          modules — around the single problem slowing it down. Explore the four pillars, or read our
+          We don't sell software. We assemble the system your business actually needs, from a library of
+          modules, around the single problem slowing it down. Explore the four pillars, or read our
           <NuxtLink to="/blog" class="text-cyan-brand-deep underline decoration-cyan-brand/40 underline-offset-2 hover:decoration-cyan-brand">insights for South African operators</NuxtLink>.
         </p>
       </div>
@@ -89,7 +89,7 @@ const pillars = [
           to="/blog"
           class="inline-flex items-center gap-2 text-[15px] font-semibold text-ink hover:text-cyan-brand-deep transition-colors"
         >
-          Read the insights — practical guides for South African operators
+          Read the insights, practical guides for South African operators
           <ArrowRight :size="16" class="text-cyan-brand-deep" />
         </NuxtLink>
       </div>

@@ -6,7 +6,7 @@ type Mode = 'event' | 'receptionist'
 const mode = ref<Mode>('event')
 
 // =============================================================================
-// EVENT MODE — timeline data (T-14 → T+7)
+// EVENT MODE, timeline data (T-14 → T+7)
 // =============================================================================
 
 type Channel = 'email' | 'sms' | 'whatsapp' | 'call' | 'calendar' | 'system' | 'crm'
@@ -37,9 +37,9 @@ interface TimelineDay {
   riskFlagged?: number
 }
 
-// Conference: Adviser Forum 2026 — 783 registrants, day-of on 2026-06-04 (Thu).
+// Conference: Adviser Forum 2026, 783 registrants, day-of on 2026-06-04 (Thu).
 // Dates are illustrative; the system runs the same arc regardless of date.
-// Counts are deliberately un-rounded — this is one real-shaped example, not a brochure.
+// Counts are deliberately un-rounded, this is one real-shaped example, not a brochure.
 const TIMELINE: TimelineDay[] = [
   {
     day: -14, label: 'T-14', date: 'Thu 21 May', phase: 'pre',
@@ -57,7 +57,7 @@ const TIMELINE: TimelineDay[] = [
   {
     day: -13, label: 'T-13', date: 'Fri 22 May', phase: 'pre',
     headline: 'Inbound parsing · first replies',
-    description: 'Reply-to parser turns email replies into structured intent — RSVPs, reschedules, declines.',
+    description: 'Reply-to parser turns email replies into structured intent, RSVPs, reschedules, declines.',
     touchpoints: [
       { time: '11:18', channel: 'crm', label: '51 RSVPs locked in', reason: 'Reply-to parser matched intent' },
       { time: '12:47', channel: 'crm', label: '2 reschedule requests auto-applied', reason: 'Free-text matched a known reschedule pattern' },
@@ -71,7 +71,7 @@ const TIMELINE: TimelineDay[] = [
     headline: 'Weekend send-quiet · inbound only',
     description: 'No outbound on the weekend per the firm\'s contact policy. Inbound is still parsed and logged.',
     touchpoints: [
-      { time: '—', channel: 'system', label: 'Policy: weekend send-quiet active' },
+      { time: '-', channel: 'system', label: 'Policy: weekend send-quiet active' },
       { time: '09:14', channel: 'system', label: 'Corporate auto-responders parsed · ignored', count: 23, reason: 'Out-of-office detected · no follow-up triggered' },
     ],
     metric: { label: 'RSVPs', value: '63' },
@@ -82,7 +82,7 @@ const TIMELINE: TimelineDay[] = [
     headline: 'Weekend send-quiet · inbound only',
     description: 'No outbound. The system still reads what lands and updates the record.',
     touchpoints: [
-      { time: '—', channel: 'system', label: 'Inbound-only mode' },
+      { time: '-', channel: 'system', label: 'Inbound-only mode' },
       { time: '14:02', channel: 'crm', label: '4 reschedules logged · 1 corporate-policy decline', reason: 'Free-text intent matched' },
     ],
     metric: { label: 'RSVPs', value: '71' },
@@ -158,7 +158,7 @@ const TIMELINE: TimelineDay[] = [
     headline: 'Weekend send-quiet · inbound only',
     description: 'Inbound parsed; declines and dietary updates logged. No outbound.',
     touchpoints: [
-      { time: '—', channel: 'system', label: 'Policy: weekend send-quiet active' },
+      { time: '-', channel: 'system', label: 'Policy: weekend send-quiet active' },
       { time: '10:46', channel: 'system', label: 'Corporate auto-replies ignored · 2 hard declines logged', count: 18 },
     ],
     metric: { label: 'RSVPs', value: '538' },
@@ -170,7 +170,7 @@ const TIMELINE: TimelineDay[] = [
     headline: 'Weekend send-quiet · inbound only',
     description: 'Inbound only. A dietary update on a Sunday gets the same handling as one on a Tuesday.',
     touchpoints: [
-      { time: '—', channel: 'system', label: 'Inbound-only mode' },
+      { time: '-', channel: 'system', label: 'Inbound-only mode' },
       { time: '11:09', channel: 'crm', label: 'Dietary preference updated · 1', reason: 'Reply parsed · field auto-merged' },
     ],
     metric: { label: 'RSVPs', value: '548' },
@@ -250,7 +250,7 @@ const TIMELINE: TimelineDay[] = [
     headline: 'Weekend send-quiet · recap queued',
     description: 'Recap queued for Monday send. Inbound replies still parsed.',
     touchpoints: [
-      { time: '—', channel: 'system', label: 'Recap queued for Monday send' },
+      { time: '-', channel: 'system', label: 'Recap queued for Monday send' },
       { time: '12:14', channel: 'crm', label: '7 late survey replies parsed', reason: 'Sentiment scored · attached to attendee record' },
     ],
     metric: { label: 'NPS', value: '+56' },
@@ -260,7 +260,7 @@ const TIMELINE: TimelineDay[] = [
     headline: 'Weekend send-quiet · inbound only',
     description: 'Inbound parsed and routed. Things that need a human land in a small tray.',
     touchpoints: [
-      { time: '—', channel: 'system', label: 'Inbound-only mode' },
+      { time: '-', channel: 'system', label: 'Inbound-only mode' },
       { time: '13:48', channel: 'crm', label: 'Photo permission queries · routed to ops manager', count: 3, reason: 'Intent matched · not auto-resolvable' },
     ],
     metric: { label: 'NPS', value: '+56' },
@@ -307,18 +307,18 @@ const TIMELINE: TimelineDay[] = [
   },
 ]
 
-const dayIndex = ref(0) // 0..21 — index into TIMELINE
+const dayIndex = ref(0) // 0..21, index into TIMELINE
 const currentDay = computed(() => TIMELINE[dayIndex.value]!)
 const phase = computed(() => currentDay.value.phase)
 
 // ---- "Vs. last forum" comparator (small analytics surface) ----
 // Q1 Adviser Forum tracked about 11% slower at the same arc point. This is
 // the honest comparison the planning team uses to gauge whether the next
-// event is on track. Hard-coded ratio — the prior event is fixed history.
+// event is on track. Hard-coded ratio, the prior event is fixed history.
 const PRIOR_TRACKING_FACTOR = 0.89
 const priorConfirmedForDay = computed(() => {
   const c = currentDay.value.confirmed
-  return c != null ? Math.round(c * PRIOR_TRACKING_FACTOR).toLocaleString() : '—'
+  return c != null ? Math.round(c * PRIOR_TRACKING_FACTOR).toLocaleString() : '-'
 })
 const comparePct = computed(() => {
   const c = currentDay.value.confirmed ?? 0
@@ -392,7 +392,7 @@ watch(phase, (p) => {
 function animateDayOf() {
   // 47 recovery calls placed. 31 attendees said "yes, I am coming" and showed
   // up; 16 said they couldn't make it and were marked no-show. Real recovery
-  // hovers around two-thirds — not 100% — so that is what the demo shows.
+  // hovers around two-thirds, not 100%, so that is what the demo shows.
   const targetCheckedIn = 597
   const targetRecoverySuccess = 31
   const targetRecoveryDeclined = 16
@@ -418,9 +418,9 @@ interface TranscriptLine {
 }
 
 const RECOVERY_TRANSCRIPT: TranscriptLine[] = [
-  { speaker: 'ai',    delay: 0,    text: 'Hi Maria, this is Kairos calling on behalf of Adviser Forum. We had you confirmed for today\'s keynote — are you still able to make it?' },
-  { speaker: 'human', delay: 2400, text: 'Oh — I\'m running late. Traffic is awful and I can\'t find parking.' },
-  { speaker: 'ai',    delay: 2200, text: 'No problem. The keynote starts in 35 minutes. Building 4, doors C — I\'ll text you directions and a code for the overflow lot. Sound good?' },
+  { speaker: 'ai',    delay: 0,    text: 'Hi Maria, this is Kairos calling on behalf of Adviser Forum. We had you confirmed for today\'s keynote, are you still able to make it?' },
+  { speaker: 'human', delay: 2400, text: 'Oh, I\'m running late. Traffic is awful and I can\'t find parking.' },
+  { speaker: 'ai',    delay: 2200, text: 'No problem. The keynote starts in 35 minutes. Building 4, doors C, I\'ll text you directions and a code for the overflow lot. Sound good?' },
   { speaker: 'human', delay: 2300, text: 'Yes please, that would help.' },
   { speaker: 'ai',    delay: 1800, text: 'Sent. The host knows you\'re en route. See you there, Maria.' },
 ]
@@ -456,7 +456,7 @@ const CHECKIN_FEED = [
 ]
 
 // =============================================================================
-// RECEPTIONIST MODE — call simulation
+// RECEPTIONIST MODE, call simulation
 // =============================================================================
 
 interface ActionEvent {
@@ -487,12 +487,12 @@ const RECEPTIONIST_SCRIPT: ReceptionistLine[] = [
   {
     speaker: 'caller',
     delay: 2400,
-    text: 'Hi — I\'d like to book a check-up.',
+    text: 'Hi, I\'d like to book a check-up.',
   },
   {
     speaker: 'ai',
     delay: 2000,
-    text: 'Of course. I can see you\'re due for your six-month check-up with Dr. Patel — is this Mr. Hassan?',
+    text: 'Of course. I can see you\'re due for your six-month check-up with Dr. Patel, is this Mr. Hassan?',
     actions: [
       { time: '14:02:07', label: 'Intent classified', detail: 'book_appointment · routine_checkup', icon: 'reason' },
       { time: '14:02:07', label: 'Suggested provider', detail: 'Dr. Patel (last-seen continuity)', icon: 'reason' },
@@ -506,7 +506,7 @@ const RECEPTIONIST_SCRIPT: ReceptionistLine[] = [
   {
     speaker: 'ai',
     delay: 1700,
-    text: 'Great. I have Tuesday the 2nd at 2pm or Thursday the 4th at 4:30pm — both with Dr. Patel, both in your usual slot.',
+    text: 'Great. I have Tuesday the 2nd at 2pm or Thursday the 4th at 4:30pm, both with Dr. Patel, both in your usual slot.',
     actions: [
       { time: '14:02:10', label: 'Calendar queried', detail: 'Dr. Patel · next 14 days · ≥30min slot', icon: 'calendar' },
       { time: '14:02:10', label: 'Slots ranked', detail: 'Filter: prior preference Tue/Thu afternoons', icon: 'reason' },
@@ -531,7 +531,7 @@ const RECEPTIONIST_SCRIPT: ReceptionistLine[] = [
   {
     speaker: 'caller',
     delay: 1900,
-    text: 'Actually — could I bring my son in too? He\'s eight and overdue.',
+    text: 'Actually, could I bring my son in too? He\'s eight and overdue.',
   },
   {
     speaker: 'ai',
@@ -672,7 +672,7 @@ function actionIcon(k: ActionEvent['icon']) {
           Interactive Demo · Kairos
         </span>
         <p class="kairos-head__sub">
-          Same engine. Two deployments. The administrative work runs itself —
+          Same engine. Two deployments. The administrative work runs itself -
           your team handles the work humans should.
         </p>
       </div>
@@ -855,7 +855,7 @@ function actionIcon(k: ActionEvent['icon']) {
           </ul>
         </article>
 
-        <!-- Right panel — varies by phase -->
+        <!-- Right panel, varies by phase -->
         <article class="kairos-card kairos-card--side">
           <!-- PRE-EVENT: rolling status -->
           <template v-if="phase === 'pre'">
@@ -872,7 +872,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 <div>
                   <div class="kairos-stat__label">Confirmed</div>
                   <div class="kairos-stat__value">
-                    {{ currentDay.confirmed != null ? currentDay.confirmed.toLocaleString() : '—' }}
+                    {{ currentDay.confirmed != null ? currentDay.confirmed.toLocaleString() : '-' }}
                   </div>
                 </div>
               </div>
@@ -881,7 +881,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 <div>
                   <div class="kairos-stat__label">Open rate · last send</div>
                   <div class="kairos-stat__value">
-                    {{ currentDay.openRatePct != null ? currentDay.openRatePct + '%' : '—' }}
+                    {{ currentDay.openRatePct != null ? currentDay.openRatePct + '%' : '-' }}
                   </div>
                 </div>
               </div>
@@ -890,7 +890,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 <div>
                   <div class="kairos-stat__label">No-show risk flagged</div>
                   <div class="kairos-stat__value">
-                    {{ currentDay.riskFlagged != null ? currentDay.riskFlagged : '—' }}
+                    {{ currentDay.riskFlagged != null ? currentDay.riskFlagged : '-' }}
                   </div>
                 </div>
               </div>
@@ -926,13 +926,13 @@ function actionIcon(k: ActionEvent['icon']) {
               </div>
             </div>
 
-            <!-- Small "vs. last forum" analytics comparator — an honest read on
+            <!-- Small "vs. last forum" analytics comparator, an honest read on
                  whether this campaign is tracking ahead of the last one. -->
             <div v-if="(currentDay.confirmed ?? 0) >= 100" class="kairos-compare">
               <TrendingUp :size="13" :stroke-width="2" aria-hidden="true" />
               <span class="kairos-compare__text">
                 <strong>{{ comparePct }}</strong>
-                vs. Q1 Adviser Forum at the same day — last event had
+                vs. Q1 Adviser Forum at the same day, last event had
                 <strong>{{ priorConfirmedForDay }}</strong>
                 confirmed by {{ currentDay.label }}.
               </span>
@@ -1046,7 +1046,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 </div>
                 <div class="kairos-post__cell">
                   <div class="kairos-post__cell-label">Hot attendees</div>
-                  <div class="kairos-post__cell-value">{{ dayIndex >= 18 ? 39 : '—' }}</div>
+                  <div class="kairos-post__cell-value">{{ dayIndex >= 18 ? 39 : '-' }}</div>
                   <div class="kairos-post__cell-sub">
                     {{ dayIndex >= 18 ? 'Engagement + sentiment' : 'Flagged on T+4' }}
                   </div>
@@ -1060,7 +1060,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 </div>
                 <div class="kairos-post__cell">
                   <div class="kairos-post__cell-label">Pipeline added</div>
-                  <div class="kairos-post__cell-value">{{ dayIndex >= 21 ? '£387k' : '—' }}</div>
+                  <div class="kairos-post__cell-value">{{ dayIndex >= 21 ? '£387k' : '-' }}</div>
                   <div class="kairos-post__cell-sub">Sales-ready</div>
                 </div>
               </div>
@@ -1073,7 +1073,7 @@ function actionIcon(k: ActionEvent['icon']) {
                 <ul>
                   <li>
                     <span class="kairos-survey__topic kairos-survey__topic--pos">Sessions</span>
-                    "Best breakout I’ve been to all year — concrete, no fluff."
+                    "Best breakout I’ve been to all year, concrete, no fluff."
                   </li>
                   <li>
                     <span class="kairos-survey__topic kairos-survey__topic--pos">Hospitality</span>
@@ -1178,7 +1178,7 @@ function actionIcon(k: ActionEvent['icon']) {
             </li>
             <li v-if="!receptionistRunning && visibleCallLines.length === 0" class="kairos-callempty">
               <Phone :size="18" :stroke-width="1.9" aria-hidden="true" />
-              <span>Ready when you are — press Play to hear how the system handles an inbound call, partial escalation and all.</span>
+              <span>Ready when you are, press Play to hear how the system handles an inbound call, partial escalation and all.</span>
             </li>
           </ul>
         </article>
@@ -1192,7 +1192,7 @@ function actionIcon(k: ActionEvent['icon']) {
             </div>
             <h3 class="kairos-card__title">What the system did, and why</h3>
             <p class="kairos-card__sub">
-              Every step is logged with the reasoning that triggered it — a coordinator can replay the call end to end.
+              Every step is logged with the reasoning that triggered it, a coordinator can replay the call end to end.
             </p>
           </header>
 
@@ -1235,7 +1235,7 @@ function actionIcon(k: ActionEvent['icon']) {
 
       <p class="kairos-recep__foot">
         <Workflow :size="13" :stroke-width="2" aria-hidden="true" />
-        Same engine as Event Coordinator. The deployment is what changes — receptionists, clinics, service businesses, sales lines.
+        Same engine as Event Coordinator. The deployment is what changes, receptionists, clinics, service businesses, sales lines.
       </p>
     </section>
   </div>
@@ -1751,7 +1751,7 @@ function actionIcon(k: ActionEvent['icon']) {
   gap: 8px;
 }
 
-/* "vs. last forum" comparator — small analytics surface */
+/* "vs. last forum" comparator, small analytics surface */
 .kairos-compare {
   margin-top: 14px;
   display: flex;

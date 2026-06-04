@@ -1,5 +1,5 @@
 /**
- * Zabble — automatic key-event instrumentation (B2B lead-gen).
+ * Zabble, automatic key-event instrumentation (B2B lead-gen).
  *
  * Zero-config capture so we don't have to touch all 30 system/demo components:
  *  - email_click       → any  mailto:  link
@@ -10,13 +10,13 @@
  *  - page_view         → on every SPA route change (history-based, GA4 SPA)
  *
  * generate_lead (the primary conversion) is fired explicitly from the diagnose
- * flow — it has no DOM anchor to delegate from.
+ * flow, it has no DOM anchor to delegate from.
  *
  * Any element can override inference with data-analytics-event="<name>" plus
  * optional data-analytics-* params (e.g. data-analytics-value="0").
  *
  * Events are pushed to the dataLayer via the core API. Before consent no tag is
- * loaded, so nothing is sent to the network — the dataLayer simply buffers.
+ * loaded, so nothing is sent to the network, the dataLayer simply buffers.
  */
 import { defineNuxtPlugin, useRouter } from '#app'
 import type { ZabbleAnalytics } from './1.analytics.client'

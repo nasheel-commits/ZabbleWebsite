@@ -247,7 +247,7 @@ const manualOutput = computed<ManualOutput>(() => {
         steps: [
           { actor: 'Bookkeeper', action: 'Opens the "retainers due" spreadsheet',       risk: false },
           { actor: 'Bookkeeper', action: 'Manually generates 3 invoices in QuickBooks', risk: false },
-          { actor: 'Client',     action: 'Pings finance — one renewal was missed last month', risk: true },
+          { actor: 'Client',     action: 'Pings finance, one renewal was missed last month', risk: true },
         ],
         eta: '1 day · if remembered',
         risk: 'One retainer was missed last May. $8,500 of revenue went uncollected.',
@@ -751,7 +751,7 @@ function confidenceTone(confidence: number) {
           </div>
           <p class="mt-1.5 text-[13px] text-mute">
             Deposits arriving from the bank. The engine matches each one to an outstanding invoice
-            and posts the receipt — exceptions land in a small queue.
+            and posts the receipt, exceptions land in a small queue.
           </p>
         </div>
         <div
@@ -849,7 +849,7 @@ function confidenceTone(confidence: number) {
               </div>
               <div class="mt-0.5 text-[12px] text-mute">
                 <span class="font-mono text-[11.5px] text-ink-soft">{{ d.ref }}</span>
-                <span class="ml-1">— no matching invoice</span>
+                <span class="ml-1">- no matching invoice</span>
               </div>
               <div class="mt-1.5 text-[11.5px] text-mute-2">
                 Flagged for human review · won't touch the ledger.

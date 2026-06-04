@@ -8,7 +8,7 @@ interface SourceMeta {
   label: string
   short: string
   icon: Component
-  // Tailwind class strings — pre-baked so the JIT picks them up.
+  // Tailwind class strings, pre-baked so the JIT picks them up.
   chip: string         // background + ring + text for inline field
   chipHover: string    // strengthened state on hover/focus
   chipEdited: string   // ring style for overridden field
@@ -60,7 +60,7 @@ const SOURCE_META: Record<Source, SourceMeta> = {
 }
 
 // ---------------------------------------------------------------------------
-// Sample deals — three live CRM records.
+// Sample deals, three live CRM records.
 // ---------------------------------------------------------------------------
 
 type FeeModel = 'milestone' | 'retainer' | 'phased'
@@ -81,7 +81,7 @@ interface Deal {
   engagementSummary: string
   feeTotal: string
   feeStructure: string
-  /** Drives the statement template — milestone, retainer, or phased schedules. */
+  /** Drives the statement template, milestone, retainer, or phased schedules. */
   feeModel: FeeModel
   /** Only meaningful when feeModel === 'retainer'. */
   monthlyRetainer?: string
@@ -116,10 +116,10 @@ const DEALS: Deal[] = [
     engagementName: 'Capital raise readiness review',
     engagementSummary: 'Six-week readiness review across capital structure, investor materials, and roadshow plan.',
     feeTotal: 'R 2,400,000',
-    feeStructure: 'Fixed fee — 50% on signing, 50% on delivery',
+    feeStructure: 'Fixed fee, 50% on signing, 50% on delivery',
     feeModel: 'milestone',
-    statementPaidLine: 'Signing invoice of R 1,200,000 — settled 21 March',
-    statementDueLine: 'Delivery invoice of R 1,200,000 — due on countersign of the final deliverables',
+    statementPaidLine: 'Signing invoice of R 1,200,000, settled 21 March',
+    statementDueLine: 'Delivery invoice of R 1,200,000, due on countersign of the final deliverables',
     outstandingBalance: 'R 1,200,000',
     lineItems: [
       { label: 'Capital structure review', qty: '1', rate: 'R 720,000',   amount: 'R 720,000' },
@@ -159,7 +159,7 @@ const DEALS: Deal[] = [
     caseRef: 'PrimeRetail · DC consolidation, 2024',
     caseOutcome: 'Landed cost down 11.4%, on-shelf availability up 3.2 pts.',
     caseBlurb: 'A national grocer with the same four-DC footprint. Same network-redesign approach, same eight-week sprint.',
-    caseFlag: { label: 'Review', reason: 'Case study is 17 months old — confirm the comparison still holds before sending.' },
+    caseFlag: { label: 'Review', reason: 'Case study is 17 months old, confirm the comparison still holds before sending.' },
     dealAgeWeeks: '5 weeks',
     pipelineValue: 'R 1.2m · weighted R 0.5m',
   },
@@ -176,10 +176,10 @@ const DEALS: Deal[] = [
     engagementName: 'ESG reporting framework programme',
     engagementSummary: 'Implementation of a JSE- and IFRS S2-aligned ESG reporting framework with assurance-ready evidence chains.',
     feeTotal: 'R 3,850,000',
-    feeStructure: 'Phased — R 1.6m setup, R 510,000 per quarterly assurance pack, plus stakeholder workshops as delivered',
+    feeStructure: 'Phased, R 1.6m setup, R 510,000 per quarterly assurance pack, plus stakeholder workshops as delivered',
     feeModel: 'phased',
-    statementPaidLine: 'Setup invoice of R 1,600,000 — paid 12 February',
-    statementDueLine: 'Next quarterly assurance pack of R 510,000 — due on the first of the next quarter',
+    statementPaidLine: 'Setup invoice of R 1,600,000, paid 12 February',
+    statementDueLine: 'Next quarterly assurance pack of R 510,000, due on the first of the next quarter',
     outstandingBalance: 'R 2,040,000',
     lineItems: [
       { label: 'Framework setup',          qty: '1', rate: 'R 1,600,000', amount: 'R 1,600,000' },
@@ -195,7 +195,7 @@ const DEALS: Deal[] = [
 ]
 
 // ---------------------------------------------------------------------------
-// Field type — every coloured chip in the preview is a Field.
+// Field type, every coloured chip in the preview is a Field.
 // `id` is stable per (template, deal, field), so overrides persist across
 // re-renders without leaking between deals or templates.
 // ---------------------------------------------------------------------------
@@ -204,9 +204,9 @@ interface Field {
   id: string
   value: string
   source: Source
-  // Where the value would come from in a real system — shown in the tooltip.
+  // Where the value would come from in a real system, shown in the tooltip.
   sourceRecord: string
-  /** Optional review/conflict pill alongside the chip — e.g. stale case study. */
+  /** Optional review/conflict pill alongside the chip, e.g. stale case study. */
   flag?: { label: string; reason: string }
 }
 
@@ -218,7 +218,7 @@ interface Block {
 }
 
 // ---------------------------------------------------------------------------
-// Templates — each one returns the block list for a chosen deal.
+// Templates, each one returns the block list for a chosen deal.
 // ---------------------------------------------------------------------------
 
 type TemplateKey = 'proposal' | 'contract' | 'statement' | 'board-report'
@@ -295,7 +295,7 @@ function makeProposal(d: Deal): Block[] {
     {
       heading: 'Next step',
       fragments: [
-        { field: f('next-step', 'A countersignature on the engagement letter starts the clock — kick-off within five working days.', 'template', 'Template · §7 Acceptance') },
+        { field: f('next-step', 'A countersignature on the engagement letter starts the clock, kick-off within five working days.', 'template', 'Template · §7 Acceptance') },
       ],
     },
   ]
@@ -438,7 +438,7 @@ function makeBoardReport(d: Deal): Block[] {
       heading: 'Comparable',
       fragments: [
         { field: f('case-ref', d.caseRef, 'case-study', 'Case study library · ' + d.industry, d.caseFlag) },
-        { text: ' — ' },
+        { text: ', ' },
         { field: f('case-outcome', d.caseOutcome, 'case-study', 'Case study library · Outcome metric') },
       ],
     },
@@ -470,7 +470,7 @@ const assembleProgress = ref<number>(0)        // 0 → 1 over the animation
 const isAssembling = ref<boolean>(false)
 const hasAssembled = ref<boolean>(false)
 
-// Manual overrides — keyed by field id. Cleared when the user re-assembles
+// Manual overrides, keyed by field id. Cleared when the user re-assembles
 // (because the source values may have changed).
 const overrides = reactive<Record<string, string>>({})
 const editingFieldId = ref<string | null>(null)
@@ -527,7 +527,7 @@ const oldSecondsTotal = 3 * 60 * 60 // three hours
 const newSeconds = computed(() =>
   Math.round(assembleProgress.value * newSecondsTotal),
 )
-// The old way is far slower — both timers run for the same wall-clock
+// The old way is far slower, both timers run for the same wall-clock
 // duration, but the old-way counter only ticks through what it could fit
 // into the new way's eight minutes. Drives the pace gap home visually.
 const oldSeconds = computed(() =>
@@ -576,7 +576,7 @@ function tick(now: number) {
 
 function assemble() {
   if (isAssembling.value) return
-  // Clear overrides on a fresh assembly — the source values may have updated.
+  // Clear overrides on a fresh assembly, the source values may have updated.
   for (const k of Object.keys(overrides)) delete overrides[k]
   editingFieldId.value = null
   lastAction.value = null
@@ -626,7 +626,7 @@ const editingFieldSourceRecord = computed<string | null>(() => {
   for (const b of blocks.value) {
     for (const fr of b.fragments) {
       if ('field' in fr && fr.field.id === id) {
-        return `${SOURCE_META[fr.field.source].label} — ${fr.field.sourceRecord}`
+        return `${SOURCE_META[fr.field.source].label}, ${fr.field.sourceRecord}`
       }
     }
   }
@@ -651,7 +651,7 @@ function fireOutput(kind: OutputKind) {
   }, 2400)
 }
 
-// Switching deal or template after an assembly clears the assembled state —
+// Switching deal or template after an assembly clears the assembled state -
 // the user must hit Assemble again to rebuild from the new sources.
 watch([selectedDealId, selectedTemplate], () => {
   if (hasAssembled.value || isAssembling.value) {
@@ -983,7 +983,7 @@ function isFieldEdited(id: string): boolean {
                   <template v-else>
                     <span
                       :class="fieldChipClass(fr.field)"
-                      :title="`${SOURCE_META[fr.field.source].label} — ${fr.field.sourceRecord}`"
+                      :title="`${SOURCE_META[fr.field.source].label}, ${fr.field.sourceRecord}`"
                       @click="startEdit(fr.field.id, fr.field.value)"
                     >
                       <span

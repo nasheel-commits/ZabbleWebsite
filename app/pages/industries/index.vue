@@ -4,7 +4,7 @@ import { INDUSTRIES } from '~/data/industries'
 usePageSeo({
   title: 'Industries We Build For',
   description:
-    'Law firms, hospitality, logistics, manufacturing, banks and NGOs — see the bespoke systems Zabble assembles for each South African industry.',
+    'Law firms, hospitality, logistics, manufacturing, banks and NGOs, see the bespoke systems Zabble assembles for each South African industry.',
   path: '/industries',
   ogType: 'website',
   primaryKeyword: 'business software by industry south africa',
@@ -26,7 +26,7 @@ usePageSeo({
             Built for your industry. Shaped to your business.
           </h1>
           <p data-answer-first class="mt-6 max-w-2xl text-[16px] md:text-[18px] leading-[1.6] text-ink">
-            Zabble has built for NGOs, banks, hotels, law firms, parts suppliers and manufacturers. The industries differ; the pattern doesn’t — every business has one operational problem that costs more than the rest combined. These pages show the systems we typically assemble for each.
+            Zabble has built for NGOs, banks, hotels, law firms, parts suppliers and manufacturers. The industries differ; the pattern doesn’t, every business has one operational problem that costs more than the rest combined. These pages show the systems we typically assemble for each.
           </p>
         </div>
 

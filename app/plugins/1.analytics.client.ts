@@ -1,5 +1,5 @@
 /**
- * Zabble — Analytics core (Consent Mode v2, POPIA opt-in).
+ * Zabble, Analytics core (Consent Mode v2, POPIA opt-in).
  *
  * Session 09 (analytics + indexing). Owns the measurement stack.
  *
@@ -7,7 +7,7 @@
  *   1. Bootstraps `window.dataLayer` + the `gtag()` shim.
  *   2. Pushes Consent Mode v2 *defaults* with all four signals DENIED
  *      (ad_storage, ad_user_data, ad_personalization, analytics_storage) plus
- *      the storage signals — region-scoped to ZA *and* globally. This must run
+ *      the storage signals, region-scoped to ZA *and* globally. This must run
  *      BEFORE any GTM/GA/Clarity tag loads, so Google honours the denied state.
  *   3. POPIA is opt-in: we do NOT load GTM / GA4 / Clarity until the visitor
  *      explicitly grants consent (or a stored grant is found). On grant we push
@@ -15,7 +15,7 @@
  *
  * Real IDs are injected via env → runtimeConfig.public.analytics (see
  * nuxt.config.ts + .env.example). When an ID is absent the corresponding tag is
- * simply never loaded — the machinery degrades to a no-op, which is the correct
+ * simply never loaded, the machinery degrades to a no-op, which is the correct
  * pre-launch state. See docs/seo/measurement-plan.md + id-secret-registry.md.
  */
 import { reactive, readonly } from 'vue'
@@ -98,7 +98,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
   // ── 1. dataLayer + gtag shim ───────────────────────────────────────────────
   window.dataLayer = window.dataLayer || []
-  // IMPORTANT: gtag must push the *arguments* object verbatim — Google's consent
+  // IMPORTANT: gtag must push the *arguments* object verbatim, Google's consent
   // parser depends on it. Do not refactor to push an array.
   function gtag(..._args: unknown[]) {
     // eslint-disable-next-line prefer-rest-params
@@ -106,7 +106,7 @@ export default defineNuxtPlugin((nuxtApp) => {
   }
   window.gtag = window.gtag || (gtag as Window['gtag'])
 
-  // ── 2. Consent Mode v2 defaults — DENIED, before any tag loads ─────────────
+  // ── 2. Consent Mode v2 defaults, DENIED, before any tag loads ─────────────
   const deniedSignals: ConsentSignals = {
     ad_storage: 'denied',
     ad_user_data: 'denied',
@@ -224,7 +224,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           JSON.stringify({ ...choice, ts: new Date().toISOString() }),
         )
       } catch {
-        /* storage blocked — session-only consent */
+        /* storage blocked, session-only consent */
       }
     }
   }

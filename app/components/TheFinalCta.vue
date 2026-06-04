@@ -102,8 +102,8 @@ function tick() {
   }
   const rect = buttonEl.getBoundingClientRect()
   const target = targetOnRectEdge(rect)
-  // After (re)entering the section — e.g. a fast scroll or a button that jumps
-  // straight here — snap the arrow head onto the target instead of easing in
+  // After (re)entering the section, e.g. a fast scroll or a button that jumps
+  // straight here, snap the arrow head onto the target instead of easing in
   // from a stale position, so it points at the button the instant it appears.
   if (snapPending) {
     pointerX = target.x
@@ -122,7 +122,7 @@ function tick() {
     : Math.atan2(pointerY - mouseY, pointerX - mouseX)
   headRef.value.setAttribute('d', buildHead(pointerX, pointerY, angle))
 
-  // Don't draw until we've seen a real cursor position — otherwise the arrow
+  // Don't draw until we've seen a real cursor position, otherwise the arrow
   // would render from the screen-center default before the first mousemove.
   const dist = distanceToRect(mouseX, mouseY, rect)
   const shouldShow = hasMouse && dist > HIDE_NEAR && dist < HIDE_FAR
@@ -290,7 +290,7 @@ onBeforeUnmount(() => {
     <!--
       Teleport to <body> so the arrow's `position: fixed` is anchored to the
       viewport, not to this section. The section carries `content-visibility:
-      auto` (.lazy-section), which implies `contain: layout paint` — that would
+      auto` (.lazy-section), which implies `contain: layout paint`, that would
       otherwise make the section the containing block for the fixed arrow and
       clip it, shifting the whole arrow by the section's scroll offset.
     -->

@@ -94,7 +94,7 @@ const triptych = computed(() => [
             The systems we assemble for {{ ind.name.toLowerCase() }}
           </h2>
           <p class="mt-3 text-[14.5px] md:text-[15px] text-mute">
-            No business gets all of them — it gets the handful that fix the problem costing it the most, wired into one system.
+            No business gets all of them, it gets the handful that fix the problem costing it the most, wired into one system.
           </p>
         </div>
         <div class="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">

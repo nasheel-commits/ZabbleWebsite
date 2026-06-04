@@ -1,9 +1,9 @@
-// Industry / solution pages — data (owned by S02 on-page).
+// Industry / solution pages, data (owned by S02 on-page).
 //
 // Each industry is a use-case landing page at /industries/<slug> that assembles
 // the Zabble modules that vertical typically needs (the overview's "How It Comes
 // Together") and targets the verified ZA industry keyword (targets/keyword-map.md,
-// S03 — "Industry use-case" cluster). Structure + metadata are S02's; final
+// S03, "Industry use-case" cluster). Structure + metadata are S02's; final
 // long-form body copy is S10's. `moduleSlugs` must reference live SYSTEMS slugs.
 
 export interface Industry {
@@ -35,14 +35,14 @@ export const INDUSTRIES: Industry[] = [
     h1: 'Systems for South African law firms',
     seoTitle: 'Legal Practice Management Software, SA',
     seoDescription:
-      'Bespoke systems for South African law firms — document intake, case and matter management, conveyancing tasks and client onboarding in one operating system.',
+      'Bespoke systems for South African law firms, document intake, case and matter management, conveyancing tasks and client onboarding in one operating system.',
     keywords: ['legal practice management software south africa', 'software for law firms south africa', 'legal case management software'],
     intro:
-      'Zabble builds bespoke systems for South African law firms — document intake, matter and case management, client onboarding and conveyancing task tracking — assembled into one operating system shaped to the firm. We start with the workflow costing the most billable hours and build the system that runs it.',
+      'Zabble builds bespoke systems for South African law firms, document intake, matter and case management, client onboarding and conveyancing task tracking, assembled into one operating system shaped to the firm. We start with the workflow costing the most billable hours and build the system that runs it.',
     problem:
       'A matter passes through five hands over weeks. Documents land in one inbox, deadlines in another, decisions in WhatsApp. A filing date gets missed; nobody can reconstruct who did what, when.',
     whatWeBuild:
-      'Document intake that reads and routes every file, case management with SLA timers, dependency-aware task tracking for conveyancing, and two-sided client onboarding — connected, with the audit trail written by default.',
+      'Document intake that reads and routes every file, case management with SLA timers, dependency-aware task tracking for conveyancing, and two-sided client onboarding, connected, with the audit trail written by default.',
     whatChanges:
       'Missed deadlines drop sharply, audit prep becomes an export, and a new fee-earner ramps in days because the system encodes how the work runs.',
     moduleSlugs: ['document-intelligence', 'case-management', 'task-management', 'client-onboarding', 'document-assembly'],
@@ -53,10 +53,10 @@ export const INDUSTRIES: Industry[] = [
     h1: 'Systems for hospitality & venues',
     seoTitle: 'Hospitality Management Software',
     seoDescription:
-      'Bespoke systems for hotels and venues — AI reception, a unified guest inbox, booking-to-accounting sync and demand forecasting, shaped to how you run.',
+      'Bespoke systems for hotels and venues, AI reception, a unified guest inbox, booking-to-accounting sync and demand forecasting, shaped to how you run.',
     keywords: ['hospitality management software', 'restaurant management software south africa', 'booking management software'],
     intro:
-      'Zabble builds bespoke systems for South African hospitality operators — AI reception and event orchestration, a unified guest inbox, booking-to-accounting integration and demand forecasting — assembled into one operating system, so revenue, calendar and CRM stop disagreeing and no enquiry goes unanswered.',
+      'Zabble builds bespoke systems for South African hospitality operators, AI reception and event orchestration, a unified guest inbox, booking-to-accounting integration and demand forecasting, assembled into one operating system, so revenue, calendar and CRM stop disagreeing and no enquiry goes unanswered.',
     problem:
       'A booking lands on one platform, the calendar on another, accounting hears about the revenue when the bookkeeper opens the folder. Enquiries arrive on six channels and the team watches one.',
     whatWeBuild:
@@ -71,12 +71,12 @@ export const INDUSTRIES: Industry[] = [
     h1: 'Systems for logistics & warehousing',
     seoTitle: 'Logistics Software, South Africa',
     seoDescription:
-      'Bespoke logistics systems for South Africa — RFID inventory, an offline-first field app, demand forecasting and analytics: one source of truth for the floor.',
+      'Bespoke logistics systems for South Africa, RFID inventory, an offline-first field app, demand forecasting and analytics: one source of truth for the floor.',
     keywords: ['logistics software south africa', 'warehouse management system south africa', 'inventory management software'],
     intro:
-      'Zabble builds bespoke systems for South African logistics and warehousing operators — RFID inventory clarity, an offline-first field app, demand forecasting and role-based analytics — so stock, books and orders always agree and dispatch plans against what’s actually happening on the floor.',
+      'Zabble builds bespoke systems for South African logistics and warehousing operators, RFID inventory clarity, an offline-first field app, demand forecasting and role-based analytics, so stock, books and orders always agree and dispatch plans against what’s actually happening on the floor.',
     problem:
-      'The warehouse says one thing, the ledger another, the order system a third. Someone walks the floor with a clipboard to find the truth — and by the time they finish, the count has moved.',
+      'The warehouse says one thing, the ledger another, the order system a third. Someone walks the floor with a clipboard to find the truth, and by the time they finish, the count has moved.',
     whatWeBuild:
       'RFID readers that turn every movement into a digital event, an offline-first field app for crews and drivers, demand forecasting for reorder points, and analytics composed for each role.',
     whatChanges:
@@ -89,10 +89,10 @@ export const INDUSTRIES: Industry[] = [
     h1: 'Systems for manufacturing',
     seoTitle: 'Manufacturing Software, South Africa',
     seoDescription:
-      'Bespoke systems for South African manufacturers — predictive maintenance, RFID inventory, a legacy ERP bridge and master-data hub, no multi-year rewrite.',
+      'Bespoke systems for South African manufacturers, predictive maintenance, RFID inventory, a legacy ERP bridge and master-data hub, no multi-year rewrite.',
     keywords: ['manufacturing software south africa', 'predictive maintenance software', 'erp integration software'],
     intro:
-      'Zabble builds bespoke systems for South African manufacturers — predictive maintenance, RFID inventory clarity, a bridge to the legacy ERP and a master-data hub — connected into one operating system without the multi-year rewrite nobody can stomach, so the line keeps running and the data finally agrees.',
+      'Zabble builds bespoke systems for South African manufacturers, predictive maintenance, RFID inventory clarity, a bridge to the legacy ERP and a master-data hub, connected into one operating system without the multi-year rewrite nobody can stomach, so the line keeps running and the data finally agrees.',
     problem:
       'A gearbox fails at 3am; the signals were in the data for weeks. Half the business runs on a 2008 ERP nobody dares migrate, the other half on one owner’s spreadsheet.',
     whatWeBuild:
@@ -107,10 +107,10 @@ export const INDUSTRIES: Industry[] = [
     h1: 'Systems for banks & financial services',
     seoTitle: 'Banking Software Development, SA',
     seoDescription:
-      'Bespoke systems for South African banks and FSPs — a decision engine, governed approvals, transaction monitoring, POPIA/SARB reporting and reconciliation.',
+      'Bespoke systems for South African banks and FSPs, a decision engine, governed approvals, transaction monitoring, POPIA/SARB reporting and reconciliation.',
     keywords: ['banking software development south africa', 'fintech software development south africa', 'regulatory reporting software'],
     intro:
-      'Zabble builds bespoke systems for South African banks and FSPs — a decision engine for consistent lending calls, governed sign-off workflows, continuous transaction monitoring, POPIA and SARB reporting, and reconciliation — woven into one governed flow where every decision and figure is traceable.',
+      'Zabble builds bespoke systems for South African banks and FSPs, a decision engine for consistent lending calls, governed sign-off workflows, continuous transaction monitoring, POPIA and SARB reporting, and reconciliation, woven into one governed flow where every decision and figure is traceable.',
     problem:
       'Three reviewers reach three answers on the same applicant. Quarter-end is a fortnight of spreadsheets, and when the regulator asks where a number came from, nobody can answer for ninety minutes.',
     whatWeBuild:
@@ -125,10 +125,10 @@ export const INDUSTRIES: Industry[] = [
     h1: 'Systems for NGOs & non-profits',
     seoTitle: 'NGO Management Software',
     seoDescription:
-      'Bespoke systems for South African NGOs — beneficiary case management, donor and regulatory reporting, a data pipeline and governed grant approvals.',
+      'Bespoke systems for South African NGOs, beneficiary case management, donor and regulatory reporting, a data pipeline and governed grant approvals.',
     keywords: ['ngo management software', 'donor reporting software', 'grant management software'],
     intro:
-      'Zabble builds bespoke systems for South African NGOs — beneficiary case management, donor and regulatory reporting, a data-routing pipeline and governed grant approvals — assembled into one operating system, so donor returns and compliance filings come from the data you already generate, not a quarter-end scramble.',
+      'Zabble builds bespoke systems for South African NGOs, beneficiary case management, donor and regulatory reporting, a data-routing pipeline and governed grant approvals, assembled into one operating system, so donor returns and compliance filings come from the data you already generate, not a quarter-end scramble.',
     problem:
       'Beneficiary files live across inboxes and spreadsheets. The donor report, the board pack and the regulator return each get rebuilt by hand, three weeks running, from the same data.',
     whatWeBuild:

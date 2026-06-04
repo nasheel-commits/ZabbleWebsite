@@ -101,7 +101,7 @@ const PERSONAS: Persona[] = [
 
 const SEVERITIES: Severity[] = ['low', 'medium', 'high', 'critical']
 
-// Default rules — user can edit channel, threshold, and recipient.
+// Default rules, user can edit channel, threshold, and recipient.
 const DEFAULT_RULES: Rule[] = [
   { id: 'r-stock', condition: 'low-stock', minSeverity: 'medium', channel: 'slack', recipient: 'ops-manager', active: true },
   { id: 'r-fraud', condition: 'fraud', minSeverity: 'high', channel: 'sms', recipient: 'on-call-engineer', active: true },
@@ -116,7 +116,7 @@ const EVENTS: SampleEvent[] = [
     condition: 'low-stock',
     severity: 'medium',
     title: 'Stock running low · SKU AOS-0042',
-    body: 'A4 ream (80gsm) — 18 units on hand, 7-day reorder lead time.',
+    body: 'A4 ream (80gsm), 18 units on hand, 7-day reorder lead time.',
     meta: 'warehouse-emea',
   },
   {
@@ -132,7 +132,7 @@ const EVENTS: SampleEvent[] = [
     condition: 'sla-breach',
     severity: 'high',
     title: 'Ticket #2418 response SLA at risk',
-    body: '92 % of response allowance consumed — 7 min to breach.',
+    body: '92 % of response allowance consumed, 7 min to breach.',
     meta: 'helpdesk · priority p2',
   },
   {
@@ -276,7 +276,7 @@ function resetDemo() {
 
 watch(quietHours, (q, prev) => {
   if (prev && !q) {
-    // Morning arrived — release held alerts.
+    // Morning arrived, release held alerts.
     releaseHeld()
   }
 })
@@ -317,12 +317,12 @@ function severityLabel(s: Severity): string {
 }
 
 // ---------------------------------------------------------------------------
-// "Before" mode — synthetic blast
+// "Before" mode, synthetic blast
 // ---------------------------------------------------------------------------
 
 // 200 silhouette badges across the 5 channels for a clear "fatigue mountain".
 const blastByChannel = computed(() => {
-  // Distribute total ~200 across channels — Slack the loudest, push the smallest.
+  // Distribute total ~200 across channels, Slack the loudest, push the smallest.
   return [
     { ch: channelOf('slack'),    unread: 87 },
     { ch: channelOf('email'),    unread: 64 },
@@ -346,7 +346,7 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
           Alert Orchestration · Routing engine
         </div>
         <h3 class="mt-2 font-display text-[22px] md:text-[24px] leading-[1.15] text-ink">
-          Pick a persona, fire a signal — see where it lands and where it doesn't.
+          Pick a persona, fire a signal, see where it lands and where it doesn't.
         </h3>
       </div>
 
@@ -384,7 +384,7 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
     </header>
 
     <!-- ===================================================================
-         AFTER MODE — orchestrated
+         AFTER MODE, orchestrated
          =================================================================== -->
     <div v-if="mode === 'after'" class="grid grid-cols-1 lg:grid-cols-[240px_minmax(0,380px)_minmax(0,1fr)] gap-0">
       <!-- Left col: persona + hour -->
@@ -623,13 +623,13 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
                 <span class="text-amber-700"> Held by quiet hours.</span>
               </template>
               <template v-else-if="quietHours && lastEvent.severity === 'critical'">
-                <span class="text-red-600"> Critical override — sent.</span>
+                <span class="text-red-600"> Critical override, sent.</span>
               </template>
             </span>
           </template>
           <template v-else>
             <span class="font-semibold text-ink">No rule matched.</span>
-            <span class="text-mute"> Event was below all active thresholds — nobody pinged.</span>
+            <span class="text-mute"> Event was below all active thresholds, nobody pinged.</span>
           </template>
         </div>
       </section>
@@ -690,7 +690,7 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
                   Not subscribed.
                 </p>
                 <p v-else class="text-[10.5px] text-mute-2 italic">
-                  Quiet — nothing for this channel.
+                  Quiet, nothing for this channel.
                 </p>
               </div>
             </div>
@@ -708,7 +708,7 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
     </div>
 
     <!-- ===================================================================
-         BEFORE MODE — alert blast
+         BEFORE MODE, alert blast
          =================================================================== -->
     <div v-else class="px-5 md:px-6 py-5 md:py-6 bg-surface-alt/30">
       <div class="mx-auto max-w-3xl text-center">
@@ -720,7 +720,7 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
           {{ blastTotal.toLocaleString() }} alerts in someone's inbox. Three of them mattered.
         </h4>
         <p class="mt-2 text-[14px] leading-[1.55] text-mute">
-          A single morning, blasted to every channel, every person — the same event copied five ways. After a week, nobody opens the channel at all.
+          A single morning, blasted to every channel, every person, the same event copied five ways. After a week, nobody opens the channel at all.
         </p>
       </div>
 
@@ -853,7 +853,7 @@ const blastTotal = computed(() => blastByChannel.value.reduce((s, x) => s + x.un
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* Before-mode badge pulse — the fatigue beacon. */
+/* Before-mode badge pulse, the fatigue beacon. */
 .no-badge-pulse {
   animation: no-badge 2.4s ease-in-out infinite;
 }

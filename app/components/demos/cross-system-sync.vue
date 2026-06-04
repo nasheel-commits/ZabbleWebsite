@@ -124,7 +124,7 @@ const invEcomPair: PairConfig = {
     {
       id: 'SKU-8841',
       titleA: 'Trail running shoes',
-      titleB: 'Trail Runner Pro — Men\'s',
+      titleB: 'Trail Runner Pro, Men\'s',
       fieldsA: { stock: 42, price: 89.0, status: 'Active', lastCheck: 'Mon 13 May' },
       fieldsB: { stock: 42, price: 89.0, status: 'Active', visibility: 'Listed' },
     },
@@ -413,7 +413,7 @@ function resetCell(side: 'A' | 'B', recordId: string, field: string) {
 // ============================================================================
 
 function formatValue(field: FieldDef, value: string | number): string {
-  if (value === '' || value === undefined || value === null) return '—'
+  if (value === '' || value === undefined || value === null) return '-'
   if (field.type === 'currency') {
     return `$${Number(value).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`
   }
@@ -591,7 +591,7 @@ function triggerConflict() {
   if (isOneWay.value) {
     direction.value = 'bi'
     banner.value = {
-      text: 'Switched to bi-directional — conflicts only fire when both sides can write.',
+      text: 'Switched to bi-directional, conflicts only fire when both sides can write.',
       kind: 'info',
     }
     schedule(() => {
@@ -615,7 +615,7 @@ function triggerConflict() {
   setCell('B', recordId, field, { status: 'syncing-out', draft: valueFromB })
   arrowFlash.value = 'conflict'
 
-  // Stage 2: both writes "land" at the engine simultaneously — conflict.
+  // Stage 2: both writes "land" at the engine simultaneously, conflict.
   schedule(() => {
     setCell('A', recordId, field, { status: 'conflict', draft: valueFromA })
     setCell('B', recordId, field, { status: 'conflict', draft: valueFromB })
@@ -681,7 +681,7 @@ function resolveConflict(
       valueA: valueFromA,
       valueB: valueFromB,
     }
-    banner.value = { text: 'Conflict — human review required.', kind: 'review' }
+    banner.value = { text: 'Conflict, human review required.', kind: 'review' }
     return
   }
 
@@ -725,7 +725,7 @@ function resolveConflict(
   }
   log.value = [entry, ...log.value]
   banner.value = {
-    text: `Conflict resolved per ${ruleLabel} — ${winner === 'A' ? cfg.paneA.label : cfg.paneB.label} wins.`,
+    text: `Conflict resolved per ${ruleLabel}, ${winner === 'A' ? cfg.paneA.label : cfg.paneB.label} wins.`,
     kind: 'conflict',
   }
   schedule(() => {
@@ -840,7 +840,7 @@ function fieldHoverable(side: 'A' | 'B'): string {
 <template>
   <div class="p-5 md:p-6 lg:p-7">
     <!-- =====================================================================
-      Header — eyebrow, title, pair selector
+      Header, eyebrow, title, pair selector
     ===================================================================== -->
     <header class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
       <div>
@@ -852,7 +852,7 @@ function fieldHoverable(side: 'A' | 'B'): string {
           Two systems, kept in lockstep.
         </h3>
         <p class="mt-1.5 text-[14px] md:text-[14.5px] text-mute max-w-2xl">
-          Edit any value on either side. The engine propagates the change to its mirror in under two seconds — every event lands in the log on the right.
+          Edit any value on either side. The engine propagates the change to its mirror in under two seconds, every event lands in the log on the right.
         </p>
       </div>
 
@@ -881,7 +881,7 @@ function fieldHoverable(side: 'A' | 'B'): string {
     </header>
 
     <!-- =====================================================================
-      Control bar — direction, conflict rule, trigger conflict
+      Control bar, direction, conflict rule, trigger conflict
     ===================================================================== -->
     <section class="mt-5 rounded-2xl border border-line bg-surface-alt/60 p-4">
       <div class="flex flex-col md:flex-row md:items-center md:flex-wrap gap-3 md:gap-5">
@@ -994,7 +994,7 @@ function fieldHoverable(side: 'A' | 'B'): string {
       <p class="mt-3 text-[12.5px] text-mute-2 leading-[1.55]">
         <template v-if="isOneWay">
           <Lock :size="11" :stroke-width="2.2" class="inline -mt-0.5 mr-0.5 text-mute-2" />
-          {{ pair.paneB.label }} is read-only — edits flow only from {{ pair.paneA.label }}.
+          {{ pair.paneB.label }} is read-only, edits flow only from {{ pair.paneA.label }}.
         </template>
         <template v-else>
           <ArrowLeftRight :size="11" :stroke-width="2.2" class="inline -mt-0.5 mr-0.5 text-cyan-brand-deep" />
@@ -1096,7 +1096,7 @@ function fieldHoverable(side: 'A' | 'B'): string {
     </Transition>
 
     <!-- =====================================================================
-      Main grid — pane A | pane B | log
+      Main grid, pane A | pane B | log
     ===================================================================== -->
     <section class="mt-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1fr_320px] gap-4 md:gap-5 relative">
       <!-- Engine connector arrow (md+ only) -->
@@ -1436,7 +1436,7 @@ function fieldHoverable(side: 'A' | 'B'): string {
                 <span class="text-mute"> · {{ entry.fieldLabel }}</span>
               </div>
               <div class="mt-0.5 text-[12px] text-mute-2 leading-[1.4]">
-                {{ entry.srcLabel }} → {{ entry.destLabel }} blocked — one-way sync
+                {{ entry.srcLabel }} → {{ entry.destLabel }} blocked, one-way sync
               </div>
             </template>
 
@@ -1548,11 +1548,11 @@ function fieldHoverable(side: 'A' | 'B'): string {
     <p class="mt-4 text-[12px] text-mute-2 flex flex-wrap items-center gap-x-4 gap-y-1.5">
       <span class="inline-flex items-center gap-1.5">
         <span class="h-1.5 w-1.5 rounded-full bg-cyan-brand" />
-        Shared field — propagates between systems
+        Shared field, propagates between systems
       </span>
       <span class="inline-flex items-center gap-1.5">
         <span class="h-1.5 w-1.5 rounded-full bg-line" />
-        Local field — lives only on this system
+        Local field, lives only on this system
       </span>
     </p>
   </div>

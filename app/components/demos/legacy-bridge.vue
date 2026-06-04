@@ -222,7 +222,7 @@ const excelEnrichedVisible = computed(() => stage.value >= 4)
           </h3>
           <p class="mt-2 max-w-xl text-[14.5px] leading-[1.55] text-mute">
             The bridge listens on the legacy system's existing surface, normalises the change, sends
-            it to a modern stack for enrichment, and writes the result back — through the same
+            it to a modern stack for enrichment, and writes the result back, through the same
             surface. No migration project.
           </p>
         </div>
@@ -265,7 +265,7 @@ const excelEnrichedVisible = computed(() => stage.value >= 4)
               No migration project required
             </div>
             <div class="mt-0.5 text-[12.5px] text-mute leading-snug">
-              The bridge reads and writes through the legacy system's existing surface area —
+              The bridge reads and writes through the legacy system's existing surface area -
               not by rewriting it.
             </div>
           </div>
@@ -300,7 +300,7 @@ const excelEnrichedVisible = computed(() => stage.value >= 4)
                 X
               </span>
               <span class="font-sans text-[11.5px] text-[#1f2328]">
-                PIPELINE.xlsx — 2026 Q2
+                PIPELINE.xlsx, 2026 Q2
               </span>
               <span class="ml-auto font-mono text-[10.5px] text-[#57606a]">
                 Saved {{ stage >= 1 ? '· just now' : '· 2 min ago' }}
@@ -424,7 +424,7 @@ const excelEnrichedVisible = computed(() => stage.value >= 4)
             <!-- Title bar -->
             <div class="flex items-center gap-1.5 bg-[#000080] px-1.5 py-0.5 text-[11px] font-bold text-white">
               <span class="inline-flex h-3.5 w-3.5 items-center justify-center bg-[#c0c0c0] text-[8px] text-[#000080]" style="box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #404040;">P</span>
-              <span>Project Tracker 3.2.7 — Record Edit</span>
+              <span>Project Tracker 3.2.7, Record Edit</span>
               <span class="ml-auto font-mono text-[10px]" aria-hidden="true">_ □ X</span>
             </div>
             <!-- Menu bar -->
@@ -454,7 +454,7 @@ const excelEnrichedVisible = computed(() => stage.value >= 4)
                 >
                   <div v-if="stage < 4" class="text-[#666] italic">(no notes)</div>
                   <div v-else>
-                    <div class="text-[10.5px] text-[#666]">— Bridge · {{ nowHMS() }} —</div>
+                    <div class="text-[10.5px] text-[#666]">- Bridge · {{ nowHMS() }} -</div>
                     <div>Risk: Medium · Suggested owner: Priya Shah · Due: Jun 14.</div>
                   </div>
                 </div>

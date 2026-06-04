@@ -72,29 +72,29 @@ const bankScenario: ScenarioConfig = {
   systemMinutes: 14,
   build: () => {
     const left: Row[] = [
-      r('ACT-2271', 'A', 'Mon 13', 'Card sale — register 2', 50.0,  'exception', ['BNK-9420'], 'fee', 'Fee delta — likely processor fee', 'Processor fee · 2.9% + $0.30'),
-      r('ACT-2272', 'A', 'Mon 13', 'Card sale — register 1', 24.5,  'match', ['BNK-9421']),
-      r('ACT-2273', 'A', 'Mon 13', 'Card sale — register 3', 78.2,  'match', ['BNK-9422']),
-      r('ACT-2274', 'A', 'Mon 13', 'Card sale — register 1', 152.0, 'exception', ['BNK-9423'], 'fee', 'Fee delta — likely processor fee', 'Processor fee · 2.9% + $0.30'),
-      r('ACT-2275', 'A', 'Mon 13', 'Card sale — register 2', 33.6,  'match', ['BNK-9424']),
-      r('ACT-2276', 'A', 'Tue 14', 'Card sale — register 3', 17.4,  'match', ['BNK-9427']),
-      r('ACT-2277', 'A', 'Tue 14', 'Card sale — register 1', 25.0,  'exception', ['BNK-9426'], 'fee', 'Fee delta — likely processor fee', 'Processor fee · 2.9% + $0.30'),
-      r('ACT-2278', 'A', 'Tue 14', 'Card sale — register 2', 99.5,  'partial', ['BNK-9428', 'BNK-9429'], undefined, 'Split deposit — combined to match'),
-      r('ACT-2279', 'A', 'Wed 15', 'Card sale — register 3', 41.2,  'match', ['BNK-9430']),
-      r('ACT-2280', 'A', 'Wed 15', 'Card sale — register 1', 312.0, 'exception', ['BNK-9425'], 'timing', 'Timing gap — bank posted day earlier'),
-      r('ACT-2281', 'A', 'Wed 15', 'Card sale — register 2', 88.0,  'match', ['BNK-9431']),
-      r('ACT-2282', 'A', 'Wed 15', 'Card sale — register 3', 60.0,  'match', ['BNK-9432']),
-      r('ACT-2283', 'A', 'Thu 16', 'Card sale — register 1', 250.0, 'exception', [], 'missing-b', 'No bank deposit found yet'),
-      r('ACT-2284', 'A', 'Thu 16', 'Card sale — register 2', 14.99, 'match', ['BNK-9433']),
+      r('ACT-2271', 'A', 'Mon 13', 'Card sale, register 2', 50.0,  'exception', ['BNK-9420'], 'fee', 'Fee delta, likely processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('ACT-2272', 'A', 'Mon 13', 'Card sale, register 1', 24.5,  'match', ['BNK-9421']),
+      r('ACT-2273', 'A', 'Mon 13', 'Card sale, register 3', 78.2,  'match', ['BNK-9422']),
+      r('ACT-2274', 'A', 'Mon 13', 'Card sale, register 1', 152.0, 'exception', ['BNK-9423'], 'fee', 'Fee delta, likely processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('ACT-2275', 'A', 'Mon 13', 'Card sale, register 2', 33.6,  'match', ['BNK-9424']),
+      r('ACT-2276', 'A', 'Tue 14', 'Card sale, register 3', 17.4,  'match', ['BNK-9427']),
+      r('ACT-2277', 'A', 'Tue 14', 'Card sale, register 1', 25.0,  'exception', ['BNK-9426'], 'fee', 'Fee delta, likely processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('ACT-2278', 'A', 'Tue 14', 'Card sale, register 2', 99.5,  'partial', ['BNK-9428', 'BNK-9429'], undefined, 'Split deposit, combined to match'),
+      r('ACT-2279', 'A', 'Wed 15', 'Card sale, register 3', 41.2,  'match', ['BNK-9430']),
+      r('ACT-2280', 'A', 'Wed 15', 'Card sale, register 1', 312.0, 'exception', ['BNK-9425'], 'timing', 'Timing gap, bank posted day earlier'),
+      r('ACT-2281', 'A', 'Wed 15', 'Card sale, register 2', 88.0,  'match', ['BNK-9431']),
+      r('ACT-2282', 'A', 'Wed 15', 'Card sale, register 3', 60.0,  'match', ['BNK-9432']),
+      r('ACT-2283', 'A', 'Thu 16', 'Card sale, register 1', 250.0, 'exception', [], 'missing-b', 'No bank deposit found yet'),
+      r('ACT-2284', 'A', 'Thu 16', 'Card sale, register 2', 14.99, 'match', ['BNK-9433']),
     ]
     const right: Row[] = [
-      r('BNK-9420', 'B', 'Mon 13', 'Card processor deposit', 48.30,  'exception', ['ACT-2271'], 'fee', 'Fee delta — likely processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('BNK-9420', 'B', 'Mon 13', 'Card processor deposit', 48.30,  'exception', ['ACT-2271'], 'fee', 'Fee delta, likely processor fee', 'Processor fee · 2.9% + $0.30'),
       r('BNK-9421', 'B', 'Mon 13', 'Card processor deposit', 24.5,   'match', ['ACT-2272']),
       r('BNK-9422', 'B', 'Mon 13', 'Card processor deposit', 78.2,   'match', ['ACT-2273']),
-      r('BNK-9423', 'B', 'Mon 13', 'Card processor deposit', 147.29, 'exception', ['ACT-2274'], 'fee', 'Fee delta — likely processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('BNK-9423', 'B', 'Mon 13', 'Card processor deposit', 147.29, 'exception', ['ACT-2274'], 'fee', 'Fee delta, likely processor fee', 'Processor fee · 2.9% + $0.30'),
       r('BNK-9424', 'B', 'Mon 13', 'Card processor deposit', 33.6,   'match', ['ACT-2275']),
-      r('BNK-9425', 'B', 'Tue 14', 'Card processor deposit', 312.0,  'exception', ['ACT-2280'], 'timing', 'Timing gap — POS recorded day later'),
-      r('BNK-9426', 'B', 'Tue 14', 'Card processor deposit', 23.98,  'exception', ['ACT-2277'], 'fee', 'Fee delta — likely processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('BNK-9425', 'B', 'Tue 14', 'Card processor deposit', 312.0,  'exception', ['ACT-2280'], 'timing', 'Timing gap, POS recorded day later'),
+      r('BNK-9426', 'B', 'Tue 14', 'Card processor deposit', 23.98,  'exception', ['ACT-2277'], 'fee', 'Fee delta, likely processor fee', 'Processor fee · 2.9% + $0.30'),
       r('BNK-9427', 'B', 'Tue 14', 'Card processor deposit', 17.4,   'match', ['ACT-2276']),
       r('BNK-9428', 'B', 'Tue 14', 'Card processor deposit', 49.5,   'partial', ['ACT-2278'], undefined, 'Combined with BNK-9429 to match ACT-2278'),
       r('BNK-9429', 'B', 'Tue 14', 'Card processor deposit', 50.0,   'partial', ['ACT-2278'], undefined, 'Combined with BNK-9428 to match ACT-2278'),
@@ -125,37 +125,37 @@ const posScenario: ScenarioConfig = {
   systemMinutes: 11,
   build: () => {
     const left: Row[] = [
-      r('POS-4112', 'A', 'Mon 13', 'SKU 8841 — running shoes 9',   1, 'match',     ['INV-7301'], undefined, undefined, undefined, 'unit'),
-      r('POS-4113', 'A', 'Mon 13', 'SKU 8841 — running shoes 10',  1, 'exception', ['INV-7302'], 'timing', 'Inventory move logged Tue — POS sold Mon', 'Warehouse split-shipment · next-day move', 'unit'),
-      r('POS-4114', 'A', 'Mon 13', 'SKU 6210 — backpack',           2, 'partial',   ['INV-7303', 'INV-7304'], undefined, 'Split shipment — two warehouses', undefined, 'units'),
-      r('POS-4115', 'A', 'Mon 13', 'SKU 4407 — water bottle',       3, 'match',     ['INV-7305'], undefined, undefined, undefined, 'units'),
-      r('POS-4116', 'A', 'Tue 14', 'SKU 1182 — wool socks',         6, 'match',     ['INV-7306'], undefined, undefined, undefined, 'units'),
-      r('POS-4117', 'A', 'Tue 14', 'SKU 9034 — rain shell',         1, 'exception', ['INV-7308'], 'timing', 'Inventory move logged Wed — POS sold Tue', 'Warehouse split-shipment · next-day move', 'unit'),
-      r('POS-4118', 'A', 'Tue 14', 'SKU 6210 — backpack',           1, 'match',     ['INV-7307'], undefined, undefined, undefined, 'unit'),
-      r('POS-4119', 'A', 'Tue 14', 'SKU 2255 — head torch',         4, 'partial',   ['INV-7309', 'INV-7310'], undefined, 'Split shipment — two warehouses', undefined, 'units'),
-      r('POS-4120', 'A', 'Wed 15', 'SKU 8841 — running shoes 8',    1, 'exception', ['INV-7311'], 'timing', 'Inventory move logged Thu — POS sold Wed', 'Warehouse split-shipment · next-day move', 'unit'),
-      r('POS-4121', 'A', 'Wed 15', 'SKU 4407 — water bottle',       2, 'match',     ['INV-7312'], undefined, undefined, undefined, 'units'),
-      r('POS-4122', 'A', 'Wed 15', 'SKU 5550 — picnic blanket',     1, 'exception', [], 'missing-b', 'No inventory movement found — possible shrinkage', undefined, 'unit'),
-      r('POS-4123', 'A', 'Wed 15', 'SKU 6210 — backpack',           1, 'match',     ['INV-7313'], undefined, undefined, undefined, 'unit'),
-      r('POS-4124', 'A', 'Thu 16', 'SKU 9034 — rain shell',         1, 'match',     ['INV-7314'], undefined, undefined, undefined, 'unit'),
-      r('POS-4125', 'A', 'Thu 16', 'SKU 1182 — wool socks',         2, 'exception', ['INV-7315'], 'partial', 'Sale of 2, only 1 unit moved from stock', undefined, 'units'),
+      r('POS-4112', 'A', 'Mon 13', 'SKU 8841, running shoes 9',   1, 'match',     ['INV-7301'], undefined, undefined, undefined, 'unit'),
+      r('POS-4113', 'A', 'Mon 13', 'SKU 8841, running shoes 10',  1, 'exception', ['INV-7302'], 'timing', 'Inventory move logged Tue, POS sold Mon', 'Warehouse split-shipment · next-day move', 'unit'),
+      r('POS-4114', 'A', 'Mon 13', 'SKU 6210, backpack',           2, 'partial',   ['INV-7303', 'INV-7304'], undefined, 'Split shipment, two warehouses', undefined, 'units'),
+      r('POS-4115', 'A', 'Mon 13', 'SKU 4407, water bottle',       3, 'match',     ['INV-7305'], undefined, undefined, undefined, 'units'),
+      r('POS-4116', 'A', 'Tue 14', 'SKU 1182, wool socks',         6, 'match',     ['INV-7306'], undefined, undefined, undefined, 'units'),
+      r('POS-4117', 'A', 'Tue 14', 'SKU 9034, rain shell',         1, 'exception', ['INV-7308'], 'timing', 'Inventory move logged Wed, POS sold Tue', 'Warehouse split-shipment · next-day move', 'unit'),
+      r('POS-4118', 'A', 'Tue 14', 'SKU 6210, backpack',           1, 'match',     ['INV-7307'], undefined, undefined, undefined, 'unit'),
+      r('POS-4119', 'A', 'Tue 14', 'SKU 2255, head torch',         4, 'partial',   ['INV-7309', 'INV-7310'], undefined, 'Split shipment, two warehouses', undefined, 'units'),
+      r('POS-4120', 'A', 'Wed 15', 'SKU 8841, running shoes 8',    1, 'exception', ['INV-7311'], 'timing', 'Inventory move logged Thu, POS sold Wed', 'Warehouse split-shipment · next-day move', 'unit'),
+      r('POS-4121', 'A', 'Wed 15', 'SKU 4407, water bottle',       2, 'match',     ['INV-7312'], undefined, undefined, undefined, 'units'),
+      r('POS-4122', 'A', 'Wed 15', 'SKU 5550, picnic blanket',     1, 'exception', [], 'missing-b', 'No inventory movement found, possible shrinkage', undefined, 'unit'),
+      r('POS-4123', 'A', 'Wed 15', 'SKU 6210, backpack',           1, 'match',     ['INV-7313'], undefined, undefined, undefined, 'unit'),
+      r('POS-4124', 'A', 'Thu 16', 'SKU 9034, rain shell',         1, 'match',     ['INV-7314'], undefined, undefined, undefined, 'unit'),
+      r('POS-4125', 'A', 'Thu 16', 'SKU 1182, wool socks',         2, 'exception', ['INV-7315'], 'partial', 'Sale of 2, only 1 unit moved from stock', undefined, 'units'),
     ]
     const right: Row[] = [
-      r('INV-7301', 'B', 'Mon 13', 'Out — Joburg warehouse',        1, 'match',     ['POS-4112'], undefined, undefined, undefined, 'unit'),
-      r('INV-7302', 'B', 'Tue 14', 'Out — Cape warehouse',          1, 'exception', ['POS-4113'], 'timing', 'POS sold Mon — inventory left Tue', 'Warehouse split-shipment · next-day move', 'unit'),
-      r('INV-7303', 'B', 'Mon 13', 'Out — Joburg warehouse',        1, 'partial',   ['POS-4114'], undefined, 'Combined with INV-7304 to match POS-4114', undefined, 'unit'),
-      r('INV-7304', 'B', 'Mon 13', 'Out — Cape warehouse',          1, 'partial',   ['POS-4114'], undefined, 'Combined with INV-7303 to match POS-4114', undefined, 'unit'),
-      r('INV-7305', 'B', 'Mon 13', 'Out — Joburg warehouse',        3, 'match',     ['POS-4115'], undefined, undefined, undefined, 'units'),
-      r('INV-7306', 'B', 'Tue 14', 'Out — Joburg warehouse',        6, 'match',     ['POS-4116'], undefined, undefined, undefined, 'units'),
-      r('INV-7307', 'B', 'Tue 14', 'Out — Joburg warehouse',        1, 'match',     ['POS-4118'], undefined, undefined, undefined, 'unit'),
-      r('INV-7308', 'B', 'Wed 15', 'Out — Cape warehouse',          1, 'exception', ['POS-4117'], 'timing', 'POS sold Tue — inventory left Wed', 'Warehouse split-shipment · next-day move', 'unit'),
-      r('INV-7309', 'B', 'Tue 14', 'Out — Joburg warehouse',        2, 'partial',   ['POS-4119'], undefined, 'Combined with INV-7310 to match POS-4119', undefined, 'units'),
-      r('INV-7310', 'B', 'Tue 14', 'Out — Cape warehouse',          2, 'partial',   ['POS-4119'], undefined, 'Combined with INV-7309 to match POS-4119', undefined, 'units'),
-      r('INV-7311', 'B', 'Thu 16', 'Out — Cape warehouse',          1, 'exception', ['POS-4120'], 'timing', 'POS sold Wed — inventory left Thu', 'Warehouse split-shipment · next-day move', 'unit'),
-      r('INV-7312', 'B', 'Wed 15', 'Out — Joburg warehouse',        2, 'match',     ['POS-4121'], undefined, undefined, undefined, 'units'),
-      r('INV-7313', 'B', 'Wed 15', 'Out — Joburg warehouse',        1, 'match',     ['POS-4123'], undefined, undefined, undefined, 'unit'),
-      r('INV-7314', 'B', 'Thu 16', 'Out — Joburg warehouse',        1, 'match',     ['POS-4124'], undefined, undefined, undefined, 'unit'),
-      r('INV-7315', 'B', 'Thu 16', 'Out — Joburg warehouse',        1, 'exception', ['POS-4125'], 'partial', 'Only 1 unit moved against a sale of 2', undefined, 'unit'),
+      r('INV-7301', 'B', 'Mon 13', 'Out, Joburg warehouse',        1, 'match',     ['POS-4112'], undefined, undefined, undefined, 'unit'),
+      r('INV-7302', 'B', 'Tue 14', 'Out, Cape warehouse',          1, 'exception', ['POS-4113'], 'timing', 'POS sold Mon, inventory left Tue', 'Warehouse split-shipment · next-day move', 'unit'),
+      r('INV-7303', 'B', 'Mon 13', 'Out, Joburg warehouse',        1, 'partial',   ['POS-4114'], undefined, 'Combined with INV-7304 to match POS-4114', undefined, 'unit'),
+      r('INV-7304', 'B', 'Mon 13', 'Out, Cape warehouse',          1, 'partial',   ['POS-4114'], undefined, 'Combined with INV-7303 to match POS-4114', undefined, 'unit'),
+      r('INV-7305', 'B', 'Mon 13', 'Out, Joburg warehouse',        3, 'match',     ['POS-4115'], undefined, undefined, undefined, 'units'),
+      r('INV-7306', 'B', 'Tue 14', 'Out, Joburg warehouse',        6, 'match',     ['POS-4116'], undefined, undefined, undefined, 'units'),
+      r('INV-7307', 'B', 'Tue 14', 'Out, Joburg warehouse',        1, 'match',     ['POS-4118'], undefined, undefined, undefined, 'unit'),
+      r('INV-7308', 'B', 'Wed 15', 'Out, Cape warehouse',          1, 'exception', ['POS-4117'], 'timing', 'POS sold Tue, inventory left Wed', 'Warehouse split-shipment · next-day move', 'unit'),
+      r('INV-7309', 'B', 'Tue 14', 'Out, Joburg warehouse',        2, 'partial',   ['POS-4119'], undefined, 'Combined with INV-7310 to match POS-4119', undefined, 'units'),
+      r('INV-7310', 'B', 'Tue 14', 'Out, Cape warehouse',          2, 'partial',   ['POS-4119'], undefined, 'Combined with INV-7309 to match POS-4119', undefined, 'units'),
+      r('INV-7311', 'B', 'Thu 16', 'Out, Cape warehouse',          1, 'exception', ['POS-4120'], 'timing', 'POS sold Wed, inventory left Thu', 'Warehouse split-shipment · next-day move', 'unit'),
+      r('INV-7312', 'B', 'Wed 15', 'Out, Joburg warehouse',        2, 'match',     ['POS-4121'], undefined, undefined, undefined, 'units'),
+      r('INV-7313', 'B', 'Wed 15', 'Out, Joburg warehouse',        1, 'match',     ['POS-4123'], undefined, undefined, undefined, 'unit'),
+      r('INV-7314', 'B', 'Thu 16', 'Out, Joburg warehouse',        1, 'match',     ['POS-4124'], undefined, undefined, undefined, 'unit'),
+      r('INV-7315', 'B', 'Thu 16', 'Out, Joburg warehouse',        1, 'exception', ['POS-4125'], 'partial', 'Only 1 unit moved against a sale of 2', undefined, 'unit'),
     ]
     return { left, right }
   },
@@ -179,20 +179,20 @@ const processorScenario: ScenarioConfig = {
   systemMinutes: 8,
   build: () => {
     const left: Row[] = [
-      r('INV-50111', 'A', 'Mon 13', 'Inv #50111 — Acme Logistics',     1200.00, 'exception', ['PAY-1041'], 'fee', 'Net payout below invoice — processor fee', 'Processor fee · 2.9% + $0.30'),
-      r('INV-50112', 'A', 'Mon 13', 'Inv #50112 — Hilltop Hardware',     480.00, 'match', ['PAY-1042']),
-      r('INV-50113', 'A', 'Mon 13', 'Inv #50113 — Bluebird Cafe',        264.00, 'exception', ['PAY-1043'], 'fee', 'Net payout below invoice — processor fee', 'Processor fee · 2.9% + $0.30'),
-      r('INV-50114', 'A', 'Tue 14', 'Inv #50114 — Northridge Mills',    3120.00, 'match', ['PAY-1044']),
-      r('INV-50115', 'A', 'Tue 14', 'Inv #50115 — Quay Café',             97.50, 'exception', ['PAY-1045'], 'fee', 'Net payout below invoice — processor fee', 'Processor fee · 2.9% + $0.30'),
-      r('INV-50116', 'A', 'Tue 14', 'Inv #50116 — Westline Carriers',    540.00, 'match', ['PAY-1046']),
-      r('INV-50117', 'A', 'Wed 15', 'Inv #50117 — Brookside Restaurant', 318.00, 'partial', ['PAY-1047', 'PAY-1048'], undefined, 'Two payouts — combined to match'),
-      r('INV-50118', 'A', 'Wed 15', 'Inv #50118 — Apex Couriers',        720.00, 'match', ['PAY-1049']),
-      r('INV-50119', 'A', 'Wed 15', 'Inv #50119 — Riverbend Spa',        180.00, 'exception', ['PAY-1051'], 'timing', 'Payout settled Thu — invoice issued Wed'),
-      r('INV-50120', 'A', 'Wed 15', 'Inv #50120 — Lakeline Lodge',       640.00, 'match', ['PAY-1050']),
-      r('INV-50121', 'A', 'Thu 16', 'Inv #50121 — Stonepine B&B',        145.00, 'match', ['PAY-1052']),
-      r('INV-50122', 'A', 'Thu 16', 'Inv #50122 — Crowfoot Pty',         960.00, 'exception', [], 'missing-b', 'No matching payout found yet'),
-      r('INV-50123', 'A', 'Thu 16', 'Inv #50123 — Cedar & Co',           212.00, 'match', ['PAY-1053']),
-      r('INV-50124', 'A', 'Fri 17', 'Inv #50124 — Sunset Catering',      388.00, 'match', ['PAY-1054']),
+      r('INV-50111', 'A', 'Mon 13', 'Inv #50111, Acme Logistics',     1200.00, 'exception', ['PAY-1041'], 'fee', 'Net payout below invoice, processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('INV-50112', 'A', 'Mon 13', 'Inv #50112, Hilltop Hardware',     480.00, 'match', ['PAY-1042']),
+      r('INV-50113', 'A', 'Mon 13', 'Inv #50113, Bluebird Cafe',        264.00, 'exception', ['PAY-1043'], 'fee', 'Net payout below invoice, processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('INV-50114', 'A', 'Tue 14', 'Inv #50114, Northridge Mills',    3120.00, 'match', ['PAY-1044']),
+      r('INV-50115', 'A', 'Tue 14', 'Inv #50115, Quay Café',             97.50, 'exception', ['PAY-1045'], 'fee', 'Net payout below invoice, processor fee', 'Processor fee · 2.9% + $0.30'),
+      r('INV-50116', 'A', 'Tue 14', 'Inv #50116, Westline Carriers',    540.00, 'match', ['PAY-1046']),
+      r('INV-50117', 'A', 'Wed 15', 'Inv #50117, Brookside Restaurant', 318.00, 'partial', ['PAY-1047', 'PAY-1048'], undefined, 'Two payouts, combined to match'),
+      r('INV-50118', 'A', 'Wed 15', 'Inv #50118, Apex Couriers',        720.00, 'match', ['PAY-1049']),
+      r('INV-50119', 'A', 'Wed 15', 'Inv #50119, Riverbend Spa',        180.00, 'exception', ['PAY-1051'], 'timing', 'Payout settled Thu, invoice issued Wed'),
+      r('INV-50120', 'A', 'Wed 15', 'Inv #50120, Lakeline Lodge',       640.00, 'match', ['PAY-1050']),
+      r('INV-50121', 'A', 'Thu 16', 'Inv #50121, Stonepine B&B',        145.00, 'match', ['PAY-1052']),
+      r('INV-50122', 'A', 'Thu 16', 'Inv #50122, Crowfoot Pty',         960.00, 'exception', [], 'missing-b', 'No matching payout found yet'),
+      r('INV-50123', 'A', 'Thu 16', 'Inv #50123, Cedar & Co',           212.00, 'match', ['PAY-1053']),
+      r('INV-50124', 'A', 'Fri 17', 'Inv #50124, Sunset Catering',      388.00, 'match', ['PAY-1054']),
     ]
     const right: Row[] = [
       r('PAY-1041', 'B', 'Mon 13', 'Processor payout',                 1164.50, 'exception', ['INV-50111'], 'fee', 'Likely processor fee on invoice #50111', 'Processor fee · 2.9% + $0.30'),
@@ -205,7 +205,7 @@ const processorScenario: ScenarioConfig = {
       r('PAY-1048', 'B', 'Wed 15', 'Processor payout',                  160.00, 'partial', ['INV-50117'], undefined, 'Combined with PAY-1047 to match INV-50117'),
       r('PAY-1049', 'B', 'Wed 15', 'Processor payout',                  720.00, 'match', ['INV-50118']),
       r('PAY-1050', 'B', 'Wed 15', 'Processor payout',                  640.00, 'match', ['INV-50120']),
-      r('PAY-1051', 'B', 'Thu 16', 'Processor payout',                  180.00, 'exception', ['INV-50119'], 'timing', 'Invoice issued Wed — payout settled Thu'),
+      r('PAY-1051', 'B', 'Thu 16', 'Processor payout',                  180.00, 'exception', ['INV-50119'], 'timing', 'Invoice issued Wed, payout settled Thu'),
       r('PAY-1052', 'B', 'Thu 16', 'Processor payout',                  145.00, 'match', ['INV-50121']),
       r('PAY-1053', 'B', 'Thu 16', 'Processor payout',                  212.00, 'match', ['INV-50123']),
       r('PAY-1054', 'B', 'Fri 17', 'Processor payout',                  388.00, 'match', ['INV-50124']),
@@ -464,7 +464,7 @@ function candidatesFor(exception: Row): Row[] {
     ? otherSide.find((r) => r.id === exception.partnerIds[0])
     : undefined
   // Two "noise" candidates: any rows from the other side that are matched
-  // (already resolved) — they make a good visual contrast and reinforce that
+  // (already resolved), they make a good visual contrast and reinforce that
   // the engine ranked the real partner highest.
   const noise = otherSide.filter(
     (r) => r.status === 'matched' && r.id !== truePartner?.id,
@@ -486,7 +486,7 @@ function candidatesFor(exception: Row): Row[] {
 
 function confidenceFor(candidate: Row, exception: Row): number {
   if (exception.partnerIds.includes(candidate.id)) {
-    // Highly confident match — the engine knows this is its best candidate.
+    // Highly confident match, the engine knows this is its best candidate.
     return 96 + Math.floor(Math.random() * 3)
   }
   const delta = Math.abs(candidate.amount - exception.amount)
@@ -507,7 +507,7 @@ function resolveException(exception: Row, candidate: Row) {
   expandedExceptionId.value = null
 
   const pattern = exception.patternLabel
-  banner.value = { text: 'Resolved — match recorded to audit trail', kind: 'resolve' }
+  banner.value = { text: 'Resolved, match recorded to audit trail', kind: 'resolve' }
 
   // If this exception had a pattern label that hasn't been learned, learn
   // it and auto-clear similar exceptions.
@@ -538,7 +538,7 @@ function resolveException(exception: Row, candidate: Row) {
       }
     }, 1200 + matchingExceptions.length * 450 + 900)
   } else {
-    // No pattern learning — just clear the pulse.
+    // No pattern learning, just clear the pulse.
     schedule(() => {
       mutateRow(exception.id, { justResolved: false })
       mutateRow(candidate.id, { justResolved: false })
@@ -1061,7 +1061,7 @@ function reasonChip(reason?: Reason): { label: string; tone: 'red' | 'cyan' | 'm
                 class="mt-3 text-[12px] text-mute-2 leading-[1.5]"
               >
                 <Sparkles :size="12" :stroke-width="2" class="inline -mt-0.5 text-cyan-brand-deep" />
-                Tip — resolve this one and the engine will learn the
+                Tip, resolve this one and the engine will learn the
                 <span class="font-semibold text-ink">{{ exception.patternLabel }}</span>
                 pattern. Similar exceptions will auto-clear.
               </p>
@@ -1070,7 +1070,7 @@ function reasonChip(reason?: Reason): { label: string; tone: 'red' | 'cyan' | 'm
                 class="mt-3 text-[12px] text-mute-2 leading-[1.5]"
               >
                 <Wand2 :size="12" :stroke-width="2" class="inline -mt-0.5 text-cyan-brand-deep" />
-                Pattern already learned —
+                Pattern already learned -
                 <span class="font-semibold text-ink">{{ exception.patternLabel }}</span>.
               </p>
             </div>
@@ -1118,7 +1118,7 @@ function reasonChip(reason?: Reason): { label: string; tone: 'red' | 'cyan' | 'm
         </div>
         <p class="mt-2 text-[13px] text-mute leading-[1.5]">
           {{ summaryStats.remainingExceptions === summaryStats.initialExceptions
-            ? 'Pick the first exception to teach the engine — it will learn the pattern.'
+            ? 'Pick the first exception to teach the engine, it will learn the pattern.'
             : `Engine learned ${learnedPatterns.size} pattern${learnedPatterns.size === 1 ? '' : 's'} and auto-cleared the rest of that kind.` }}
         </p>
       </div>

@@ -75,7 +75,7 @@ const FLAGS: Record<FlagType, FlagMeta> = {
 }
 
 // ---------------------------------------------------------------------------
-// Event templates — designed so each source feeds a recognisable pattern.
+// Event templates, designed so each source feeds a recognisable pattern.
 // `trueFlag` means the event was generated as a real anomaly; if non-null
 // it surfaces whenever sensitivity is above ~25.
 // `fpFlag` / `fpLine` / `fpMeta` describe how a normal-looking event would
@@ -184,7 +184,7 @@ const SENSOR_ANOMALIES: Record<SensorKey, EventTemplate[]> = {
 }
 
 // ---------------------------------------------------------------------------
-// Flag payload — what the expanded view shows when a flag is clicked.
+// Flag payload, what the expanded view shows when a flag is clicked.
 // ---------------------------------------------------------------------------
 
 const FLAG_PAYLOAD: Record<FlagType, FlagPayload> = {
@@ -256,7 +256,7 @@ const TICK_MS = 360
 const FEED_MAX = 18
 
 // ---------------------------------------------------------------------------
-// Derived metrics — trade-off readouts
+// Derived metrics, trade-off readouts
 // ---------------------------------------------------------------------------
 
 function flagsPerMinAt(sens: number): number {
@@ -272,7 +272,7 @@ function fpPercentAt(sens: number): number {
 }
 
 function coverageAt(sens: number): number {
-  // 0..100 — share of true anomalies actually surfaced.
+  // 0..100, share of true anomalies actually surfaced.
   const x = Math.max(0, Math.min(100, sens)) / 100
   // Saturating: 0 at 0, ~94 at 50, ~99 at 80
   return Math.round(100 * (1 - Math.exp(-4.1 * x)))
@@ -314,7 +314,7 @@ function caseIdFor(flag: FlagType | null): string {
 function pickEvent(): FeedEvent {
   const { normals, anomalies } = templatesForCurrentSource()
   const sens = sensitivity.value
-  // ~6% of generated events are designed anomalies — always flagged at sens>=30.
+  // ~6% of generated events are designed anomalies, always flagged at sens>=30.
   const isDesignedAnomaly = Math.random() < 0.065
   const sensFiresAnomalies = sens >= 25
   const fpProbability = Math.max(0, (sens - 55) / 50) * 0.32 // up to ~32% of normals at sens=100
@@ -414,7 +414,7 @@ function startReplay() {
   replayCounts.value = { processed: 0, flagged: 0, caught: 0, humanCaught: 0 }
   stopStream()
 
-  // Source-specific weekly volume — anchors the headline number.
+  // Source-specific weekly volume, anchors the headline number.
   const totals = {
     bank:    { processed: 5_643_120, flagged: 3140, caught: 314, humanCaught: 22 },
     crm:     { processed:   812_400, flagged:  482, caught:  47, humanCaught:  4 },
@@ -452,7 +452,7 @@ function exitReplay() {
 }
 
 // ---------------------------------------------------------------------------
-// Chart geometry — small 320x110 SVG.
+// Chart geometry, small 320x110 SVG.
 // Two curves over sensitivity 0..100:
 //   - coverage (cyan-brand-deep, solid): % of true anomalies caught
 //   - false-positive rate (mute, dashed): scaled into the same plot
@@ -776,7 +776,7 @@ function fmt(n: number): string {
                 <span class="text-ink font-semibold">
                   {{ fmt(replayCounts.caught - replayCounts.humanCaught) }}
                 </span>
-                issues recovered that a human reviewer at sample rate would have missed —
+                issues recovered that a human reviewer at sample rate would have missed -
                 every one with its evidence trail already attached.
               </p>
             </div>
@@ -961,7 +961,7 @@ function fmt(n: number): string {
         <!-- Footnote -->
         <p class="text-[11.5px] text-mute-2 leading-snug">
           Demo data. The detectors, rules, history payload and audit-trail references are
-          illustrative — the engine behind it is the same one we build for real.
+          illustrative, the engine behind it is the same one we build for real.
         </p>
       </aside>
     </div>

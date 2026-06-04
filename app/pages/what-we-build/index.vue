@@ -18,13 +18,13 @@ const hubs = [
     href: '/what-we-build/audit-trails',
     icon: ShieldCheck,
     title: 'Audit Trails',
-    body: 'Who did what, when and why — captured as work happens. POPIA, FAIS and SARB-ready.',
+    body: 'Who did what, when and why, captured as work happens. POPIA, FAIS and SARB-ready.',
   },
   {
     href: '/what-we-build/anomaly-detection',
     icon: Radar,
     title: 'Anomaly Detection',
-    body: 'Catch the fraud, error and drift hiding inside an ocean of normal activity — before it costs you.',
+    body: 'Catch the fraud, error and drift hiding inside an ocean of normal activity, before it costs you.',
   },
   {
     href: '/what-we-build/analytics',
@@ -39,7 +39,7 @@ const hubs = [
 usePageSeo({
   title: 'What We Build',
   description:
-    'Zabble builds bespoke operational systems across four pillars — automation, audit trails, anomaly detection and analytics — for South African businesses.',
+    'Zabble builds bespoke operational systems across four pillars, automation, audit trails, anomaly detection and analytics, for South African businesses.',
   path: '/what-we-build',
   ogType: 'website',
 })
@@ -71,8 +71,8 @@ usePageSeo({
         <div class="mt-8 max-w-2xl rounded-2xl border border-cyan-brand/30 bg-cyan-brand/[0.04] p-5 md:p-6" data-answer-first>
           <div class="text-[11px] uppercase tracking-[0.2em] text-cyan-brand-deep font-semibold">In short</div>
           <p class="mt-2.5 text-[16.5px] md:text-[17px] leading-[1.6] text-ink font-medium">
-            Zabble is a South African firm that builds bespoke operational systems — automation, audit trails,
-            anomaly detection and analytics — shaped around the single problem slowing a specific business down.
+            Zabble is a South African firm that builds bespoke operational systems, automation, audit trails,
+            anomaly detection and analytics, shaped around the single problem slowing a specific business down.
             We don't sell software. We assemble the system your business actually needs, from a library of modules,
             and you run it.
           </p>

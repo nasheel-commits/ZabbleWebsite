@@ -105,7 +105,7 @@ const ENTITIES: EntityDef[] = [
       { systemId: 'support',    value: 'Atlas warehouse, 14 Capricorn Way',     source: 'Support agent re-typed from a ticket footer' },
       { systemId: 'marketing',  value: '23rd Floor, Portside Tower, Cape Town', source: 'Mailchimp import in 2023' },
       { systemId: 'billing',    value: '23rd Floor, Portside Tower, Cape Town', source: 'Synced from Accounting at go-live' },
-      { systemId: 'shipping',   value: 'Atlas, Capricorn Industrial, M\'berg',  source: 'WMS operator best guess — courier kept asking' },
+      { systemId: 'shipping',   value: 'Atlas, Capricorn Industrial, M\'berg',  source: 'WMS operator best guess, courier kept asking' },
     ],
     beforeCost: {
       label: 'R 28,400 / quarter wasted',
@@ -153,10 +153,10 @@ const ENTITIES: EntityDef[] = [
     before: [
       { systemId: 'erp',         value: 'FNB · 62518473291 · branch 250655',  source: 'ERP master · last verified Q4 2024' },
       { systemId: 'procurement', value: 'FNB · 62518473291 · branch 250655',  source: 'Procurement synced from ERP' },
-      { systemId: 'ap',          value: 'Nedbank · 1185374029 · branch 198765', source: 'Vendor email change — A/P updated without verification' },
+      { systemId: 'ap',          value: 'Nedbank · 1185374029 · branch 198765', source: 'Vendor email change, A/P updated without verification' },
       { systemId: 'compliance',  value: 'FNB · 62518473291 · branch 250655',  source: 'KYC pack on file · independent verification' },
       { systemId: 'treasury',    value: 'Nedbank · 1185374029 · branch 198765', source: 'Treasury matched A/P at next pay run' },
-      { systemId: 'sustain',     value: 'FNB · 62518473291 · branch 250655',  source: 'ESG vendor file — original onboarding' },
+      { systemId: 'sustain',     value: 'FNB · 62518473291 · branch 250655',  source: 'ESG vendor file, original onboarding' },
     ],
     beforeCost: {
       label: '2 fraud near-misses · 9 days of A/P friction',
@@ -207,7 +207,7 @@ const ENTITIES: EntityDef[] = [
       { systemId: 'warehouse',   value: 'R 165.00 (legacy excl. VAT)', source: 'WMS still on pre-2024 cost-plus margin' },
       { systemId: 'marketplace', value: 'R 199.00 incl. VAT',          source: 'Marketplace manager raised it during promo, never reverted' },
       { systemId: 'erp',         value: 'R 184.50 incl. VAT',          source: 'ERP price master · synced from PIM' },
-      { systemId: 'returns',     value: 'R 159.00 (2023 list)',         source: 'Returns refund table — last touched 14 months ago' },
+      { systemId: 'returns',     value: 'R 159.00 (2023 list)',         source: 'Returns refund table, last touched 14 months ago' },
     ],
     beforeCost: {
       label: 'R 11k / month in mis-charged refunds',
@@ -237,7 +237,7 @@ const ENTITIES: EntityDef[] = [
     golden: {
       name:    'Lerato Khumalo',
       role:    'Senior Data Engineer',
-      dept:    'Platform — Data',
+      dept:    'Platform, Data',
       manager: 'Tendai Moyo (VP Engineering)',
       email:   'lerato.khumalo@zabble.org',
       payroll: 'P-01298',
@@ -253,11 +253,11 @@ const ENTITIES: EntityDef[] = [
     conflictField: 'dept',
     beforeField:   'dept',
     before: [
-      { systemId: 'hris',      value: 'Platform — Data',      source: 'HRIS · canonical after the Q1 re-org' },
+      { systemId: 'hris',      value: 'Platform, Data',      source: 'HRIS · canonical after the Q1 re-org' },
       { systemId: 'payroll',   value: 'Engineering',           source: 'Payroll on the pre-re-org cost-centre map' },
       { systemId: 'directory', value: 'Data Engineering',      source: 'IT directory edited locally by a sysadmin' },
       { systemId: 'comms',     value: 'Data Engineering',      source: 'Slack workspace · synced from IT directory' },
-      { systemId: 'benefits',  value: 'Platform — Data',       source: 'Benefits provider · synced from HRIS at hire' },
+      { systemId: 'benefits',  value: 'Platform, Data',       source: 'Benefits provider · synced from HRIS at hire' },
       { systemId: 'access',    value: 'Engineering',           source: 'Badge system · pre-re-org seat assignment' },
     ],
     beforeCost: {
@@ -305,7 +305,7 @@ const ENTITIES: EntityDef[] = [
     beforeField:   'site',
     before: [
       { systemId: 'erp-fa',    value: 'Kenmare branch · Mokopane',   source: 'ERP fixed-asset register · last audited 2024-06' },
-      { systemId: 'insurance', value: 'Polokwane depot',              source: 'Insurance schedule from 2022 — never updated post-move' },
+      { systemId: 'insurance', value: 'Polokwane depot',              source: 'Insurance schedule from 2022, never updated post-move' },
       { systemId: 'cmms',      value: 'Kenmare branch',               source: 'CMMS · last service entry confirmed location' },
       { systemId: 'tax',       value: 'Polokwane depot',              source: 'Tax schedule · copy of old insurance file' },
       { systemId: 'gis',       value: 'Kenmare branch · plant area',  source: 'GIS · facilities surveyed Q1 2025' },
@@ -705,7 +705,7 @@ function formatTime(ts: number): string {
 <template>
   <div class="relative">
     <!-- ===================================================================
-         Header — eyebrow, heading, entity tabs, before/after toggle
+         Header, eyebrow, heading, entity tabs, before/after toggle
          =================================================================== -->
     <header class="px-5 md:px-8 lg:px-10 pt-6 md:pt-8 pb-5 border-b border-line">
       <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
@@ -768,7 +768,7 @@ function formatTime(ts: number): string {
     </header>
 
     <!-- ===================================================================
-         Workspace — golden record + downstream tile grid
+         Workspace, golden record + downstream tile grid
          =================================================================== -->
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-0 border-b border-line">
       <!-- Golden record -->
@@ -1036,7 +1036,7 @@ function formatTime(ts: number): string {
     </section>
 
     <!-- ===================================================================
-         Footer strip — conflict rule selector + propagation log
+         Footer strip, conflict rule selector + propagation log
          =================================================================== -->
     <section class="grid grid-cols-1 lg:grid-cols-12 gap-0">
       <div class="lg:col-span-5 p-5 md:p-6 lg:p-7 border-b lg:border-b-0 lg:border-r border-line bg-white">
@@ -1107,7 +1107,7 @@ function formatTime(ts: number): string {
           class="mt-3 rounded-lg border border-dashed border-line bg-white px-3 py-4 text-center"
         >
           <p class="text-[12.5px] text-mute">
-            Edit a field on the golden record, or run the conflict simulator — every motion lands here with the rule that resolved it.
+            Edit a field on the golden record, or run the conflict simulator, every motion lands here with the rule that resolved it.
           </p>
         </div>
       </div>

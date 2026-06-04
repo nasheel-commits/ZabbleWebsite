@@ -431,7 +431,7 @@ async function run() {
       if (!(await delay(420, token))) return
       isRunning.value = false
       isHalted.value = true
-      log('workflow.halted', 'Chain stopped — waiting on a human')
+      log('workflow.halted', 'Chain stopped, waiting on a human')
       return
     }
 
@@ -632,7 +632,7 @@ const overallStatusTone = computed(() => {
 
 function selectEvent(id: EventId) {
   if (id === activeEventId.value) return
-  // Clear the failure target whenever the workflow changes — node ids don't carry over.
+  // Clear the failure target whenever the workflow changes, node ids don't carry over.
   failureTarget.value = null
   activeEventId.value = id
 }
@@ -1048,7 +1048,7 @@ function replay() {
             What this would take by hand
           </div>
           <p class="mt-1.5 text-[13px] text-mute max-w-2xl">
-            Same event, no orchestrator. Different people in different tools, with the handoffs living in inboxes —
+            Same event, no orchestrator. Different people in different tools, with the handoffs living in inboxes -
             and the one that gets forgotten is the one that costs the most.
           </p>
         </div>

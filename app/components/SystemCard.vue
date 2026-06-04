@@ -2,7 +2,7 @@
 
 // Card for a system in the gallery grid.
 // The whole card is one keyboard-accessible link to /systems/[slug].
-// Pillar chips inside the card are <a> links to the filtered gallery —
+// Pillar chips inside the card are <a> links to the filtered gallery -
 // they intercept clicks so the chip link wins over the card link.
 
 

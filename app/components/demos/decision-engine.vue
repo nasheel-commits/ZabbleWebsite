@@ -978,7 +978,7 @@ const batchTotal = computed(
 )
 const hasBatchResults = computed(() => batchTotal.value > 0)
 
-// Reset batch results when context switches — the counts no longer make sense.
+// Reset batch results when context switches, the counts no longer make sense.
 watch([activeDomain, activePolicyId], () => {
   batchCounts.value = { approve: 0, refer: 0, decline: 0 }
   batchProgress.value = 0
@@ -1058,7 +1058,7 @@ watch(
         </button>
       </div>
       <p class="mt-2 text-[12.5px] text-mute-2">
-        Switching context swaps the rule pack — not the engine.
+        Switching context swaps the rule pack, not the engine.
       </p>
     </div>
 

@@ -117,7 +117,7 @@ usePageSeo(() => ({
             </div>
             <p class="mt-3 text-[15.5px] md:text-[16px] leading-[1.65] text-ink">{{ loc.whyLocal }}</p>
             <p class="mt-5 text-[13.5px] leading-[1.55] text-mute-2">
-              We work with operators across {{ loc.city }} and the wider {{ loc.region }} —
+              We work with operators across {{ loc.city }} and the wider {{ loc.region }} -
               including
               <span class="text-mute">{{ loc.nearbyAreas.slice(0, 4).join(', ') }}</span>
               and beyond.
@@ -182,7 +182,7 @@ usePageSeo(() => ({
       <CtaStrip
         eyebrow="Next Step"
         :heading="`Have a problem worth solving in ${loc.city}?`"
-        body="The first conversation is free. We find the most expensive operational problem in your business — and tell you whether it's worth building for."
+        body="The first conversation is free. We find the most expensive operational problem in your business, and tell you whether it's worth building for."
       />
     </main>
 

@@ -21,8 +21,8 @@ usePageSeo({
 
 const facts: Array<{ k: string; v: string }> = [
   { k: 'What it is', v: 'A South African software consultancy building bespoke operational systems.' },
-  { k: 'What it builds', v: `Custom software across four pillars — automation, audit trails, anomaly detection, analytics — with ${liveCount}+ documented system patterns.` },
-  { k: 'Where', v: `South Africa — ${LOCATIONS.map((l) => l.city).join(', ')}.` },
+  { k: 'What it builds', v: `Custom software across four pillars, automation, audit trails, anomaly detection, analytics, with ${liveCount}+ documented system patterns.` },
+  { k: 'Where', v: `South Africa, ${LOCATIONS.map((l) => l.city).join(', ')}.` },
   { k: 'Founded with', v: `Selected build partners, including ${NAP.partners.join(', ')}.` },
   { k: 'Website', v: NAP.url.replace('https://', '') },
   { k: 'Contact', v: NAP.email },
@@ -45,7 +45,7 @@ const facts: Array<{ k: string; v: string }> = [
             Everything you need to <span class="cyan-underline">write about Zabble.</span>
           </h1>
           <p class="mt-6 max-w-2xl text-[16px] md:text-[19px] leading-[1.6] md:leading-[1.65] text-mute">
-            Boilerplate, fast facts and brand basics — ready to quote. For interviews, commentary on
+            Boilerplate, fast facts and brand basics, ready to quote. For interviews, commentary on
             business automation in South Africa, or anything else, reach us at
             <a :href="`mailto:${NAP.email}`" class="text-ink underline underline-offset-4 hover:text-ink-soft">{{ NAP.email }}</a>.
           </p>
@@ -56,12 +56,12 @@ const facts: Array<{ k: string; v: string }> = [
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-14 md:mt-20">
         <div v-reveal class="rounded-2xl border border-line bg-white p-6 md:p-8">
           <div class="flex items-center justify-between gap-3">
-            <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Boilerplate — short</div>
+            <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Boilerplate, short</div>
             <span class="inline-flex items-center gap-1 text-[11.5px] text-mute-2"><Copy :size="12" /> quote as-is</span>
           </div>
           <p class="mt-3 text-[16px] md:text-[17px] leading-[1.65] text-ink">{{ NAP.description }}</p>
 
-          <div class="mt-6 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Boilerplate — long</div>
+          <div class="mt-6 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Boilerplate, long</div>
           <p class="mt-3 text-[15.5px] leading-[1.65] text-ink">{{ NAP.longDescription }}</p>
         </div>
       </section>
@@ -98,7 +98,7 @@ const facts: Array<{ k: string; v: string }> = [
           <article v-reveal:scale class="rounded-2xl border border-line bg-white p-6 md:p-8">
             <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Naming</div>
             <p class="mt-3 text-[15px] leading-[1.6] text-ink">
-              Always written <span class="font-semibold">Zabble</span> — one word, capital Z. Not "Zabble Inc",
+              Always written <span class="font-semibold">Zabble</span>, one word, capital Z. Not "Zabble Inc",
               "Zable", or "Zabble Systems".
             </p>
           </article>
@@ -117,7 +117,7 @@ const facts: Array<{ k: string; v: string }> = [
         <div v-reveal class="rounded-2xl border border-cyan-brand/25 bg-white p-6 md:p-8">
           <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">For journalists &amp; analysts</div>
           <p class="mt-3 max-w-2xl text-[15.5px] leading-[1.65] text-ink">
-            We publish a reference map of how South African businesses run their operations — the categories of
+            We publish a reference map of how South African businesses run their operations, the categories of
             operational software, what each does, and where bespoke fits. Useful background, free to cite.
           </p>
           <NuxtLink

@@ -1,5 +1,5 @@
 /**
- * useAnalytics — typed, SSR-safe accessor for the Zabble measurement API.
+ * useAnalytics, typed, SSR-safe accessor for the Zabble measurement API.
  *
  * The real implementation is provided client-side by `1.analytics.client.ts`.
  * During SSR / prerender (or before the plugin runs) this returns a no-op stub

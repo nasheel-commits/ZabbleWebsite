@@ -4,7 +4,7 @@
 //   1. Re-checks the slot against sales@'s live calendar (no double-booking)
 //   2. Creates an event on sales@zabble.org's Google Calendar
 //   3. Attaches an auto-generated Google Meet link (conferenceData)
-//   4. Invites the prospect + sales@ — Google emails both the invite + Meet
+//   4. Invites the prospect + sales@, Google emails both the invite + Meet
 //      link automatically (sendUpdates: 'all')
 //   5. Sends sales@ a separate lead-notification email with the pain profile
 //
@@ -40,7 +40,7 @@ function addMinutes(naive: string, minutes: number): string {
   const m = NAIVE_DT_RE.exec(naive)
   if (!m) return naive
   const [, y, mo, d, h, min] = m
-  // UTC anchor purely for arithmetic — we only read wall-clock fields back.
+  // UTC anchor purely for arithmetic, we only read wall-clock fields back.
   const next = new Date(Date.UTC(+y, +mo - 1, +d, +h, +min, 0) + minutes * 60_000)
   const p = (n: number) => String(n).padStart(2, '0')
   return (
@@ -65,7 +65,7 @@ export default defineEventHandler(async (event) => {
 
   const c = readBookingConfig()
   if (!c) {
-    console.warn('[book] Google credentials not configured — returning fallback.')
+    console.warn('[book] Google credentials not configured, returning fallback.')
     return { ok: false as const, reason: 'not_configured' as const }
   }
 
@@ -126,7 +126,7 @@ export default defineEventHandler(async (event) => {
       conferenceData?: { entryPoints?: Array<{ entryPointType?: string; uri?: string }> }
     }>('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
       method: 'POST',
-      // sendUpdates:'none' — we send our own premium confirmation to the lead
+      // sendUpdates:'none', we send our own premium confirmation to the lead
       // instead of Google's plain invite. The event still lands on sales@'s
       // calendar (they're the organizer), and sales@ gets our internal email.
       query: { conferenceDataVersion: 1, sendUpdates: 'none' },
@@ -228,7 +228,7 @@ export default defineEventHandler(async (event) => {
         buildRawMime({
           from: c.organizer,
           to: c.salesEmail,
-          subject: `New call booked — ${name}${company ? `, ${company}` : ''}`,
+          subject: `New call booked, ${name}${company ? `, ${company}` : ''}`,
           text: internal,
         }),
       )

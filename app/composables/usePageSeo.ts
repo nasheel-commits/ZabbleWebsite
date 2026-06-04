@@ -1,4 +1,4 @@
-// usePageSeo — centralised per-page SEO wiring (owned by S02, On-Page & Metadata).
+// usePageSeo, centralised per-page SEO wiring (owned by S02, On-Page & Metadata).
 //
 // One call per page sets a unique, server-rendered: <title> (via the global
 // `%s · Zabble` titleTemplate in nuxt.config), meta description, canonical link,
@@ -10,7 +10,7 @@
 //   - S01 owns nuxt.config SEO-module wiring + `site.url`. Until that lands, the
 //     canonical/OG absolute URLs are derived from SITE_ORIGIN below. When
 //     `@nuxtjs/seo` is installed and `site.url` is set, replace SITE_ORIGIN with
-//     useSiteConfig().url and the module will own canonical resolution — this
+//     useSiteConfig().url and the module will own canonical resolution, this
 //     composable can then drop the manual `link: [{ rel: 'canonical' }]`.
 //   - S01 also owns the pre-launch `noindex` guard (staging). This composable does
 //     NOT set robots; indexability is decided globally by S01's env-conditioned
@@ -36,15 +36,15 @@ export function absoluteUrl(path?: string): string {
 export interface PageSeoInput {
   /** Distinct, intent-bearing part of the title. The global titleTemplate appends ` · Zabble`. */
   title: string
-  /** Meta description — aim 150–160 chars, answer-first, one clear CTA-bearing benefit. */
+  /** Meta description, aim 150–160 chars, answer-first, one clear CTA-bearing benefit. */
   description: string
   /**
    * Canonical path, e.g. '/systems/bespoke-crm'. Defaults to the current route
-   * path WITHOUT query — so filtered variants like /systems?pillar=automation
+   * path WITHOUT query, so filtered variants like /systems?pillar=automation
    * canonicalise to /systems and never cannibalise it.
    */
   path?: string
-  /** og:type — 'website' for hubs/home, 'article' for a specific system/answer page. */
+  /** og:type, 'website' for hubs/home, 'article' for a specific system/answer page. */
   ogType?: 'website' | 'article'
   /** Absolute or site-relative social image. Falls back to DEFAULT_OG_IMAGE. */
   image?: string
@@ -90,7 +90,7 @@ export function usePageSeo(input: PageSeoInput | (() => PageSeoInput)): void {
   useHead({
     link: [{ rel: 'canonical', href: canonical }],
     meta: [
-      // QA signal for the cannibalisation guard — see PageSeoInput.primaryKeyword.
+      // QA signal for the cannibalisation guard, see PageSeoInput.primaryKeyword.
       // Rendered only when a primary keyword is declared.
       { name: 'zabble:primary-kw', content: () => get().primaryKeyword ?? '' },
     ],

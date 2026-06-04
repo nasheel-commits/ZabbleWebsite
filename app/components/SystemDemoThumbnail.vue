@@ -1,13 +1,13 @@
 <script setup lang="ts">
 // Renders the live demo component for a system as a scaled, non-interactive
-// snapshot — used as the thumbnail on /systems gallery cards.
+// snapshot, used as the thumbnail on /systems gallery cards.
 //
 // Behaviour:
 //   - Mounts the demo lazily, only when the card scrolls into (or near) the
 //     viewport, so /systems doesn't pay the cost of 30+ demos at once.
 //   - Renders the demo at a fixed native width and applies `transform: scale`
 //     so the same demo fills any card width consistently.
-//   - Disables interaction (pointer-events: none, aria-hidden) — it is a
+//   - Disables interaction (pointer-events: none, aria-hidden), it is a
 //     visual snapshot, not a control surface. The whole-card NuxtLink wins.
 //   - Falls back to a gradient + monogram for systems without a registered
 //     demo (concept-stage entries), matching the previous look.
@@ -16,7 +16,7 @@ import { computed, onBeforeUnmount, onMounted, ref, shallowRef, type Component }
 import { resolveDemoComponent } from '~/utils/demoRegistry'
 
 const props = defineProps<{
-  /** System slug — also the default registry key. */
+  /** System slug, also the default registry key. */
   slug: string
   /** Optional registry override (System.demoComponent). */
   demoComponent?: string
@@ -31,7 +31,7 @@ const resolved = shallowRef<Component | null>(null)
 
 // Native render size for the demo inside the snapshot. Picked to match the
 // width the demos are designed against (≈ the /systems/[slug] detail page
-// content column). Height clips via overflow-hidden — the snapshot shows the
+// content column). Height clips via overflow-hidden, the snapshot shows the
 // top portion of the demo, which is always the most visually distinctive.
 const NATIVE_WIDTH = 1200
 

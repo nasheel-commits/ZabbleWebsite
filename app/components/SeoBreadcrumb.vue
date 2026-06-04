@@ -3,12 +3,12 @@
 //
 // Replaces the single "<- All systems" back-link on module pages with a real
 // Home > Systems > <Name> trail. Two wins:
-//   1. internal linking — every page links up its canonical spine (/systems is
+//   1. internal linking, every page links up its canonical spine (/systems is
 //      the canonical parent of all module pages, per site-architecture.md §2.2);
 //   2. it is the visible counterpart to the BreadcrumbList JSON-LD that S03 adds
 //      (keep the visible trail and the schema itemListElement 1:1).
 //
-// Pure presentational: pass the crumbs in. The LAST crumb is the current page —
+// Pure presentational: pass the crumbs in. The LAST crumb is the current page -
 // rendered as plain text with aria-current, not a link.
 //
 // Usage (module page):

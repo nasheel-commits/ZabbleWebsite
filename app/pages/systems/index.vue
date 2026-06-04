@@ -12,11 +12,11 @@ import { SYSTEMS_INDEX_ANSWER, SYSTEMS_INDEX_FAQS } from '~/data/site-faqs'
 // Pillar hub / module index (S02 on-page). Canonical is the clean /systems URL,
 // so filtered variants (/systems?pillar=automation) canonicalise here and never
 // cannibalise it. Primary intent: "operational systems / business automation,
-// South Africa" — verify against targets/keyword-map.md once S05 completes.
+// South Africa", verify against targets/keyword-map.md once S05 completes.
 usePageSeo({
   title: 'Operational Systems We Build',
   description:
-    'The building blocks Zabble assembles into bespoke operating systems for South African businesses — automation, audit trails, anomaly detection and analytics.',
+    'The building blocks Zabble assembles into bespoke operating systems for South African businesses, automation, audit trails, anomaly detection and analytics.',
   path: '/systems',
   ogType: 'website',
   primaryKeyword: 'operational systems',
@@ -25,7 +25,7 @@ usePageSeo({
 // ── Structured data / JSON-LD (S03) ────────────────────────────────────────
 // CollectionPage + breadcrumb + an ItemList mirroring the live system cards in
 // the gallery. Concept entries are hidden in the UI (only `live` systems render
-// as cards), so they're excluded here too — the list matches what's on screen.
+// as cards), so they're excluded here too, the list matches what's on screen.
 const liveSystemsForSchema = SYSTEMS.filter((sx) => sx.status === 'live')
 useSchemaOrg([
   defineWebPage({ '@type': ['WebPage', 'CollectionPage'] }),
@@ -72,7 +72,7 @@ function setActive(next: PillarSlug[]) {
   })
 }
 
-// Only `live` systems are surfaced in the gallery — concept/in-progress
+// Only `live` systems are surfaced in the gallery, concept/in-progress
 // entries stay in the data file but are hidden until their copy is signed off.
 const liveSystems = computed(() => SYSTEMS.filter((s) => s.status === 'live'))
 
@@ -130,7 +130,7 @@ watch(
             </h1>
             <p data-answer-first class="mt-6 max-w-2xl text-[16px] md:text-[19px] leading-[1.6] md:leading-[1.65] text-mute">
               These are the building blocks Zabble assembles into a bespoke operating system.
-              No business gets all of them — each gets the handful that fix the problem costing it
+              No business gets all of them, each gets the handful that fix the problem costing it
               the most, wired into one system shaped to how it actually works. Filter by pillar to
               see the systems that match your operational pain.
             </p>
@@ -185,7 +185,7 @@ watch(
       <section class="relative mt-12 md:mt-16">
         <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
           <!-- Browse by pillar: links to the canonical pillar hubs (rule L6
-               reciprocal — /systems -> hubs). The filter bar below is on-page UX. -->
+               reciprocal, /systems -> hubs). The filter bar below is on-page UX. -->
           <nav aria-label="Browse by pillar" class="mb-6 flex flex-wrap items-center gap-2">
             <span class="text-mute-2 font-semibold uppercase tracking-[0.16em] text-[11px] mr-1">Browse by pillar</span>
             <NuxtLink

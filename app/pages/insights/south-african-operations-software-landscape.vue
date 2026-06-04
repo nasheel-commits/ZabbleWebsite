@@ -58,7 +58,7 @@ const citation = `Zabble (2026). The South African Operations-Software Landscape
           <p data-answer-first class="mt-6 text-[16px] md:text-[19px] leading-[1.65] text-mute">
             A plain map of how South African businesses run their operations: the categories of operational
             software, what each one does, and the point where off-the-shelf tools stop and bespoke earns its
-            keep. Built as a reference — quote it, link it, use it.
+            keep. Built as a reference, quote it, link it, use it.
           </p>
         </header>
 

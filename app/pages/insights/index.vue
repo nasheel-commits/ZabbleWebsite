@@ -2,9 +2,9 @@
 import { INSIGHTS } from '~/data/insights'
 
 usePageSeo({
-  title: 'Insights — Bespoke Systems & Automation',
+  title: 'Insights, Bespoke Systems & Automation',
   description:
-    'Plain-English answers on bespoke systems, automation, POPIA, CRM and reconciliation — from Zabble, the South African firm that builds the systems behind them.',
+    'Plain-English answers on bespoke systems, automation, POPIA, CRM and reconciliation, from Zabble, the South African firm that builds the systems behind them.',
   path: '/insights',
   ogType: 'website',
   primaryKeyword: 'business automation insights south africa',
@@ -26,7 +26,7 @@ usePageSeo({
             Plain answers to the questions buyers actually ask.
           </h1>
           <p data-answer-first class="mt-6 max-w-2xl text-[16px] md:text-[18px] leading-[1.6] text-ink">
-            Short, plain-English explainers on the systems we build and the decisions behind them — what POPIA actually requires, what CRM software does, how to automate reconciliation, and when custom software beats off-the-shelf. Each one links to the system that puts the answer to work.
+            Short, plain-English explainers on the systems we build and the decisions behind them, what POPIA actually requires, what CRM software does, how to automate reconciliation, and when custom software beats off-the-shelf. Each one links to the system that puts the answer to work.
           </p>
         </div>
 

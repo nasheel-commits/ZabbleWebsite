@@ -9,7 +9,7 @@ const facts = [
   { icon: Building2, label: 'What', value: 'Operations-systems consultancy' },
   { icon: MapPin, label: 'Where', value: 'South Africa' },
   { icon: Mail, label: 'Contact', value: ORGANIZATION.email, href: `mailto:${ORGANIZATION.email}` },
-  // Self-reference to the homepage — kept relative so it isn't flagged as an
+  // Self-reference to the homepage, kept relative so it isn't flagged as an
   // absolute internal link (nuxt-link-checker absolute-site-urls).
   { icon: Globe, label: 'Web', value: 'zabble.org', href: '/' },
 ]
@@ -37,8 +37,8 @@ const facts = [
         </h2>
 
         <p class="mt-6 md:mt-7 text-[17px] md:text-[19px] text-ink leading-[1.7]">
-          We build bespoke operational systems — automation, audit trails, anomaly
-          detection, and analytics — shaped around the single problem slowing one
+          We build bespoke operational systems, automation, audit trails, anomaly
+          detection, and analytics, shaped around the single problem slowing one
           specific business down. We don't sell off-the-shelf software. We assemble a
           library of 30 modules into one operating system, built for one business and
           no other.
@@ -46,7 +46,7 @@ const facts = [
 
         <p class="mt-5 text-[16px] md:text-[17px] text-mute leading-[1.7]">
           We've built for NGOs, banks, hotels, law firms, parts suppliers, marketing
-          agencies, and small businesses. The industries differ; the method doesn't —
+          agencies, and small businesses. The industries differ; the method doesn't -
           we find the operational problem costing the most, and build the exact system
           that fixes it.
         </p>
@@ -62,7 +62,7 @@ const facts = [
         </blockquote>
         <figcaption class="mt-3 text-[14.5px] text-mute leading-[1.6]">
           About <strong class="text-ink font-semibold">60% of all occupations</strong>
-          have at least 30% of their activities that could be automated — which is
+          have at least 30% of their activities that could be automated, which is
           exactly the operational drag we remove.
           <a
             href="https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages"

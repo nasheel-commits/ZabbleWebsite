@@ -111,7 +111,7 @@ const ASSET_CLASSES: AssetClass[] = [
     },
     skus: [
       sku('SKU-4471', 'M8×30 cap screw',     { bay1: 24, bay3: 96, dispatch: 0 }),
-      // RFID shows 1 fewer in bay2 than the ledger — pre-seeded mismatch for cycle count
+      // RFID shows 1 fewer in bay2 than the ledger, pre-seeded mismatch for cycle count
       sku('SKU-9012', 'Bearing 6204-2RS',    { bay2: 60, bay1: 12 },           { bay2: 59 }),
       sku('SKU-2204', 'Drive belt 1820',     { bay2: 40, dispatch: 8 }),
       sku('SKU-7788', 'Hydraulic seal kit',  { bay1: 18, bay3: 6 }),
@@ -168,7 +168,7 @@ const ASSET_CLASSES: AssetClass[] = [
     skus: [
       sku('LINEN-K',  'King sheet set',       { bay1: 84, bay2: 32 }),
       sku('LINEN-Q',  'Queen sheet set',      { bay1: 18, bay2: 70 }, { bay2: 68 }),
-      sku('TOWEL-BL', 'Bath towel — large',   { bay1: 120, bay3: 36, dispatch: 20 }),
+      sku('TOWEL-BL', 'Bath towel, large',   { bay1: 120, bay3: 36, dispatch: 20 }),
       sku('ROBE-CT',  'Cotton robe',          { bay3: 28, dispatch: 4 }),
     ],
     actions: [
@@ -196,7 +196,7 @@ const ASSET_CLASSES: AssetClass[] = [
       },
       {
         id: 'pick',
-        label: 'Stayover refresh — Floor 7 picked',
+        label: 'Stayover refresh, Floor 7 picked',
         detail: '12 × TOWEL-BL from Linen Room A → Floors Cart',
         sku: 'TOWEL-BL',
         qty: 12,
@@ -496,10 +496,10 @@ function runCycleCount(loc: LocationId) {
         if (delta !== 0) {
           if (delta < 0)
             cause =
-              'Probable cause: unscanned pick — tag moved out without gate confirmation.'
+              'Probable cause: unscanned pick, tag moved out without gate confirmation.'
           else
             cause =
-              'Probable cause: pallet relocated into bay without scan — re-tag at gate.'
+              'Probable cause: pallet relocated into bay without scan, re-tag at gate.'
         }
         return { sku: s.id, ledger, rfid, delta, cause }
       })
@@ -511,8 +511,8 @@ function runCycleCount(loc: LocationId) {
     pushFeed({
       channel: 'ledger',
       line: perfect
-        ? `Cycle count ${locationLabel(loc)} — ledger matches RFID`
-        : `Cycle count ${locationLabel(loc)} — mismatch surfaced`,
+        ? `Cycle count ${locationLabel(loc)}, ledger matches RFID`
+        : `Cycle count ${locationLabel(loc)}, mismatch surfaced`,
       tone: perfect ? 'good' : 'warn',
     })
 
@@ -607,7 +607,7 @@ function movementSummary(m: Movement): string {
             Live demo
           </div>
           <div class="mt-1 font-display text-[17px] sm:text-[20px] md:text-[22px] leading-tight text-ink truncate">
-            Inventory Clarity — {{ assetClass.label }} warehouse
+            Inventory Clarity, {{ assetClass.label }} warehouse
           </div>
         </div>
       </div>
@@ -720,7 +720,7 @@ function movementSummary(m: Movement): string {
               width: loc.w + '%',
               height: loc.h + '%',
             }"
-            :aria-label="`${locationLabel(loc.id)} — ${totalAt(loc.id)} ${assetClass.unit}${totalAt(loc.id) === 1 ? '' : 's'}`"
+            :aria-label="`${locationLabel(loc.id)}, ${totalAt(loc.id)} ${assetClass.unit}${totalAt(loc.id) === 1 ? '' : 's'}`"
             @click="runCycleCount(loc.id)"
           >
             <div class="flex items-center justify-between gap-2">
@@ -1013,7 +1013,7 @@ function movementSummary(m: Movement): string {
               </td>
               <td class="border-t border-line py-2 pr-3 text-mute">
                 <span v-if="row.cause">{{ row.cause }}</span>
-                <span v-else class="text-mute-2">—</span>
+                <span v-else class="text-mute-2">-</span>
               </td>
             </tr>
           </tbody>

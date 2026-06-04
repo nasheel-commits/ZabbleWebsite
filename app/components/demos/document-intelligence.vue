@@ -246,7 +246,7 @@ const documents: SampleDoc[] = [
     paper: { orientation: 'portrait' },
     blocks: [
       { kind: 'headline', text: 'Insurance Claim Form' },
-      { kind: 'meta', text: 'Galaxy Insurance Co. · Motor — third-party damage' },
+      { kind: 'meta', text: 'Galaxy Insurance Co. · Motor, third-party damage' },
       { kind: 'divider' },
       {
         kind: 'kv-grid',
@@ -272,7 +272,7 @@ const documents: SampleDoc[] = [
       { id: 'claimant', label: 'Claimant', value: 'Priya Naidoo', confidence: 0.96 },
       { id: 'policy', label: 'Policy no.', value: 'GIC-PV-99481-22', confidence: 0.97 },
       { id: 'loss-date', label: 'Date of loss', value: '08 May 2026', confidence: 0.95 },
-      { id: 'category', label: 'Category', value: 'Motor — third-party damage', confidence: 0.93 },
+      { id: 'category', label: 'Category', value: 'Motor, third-party damage', confidence: 0.93 },
       { id: 'amount-claimed', label: 'Amount claimed', value: 'R 38,400.00', confidence: 0.94 },
       { id: 'sig', label: 'Claimant signature', value: 'Signed', confidence: 0.91 },
     ],
@@ -295,7 +295,7 @@ const documents: SampleDoc[] = [
     accent: 'cyan',
     paper: { orientation: 'portrait' },
     blocks: [
-      { kind: 'headline', text: 'Kibo Bank — Consolidated Statement' },
+      { kind: 'headline', text: 'Kibo Bank, Consolidated Statement' },
       { kind: 'meta', text: 'Generated 02 May 2026 · Page 1 of 4' },
       { kind: 'divider' },
       { kind: 'row', label: 'Account holder', field: 'holder' },
@@ -313,7 +313,7 @@ const documents: SampleDoc[] = [
       { kind: 'table-row', cells: ['28 Apr', 'Service charge', '−R 1,800.00'] },
     ],
     fields: [
-      { id: 'holder', label: 'Account holder', value: 'Hawthorne & Vega LLP — Trust', confidence: 0.97 },
+      { id: 'holder', label: 'Account holder', value: 'Hawthorne & Vega LLP, Trust', confidence: 0.97 },
       { id: 'account-no', label: 'Account no.', value: '6201-44871-002', confidence: 0.98 },
       { id: 'period', label: 'Statement period', value: '01 Apr 2026 – 30 Apr 2026', confidence: 0.96 },
       { id: 'opening', label: 'Opening balance', value: 'R 4,210,884.12', confidence: 0.98 },
@@ -323,7 +323,7 @@ const documents: SampleDoc[] = [
     validations: [
       { label: 'Opening + transactions = Closing', detail: '4,210,884.12 + (−223,871.72) = 3,987,012.40.', status: 'pass' },
       { label: 'No duplicate entries', detail: '47 distinct transactions, no replays.', status: 'pass' },
-      { label: 'Period matches request', detail: 'April 2026 — as requested.', status: 'pass' },
+      { label: 'Period matches request', detail: 'April 2026, as requested.', status: 'pass' },
     ],
     routing: {
       destination: 'Matter folder · Estate audit',
@@ -340,7 +340,7 @@ const documents: SampleDoc[] = [
     paper: { orientation: 'portrait', skew: -2.4, noise: true },
     blocks: [
       { kind: 'headline', text: 'Insurance Claim Form' },
-      { kind: 'meta', text: 'Galaxy Insurance Co. · Home — water damage' },
+      { kind: 'meta', text: 'Galaxy Insurance Co. · Home, water damage' },
       { kind: 'divider' },
       {
         kind: 'kv-grid',
@@ -354,20 +354,20 @@ const documents: SampleDoc[] = [
       },
       { kind: 'spacer', h: 'sm' },
       { kind: 'paragraph', text: 'Description: B?rst geyser on upper floor caused water in?ress to k?tchen ceiling. Plumber attended same evening; ce?ling pa?els removed.' },
-      { kind: 'torn-page', text: 'Page 2 of 3 not received — amount claimed & signature block missing' },
+      { kind: 'torn-page', text: 'Page 2 of 3 not received, amount claimed & signature block missing' },
     ],
     fields: [
       { id: 'claimant', label: 'Claimant', value: 'M??r?us E. K??ler', confidence: 0.41 },
       { id: 'policy', label: 'Policy no.', value: 'GIC-HM-???1?-1?', confidence: 0.38 },
       { id: 'loss-date', label: 'Date of loss', value: '0? Apr 2026', confidence: 0.46 },
-      { id: 'category', label: 'Category', value: 'Home — water damage', confidence: 0.82 },
-      { id: 'amount-claimed', label: 'Amount claimed', value: '— missing —', confidence: 0.12 },
-      { id: 'sig', label: 'Claimant signature', value: '— page 2 missing —', confidence: 0.0 },
+      { id: 'category', label: 'Category', value: 'Home, water damage', confidence: 0.82 },
+      { id: 'amount-claimed', label: 'Amount claimed', value: '- missing -', confidence: 0.12 },
+      { id: 'sig', label: 'Claimant signature', value: '- page 2 missing -', confidence: 0.0 },
     ],
     validations: [
       { label: 'Page 2 detected', detail: 'Expected 3 pages; received 2. Signature & amount block on missing page.', status: 'fail' },
-      { label: 'Scan quality', detail: 'Skew −2.4°, low DPI — name and policy fields below 50% confidence.', status: 'warn' },
-      { label: 'Policy lookup', detail: 'Policy number partially obscured — no unambiguous match.', status: 'fail' },
+      { label: 'Scan quality', detail: 'Skew −2.4°, low DPI, name and policy fields below 50% confidence.', status: 'warn' },
+      { label: 'Policy lookup', detail: 'Policy number partially obscured, no unambiguous match.', status: 'fail' },
     ],
     routing: {
       destination: 'Human review tray · Exceptions',
@@ -517,7 +517,7 @@ const happyTypes: { id: string; reason?: undefined }[] = (
 ).map((id) => ({ id }))
 
 const exceptionScript: { at: number; docId: string; reason: string }[] = [
-  { at: 7, docId: 'malformed-claim', reason: 'Page 2 missing — claimant signature & amount not captured.' },
+  { at: 7, docId: 'malformed-claim', reason: 'Page 2 missing, claimant signature & amount not captured.' },
   { at: 14, docId: 'invoice', reason: 'Subtotal + VAT does not equal Total (R 0.10 mismatch).' },
   { at: 22, docId: 'gov-id', reason: 'ID number failed Mod-11 checksum.' },
 ]
@@ -660,10 +660,10 @@ const batchClean = computed(() => batchProcessed.value - batchExceptions.value.l
         </div>
         <h3 class="mt-2 font-display text-[18px] sm:text-[22px] md:text-[24px] leading-[1.15] text-ink">
           <template v-if="mode === 'single'">
-            Pick a document — watch the desk read it.
+            Pick a document, watch the desk read it.
           </template>
           <template v-else>
-            Drop 25 in at once — watch only the exceptions surface.
+            Drop 25 in at once, watch only the exceptions surface.
           </template>
         </h3>
       </div>
@@ -730,7 +730,7 @@ const batchClean = computed(() => batchProcessed.value - batchExceptions.value.l
               draggingId === d.id ? 'opacity-50' : '',
             ]"
             :aria-pressed="selectedId === d.id"
-            :aria-label="`Select ${d.shortName} — ${d.category}`"
+            :aria-label="`Select ${d.shortName}, ${d.category}`"
           >
             <span
               :class="[
@@ -920,7 +920,7 @@ const batchClean = computed(() => batchProcessed.value - batchExceptions.value.l
                   aria-hidden="true"
                 />
                 <span class="truncate">
-                  <template v-if="stage === 'idle'">Ready — press “Process” to begin.</template>
+                  <template v-if="stage === 'idle'">Ready, press “Process” to begin.</template>
                   <template v-else-if="stage === 'ocr'">OCR running · extracting fields…</template>
                   <template v-else-if="stage === 'classify'">Classifying document type…</template>
                   <template v-else-if="stage === 'validate'">Validating structure & maths…</template>
@@ -1145,7 +1145,7 @@ const batchClean = computed(() => batchProcessed.value - batchExceptions.value.l
               </span>
             </li>
             <li v-if="!batchTail.length" class="text-[12.5px] text-mute-2 italic">
-              No documents yet — press “Run batch”.
+              No documents yet, press “Run batch”.
             </li>
           </ul>
         </div>
@@ -1170,7 +1170,7 @@ const batchClean = computed(() => batchProcessed.value - batchExceptions.value.l
               <div class="mt-1 text-[11.5px] text-amber-900 leading-snug">{{ ex.reason }}</div>
             </li>
             <li v-if="!batchExceptions.length" class="text-[12.5px] text-mute-2 italic">
-              <template v-if="batchActive">Quiet so far — that's how the team likes it.</template>
+              <template v-if="batchActive">Quiet so far, that's how the team likes it.</template>
               <template v-else>Run the batch to see only what needs human eyes.</template>
             </li>
           </ul>

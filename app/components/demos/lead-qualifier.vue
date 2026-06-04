@@ -37,7 +37,7 @@ interface Brief {
 }
 
 interface Turn {
-  /** Possible user phrasings — first is used when free-text input is empty. */
+  /** Possible user phrasings, first is used when free-text input is empty. */
   userOptions: [string, string, string]
   /** What the bot replies after the user speaks. */
   botReply: string
@@ -127,13 +127,13 @@ const PERSONAS: Record<Persona, PersonaConfig> = {
   junk: {
     label: 'Junk lead',
     short: 'Junk',
-    blurb: 'Off-topic or spam — should never reach a rep.',
+    blurb: 'Off-topic or spam, should never reach a rep.',
     icon: Trash2,
   },
 }
 
 // ============================================================================
-// Scripts (business × persona) — 4 turns each
+// Scripts (business × persona), 4 turns each
 // ============================================================================
 
 const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
@@ -141,26 +141,26 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
   hotel: {
     serious: {
       greeting:
-        "Hi — I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
+        "Hi, I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
       turns: [
         {
           userOptions: [
-            "Looking for a 6-night anniversary stay in October — my wife's 50th.",
+            "Looking for a 6-night anniversary stay in October, my wife's 50th.",
             'Planning an anniversary stay, late October, 6 nights.',
             'Anniversary trip, 2 of us, week of the 10th.',
           ],
           botReply:
-            'Lovely — a milestone deserves the Lake Suite. We have it open the week of the 10th. Shall I pencil it in?',
+            'Lovely, a milestone deserves the Lake Suite. We have it open the week of the 10th. Shall I pencil it in?',
           extracts: { intent: 'Anniversary stay', scope: '2 guests · 6 nights' },
         },
         {
           userOptions: [
-            'Yes please — 10th to the 16th.',
+            'Yes please, 10th to the 16th.',
             'Perfect, lock in the 10th to 16th.',
             'Book it. The 10th works.',
           ],
           botReply:
-            'Done. Would you like us to arrange anything for the stay — a private dinner, flowers in the room?',
+            'Done. Would you like us to arrange anything for the stay, a private dinner, flowers in the room?',
           extracts: { timing: '10–16 October', urgency: 'High' },
         },
         {
@@ -177,11 +177,11 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
           userOptions: [
             "James Hartley. You can reach me on the number I used.",
             "It's James Hartley.",
-            'James Hartley — number on file.',
+            'James Hartley, number on file.',
           ],
           botReply:
             'Thank you, James. Sasha will be in touch shortly. The Lake Suite is held in your name.',
-          extracts: { name: 'James Hartley', approach: 'Confirm Lake Suite + private Sat dinner. Anniversary stay — soft-touch upsell on spa package.' },
+          extracts: { name: 'James Hartley', approach: 'Confirm Lake Suite + private Sat dinner. Anniversary stay, soft-touch upsell on spa package.' },
         },
       ],
       routing: {
@@ -194,7 +194,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
     },
     shopper: {
       greeting:
-        "Hi — I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
+        "Hi, I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
       turns: [
         {
           userOptions: [
@@ -208,12 +208,12 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         },
         {
           userOptions: [
-            "I'm not fussy — whenever it's cheapest.",
+            "I'm not fussy, whenever it's cheapest.",
             "Anytime, really. Whatever's cheapest.",
             "Dunno, sometime this year, just cheap.",
           ],
           botReply:
-            "Got it. Shoulder months are March and November — our best rates land then. Want me to send you a rate sheet?",
+            "Got it. Shoulder months are March and November, our best rates land then. Want me to send you a rate sheet?",
           extracts: { timing: 'Flexible · whenever cheapest', urgency: 'Low' },
         },
         {
@@ -223,7 +223,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             'Fine.',
           ],
           botReply:
-            "Sent. I've also tagged you for our flash-sale list — that's where the deepest rates go first.",
+            "Sent. I've also tagged you for our flash-sale list, that's where the deepest rates go first.",
           extracts: { scope: '1 room · unspecified', approach: 'Self-serve rate sheet sent. Tagged for flash-sale list. No rep time spent.' },
         },
         {
@@ -239,21 +239,21 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         outcome: 'waitlist',
         title: 'Added to nurture list',
         detail:
-          'Rate sheet auto-sent. Tagged for flash-sale list. No rep involved — price-only enquiry, low conversion signal.',
+          'Rate sheet auto-sent. Tagged for flash-sale list. No rep involved, price-only enquiry, low conversion signal.',
       },
     },
     enterprise: {
       greeting:
-        "Hi — I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
+        "Hi, I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
       turns: [
         {
           userOptions: [
-            "I'm a wedding planner — client wants the venue for 90 guests, October 2026, budget around £45k.",
+            "I'm a wedding planner, client wants the venue for 90 guests, October 2026, budget around £45k.",
             "Wedding for a client. 90 guests, Oct 2026, £45k budget.",
             "Booking on behalf of a client. 90-guest wedding, October '26.",
           ],
           botReply:
-            'Wonderful — we host weddings up to 110 guests. Is the client open to a midweek date, or Saturday only?',
+            'Wonderful, we host weddings up to 110 guests. Is the client open to a midweek date, or Saturday only?',
           extracts: {
             intent: 'Wedding (planner booking on behalf of client)',
             scope: '90 guests',
@@ -262,7 +262,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         },
         {
           userOptions: [
-            "Saturday — ideally the second weekend.",
+            "Saturday, ideally the second weekend.",
             "Saturday 10th October if it's open.",
             "Has to be a Saturday.",
           ],
@@ -272,36 +272,36 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         },
         {
           userOptions: [
-            'Yes — about 40 rooms.',
+            'Yes, about 40 rooms.',
             "Roughly 40 rooms needed, yes.",
             "40 rooms, plus suites for the couple.",
           ],
           botReply:
-            'Perfect — that puts you in our Estate Hire package. I will connect you with Mira, our Head of Events, today.',
+            'Perfect, that puts you in our Estate Hire package. I will connect you with Mira, our Head of Events, today.',
           extracts: { scope: '90 guests · 40 rooms · Estate Hire' },
         },
         {
           userOptions: [
             "Priya Shah, planner. Number on the form.",
-            "I'm Priya Shah — happy to take the call.",
+            "I'm Priya Shah, happy to take the call.",
             'Priya Shah, contact details with you.',
           ],
           botReply:
             "Thank you, Priya. Mira will be in touch within the next two hours with the package brief.",
-          extracts: { name: 'Priya Shah', approach: 'Lead with Estate Hire deck. Confirm Sat 10 Oct 2026, 90 pax, 40 rooms. Planner is repeat-business channel — treat as VIP partner.' },
+          extracts: { name: 'Priya Shah', approach: 'Lead with Estate Hire deck. Confirm Sat 10 Oct 2026, 90 pax, 40 rooms. Planner is repeat-business channel, treat as VIP partner.' },
         },
       ],
       routing: {
         outcome: 'rep',
         title: 'Senior rep assigned',
         detail:
-          'Mira (Head of Events) takes this directly — Estate Hire package. Full wedding brief in her inbox.',
+          'Mira (Head of Events) takes this directly, Estate Hire package. Full wedding brief in her inbox.',
         rep: { name: 'Mira Adebayo', title: 'Head of Events', sla: 'Within 2 hours' },
       },
     },
     junk: {
       greeting:
-        "Hi — I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
+        "Hi, I'm Iris, the front desk's AI assistant at The Marlow. What brings you to us today?",
       turns: [
         {
           userOptions: [
@@ -349,7 +349,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
   law: {
     serious: {
       greeting:
-        "Reeves & Hart intake — I help you find the right partner for the matter. What's brought you in?",
+        "Reeves & Hart intake, I help you find the right partner for the matter. What's brought you in?",
       turns: [
         {
           userOptions: [
@@ -358,13 +358,13 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             '£2m commercial dispute landed on my desk yesterday.',
           ],
           botReply:
-            'Understood — commercial dispute, defendant side. What does the response window look like?',
+            'Understood, commercial dispute, defendant side. What does the response window look like?',
           extracts: { intent: 'Commercial litigation (defence)', scope: '£2m claim' },
         },
         {
           userOptions: [
             '21 days from yesterday.',
-            'Three weeks — so 20 days now.',
+            'Three weeks, so 20 days now.',
             'Tight. Three weeks max.',
           ],
           botReply:
@@ -374,18 +374,18 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         {
           userOptions: [
             "You're the first call.",
-            "Nobody else yet — wanted you first.",
+            "Nobody else yet, wanted you first.",
             'First firm I rang.',
           ],
           botReply:
-            "Good — that gives us room. I'll have Tom, our commercial disputes partner, look at the claim and call you today.",
+            "Good, that gives us room. I'll have Tom, our commercial disputes partner, look at the claim and call you today.",
           extracts: { budget: 'Defended litigation budget · partner-level' },
         },
         {
           userOptions: [
             "David Mensah. Best to reach me on mobile.",
             "It's David Mensah.",
-            'David Mensah — mobile is fine.',
+            'David Mensah, mobile is fine.',
           ],
           botReply:
             "Thank you, David. Tom will call within the next two hours and the claim documents are already with us.",
@@ -402,7 +402,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
     },
     shopper: {
       greeting:
-        "Reeves & Hart intake — I help you find the right partner for the matter. What's brought you in?",
+        "Reeves & Hart intake, I help you find the right partner for the matter. What's brought you in?",
       turns: [
         {
           userOptions: [
@@ -421,7 +421,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             "Not really, just want lowest rate.",
           ],
           botReply:
-            "We are not the cheapest in town — we are partner-led. Happy to send you our published fee guide if that helps.",
+            "We are not the cheapest in town, we are partner-led. Happy to send you our published fee guide if that helps.",
           extracts: { urgency: 'Low' },
         },
         {
@@ -447,27 +447,27 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         outcome: 'waitlist',
         title: 'Added to nurture list',
         detail:
-          'Fee guide auto-sent. No matter disclosed and no urgency — no partner time consumed.',
+          'Fee guide auto-sent. No matter disclosed and no urgency, no partner time consumed.',
       },
     },
     enterprise: {
       greeting:
-        "Reeves & Hart intake — I help you find the right partner for the matter. What's brought you in?",
+        "Reeves & Hart intake, I help you find the right partner for the matter. What's brought you in?",
       turns: [
         {
           userOptions: [
-            "I'm GC at a FTSE 250. We're consolidating panel firms — commercial, employment, IP.",
+            "I'm GC at a FTSE 250. We're consolidating panel firms, commercial, employment, IP.",
             'In-house counsel running a panel review across three practice areas.',
-            'Panel firm review — looking for multi-practice cover.',
+            'Panel firm review, looking for multi-practice cover.',
           ],
           botReply:
-            'Understood — that is a managing-partner conversation. May I book Helen for a 30-minute discovery?',
+            'Understood, that is a managing-partner conversation. May I book Helen for a 30-minute discovery?',
           extracts: { intent: 'Panel firm review (multi-practice)', scope: 'Commercial · Employment · IP' },
         },
         {
           userOptions: [
             'Tomorrow 11am works.',
-            'Yes — diary tomorrow morning.',
+            'Yes, diary tomorrow morning.',
             "Helen, tomorrow 11. Done.",
           ],
           botReply:
@@ -481,14 +481,14 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             "It's a proper RFP. Q3 close.",
           ],
           botReply:
-            "Helpful — Helen will come prepared with our panel-firm credentials pack.",
+            "Helpful, Helen will come prepared with our panel-firm credentials pack.",
           extracts: { budget: 'Multi-year retainer · panel mandate' },
         },
         {
           userOptions: [
             "Sarah Okonkwo, GC.",
             "I'm Sarah Okonkwo, General Counsel.",
-            "Sarah Okonkwo — contact's with you.",
+            "Sarah Okonkwo, contact's with you.",
           ],
           botReply:
             'Thank you, Sarah. Helen has the meeting and the credentials pack will go ahead of it.',
@@ -505,7 +505,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
     },
     junk: {
       greeting:
-        "Reeves & Hart intake — I help you find the right partner for the matter. What's brought you in?",
+        "Reeves & Hart intake, I help you find the right partner for the matter. What's brought you in?",
       turns: [
         {
           userOptions: [
@@ -553,7 +553,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
   saas: {
     serious: {
       greeting:
-        "Hi, I'm Atlas — I help teams find the right plan. What are you trying to solve?",
+        "Hi, I'm Atlas, I help teams find the right plan. What are you trying to solve?",
       turns: [
         {
           userOptions: [
@@ -562,14 +562,14 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             "80-engineer team, moving off Jira soon.",
           ],
           botReply:
-            'Got it. What is pushing the move — pricing, integrations, or the way it handles your flow?',
+            'Got it. What is pushing the move, pricing, integrations, or the way it handles your flow?',
           extracts: { intent: 'Jira replacement (engineering workflow)', scope: '80 engineers · Series B' },
         },
         {
           userOptions: [
             "It's clunky for our agile flow. We need better roadmapping.",
             'Roadmapping is the killer. Jira fights us.',
-            "Workflow's too rigid — need real roadmapping.",
+            "Workflow's too rigid, need real roadmapping.",
           ],
           botReply:
             "That's exactly the Mid-Market plan's sweet spot. Want a 30-minute product walkthrough this week?",
@@ -578,7 +578,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
         {
           userOptions: [
             'Thursday 2pm works.',
-            'Yes — Thu 14:00.',
+            'Yes, Thu 14:00.',
             "Book me Thursday afternoon.",
           ],
           botReply:
@@ -589,7 +589,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
           userOptions: [
             "Lena Park, VP Engineering.",
             "I'm Lena Park, VP Eng.",
-            'Lena Park — VP Engineering.',
+            'Lena Park, VP Engineering.',
           ],
           botReply:
             "Thank you, Lena. Demo's locked for Thursday 14:00 with the roadmap-flow walkthrough.",
@@ -606,7 +606,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
     },
     shopper: {
       greeting:
-        "Hi, I'm Atlas — I help teams find the right plan. What are you trying to solve?",
+        "Hi, I'm Atlas, I help teams find the right plan. What are you trying to solve?",
       turns: [
         {
           userOptions: [
@@ -615,7 +615,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             'How much for the cheapest plan?',
           ],
           botReply:
-            "We run a 14-day trial — no credit card, full features. Want me to send the sign-up link?",
+            "We run a 14-day trial, no credit card, full features. Want me to send the sign-up link?",
           extracts: { intent: 'Free-tier enquiry', budget: 'Self-serve / low' },
         },
         {
@@ -625,7 +625,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             'OK send it.',
           ],
           botReply:
-            "Done. The trial drops a Slack-style onboarding sequence — feel free to ignore the nudges if you just want to look around.",
+            "Done. The trial drops a Slack-style onboarding sequence, feel free to ignore the nudges if you just want to look around.",
           extracts: { timing: 'Now (trial)', urgency: 'Low' },
         },
         {
@@ -656,16 +656,16 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
     },
     enterprise: {
       greeting:
-        "Hi, I'm Atlas — I help teams find the right plan. What are you trying to solve?",
+        "Hi, I'm Atlas, I help teams find the right plan. What are you trying to solve?",
       turns: [
         {
           userOptions: [
-            "Fortune 500 — running a 6-month evaluation. Need SOC 2, SSO, and a custom DPA.",
+            "Fortune 500, running a 6-month evaluation. Need SOC 2, SSO, and a custom DPA.",
             'Enterprise evaluation. SOC 2, SSO, DPA required.',
             "Big-co procurement. Six-month eval, full security review.",
           ],
           botReply:
-            'Understood — that is an Enterprise track. Our VP Sales runs those evaluations directly. May I book the discovery this week?',
+            'Understood, that is an Enterprise track. Our VP Sales runs those evaluations directly. May I book the discovery this week?',
           extracts: {
             intent: 'Enterprise evaluation (security + procurement)',
             scope: 'SOC 2 · SSO · custom DPA',
@@ -675,7 +675,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
           userOptions: [
             "Wednesday morning works.",
             "Wed AM, anytime before noon.",
-            "Yes — Wed 10:00.",
+            "Yes, Wed 10:00.",
           ],
           botReply:
             'Booked for Wednesday 10:00. How large is the team this would roll out to?',
@@ -695,10 +695,10 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
           userOptions: [
             'Marcus Webb, Director of Engineering.',
             "I'm Marcus Webb, Director of Engineering.",
-            'Marcus Webb — Dir Eng. Contact on file.',
+            'Marcus Webb, Dir Eng. Contact on file.',
           ],
           botReply:
-            "Thank you, Marcus. Wednesday 10:00 with our VP Sales — security pack and draft DPA will land the day before.",
+            "Thank you, Marcus. Wednesday 10:00 with our VP Sales, security pack and draft DPA will land the day before.",
           extracts: { name: 'Marcus Webb', approach: 'VP Sales leads. Pre-send security pack + draft DPA. Lead with SOC 2 / SSO story, then seat-rollout commercials.' },
         },
       ],
@@ -712,7 +712,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
     },
     junk: {
       greeting:
-        "Hi, I'm Atlas — I help teams find the right plan. What are you trying to solve?",
+        "Hi, I'm Atlas, I help teams find the right plan. What are you trying to solve?",
       turns: [
         {
           userOptions: [
@@ -721,7 +721,7 @@ const SCRIPTS: Record<BusinessType, Record<Persona, Script>> = {
             'excel wont start',
           ],
           botReply:
-            "We're a workflow tool — not Microsoft. Try support.microsoft.com for Excel issues.",
+            "We're a workflow tool, not Microsoft. Try support.microsoft.com for Excel issues.",
           extracts: { intent: 'Out of scope (Microsoft support)' },
         },
         {
@@ -790,7 +790,7 @@ const activeTurn = computed<Turn | null>(() => {
   return currentScript.value.turns[stepIndex.value] ?? null
 })
 
-// Visible suggested replies — filter out empty placeholders so junk-lead scripts
+// Visible suggested replies, filter out empty placeholders so junk-lead scripts
 // can have shorter conversations without showing blank buttons.
 const visibleOptions = computed(() => {
   const t = activeTurn.value
@@ -876,7 +876,7 @@ function submitTyped() {
 }
 
 // ============================================================================
-// Reactivity wiring — reset when business or persona changes
+// Reactivity wiring, reset when business or persona changes
 // ============================================================================
 
 watch([businessType, persona], () => {
@@ -916,7 +916,7 @@ const ROUTING_META: Record<Outcome, { icon: Component; tone: 'positive' | 'posit
 
 const routingMeta = computed(() => ROUTING_META[currentScript.value.routing.outcome])
 
-// Brief shown to the rep — only meaningful for consultation / rep outcomes.
+// Brief shown to the rep, only meaningful for consultation / rep outcomes.
 const briefForRep = computed<Brief | null>(() => {
   const outcome = currentScript.value.routing.outcome
   if (outcome !== 'consultation' && outcome !== 'rep') return null
@@ -956,7 +956,7 @@ const urgencyTone = (u?: Brief['urgency']) => {
             One AI intake. Three businesses. Four prospects.
           </h3>
           <p class="mt-1.5 text-[14px] text-mute max-w-2xl">
-            Pick a business and a persona. Hold the conversation as the prospect — the system qualifies you in real time and routes the lead before a human gets involved.
+            Pick a business and a persona. Hold the conversation as the prospect, the system qualifies you in real time and routes the lead before a human gets involved.
           </p>
         </div>
       </div>
@@ -1137,7 +1137,7 @@ const urgencyTone = (u?: Brief['urgency']) => {
           <div v-else class="rounded-xl border border-line bg-white px-3.5 py-3 text-[13.5px] text-mute flex items-start gap-2">
             <Sparkles :size="14" :stroke-width="2" class="mt-0.5 text-cyan-brand-deep shrink-0" />
             <span>
-              Conversation closed — see how the system routed this lead on the right. Switch persona or business type to run another.
+              Conversation closed, see how the system routed this lead on the right. Switch persona or business type to run another.
             </span>
           </div>
         </div>
@@ -1149,7 +1149,7 @@ const urgencyTone = (u?: Brief['urgency']) => {
         <div class="px-4 sm:px-5 md:px-6 py-5 border-b border-line">
           <div class="flex items-center justify-between">
             <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
-              Qualifying — live
+              Qualifying, live
             </div>
             <div class="text-[12px] text-mute">
               Updates every turn
@@ -1176,7 +1176,7 @@ const urgencyTone = (u?: Brief['urgency']) => {
                 ]"
               >
                 <template v-if="liveBrief[row.key]">{{ liveBrief[row.key] }}</template>
-                <template v-else><span class="opacity-60">—</span></template>
+                <template v-else><span class="opacity-60">-</span></template>
               </dd>
             </div>
           </dl>
@@ -1269,7 +1269,7 @@ const urgencyTone = (u?: Brief['urgency']) => {
                         liveBrief[row.key] ? 'text-ink font-medium' : 'text-mute-2',
                       ]"
                     >
-                      {{ liveBrief[row.key] ?? '—' }}
+                      {{ liveBrief[row.key] ?? '-' }}
                     </span>
                   </div>
                 </div>

@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import type { NuxtError } from '#app'
 import { ArrowRight } from '@lucide/vue'
 
-// Custom error page (S01 — indexability). Renders full HTML with site chrome,
+// Custom error page (S01, indexability). Renders full HTML with site chrome,
 // sets the correct status code, and is never indexed.
 const props = defineProps<{ error: NuxtError }>()
 
@@ -16,7 +16,7 @@ const heading = computed(() => {
   return 'Something went wrong'
 })
 const message = computed(() => {
-  if (is404.value) return "That page doesn't exist — it may have moved, or the link was mistyped."
+  if (is404.value) return "That page doesn't exist, it may have moved, or the link was mistyped."
   if (isGone.value) return "This page has been retired or isn't published yet. Browse the systems we've built, or tell us what you need."
   return 'An unexpected error occurred on our side. Try again, or head back to safe ground.'
 })

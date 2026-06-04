@@ -37,7 +37,7 @@ usePageSeo({
           >
             <div class="font-display text-[20px] text-ink">Run the 2-minute diagnostic</div>
             <p class="mt-2 text-[14.5px] leading-[1.55] text-mute">
-              Find the operational problem costing you the most — and the kind of system that fixes it. No sign-up to see the result.
+              Find the operational problem costing you the most, and the kind of system that fixes it. No sign-up to see the result.
             </p>
             <span class="mt-4 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-ink">
               Start the diagnostic

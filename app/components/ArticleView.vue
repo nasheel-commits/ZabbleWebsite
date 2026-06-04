@@ -105,7 +105,7 @@ const dateLabel = computed(() =>
       </h2>
       <ol class="mt-4 space-y-3 text-[13.5px] leading-[1.55] text-mute">
         <li v-for="s in a.sources" :id="s.id" :key="s.id" class="scroll-mt-28">
-          <span class="text-ink font-medium">{{ s.publisher }}</span> —
+          <span class="text-ink font-medium">{{ s.publisher }}</span> -
           <a
             :href="s.url"
             target="_blank"

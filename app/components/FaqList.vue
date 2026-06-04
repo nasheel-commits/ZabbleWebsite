@@ -1,14 +1,14 @@
 <script setup lang="ts">
 // Reusable AEO FAQ list (S07).
 //
-// Renders a question-shaped Q&A set as plain semantic HTML — each question an
+// Renders a question-shaped Q&A set as plain semantic HTML, each question an
 // <h3>, each answer a <p>, all answers visible (not collapsed) so answer
 // engines can extract them and Google is eligible to show FAQ / People-Also-Ask
 // results. Fully server-rendered: every question and answer is in the
 // prerendered DOM with no client JS required.
 //
 // The same `items` array is exposed for S03 to attach FAQPage / QAPage JSON-LD
-// — keep on-page text and schema sourced from one place to stay consistent.
+//, keep on-page text and schema sourced from one place to stay consistent.
 // See docs/seo/content/aeo-standard.md.
 
 import type { Faq } from '~/data/systems'

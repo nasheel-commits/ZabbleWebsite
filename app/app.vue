@@ -2,8 +2,8 @@
 import { computed } from 'vue'
 import { canonicalUrl, CANONICAL_SITE_URL } from '~/utils/seo'
 
-// Self-referencing canonical (S01 — indexability). Non-www, no trailing slash
-// (except root), query/hash stripped — so faceted `/systems?pillar=` collapses to
+// Self-referencing canonical (S01, indexability). Non-www, no trailing slash
+// (except root), query/hash stripped, so faceted `/systems?pillar=` collapses to
 // `/systems` (OR-3). Pins the canonical host and prevents duplicate-content
 // dilution across the 30+ near-structured system pages. Logic is shared with the
 // SEO-regression tests via `canonicalUrl` (app/utils/seo.ts).
@@ -17,7 +17,7 @@ const canonicalHref = computed(() =>
 // Site-wide self-referencing canonical (S01).
 //
 // The Organization / WebSite entity is emitted ONCE, site-wide, by
-// nuxt-schema-org from `schemaOrg.identity` in nuxt.config (S03, JSON-LD owner) —
+// nuxt-schema-org from `schemaOrg.identity` in nuxt.config (S03, JSON-LD owner) -
 // NOT here. A second hand-rolled Organization node (the earlier GEO app.vue
 // block, @id …/#organization) would split the entity against nuxt-schema-org's
 // @id …/#identity, so it was removed. `app/data/organization.ts` is retained for

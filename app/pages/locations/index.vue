@@ -7,7 +7,7 @@ import { NAP } from '~/data/nap'
 usePageSeo({
   title: 'Custom Software Across South Africa',
   description:
-    'Zabble builds bespoke operational systems for businesses across South Africa — Johannesburg, Sandton, Cape Town, Pretoria and Durban. Find your city.',
+    'Zabble builds bespoke operational systems for businesses across South Africa, Johannesburg, Sandton, Cape Town, Pretoria and Durban. Find your city.',
   path: '/locations',
   ogType: 'website',
 })
@@ -30,7 +30,7 @@ usePageSeo({
             We build where <span class="cyan-underline">South Africa works.</span>
           </h1>
           <p class="mt-6 max-w-2xl text-[16px] md:text-[19px] leading-[1.6] md:leading-[1.65] text-mute">
-            Zabble builds bespoke operational systems for businesses across the country — shaped to the
+            Zabble builds bespoke operational systems for businesses across the country, shaped to the
             industries, scale and reality of each metro. Find your city, or
             <NuxtLink to="/diagnose" class="text-ink underline underline-offset-4 hover:text-ink-soft">book a discovery call</NuxtLink>
             wherever you are.

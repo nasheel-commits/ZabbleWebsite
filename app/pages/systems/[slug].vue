@@ -59,7 +59,7 @@ const geoPillarLabel = computed(
 // Per-page SEO (S02 on-page, owner of per-page meta). Distinct title +
 // description per module, derived from the data file: SEO-specific overrides
 // (seoTitle/seoDescription from S06) when present, else name/tagline. ogType
-// 'article' — a specific offering page; canonical to the clean slug URL. The
+// 'article', a specific offering page; canonical to the clean slug URL. The
 // global titleTemplate appends " · Zabble".
 usePageSeo(() => ({
   title: sys.value.seoTitle ?? sys.value.name,
@@ -72,7 +72,7 @@ usePageSeo(() => ({
 // ── Structured data / JSON-LD (S03) ────────────────────────────────────────
 // Per-module markup: WebPage (ItemPage; also FAQPage when the page renders a
 // FAQ block) + the breadcrumb trail + a Service node (provider → the Zabble
-// Organization). Service — not Product/SoftwareApplication — because Zabble
+// Organization). Service, not Product/SoftwareApplication, because Zabble
 // delivers a bespoke build/consulting engagement, not a priced, off-the-shelf
 // product (audits/08-schema.md §type-choice). Service is emitted only for
 // systems with real, signed-off copy; concept/TODO entries make no claims.
@@ -114,7 +114,7 @@ useSchemaOrg([
         },
       ]
     : []),
-  // FAQPage Question nodes — 1:1, byte-identical to the rendered FaqList items.
+  // FAQPage Question nodes, 1:1, byte-identical to the rendered FaqList items.
   ...faqs.map((f) =>
     defineQuestion({ name: f.question, acceptedAnswer: f.answer }),
   ),
@@ -317,7 +317,7 @@ useSchemaOrg([
               {{
                 sys.pillarNotes?.[p.slug]
                   ?? (sys.pillars.includes(p.slug)
-                    ? 'TODO — how this system delivers on this pillar.'
+                    ? 'TODO, how this system delivers on this pillar.'
                     : 'Not the primary focus for this system.')
               }}
             </p>

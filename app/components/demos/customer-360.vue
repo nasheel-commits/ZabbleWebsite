@@ -60,7 +60,7 @@ interface CustomerSeed {
 // ──────────────────────────────────────────────────────────────
 
 const CUSTOMERS: CustomerSeed[] = [
-  // ───── 1. Greengate Group — long-tenure SMB, healthy
+  // ───── 1. Greengate Group, long-tenure SMB, healthy
   {
     id: 'greengate',
     name: 'Greengate Group',
@@ -161,7 +161,7 @@ const CUSTOMERS: CustomerSeed[] = [
           system: 'Zendesk · Support',
           objectLabel: 'Ticket T-4471',
           fields: [
-            { label: 'Subject',     value: 'CSV import — date column format' },
+            { label: 'Subject',     value: 'CSV import, date column format' },
             { label: 'Severity',    value: 'Low' },
             { label: 'First reply', value: '58 minutes' },
             { label: 'Resolution',  value: '1.4 hours' },
@@ -188,7 +188,7 @@ const CUSTOMERS: CustomerSeed[] = [
       sales: [
         { title: 'Surface analytics roadmap', body: 'Ops Lead asked about it on the Q1 check-in. Add a 15-min slot before they buy a separate tool.', severity: 'med', cta: 'Draft outreach' },
         { title: 'Float a 24-month renewal', body: 'NPS 9, 7-year tenure, day-2 payer. The discount maths is in your favour.', severity: 'low', cta: 'Run terms' },
-        { title: 'Reference programme', body: 'Promoter verbatim + multi-store footprint — they fit your specialty-grocery case study.', severity: 'low', cta: 'Invite to programme' },
+        { title: 'Reference programme', body: 'Promoter verbatim + multi-store footprint, they fit your specialty-grocery case study.', severity: 'low', cta: 'Invite to programme' },
       ],
       support: [
         { title: 'Promote CSV-import doc', body: 'T-4471 was a doc gap. Promote the resolution into the help centre so the next ten customers self-serve.', severity: 'low', cta: 'Promote KB' },
@@ -197,7 +197,7 @@ const CUSTOMERS: CustomerSeed[] = [
       ],
       finance: [
         { title: 'No collections action', body: 'Last 12 invoices paid on or before day-3. Move to the auto-clear queue and stop dunning.', severity: 'low', cta: 'Update billing rule' },
-        { title: 'Project next 12 months', body: 'R 84k recurring at +0% — model their expansion case so you know what a "good year" looks like.', severity: 'low', cta: 'Update forecast' },
+        { title: 'Project next 12 months', body: 'R 84k recurring at +0%, model their expansion case so you know what a "good year" looks like.', severity: 'low', cta: 'Update forecast' },
         { title: 'Annual VAT pack', body: 'Their accountant asks every February. Pre-build the pack now so you reply in one line.', severity: 'low', cta: 'Pre-build pack' },
       ],
       csm: [
@@ -214,7 +214,7 @@ const CUSTOMERS: CustomerSeed[] = [
         lines: [
           { label: 'Owner',    value: 'L. Ndlovu' },
           { label: 'Stage',    value: 'Active customer' },
-          { label: 'Last note',value: '"Renewal — needs follow-up"' },
+          { label: 'Last note',value: '"Renewal, needs follow-up"' },
         ],
       },
       support: {
@@ -247,7 +247,7 @@ const CUSTOMERS: CustomerSeed[] = [
     },
   },
 
-  // ───── 2. Solis International — high-touch enterprise, watch signals
+  // ───── 2. Solis International, high-touch enterprise, watch signals
   {
     id: 'solis',
     name: 'Solis International',
@@ -390,23 +390,23 @@ const CUSTOMERS: CustomerSeed[] = [
     nba: {
       sales: [
         { title: 'Pre-brief the VP Ops', body: 'New sponsor on the QBR. Open with the API integration story; that\'s their problem.', severity: 'high', cta: 'Draft pre-read' },
-        { title: 'Position 2027 expansion', body: 'Their API usage is +30% WoW. The current quota will choke them in two quarters — pitch the next tier now, before the renewal calendar locks in.', severity: 'med', cta: 'Build expansion case' },
+        { title: 'Position 2027 expansion', body: 'Their API usage is +30% WoW. The current quota will choke them in two quarters, pitch the next tier now, before the renewal calendar locks in.', severity: 'med', cta: 'Build expansion case' },
         { title: 'Reference customer ask', body: 'Promoter sponsor + multi-year deal. A 30-min reference call would be the warmest one on your panel.', severity: 'low', cta: 'Send reference ask' },
       ],
       support: [
         { title: 'Escalate T-8842', body: 'P2 on rate-limit, 18 users impacted, error rate above target. Hand to engineering today; don\'t wait for SLA.', severity: 'high', cta: 'Escalate to Eng' },
         { title: 'Issue customer comms', body: 'They\'ll mention it in the QBR. Send a status note before then so you control the narrative.', severity: 'med', cta: 'Send status note' },
-        { title: 'Quota review', body: 'Error rate is rising with usage, not bugs. Pull the quota review forward — it\'s a sales motion disguised as support.', severity: 'med', cta: 'Open quota ticket' },
+        { title: 'Quota review', body: 'Error rate is rising with usage, not bugs. Pull the quota review forward, it\'s a sales motion disguised as support.', severity: 'med', cta: 'Open quota ticket' },
       ],
       finance: [
         { title: 'No collections action', body: 'INV-9920 is at day 8 of net-60. Last 12 invoices all paid by day 45. Healthy.', severity: 'low', cta: 'Confirm cadence' },
-        { title: 'Pre-model 2027 ARR', body: 'Multi-year contract + API expansion appetite — finance should know the 2027 ARR ceiling before sales sells it.', severity: 'med', cta: 'Model expansion' },
+        { title: 'Pre-model 2027 ARR', body: 'Multi-year contract + API expansion appetite, finance should know the 2027 ARR ceiling before sales sells it.', severity: 'med', cta: 'Model expansion' },
         { title: 'Tax pack for accountant', body: 'Their finance team requests a tax summary every June. Auto-schedule it.', severity: 'low', cta: 'Schedule pack' },
       ],
       csm: [
         { title: 'Walk the QBR through API quotas', body: 'NPS comment + open P2 both point at one thing. The QBR resolves it or it surfaces twice on the call.', severity: 'high', cta: 'Update QBR deck' },
         { title: 'Map the buying committee', body: 'New VP Ops sponsor. Map their goals against your roadmap before the meeting.', severity: 'med', cta: 'Map stakeholders' },
-        { title: 'Renewal in 12 mo', body: 'Start the renewal motion now — multi-year contracts move on partner cycles, not yours.', severity: 'med', cta: 'Open renewal play' },
+        { title: 'Renewal in 12 mo', body: 'Start the renewal motion now, multi-year contracts move on partner cycles, not yours.', severity: 'med', cta: 'Open renewal play' },
       ],
     },
     fragments: {
@@ -417,7 +417,7 @@ const CUSTOMERS: CustomerSeed[] = [
         lines: [
           { label: 'Owner',    value: 'D. Wilson' },
           { label: 'Stage',    value: 'Customer · Healthy' },
-          { label: 'Last note',value: '"Renewal: 12 months out — no actions"' },
+          { label: 'Last note',value: '"Renewal: 12 months out, no actions"' },
         ],
       },
       support: {
@@ -445,13 +445,13 @@ const CUSTOMERS: CustomerSeed[] = [
         toolNote: 'QBR scheduled · agenda thin',
         lines: [
           { label: 'Health', value: 'Watch', warning: true },
-          { label: 'Notes',  value: '"NPS 8 — investigate support gap"' },
+          { label: 'Notes',  value: '"NPS 8, investigate support gap"' },
         ],
       },
     },
   },
 
-  // ───── 3. KwaZulu Café Co. — churn risk
+  // ───── 3. KwaZulu Café Co., churn risk
   {
     id: 'kwazulu',
     name: 'KwaZulu Café Co.',
@@ -468,18 +468,18 @@ const CUSTOMERS: CustomerSeed[] = [
     events: [
       {
         id: 'kz-1', kind: 'support', tag: 'opened',
-        title: 'Ticket T-5042 · cancellation signal', detail: '"Considering cancelling — sync failing every day"',
+        title: 'Ticket T-5042 · cancellation signal', detail: '"Considering cancelling, sync failing every day"',
         daysAgo: 1,
         severity: 'high',
         source: {
           system: 'Zendesk · Support',
           objectLabel: 'Ticket T-5042',
           fields: [
-            { label: 'Subject',      value: 'Sync to POS failing daily — considering cancelling' },
+            { label: 'Subject',      value: 'Sync to POS failing daily, considering cancelling' },
             { label: 'Severity',     value: 'High · churn signal' },
             { label: 'Sentiment',    value: 'Frustrated' },
             { label: 'Owner',        value: 'unassigned', },
-            { label: 'First reply',  value: '— still pending —' },
+            { label: 'First reply',  value: '- still pending -' },
           ],
         },
       },
@@ -496,7 +496,7 @@ const CUSTOMERS: CustomerSeed[] = [
             { label: 'Verbatim',  value: 'Not what we expected.' },
             { label: 'Survey',    value: 'Quarterly NPS · Q1-26' },
             { label: 'Respondent',value: 'A. Naidoo · Owner' },
-            { label: 'Flag',      value: 'Detractor — escalate to CSM' },
+            { label: 'Flag',      value: 'Detractor, escalate to CSM' },
           ],
         },
       },
@@ -599,8 +599,8 @@ const CUSTOMERS: CustomerSeed[] = [
     ],
     nba: {
       sales: [
-        { title: 'Don\'t pitch — save first', body: 'Detractor NPS, failed payment, cancellation signal in a live ticket. Any sales motion here ends the relationship. Hand to CSM, not to AE.', severity: 'high', cta: 'Block outbound' },
-        { title: 'Tag for win-back', body: 'If they leave, they leave as a known story — POS export, sync. Tag the account so the win-back motion in 3-6 mo doesn\'t start from zero.', severity: 'low', cta: 'Tag account' },
+        { title: 'Don\'t pitch, save first', body: 'Detractor NPS, failed payment, cancellation signal in a live ticket. Any sales motion here ends the relationship. Hand to CSM, not to AE.', severity: 'high', cta: 'Block outbound' },
+        { title: 'Tag for win-back', body: 'If they leave, they leave as a known story, POS export, sync. Tag the account so the win-back motion in 3-6 mo doesn\'t start from zero.', severity: 'low', cta: 'Tag account' },
         { title: 'Post-mortem feed', body: 'Three SMBs cancelled in Q1 with the same POS issue. Feed this into the SMB retention review.', severity: 'med', cta: 'Add to review' },
       ],
       support: [
@@ -611,11 +611,11 @@ const CUSTOMERS: CustomerSeed[] = [
       finance: [
         { title: 'Pause dunning', body: 'Auto-dunning a churning customer adds spite to the exit. Pause until CSM has had the conversation.', severity: 'high', cta: 'Pause dunning' },
         { title: 'Offer a one-month credit', body: 'R 1,200 is recoverable; R 14,400 ARR is not. Pre-approve the credit so CSM doesn\'t have to come back to ask.', severity: 'med', cta: 'Pre-approve credit' },
-        { title: 'Update collections rule', body: 'Failed-payment notifications should auto-page CSM for at-risk accounts. The rule\'s missing — add it.', severity: 'med', cta: 'Add CSM trigger' },
+        { title: 'Update collections rule', body: 'Failed-payment notifications should auto-page CSM for at-risk accounts. The rule\'s missing, add it.', severity: 'med', cta: 'Add CSM trigger' },
       ],
       csm: [
         { title: 'Call the owner today', body: 'Detractor NPS · 4 missed check-ins · failed payment · cancellation signal in a live ticket. This is a call, not an email. Today.', severity: 'high', cta: 'Initiate save call' },
-        { title: 'Re-assign the account', body: '"Pending re-assignment" for 28 days is how customers leave. Park no longer — name an owner before the save call.', severity: 'high', cta: 'Assign CSM' },
+        { title: 'Re-assign the account', body: '"Pending re-assignment" for 28 days is how customers leave. Park no longer, name an owner before the save call.', severity: 'high', cta: 'Assign CSM' },
         { title: 'Run the save play', body: 'Acknowledge POS pain · pre-approved credit · concrete fix date · 30-day check-in scheduled. All before the next renewal date.', severity: 'high', cta: 'Run play' },
       ],
     },
@@ -654,7 +654,7 @@ const CUSTOMERS: CustomerSeed[] = [
         toolNote: 'Touchpoint missed × 4',
         lines: [
           { label: 'Health', value: 'Healthy?', warning: true },
-          { label: 'Notes',  value: '"No response — likely on holiday"' },
+          { label: 'Notes',  value: '"No response, likely on holiday"' },
         ],
       },
     },
@@ -754,7 +754,7 @@ const SEVERITY_CLASS: Record<'low' | 'med' | 'high', string> = {
 // State
 // ──────────────────────────────────────────────────────────────
 
-const selectedId = ref<string>('solis')          // open on the high-touch enterprise — best demo balance
+const selectedId = ref<string>('solis')          // open on the high-touch enterprise, best demo balance
 const lens = ref<Lens>('csm')
 const mode = ref<'before' | 'after'>('after')
 const selectedEventId = ref<string | null>(null)
@@ -762,7 +762,7 @@ const selectedEventId = ref<string | null>(null)
 // Live events per customer (added via simulator).
 const extraEvents = reactive<Record<string, EventSeed[]>>({})
 
-// Lens chips that should briefly pulse — set when a live event lands.
+// Lens chips that should briefly pulse, set when a live event lands.
 const flashedLenses = ref<Set<Lens>>(new Set())
 const newEventIds = ref<Set<string>>(new Set())
 const flashTimers: number[] = []
@@ -883,7 +883,7 @@ function simulate(kind: SimMeta['slug']) {
       detail: `${c.name === 'Solis International'
         ? 'API quota error on /v2/routes/optimise'
         : c.name === 'KwaZulu Café Co.'
-          ? 'Sync to POS failing — second time today'
+          ? 'Sync to POS failing, second time today'
           : 'Mobile receipts not printing on Bluetooth dock'}`,
       daysAgo: 0,
       severity: c.health === 'at-risk' ? 'high' : 'med',
@@ -1060,7 +1060,7 @@ const summaryKpis = computed(() => {
         </div>
       </div>
 
-      <!-- Lens chips — only in unified mode -->
+      <!-- Lens chips, only in unified mode -->
       <div v-if="mode === 'after'" class="mt-3 flex items-center gap-2 overflow-x-auto scrollbar-none -mx-1 px-1">
         <span class="text-[11px] uppercase tracking-[0.22em] text-mute-2 font-semibold shrink-0">
           Lens
@@ -1120,7 +1120,7 @@ const summaryKpis = computed(() => {
           Before · four tools, four versions
         </p>
         <h4 class="mt-2 font-display text-[19px] sm:text-[22px] md:text-[26px] leading-[1.25] md:leading-[1.2] text-ink">
-          The same customer in four places — and no two of them agree.
+          The same customer in four places, and no two of them agree.
         </h4>
         <p class="mt-2 text-[13.5px] text-mute">
           This is what the team sees today. No one has the whole picture.
@@ -1182,7 +1182,7 @@ const summaryKpis = computed(() => {
           </p>
           <p class="mt-1 text-[12.5px] text-mute leading-snug">
             Flip to <span class="font-medium text-ink">Unified</span> to see what every team sees
-            when the record is stitched together — same data, one record, four lenses.
+            when the record is stitched together, same data, one record, four lenses.
           </p>
         </div>
         <button
@@ -1496,7 +1496,7 @@ const summaryKpis = computed(() => {
   display: none;
 }
 
-/* Lens chip ripple — gentle pulse when a new event lands that's relevant. */
+/* Lens chip ripple, gentle pulse when a new event lands that's relevant. */
 .lens-chip {
   transition:
     background-color 220ms cubic-bezier(0.22, 1, 0.36, 1),
@@ -1514,7 +1514,7 @@ const summaryKpis = computed(() => {
   100% { box-shadow: 0 0 0 0   rgba(1, 219, 241, 0); }
 }
 
-/* Newly added event card — brief cyan glow and slide-in. */
+/* Newly added event card, brief cyan glow and slide-in. */
 .timeline-card.is-new {
   animation: tl-new-in 600ms cubic-bezier(0.22, 1, 0.36, 1);
   box-shadow:

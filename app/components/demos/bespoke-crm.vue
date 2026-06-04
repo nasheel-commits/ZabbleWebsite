@@ -75,7 +75,7 @@ interface BusinessConfig {
     primary: string
     conversionLabel: string
   }
-  /** Seed deals — only used at first switch into this business. */
+  /** Seed deals, only used at first switch into this business. */
   seed: () => Deal[]
 }
 
@@ -144,7 +144,7 @@ const RITUALS: Record<RitualKey, RitualDef> = {
   },
   'won': {
     key: 'won',
-    title: 'Deal won — hand-off fired',
+    title: 'Deal won, hand-off fired',
     lines: [
       'Contract pushed to e-sign',
       'Accounting projection updated',
@@ -164,7 +164,7 @@ const BUSINESSES: BusinessConfig[] = [
   {
     key: 'equipment',
     label: 'Equipment sales',
-    pitch: 'B2B equipment pipeline — long cycles, site visits, hands-on quoting.',
+    pitch: 'B2B equipment pipeline, long cycles, site visits, hands-on quoting.',
     reps: ['SA', 'MK', 'TL'],
     stages: [
       { key: 'lead',        label: 'Lead',        winProb: 0.05 },
@@ -190,7 +190,7 @@ const BUSINESSES: BusinessConfig[] = [
   {
     key: 'agency',
     label: 'Agency',
-    pitch: 'Creative agency pipeline — brief, pitch, contract, kickoff.',
+    pitch: 'Creative agency pipeline, brief, pitch, contract, kickoff.',
     reps: ['JD', 'RP', 'KM'],
     stages: [
       { key: 'lead',        label: 'Lead',        winProb: 0.05 },
@@ -214,7 +214,7 @@ const BUSINESSES: BusinessConfig[] = [
   {
     key: 'consulting',
     label: 'Consulting',
-    pitch: 'Consulting pipeline — discovery, scoping, SOW, engagement.',
+    pitch: 'Consulting pipeline, discovery, scoping, SOW, engagement.',
     reps: ['HN', 'EF', 'MO'],
     stages: [
       { key: 'lead',       label: 'Lead',        winProb: 0.05 },
@@ -246,7 +246,7 @@ function mkDeal(
   rep: string,
   stageKey: string,
 ): Deal {
-  // Deterministic seed timeline — same content every render so SSR/hydrate match.
+  // Deterministic seed timeline, same content every render so SSR/hydrate match.
   const baseInteractions: Interaction[] = [
     {
       id: n * 100 + 1,
@@ -289,7 +289,7 @@ function mkDeal(
 const activeBusinessKey = ref<BusinessKey>('equipment')
 const activeBusiness = computed(() => BUSINESSES.find((b) => b.key === activeBusinessKey.value)!)
 
-// Per-business deal stores — switching business swaps the working set rather
+// Per-business deal stores, switching business swaps the working set rather
 // than wiping it (so you can flip between configs without losing your moves).
 const dealsByBusiness: Record<BusinessKey, Deal[]> = reactive({
   equipment: BUSINESSES[0]!.seed(),
@@ -343,7 +343,7 @@ function moveDeal(dealId: string, toStageKey: string) {
   pushLog({
     kind: 'move',
     title: `${d.company} → ${toStage.label}`,
-    body: `Moved from ${fromStage?.label ?? '—'}. ${activeBusiness.value.reps.includes(d.rep) ? d.rep : 'rep'} owns it.`,
+    body: `Moved from ${fromStage?.label ?? '-'}. ${activeBusiness.value.reps.includes(d.rep) ? d.rep : 'rep'} owns it.`,
     icon: CircleDot,
   })
   if (toStage.ritual) fireRitual(d, toStage.ritual)
@@ -382,7 +382,7 @@ function fireRitual(d: Deal, ritualKey: RitualKey) {
   pushLog({
     kind: 'ritual',
     title: `Ritual fired · ${r.title}`,
-    body: `${d.company} — ${r.lines.join(' · ')}`,
+    body: `${d.company}, ${r.lines.join(' · ')}`,
     icon: r.icon,
   })
 }
@@ -432,7 +432,7 @@ function onDrop(e: DragEvent, stageKey: string) {
   dragOverStage.value = null
 }
 
-// Mobile / touch fallback — open a stage picker per card.
+// Mobile / touch fallback, open a stage picker per card.
 const stagePickerFor = ref<string | null>(null)
 function openStagePicker(dealId: string) {
   stagePickerFor.value = stagePickerFor.value === dealId ? null : dealId
@@ -467,7 +467,7 @@ const channelMeta: Record<Channel, { label: string; icon: typeof Phone; sample: 
     icon: Phone,
     sample: [
       'Missed call · voicemail transcribed: "We\'d like to revisit pricing on the proposal."',
-      'Returned call from procurement — wants delivery timeline by Friday.',
+      'Returned call from procurement, wants delivery timeline by Friday.',
       'Inbound: contact wants to push site visit by a week.',
     ],
   },
@@ -475,7 +475,7 @@ const channelMeta: Record<Channel, { label: string; icon: typeof Phone; sample: 
     label: 'WhatsApp',
     icon: MessageCircle,
     sample: [
-      '"Hi — just confirming Thursday at 10:30 still works for the visit?"',
+      '"Hi, just confirming Thursday at 10:30 still works for the visit?"',
       '"My MD reviewed the quote, can we knock 5% off line two?"',
       '"Sending through the floor plan, hope it helps the brief."',
     ],
@@ -484,9 +484,9 @@ const channelMeta: Record<Channel, { label: string; icon: typeof Phone; sample: 
     label: 'Email',
     icon: Mail,
     sample: [
-      'Subject: "RE: Proposal v2" — finance has signed off, please share contract.',
-      'Subject: "Question on warranty cover" — needs answer before they commit.',
-      'Subject: "Intro from a friend" — referral with budget signalled.',
+      'Subject: "RE: Proposal v2", finance has signed off, please share contract.',
+      'Subject: "Question on warranty cover", needs answer before they commit.',
+      'Subject: "Intro from a friend", referral with budget signalled.',
     ],
   },
   visit: {
@@ -494,7 +494,7 @@ const channelMeta: Record<Channel, { label: string; icon: typeof Phone; sample: 
     icon: Footprints,
     sample: [
       'Site walk-through log uploaded by tech. Three blockers flagged.',
-      'Walk-in at the showroom — looked at the mid-range range.',
+      'Walk-in at the showroom, looked at the mid-range range.',
       'Lunch meeting notes: decision-maker introduced, timeline shared.',
     ],
   },
@@ -529,7 +529,7 @@ function fireInbound() {
     kind: 'inbound',
     channel: simChannel.value,
     title: `${channelMeta[simChannel.value].label} inbound · auto-matched`,
-    body: `${target.company} — matched on ${matchFieldFor(simChannel.value)}. "${text.length > 80 ? text.slice(0, 78) + '…' : text}"`,
+    body: `${target.company}, matched on ${matchFieldFor(simChannel.value)}. "${text.length > 80 ? text.slice(0, 78) + '…' : text}"`,
     icon: channelMeta[simChannel.value].icon,
   })
   // Briefly pulse the card column so the user sees where it landed.
@@ -705,7 +705,7 @@ function switchBusiness(k: BusinessKey) {
               <span class="dot" /> Pipeline
             </div>
             <p class="mt-1 text-[12.5px] text-mute leading-snug">
-              Drag a deal between stages — the right ritual fires automatically.
+              Drag a deal between stages, the right ritual fires automatically.
               <span class="hidden md:inline">On touch, tap the grip to pick a stage.</span>
             </p>
           </div>
@@ -854,7 +854,7 @@ function switchBusiness(k: BusinessKey) {
               </div>
             </div>
             <p class="mt-1 text-[12.5px] text-mute leading-snug">
-              Fire a fake inbound — watch it auto-attach to the right deal.
+              Fire a fake inbound, watch it auto-attach to the right deal.
             </p>
 
             <div class="mt-3 flex flex-wrap gap-1.5">
@@ -917,7 +917,7 @@ function switchBusiness(k: BusinessKey) {
               </li>
             </ul>
             <p v-else class="mt-3 text-[12px] text-mute italic">
-              Move a deal or fire an inbound — events will appear here.
+              Move a deal or fire an inbound, events will appear here.
             </p>
           </div>
         </div>
@@ -951,7 +951,7 @@ function switchBusiness(k: BusinessKey) {
             <Activity :size="14" :stroke-width="2" class="text-cyan-brand-deep" />
           </div>
           <div class="mt-1 flex items-baseline gap-2">
-            <span class="font-display text-[24px] md:text-[28px] leading-none text-ink">{{ conversionPct === null ? '—' : conversionPct + '%' }}</span>
+            <span class="font-display text-[24px] md:text-[28px] leading-none text-ink">{{ conversionPct === null ? '-' : conversionPct + '%' }}</span>
             <span class="text-[11px] text-mute-2">won of decided</span>
           </div>
           <div class="mt-2 flex items-center gap-1.5 text-[11px]">

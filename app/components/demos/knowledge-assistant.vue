@@ -68,16 +68,16 @@ const retail: KnowledgeBase = {
       title: 'Customer complaint handling',
       meta: 'v6 · owned by Ops · last reviewed Q1',
       body: [
-        'Acknowledge every complaint within 4 hours of receipt — phone, email, or in-store. The duty manager owns acknowledgement when the complaint arrives outside an AE\'s working hours.',
+        'Acknowledge every complaint within 4 hours of receipt, phone, email, or in-store. The duty manager owns acknowledgement when the complaint arrives outside an AE\'s working hours.',
         'Issue a written response within 24 hours. If the customer is dissatisfied after the first response, escalate to the duty manager and tag the case "esc-1" in the CRM.',
-        'Every complaint logs a case ID. Refunds tied to a complaint follow the credit-note flow in §3.4 — they do not bypass the standard refund SOP.',
+        'Every complaint logs a case ID. Refunds tied to a complaint follow the credit-note flow in §3.4, they do not bypass the standard refund SOP.',
       ],
     },
     {
       id: 'contract-enterprise',
       kind: 'Contract',
-      label: 'Contract — Enterprise',
-      title: 'Master Services Agreement — Enterprise tier',
+      label: 'Contract, Enterprise',
+      title: 'Master Services Agreement, Enterprise tier',
       meta: 'Template v9 · approved by Legal',
       body: [
         '§7.2 Refunds. Enterprise customers may request a refund within 30 days of invoice for service months not yet consumed. Refunds are pro-rated against unused months and exclude one-off setup fees.',
@@ -92,10 +92,10 @@ const retail: KnowledgeBase = {
       title: 'Discount approval matrix',
       meta: 'v4 · effective March · owner: Head of Sales',
       body: [
-        'Up to 10% — at the AE\'s discretion. No additional approval required. Auto-logged in the pricing register.',
-        '10–15% — sales manager approval. Comment field mandatory.',
-        'Above 15% — head of sales approval.',
-        'Above 25% — COO approval. CFO is copied automatically.',
+        'Up to 10%, at the AE\'s discretion. No additional approval required. Auto-logged in the pricing register.',
+        '10–15%, sales manager approval. Comment field mandatory.',
+        'Above 15%, head of sales approval.',
+        'Above 25%, COO approval. CFO is copied automatically.',
         'Every discount is recorded against the deal in the pricing register; the register feeds the weekly margin review.',
       ],
     },
@@ -121,7 +121,7 @@ const retail: KnowledgeBase = {
       body: [
         'Standard NET-30 applies to all customers on the published price book.',
         'Accounts in good standing for 12+ months may be extended unilaterally to NET-60 by the account owner. Log the extension against the deal.',
-        'Beyond NET-60 requires CFO approval. The CFO\'s decision is logged against the deal with a stated reason — the audit trail matters more than the speed.',
+        'Beyond NET-60 requires CFO approval. The CFO\'s decision is logged against the deal with a stated reason, the audit trail matters more than the speed.',
       ],
     },
     {
@@ -132,7 +132,7 @@ const retail: KnowledgeBase = {
       meta: 'v8 · owned by Store Ops',
       body: [
         'Count the float against the till tape. Variances over $5 raise an over/short note that the manager on duty signs off.',
-        'Lock the cash drawer with the day\'s deposit slip inside. The deposit goes into the safe — never carried.',
+        'Lock the cash drawer with the day\'s deposit slip inside. The deposit goes into the safe, never carried.',
         'Run the close-out report from the POS. Email it to the manager group; the system also files it against the day\'s shift log.',
       ],
     },
@@ -149,7 +149,7 @@ const retail: KnowledgeBase = {
       id: 'r-2',
       prompt: 'Can we extend payment terms on this deal?',
       answer:
-        'Standard terms are NET-30. You can extend up to NET-60 unilaterally for accounts in good standing for 12+ months — just log it against the deal. Beyond NET-60 needs CFO approval, with the reason captured in the audit trail.',
+        'Standard terms are NET-30. You can extend up to NET-60 unilaterally for accounts in good standing for 12+ months, just log it against the deal. Beyond NET-60 needs CFO approval, with the reason captured in the audit trail.',
       citationIds: ['sales-5', 'contract-enterprise'],
     },
     {
@@ -163,7 +163,7 @@ const retail: KnowledgeBase = {
       id: 'r-4',
       prompt: 'Who signs off on a discount above 15%?',
       answer:
-        'Up to 10% sits with the AE. 10–15% is the sales manager. Above 15% is the head of sales — and above 25% goes to the COO with the CFO copied. Every discount auto-logs to the pricing register.',
+        'Up to 10% sits with the AE. 10–15% is the sales manager. Above 15% is the head of sales, and above 25% goes to the COO with the CFO copied. Every discount auto-logs to the pricing register.',
       citationIds: ['pricing-v4'],
     },
     {
@@ -178,7 +178,7 @@ const retail: KnowledgeBase = {
       prompt: 'What\'s our policy on accepting cryptocurrency at the till?',
       unknown: true,
       answer:
-        'I don\'t have an answer for that in the current knowledge base — there\'s no policy document on cryptocurrency payments. I can flag this to the ops manager so it gets resolved and added to the playbook.',
+        'I don\'t have an answer for that in the current knowledge base, there\'s no policy document on cryptocurrency payments. I can flag this to the ops manager so it gets resolved and added to the playbook.',
       citationIds: [],
     },
   ],
@@ -187,7 +187,7 @@ const retail: KnowledgeBase = {
       id: 'r-h-1',
       prompt: 'How do I close out my till at end of shift?',
       answer:
-        'Count the float against the till tape, lodge any over/short with the manager on duty, lock the cash drawer with the day\'s deposit slip inside, and run the close-out report from the POS. The full SOP is below — read it through once before your first close-out.',
+        'Count the float against the till tape, lodge any over/short with the manager on duty, lock the cash drawer with the day\'s deposit slip inside, and run the close-out report from the POS. The full SOP is below, read it through once before your first close-out.',
       citationIds: ['sop-5-3'],
       featureSourceId: 'sop-5-3',
     },
@@ -203,7 +203,7 @@ const retail: KnowledgeBase = {
   admin: {
     totals: { questions: 247, coverage: 86, activeUsers: 34 },
     top: [
-      { label: 'Refund policy — enterprise', count: 32 },
+      { label: 'Refund policy, enterprise', count: 32 },
       { label: 'Discount approval matrix', count: 24 },
       { label: 'Contractor leave', count: 19 },
       { label: 'Complaint handling SOP', count: 17 },
@@ -212,15 +212,15 @@ const retail: KnowledgeBase = {
     gaps: [
       {
         question: 'Cryptocurrency payments at till',
-        suggested: 'SOP — alternative payment methods (crypto / BNPL)',
+        suggested: 'SOP, alternative payment methods (crypto / BNPL)',
       },
       {
         question: 'Returns over 90 days from purchase',
-        suggested: 'Policy — extended returns and goodwill exceptions',
+        suggested: 'Policy, extended returns and goodwill exceptions',
       },
       {
         question: 'Staff discount on online orders',
-        suggested: 'HR Policy — employee online purchase discount',
+        suggested: 'HR Policy, employee online purchase discount',
       },
     ],
   },
@@ -253,7 +253,7 @@ const finance: KnowledgeBase = {
       meta: 'v2026.1 · effective Jan 1 · owner: Treasury',
       body: [
         'Wire fee: $25 retail; $15 business; $0 private-wealth tier.',
-        'Private-wealth accounts already enjoy the standard waiver — no further approval required. Wire-fee waivers for retail or business accounts require the branch manager\'s signoff.',
+        'Private-wealth accounts already enjoy the standard waiver, no further approval required. Wire-fee waivers for retail or business accounts require the branch manager\'s signoff.',
         'Annual card-fee waivers are restricted to relationship-managed accounts at the RM\'s discretion, up to two per year.',
       ],
     },
@@ -266,7 +266,7 @@ const finance: KnowledgeBase = {
       body: [
         'Politically-Exposed Persons (PEPs) require Tier-3 KYC plus a senior-management review before the account is opened. The MLRO chairs the review.',
         'Source-of-funds documentation is mandatory: 12 months of bank statements, tax assessment, and a written declaration of source.',
-        'Ongoing monitoring is enhanced — quarterly screening refresh and an annual relationship review by the RM and the compliance officer.',
+        'Ongoing monitoring is enhanced, quarterly screening refresh and an annual relationship review by the RM and the compliance officer.',
       ],
     },
     {
@@ -290,7 +290,7 @@ const finance: KnowledgeBase = {
       body: [
         'Tier-1: ID + proof of address. Account limits apply. Self-service onboarding.',
         'Tier-2: Tier-1 documents plus source-of-funds declaration. Approved by onboarding analyst.',
-        'Tier-3: Tier-2 documents plus enhanced due diligence pack — beneficial-ownership tree, sanctions narrative, RM sign-off. Required for high-risk segments and any PEP.',
+        'Tier-3: Tier-2 documents plus enhanced due diligence pack, beneficial-ownership tree, sanctions narrative, RM sign-off. Required for high-risk segments and any PEP.',
         'Tier overrides (downgrade or expedited approval) require the head of compliance and are logged in the override register.',
       ],
     },
@@ -319,7 +319,7 @@ const finance: KnowledgeBase = {
       id: 'f-2',
       prompt: 'Can I waive the wire fee on a private-wealth account?',
       answer:
-        'Private-wealth accounts already carry a standard $0 wire-fee waiver — no extra approval is needed. Waivers for retail or business accounts need the branch manager\'s signoff.',
+        'Private-wealth accounts already carry a standard $0 wire-fee waiver, no extra approval is needed. Waivers for retail or business accounts need the branch manager\'s signoff.',
       citationIds: ['fee-2026'],
     },
     {
@@ -333,7 +333,7 @@ const finance: KnowledgeBase = {
       id: 'f-4',
       prompt: 'Who signs off on a Tier-3 KYC override?',
       answer:
-        'KYC overrides — including Tier-3 downgrades and expedited approvals — sit with the head of compliance and are logged in the override register. The MLRO is copied on every override.',
+        'KYC overrides, including Tier-3 downgrades and expedited approvals, sit with the head of compliance and are logged in the override register. The MLRO is copied on every override.',
       citationIds: ['kyc-tier'],
     },
     {
@@ -348,7 +348,7 @@ const finance: KnowledgeBase = {
       prompt: 'How do we treat stablecoin deposits from a retail customer?',
       unknown: true,
       answer:
-        'I don\'t have an answer for that in the current knowledge base — there\'s no procedure covering stablecoin deposits yet. I can flag this to the ops manager so the gap is closed and the procedure is written.',
+        'I don\'t have an answer for that in the current knowledge base, there\'s no procedure covering stablecoin deposits yet. I can flag this to the ops manager so the gap is closed and the procedure is written.',
       citationIds: [],
     },
   ],
@@ -357,7 +357,7 @@ const finance: KnowledgeBase = {
       id: 'f-h-1',
       prompt: 'What\'s the difference between Tier-1, Tier-2 and Tier-3 KYC?',
       answer:
-        'Tier-1 is ID plus proof of address with account limits. Tier-2 adds a source-of-funds declaration and analyst approval. Tier-3 is enhanced due diligence with a beneficial-ownership tree, sanctions narrative, and RM sign-off — required for high-risk segments and PEPs.',
+        'Tier-1 is ID plus proof of address with account limits. Tier-2 adds a source-of-funds declaration and analyst approval. Tier-3 is enhanced due diligence with a beneficial-ownership tree, sanctions narrative, and RM sign-off, required for high-risk segments and PEPs.',
       citationIds: ['kyc-tier'],
       featureSourceId: 'kyc-tier',
     },
@@ -382,15 +382,15 @@ const finance: KnowledgeBase = {
     gaps: [
       {
         question: 'Stablecoin and crypto-asset deposits',
-        suggested: 'Procedure — digital-asset deposits and risk-class mapping',
+        suggested: 'Procedure, digital-asset deposits and risk-class mapping',
       },
       {
-        question: 'Cross-border remittance — sub-$1k',
-        suggested: 'Policy — light-touch KYC for low-value remittance corridors',
+        question: 'Cross-border remittance, sub-$1k',
+        suggested: 'Policy, light-touch KYC for low-value remittance corridors',
       },
       {
         question: 'Dormant-account fee treatment',
-        suggested: 'Policy — dormancy thresholds, fee schedule, and reactivation',
+        suggested: 'Policy, dormancy thresholds, fee schedule, and reactivation',
       },
     ],
   },
@@ -407,11 +407,11 @@ const manufacturer: KnowledgeBase = {
       id: 'safety-12',
       kind: 'SOP',
       label: 'Safety SOP §12',
-      title: 'Lockout-tagout — press lines',
+      title: 'Lockout-tagout, press lines',
       meta: 'v11 · owned by EHS · audited quarterly',
       body: [
         'Before any maintenance on a press line: isolate the disconnect, apply your personal lock, hang the tag (initialled, dated), and verify zero-energy state with the calibrated meter.',
-        'Press line 2 has dual hydraulic accumulators — bleed both before working on the ram. Verification card is mandatory and stays with the work order.',
+        'Press line 2 has dual hydraulic accumulators, bleed both before working on the ram. Verification card is mandatory and stays with the work order.',
         'Removal of a lock is by the person who applied it. Exceptions require a supervisor and EHS sign-off, logged in the LOTO register.',
       ],
     },
@@ -449,7 +449,7 @@ const manufacturer: KnowledgeBase = {
       body: [
         'Acme Suppliers run NET-45 from invoice date. 2% early-pay discount available within 10 days.',
         'Critical-path suppliers (motors, controllers) hold a standing PO with weekly draw-downs and net-monthly settlement.',
-        'Late payments trigger a hold on next dispatch — finance owns the watch list and escalates to the COO when a critical supplier is at risk.',
+        'Late payments trigger a hold on next dispatch, finance owns the watch list and escalates to the COO when a critical supplier is at risk.',
       ],
     },
     {
@@ -459,9 +459,9 @@ const manufacturer: KnowledgeBase = {
       title: 'Critical machine failure response',
       meta: 'v8 · 24×7 · owned by Ops',
       body: [
-        'Step 1: confirm the line is safe to approach — LOTO if any energy source is unconfirmed.',
+        'Step 1: confirm the line is safe to approach, LOTO if any energy source is unconfirmed.',
         'Step 2: page the on-call maintenance lead. After-hours dispatch is via the duty roster; the current on-call is published on the ops dashboard.',
-        'Step 3: open a line-down incident in the CMMS. Every step from page-out to restoration is timestamped — the post-incident review uses that log.',
+        'Step 3: open a line-down incident in the CMMS. Every step from page-out to restoration is timestamped, the post-incident review uses that log.',
         'Step 4: notify the production planner if downtime is forecast above 30 minutes; planning re-balances the day\'s schedule.',
       ],
     },
@@ -484,7 +484,7 @@ const manufacturer: KnowledgeBase = {
       id: 'm-1',
       prompt: 'What\'s the lockout-tagout procedure for press line 2?',
       answer:
-        'Isolate the disconnect, apply your personal lock, tag (initialled and dated), and verify zero-energy state with the calibrated meter. Press line 2 has dual hydraulic accumulators — bleed both before working on the ram, and the verification card stays with the work order.',
+        'Isolate the disconnect, apply your personal lock, tag (initialled and dated), and verify zero-energy state with the calibrated meter. Press line 2 has dual hydraulic accumulators, bleed both before working on the ram, and the verification card stays with the work order.',
       citationIds: ['safety-12'],
     },
     {
@@ -498,7 +498,7 @@ const manufacturer: KnowledgeBase = {
       id: 'm-3',
       prompt: 'What\'s the SOP for handling a returned faulty unit?',
       answer:
-        'The customer files an RMA on the portal — the system issues a number and a prepaid label within 1 hour for in-warranty units. We triage within 48 hours of arrival, replace within 5 working days, and close every RMA with a written failure-mode note.',
+        'The customer files an RMA on the portal, the system issues a number and a prepaid label within 1 hour for in-warranty units. We triage within 48 hours of arrival, replace within 5 working days, and close every RMA with a written failure-mode note.',
       citationIds: ['rma-3'],
     },
     {
@@ -512,7 +512,7 @@ const manufacturer: KnowledgeBase = {
       id: 'm-5',
       prompt: 'Who do I call if line 4 goes down at 02:00?',
       answer:
-        'Page the on-call maintenance lead — after-hours dispatch goes through the duty roster, and the current on-call is on the ops dashboard. Open a line-down incident in the CMMS so the response is timestamped end-to-end.',
+        'Page the on-call maintenance lead, after-hours dispatch goes through the duty roster, and the current on-call is on the ops dashboard. Open a line-down incident in the CMMS so the response is timestamped end-to-end.',
       citationIds: ['line-down'],
     },
     {
@@ -520,7 +520,7 @@ const manufacturer: KnowledgeBase = {
       prompt: 'What\'s the policy on accepting carbon-offset credits as part-payment?',
       unknown: true,
       answer:
-        'I don\'t have an answer for that in the current knowledge base — there\'s no policy on carbon-offset credits as a payment method. I can flag this to the ops manager so the policy gets written.',
+        'I don\'t have an answer for that in the current knowledge base, there\'s no policy on carbon-offset credits as a payment method. I can flag this to the ops manager so the policy gets written.',
       citationIds: [],
     },
   ],
@@ -537,7 +537,7 @@ const manufacturer: KnowledgeBase = {
       id: 'm-h-2',
       prompt: 'Where do I file an RMA?',
       answer:
-        'RMAs are filed through the customer portal — the system issues the RMA number and, for in-warranty units, prints a prepaid return label within 1 hour. As a new hire, your first few RMAs go past the service-ops lead for a second look before close-out.',
+        'RMAs are filed through the customer portal, the system issues the RMA number and, for in-warranty units, prints a prepaid return label within 1 hour. As a new hire, your first few RMAs go past the service-ops lead for a second look before close-out.',
       citationIds: ['rma-3'],
       featureSourceId: 'rma-3',
     },
@@ -545,24 +545,24 @@ const manufacturer: KnowledgeBase = {
   admin: {
     totals: { questions: 178, coverage: 81, activeUsers: 26 },
     top: [
-      { label: 'Lockout-tagout — press lines', count: 28 },
+      { label: 'Lockout-tagout, press lines', count: 28 },
       { label: 'Distributor discount tiers', count: 22 },
       { label: 'RMA return flow', count: 19 },
       { label: 'Line-down on-call roster', count: 15 },
-      { label: 'Supplier credit terms — Acme', count: 11 },
+      { label: 'Supplier credit terms, Acme', count: 11 },
     ],
     gaps: [
       {
         question: 'Carbon-offset credits as part-payment',
-        suggested: 'Policy — alternative payment instruments and offset credits',
+        suggested: 'Policy, alternative payment instruments and offset credits',
       },
       {
         question: 'Refurbished-unit warranty length',
-        suggested: 'Policy — refurbished and reconditioned unit warranty terms',
+        suggested: 'Policy, refurbished and reconditioned unit warranty terms',
       },
       {
         question: 'Distributor exclusivity by region',
-        suggested: 'Contract addendum — territorial exclusivity and overlap rules',
+        suggested: 'Contract addendum, territorial exclusivity and overlap rules',
       },
     ],
   },
@@ -741,7 +741,7 @@ function scrollChatToEnd() {
   el.scrollTo({ top: el.scrollHeight, behavior: 'smooth' })
 }
 
-// When the user switches business or mode, close any open source panel —
+// When the user switches business or mode, close any open source panel -
 // the IDs are per-KB and would dangle.
 watch([activeBusinessId, activeMode], () => {
   openSourceId.value = null
@@ -828,7 +828,7 @@ function lastFlagFor(qaId: string | undefined) {
           </button>
         </div>
         <p class="mt-2 text-[12.5px] text-mute-2">
-          Switching businesses swaps the playbook — same engine.
+          Switching businesses swaps the playbook, same engine.
         </p>
       </div>
 
@@ -922,7 +922,7 @@ function lastFlagFor(qaId: string | undefined) {
             That's the full set for this business. Hit reset to run it again.
           </div>
 
-          <!-- Mini "Ops queue" sidecar — only when flags landed -->
+          <!-- Mini "Ops queue" sidecar, only when flags landed -->
           <div
             v-if="currentState.flagsLanded.length > 0"
             class="mt-5 rounded-lg border border-line bg-surface-alt/70 p-3.5"
@@ -1132,7 +1132,7 @@ function lastFlagFor(qaId: string | undefined) {
             </div>
           </div>
 
-          <!-- Fake input bar (read-only — the demo is question-driven) -->
+          <!-- Fake input bar (read-only, the demo is question-driven) -->
           <div class="border-t border-line bg-surface-alt/40 px-4 py-3 flex items-center gap-2">
             <input
               type="text"

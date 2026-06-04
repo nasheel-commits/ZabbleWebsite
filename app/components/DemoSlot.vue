@@ -22,7 +22,7 @@
 //    a scaled, non-interactive snapshot of the demo as the gallery thumbnail.
 //
 // 3. The demo component will be lazy-loaded only when its detail page renders
-//    — or when its gallery card scrolls into view on /systems.
+//   , or when its gallery card scrolls into view on /systems.
 //
 // 4. Demo components should:
 //    - Be self-contained (no required props).

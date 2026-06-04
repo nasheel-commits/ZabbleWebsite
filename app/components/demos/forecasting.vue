@@ -125,7 +125,7 @@ function computeMape(
     const winStart = Math.max(0, i - 11)
     const win = history.slice(winStart, i)
     const naive = win.reduce((a, b) => a + b, 0) / win.length
-    // Synthetic "system forecast" tracks the actual closely — this is the
+    // Synthetic "system forecast" tracks the actual closely, this is the
     // model's holdout performance, not driver-dependent.
     const sys = actual * (1 + noise(i) * 0.085)
     fErr += Math.abs((sys - actual) / actual)
@@ -339,7 +339,7 @@ const USE_CASES: UseCase[] = [
         id: 'flour',
         icon: ChefHat,
         format: (peak) => `Order ${Math.round((peak * 0.20) / 10) * 10}kg flour Tuesday`,
-        reason: 'Sized to the forecast peak — covers Wed–Sat prep without surplus.',
+        reason: 'Sized to the forecast peak, covers Wed–Sat prep without surplus.',
         destination: REST_DEST.supplier,
       },
       {
@@ -357,7 +357,7 @@ const USE_CASES: UseCase[] = [
           const pct = Math.max(6, Math.min(22, Math.round(12 + (avg < 900 ? 4 : -2))))
           return `Reduce dessert prep ${pct}% Wednesday`
         },
-        reason: 'Midweek dessert pull lags the weekly average — cut to avoid waste.',
+        reason: 'Midweek dessert pull lags the weekly average, cut to avoid waste.',
         destination: REST_DEST.kitchen,
       },
     ],
@@ -443,7 +443,7 @@ const USE_CASES: UseCase[] = [
           const pct = Math.max(15, Math.min(45, Math.round(30 + (avg > 1300 ? 5 : -3))))
           return `Hold pump kits at ${pct}% above plan`
         },
-        reason: 'Forecast band sits above mean — buffer absorbs the variance.',
+        reason: 'Forecast band sits above mean, buffer absorbs the variance.',
         destination: PARTS_DEST.mrp,
       },
       {
@@ -453,7 +453,7 @@ const USE_CASES: UseCase[] = [
           const pct = Math.max(8, Math.min(22, Math.round(13 + (avg < 1150 ? 3 : -2))))
           return `Cut Thursday courier load ${pct}%`
         },
-        reason: 'Midweek dip in dispatch volume — courier slot scales down.',
+        reason: 'Midweek dip in dispatch volume, courier slot scales down.',
         destination: PARTS_DEST.dispatch,
       },
     ],
@@ -874,7 +874,7 @@ function driverValueLabel(def: DriverDef, value: number): string {
           <div
             class="mt-1 font-display text-[20px] md:text-[22px] leading-tight text-ink truncate"
           >
-            Forecasting — {{ activeUseCase.label }}
+            Forecasting, {{ activeUseCase.label }}
           </div>
         </div>
       </div>
@@ -1099,7 +1099,7 @@ function driverValueLabel(def: DriverDef, value: number): string {
                 Holdout accuracy · last 12 weeks
               </div>
               <div class="mt-1 text-[13.5px] text-mute leading-[1.5] max-w-md">
-                System forecast vs naive 12-week trailing average — measured on the same window.
+                System forecast vs naive 12-week trailing average, measured on the same window.
               </div>
             </div>
             <div class="w-full sm:w-auto sm:ml-auto flex flex-wrap items-end gap-4 md:gap-6">

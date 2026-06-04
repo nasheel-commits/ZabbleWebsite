@@ -13,7 +13,7 @@ const posts = computed(() =>
 usePageSeo({
   title: 'Insights',
   description:
-    'Practical, South-Africa-first guides on automation, audit trails, anomaly detection and analytics — fix the problem costing your business the most.',
+    'Practical, South-Africa-first guides on automation, audit trails, anomaly detection and analytics, fix the problem costing your business the most.',
   path: '/blog',
   ogType: 'website',
 })
@@ -40,7 +40,7 @@ usePageSeo({
             How to fix the problem <span class="cyan-underline">costing you the most</span>.
           </h1>
           <p class="mt-5 text-[16.5px] md:text-[17px] leading-[1.6] text-mute">
-            Practical guides for South African operators — written around real problems, not products.
+            Practical guides for South African operators, written around real problems, not products.
             Start with <NuxtLink to="/what-we-build" class="text-cyan-brand-deep underline decoration-cyan-brand/40 underline-offset-2 hover:decoration-cyan-brand">what we build</NuxtLink>,
             or dig into a use case below.
           </p>

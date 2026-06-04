@@ -3,15 +3,15 @@ import { liveSystemRoutes, goneSystemRoutes, computeIndexable } from './app/util
 import { REDIRECTS, buildRedirectRouteRules } from './app/data/redirects'
 
 // ---------------------------------------------------------------------------
-// SEO foundation wiring — owned by S01 (Technical SEO & Crawlability).
+// SEO foundation wiring, owned by S01 (Technical SEO & Crawlability).
 // See docs/seo/audits/01-technical.md and docs/seo/decisions/*
 // ---------------------------------------------------------------------------
 
 // System detail routes are sourced from the single source of truth
 // (app/data/systems.ts) and split by publish status so prerender + sitemap never
 // drift from the data:
-//  • liveSystemRoutes — published money pages: prerendered, in sitemap, 200.
-//  • goneSystemRoutes — concept/in-progress (thin/orphan): NOT prerendered, NOT
+//  • liveSystemRoutes, published money pages: prerendered, in sitemap, 200.
+//  • goneSystemRoutes, concept/in-progress (thin/orphan): NOT prerendered, NOT
 //    in sitemap, noindex, and served 410 by the [slug].vue gate (OR-4).
 const priorityRoutes = [
   '/', '/systems', '/diagnose', '/contact',
@@ -37,7 +37,7 @@ const goneRouteRules = Object.fromEntries(
 // FAIL-CLOSED. The build is NON-indexable unless explicitly flipped at launch.
 // Production (Vercel `production` env) is indexable AUTOMATICALLY, so deploying
 // this config to the live site can never accidentally noindex it. Preview/staging
-// deploys (Vercel `preview`) — and any build lacking these signals — stay
+// deploys (Vercel `preview`), and any build lacking these signals, stay
 // NON-indexable: `Disallow: /` + noindex, so a staging domain never indexes.
 // Explicit override for non-Vercel hosts: NUXT_SITE_INDEXABLE=true.
 const SITE_URL = process.env.NUXT_SITE_URL || 'https://zabble.org'
@@ -63,7 +63,7 @@ export default defineNuxtConfig({
     enabled: true,
     failOnError: false,
     report: { html: true, markdown: true },
-    // Concept/410 pages are intentionally unreachable — don't flag them.
+    // Concept/410 pages are intentionally unreachable, don't flag them.
     excludeLinks: goneSystemRoutes,
   },
 
@@ -75,7 +75,7 @@ export default defineNuxtConfig({
   // → org) plus a per-route `WebPage` (isPartOf → WebSite, about → org).
   //
   // `description` + `knowsAbout` are byte-identical to the GEO entity standard
-  // (07-geo-entity-plan.md §1–2, boilerplate "B") and public/llms.txt — one
+  // (07-geo-entity-plan.md §1–2, boilerplate "B") and public/llms.txt, one
   // entity, one description, everywhere (divergent descriptions split the
   // entity for generative engines).
   //
@@ -88,10 +88,10 @@ export default defineNuxtConfig({
   // `sameAs` is intentionally ABSENT: every owned profile (LinkedIn / Crunchbase
   // / Wikidata / Google Business Profile) is still PENDING (07-geo §2/§4, 04
   // local plan). A dead or wrong `sameAs` weakens the entity, so each URL is
-  // added only once it is live (S07/S10). `logo` is wired-on-arrival — no
+  // added only once it is live (S07/S10). `logo` is wired-on-arrival, no
   // ≥112×112 brand asset exists in /public yet (only favicon.ico); see the LOGO
   // marker below + 04 GBP plan §2.5. NOT a `LocalBusiness`: no verified NAP
-  // exists (04 local plan blocker B6 — name/address/phone pending). `areaServed`
+  // exists (04 local plan blocker B6, name/address/phone pending). `areaServed`
   // carries the ZA local signal in the meantime.
   schemaOrg: {
     identity: {
@@ -100,8 +100,8 @@ export default defineNuxtConfig({
       url: 'https://zabble.org',
       description:
         'Zabble is a South African consulting firm that builds bespoke ' +
-        'operational systems — automation, audit trails, anomaly detection, and ' +
-        'analytics — shaped around the single problem slowing one specific ' +
+        'operational systems, automation, audit trails, anomaly detection, and ' +
+        'analytics, shaped around the single problem slowing one specific ' +
         'business down.',
       disambiguatingDescription:
         'Zabble is the South African bespoke operational-systems consultancy at ' +
@@ -116,7 +116,7 @@ export default defineNuxtConfig({
       },
       // Country-level certainty + the three metros S04's local plan designates
       // as service areas (04 local plan §2). No street address is claimed (none
-      // verified — blocker B6).
+      // verified, blocker B6).
       areaServed: [
         { '@type': 'Country', name: 'South Africa' },
         { '@type': 'City', name: 'Johannesburg' },
@@ -136,12 +136,12 @@ export default defineNuxtConfig({
         'custom CRM',
       ],
       // LOGO (wire-on-arrival): uncomment once /public/zabble-logo.png (≥112×112,
-      // on white) exists — schema then gains the logo enhancement. Tracked in
+      // on white) exists, schema then gains the logo enhancement. Tracked in
       // audits/08-schema.md (G2) + 04 GBP plan §2.5.
       // logo: 'https://zabble.org/zabble-logo.png',
       //
       // SAMEAS (wire-on-arrival): add each verified profile URL once it is live
-      // (07-geo §2/§4). Keep absent until then — no fabricated/placeholder URLs.
+      // (07-geo §2/§4). Keep absent until then, no fabricated/placeholder URLs.
       // sameAs: [
       //   'https://www.linkedin.com/company/<zabble>',
       //   'https://www.crunchbase.com/organization/<zabble>',
@@ -178,8 +178,8 @@ export default defineNuxtConfig({
       // app/plugins/seo-verification.ts). DNS TXT is preferred; these meta-tag
       // values are the in-code fallback. Empty ⇒ no tag. Not secrets.
       verification: {
-        google: '', // NUXT_PUBLIC_VERIFICATION_GOOGLE — GSC HTML-tag method
-        bing: '',   // NUXT_PUBLIC_VERIFICATION_BING   — Bing msvalidate.01
+        google: '', // NUXT_PUBLIC_VERIFICATION_GOOGLE, GSC HTML-tag method
+        bing: '',   // NUXT_PUBLIC_VERIFICATION_BING  , Bing msvalidate.01
       },
     },
   },
@@ -197,11 +197,11 @@ export default defineNuxtConfig({
   site: {
     url: SITE_URL,
     name: 'Zabble',
-    // Micro boilerplate (GEO entity standard "A") — kept consistent with the
+    // Micro boilerplate (GEO entity standard "A"), kept consistent with the
     // Organization description (schemaOrg below) + public/llms.txt so the entity
     // reads as one thing across SEO, schema and AI surfaces (S03/S07).
     description:
-      'Zabble is a South African firm that builds bespoke operational systems — ' +
+      'Zabble is a South African firm that builds bespoke operational systems, ' +
       'automation, audit trails, anomaly detection, and analytics.',
     // en-ZA market; 'en' is the language code. HTML lang is set to en-ZA below.
     defaultLocale: 'en',
@@ -211,12 +211,12 @@ export default defineNuxtConfig({
     indexable: INDEXABLE,
   },
 
-  // --- robots.txt — AI-crawler policy per ADR-0002 ----------------------------
+  // --- robots.txt, AI-crawler policy per ADR-0002 ----------------------------
   // When `site.indexable` is false (default / staging) the module emits a global
-  // `Disallow: /` + noindex — the pre-launch guard. The groups below are the
+  // `Disallow: /` + noindex, the pre-launch guard. The groups below are the
   // LAUNCH policy, emitted once NUXT_SITE_INDEXABLE=true.
   robots: {
-    // Do NOT block AI bots — GEO depends on being crawlable + citable.
+    // Do NOT block AI bots, GEO depends on being crawlable + citable.
     blockAiBots: false,
     blockNonSeoBots: false,
     // Baseline: everything may crawl everything at launch.
@@ -249,11 +249,11 @@ export default defineNuxtConfig({
     sitemap: '/sitemap.xml',
   },
 
-  // --- sitemap.xml — dynamic source from SYSTEMS, with lastmod ----------------
+  // --- sitemap.xml, dynamic source from SYSTEMS, with lastmod ----------------
   sitemap: {
     // Explicit URLs for reliability (in addition to prerender auto-discovery).
     urls: priorityRoutes,
-    // Never expose internal/build/api routes — or the un-published system pages.
+    // Never expose internal/build/api routes, or the un-published system pages.
     exclude: ['/_**', '/api/**', '/200.html', '/404.html', ...goneSystemRoutes],
     autoLastmod: true,
     defaults: { changefreq: 'monthly', priority: 0.7 },
@@ -265,7 +265,7 @@ export default defineNuxtConfig({
       crawlLinks: true,             // discover any linked routes automatically
       // priorityRoutes (top of file) now includes the S02 hub entry points
       // (/contact, /pillars, /industries, /insights) + the S09 POPIA legal pages
-      // (/privacy, /cookie-policy) alongside the live system money pages — so
+      // (/privacy, /cookie-policy) alongside the live system money pages, so
       // prerender + sitemap never miss one. crawlLinks then discovers the
       // dynamic children from those hubs + footer links.
       routes: priorityRoutes,       // belt-and-suspenders explicit list (live only)
@@ -290,7 +290,7 @@ export default defineNuxtConfig({
     '/blog/**':          { prerender: true },
     '/diagnose':         { prerender: true },
     '/contact':          { prerender: true },
-    // POPIA legal pages (S09) — server-rendered/prerendered like the rest.
+    // POPIA legal pages (S09), server-rendered/prerendered like the rest.
     '/privacy':          { prerender: true },
     '/cookie-policy':    { prerender: true },
 
@@ -305,7 +305,7 @@ export default defineNuxtConfig({
 
     // NOTE: structural canonicalisation (trailing-slash, clean URLs, www→apex)
     // is handled at the host layer (vercel.json + Vercel domain settings), NOT
-    // here — a `redirect` routeRule on a LIVE static path emits a meta-refresh
+    // here, a `redirect` routeRule on a LIVE static path emits a meta-refresh
     // stub that clobbers the real page. See docs/seo/decisions/0003-redirect-map.md.
   },
 

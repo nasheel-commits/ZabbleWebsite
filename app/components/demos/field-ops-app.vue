@@ -91,7 +91,7 @@ const PERSONAS: PersonaCfg[] = [
         customer: 'Sithole household',
         address: '88 Hill Road',
         city: 'Linden',
-        category: 'Service call — no cooling',
+        category: 'Service call, no cooling',
         equipment: ['LG dual-inverter (2022)'],
         history: [
           { date: '2025-12-04', note: 'Reported icing on indoor coil.' },
@@ -334,7 +334,7 @@ const PERSONAS: PersonaCfg[] = [
         city: 'Pinetown',
         category: 'Read + seal check',
         equipment: ['Itron AMI 100'],
-        history: [{ date: '2025-06-04', note: 'Seal flagged loose — re-sealed.' }],
+        history: [{ date: '2025-06-04', note: 'Seal flagged loose, re-sealed.' }],
         lastPhotos: [{ caption: 'Seal close-up', tone: 'amber' }],
       },
       {
@@ -443,16 +443,16 @@ function emit(action: string, detail?: string) {
     id: uniq(),
     ts: Date.now(),
     persona: personaSlug.value,
-    jobId: j?.id ?? '—',
-    jobCategory: j?.category ?? '—',
-    customer: j?.customer ?? '—',
+    jobId: j?.id ?? '-',
+    jobCategory: j?.category ?? '-',
+    customer: j?.customer ?? '-',
     action,
     detail,
     status: online.value ? 'syncing' : 'queued',
   }
   events.value = [ev, ...events.value].slice(0, MAX_FEED)
   if (online.value) {
-    // Brief "syncing" beat, then settle to synced — feels like a network round-trip.
+    // Brief "syncing" beat, then settle to synced, feels like a network round-trip.
     setTimeout(() => {
       const target = events.value.find((e) => e.id === ev.id)
       if (target && target.status === 'syncing') target.status = 'synced'
@@ -738,7 +738,7 @@ const eventStatusClass: Record<EventStatus, string> = {
       <div class="border-b lg:border-b-0 lg:border-r border-line bg-surface-alt/40 px-3 sm:px-4 md:px-6 py-5 sm:py-6 md:py-8 flex justify-center">
         <div
           class="phone-frame relative w-[280px] h-[560px] rounded-[36px] bg-ink shadow-[0_30px_60px_-28px_rgba(15,23,42,0.4),0_10px_25px_-12px_rgba(15,23,42,0.18)]"
-          aria-label="Field app — phone mockup"
+          aria-label="Field app, phone mockup"
         >
           <!-- Notch -->
           <div
@@ -1301,7 +1301,7 @@ const eventStatusClass: Record<EventStatus, string> = {
             </span>
             <p class="text-[13px] text-ink font-medium">No activity yet.</p>
             <p class="text-[12px] text-mute mt-1 max-w-xs mx-auto">
-              Open a job on the phone, take a photo, tick a checklist item — the feed will fill in
+              Open a job on the phone, take a photo, tick a checklist item, the feed will fill in
               real time.
             </p>
           </div>
@@ -1318,7 +1318,7 @@ const eventStatusClass: Record<EventStatus, string> = {
           <div class="rounded-lg border border-line bg-white px-3 py-2 flex items-start gap-2">
             <WifiOff :size="14" :stroke-width="2" class="mt-0.5 text-amber-600 shrink-0" />
             <p class="text-[11.5px] text-ink leading-tight">
-              Toggle Offline — actions keep working and queue locally.
+              Toggle Offline, actions keep working and queue locally.
             </p>
           </div>
           <div class="rounded-lg border border-line bg-white px-3 py-2 flex items-start gap-2">
@@ -1342,14 +1342,14 @@ const eventStatusClass: Record<EventStatus, string> = {
 }
 
 .phone-frame {
-  /* Phone bezel — gives the frame a subtle inner highlight without a gradient. */
+  /* Phone bezel, gives the frame a subtle inner highlight without a gradient. */
   box-shadow:
     inset 0 0 0 1px rgba(255, 255, 255, 0.08),
     0 30px 60px -28px rgba(15, 23, 42, 0.4),
     0 10px 25px -12px rgba(15, 23, 42, 0.18);
 }
 
-/* Animated signature drawing — pen sweeps left to right. */
+/* Animated signature drawing, pen sweeps left to right. */
 .sig-path {
   stroke-dasharray: 320;
   stroke-dashoffset: 0;
@@ -1362,7 +1362,7 @@ const eventStatusClass: Record<EventStatus, string> = {
   to { stroke-dashoffset: 0; }
 }
 
-/* Slow spin for "syncing" indicator — gentler than Tailwind's default. */
+/* Slow spin for "syncing" indicator, gentler than Tailwind's default. */
 .animate-spin-slow {
   animation: spin-slow 1.4s linear infinite;
 }

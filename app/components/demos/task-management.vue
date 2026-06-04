@@ -81,7 +81,7 @@ function log(kind: ActivityEntry['kind'], text: string) {
   if (activity.value.length > 12) activity.value.length = 12
 }
 
-log('open', 'Matter 2026-0341 opened — 11 Acacia Avenue, Sandton. Playbook loaded.')
+log('open', 'Matter 2026-0341 opened, 11 Acacia Avenue, Sandton. Playbook loaded.')
 
 // ---------------------------------------------------------------------------
 // Derived data
@@ -143,10 +143,10 @@ function isContextual(t: Task): boolean {
 
 // Auto-generated partner brief (would normally be assembled from matter data).
 const partnerSummary = computed(() => (
-  'Matter 2026-0341 — Transfer of 11 Acacia Avenue, Sandton (Erf 4421) from J & A Smith to N Naidoo for R 4,250,000. ' +
+  'Matter 2026-0341, Transfer of 11 Acacia Avenue, Sandton (Erf 4421) from J & A Smith to N Naidoo for R 4,250,000. ' +
   'FICA cleared for all parties on day 3. Bond approval received from Investec on day 6 with guarantees lodged on day 9. ' +
   'Rates and levy clearance certificates issued. Transfer documents signed by both parties on day 13. ' +
-  'All suspensive conditions met — ready for your signature on the deed of transfer and supporting power of attorney.'
+  'All suspensive conditions met, ready for your signature on the deed of transfer and supporting power of attorney.'
 ))
 
 // ---------------------------------------------------------------------------
@@ -233,7 +233,7 @@ function selectedSimulatorTask() {
 
 // Pre-seed: open the first task so the demo doesn't start fully blocked.
 function ensureSeed() {
-  // Nothing pre-completed — keeps the reset path obvious. The first card
+  // Nothing pre-completed, keeps the reset path obvious. The first card
   // ("Open matter") is always 'ready' because it has no deps.
 }
 ensureSeed()
@@ -459,7 +459,7 @@ ensureSeed()
                   Prepared brief
                 </div>
                 <p>
-                  The system has prepared the linked deeds search, FICA pack, and prior correspondence for this task — surfaced where {{ ROLE_META[t.owner].label }} starts.
+                  The system has prepared the linked deeds search, FICA pack, and prior correspondence for this task, surfaced where {{ ROLE_META[t.owner].label }} starts.
                 </p>
               </div>
 
@@ -479,7 +479,7 @@ ensureSeed()
                 </p>
                 <div class="mt-2.5 flex items-center gap-2 text-[11.5px] text-mute">
                   <Users :size="12" :stroke-width="2" aria-hidden="true" />
-                  Auto-generated from matter context — every fact links back to the source document.
+                  Auto-generated from matter context, every fact links back to the source document.
                 </div>
               </div>
 
@@ -512,7 +512,7 @@ ensureSeed()
                   <span>+10d</span>
                 </div>
                 <p class="mt-2 text-[12px] text-mute leading-[1.5]">
-                  The timeline recomputes downstream tasks live — anything that can no longer meet its target due date is flagged in red.
+                  The timeline recomputes downstream tasks live, anything that can no longer meet its target due date is flagged in red.
                 </p>
               </div>
             </article>
@@ -595,7 +595,7 @@ ensureSeed()
                   isContextual(t) ? 'opacity-40' : 'opacity-100',
                 ]"
                 :style="{ left: `${timelinePct(t.effDue)}%` }"
-                :aria-label="`${t.title} — due day ${t.effDue}${t.atRisk ? `, ${t.slipDays} days late` : ''}`"
+                :aria-label="`${t.title}, due day ${t.effDue}${t.atRisk ? `, ${t.slipDays} days late` : ''}`"
                 @click="t.status === 'ready' ? selectSimulatorTask(simulatorTaskId === t.id ? null : t.id) : null"
               >
                 <span
@@ -710,7 +710,7 @@ ensureSeed()
 </template>
 
 <style scoped>
-/* Range input styling — keep brand-consistent. */
+/* Range input styling, keep brand-consistent. */
 input[type='range'] {
   height: 4px;
   border-radius: 9999px;

@@ -1,9 +1,9 @@
-// Reusable structured-data patterns (S03 — Structured Data / Schema.org),
+// Reusable structured-data patterns (S03, Structured Data / Schema.org),
 // driven by page data. These are the ready-to-wire builders for content types
 // the site does not carry YET:
 //
-//   • useFaqSchema     — FAQPage, for when S06/S07 add a visible Q&A block.
-//   • useArticleSchema — Article/BlogPosting, for when a blog ships (S06).
+//   • useFaqSchema    , FAQPage, for when S06/S07 add a visible Q&A block.
+//   • useArticleSchema, Article/BlogPosting, for when a blog ships (S06).
 //
 // They are intentionally NOT called anywhere today: there is no on-page FAQ or
 // article/blog content to mark up, and JSON-LD must match visible content (no
@@ -12,7 +12,7 @@
 // (§FAQPage/QAPage and §Article/BlogPosting) and the cross-session asks to S06/S07.
 //
 // nuxt-schema-org auto-imports `useSchemaOrg` / `define*`; Vue auto-imports
-// `toValue` / `MaybeRefOrGetter` — no explicit imports needed in Nuxt app code.
+// `toValue` / `MaybeRefOrGetter`, no explicit imports needed in Nuxt app code.
 
 export interface FaqItem {
   /** The question exactly as it appears on the page. */

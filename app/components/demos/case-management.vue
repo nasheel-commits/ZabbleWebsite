@@ -130,7 +130,7 @@ interface Case {
 // ---------------------------------------------------------------------------
 //
 // We pick a stable simulation epoch on mount (so seeds are deterministic
-// relative to "now") and tick simHoursElapsed forward — 1 sim-hour per real
+// relative to "now") and tick simHoursElapsed forward, 1 sim-hour per real
 // 500ms. A 24h SLA visibly counts down in 12 real seconds.
 
 const TICK_MS = 500
@@ -212,7 +212,7 @@ const LEGAL: CaseTypeTemplate = {
       detail: 'File archived; client letter dispatched.',
       stages: ['resolution'],
       toStage: 'resolution',
-      comment: 'Matter closed — archived to records.',
+      comment: 'Matter closed, archived to records.',
       kind: 'decision',
     },
     {
@@ -601,7 +601,7 @@ function templateFor(typeId: CaseTypeId): CaseTypeTemplate {
 }
 
 // ---------------------------------------------------------------------------
-// Seeds — 4 cases per type, distributed across the 4 stages.
+// Seeds, 4 cases per type, distributed across the 4 stages.
 // ---------------------------------------------------------------------------
 
 const LEGAL_SEEDS: SeedCase[] = [
@@ -617,7 +617,7 @@ const LEGAL_SEEDS: SeedCase[] = [
       client: 'A. Roberts',
       opposing: 'Acme Holdings Ltd',
       matterNo: 'LM-2041',
-      court: 'High Court — JHB',
+      court: 'High Court, JHB',
       nextHearing: '14 Oct',
     },
     initialEvents: [
@@ -657,7 +657,7 @@ const LEGAL_SEEDS: SeedCase[] = [
   },
   {
     id: 'LM-2037',
-    subject: 'Patel & Co. — Contract dispute',
+    subject: 'Patel & Co., Contract dispute',
     assignee: 'A. Naidoo',
     supervisor: 'P. Okoye (Partner)',
     stage: 'negotiation',
@@ -667,7 +667,7 @@ const LEGAL_SEEDS: SeedCase[] = [
       client: 'Patel & Co.',
       opposing: 'Riverside Supply',
       matterNo: 'LM-2037',
-      court: 'Magistrates — DBN',
+      court: 'Magistrates, DBN',
       nextHearing: '21 Sep',
     },
     initialEvents: [
@@ -702,7 +702,7 @@ const LEGAL_SEEDS: SeedCase[] = [
       { hoursAgo: 144, kind: 'transition', title: 'Moved to Negotiation', actor: 'M. Daniels' },
       { hoursAgo: 96, kind: 'decision', title: 'Settlement received', actor: 'M. Daniels' },
       { hoursAgo: 96, kind: 'transition', title: 'Moved to Resolution', actor: 'M. Daniels' },
-      { hoursAgo: 72, kind: 'decision', title: 'Matter closed — archived to records', actor: 'M. Daniels' },
+      { hoursAgo: 72, kind: 'decision', title: 'Matter closed, archived to records', actor: 'M. Daniels' },
     ],
     initialDocs: [
       { hoursAgo: 96, name: 'Settlement agreement (signed).pdf', uploadedBy: 'M. Daniels' },
@@ -808,7 +808,7 @@ const NGO_SEEDS: SeedCase[] = [
 const COMPLAINT_SEEDS: SeedCase[] = [
   {
     id: 'CC-9087',
-    subject: 'Damaged shipment — order 88421',
+    subject: 'Damaged shipment, order 88421',
     assignee: 'S. Pillay (CX)',
     supervisor: 'D. Rao (CX lead)',
     stage: 'new',
@@ -828,7 +828,7 @@ const COMPLAINT_SEEDS: SeedCase[] = [
   },
   {
     id: 'CC-9081',
-    subject: 'Billing error — duplicate charge',
+    subject: 'Billing error, duplicate charge',
     assignee: 'S. Pillay (CX)',
     supervisor: 'D. Rao (CX lead)',
     stage: 'investigating',
@@ -849,7 +849,7 @@ const COMPLAINT_SEEDS: SeedCase[] = [
   },
   {
     id: 'CC-9076',
-    subject: 'Late delivery — order 88105',
+    subject: 'Late delivery, order 88105',
     assignee: 'N. Botha (CX)',
     supervisor: 'D. Rao (CX lead)',
     stage: 'resolving',
@@ -874,7 +874,7 @@ const COMPLAINT_SEEDS: SeedCase[] = [
   },
   {
     id: 'CC-9015',
-    subject: 'Product defect — kettle',
+    subject: 'Product defect, kettle',
     assignee: 'N. Botha (CX)',
     supervisor: 'D. Rao (CX lead)',
     stage: 'closed',
@@ -943,7 +943,7 @@ const HR_SEEDS: SeedCase[] = [
   },
   {
     id: 'HR-0204',
-    subject: 'Safety incident — Warehouse B',
+    subject: 'Safety incident, Warehouse B',
     assignee: 'V. Pereira (HRBP)',
     supervisor: 'C. Adebayo (Head of HR)',
     stage: 'action',
@@ -951,7 +951,7 @@ const HR_SEEDS: SeedCase[] = [
     slaTotalHours: 12,
     fields: {
       reporter: 'Floor supervisor',
-      subject: 'Team — Warehouse B',
+      subject: 'Team, Warehouse B',
       department: 'Warehouse',
       severity: 'High',
       incidentNo: 'HR-0204',
@@ -968,7 +968,7 @@ const HR_SEEDS: SeedCase[] = [
   },
   {
     id: 'HR-0188',
-    subject: 'Grievance — performance review',
+    subject: 'Grievance, performance review',
     assignee: 'V. Pereira (HRBP)',
     supervisor: 'C. Adebayo (Head of HR)',
     stage: 'closed',
@@ -984,7 +984,7 @@ const HR_SEEDS: SeedCase[] = [
     initialEvents: [
       { hoursAgo: 480, kind: 'intake', title: 'Grievance reported', actor: 'Confidential' },
       { hoursAgo: 360, kind: 'transition', title: 'Moved to Action', actor: 'V. Pereira' },
-      { hoursAgo: 168, kind: 'decision', title: 'Case closed — mediation outcome accepted', actor: 'C. Adebayo' },
+      { hoursAgo: 168, kind: 'decision', title: 'Case closed, mediation outcome accepted', actor: 'C. Adebayo' },
       { hoursAgo: 168, kind: 'transition', title: 'Moved to Closed', actor: 'C. Adebayo' },
     ],
   },
@@ -993,7 +993,7 @@ const HR_SEEDS: SeedCase[] = [
 const INSURANCE_SEEDS: SeedCase[] = [
   {
     id: 'IC-7714',
-    subject: 'Motor — collision claim',
+    subject: 'Motor, collision claim',
     assignee: 'O. Williams (Claims)',
     supervisor: 'B. Kruger (Claims lead)',
     stage: 'filed',
@@ -1016,7 +1016,7 @@ const INSURANCE_SEEDS: SeedCase[] = [
   },
   {
     id: 'IC-7702',
-    subject: 'Household — burst geyser',
+    subject: 'Household, burst geyser',
     assignee: 'O. Williams (Claims)',
     supervisor: 'B. Kruger (Claims lead)',
     stage: 'assessing',
@@ -1037,7 +1037,7 @@ const INSURANCE_SEEDS: SeedCase[] = [
   },
   {
     id: 'IC-7689',
-    subject: 'Commercial — equipment loss',
+    subject: 'Commercial, equipment loss',
     assignee: 'O. Williams (Claims)',
     supervisor: 'B. Kruger (Claims lead)',
     stage: 'adjusting',
@@ -1063,7 +1063,7 @@ const INSURANCE_SEEDS: SeedCase[] = [
   },
   {
     id: 'IC-7641',
-    subject: 'Travel — medical claim',
+    subject: 'Travel, medical claim',
     assignee: 'O. Williams (Claims)',
     supervisor: 'B. Kruger (Claims lead)',
     stage: 'paid',
@@ -1088,7 +1088,7 @@ const INSURANCE_SEEDS: SeedCase[] = [
 const MAINTENANCE_SEEDS: SeedCase[] = [
   {
     id: 'MT-3306',
-    subject: 'AC unit — meeting room 2 not cooling',
+    subject: 'AC unit, meeting room 2 not cooling',
     assignee: 'Help desk',
     supervisor: 'K. Bekker (Facilities lead)',
     stage: 'logged',
@@ -1107,7 +1107,7 @@ const MAINTENANCE_SEEDS: SeedCase[] = [
   },
   {
     id: 'MT-3301',
-    subject: 'Leaking pipe — kitchen sink',
+    subject: 'Leaking pipe, kitchen sink',
     assignee: 'K. Bekker (Facilities lead)',
     supervisor: 'K. Bekker (Facilities lead)',
     stage: 'triaged',
@@ -1152,7 +1152,7 @@ const MAINTENANCE_SEEDS: SeedCase[] = [
   },
   {
     id: 'MT-3270',
-    subject: 'Lift — emergency call resolved',
+    subject: 'Lift, emergency call resolved',
     assignee: 'J. Pillai (Technician)',
     supervisor: 'K. Bekker (Facilities lead)',
     stage: 'resolved',
@@ -1277,7 +1277,7 @@ function buildCaseFromSeed(typeId: CaseTypeId, s: SeedCase, nowMs: number): Case
     .sort((a, b) => b.at - a.at)
 
   const resolved = isTerminalStage(typeId, s.stage)
-  // For resolved cases, the deadline is irrelevant — set it well in the past.
+  // For resolved cases, the deadline is irrelevant, set it well in the past.
   const deadline = resolved
     ? nowMs - 72 * 3_600_000
     : nowMs + s.slaHours * 3_600_000
@@ -1481,7 +1481,7 @@ function fireEvent(tpl: EventTemplate) {
         id: uid('e'),
         at: now,
         kind: 'decision',
-        title: 'Case resolved — record sealed',
+        title: 'Case resolved, record sealed',
         actor: 'System',
       })
     }
@@ -1543,7 +1543,7 @@ function buildExportText(c: Case): string {
     '------',
   ]
   const fieldLines = tpl.fields.map(
-    (f) => `${f.label.padEnd(18, ' ')} ${c.fields[f.key] ?? '—'}`,
+    (f) => `${f.label.padEnd(18, ' ')} ${c.fields[f.key] ?? '-'}`,
   )
   const docLines =
     c.documents.length > 0
@@ -1563,7 +1563,7 @@ function buildExportText(c: Case): string {
     '------------------------',
     ...chronological.map(formatExportLine),
     '',
-    '— end of record —',
+    '- end of record -',
   ]
   return [...headerLines, ...fieldLines, ...docLines, ...timelineLines].join('\n')
 }
@@ -1779,7 +1779,7 @@ watch(activeTypeId, () => {
           Live engine
         </span>
         <p class="mt-3 max-w-xl text-[14.5px] md:text-[15px] leading-[1.55] text-mute">
-          One engine, six case types. Fire an event and the case advances —
+          One engine, six case types. Fire an event and the case advances -
           deadlines recompute, assignees update, breach rules escalate
           themselves. Every action is written to the audit trail
           <strong class="text-ink font-semibold">as it happens</strong>.
@@ -1821,7 +1821,7 @@ watch(activeTypeId, () => {
         </button>
       </div>
       <p class="mt-2 text-[12.5px] text-mute-2">
-        Switching case type swaps the workflow, fields and SLAs — not the engine.
+        Switching case type swaps the workflow, fields and SLAs, not the engine.
       </p>
     </div>
 
@@ -2176,7 +2176,7 @@ watch(activeTypeId, () => {
                     {{ f.label }}
                   </dt>
                   <dd class="mt-0.5 text-[14px] text-ink">
-                    {{ selectedCase.fields[f.key] ?? '—' }}
+                    {{ selectedCase.fields[f.key] ?? '-' }}
                   </dd>
                 </div>
                 <div>
@@ -2231,7 +2231,7 @@ watch(activeTypeId, () => {
 
             <div v-if="selectedCase.isResolved" class="rounded-lg bg-surface-alt p-4 text-[13px] text-mute leading-[1.55]">
               <CheckCircle2 :size="16" :stroke-width="2" class="inline-block mr-1.5 text-cyan-brand-deep align-text-bottom" aria-hidden="true" />
-              This case is resolved. The record is sealed — further events
+              This case is resolved. The record is sealed, further events
               cannot fire. The full audit trail remains exportable.
             </div>
 
@@ -2383,7 +2383,7 @@ watch(activeTypeId, () => {
               Audit trail · single document
             </div>
             <div class="mt-1 font-display text-[20px] leading-[1.15] text-ink">
-              {{ selectedCase.id }} — {{ selectedCase.subject }}
+              {{ selectedCase.id }}, {{ selectedCase.subject }}
             </div>
           </div>
           <button
@@ -2396,7 +2396,7 @@ watch(activeTypeId, () => {
           </button>
         </div>
 
-        <!-- Modal body — document preview -->
+        <!-- Modal body, document preview -->
         <div class="flex-1 overflow-y-auto px-5 md:px-6 py-5">
           <div class="rounded-xl border border-line bg-surface-alt/40 p-5 md:p-6">
             <div class="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[12.5px] text-ink">
@@ -2415,7 +2415,7 @@ watch(activeTypeId, () => {
               <div>{{ selectedCase.supervisor }}</div>
               <template v-for="f in activeTemplate.fields" :key="f.key">
                 <div class="font-semibold text-mute-2 uppercase tracking-[0.12em] text-[11px]">{{ f.label }}</div>
-                <div>{{ selectedCase.fields[f.key] ?? '—' }}</div>
+                <div>{{ selectedCase.fields[f.key] ?? '-' }}</div>
               </template>
             </div>
 
@@ -2461,7 +2461,7 @@ watch(activeTypeId, () => {
             </div>
           </div>
           <p class="mt-3 text-[12px] text-mute-2 leading-[1.55]">
-            Every line above was written by the engine as it happened — never edited.
+            Every line above was written by the engine as it happened, never edited.
             The full record exports as a single document, ready for an auditor,
             a regulator, or the client.
           </p>

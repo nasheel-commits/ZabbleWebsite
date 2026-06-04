@@ -1,4 +1,4 @@
-// Canonical Zabble organization entity — single source of truth.
+// Canonical Zabble organization entity, single source of truth.
 //
 // Used by: the site-wide Organization JSON-LD (app.vue), the on-site entity
 // section (TheEntity.vue), llms.txt generation, and the GEO test suite. S03/S08
@@ -6,8 +6,8 @@
 // re-declaring the entity, so every surface tells generative engines the same
 // thing.
 //
-// GEO purpose: make "Zabble" an unambiguous entity — a South African
-// operations-systems consultancy — and explicitly distinct from the US homonym
+// GEO purpose: make "Zabble" an unambiguous entity, a South African
+// operations-systems consultancy, and explicitly distinct from the US homonym
 // "Zabble, Inc." (zabbleinc.com), which generative engines currently conflate it
 // with (see audits/07-geo.md finding F2).
 
@@ -28,9 +28,9 @@ export interface OrgEntity {
   legalName: string | null
   url: string
   email: string
-  /** Authoritative one-paragraph description — kept byte-identical across surfaces. */
+  /** Authoritative one-paragraph description, kept byte-identical across surfaces. */
   description: string
-  /** Schema.org disambiguatingDescription — the on-site "we are not them" signal. */
+  /** Schema.org disambiguatingDescription, the on-site "we are not them" signal. */
   disambiguatingDescription: string
   slogan: string
   areaServed: string
@@ -53,7 +53,7 @@ export const ORGANIZATION: OrgEntity = {
   url: 'https://zabble.org',
   email: 'sales@zabble.org',
   description:
-    'Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.',
+    'Zabble is a South African consulting firm that builds bespoke operational systems, automation, audit trails, anomaly detection, and analytics, shaped around the single problem slowing one specific business down.',
   disambiguatingDescription:
     'Zabble is a South African operations-systems consultancy. It is not affiliated with Zabble, Inc., the United States waste-management software company.',
   slogan: "We don't sell software. We build the system your business actually needs.",

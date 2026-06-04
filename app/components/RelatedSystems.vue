@@ -3,7 +3,7 @@
 //
 // Turns each module page from an in-degree-1 dead-end into a node in a topical
 // cluster: it links out to 3–6 sibling modules that share pillars, with the
-// module NAME as the (descriptive) anchor text — not a generic "view system"
+// module NAME as the (descriptive) anchor text, not a generic "view system"
 // (fixes audit issue A6). Equity flows module->module within a pillar, and the
 // shared-pillar context tells crawlers/AI engines these entities are related.
 //

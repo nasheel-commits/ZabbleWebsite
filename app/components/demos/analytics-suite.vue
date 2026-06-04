@@ -368,7 +368,7 @@ const KPIS: Record<IndustryKey, Record<PersonaKey, KPI[]>> = {
         calc: 'Cost of goods sold (F&B) ÷ F&B revenue, MTD across the portfolio.',
         sources: ['POS', 'Supplier invoices', 'Inventory'],
         decision: 'Whether to escalate to the chefs or to procurement.',
-        action: 'Procurement first — two suppliers have raised price 7%+ without notice. Then the menu mix conversation.',
+        action: 'Procurement first, two suppliers have raised price 7%+ without notice. Then the menu mix conversation.',
       },
       {
         id: 'hos-ops-chan',
@@ -694,9 +694,9 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
   logistics: {
     frontline: {
       anomalies: [
-        'Two N1 corridor routes finished 47 and 52 minutes late — same dispatcher, same shift.',
+        'Two N1 corridor routes finished 47 and 52 minutes late, same dispatcher, same shift.',
         'Three returns flagged against the new packaging spec; loaders not yet retrained.',
-        'Workshop completed both scheduled services overnight — fleet at 41 of 45.',
+        'Workshop completed both scheduled services overnight, fleet at 41 of 45.',
       ],
       risks: [
         'Four drivers projected to breach 12-hour duty before close.',
@@ -710,12 +710,12 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     ops: {
       anomalies: [
-        'Fuel spend tracking +12% against forecast — diesel up 9%, the rest is route mix.',
+        'Fuel spend tracking +12% against forecast, diesel up 9%, the rest is route mix.',
         'Dispatcher trial completing its eighth consecutive week below SLA penalty exposure.',
       ],
       risks: [
         'Two contracts (Klipfontein, Bayside) now eligible for the price-recovery clause.',
-        'Yard utilisation crossed 68% — expansion business case threshold is 78%.',
+        'Yard utilisation crossed 68%, expansion business case threshold is 78%.',
       ],
       decisions: [
         'Trigger the price-recovery clause on Klipfontein and Bayside before month-end.',
@@ -735,17 +735,17 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
       decisions: [
         'Lift the headcount freeze on two of the four held commercial roles.',
         'Move the revolver conversation up by a month with FD and relationship manager.',
-        'Brief the board ahead of the quarterly — margin compression is the watch item.',
+        'Brief the board ahead of the quarterly, margin compression is the watch item.',
       ],
     },
     board: {
       anomalies: [
-        'Customer concentration dropped 3pp on top three — diversification is working.',
+        'Customer concentration dropped 3pp on top three, diversification is working.',
         'Gross margin held QoQ despite a fuel headwind that hit competitors harder.',
       ],
       risks: [
         'FY revenue guidance is within corridor but margin is the variable to watch.',
-        'Net retention at 108% — capital allocation question is now timely.',
+        'Net retention at 108%, capital allocation question is now timely.',
       ],
       decisions: [
         'Hold FY guidance one more quarter.',
@@ -757,7 +757,7 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
   hospitality: {
     frontline: {
       anomalies: [
-        'Room 412 escalation overnight — loyalty-tier guest, posting tonight.',
+        'Room 412 escalation overnight, loyalty-tier guest, posting tonight.',
         'Wine-by-the-glass list down two SKUs ahead of the Thursday delivery.',
       ],
       risks: [
@@ -772,11 +772,11 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     ops: {
       anomalies: [
-        'F&B cost ratio crossed 31% — two suppliers raised price 7%+ without notice.',
+        'F&B cost ratio crossed 31%, two suppliers raised price 7%+ without notice.',
         'Direct booking share climbed another 3pp; loyalty programme is paying.',
       ],
       risks: [
-        'Cape Quarter rate plan delivering +6% YoY — Northern properties still on the old plan.',
+        'Cape Quarter rate plan delivering +6% YoY, Northern properties still on the old plan.',
         'ALOS flat against last week despite the long-weekend push.',
       ],
       decisions: [
@@ -787,8 +787,8 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     ceo: {
       anomalies: [
-        'GOP up 1.2pp — staff-incentive trial is the visible driver.',
-        'NPS at 62 on the rolling 90 — best read of the year.',
+        'GOP up 1.2pp, staff-incentive trial is the visible driver.',
+        'NPS at 62 on the rolling 90, best read of the year.',
       ],
       risks: [
         'December marketing budget held pending pace read.',
@@ -802,12 +802,12 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     board: {
       anomalies: [
-        'Direct booking share at 36% — five-percentage-point gain YoY.',
+        'Direct booking share at 36%, five-percentage-point gain YoY.',
         'Two legacy OTA-only properties now on the unified platform after rebuild.',
       ],
       risks: [
         'FY revenue target is comfortable; the watch item is the refurb cycle.',
-        'Capex / EBITDA at 0.18 — historically low, opens room for FY+1 spend.',
+        'Capex / EBITDA at 0.18, historically low, opens room for FY+1 spend.',
       ],
       decisions: [
         'Confirm the FY revenue target at next board.',
@@ -823,7 +823,7 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
         'Two velocity-A SKUs went out-of-stock overnight; replenishment is Friday.',
       ],
       risks: [
-        'Sales tracking -6% to plan — afternoon pace needs to recover.',
+        'Sales tracking -6% to plan, afternoon pace needs to recover.',
         'Five lower-velocity SKUs also stocked-out, but substitutes are on the floor.',
       ],
       decisions: [
@@ -834,12 +834,12 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     ops: {
       anomalies: [
-        'Shrinkage drifted +0.2pp at four stores — common factor: same regional team.',
+        'Shrinkage drifted +0.2pp at four stores, common factor: same regional team.',
         'Markdown rate down 1.1pp; new sizing matrix is the visible driver.',
       ],
       risks: [
         'Autumn campaign extension would tie up additional working capital.',
-        'Stock turn flat at 6.2x — no movement signal either way.',
+        'Stock turn flat at 6.2x, no movement signal either way.',
       ],
       decisions: [
         'Bring the count forward to next Wednesday for the four drifting stores.',
@@ -849,7 +849,7 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     ceo: {
       anomalies: [
-        'Three stores slipped below plan in the last four weeks — same region.',
+        'Three stores slipped below plan in the last four weeks, same region.',
         'Gross margin softened 0.6pp; markdown is healthy, so it\'s supplier-side.',
       ],
       risks: [
@@ -864,8 +864,8 @@ const BRIEFINGS: Record<IndustryKey, Record<PersonaKey, Briefing>> = {
     },
     board: {
       anomalies: [
-        'New-store contribution at 11% — three points of QoQ acceleration.',
-        'NWC days improved by four — efficiency programme is working.',
+        'New-store contribution at 11%, three points of QoQ acceleration.',
+        'NWC days improved by four, efficiency programme is working.',
       ],
       risks: [
         'FY guidance is comfortable; private-label decision is now timing-sensitive.',
@@ -951,7 +951,7 @@ function sparkPoints(values: number[]): string {
     .join(' ')
 }
 
-// The chaotic "old dashboard" — 47 deliberately-tiny labelled tiles.
+// The chaotic "old dashboard", 47 deliberately-tiny labelled tiles.
 // Stable across renders (no random reseeding on toggle).
 const OLD_WIDGETS: string[] = [
   'Vehicles dispatched (hour)',
@@ -1091,7 +1091,7 @@ const OLD_WIDGETS: string[] = [
         </div>
         <p class="mt-4 text-[12.5px] text-mute px-1 max-w-2xl">
           Built once, by committee. Every team asked for "their" tile and nobody removed anything.
-          When the operator opens it, the eye doesn't know where to start — so it doesn't.
+          When the operator opens it, the eye doesn't know where to start, so it doesn't.
         </p>
       </div>
     </div>

@@ -1,17 +1,17 @@
-// Zabble — NAP (Name, Address, Phone) + entity facts. SINGLE SOURCE OF TRUTH.
+// Zabble, NAP (Name, Address, Phone) + entity facts. SINGLE SOURCE OF TRUTH.
 //
 // Off-page and local SEO depend on a byte-identical NAP everywhere Zabble appears:
 // the site footer, the LocalBusiness/Organization schema (handed to S08), the
 // Google Business Profile, and every directory citation. Inconsistent NAP is the
-// #1 local-ranking and entity-confusion killer (and it hurts GEO — models trust
+// #1 local-ranking and entity-confusion killer (and it hurts GEO, models trust
 // facts that agree across sources). So every consumer reads from THIS file.
 //
 // Address, phone, and geo coordinates are PENDING the business owner (status.md
 // blocker B6). They are sentinel placeholders here, never invented. Pages render
 // gracefully without them (areas-served + email instead of a fake street address),
 // and the GBP/citation kits and schema-field hand-off all read the same sentinels.
-// The moment the real values land, edit ONLY this file and the whole system — site,
-// schema fields, kits — updates in lockstep.
+// The moment the real values land, edit ONLY this file and the whole system, site,
+// schema fields, kits, updates in lockstep.
 //
 // Owner: S04 (off-page/local). Schema emission from these fields: S08 (see
 // docs/seo/targets/localbusiness-schema-fields.md).
@@ -29,7 +29,7 @@ export interface SameAsTarget {
 }
 
 export interface Nap {
-  /** Public brand name — exact string used everywhere. */
+  /** Public brand name, exact string used everywhere. */
   name: string
   /** Registered legal/trading name (e.g. "Zabble (Pty) Ltd"). PENDING confirmation. */
   legalName: string
@@ -55,13 +55,13 @@ export interface Nap {
   countryCode: string
   /** Service-area business: true if Zabble serves areas without a walk-in office. */
   serviceArea: boolean
-  /** Cities/areas served — drives areaServed in schema and the local pages. */
+  /** Cities/areas served, drives areaServed in schema and the local pages. */
   areasServed: string[]
   /** Opening hours in human form; schema form derived in the hand-off doc. */
   hours: string
   /** Geo coordinates of the registered address, or null while PENDING. */
   geo: { lat: number; lng: number } | null
-  /** sameAs / brand-citation targets — the entity corroboration set for GEO (S08). */
+  /** sameAs / brand-citation targets, the entity corroboration set for GEO (S08). */
   sameAs: SameAsTarget[]
   /** Partner/credit context (kept truthful; surfaced on About/Press). */
   partners: string[]
@@ -71,9 +71,9 @@ export const NAP: Nap = {
   name: 'Zabble',
   legalName: NAP_PENDING,
   description:
-    'Zabble builds bespoke operational systems for South African businesses — automation, audit trails, anomaly detection, and analytics — delivered as custom software tailored to how each business actually runs.',
+    'Zabble builds bespoke operational systems for South African businesses, automation, audit trails, anomaly detection, and analytics, delivered as custom software tailored to how each business actually runs.',
   longDescription:
-    'Zabble is a South African software consultancy that builds bespoke operational systems — custom software designed around the specific problem slowing a business down. Every build rests on four pillars: automation that removes manual work, audit trails that make every decision replayable, anomaly detection that surfaces the costly few events inside the routine many, and analytics that turn operational data into decisions. Rather than forcing a business onto off-the-shelf software, Zabble sits with the team, finds the most expensive operational problem, and builds the system that fixes it.',
+    'Zabble is a South African software consultancy that builds bespoke operational systems, custom software designed around the specific problem slowing a business down. Every build rests on four pillars: automation that removes manual work, audit trails that make every decision replayable, anomaly detection that surfaces the costly few events inside the routine many, and analytics that turn operational data into decisions. Rather than forcing a business onto off-the-shelf software, Zabble sits with the team, finds the most expensive operational problem, and builds the system that fixes it.',
   email: 'sales@zabble.org',
   // CANONICAL HOST: this is the ONE knob for every canonical/og/schema URL on the
   // new pages. The live site has an apex↔www host split (deployment blocker B5). If

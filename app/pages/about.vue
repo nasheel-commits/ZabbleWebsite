@@ -7,9 +7,9 @@ import { LOCATIONS } from '~/data/locations'
 // Per-page SEO (S02 standard): bare title (titleTemplate brands once), canonical,
 // OG + Twitter. This is the canonical Organization page (schema slot below).
 usePageSeo({
-  title: 'About Zabble — Bespoke Operational Systems',
+  title: 'About Zabble, Bespoke Operational Systems',
   description:
-    'Zabble is a South African software consultancy building bespoke operational systems — automation, audit trails, anomaly detection and analytics.',
+    'Zabble is a South African software consultancy building bespoke operational systems, automation, audit trails, anomaly detection and analytics.',
   path: '/about',
   ogType: 'website',
 })
@@ -18,7 +18,7 @@ usePageSeo({
 // (name, url, description = NAP.description, areaServed, sameAs = NAP.sameAs, founder/
 // partner context, contactPoint = NAP.email). Fields in localbusiness-schema-fields.md.
 
-// Quotable, self-contained facts — written to be liftable verbatim by an AI engine
+// Quotable, self-contained facts, written to be liftable verbatim by an AI engine
 // (GEO). Each is a complete, attributable claim. Hand-off mirror in
 // docs/seo/targets/localbusiness-schema-fields.md and S08's entity work.
 const facts = [
@@ -100,7 +100,7 @@ const facts = [
               What Zabble is, in plain terms.
             </h2>
             <p class="mt-4 text-[15px] leading-[1.65] text-mute">
-              The facts beside this are written to be quoted as-is — by a person, a journalist, or an AI
+              The facts beside this are written to be quoted as-is, by a person, a journalist, or an AI
               answer engine. They're consistent with how we describe ourselves everywhere.
             </p>
           </div>
@@ -122,15 +122,15 @@ const facts = [
           <article v-reveal:scale class="rounded-2xl border border-line bg-white p-6 md:p-8">
             <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Who we work with</div>
             <p class="mt-3 text-[15.5px] leading-[1.65] text-ink">
-              We build with selected partners where it makes the work better —
-              <span class="font-medium">{{ NAP.partners.join(', ') }}</span> among them — and directly
+              We build with selected partners where it makes the work better -
+              <span class="font-medium">{{ NAP.partners.join(', ') }}</span> among them, and directly
               with the operators whose problems we're solving.
             </p>
           </article>
           <article v-reveal:scale="80" class="rounded-2xl border border-line bg-white p-6 md:p-8">
             <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Where we work</div>
             <p class="mt-3 text-[15.5px] leading-[1.65] text-ink">
-              Across South Africa — with a focus on
+              Across South Africa, with a focus on
               {{ LOCATIONS.map((l) => l.city).join(', ') }}.
             </p>
             <NuxtLink to="/locations" class="mt-4 inline-flex items-center gap-1.5 text-[14px] font-medium text-ink hover:text-ink-soft transition-colors">

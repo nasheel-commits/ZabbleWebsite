@@ -476,7 +476,7 @@ function deleteBridge(bid: string) {
   pushLog({
     kind: 'note',
     title: 'Bridge removed',
-    body: `${TOOL_KINDS[nodeById.value[b.from]?.kindKey ?? '']?.name ?? '—'} → ${TOOL_KINDS[nodeById.value[b.to]?.kindKey ?? '']?.name ?? '—'} disconnected.`,
+    body: `${TOOL_KINDS[nodeById.value[b.from]?.kindKey ?? '']?.name ?? '-'} → ${TOOL_KINDS[nodeById.value[b.to]?.kindKey ?? '']?.name ?? '-'} disconnected.`,
   })
 }
 
@@ -577,7 +577,7 @@ const TRIGGERS: TriggerDef[] = [
 
 // The accounting outage trigger reuses the booking event but the hub
 // pretends accounting is briefly down. The bridge into accounting fails
-// once, queues, then retries successfully — the rest of the cascade is
+// once, queues, then retries successfully, the rest of the cascade is
 // unaffected. Set per-fire by `fireTrigger`.
 const failingToolForFire = ref<ToolId | null>(null)
 
@@ -633,7 +633,7 @@ async function fireTrigger(trig: TriggerDef) {
   }
 
   if (lastWaveEndsAt === 0) {
-    // No outgoing bridges — note it
+    // No outgoing bridges, note it
     pushLog({
       kind: 'note',
       title: 'No outgoing bridges',
@@ -711,7 +711,7 @@ const afterPackets = ref<ActivePacket[]>([])
 const compareFiring = ref(false)
 const compareTrigger = ref<CompareTriggerKey>('booking')
 
-// Compare view only handles the three "real" triggers — outage doesn't
+// Compare view only handles the three "real" triggers, outage doesn't
 // have a before-recipe and would be meaningless side-by-side.
 const COMPARE_TRIGGERS = computed(() =>
   TRIGGERS.filter((t): t is TriggerDef & { key: CompareTriggerKey } => t.key !== 'outage'),
@@ -750,7 +750,7 @@ const BEFORE_RECIPES: Record<CompareTriggerKey, BeforeRecipe> = {
     steps: [
       { who: 'Marie (marketing)', afterSec: 300,  text: 'Sees the form notification · waits till morning to grab the lead' },
       { who: 'Marie (marketing)', afterSec: 780,  text: 'Re-types the lead into Pipedrive, tags the source by hand' },
-      { who: 'Sales',             afterSec: 1320, text: 'Lead surfaces in Monday standup — three days late' },
+      { who: 'Sales',             afterSec: 1320, text: 'Lead surfaces in Monday standup, three days late' },
       { who: 'Sales',             afterSec: 1740, text: 'Books follow-up call after another two days of email tag' },
     ],
     totalMinutes: 29,
@@ -1306,7 +1306,7 @@ function resetAll() {
           </li>
         </ul>
         <p v-else class="text-[12px] text-mute italic">
-          Fire a trigger or wire a bridge — events will appear here.
+          Fire a trigger or wire a bridge, events will appear here.
         </p>
       </aside>
     </div>
@@ -1756,7 +1756,7 @@ function resetAll() {
   opacity: 1;
   transform: scale(1);
 }
-/* Touch — always visible */
+/* Touch, always visible */
 @media (hover: none) {
   .ih-handle { opacity: 1; transform: scale(1); }
 }

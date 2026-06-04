@@ -104,7 +104,7 @@ const CLASSES: AssetClassConfig[] = [
     partLeadDays: '5–12 days',
     techRole: 'Senior reliability fitter',
     techName: 'D. Mahlangu',
-    spareLocation: 'Bay 3 — Plant Spares',
+    spareLocation: 'Bay 3, Plant Spares',
     workOrderPrefix: 'WO-MIN',
     costPerDay: 145000,
     lostProdPerDay: 92000,
@@ -150,7 +150,7 @@ const CLASSES: AssetClassConfig[] = [
     partLeadDays: '3–7 days',
     techRole: 'Electrical reliability tech',
     techName: 'J. Pillay',
-    spareLocation: 'Motor store — Workshop 2',
+    spareLocation: 'Motor store, Workshop 2',
     workOrderPrefix: 'WO-MOT',
     costPerDay: 48000,
     lostProdPerDay: 31000,
@@ -195,7 +195,7 @@ const CLASSES: AssetClassConfig[] = [
     partLeadDays: '2–5 days',
     techRole: 'Refrigeration technician',
     techName: 'A. van der Walt',
-    spareLocation: 'Cold-side store — Yard 4',
+    spareLocation: 'Cold-side store, Yard 4',
     workOrderPrefix: 'WO-CRF',
     costPerDay: 32000,
     lostProdPerDay: 22000,
@@ -238,7 +238,7 @@ const CLASSES: AssetClassConfig[] = [
     partLeadDays: '1–3 days',
     techRole: 'Facilities technician',
     techName: 'S. Naidoo',
-    spareLocation: 'Facilities store — Plant room L2',
+    spareLocation: 'Facilities store, Plant room L2',
     workOrderPrefix: 'WO-FAC',
     costPerDay: 9500,
     lostProdPerDay: 4200,
@@ -280,7 +280,7 @@ const CLASSES: AssetClassConfig[] = [
     partLeadDays: 'Same-day',
     techRole: 'Workshop foreman',
     techName: 'R. Botha',
-    spareLocation: 'Workshop B — line 2',
+    spareLocation: 'Workshop B, line 2',
     workOrderPrefix: 'WO-FLT',
     costPerDay: 2600,
     lostProdPerDay: 1400,
@@ -320,7 +320,7 @@ const CLASS_BY_ID = Object.fromEntries(CLASSES.map((c) => [c.id, c])) as Record<
 // Asset profile generation
 // ---------------------------------------------------------------------------
 
-// The seed string for an asset combines the class and index — deterministic
+// The seed string for an asset combines the class and index, deterministic
 // across reloads but distinct per asset.
 function buildAsset(cls: AssetClassConfig, index: number): AssetProfile {
   const id = `${cls.prefix}-${(index + 1).toString().padStart(3, '0')}`
@@ -348,7 +348,7 @@ function buildAsset(cls: AssetClassConfig, index: number): AssetProfile {
         ? Math.round(22 + (healthScore - 35) * 4.2)
         : Math.round(180 + (healthScore - 65) * 5)
 
-  // Confidence band — tightens with severity (the worse it gets, the better
+  // Confidence band, tightens with severity (the worse it gets, the better
   // the model knows what's coming).
   const bandWidth =
     status === 'red' ? 0.25 : status === 'amber' ? 0.35 : 0.55
@@ -847,7 +847,7 @@ function yForValue(v: number, min: number, max: number, height = 100): number {
             Live demo
           </div>
           <div class="mt-1 font-display text-[20px] md:text-[22px] leading-tight text-ink truncate">
-            Predictive Maintenance — {{ activeClass.label }} fleet
+            Predictive Maintenance, {{ activeClass.label }} fleet
           </div>
         </div>
       </div>
@@ -1028,7 +1028,7 @@ function yForValue(v: number, min: number, max: number, height = 100): number {
                 {{ a.healthScore }}
               </span>
               <span class="text-right text-[13px] tabular-nums text-ink">
-                <template v-if="a.status === 'green'"><span class="text-mute-2">—</span></template>
+                <template v-if="a.status === 'green'"><span class="text-mute-2">-</span></template>
                 <template v-else>{{ a.dtf }}d</template>
               </span>
               <span class="hidden md:block text-right text-[12px] tabular-nums text-mute">
@@ -1377,7 +1377,7 @@ function yForValue(v: number, min: number, max: number, height = 100): number {
         </li>
       </ol>
       <p v-else class="mt-3 rounded-xl border border-dashed border-line bg-surface-alt/60 p-5 text-center text-[13px] text-mute">
-        Drag the scrubber forward — flags will surface as soon as the model would have raised them.
+        Drag the scrubber forward, flags will surface as soon as the model would have raised them.
       </p>
     </div>
 

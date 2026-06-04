@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// Pillar hub page — /what-we-build/<pillar> (SEO S04).
+// Pillar hub page, /what-we-build/<pillar> (SEO S04).
 //
 // A real, server-rendered hub that introduces one of Zabble's four pillars and
 // links to EVERY live module that delivers on it (hub -> member). Member pages
@@ -46,7 +46,7 @@ const breadcrumbs = computed(() => [
 
 // Per-page SEO (S02 standard): full title/description/canonical/OG/Twitter via
 // usePageSeo, so the pillar hubs carry the same complete metadata as every other
-// indexable page. ogType 'website' — a hub/section, not an article.
+// indexable page. ogType 'website', a hub/section, not an article.
 usePageSeo(() => ({
   title: pillar.value.seoTitle,
   description: pillar.value.seoDescription,
@@ -104,7 +104,7 @@ usePageSeo(() => ({
                 class="font-semibold text-ink underline decoration-cyan-brand/40 underline-offset-4 hover:decoration-cyan-brand transition"
               >{{ s.name }}</NuxtLink><span v-if="i < flagship.length - 2">, </span><span v-else-if="i === flagship.length - 2"> and </span>
             </template>
-            — each one assembled into a single system shaped to your business.
+           , each one assembled into a single system shaped to your business.
           </p>
 
           <div class="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3">
@@ -126,7 +126,7 @@ usePageSeo(() => ({
       </section>
 
       <!-- AEO answer-first block (S07): question-led, liftable ≤40-word definition
-           of the pillar — placed high for featured-snippet / AI-overview lift. -->
+           of the pillar, placed high for featured-snippet / AI-overview lift. -->
       <section
         v-if="pillar.question && pillar.definition"
         class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-12 md:mt-16"
@@ -158,7 +158,7 @@ usePageSeo(() => ({
             v-if="pillar.quote"
             class="mt-5 border-l-2 border-cyan-brand/40 pl-4 text-[15.5px] italic text-mute"
           >
-            “{{ pillar.quote.text }}” —
+            “{{ pillar.quote.text }}” -
             <a
               :href="pillar.quote.url"
               target="_blank"

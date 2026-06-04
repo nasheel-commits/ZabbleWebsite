@@ -1,9 +1,9 @@
 // ---------------------------------------------------------------------------
 // Email rendering for the booking flow.
-//   • renderLeadConfirmationEmail — the premium, branded confirmation the
+//   • renderLeadConfirmationEmail, the premium, branded confirmation the
 //     prospect receives after booking (HTML + plain-text + subject).
-//   • buildIcs — a calendar attachment so they can add it in one tap.
-//   • buildRawMime — assembles a Gmail-API "raw" message (multipart, with an
+//   • buildIcs, a calendar attachment so they can add it in one tap.
+//   • buildRawMime, assembles a Gmail-API "raw" message (multipart, with an
 //     optional .ics attachment), base64url-encoded.
 // Nitro auto-imports these into server routes.
 // ---------------------------------------------------------------------------
@@ -55,7 +55,7 @@ export function renderLeadConfirmationEmail(d: LeadEmailData): {
   const first = firstNameOf(d.name)
   const whenLine = `${d.dateLabel}${d.timeLabel ? ` · ${d.timeLabel}` : ''}`
   const profile = (d.profileTitle || '').replace(/\.$/, '')
-  const subject = `You're booked in — your Zabble call, ${d.dateLabel}`
+  const subject = `You're booked in, your Zabble call, ${d.dateLabel}`
 
   // --- Plain-text fallback (always present) --------------------------------
   const text = [
@@ -64,16 +64,16 @@ export function renderLeadConfirmationEmail(d: LeadEmailData): {
     `Your ${d.durationMin}-minute discovery call with Zabble is confirmed.`,
     '',
     `When:  ${whenLine} (${d.timeZoneLabel})`,
-    `Where: Google Meet${d.meetLink ? ` — ${d.meetLink}` : ' (link in your calendar invite)'}`,
+    `Where: Google Meet${d.meetLink ? `, ${d.meetLink}` : ' (link in your calendar invite)'}`,
     profile ? `\nWhat we'll dig into: ${profile}.` : '',
     '',
-    "What to expect — no slide deck, no pitch. A real conversation about where",
+    "What to expect, no slide deck, no pitch. A real conversation about where",
     "your operations are straining, and you'll leave with a clear first move",
     'whether or not we work together.',
     '',
     'Need to move it? Just reply to this email.',
     '',
-    '— The Zabble team',
+    '- The Zabble team',
     'sales@zabble.org · zabble.org',
   ]
     .filter((l) => l !== '')
@@ -89,7 +89,7 @@ export function renderLeadConfirmationEmail(d: LeadEmailData): {
          <div style="border-top:1px solid ${LINE};padding-top:26px;">
            <div style="font-family:${SANS};font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${CYAN_DEEP};font-weight:700;">What we'll dig into</div>
            <div style="font-family:${SERIF};font-size:21px;line-height:1.4;color:${INK};margin-top:10px;">${esc(profile)}.</div>
-           <div style="font-family:${SANS};font-size:14px;line-height:1.65;color:${MUTE};margin-top:10px;">That's our read from your answers — a starting point. On the call we'll map the wider operational picture, which is usually broader than a short form can capture.</div>
+           <div style="font-family:${SANS};font-size:14px;line-height:1.65;color:${MUTE};margin-top:10px;">That's our read from your answers, a starting point. On the call we'll map the wider operational picture, which is usually broader than a short form can capture.</div>
          </div>
        </td></tr>`
     : ''
@@ -103,7 +103,7 @@ export function renderLeadConfirmationEmail(d: LeadEmailData): {
 <title>${esc(subject)}</title>
 </head>
 <body style="margin:0;padding:0;background:${BG};">
-<div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:${BG};">Your ${d.durationMin}-minute discovery call with Zabble is confirmed — ${esc(whenLine)}.</div>
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;font-size:1px;line-height:1px;color:${BG};">Your ${d.durationMin}-minute discovery call with Zabble is confirmed, ${esc(whenLine)}.</div>
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${BG};">
   <tr>
     <td align="center" style="padding:32px 16px;">
@@ -144,9 +144,9 @@ export function renderLeadConfirmationEmail(d: LeadEmailData): {
         <tr><td style="padding:24px 36px 6px 36px;">
           <div style="font-family:${SANS};font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:${CYAN_DEEP};font-weight:700;">What to expect</div>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:12px;">
-            <tr><td style="font-family:${SANS};font-size:15px;line-height:1.6;color:${INK_SOFT};padding:6px 0;"><span style="color:${CYAN_DEEP};font-weight:700;">·</span>&nbsp; No slide deck and no pitch — a real conversation.</td></tr>
+            <tr><td style="font-family:${SANS};font-size:15px;line-height:1.6;color:${INK_SOFT};padding:6px 0;"><span style="color:${CYAN_DEEP};font-weight:700;">·</span>&nbsp; No slide deck and no pitch, a real conversation.</td></tr>
             <tr><td style="font-family:${SANS};font-size:15px;line-height:1.6;color:${INK_SOFT};padding:6px 0;"><span style="color:${CYAN_DEEP};font-weight:700;">·</span>&nbsp; We dig into where your operations are actually straining.</td></tr>
-            <tr><td style="font-family:${SANS};font-size:15px;line-height:1.6;color:${INK_SOFT};padding:6px 0;"><span style="color:${CYAN_DEEP};font-weight:700;">·</span>&nbsp; You leave with a clear first move — work with us or not.</td></tr>
+            <tr><td style="font-family:${SANS};font-size:15px;line-height:1.6;color:${INK_SOFT};padding:6px 0;"><span style="color:${CYAN_DEEP};font-weight:700;">·</span>&nbsp; You leave with a clear first move, work with us or not.</td></tr>
           </table>
         </td></tr>
 
@@ -159,7 +159,7 @@ export function renderLeadConfirmationEmail(d: LeadEmailData): {
 
         <!-- sign off -->
         <tr><td style="padding:22px 36px 30px 36px;">
-          <div style="font-family:${SERIF};font-size:17px;color:${INK};">— The Zabble team</div>
+          <div style="font-family:${SERIF};font-size:17px;color:${INK};">- The Zabble team</div>
         </td></tr>
 
         <!-- footer -->

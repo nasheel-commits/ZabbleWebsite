@@ -74,7 +74,7 @@ interface ApproverState {
 }
 
 // =============================================================================
-// Scenarios — one engine, five rule packs
+// Scenarios, one engine, five rule packs
 // =============================================================================
 
 const SCENARIOS: Scenario[] = [
@@ -266,7 +266,7 @@ const allChainTiles = computed(() =>
 )
 
 // When amount changes, prune state for approvers no longer in the active chain.
-// Keep state for everyone still in the chain — small nudges shouldn't wipe progress.
+// Keep state for everyone still in the chain, small nudges shouldn't wipe progress.
 watch(amount, () => {
   const activeIds = new Set(activeChain.value.map((a) => a.id))
   const next: Record<string, ApproverState> = {}
@@ -774,7 +774,7 @@ const evidenceGeneratedAt = computed<number>(() => {
               <textarea
                 v-model="pendingComment"
                 rows="2"
-                placeholder="Add a condition, reason, or follow-up — threaded into the audit log."
+                placeholder="Add a condition, reason, or follow-up, threaded into the audit log."
                 class="zb-field w-full"
               />
             </label>
@@ -844,7 +844,7 @@ const evidenceGeneratedAt = computed<number>(() => {
             </div>
             <p class="mt-1.5 text-[13.5px] text-mute max-w-md mx-auto leading-[1.55]">
               <template v-if="isComplete">
-                The last signature landed — work moved instantly.
+                The last signature landed, work moved instantly.
               </template>
               <template v-else-if="isHalted">
                 No downstream actions fire. The full reasoning sits in the audit log to the right.
@@ -990,7 +990,7 @@ const evidenceGeneratedAt = computed<number>(() => {
               The trail, rendered as a regulator would receive it.
             </h3>
             <p class="mt-1 text-[13px] md:text-[13.5px] text-mute leading-[1.55] max-w-xl">
-              Every decision, every comment, every timestamp — stitched into a single
+              Every decision, every comment, every timestamp, stitched into a single
               document. One click, not a week of digging.
             </p>
           </div>
@@ -1104,7 +1104,7 @@ const evidenceGeneratedAt = computed<number>(() => {
                       {{ actionLabel(entry.action) }}
                     </td>
                     <td class="py-2 text-mute">
-                      {{ entry.comment || '—' }}
+                      {{ entry.comment || '-' }}
                     </td>
                   </tr>
                 </tbody>
@@ -1123,7 +1123,7 @@ const evidenceGeneratedAt = computed<number>(() => {
 </template>
 
 <style scoped>
-/* Textarea styling — sits alongside form-field defaults from brand.md. */
+/* Textarea styling, sits alongside form-field defaults from brand.md. */
 .zb-field {
   border-radius: 0.75rem;
   border: 1px solid var(--color-line, #E2E8F0);
@@ -1145,7 +1145,7 @@ const evidenceGeneratedAt = computed<number>(() => {
   box-shadow: 0 0 0 3px rgba(1, 219, 241, 0.22);
 }
 
-/* Range slider — light track, cyan-ringed thumb. */
+/* Range slider, light track, cyan-ringed thumb. */
 .zb-range {
   -webkit-appearance: none;
   appearance: none;

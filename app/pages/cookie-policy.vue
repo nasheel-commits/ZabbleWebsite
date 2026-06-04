@@ -10,7 +10,7 @@ const lastUpdated = '4 June 2026'
 usePageSeo({
   title: 'Cookie Policy',
   description:
-    'The cookies Zabble uses, why, and how to control them. Opt-in by design under POPIA — nothing non-essential loads until you accept.',
+    'The cookies Zabble uses, why, and how to control them. Opt-in by design under POPIA, nothing non-essential loads until you accept.',
   path: '/cookie-policy',
   ogType: 'website',
 })
@@ -58,7 +58,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <p>
             A cookie is a small file a website stores on your device. Some sites also use related
             technologies (local storage, tags). We use a single local-storage entry
-            (<code>zabble_consent_v1</code>) just to remember your cookie choice — that one is
+            (<code>zabble_consent_v1</code>) just to remember your cookie choice, that one is
             strictly necessary and always on.
           </p>
         </section>
@@ -105,7 +105,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
         <section>
           <h2>4. Manage your choices</h2>
           <p>
-            You can change or withdraw your consent at any time — your choice takes effect immediately.
+            You can change or withdraw your consent at any time, your choice takes effect immediately.
           </p>
           <p>
             <button type="button" class="manage-btn" @click="analytics.openSettings()">
@@ -122,8 +122,8 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
         <section>
           <h2>5. Third-party tools</h2>
           <ul>
-            <li>Google Analytics 4 — <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
-            <li>Microsoft Clarity — <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a></li>
+            <li>Google Analytics 4, <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy Policy</a></li>
+            <li>Microsoft Clarity, <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener noreferrer">Microsoft Privacy Statement</a></li>
           </ul>
           <p>These tools only run with your consent and are configured to respect Consent Mode.</p>
         </section>

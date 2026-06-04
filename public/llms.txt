@@ -1,14 +1,14 @@
 # Zabble
 
-> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software. It assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org
+> Zabble is a South African consulting firm that builds bespoke operational systems, automation, audit trails, anomaly detection, and analytics, shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software. It assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org
 
-Zabble sits with a business until it can name the one operational problem costing the most — the spreadsheet three people fill in by hand, the data trapped across tools that never talk, the error caught only when it is already too late — then designs and builds the exact system that fixes it. We have built for NGOs, banks, hotels, law firms, parts suppliers, marketing agencies, and small businesses. The four pillars below are the objective; the modules are how we get there.
+Zabble sits with a business until it can name the one operational problem costing the most, the spreadsheet three people fill in by hand, the data trapped across tools that never talk, the error caught only when it is already too late, then designs and builds the exact system that fixes it. We have built for NGOs, banks, hotels, law firms, parts suppliers, marketing agencies, and small businesses. The four pillars below are the objective; the modules are how we get there.
 
 ## Start here
 
-- [Zabble — home](https://zabble.org): What Zabble is, how we work (sit with you, build it, you run it), and the four pillars.
+- [Zabble, home](https://zabble.org): What Zabble is, how we work (sit with you, build it, you run it), and the four pillars.
 - [Systems library](https://zabble.org/systems): The full library of 30 modules we assemble into bespoke operating systems.
-- [The four pillars](https://zabble.org/what-we-build): Automation, audit trails, anomaly detection, and analytics — what each is, with cited evidence.
+- [The four pillars](https://zabble.org/what-we-build): Automation, audit trails, anomaly detection, and analytics, what each is, with cited evidence.
 - [Diagnose your business](https://zabble.org/diagnose): A guided question flow that points to the operational problem costing a business the most.
 
 ## The four pillars
@@ -20,19 +20,19 @@ Zabble sits with a business until it can name the one operational problem costin
 
 ## Flagship systems
 
-- [Kairos — Voice Agent & Event Orchestration](https://zabble.org/systems/kairos): A voice-first engine that answers the phone, runs the 21-day arc around an event, and logs every call with the reasoning that fired it.
-- [Bespoke CRM](https://zabble.org/systems/bespoke-crm): A CRM built around how a team actually sells — stages, automations, and dashboards that mirror the business, not a vendor template.
+- [Kairos, Voice Agent & Event Orchestration](https://zabble.org/systems/kairos): A voice-first engine that answers the phone, runs the 21-day arc around an event, and logs every call with the reasoning that fired it.
+- [Bespoke CRM](https://zabble.org/systems/bespoke-crm): A CRM built around how a team actually sells, stages, automations, and dashboards that mirror the business, not a vendor template.
 - [Document Intelligence System](https://zabble.org/systems/document-intelligence): Reads, validates, and routes every inbound document; Zabble reports intake time dropping from ~40 minutes to under 4 seconds per document.
-- [Reconciliation Engine](https://zabble.org/systems/reconciliation-engine): Auto-matches POS, bank, and processor ledgers in the background — ten thousand lines down to a handful of real exceptions.
+- [Reconciliation Engine](https://zabble.org/systems/reconciliation-engine): Auto-matches POS, bank, and processor ledgers in the background, ten thousand lines down to a handful of real exceptions.
 - [Pricing & Quote Engine](https://zabble.org/systems/pricing-engine): Composes list price, tier discount, volume break, and contract override into one number, and blocks anything below the margin floor.
 - [Compliance & Regulatory Reporting Engine](https://zabble.org/systems/compliance-reporting): Assembles regulator, auditor, and donor submissions from existing data, with every figure traced to its source row.
-- [Continuous Assurance Engine](https://zabble.org/systems/continuous-assurance): Background anomaly detection over high-traffic streams — fraud, drift, equipment failure — surfacing only cases that matter, evidence attached.
+- [Continuous Assurance Engine](https://zabble.org/systems/continuous-assurance): Background anomaly detection over high-traffic streams, fraud, drift, equipment failure, surfacing only cases that matter, evidence attached.
 - [Lead Qualification Engine](https://zabble.org/systems/lead-qualifier): Qualifies every inbound enquiry before a rep sees it and routes it with the brief already written.
-- [Integration Hub](https://zabble.org/systems/integration-hub): The connective tissue between the tools a business already runs — every system that should know about an event, knows the moment it happens.
+- [Integration Hub](https://zabble.org/systems/integration-hub): The connective tissue between the tools a business already runs, every system that should know about an event, knows the moment it happens.
 - [Forecasting & Demand Planning](https://zabble.org/systems/forecasting): Projects a business's own history forward, with the orders, shifts, and cash buffers it implies pushed to where the team already works.
 - [Case Management System](https://zabble.org/systems/case-management): Tracks every matter, owner, and deadline end to end, with the audit trail written by default.
 - [Analytics & Decision Support Suite](https://zabble.org/systems/analytics-suite): One platform pulling from every system in the business, composed by role so each person sees only the decisions they make.
-- [Accounting Engine](https://zabble.org/systems/accounting-engine): Event-driven books — invoices, receipts, and journal entries fire from real operational events, not month-end memory.
+- [Accounting Engine](https://zabble.org/systems/accounting-engine): Event-driven books, invoices, receipts, and journal entries fire from real operational events, not month-end memory.
 - [Internal Knowledge & SOP Assistant](https://zabble.org/systems/knowledge-assistant): Answers plain-English questions from every SOP, contract, and policy a business runs on, each claim cited to its source.
 
 ## Contact

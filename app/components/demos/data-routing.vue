@@ -294,7 +294,7 @@ function transformCount(transform: TransformDef) {
     .reduce((acc, s) => acc + s.records, 0)
   if (runStep.value < 2) return 0
   if (runStep.value === 2) {
-    // Stagger transforms — earlier ones finish first within the phase.
+    // Stagger transforms, earlier ones finish first within the phase.
     const idx = TRANSFORMS.findIndex((t) => t.id === transform.id)
     const t0 = idx / TRANSFORMS.length
     const t1 = (idx + 1) / TRANSFORMS.length
@@ -370,7 +370,7 @@ function isTransformLit(id: string) {
 }
 
 // =============================================================================
-// "Before" view — 3-day email chain
+// "Before" view, 3-day email chain
 // =============================================================================
 
 interface EmailEvent {
@@ -393,16 +393,16 @@ const beforePeople = [
 const beforeEmails: EmailEvent[] = [
   { day: 1, time: '09:14', from: 'finance', to: 'sales', subject: 'Need May pipeline + revenue export' },
   { day: 1, time: '09:16', from: 'finance', to: 'hr',    subject: 'May payroll register (with cost-centre tags)' },
-  { day: 1, time: '09:18', from: 'finance', to: 'acc',   subject: 'GL extract — please run with class X enabled' },
-  { day: 1, time: '14:02', from: 'sales',   to: 'finance', subject: 'Re: pipeline — out tomorrow, OOO Wed' },
+  { day: 1, time: '09:18', from: 'finance', to: 'acc',   subject: 'GL extract, please run with class X enabled' },
+  { day: 1, time: '14:02', from: 'sales',   to: 'finance', subject: 'Re: pipeline, out tomorrow, OOO Wed' },
   { day: 1, time: '16:48', from: 'hr',      to: 'finance', subject: 'Payroll attached · headcount 86 (one TBC)', risk: true },
-  { day: 2, time: '08:31', from: 'acc',     to: 'finance', subject: 'GL ready — but Mar revenue restated, headsup' },
+  { day: 2, time: '08:31', from: 'acc',     to: 'finance', subject: 'GL ready, but Mar revenue restated, headsup' },
   { day: 2, time: '10:11', from: 'finance', to: 'acc',     subject: 'Which revenue line goes against retained earnings?' },
   { day: 2, time: '11:55', from: 'finance', to: 'hr',      subject: 'Is it 86 or 87? Board will ask.' },
-  { day: 2, time: '13:20', from: 'finance', to: 'sales',   subject: 'Pipeline weight method — using stage prob, OK?' },
+  { day: 2, time: '13:20', from: 'finance', to: 'sales',   subject: 'Pipeline weight method, using stage prob, OK?' },
   { day: 2, time: '17:02', from: 'finance', to: 'finance', subject: 'Margin doesn\'t tie · 12pts off · investigating', risk: true },
-  { day: 3, time: '08:45', from: 'acc',     to: 'finance', subject: 'Found it — cost centre mis-tag on $84K invoice' },
-  { day: 3, time: '10:30', from: 'sales',   to: 'finance', subject: 'Pipeline export attached — apologies for delay' },
+  { day: 3, time: '08:45', from: 'acc',     to: 'finance', subject: 'Found it, cost centre mis-tag on $84K invoice' },
+  { day: 3, time: '10:30', from: 'sales',   to: 'finance', subject: 'Pipeline export attached, apologies for delay' },
   { day: 3, time: '12:14', from: 'finance', to: 'finance', subject: 'Final pack assembled · sending to CEO for review' },
   { day: 3, time: '15:50', from: 'finance', to: 'finance', subject: 'CEO: where did 18.4% come from? · reviewing', risk: true },
 ]
@@ -732,7 +732,7 @@ function personById(id: string) {
                     <code
                       class="rounded bg-surface-alt px-1.5 py-0.5 font-mono tabular-nums text-[11px] font-semibold text-ink-soft"
                     >
-                      <template v-if="runStep < 2">—</template>
+                      <template v-if="runStep < 2">-</template>
                       <template v-else>{{ fmtNumber(transformCount(t)) }} rows</template>
                     </code>
                     <span
@@ -755,7 +755,7 @@ function personById(id: string) {
             </li>
           </ol>
 
-          <!-- Validation summary chip — appears once validate has run -->
+          <!-- Validation summary chip, appears once validate has run -->
           <div
             v-if="runStep >= 3"
             class="mt-4 flex items-start gap-2 rounded-xl border border-line bg-white p-3"
@@ -876,7 +876,7 @@ function personById(id: string) {
                         : 'text-ink',
                     ]"
                   >
-                    {{ impactedMetricIds.has(m.id) ? '— · review' : m.valueDisplay }}
+                    {{ impactedMetricIds.has(m.id) ? '- · review' : m.valueDisplay }}
                   </div>
                 </button>
               </li>
@@ -1007,7 +1007,7 @@ function personById(id: string) {
         </div>
 
         <p class="mt-4 text-[12.5px] leading-snug text-mute-2">
-          Every figure carries its full chain of evidence — when an auditor asks
+          Every figure carries its full chain of evidence, when an auditor asks
           <span class="italic">"where did this come from?"</span> the answer is the click you just made.
         </p>
       </div>

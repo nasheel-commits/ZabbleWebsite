@@ -1,13 +1,13 @@
-# Zabble — Full Reference for Language Models
+# Zabble, Full Reference for Language Models
 
-> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software; it assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org
+> Zabble is a South African consulting firm that builds bespoke operational systems, automation, audit trails, anomaly detection, and analytics, shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software; it assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org
 
 Zabble (South Africa) is an operations-systems consultancy. It is not affiliated with Zabble, Inc., the United States waste-management software company. This file lists Zabble’s four pillars and every live system with a one-line, self-contained definition and its canonical URL.
 
 ## How Zabble works
 
 1. We sit with you. We spend time inside the business until we can name the operational problem costing the most.
-2. We build it. We design and deliver a system tailored to that business — not its industry, not businesses like it. It.
+2. We build it. We design and deliver a system tailored to that business, not its industry, not businesses like it. It.
 3. You run it. Workflows run themselves, risk gets caught early, and the business starts working the way it should.
 
 ## The four pillars
@@ -33,7 +33,7 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ### Kairos
 - URL: https://zabble.org/systems/kairos
 - Pillars: automation, audit trails, analytics
-- Your team stops being a switchboard. Outreach, day-of orchestration and follow-up run themselves — so they can do the work humans should.
+- Your team stops being a switchboard. Outreach, day-of orchestration and follow-up run themselves, so they can do the work humans should.
 
 ### Approval & Sign-Off Workflow
 - URL: https://zabble.org/systems/approval-workflow
@@ -48,12 +48,12 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ### Event-Driven Workflow Orchestrator
 - URL: https://zabble.org/systems/workflow-orchestrator
 - Pillars: automation, audit trails
-- When one event happens, the right thing happens in every other system — without your team touching anything.
+- When one event happens, the right thing happens in every other system, without your team touching anything.
 
 ### Decision Engine
 - URL: https://zabble.org/systems/decision-engine
 - Pillars: automation, audit trails, analytics
-- Three reviewers, three different answers on the same case. Make the call once — then have every reviewer reach it the same way, every time.
+- Three reviewers, three different answers on the same case. Make the call once, then have every reviewer reach it the same way, every time.
 
 ### Document Intelligence System
 - URL: https://zabble.org/systems/document-intelligence
@@ -63,12 +63,12 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ### Document Assembly System
 - URL: https://zabble.org/systems/document-assembly
 - Pillars: automation, audit trails
-- Proposals, contracts, statements, board reports — assembled from the CRM, pricing engine, and case-study library in seconds. Every field traceable to the source it came from.
+- Proposals, contracts, statements, board reports, assembled from the CRM, pricing engine, and case-study library in seconds. Every field traceable to the source it came from.
 
 ### Bespoke CRM
 - URL: https://zabble.org/systems/bespoke-crm
 - Pillars: automation, analytics, audit trails
-- A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.
+- A CRM shaped around how your team actually sells, stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.
 
 ### Unified Customer Record
 - URL: https://zabble.org/systems/customer-360
@@ -78,7 +78,7 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ### Internal Knowledge & SOP Assistant
 - URL: https://zabble.org/systems/knowledge-assistant
 - Pillars: automation, audit trails, analytics
-- The company playbook stops being a folder no one reads — it becomes the system that answers questions for the whole team.
+- The company playbook stops being a folder no one reads, it becomes the system that answers questions for the whole team.
 
 ### Lead Qualification Engine
 - URL: https://zabble.org/systems/lead-qualifier
@@ -88,57 +88,57 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ### Legacy Bridge
 - URL: https://zabble.org/systems/legacy-bridge
 - Pillars: automation, audit trails, analytics
-- Keep the spreadsheet, the green-screen ERP, and the bespoke tool that still does its job — and connect them to a modern AI workflow without rewriting any of them.
+- Keep the spreadsheet, the green-screen ERP, and the bespoke tool that still does its job, and connect them to a modern AI workflow without rewriting any of them.
 
 ### Inventory Clarity System
 - URL: https://zabble.org/systems/inventory-clarity
 - Pillars: automation, audit trails, analytics
-- Every pallet, every linen, every tool — counted by the building itself. Stock, books, and orders stop disagreeing.
+- Every pallet, every linen, every tool, counted by the building itself. Stock, books, and orders stop disagreeing.
 
 ### Client Onboarding System
 - URL: https://zabble.org/systems/client-onboarding
 - Pillars: automation, audit trails, analytics
-- Two checklists, one workflow. The client moves through their part; the firm's part runs itself in lockstep — no email chase, no client left in limbo.
+- Two checklists, one workflow. The client moves through their part; the firm's part runs itself in lockstep, no email chase, no client left in limbo.
 
 ### Case Management System
 - URL: https://zabble.org/systems/case-management
 - Pillars: automation, audit trails
-- Every matter, every owner, every deadline — tracked end to end with the audit trail written by default.
+- Every matter, every owner, every deadline, tracked end to end with the audit trail written by default.
 
 ### Task Management System
 - URL: https://zabble.org/systems/task-management
 - Pillars: automation, audit trails
-- Every owner, every dependency, every deadline. When one slips, the rest of the matter knows — and the right person hears before the client does.
+- Every owner, every dependency, every deadline. When one slips, the rest of the matter knows, and the right person hears before the client does.
 
 ### Field Operations App
 - URL: https://zabble.org/systems/field-ops-app
 - Pillars: automation, audit trails, analytics
-- The team in the field works in their reality — signal-poor sites, gloves on, vehicles moving. The office still gets clean, real-time data.
+- The team in the field works in their reality, signal-poor sites, gloves on, vehicles moving. The office still gets clean, real-time data.
 
 ### Analytics & Decision Support Suite
 - URL: https://zabble.org/systems/analytics-suite
 - Pillars: analytics, anomaly detection
-- One platform pulling from every system in the business — shaped four different ways for the four people who run it.
+- One platform pulling from every system in the business, shaped four different ways for the four people who run it.
 
 ### Accounting Engine
 - URL: https://zabble.org/systems/accounting-engine
 - Pillars: automation, audit trails, analytics
-- The books move when the business does. Invoices, receipts and journal entries fire from real events — not month-end memory.
+- The books move when the business does. Invoices, receipts and journal entries fire from real events, not month-end memory.
 
 ### Compliance & Regulatory Reporting Engine
 - URL: https://zabble.org/systems/compliance-reporting
 - Pillars: automation, audit trails, anomaly detection
-- The submissions regulators, auditors, donors, and boards expect — assembled from the data you already generate, no quarter-end scramble.
+- The submissions regulators, auditors, donors, and boards expect, assembled from the data you already generate, no quarter-end scramble.
 
 ### Continuous Assurance Engine
 - URL: https://zabble.org/systems/continuous-assurance
 - Pillars: anomaly detection, audit trails, analytics
-- Background monitoring across a stream of activity no human could realistically watch — only the things that matter surface, with their evidence already attached.
+- Background monitoring across a stream of activity no human could realistically watch, only the things that matter surface, with their evidence already attached.
 
 ### Pricing & Quote Engine
 - URL: https://zabble.org/systems/pricing-engine
 - Pillars: automation, audit trails, analytics
-- The right number, signed by the right person, in seconds. List price, tier discount, volume break and contract override — composed by one engine, not five spreadsheets.
+- The right number, signed by the right person, in seconds. List price, tier discount, volume break and contract override, composed by one engine, not five spreadsheets.
 
 ### Reconciliation Engine
 - URL: https://zabble.org/systems/reconciliation-engine
@@ -148,12 +148,12 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ### Data Routing Pipeline
 - URL: https://zabble.org/systems/data-routing
 - Pillars: automation, audit trails, anomaly detection
-- The systems you already own, piped into one clean output — board pack, donor report, regulator return. The pipeline does the assembly that four people used to do over three days of email.
+- The systems you already own, piped into one clean output, board pack, donor report, regulator return. The pipeline does the assembly that four people used to do over three days of email.
 
 ### Integration Hub
 - URL: https://zabble.org/systems/integration-hub
 - Pillars: automation, audit trails
-- The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.
+- The connective tissue between the tools you already run. New booking, new order, new lead, every system that should know, knows, the moment it happens.
 
 ### Cross-System Sync Engine
 - URL: https://zabble.org/systems/cross-system-sync

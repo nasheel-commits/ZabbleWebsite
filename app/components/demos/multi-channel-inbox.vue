@@ -36,13 +36,13 @@ interface InboundMessage {
   subject?: string
   body: string
   ts: number
-  /** Caught a mis-channelled message — the routing engine reclassified it. */
+  /** Caught a mis-channelled message, the routing engine reclassified it. */
   misrouted?: boolean
   /** Arrived on an under-watched channel (social/voicemail/web). */
   wouldHaveMissed?: boolean
   /** True once the user has replied via the composer. */
   replied?: boolean
-  /** True for the injected edge-case message — for visual emphasis. */
+  /** True for the injected edge-case message, for visual emphasis. */
   edgeCase?: boolean
 }
 
@@ -82,7 +82,7 @@ const PERSONAS: PersonaMeta[] = [
 ]
 
 // =============================================================================
-// Message pool — cycled in fixed order so the demo plays consistently
+// Message pool, cycled in fixed order so the demo plays consistently
 // =============================================================================
 
 const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
@@ -91,15 +91,15 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     rule: { description: 'Email + buying-intent keywords ("demo", "fleet") → Sales queue' },
     from: 'Priya Bhatia',
     fromMeta: 'priya@nordicfreight.com',
-    subject: 'Demo request — 40-strong fleet',
-    body: "Hi team — I'm with Nordic Freight, we run 40 trucks across Sweden and Norway. Looking to overhaul our scheduling stack this quarter. Can we get a demo?",
+    subject: 'Demo request, 40-strong fleet',
+    body: "Hi team, I'm with Nordic Freight, we run 40 trucks across Sweden and Norway. Looking to overhaul our scheduling stack this quarter. Can we get a demo?",
   },
   {
     channel: 'whatsapp', classification: 'support', queue: 'support',
     rule: { description: 'WhatsApp from registered customer number → Support' },
     from: 'Liam Vermaak',
     fromMeta: '+27 82 491 5582 · existing customer',
-    body: "Hey — the kanban tile won't load on iPad since this morning. Other devices fine. Anyone else seeing this?",
+    body: "Hey, the kanban tile won't load on iPad since this morning. Other devices fine. Anyone else seeing this?",
   },
   {
     channel: 'sms', classification: 'complaint', queue: 'support',
@@ -121,7 +121,7 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     rule: { description: 'Voicemail transcript + "demo" keyword → Sales' },
     from: 'Owen Carmichael',
     fromMeta: '+44 20 7946 0123 · Voicemail · 0:42',
-    body: "\"Hi, this is Owen at Sundown Logistics. We met at the conference last week — would love to set up a demo. Call me back on this number, thanks.\"",
+    body: "\"Hi, this is Owen at Sundown Logistics. We met at the conference last week, would love to set up a demo. Call me back on this number, thanks.\"",
     wouldHaveMissed: true,
   },
   {
@@ -129,7 +129,7 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     rule: { description: 'Web form + promo-link signature → Spam · auto-archived' },
     from: 'SEO Wizard',
     fromMeta: 'noreply@cheapseo.biz · /contact',
-    subject: 'Boost your rankings 10x — guaranteed!',
+    subject: 'Boost your rankings 10x, guaranteed!',
     body: "Hi there, I noticed your site doesn't rank well for several important keywords. We offer a no-risk SEO package starting at $99/month...",
   },
   {
@@ -138,14 +138,14 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     from: 'Hannah Krüger',
     fromMeta: 'hannah@beechcroft.de',
     subject: 'CSV export drops the second row of multi-line items',
-    body: "Hey — CSV exports on the pricing engine drop the second row of multi-line items. Steps to repro and a 3-row sample attached.",
+    body: "Hey, CSV exports on the pricing engine drop the second row of multi-line items. Steps to repro and a 3-row sample attached.",
   },
   {
     channel: 'whatsapp', classification: 'sales-lead', queue: 'sales',
     rule: { description: 'WhatsApp from unknown number + pricing intent → Sales' },
     from: 'Ravi Mehta',
     fromMeta: '+61 412 998 003 · new contact',
-    body: "G'day — mate of mine recommended you. Looking at quotes for an inventory engine across 4 sites. What's the starting price?",
+    body: "G'day, mate of mine recommended you. Looking at quotes for an inventory engine across 4 sites. What's the starting price?",
   },
   {
     channel: 'social', classification: 'complaint', queue: 'support',
@@ -160,7 +160,7 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     rule: { description: 'Voicemail with "broken/stuck" keyword → Support' },
     from: 'Mark Anderssen',
     fromMeta: '+1 312 555 0199 · Voicemail · 1:14',
-    body: "\"Hey, this is Mark from Sundown ops. Our dashboard won't load this morning — the whole night-shift team is stuck. Please call back.\"",
+    body: "\"Hey, this is Mark from Sundown ops. Our dashboard won't load this morning, the whole night-shift team is stuck. Please call back.\"",
     wouldHaveMissed: true,
   },
   {
@@ -168,7 +168,7 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     rule: { description: 'SMS from known partner contact → Partnerships' },
     from: 'Eva Liang',
     fromMeta: '+1 646 555 0145 · Accel North',
-    body: "Two portfolio companies that fit your ICP — want intros this week?",
+    body: "Two portfolio companies that fit your ICP, want intros this week?",
   },
   {
     channel: 'email', classification: 'partner', queue: 'partnerships',
@@ -176,7 +176,7 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     from: 'Thandi Mokoena',
     fromMeta: 'thandi@northbridge.partners',
     subject: 'Quick referral question',
-    body: "Hi — Northbridge has a client of ours asking about your audit-trails work. Open to a 20-minute intro this week?",
+    body: "Hi, Northbridge has a client of ours asking about your audit-trails work. Open to a 20-minute intro this week?",
   },
   {
     channel: 'web', classification: 'sales-lead', queue: 'sales',
@@ -197,7 +197,7 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     rule: { description: 'Social DM + product-fit keywords → Sales' },
     from: '@kwame.ankrah',
     fromMeta: 'Instagram DM · Ankrah Logistics',
-    body: "Hey, saw the warehouse case study. We're 25 staff, 3 sites — does the inventory engine work for that size?",
+    body: "Hey, saw the warehouse case study. We're 25 staff, 3 sites, does the inventory engine work for that size?",
     wouldHaveMissed: true,
   },
   {
@@ -206,11 +206,11 @@ const MESSAGE_POOL: Omit<InboundMessage, 'id' | 'ts'>[] = [
     from: 'Tyler Stone',
     fromMeta: 'tyler@growthpros.io',
     subject: 'Quick question?',
-    body: "Hi — I help SaaS companies generate 50+ qualified leads per month. Are you the right person to chat about lead gen?",
+    body: "Hi, I help SaaS companies generate 50+ qualified leads per month. Are you the right person to chat about lead gen?",
   },
 ]
 
-// Edge-case message — injected on demand. Mis-channelled (came in on the
+// Edge-case message, injected on demand. Mis-channelled (came in on the
 // support contact form, classifier reroutes to Sales).
 const EDGE_CASE_MESSAGE: Omit<InboundMessage, 'id' | 'ts'> = {
   channel: 'web',
@@ -223,7 +223,7 @@ const EDGE_CASE_MESSAGE: Omit<InboundMessage, 'id' | 'ts'> = {
   from: 'Tomás Andrade',
   fromMeta: 'tomas@harborlinegroup.com · /contact (Support form)',
   subject: 'Question',
-  body: "Hi — we run a fleet of 80 vehicles and our current ops platform is falling over. Looking for something fit for purpose. What does an enterprise deal look like for us?",
+  body: "Hi, we run a fleet of 80 vehicles and our current ops platform is falling over. Looking for something fit for purpose. What does an enterprise deal look like for us?",
   misrouted: true,
   edgeCase: true,
 }
@@ -318,7 +318,7 @@ function triggerEdgeCase(): void {
   messages.value = [m, ...messages.value]
   selectedId.value = m.id
   edgeCaseFired.value = true
-  // Switch persona to Sales if the user isn't there already — they should
+  // Switch persona to Sales if the user isn't there already, they should
   // see the rerouted lead land in the Sales queue.
   if (persona.value !== 'all' && persona.value !== 'sales') {
     persona.value = 'sales'
@@ -326,7 +326,7 @@ function triggerEdgeCase(): void {
 }
 
 function seedAndStart(): void {
-  // Pre-seed two messages so the inbox isn't empty on entry — feels alive
+  // Pre-seed two messages so the inbox isn't empty on entry, feels alive
   // from the first frame.
   const seedCount = 2
   const t = Date.now()
@@ -358,7 +358,7 @@ onUnmounted(() => {
 // =============================================================================
 
 const filteredMessages = computed<InboundMessage[]>(() => {
-  // Spam/archive never shows in any persona's queue — it's auto-archived
+  // Spam/archive never shows in any persona's queue, it's auto-archived
   // and only summarised in the stats panel.
   const visible = messages.value.filter((m) => m.queue !== 'archive')
   if (persona.value === 'all') return visible
@@ -478,7 +478,7 @@ const personaQueueLabel = computed<string>(() => {
 <template>
   <div class="relative">
     <!-- ===================================================================
-         Header strip — live indicator + counters + transport controls
+         Header strip, live indicator + counters + transport controls
          =================================================================== -->
     <div
       class="flex flex-wrap items-center justify-between gap-3 border-b border-line bg-surface-alt/40 px-4 sm:px-5 md:px-7 py-3.5"
@@ -745,12 +745,12 @@ const personaQueueLabel = computed<string>(() => {
               class="inline-flex items-center gap-1.5 text-[11px] uppercase tracking-[0.18em] text-cyan-brand-deep font-semibold"
             >
               <Sparkles :size="12" :stroke-width="2" aria-hidden="true" />
-              Mis-channelled — caught and rerouted
+              Mis-channelled, caught and rerouted
             </div>
             <p class="mt-1 text-[12.5px] text-ink leading-[1.55]">
               This message landed on the support contact form, but the
               classifier recognised the buying intent and rerouted it to the
-              Sales queue — before anyone watching support saw it.
+              Sales queue, before anyone watching support saw it.
             </p>
           </div>
 
@@ -767,7 +767,7 @@ const personaQueueLabel = computed<string>(() => {
             </p>
           </div>
 
-          <!-- Message body — channel-themed -->
+          <!-- Message body, channel-themed -->
           <div>
             <div class="text-[10.5px] uppercase tracking-[0.22em] text-mute-2 font-semibold mb-2">
               Message
@@ -927,7 +927,7 @@ const personaQueueLabel = computed<string>(() => {
     </div>
 
     <!-- ===================================================================
-         Stats panel — "what we would have missed" + channel mix
+         Stats panel, "what we would have missed" + channel mix
          =================================================================== -->
     <div class="px-4 sm:px-5 md:px-7 pt-7 md:pt-8 pb-6 md:pb-7">
       <div class="grid grid-cols-1 lg:grid-cols-5 gap-4 md:gap-5">
@@ -948,8 +948,8 @@ const personaQueueLabel = computed<string>(() => {
               {{ wouldHaveMissedCount }}
             </div>
             <div class="text-[13px] text-mute leading-[1.55] max-w-xs">
-              messages on under-watched channels — social DMs, voicemail, public
-              mentions — that would have slipped through under the "everyone
+              messages on under-watched channels, social DMs, voicemail, public
+              mentions, that would have slipped through under the "everyone
               watches their own inbox" model.
             </div>
           </div>
@@ -1012,7 +1012,7 @@ const personaQueueLabel = computed<string>(() => {
 </template>
 
 <style scoped>
-/* Form fields — input + textarea share the same chrome. */
+/* Form fields, input + textarea share the same chrome. */
 .zb-field {
   border-radius: 0.75rem;
   border: 1px solid var(--color-line, #E2E8F0);

@@ -358,7 +358,7 @@ const DATA: Record<ReportId, Record<Quarter, QuarterPack>> = {
           validationId: 'b-lcr',
           title: 'LCR below regulatory floor',
           cause: '30-day stressed outflow modelled R 142M higher than HQLA stock at quarter close.',
-          owner: 'Treasury — N. Mokoena',
+          owner: 'Treasury, N. Mokoena',
         },
       ],
     },
@@ -408,7 +408,7 @@ const DATA: Record<ReportId, Record<Quarter, QuarterPack>> = {
           validationId: 'n-comp',
           title: 'Three grants missing M&E linkage',
           cause: 'GR-2241, GR-2287, GR-2299 disbursed before outcome metric was wired in the M&E DB.',
-          owner: 'Programmes — K. Adebayo',
+          owner: 'Programmes, K. Adebayo',
         },
       ],
     },
@@ -435,8 +435,8 @@ const DATA: Record<ReportId, Record<Quarter, QuarterPack>> = {
           id: 'e-n-q3',
           validationId: 'n-thr',
           title: 'Admin ratio breaches donor ceiling',
-          cause: 'New finance lead onboarding cost (R 312k) classed admin — re-tag to programme set-up?',
-          owner: 'Finance — D. Pillay',
+          cause: 'New finance lead onboarding cost (R 312k) classed admin, re-tag to programme set-up?',
+          owner: 'Finance, D. Pillay',
         },
       ],
     },
@@ -466,7 +466,7 @@ const DATA: Record<ReportId, Record<Quarter, QuarterPack>> = {
           validationId: 'p-comp',
           title: '148 data subjects missing lawful basis',
           cause: 'Pre-2021 imports from legacy CRM never had the s.11 field populated.',
-          owner: 'Info Officer — L. Khumalo',
+          owner: 'Info Officer, L. Khumalo',
         },
       ],
     },
@@ -494,7 +494,7 @@ const DATA: Record<ReportId, Record<Quarter, QuarterPack>> = {
           validationId: 'p-cons',
           title: 'Marketing comms sent past consent expiry',
           cause: '14 records · consent expired between send-time and the daily sync.',
-          owner: 'Marketing Ops — T. Sithole',
+          owner: 'Marketing Ops, T. Sithole',
         },
       ],
     },
@@ -534,7 +534,7 @@ const DATA: Record<ReportId, Record<Quarter, QuarterPack>> = {
           validationId: 't-cons',
           title: 'VAT control variance R 12,408',
           cause: '7 supplier invoices coded standard-rate but should be zero-rated (s.11(1)(g) export).',
-          owner: 'Tax — M. Ngubane',
+          owner: 'Tax, M. Ngubane',
         },
       ],
     },
@@ -639,7 +639,7 @@ function dismissException(id: string, action: 'resolve' | 'accept' | 'reassign')
 function pulseRegen() {
   isRegenerating.value = true
   regenTick.value++
-  // Visual pulse only — no real async work. Auto-clear in ~700ms.
+  // Visual pulse only, no real async work. Auto-clear in ~700ms.
   window.setTimeout(() => { isRegenerating.value = false }, 700)
 }
 
@@ -656,7 +656,7 @@ function sourceFor(id: SourceId): SourceDef {
 <template>
   <div class="relative">
     <!-- ===================================================================
-         Header — eyebrow, heading, quarter switcher
+         Header, eyebrow, heading, quarter switcher
          =================================================================== -->
     <header class="px-5 md:px-8 lg:px-10 pt-6 md:pt-8 pb-5 border-b border-line">
       <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -798,7 +798,7 @@ function sourceFor(id: SourceId): SourceDef {
               </div>
             </div>
 
-            <!-- Pull animation rail — only when source is active -->
+            <!-- Pull animation rail, only when source is active -->
             <div
               v-if="activeReport.sources.includes(s.id)"
               :key="`${selectedReportId}-${selectedQuarter}-${regenTick}-${s.id}`"
@@ -835,7 +835,7 @@ function sourceFor(id: SourceId): SourceDef {
           </span>
         </div>
         <p class="mt-2 text-[13px] text-mute">
-          Each rule from the regulator's rule pack runs against the pulled data. Cite, status, evidence — all retained.
+          Each rule from the regulator's rule pack runs against the pulled data. Cite, status, evidence, all retained.
         </p>
 
         <ul class="mt-4 space-y-2.5">
@@ -985,7 +985,7 @@ function sourceFor(id: SourceId): SourceDef {
         </transition>
 
         <p v-if="!selectedFigure" class="mt-3 text-[12px] text-mute-2 leading-snug">
-          Click any figure to unroll its lineage — source system, source rows, applicable rule and the exact calculation.
+          Click any figure to unroll its lineage, source system, source rows, applicable rule and the exact calculation.
         </p>
       </div>
     </section>
@@ -1071,7 +1071,7 @@ function sourceFor(id: SourceId): SourceDef {
         </p>
         <p class="mt-1 text-[12.5px] text-mute">
           <template v-if="pack.exceptions.length && dismissedExceptions.size === pack.exceptions.length">
-            All flagged items dismissed — submission cleared for filing.
+            All flagged items dismissed, submission cleared for filing.
           </template>
           <template v-else>
             All rules in the {{ activeReport.short }} pack passed against {{ selectedQuarter }} data.

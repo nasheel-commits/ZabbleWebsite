@@ -10,7 +10,7 @@ const { scrollY: globalScrollY, reduced: reducedRef } = useScroll()
 const { visible: heroVisible } = useInView(heroRef, { threshold: 0, rootMargin: '200px 0px' })
 
 // Only feed parallax inline styles while the hero is on-screen and motion
-// is not reduced — outside that window the elements are static, so writing
+// is not reduced, outside that window the elements are static, so writing
 // transforms each rAF only repaints work nobody can see.
 const scrollY = computed(() => {
   if (reducedRef.value) return 0
@@ -31,7 +31,7 @@ let scrambleFrame: number | undefined
 
 class TextScramble {
   el: HTMLElement
-  chars = '!<>-_\\/[]{}—=+*^?#________'
+  chars = '!<>-_\\/[]{}-=+*^?#________'
   queue: { from: string; to: string; start: number; end: number; char?: string }[] = []
   frame = 0
   resolve: (() => void) | null = null

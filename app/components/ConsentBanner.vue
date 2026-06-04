@@ -1,17 +1,17 @@
 <script setup lang="ts">
 /**
- * ConsentBanner — first-party POPIA-compliant CMP.
+ * ConsentBanner, first-party POPIA-compliant CMP.
  *
  * Opt-in by design: Accept and Reject carry equal weight, and NO analytics tag
  * loads until the visitor chooses (the core plugin keeps Consent Mode defaults
  * denied until `grant()` runs). "Manage" exposes per-category toggles.
  *
- * Only renders when at least one analytics id is configured (api.enabled) — so
+ * Only renders when at least one analytics id is configured (api.enabled), so
  * pre-launch, with no ids set, nothing is shown. Re-openable from anywhere via
  * `useAnalytics().openSettings()` (e.g. a footer "Cookie settings" link).
  *
  * This is a lightweight built-in CMP. For a managed CMP (CookieYes / Usercentrics)
- * see docs/seo/decisions/0002-analytics-stack-and-consent.md — the Consent Mode
+ * see docs/seo/decisions/0002-analytics-stack-and-consent.md, the Consent Mode
  * wiring in 1.analytics.client.ts is CMP-agnostic.
  */
 import { reactive, watch } from 'vue'
@@ -158,7 +158,7 @@ function savePrefs() {
             <label class="flex items-center justify-between gap-4 rounded-xl border border-line px-4 py-3 cursor-pointer">
               <div>
                 <p class="text-[14px] font-semibold text-ink">Analytics</p>
-                <p class="text-[12.5px] text-mute">GA4 + Microsoft Clarity — how the site is used.</p>
+                <p class="text-[12.5px] text-mute">GA4 + Microsoft Clarity, how the site is used.</p>
               </div>
               <input v-model="prefs.analytics" type="checkbox" class="consent-toggle" />
             </label>

@@ -43,7 +43,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
             This notice explains how <strong class="text-ink">Zabble</strong> ("we", "us") collects,
             uses, shares, and protects your personal information, and the rights you have under the
             <strong class="text-ink">Protection of Personal Information Act, 2013 (POPIA)</strong> of
-            South Africa. We keep it plain on purpose — privacy shouldn't need a translator.
+            South Africa. We keep it plain on purpose, privacy shouldn't need a translator.
           </p>
         </header>
 
@@ -67,7 +67,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
               operational challenge and preferred call time.
             </li>
             <li>
-              <strong>Information collected automatically.</strong> If — and only if — you consent to
+              <strong>Information collected automatically.</strong> If, and only if, you consent to
               analytics cookies, we collect usage information: pages viewed, clicks, approximate
               location (country/region), device and browser type, and how you arrived. See our
               <NuxtLink to="/cookie-policy">Cookie Policy</NuxtLink> for the detail.
@@ -88,7 +88,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
             <tbody>
               <tr><td>Reply to your enquiry and run a discovery call</td><td>Performance of / steps toward a contract; your consent</td></tr>
               <tr><td>Build your Operational Pain Profile and follow up</td><td>Your consent; our legitimate interest in serving prospective clients</td></tr>
-              <tr><td>Measure and improve the website (analytics)</td><td>Your <strong>consent</strong> (opt-in) — nothing analytics-related runs until you accept</td></tr>
+              <tr><td>Measure and improve the website (analytics)</td><td>Your <strong>consent</strong> (opt-in), nothing analytics-related runs until you accept</td></tr>
               <tr><td>Keep records and meet legal obligations</td><td>Legal obligation; legitimate interest</td></tr>
             </tbody>
           </table>
@@ -102,8 +102,8 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <h2>4. Cookies and analytics</h2>
           <p>
             We use a privacy-first, opt-in approach. Until you accept, no non-essential cookies or
-            analytics scripts load. The full breakdown — categories, providers (Google Analytics 4,
-            Microsoft Clarity), and how to change your mind — lives in our
+            analytics scripts load. The full breakdown, categories, providers (Google Analytics 4,
+            Microsoft Clarity), and how to change your mind, lives in our
             <NuxtLink to="/cookie-policy">Cookie Policy</NuxtLink>.
           </p>
         </section>
@@ -112,7 +112,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <h2>5. Who we share it with (operators)</h2>
           <p>We don't sell your personal information. We share it only with:</p>
           <ul>
-            <li><strong>Service providers ("operators")</strong> who process information on our behalf under contract — for example, our email provider, and (with your consent) Google for Analytics and Microsoft for Clarity.</li>
+            <li><strong>Service providers ("operators")</strong> who process information on our behalf under contract, for example, our email provider, and (with your consent) Google for Analytics and Microsoft for Clarity.</li>
             <li><strong>Authorities</strong>, where we're legally required to disclose information.</li>
           </ul>
         </section>
@@ -121,7 +121,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <h2>6. Cross-border transfers</h2>
           <p>
             Some operators (e.g. Google, Microsoft) process information outside South Africa. Where we
-            transfer personal information across borders, we do so in line with POPIA section 72 —
+            transfer personal information across borders, we do so in line with POPIA section 72 -
             relying on the operator's contractual safeguards and recognised data-protection standards.
           </p>
         </section>
@@ -129,8 +129,8 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
         <section>
           <h2>7. How we keep it safe</h2>
           <p>
-            We apply reasonable technical and organisational measures — access controls, encryption in
-            transit, and the principle of collecting only what we need — to guard against loss, misuse,
+            We apply reasonable technical and organisational measures, access controls, encryption in
+            transit, and the principle of collecting only what we need, to guard against loss, misuse,
             and unauthorised access, as POPIA section 19 requires.
           </p>
         </section>
@@ -139,7 +139,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           <h2>8. How long we keep it</h2>
           <p>
             We keep enquiry and client information only as long as needed for the purpose collected, or
-            as the law requires — typically up to 36 months after our last meaningful contact, after
+            as the law requires, typically up to 36 months after our last meaningful contact, after
             which we delete or de-identify it. Analytics data is retained per the settings in Google
             Analytics 4 (currently 14 months).
           </p>
@@ -157,7 +157,7 @@ useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
           </ul>
           <p>
             To exercise any of these, email <a href="mailto:sales@zabble.org">sales@zabble.org</a>.
-            Withdrawing analytics consent is one click — use
+            Withdrawing analytics consent is one click, use
             <button type="button" class="link-button" @click="analytics.openSettings()">cookie settings</button>
             or the control on our <NuxtLink to="/cookie-policy">Cookie Policy</NuxtLink> page.
           </p>

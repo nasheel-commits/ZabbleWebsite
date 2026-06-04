@@ -2,7 +2,7 @@
 //
 // Powers the "Related systems" block on every module detail page so each module
 // links to >=3 contextual shared-pillar siblings (rule L5) instead of being a
-// dead-end — AND so that the resulting inbound link distribution is even, giving
+// dead-end, AND so that the resulting inbound link distribution is even, giving
 // every module the >=4 inbound links rule L2 requires.
 //
 // A naive "top-N by shared pillars" picks the same popular, early-index modules
