@@ -1,0 +1,876 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1181 sec.",
+    "cost": 0.015,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041459-1876-0383-0000-fb532c1a7df8",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.0381 sec.",
+            "cost": 0.015,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "serp_competitors",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "serp_competitors",
+                "se_type": "google",
+                "keywords": [
+                    "custom software development south africa",
+                    "bespoke software development south africa",
+                    "software development company south africa",
+                    "business process automation south africa",
+                    "workflow automation south africa",
+                    "business automation software south africa",
+                    "custom crm south africa",
+                    "system integration services south africa",
+                    "document automation south africa",
+                    "automation consultant south africa",
+                    "custom software johannesburg",
+                    "custom software development cape town"
+                ],
+                "location_name": "South Africa",
+                "language_code": "en",
+                "item_types": [
+                    "organic"
+                ],
+                "limit": 50
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "seed_keywords": [
+                        "custom software development south africa",
+                        "bespoke software development south africa",
+                        "software development company south africa",
+                        "business process automation south africa",
+                        "workflow automation south africa",
+                        "business automation software south africa",
+                        "custom crm south africa",
+                        "system integration services south africa",
+                        "document automation south africa",
+                        "automation consultant south africa",
+                        "custom software johannesburg",
+                        "custom software development cape town"
+                    ],
+                    "location_code": 2710,
+                    "language_code": "en",
+                    "total_count": 77,
+                    "items_count": 50,
+                    "items": [
+                        {
+                            "se_type": "google",
+                            "domain": "www.synthesis.co.za",
+                            "avg_position": 1,
+                            "median_position": 1,
+                            "rating": 99,
+                            "etv": 97.28,
+                            "keywords_count": 1,
+                            "visibility": 1,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    1
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.dvt.co.za",
+                            "avg_position": 2,
+                            "median_position": 2,
+                            "rating": 98,
+                            "etv": 51.84,
+                            "keywords_count": 1,
+                            "visibility": 0.9,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    2
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "businesstech.co.za",
+                            "avg_position": 3,
+                            "median_position": 3,
+                            "rating": 97,
+                            "etv": 31.136,
+                            "keywords_count": 1,
+                            "visibility": 0.8,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    3
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "bbdsoftware.com",
+                            "avg_position": 4,
+                            "median_position": 4,
+                            "rating": 96,
+                            "etv": 21.088,
+                            "keywords_count": 1,
+                            "visibility": 0.7,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    4
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "krs.co.za",
+                            "avg_position": 5,
+                            "median_position": 5,
+                            "rating": 95,
+                            "etv": 15.008,
+                            "keywords_count": 1,
+                            "visibility": 0.6,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    5
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "clutch.co",
+                            "avg_position": 6,
+                            "median_position": 6,
+                            "rating": 94,
+                            "etv": 10.815999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0.5,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    6
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "livex.co.za",
+                            "avg_position": 7,
+                            "median_position": 7,
+                            "rating": 93,
+                            "etv": 8.192,
+                            "keywords_count": 1,
+                            "visibility": 0.4,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    7
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.goodfirms.co",
+                            "avg_position": 8,
+                            "median_position": 8,
+                            "rating": 92,
+                            "etv": 6.303999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0.3,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    8
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "mybroadband.co.za",
+                            "avg_position": 9,
+                            "median_position": 9,
+                            "rating": 91,
+                            "etv": 4.8,
+                            "keywords_count": 1,
+                            "visibility": 0.2,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    9
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "runninghill.co.za",
+                            "avg_position": 10,
+                            "median_position": 10,
+                            "rating": 90,
+                            "etv": 3.6159999999999997,
+                            "keywords_count": 1,
+                            "visibility": 0.1,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    10
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.specno.com",
+                            "avg_position": 11,
+                            "median_position": 11,
+                            "rating": 89,
+                            "etv": 2.912,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    11
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.platform45.com",
+                            "avg_position": 12,
+                            "median_position": 12,
+                            "rating": 88,
+                            "etv": 2.4,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    12
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.smudge.co.za",
+                            "avg_position": 13,
+                            "median_position": 13,
+                            "rating": 87,
+                            "etv": 1.888,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    13
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "webtonic.co.za",
+                            "avg_position": 14,
+                            "median_position": 14,
+                            "rating": 86,
+                            "etv": 1.792,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    14
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.gendac.co.za",
+                            "avg_position": 15,
+                            "median_position": 15,
+                            "rating": 85,
+                            "etv": 1.6320000000000001,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    15
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.facebook.com",
+                            "avg_position": 16,
+                            "median_position": 16,
+                            "rating": 84,
+                            "etv": 1.376,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    16
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "softserve.co.za",
+                            "avg_position": 17,
+                            "median_position": 17,
+                            "rating": 83,
+                            "etv": 1.376,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    17
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "quadrantsystems.co.za",
+                            "avg_position": 18,
+                            "median_position": 18,
+                            "rating": 82,
+                            "etv": 1.056,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    18
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "iqbusiness.net",
+                            "avg_position": 19,
+                            "median_position": 19,
+                            "rating": 81,
+                            "etv": 0.8640000000000001,
+                            "keywords_count": 1,
+                            "visibility": 0.05,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    19
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "leopardgroup.org.za",
+                            "avg_position": 21,
+                            "median_position": 21,
+                            "rating": 79,
+                            "etv": 0.736,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    21
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "codehesion.com",
+                            "avg_position": 22,
+                            "median_position": 22,
+                            "rating": 78,
+                            "etv": 0.7040000000000001,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    22
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.offerzen.com",
+                            "avg_position": 23,
+                            "median_position": 23,
+                            "rating": 77,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    23
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.scrums.com",
+                            "avg_position": 24,
+                            "median_position": 24,
+                            "rating": 76,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    24
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.wearefullstack.com",
+                            "avg_position": 25,
+                            "median_position": 25,
+                            "rating": 75,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    25
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "matogen.com",
+                            "avg_position": 26,
+                            "median_position": 26,
+                            "rating": 74,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    26
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.ditstek.com",
+                            "avg_position": 27,
+                            "median_position": 27,
+                            "rating": 73,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    27
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "softillion.com",
+                            "avg_position": 28,
+                            "median_position": 28,
+                            "rating": 72,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    28
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "topsoftwarecompanies.co",
+                            "avg_position": 30,
+                            "median_position": 30,
+                            "rating": 70,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    30
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.glassdoor.com",
+                            "avg_position": 31,
+                            "median_position": 31,
+                            "rating": 69,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    31
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.designrush.com",
+                            "avg_position": 32,
+                            "median_position": 32,
+                            "rating": 68,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    32
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.azilen.com",
+                            "avg_position": 33,
+                            "median_position": 33,
+                            "rating": 67,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    33
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "co-foundry.co.za",
+                            "avg_position": 34,
+                            "median_position": 34,
+                            "rating": 66,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    34
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.linkedin.com",
+                            "avg_position": 35,
+                            "median_position": 35,
+                            "rating": 65,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    35
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.lusha.com",
+                            "avg_position": 37,
+                            "median_position": 37,
+                            "rating": 63,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    37
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.nagarro.com",
+                            "avg_position": 38,
+                            "median_position": 38,
+                            "rating": 62,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    38
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "sasoft.co.za",
+                            "avg_position": 40,
+                            "median_position": 40,
+                            "rating": 60,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    40
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "insightconsulting.co.za",
+                            "avg_position": 41,
+                            "median_position": 41,
+                            "rating": 59,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    41
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.ksdc.co.za",
+                            "avg_position": 42,
+                            "median_position": 42,
+                            "rating": 58,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    42
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.spicysoftdev.co.za",
+                            "avg_position": 43,
+                            "median_position": 43,
+                            "rating": 57,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    43
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.bizcommunity.com",
+                            "avg_position": 44,
+                            "median_position": 44,
+                            "rating": 56,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    44
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "zonketech.co.za",
+                            "avg_position": 45,
+                            "median_position": 45,
+                            "rating": 55,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    45
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "superbcompanies.com",
+                            "avg_position": 46,
+                            "median_position": 46,
+                            "rating": 54,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    46
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.elemental.agency",
+                            "avg_position": 47,
+                            "median_position": 47,
+                            "rating": 53,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    47
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "themanifest.com",
+                            "avg_position": 48,
+                            "median_position": 48,
+                            "rating": 52,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    48
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "techbehemoths.com",
+                            "avg_position": 49,
+                            "median_position": 49,
+                            "rating": 51,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    49
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "polymorph.co.za",
+                            "avg_position": 50,
+                            "median_position": 50,
+                            "rating": 50,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    50
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "arcticedgeapps.com",
+                            "avg_position": 52,
+                            "median_position": 52,
+                            "rating": 48,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    52
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "softwaredev.co.za",
+                            "avg_position": 54,
+                            "median_position": 54,
+                            "rating": 46,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    54
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.sts.co.za",
+                            "avg_position": 56,
+                            "median_position": 56,
+                            "rating": 44,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    56
+                                ]
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "domain": "www.empirestate.co.za",
+                            "avg_position": 57,
+                            "median_position": 57,
+                            "rating": 43,
+                            "etv": 0.6719999999999999,
+                            "keywords_count": 1,
+                            "visibility": 0,
+                            "relevant_serp_items": 1,
+                            "keywords_positions": {
+                                "software development company south africa": [
+                                    57
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

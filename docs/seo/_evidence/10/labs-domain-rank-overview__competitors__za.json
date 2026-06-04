@@ -1,0 +1,237 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.0970 sec.",
+    "cost": 0.01,
+    "tasks_count": 9,
+    "tasks_error": 8,
+    "tasks": [
+        {
+            "id": "06041500-1876-0388-0000-59e72424cd4b",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.0683 sec.",
+            "cost": 0.01,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "zabble.org",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "target": "zabble.org",
+                    "location_code": 2710,
+                    "language_code": "en",
+                    "total_count": null,
+                    "items_count": 0,
+                    "items": null
+                }
+            ]
+        },
+        {
+            "id": "06041500-1876-0388-0000-39cf0df8acd4",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "scrums.com",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-50abe75a8b61",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "synthesis.co.za",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-121bd6124e58",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "dvt.co.za",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-7315b32d5fa2",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "specno.com",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-967f6de28bcd",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "platform45.com",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-6f8cb84726ba",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "runninghill.co.za",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-5aa7d48494e2",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "gendac.co.za",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        },
+        {
+            "id": "06041500-1876-0388-0000-21fe25749501",
+            "status_code": 40000,
+            "status_message": "You can set only one task at a time.",
+            "time": "0 sec.",
+            "cost": 0,
+            "result_count": 0,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "domain_rank_overview",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "domain_rank_overview",
+                "se_type": "google",
+                "target": "smudge.co.za",
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": null
+        }
+    ]
+}

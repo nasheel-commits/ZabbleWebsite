@@ -23,7 +23,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
-| 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
+| 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | S10 | **done** (off-page/local/competitive) | 00, 05 | Competitor map + visibility, content/link gaps, digital-PR + velocity plan, GBP/NAP/citation/review/local-landing plan, sameAs hand-off. Branch `seo/10-offpage-local`. Spend ~$0.18. _Measurement (B4) + Backlinks data (B5) still blocked._ |
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;
@@ -61,10 +61,28 @@ DataForSEO account verified + funded ($50.998), live + sandbox calls return
 | ~~B2~~ | ~~Fund the account~~ — **RESOLVED 2026-06-04** (balance $50.998). Keep an eye on burn as S05 runs at volume. | User ✅ | — | `00-access-and-credentials.md` §1 |
 | B3 | **Staging URL** not provided. Needed so S01 can set the pre-launch `noindex` guard before any indexing happens. | User → S01 | S01 (P1) | `reference/nuxt-seo-implementation.md` §5 |
 | B4 | **GSC + Bing + analytics access** (DNS for `zabble.org` domain verification; POPIA-compliant analytics choice). | User → S10/S01 | S10 measurement, launch indexing | `reference/measurement-indexing.md` §7 |
+| B5 | **DataForSEO Backlinks API not subscribed** — `40204 Access denied` on `backlinks/*`. It's a separate paid subscription (the "higher minimum commitment"). Decide whether to activate to unlock competitor referring-domain intel + link-velocity tracking. S10's digital-PR plan was built from observable competitor link-*assets* in the meantime. | User → S10 | S10 backlink data (not the plan) | `audits/10-offpage-local.md` §1,§4 F7; `_evidence/10/README.note.md` |
+| B6 | **NAP inputs for local SEO** — confirm exact registered business name, a verifiable SA address (or service-area), a `+27` phone, and the public contact email. Required before GBP creation + citation build. | User → S10 | GBP, citations, local pages | `targets/local-seo.md` §2,§3 |
+
+### S10 → S07/S08 hand-off — `sameAs` / brand-citation opportunity list (GEO entity)
+Establish the **"Zabble" (and "Kairos") entity** consistently across these, using
+the **NAP boilerplate in `targets/local-seo.md` §3 verbatim** so site + GBP +
+profiles corroborate (GEO needs cross-source agreement — `aeo-geo-principles.md` §4).
+Put the live URLs into `Organization.sameAs` (S03 implements):
+- **High-trust entity:** LinkedIn Company Page, Crunchbase, Google Business Profile,
+  Bing Places, Apple Business Connect.
+- **B2B/industry:** Clutch.co, GoodFirms.co, DesignRush (also rank for Zabble's SA
+  terms — `_evidence/10/labs-serp-competitors__core-cluster__za.json`).
+- **SA local:** Brabys, Nichemarket.co.za, Bizcommunity company profile.
+- **Social:** Facebook, Instagram, X/Twitter (brand handle).
+- **Corroboration fuel:** the R2 flagship digital-PR asset (`audits/10` §5) +
+  consistent boilerplate everywhere. Full directory list: `targets/local-seo.md` §4.
 
 ### Still needed from the user (not blocking session start)
 1. **Staging URL** (B3) — for S01's pre-launch `noindex` guard.
 2. **GSC / Bing / analytics access** (B4) — for S10 + launch indexing.
+3. **Backlinks subscription decision** (B5) — to unlock competitor link data.
+4. **NAP inputs** (B6) — to start GBP + local SEO.
 
 DataForSEO access is fully live — all 10 sessions can start. **Each new Claude
 Code session must launch with env loaded** (access doc §3) so the MCP tools
