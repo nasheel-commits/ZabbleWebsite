@@ -20,7 +20,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
-| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard (`content/aeo-standard.md`) + answer-block/FAQ components + 8 pages populated (home + 7 systems), SSR-verified; live SA SERP/PAA evidence ($0.0254). Audit `audits/07-aeo.md`. **S03 JSON-LD requested (below).** |
+| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard + components + **all 32 systems + 4 pillar hubs (`/pillars/*`) + home + `/systems` populated** (answer-first 40–60w + PAA FAQs), byte-verified server-side. **188 vitest regression tests pass; `nuxt generate` clean (76 routes).** Live SA SERP/PAA evidence ($0.081). Audit `audits/07-aeo.md`. **JSON-LD hand-off to S03/S08 logged below (P0).** |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
@@ -37,18 +37,27 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 ### S07 (AEO) cross-session asks — logged 2026-06-04
 > Added by S07 without editing other rows (conventions §2). Each owner: please
 > action and update your own row. Detail in `audits/07-aeo.md` §6.
-- **→ S03 (Schema) — P0 — JSON-LD REQUEST.** Attach `FAQPage` JSON-LD on the 7
-  populated system pages and `FAQPage` on `/`, sourced from `system.faqs`
-  (`app/data/systems.ts`) and `HOME_FAQS` (`app/data/site-faqs.ts`). Types `Faq`
-  / `AnswerBlock` are exported from `app/data/systems.ts`. On-page text and
-  schema **must be byte-identical** (read the same data). Consider `QAPage` for
-  the answer block. This is the formal hand-off of S07's FAQ/QA data to S03.
+- **→ S03 (Schema/JSON-LD owner) — P0 — JSON-LD HAND-OFF, serves S08/GEO.**
+  Emit `FAQPage` JSON-LD on **all 36 answer pages** and `QAPage`/`Question` for
+  each answer block, sourced verbatim from the structured data (so the marked-up
+  text is byte-identical to what renders — proven by `test/aeo-rendered.spec.ts`):
+  - per system: `system.answer` / `system.faqs` (merged onto `SYSTEMS` from
+    `app/data/aeo-content.ts`);
+  - home + `/systems`: `HOME_ANSWER`/`HOME_FAQS` + `SYSTEMS_INDEX_ANSWER`/
+    `SYSTEMS_INDEX_FAQS` (`app/data/site-faqs.ts`);
+  - pillar hubs: `PILLAR_HUBS[slug].answer` / `.faqs` (`app/data/pillar-content.ts`).
+  Types `Faq`/`AnswerBlock` exported from `app/data/systems.ts`. Import the same
+  objects — do not re-type the strings. (The goal brief calls this the "S08"
+  hand-off; in repo numbering S03 owns JSON-LD injection and S08/GEO is the
+  consumer. Logged to both.)
 - **→ S05 (Keywords) — P1.** SA volume + KD for the AEO question set (request
   appended to `targets/keyword-map.md` §4) to re-rank the page backlog.
-- **→ S08 (GEO) — P1.** AI Overview present on 10/12 priority queries; run
-  citation tracking, report whether Zabble is cited.
-- **→ S06 (Content) — P1.** Author `AEO_CONTENT` for the remaining 24 systems
-  via `content/aeo-standard.md`.
+- **→ S08 (GEO) — P1.** AI Overview present on ~33/38 sampled queries; run
+  citation tracking, report whether Zabble is cited. Consume the FAQ/answer
+  JSON-LD (above) as GEO entity signal.
+- **→ S06 (Content) — P1.** All systems now have a baseline answer + FAQ set;
+  extend with deeper long-form/article copy per `content/aeo-standard.md`,
+  keeping the answer-first shape.
 - **→ S10/S08 — P1.** `local_pack` on SA service queries ("custom software
   development south africa", "who builds custom software…").
 

@@ -222,11 +222,20 @@ page is data-only**, no new components.
   system's entry in the `AEO_CONTENT` map in `app/data/systems.ts`. The detail
   page (`app/pages/systems/[slug].vue`) renders the answer block high and the
   FAQ near the foot automatically when those fields exist.
-- **Home / core offering:** edit `HOME_ANSWER` / `HOME_FAQS` in
-  `app/data/site-faqs.ts`; `app/components/TheFaq.vue` renders them on `/`.
+- **Home / core offering & `/systems`:** edit `HOME_ANSWER`/`HOME_FAQS` and
+  `SYSTEMS_INDEX_ANSWER`/`SYSTEMS_INDEX_FAQS` in `app/data/site-faqs.ts`
+  (`TheFaq.vue` renders the home set on `/`).
+- **Pillar hubs:** edit `PILLAR_HUBS[slug]` in `app/data/pillar-content.ts`; the
+  `/pillars/<slug>` page renders the answer block, FAQs, and member-system links.
 - **Primitives:** `app/components/AnswerBlock.vue` (question heading + answer)
   and `app/components/FaqList.vue` (visible Q&A list). Reuse them anywhere; don't
   fork them.
+- **Tests are the gate.** `test/aeo-data.spec.ts` enforces the 40–60 word budget
+  and ≥3 FAQs on every system/hub/money page; `test/aeo-rendered.spec.ts` proves
+  the rendered HTML is byte-identical to the data (so S08's JSON-LD, read from the
+  same objects, matches the page). New content is automatically covered — the
+  suites enumerate the data, so just add the entry and the tests check it.
 - **Checklist before commit:** 40–60 words on every answer · question phrased as
   a user asks it · first sentence answers it · no overclaim · `npm run generate`
-  then `grep` the prerendered HTML for the answer text · FAQ data handed to S03.
+  then `npm test` (188+ assertions, incl. byte-identical render) · FAQ/answer
+  data handed to S03 for JSON-LD.

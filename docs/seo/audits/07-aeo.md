@@ -18,6 +18,41 @@
 > (Content). Worked in an isolated **git worktree** because the shared checkout
 > is branch-thrashed by parallel sessions.
 
+## 0. Implementation log — 2026-06-04 (completion pass)
+
+The first pass shipped the standard, components, and 8 pages. This pass brings
+**every** answer-shaped page up to the standard.
+
+- **All 32 systems populated** (the 25 previously unpopulated, plus the original
+  7): each has an answer-first block (40–60 words, test-enforced) + 3–4
+  PAA-shaped FAQs, authored from the business overview and the real SA SERP PAA
+  captured for every cluster (`_evidence/07/`, cumulative live cost $0.081).
+- **Four pillar hubs** built at `/pillars/<slug>` (automation, audit-trails,
+  anomaly-detection, analytics): answer-first block + FAQs + links to the systems
+  that deliver each pillar (`app/data/pillar-content.ts`,
+  `app/pages/pillars/[pillar].vue`). Discovered + prerendered via `crawlLinks`
+  from new pillar-hub links on `/systems` — no change to S01's `nuxt.config.ts`.
+- **Money pages:** `/systems` index gained an answer block + FAQs (including
+  "How do I know which system my business needs?", routing the `/diagnose`
+  intent to an extractable place; the interactive diagnose flow is left
+  uncluttered). Home was done in pass 1.
+- **Architecture:** all per-system AEO copy centralised in
+  `app/data/aeo-content.ts` (one editable source S08 marks up as JSON-LD);
+  `systems.ts` imports + merges it. Page/site content in `site-faqs.ts` /
+  `pillar-content.ts`.
+- **Regression tests (vitest, 188 passing):** `test/aeo-data.spec.ts` enforces
+  the 40–60 word budget, ≥3 question-shaped FAQs, and no duplicate questions on
+  every system/hub/money page; `test/aeo-rendered.spec.ts` asserts each answer +
+  FAQ Q&A appears **byte-identically** in the prerendered `.output/public` HTML
+  (server-rendered, schema-ready). `npm test` runs both; the rendered spec
+  expects a prior `npm run generate`.
+- **`nuxt generate` clean:** 76 routes, exit 0 (incl. the 4 hubs); no warnings
+  attributable to the change.
+
+**Coverage now:** 30 live systems + 4 pillar hubs + 2 money pages = **36
+prerendered answer/FAQ units, all byte-verified** (plus 2 concept systems
+populated in data). Baseline went from 0 → 8 (pass 1) → 36 (this pass).
+
 ## 1. Scope
 
 **Covers:** making Zabble's money pages extractable into answer surfaces —
@@ -147,14 +182,19 @@ Status: ✅ shipped this session · ⬜ backlog (data-only fill).
 | how much does a bespoke business system cost | `/` | PAA | FAQ Q&A | ✅ |
 | custom software development south africa | `/` | AI Overview + local_pack | Entity + local (S08/S10) | ⬜ |
 | how do I know which system my business needs | `/diagnose` | informational | Answer-block intro (backlog) | ⬜ |
-| _remaining 24 systems_ | `/systems/<slug>` | PAA + AI Overview (assumed; verify at fill) | Definition answer block + 3–5 FAQs | ⬜ |
+| _remaining 25 systems_ (approval-workflow, multi-channel-inbox, decision-engine, document-assembly, customer-360, knowledge-assistant, lead-qualifier, legacy-bridge, inventory-clarity, client-onboarding, case-management, task-management, field-ops-app, analytics-suite, accounting-engine, pricing-engine, data-routing, integration-hub, cross-system-sync, forecasting, predictive-maintenance, master-data-hub, notification-orchestration, legal-intake-automation, hospitality-booking-marketing-dashboard) | `/systems/<slug>` | PAA + AI Overview (confirmed live; ~6 PAA each) | Definition answer block + 3–4 FAQs | ✅ |
+| business process automation | `/pillars/automation` | PAA + AI Overview | Definition answer block + FAQ hub | ✅ |
+| what is an audit trail | `/pillars/audit-trails` | PAA + AI Overview | Definition answer block + FAQ hub | ✅ |
+| what is anomaly detection | `/pillars/anomaly-detection` | PAA + AI Overview | Definition answer block + FAQ hub | ✅ |
+| what is business analytics | `/pillars/analytics` | PAA + AI Overview | Definition answer block + FAQ hub | ✅ |
+| what systems does Zabble build / which system do I need | `/systems` | PAA + AI Overview | Answer block + FAQ | ✅ |
 
 ## 4. Gaps & opportunities (prioritised)
 
 | Pri | Gap | Why it matters | Action / owner |
 |---|---|---|---|
-| **P0** | **FAQ/answer JSON-LD not emitted** | On-page FAQs are eligible for PAA/FAQ results, but `FAQPage` schema materially lifts eligibility and is GEO entity signal. Data is ready and exposed. | **S03** — attach `FAQPage` from `system.faqs` / `HOME_FAQS` (§6). |
-| **P0** | **24 / 31 system pages still have no answer block or FAQ** | Each is a money page with an informational query that shows PAA + AI Overview. Components are live; filling is **data-only**. | **S07→S06**: author `AEO_CONTENT` for the rest, one cluster at a time. Brief: `content/aeo-standard.md`. |
+| **P0** | **FAQ/answer JSON-LD not emitted** | On-page FAQs across 36 pages are eligible for PAA/FAQ results, but `FAQPage`/`QAPage` schema materially lifts eligibility and is a GEO entity signal. All data is structured, byte-verified, and exposed. | **S03** (JSON-LD owner) **for S08/GEO** — emit `FAQPage` from `system.faqs`, `HOME_FAQS`, `SYSTEMS_INDEX_FAQS`, and `PILLAR_HUBS[*].faqs`; `QAPage`/`Question` from each `answer` block (§6). |
+| ~~P0~~ **DONE** | ~~24 / 31 system pages still have no answer block or FAQ~~ | **Resolved this pass** — all 32 systems + 4 pillar hubs + `/systems` populated and byte-verified (188 tests). | ✅ `app/data/aeo-content.ts` |
 | **P1** | **AI Overview ubiquity unmeasured** | 10/12 queries show an AI Overview; we don't yet know who it cites or whether Zabble appears. | **S08** — `AI_OPTIMIZATION` + SERP `ai_overview` citation tracking on the priority queries. |
 | **P1** | **No comparison table for "bespoke vs off-the-shelf"** | A high-intent decision query; tables lift whole into AI Overviews. Currently answered only as an FAQ paragraph on `/`. | **S07/S06** — add a comparison-table block (standard §4) on `/` or a `/bespoke-vs-off-the-shelf` asset. |
 | **P1** | **Local pack on "…south africa" service queries** | `custom software development south africa` / `who builds custom software…` surface a local_pack we can't win with copy alone. | **S10** (GBP/local) + **S08** (entity). |
@@ -181,12 +221,21 @@ Status: ✅ shipped this session · ⬜ backlog (data-only fill).
 
 Mirrored into each target session's `status.md` notes.
 
-- **→ S03 (Schema/JSON-LD) — P0.** Attach `FAQPage` JSON-LD on system pages and
-  `/`, sourced from `system.faqs` (in `app/data/systems.ts`) and `HOME_FAQS` (in
-  `app/data/site-faqs.ts`). The `Faq`/`AnswerBlock` types are exported from
-  `app/data/systems.ts`. **On-page text and schema must be byte-identical** —
-  read from the same data, don't re-write. Consider `QAPage` for the answer
-  block.
+- **→ S03 (Schema/JSON-LD) — P0 — serves S08/GEO.** Attach `FAQPage` JSON-LD on
+  all 36 answer pages and `QAPage`/`Question` for each answer block, sourced
+  verbatim from the structured data:
+  - per-system: `system.faqs` / `system.answer` (merged onto `SYSTEMS` from
+    `app/data/aeo-content.ts`);
+  - home: `HOME_FAQS` / `HOME_ANSWER`, and `/systems`: `SYSTEMS_INDEX_FAQS` /
+    `SYSTEMS_INDEX_ANSWER` (`app/data/site-faqs.ts`);
+  - pillar hubs: `PILLAR_HUBS[slug].faqs` / `.answer`
+    (`app/data/pillar-content.ts`).
+  The `Faq`/`AnswerBlock` types are exported from `app/data/systems.ts`. **On-page
+  text and schema must be byte-identical** — read from the same data, don't
+  re-write; `test/aeo-rendered.spec.ts` proves the on-page text equals the data,
+  so importing the same objects yields identical JSON-LD. (Goal framing calls
+  this the "S08" hand-off; in repo numbering S03 owns JSON-LD injection and S08
+  consumes it for GEO.)
 - **→ S05 (Keywords) — P1.** Need SA search volume + KD for the AEO question set
   (request appended to `targets/keyword-map.md` §4) to re-rank the page backlog.
 - **→ S08 (GEO) — P1.** AI Overview present on 10/12 priority queries; please run
@@ -215,5 +264,8 @@ Files under `_evidence/07/`:
 - `serp-advanced__business-automation__za.json` — "business process automation south africa": no AIO/PAA (knowledge_graph + reviews).
 - `serp-advanced__home-custom-software__za.json` — "custom software development south africa": ai_overview + local_pack.
 - `serp-advanced__home-who-builds__za.json` — "who builds custom software in south africa": local_pack + PAA(6).
-- `paa-inventory__aeo-clusters__za.json` — extracted PAA questions + slot flags per query (the question-inventory source).
-- `serp-advanced__aeo-clusters__za.note.md` — endpoint, request, mode (live), total cost ($0.02535), and what we read.
+- `paa-inventory__aeo-clusters__za.json` — extracted PAA questions + slot flags for all 38 queries (the question-inventory source).
+- `serp-advanced__aeo-clusters__za.note.md` — endpoint, request, mode (live), method, and what we read.
+- **Completion-pass captures (26 more, cumulative $0.081):**
+  `serp-advanced__{approval-workflow, multi-channel-inbox, decision-engine, document-assembly, customer-360, knowledge-assistant, lead-qualifier, legacy-bridge, inventory-clarity, client-onboarding, case-management, field-ops-app, analytics-suite, accounting-engine, pricing-engine, data-routing, integration-hub, cross-system-sync, forecasting, predictive-maintenance, master-data-hub, notification-orchestration, legal-intake-automation}__za.json` — one per remaining system; AI Overview + ~6 PAA on nearly all.
+  `serp-advanced__{pillar-automation, pillar-audit-trails, pillar-analytics}__za.json` — pillar-hub terms.
