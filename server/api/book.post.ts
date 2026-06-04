@@ -63,17 +63,44 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Missing or invalid booking details.' })
   }
 
-  const c = readBookingConfig()
-  if (!c) {
-    console.warn('[book] Google credentials not configured, returning fallback.')
-    return { ok: false as const, reason: 'not_configured' as const }
-  }
-
-  const endDateTime = addMinutes(startDateTime, c.durationMin)
   const dateLabel = body?.start?.dateLabel ?? startDateTime
   const timeLabel = body?.start?.timeLabel ?? ''
   const summaryLines = Array.isArray(body?.summaryLines) ? body!.summaryLines! : []
   const profileTitle = (body?.profileTitle ?? '').trim()
+  const phone = (contact.phone ?? '').trim()
+  const walkAway = (contact.walkAway ?? '').trim()
+
+  // --- Durable lead capture — ALWAYS, before any Google call ---------------
+  // Every validated submission is logged here so a lead is NEVER lost: not when
+  // booking isn't configured yet, not when Google later errors, not when the
+  // visitor never sends the mailto fallback. On Vercel these land in the
+  // function logs (filter for "[lead]"). The calendar event + emails below are
+  // the happy path on top of this guaranteed record.
+  console.log(
+    '[lead] diagnose submission ' +
+      JSON.stringify({
+        receivedAt: new Date().toISOString(),
+        name,
+        email,
+        company,
+        phone,
+        walkAway,
+        profileTitle,
+        requestedSlot: { dateTime: startDateTime, dateLabel, timeLabel },
+        answers: summaryLines,
+      }),
+  )
+
+  const c = readBookingConfig()
+  if (!c) {
+    // Lead is already captured in the log above; the UI shows the mailto
+    // fallback. To enable auto-booking + emails, set the NUXT_GOOGLE_* env vars
+    // in Vercel → Settings → Environment Variables (see docs/booking-setup.md).
+    console.warn('[book] not_configured: NUXT_GOOGLE_* env vars are unset — lead logged, UI falls back to mailto.')
+    return { ok: false as const, reason: 'not_configured' as const }
+  }
+
+  const endDateTime = addMinutes(startDateTime, c.durationMin)
 
   try {
     const token = await getGoogleToken(c)
@@ -105,54 +132,8 @@ export default defineEventHandler(async (event) => {
       return { ok: false as const, reason: 'slot_taken' as const }
     }
 
-    const descriptionLines = [
-      `Discovery call with ${name}${company ? ` (${company})` : ''}.`,
-      '',
-      profileTitle ? `Operational Pain Profile: ${profileTitle}` : '',
-      '',
-      'What they shared on the diagnostic:',
-      ...summaryLines.map((l) => `• ${l}`),
-      '',
-      `Contact: ${email}${contact.phone ? ` · ${contact.phone}` : ''}`,
-      contact.walkAway ? `Wants to walk away with: ${contact.walkAway}` : '',
-    ].filter((l) => l !== '')
-
-    // --- Create the calendar event + Meet link -----------------------------
-    const requestId = globalThis.crypto?.randomUUID?.() ?? `zabble-${startDateTime}-${email}`
-    const eventRes = await $fetch<{
-      id?: string
-      htmlLink?: string
-      hangoutLink?: string
-      conferenceData?: { entryPoints?: Array<{ entryPointType?: string; uri?: string }> }
-    }>('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
-      method: 'POST',
-      // sendUpdates:'none', we send our own premium confirmation to the lead
-      // instead of Google's plain invite. The event still lands on sales@'s
-      // calendar (they're the organizer), and sales@ gets our internal email.
-      query: { conferenceDataVersion: 1, sendUpdates: 'none' },
-      headers: { Authorization: `Bearer ${token}` },
-      body: {
-        summary: `Zabble discovery call · ${company}`,
-        description: descriptionLines.join('\n'),
-        start: { dateTime: startDateTime, timeZone: c.timeZone },
-        end: { dateTime: endDateTime, timeZone: c.timeZone },
-        attendees: [
-          { email, displayName: name },
-          { email: c.salesEmail, organizer: true, responseStatus: 'accepted' },
-        ],
-        guestsCanModify: false,
-        reminders: { useDefault: true },
-        conferenceData: {
-          createRequest: { requestId, conferenceSolutionKey: { type: 'hangoutsMeet' } },
-        },
-      },
-    })
-
-    const meetLink =
-      eventRes.hangoutLink ||
-      eventRes.conferenceData?.entryPoints?.find((e) => e.entryPointType === 'video')?.uri ||
-      null
-
+    // Gmail send helper + internal-notification builders. Defined BEFORE the
+    // event call so the calendar-failure path can also alert sales@.
     const sendGmail = (raw: string) =>
       $fetch('https://gmail.googleapis.com/gmail/v1/users/me/messages/send', {
         method: 'POST',
@@ -163,6 +144,100 @@ export default defineEventHandler(async (event) => {
     // Human-friendly timezone label, e.g. "Johannesburg · UTC+2".
     const tzCity = c.timeZone.split('/').pop()?.replace(/_/g, ' ') ?? c.timeZone
     const tzLabel = `${tzCity} · UTC${offset.slice(0, 3).replace(/0(\d)/, '$1')}`
+
+    // Internal lead email body — shared by the booked + booking-failed paths,
+    // so sales@ is notified of the lead either way.
+    const internalLead = (o: { booked: boolean; meetLink?: string | null; htmlLink?: string | null }) =>
+      [
+        o.booked
+          ? 'New discovery call booked via the diagnostic.'
+          : 'Lead from the diagnostic — auto-booking FAILED. Please follow up and book manually.',
+        '',
+        `When (requested): ${dateLabel}${timeLabel ? ` at ${timeLabel}` : ''} (${tzLabel})`,
+        o.meetLink ? `Google Meet: ${o.meetLink}` : '',
+        o.htmlLink ? `Calendar event: ${o.htmlLink}` : '',
+        '',
+        `Name: ${name}`,
+        `Company: ${company}`,
+        `Email: ${email}`,
+        phone ? `Phone: ${phone}` : '',
+        '',
+        profileTitle ? `Operational Pain Profile: ${profileTitle}` : '',
+        '',
+        'Diagnostic answers:',
+        ...summaryLines.map((l) => `• ${l}`),
+        walkAway ? `\nWants to walk away with: ${walkAway}` : '',
+      ]
+        .filter((l) => l !== '')
+        .join('\n')
+
+    const notifySales = async (subject: string, text: string) => {
+      try {
+        await sendGmail(buildRawMime({ from: c.organizer, to: c.salesEmail, subject, text }))
+      } catch (mailErr) {
+        console.error('[book] Internal sales@ notification failed (non-fatal):', mailErr)
+      }
+    }
+
+    const descriptionLines = [
+      `Discovery call with ${name}${company ? ` (${company})` : ''}.`,
+      '',
+      profileTitle ? `Operational Pain Profile: ${profileTitle}` : '',
+      '',
+      'What they shared on the diagnostic:',
+      ...summaryLines.map((l) => `• ${l}`),
+      '',
+      `Contact: ${email}${phone ? ` · ${phone}` : ''}`,
+      walkAway ? `Wants to walk away with: ${walkAway}` : '',
+    ].filter((l) => l !== '')
+
+    // --- Create the calendar event + Meet link -----------------------------
+    const requestId = globalThis.crypto?.randomUUID?.() ?? `zabble-${startDateTime}-${email}`
+    let eventRes: {
+      id?: string
+      htmlLink?: string
+      hangoutLink?: string
+      conferenceData?: { entryPoints?: Array<{ entryPointType?: string; uri?: string }> }
+    }
+    try {
+      // sendUpdates:'none' — we send our own premium confirmation to the lead
+      // instead of Google's plain invite. The event still lands on sales@'s
+      // calendar (they're the organizer), and sales@ gets our internal email.
+      eventRes = await $fetch('https://www.googleapis.com/calendar/v3/calendars/primary/events', {
+        method: 'POST',
+        query: { conferenceDataVersion: 1, sendUpdates: 'none' },
+        headers: { Authorization: `Bearer ${token}` },
+        body: {
+          summary: `Zabble discovery call · ${company}`,
+          description: descriptionLines.join('\n'),
+          start: { dateTime: startDateTime, timeZone: c.timeZone },
+          end: { dateTime: endDateTime, timeZone: c.timeZone },
+          attendees: [
+            { email, displayName: name },
+            { email: c.salesEmail, organizer: true, responseStatus: 'accepted' },
+          ],
+          guestsCanModify: false,
+          reminders: { useDefault: true },
+          conferenceData: {
+            createRequest: { requestId, conferenceSolutionKey: { type: 'hangoutsMeet' } },
+          },
+        },
+      })
+    } catch (eventErr) {
+      // Calendar write failed, but the lead is already logged AND Gmail may
+      // still be reachable — actively alert sales@ so the lead is never dropped.
+      console.error('[book] Calendar event creation failed:', eventErr)
+      await notifySales(
+        `Lead (auto-booking FAILED) — ${name}${company ? `, ${company}` : ''}`,
+        internalLead({ booked: false }),
+      )
+      return { ok: false as const, reason: 'calendar_failed' as const }
+    }
+
+    const meetLink =
+      eventRes.hangoutLink ||
+      eventRes.conferenceData?.entryPoints?.find((e) => e.entryPointType === 'video')?.uri ||
+      null
 
     // --- Premium, branded confirmation email to the LEAD (with .ics) -------
     try {
@@ -202,39 +277,10 @@ export default defineEventHandler(async (event) => {
     }
 
     // --- Internal lead-notification email to sales@ (best effort) ----------
-    try {
-      const internal = [
-        'New discovery call booked via the diagnostic.',
-        '',
-        `When: ${dateLabel}${timeLabel ? ` at ${timeLabel}` : ''} (${tzLabel})`,
-        meetLink ? `Google Meet: ${meetLink}` : '',
-        eventRes.htmlLink ? `Calendar event: ${eventRes.htmlLink}` : '',
-        '',
-        `Name: ${name}`,
-        `Company: ${company}`,
-        `Email: ${email}`,
-        contact.phone ? `Phone: ${contact.phone}` : '',
-        '',
-        profileTitle ? `Operational Pain Profile: ${profileTitle}` : '',
-        '',
-        'Diagnostic answers:',
-        ...summaryLines.map((l) => `• ${l}`),
-        contact.walkAway ? `\nWants to walk away with: ${contact.walkAway}` : '',
-      ]
-        .filter((l) => l !== '')
-        .join('\n')
-
-      await sendGmail(
-        buildRawMime({
-          from: c.organizer,
-          to: c.salesEmail,
-          subject: `New call booked, ${name}${company ? `, ${company}` : ''}`,
-          text: internal,
-        }),
-      )
-    } catch (mailErr) {
-      console.error('[book] Internal notification email failed (non-fatal):', mailErr)
-    }
+    await notifySales(
+      `New call booked — ${name}${company ? `, ${company}` : ''}`,
+      internalLead({ booked: true, meetLink, htmlLink: eventRes.htmlLink ?? null }),
+    )
 
     return {
       ok: true as const,

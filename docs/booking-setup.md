@@ -87,11 +87,23 @@ the credentials aren't being read — check the dev-server console for a
 
 ---
 
+## Current status (2026-06)
+- **Production is `not_configured`.** `GET https://zabble.org/api/availability`
+  returns `{"ok":false,"reason":"not_configured"}` — the `NUXT_GOOGLE_*` env vars
+  above are **not yet set in Vercel**, so the live form shows the mailto fallback
+  and does **not** auto-book or send the confirmation/calendar invite. Setting the
+  six variables (and redeploying) is what turns booking on. This is the fix for
+  "the form doesn't send the email / update the calendar."
+- **No lead is lost in the meantime.** Every validated submission is logged
+  server-side as `[lead] diagnose submission {…}` (Vercel → the project's
+  function logs) before any Google call, so submissions are captured even while
+  booking is unconfigured or if Google errors.
+
 ## Notes & possible follow-ups
-- **Availability isn't checked against the live calendar yet.** The time-slots
-  are a fixed 9:00–4:30 grid in `Africa/Johannesburg`; a prospect could book a
-  slot that's already busy. Adding a Calendar free/busy check before showing
-  slots is the natural next step if double-booking becomes an issue.
+- **Availability IS now checked against the live calendar.** `/api/availability`
+  reads sales@'s FreeBusy for the chosen day and hides busy slots, and `/api/book`
+  re-checks for conflicts at submit (returns `slot_taken`) so two leads can't grab
+  the same slot. (The slot grid is still a fixed 9:00–4:30 in `Africa/Johannesburg`.)
 - **Timezone** is fixed to the business's zone (SAST, no DST) and labelled in the
   UI. If you start booking across very different timezones, consider detecting
   the visitor's zone and converting.
