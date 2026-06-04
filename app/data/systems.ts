@@ -6,6 +6,12 @@
 
 import { Workflow, ShieldCheck, Radar, BarChart3 } from '@lucide/vue'
 import type { Component } from 'vue'
+import { AEO_CONTENT, type AnswerBlock, type Faq } from './aeo-content'
+
+// Re-export the AEO types so existing `~/data/systems` consumers (site-faqs.ts,
+// components, tests) keep importing them from here. Content itself lives in
+// ./aeo-content.ts (one editable source for all per-system answer blocks + FAQs).
+export type { AnswerBlock, Faq } from './aeo-content'
 
 export type PillarSlug =
   | 'automation'
@@ -33,24 +39,6 @@ export function pillarBySlug(slug: PillarSlug): PillarMeta | undefined {
 }
 
 export type SystemStatus = 'live' | 'in-progress' | 'concept'
-
-/**
- * AEO answer block — a question-led heading paired with a self-contained,
- * 40–60 word answer that an answer engine (featured snippet, People Also Ask,
- * AI Overview) can lift verbatim. See docs/seo/content/aeo-standard.md.
- */
-export interface AnswerBlock {
-  /** The question, phrased as a user would ask it. Rendered as a heading. */
-  question: string
-  /** Self-contained answer, 40–60 words, liftable without surrounding context. */
-  answer: string
-}
-
-/** A single FAQ entry. Feeds on-page FAQs and (via S03) FAQPage JSON-LD. */
-export interface Faq {
-  question: string
-  answer: string
-}
 
 export interface System {
   /** URL slug — used for /systems/[slug] route and as DemoSlot registry key. */
@@ -944,215 +932,17 @@ export function pillarMetasForSystem(system: System): PillarMeta[] {
 }
 
 // ---------------------------------------------------------------------------
-// AEO content (S07) — answer-first blocks + FAQs for the highest-value pages.
+// AEO content merge (S07).
 //
-// Authored to the answer-block standard in docs/seo/content/aeo-standard.md:
-// a question-led heading, a self-contained 40–60 word answer first, then the
-// page's existing detail. Questions are shaped from real South-African SERP
-// People-Also-Ask data captured in docs/seo/_evidence/07/. Answers stay true to
-// Zabble's bespoke model — outcomes are framed as representative ("in a Zabble
-// build"), never guaranteed. Kept in a separate map so the 32 system objects
-// above stay untouched; merged onto the systems at module load.
-//
-// Remaining systems are populated as their per-page question sets are
-// researched (see audits/07-aeo.md §4). The page + components already render
-// any system that has `answer`/`faqs`, so filling more is data-only.
+// Per-system answer-first blocks + FAQs live in ./aeo-content.ts (AEO_CONTENT),
+// the single editable source authored to docs/seo/content/aeo-standard.md.
+// Questions are shaped from real South-African SERP People-Also-Ask data in
+// docs/seo/_evidence/07/. They are merged onto the matching system objects at
+// module load so a page reads system.answer / system.faqs directly — and the
+// SAME strings are exposed for S03/S08 to attach byte-identical FAQPage /
+// QAPage JSON-LD. Regression tests in test/aeo.spec.ts enforce the 40-60 word
+// budget, the >=3 FAQ minimum, and data<->rendered-HTML byte-consistency.
 // ---------------------------------------------------------------------------
-
-const AEO_CONTENT: Record<string, { answer: AnswerBlock; faqs: Faq[] }> = {
-  'bespoke-crm': {
-    answer: {
-      question: 'What is a bespoke CRM?',
-      answer:
-        'A bespoke CRM is a customer relationship management system built around how your team actually sells — your real pipeline stages, automations, and channels — instead of a generic template. Moving a deal between stages triggers the right work automatically, and every interaction lands on one timeline, so the pipeline reflects what is really happening.',
-    },
-    faqs: [
-      {
-        question: 'How is a bespoke CRM different from an off-the-shelf CRM?',
-        answer:
-          'An off-the-shelf CRM makes your team fit its stages and fields. A bespoke CRM is shaped to your real pipeline: stages match how you sell, automations fire at the right step, and every channel lands on one deal timeline. Zabble builds it around your process, not someone else’s playbook.',
-      },
-      {
-        question: 'When should a business build a bespoke CRM?',
-        answer:
-          'Build a bespoke CRM when your pipeline lives in three places that disagree, your stages don’t match how you actually sell, or reps have stopped trusting the system. If an off-the-shelf tool forces workarounds for site visits, quotes, or e-sign steps, a system shaped to your process usually pays back quickly.',
-      },
-      {
-        question: 'How much does a bespoke CRM cost in South Africa?',
-        answer:
-          'Cost depends on how much of the pipeline it automates and how many systems it connects. A focused CRM for one sales team costs far less than one wired into quoting, e-sign, and ops. Zabble scopes it in a discovery session, so the price is set against your process before any build starts.',
-      },
-      {
-        question: 'Can a bespoke CRM connect to our existing tools?',
-        answer:
-          'Yes. Zabble builds the CRM to sit on top of the tools you already run — email, WhatsApp, quoting, e-sign, accounting — so every interaction lands on one deal timeline. Where a system can’t be replaced, we bridge to it rather than forcing a migration.',
-      },
-    ],
-  },
-  'document-intelligence': {
-    answer: {
-      question: 'What is a document intelligence system?',
-      answer:
-        'A document intelligence system reads each document the moment it arrives, extracts and validates the fields, and routes it where it belongs — so a team only handles the exceptions. It replaces manual data entry from invoices, IDs, statements, and forms with an intake pipeline where every extraction and routing decision is timestamped and replayable.',
-    },
-    faqs: [
-      {
-        question: 'What is document automation?',
-        answer:
-          'Document automation is software that reads incoming documents, pulls the required fields, checks them against rules, and routes the work — without a person keying data by hand. In a Zabble build, intake time on a document dropped from around forty minutes to under four seconds, with humans handling only flagged exceptions.',
-      },
-      {
-        question: 'Can document automation read scanned or handwritten forms?',
-        answer:
-          'Yes — OCR reads scanned documents, and validation rules catch what is unclear. Anything the system can’t confidently read is routed to a human-review tray with the exact reason it stopped, rather than guessed. Zabble tunes the classification and validation to the document shapes a specific business actually receives.',
-      },
-      {
-        question: 'How accurate is automated document extraction?',
-        answer:
-          'Accuracy depends on document quality and how well the validation rules are tuned. Rather than trusting every read, a well-built system validates structure — ID checksums, statement totals, signature blocks — and sends low-confidence cases to a person. The goal isn’t zero human involvement; it is that people only see the exceptions.',
-      },
-      {
-        question: 'What documents can it process?',
-        answer:
-          'Invoices, IDs, bank statements, KYC packets, applications, contracts, and correspondence — any back-office paper where the same fields are keyed by hand each day. Zabble sits with the intake team first, because the routing rules differ by business, then builds the pipeline around the documents that actually arrive.',
-      },
-    ],
-  },
-  'reconciliation-engine': {
-    answer: {
-      question: 'What is reconciliation automation?',
-      answer:
-        'Reconciliation automation matches transactions across ledgers — POS, bank, accounting, processor, inventory — in the background, clearing the easy matches in seconds and surfacing only the exceptions that need a person. It turns a weekly export-and-chase across three sources of truth into a short queue of real mismatches, with each resolved rule reused next time.',
-    },
-    faqs: [
-      {
-        question: 'Can bank reconciliation be automated?',
-        answer:
-          'Yes. A reconciliation engine ingests each ledger as it lands, auto-matches transactions that agree, and routes only genuine mismatches to a person. In a Zabble build, a queue of around ten thousand lines became a handful of real exceptions — and resolving one by hand teaches the engine to auto-clear that kind next time.',
-      },
-      {
-        question: 'Can AI be used for reconciliation?',
-        answer:
-          'AI helps where rules alone fall short — learning resolution patterns so recurring exceptions clear themselves. Zabble pairs explicit matching rules with learned ones, so the engine stays auditable: every match carries the rule that made it. The aim is fewer manual matches, not a black box finance can’t explain.',
-      },
-      {
-        question: 'What ledgers can a reconciliation engine match?',
-        answer:
-          'POS against bank and processor, accounting against inventory and invoices, processor against invoices — any pair or set of ledgers that should agree but never quite do. The same engine handles different ledger combinations; only the matching rules change for each source.',
-      },
-      {
-        question: 'How long does automated reconciliation take?',
-        answer:
-          'Easy matches clear in seconds as each ledger lands, so finance stops waiting for a weekly export. The work that remains is the small set of true exceptions a person actually needs to judge — turning reconciliation from data entry into decisions.',
-      },
-    ],
-  },
-  'continuous-assurance': {
-    answer: {
-      question: 'What is anomaly detection in business?',
-      answer:
-        'Anomaly detection in business is automated monitoring that watches a stream of activity — transactions, operations, sensor data — and flags what is unusual before it becomes a problem: the fraud, the error, the drift, the outlier. Zabble’s engine surfaces only the cases that matter, each with the rule, history, and suggested action attached.',
-    },
-    faqs: [
-      {
-        question: 'What is AI anomaly detection?',
-        answer:
-          'AI anomaly detection learns the shape of normal activity and flags departures from it, catching patterns fixed rules miss. Zabble compounds a bespoke rules-based decision engine with a model that learns over time, so detection improves while every flag still carries its reason — keeping the system auditable, not a black box.',
-      },
-      {
-        question: 'What does an anomaly detection system do?',
-        answer:
-          'It monitors a high-traffic stream no human could realistically watch, applies detectors tuned to what counts as unusual for that business, and surfaces only the cases that matter — each with its rule, history, and suggested action. Every decision lands in an immutable audit trail keyed by case ID.',
-      },
-      {
-        question: 'What risks can continuous monitoring catch?',
-        answer:
-          'Fraud in transactions, drift in operations, equipment failure, and outliers in performance — risks that share one shape: a tiny signal hidden inside an ocean of normal activity. Sampling misses them; continuous monitoring catches them at volume, dropping mean time to detection from days toward seconds.',
-      },
-      {
-        question: 'How is this different from sampling or manual review?',
-        answer:
-          'Manual review and sampling only ever see a fraction of activity, so the events that hurt most are the ones missed. A continuous assurance engine reads the whole stream, flags only genuine exceptions, and hands investigators cases with the evidence already attached — instead of leaving them to triage false positives by hand.',
-      },
-    ],
-  },
-  'compliance-reporting': {
-    answer: {
-      question: 'What is regulatory reporting automation?',
-      answer:
-        'Regulatory reporting automation assembles the submissions regulators, auditors, donors, and boards expect directly from the systems that already hold the data — validating each figure live against the rule pack and tracing it back to its source row. It replaces a quarter-end scramble across spreadsheets with a controlled, evidenced process auditors can follow in seconds.',
-    },
-    faqs: [
-      {
-        question: 'Can POPIA and regulatory reporting be automated?',
-        answer:
-          'Yes. A reporting engine knows which systems each submission draws from, pulls the data itself, and validates it against the regulator’s rule pack. The same engine can produce a SARB banking return, a POPIA filing, an NGO donor report, or a tax submission — each figure traced to the source row that produced it.',
-      },
-      {
-        question: 'How does automated reporting reduce compliance risk?',
-        answer:
-          'It removes the hand-keyed spreadsheet step where wrong numbers creep in. Validations run live, exceptions surface with a one-line cause and a human action, and every figure traces to its source. A wrong submission’s cost — a SARB penalty, a POPIA fine, a donor walking — is met with an evidenced, repeatable process.',
-      },
-      {
-        question: 'What reports can the engine produce?',
-        answer:
-          'Banking regulatory returns, POPIA filings, tax submissions, and donor reports — any recurring submission assembled from operational data. The same engine, repointed at different sources and rule packs, produces several kinds of report, so each new return reuses the validated pipeline rather than starting from scratch.',
-      },
-    ],
-  },
-  'kairos': {
-    answer: {
-      question: 'What is an AI receptionist?',
-      answer:
-        'An AI receptionist is a voice-first agent that answers calls, handles bookings and follow-up, and logs every interaction — so a team isn’t tied to the phone. Zabble’s Kairos engine acts as receptionist, event coordinator, and outbound caller, running the full arc around an event and never sending a call to voicemail.',
-    },
-    faqs: [
-      {
-        question: 'What can an AI voice agent do?',
-        answer:
-          'It answers inbound calls, confirms and chases bookings, recovers no-shows with morning-of reminder calls, runs outbound outreach, and updates the CRM — each call and message logged with the reasoning that fired it. Kairos handles the relationship admin that normally consumes a person, at any hour and at scale.',
-      },
-      {
-        question: 'Does an AI receptionist replace staff?',
-        answer:
-          'No — it removes the switchboard work so staff do the work only people can. Kairos answers what would otherwise go to voicemail and handles routine confirmations and follow-up; anything needing judgment still reaches a person, with the context already attached. The goal is freeing the team, not removing it.',
-      },
-      {
-        question: 'What businesses is a voice agent for?',
-        answer:
-          'Event businesses running conferences, expos, or weddings; any business needing a reception line answered after hours or at scale; and clinics, agencies, and service firms fielding constant inbound — anywhere the cost of a missed call or a dropped follow-up is a lost booking.',
-      },
-    ],
-  },
-  'workflow-orchestrator': {
-    answer: {
-      question: 'What is workflow automation?',
-      answer:
-        'Workflow automation makes one business event trigger the right action in every other system automatically — no copy-paste between tools. Zabble’s orchestrator listens for events like a new order and fans them out across invoicing, stock, dispatch, and CRM, with retries, fallbacks, and a human escalation of last resort, every step logged.',
-    },
-    faqs: [
-      {
-        question: 'What is an example of workflow automation?',
-        answer:
-          'A new order fires once and, within seconds, becomes an invoice, a stock update, a dispatch ticket, a CRM record, and a customer email — instead of someone copy-pasting between six tools the next morning. If a step fails it retries, then falls back, then pages a person with the reason attached.',
-      },
-      {
-        question: 'How is workflow automation different from a Zap or script?',
-        answer:
-          'Simple zaps break quietly and forget steps. An event-driven orchestrator retries on failure, falls back when retries fail, escalates to a human as a last resort, and logs every signal — fired, succeeded, failed, escalated — in an immutable event log. Workflows reshape from config, so adding a step needs no re-engineering.',
-      },
-      {
-        question: 'Can workflows change without engineering?',
-        answer:
-          'Yes. Steps are configuration, not code — add a “notify supplier” step after dispatch and the next run includes it. That keeps the system in the hands of the business rather than waiting on a developer for every change.',
-      },
-    ],
-  },
-}
-
-// Merge the AEO content onto the matching system objects at module load. Keeps
-// answer/faqs co-located in one editable block rather than scattered across the
-// 32 large system literals above.
 for (const sys of SYSTEMS) {
   const aeo = AEO_CONTENT[sys.slug]
   if (aeo) {

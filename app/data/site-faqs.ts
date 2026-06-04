@@ -45,3 +45,29 @@ export const HOME_FAQS: Faq[] = [
       'In three steps. First we sit with your team, tools, and data until we can point to the operational problem costing the most. Then we build a system tailored to that problem — not your industry, your business. Then you run it: workflows run themselves, risk gets caught early, and decisions get easier.',
   },
 ]
+
+/** Answer-first block for the /systems gallery (a top money page). */
+export const SYSTEMS_INDEX_ANSWER: AnswerBlock = {
+  question: 'What systems does Zabble build?',
+  answer:
+    'Zabble builds bespoke operational systems assembled from modules — automation, audit trails, anomaly detection, and analytics. Each is shaped around one business’s biggest operational problem: a CRM, a reconciliation engine, a document intake pipeline, an approval workflow, and more. No business gets all of them — it gets the handful that fix what’s costing it most.',
+}
+
+/** /systems FAQs — includes the "which system do I need?" diagnostic intent. */
+export const SYSTEMS_INDEX_FAQS: Faq[] = [
+  {
+    question: 'How do I know which system my business needs?',
+    answer:
+      'Start from the problem, not the product. The operational pain that costs the most — the manual spreadsheet, the data trapped in silos, the error caught too late — points to the system. Zabble’s discovery session finds it; you can also use the on-site diagnostic to get a first read.',
+  },
+  {
+    question: 'Can Zabble systems be combined?',
+    answer:
+      'Yes — that’s the norm. A parts supplier might run pricing, reconciliation, and forecasting as one spine; a bank might weave decision-making, continuous assurance, and approvals into one governed flow. Zabble assembles the modules a business needs into one system shaped to how it works.',
+  },
+  {
+    question: 'Do I have to choose a system upfront?',
+    answer:
+      'No. Zabble starts by sitting with the business to find the problem costing the most, then recommends the modules that fix it. You don’t need to know the answer before the first conversation — that’s what the discovery session is for.',
+  },
+]
