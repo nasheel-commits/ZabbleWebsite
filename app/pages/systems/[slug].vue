@@ -162,14 +162,18 @@ useHead({
         </div>
 
         <div class="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-          <article
+          <!-- Owned pillars link UP to their hub (module -> pillar, rules L2/L6);
+               non-owned pillars render as dimmed, non-interactive cards. -->
+          <component
+            :is="sys.pillars.includes(p.slug) ? 'NuxtLink' : 'article'"
             v-for="(p, i) in PILLARS"
             :key="p.slug"
+            :to="sys.pillars.includes(p.slug) ? `/what-we-build/${p.slug}` : undefined"
             v-reveal:scale="i * 60"
             :class="[
-              'relative rounded-2xl border bg-white p-5 md:p-6 transition-colors',
+              'group relative block rounded-2xl border bg-white p-5 md:p-6 transition-colors',
               sys.pillars.includes(p.slug)
-                ? 'border-cyan-brand/40 ring-1 ring-cyan-brand/20'
+                ? 'border-cyan-brand/40 ring-1 ring-cyan-brand/20 hover:border-cyan-brand/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white'
                 : 'border-line opacity-60',
             ]"
             :aria-disabled="!sys.pillars.includes(p.slug)"
@@ -196,7 +200,14 @@ useHead({
                     : 'Not the primary focus for this system.')
               }}
             </p>
-          </article>
+            <span
+              v-if="sys.pillars.includes(p.slug)"
+              class="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-cyan-brand-deep"
+            >
+              Explore {{ p.label }}
+              <ArrowRight :size="13" :stroke-width="2" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+            </span>
+          </component>
         </div>
       </section>
 
