@@ -25,11 +25,18 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard + components + **all 32 systems + 4 pillar hubs (`/pillars/*`) + home + `/systems` populated** (answer-first 40–60w + PAA FAQs), byte-verified server-side. **188 vitest regression tests pass; `nuxt generate` clean (76 routes).** Live SA SERP/PAA evidence ($0.081). Audit `audits/07-aeo.md`. **JSON-LD hand-off to S03/S08 logged below (P0).** |
+| 06 | Content Strategy & Editorial | `seo/10-content`¹ | Content strategist | **done** | 00, 05 (used spot-research) | Strategy + **published articles**. Topical model + calendar (`content/editorial-calendar.md`) + 15 briefs. **All 15 first-wave articles now written & shipped as server-rendered pages** (`app/data/articles.ts`; `/blog/*`, `/what-we-build/*`, `/blog/rss.xml`) with real cited sources, answer-first intros, PAA FAQs + Zabble voice. `nuxt generate` clean (107 routes); `vitest` 231 green (content + link-checker + prerender). Audit/coverage §9 in `audits/10-content.md`. **Hand-offs → S03/S08:** Article+FAQPage JSON-LD ready to generate from `articles.ts` fields. **→ S09:** per-article OG images (og:image omitted). **→ S04:** nav adds Insights + links `/what-we-build`. |
+| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 07′ | GEO (commissioned on `seo/07-geo`) | `seo/07-geo` | GEO agent | **done** | 00 | **Implemented on-site:** Organization JSON-LD + disambiguation (`organization.ts`/`app.vue`), home entity section, 4 pillar hubs (`/pillars/*`) + cited GEO blocks on 5 flagship pages (real sources: McKinsey/ACFE/POPIA/IDC/Salesforce), `/llms.txt`+`/llms-full.txt`, `npm run test:geo` (8/8), entity kit + ADR-0002 + AI-citation baseline (`_evidence/07/`). 78 routes prerender clean. Baseline SOV 0% / entity conflated w/ Zabble Inc — flips after deploy + entity-kit. |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
 | 09a | Analytics, Measurement & Indexing | `seo/09-analytics` | analytics eng | **done** | 00; coord 01, 10 | GA4/GTM/Clarity + Consent Mode v2 (POPIA opt-in) + key events (no-op until env ids); **`/privacy` + `/cookie-policy`** built + CMP/footer-linked; in-code **GSC/Bing verification meta**; IndexNow key + ping; **`npm test` 21/21** (consent/events/IndexNow/static-HTML). `build`+`generate`+`test` clean. Only launch dep: ids + DNS/meta (B4) — see audit §8 owner list. Docs: `audits/09-analytics.md`, `measurement-plan.md`, `id-secret-registry.md`, ADR 0002. |
+
+> ¹ The content-strategy task was **issued as "S10 content"** on branch
+> `seo/10-content` (≠ the conventions' `seo/06-content`). Delivered there to
+> satisfy the issued goal; functionally this is session 06. See
+> `audits/10-content.md` §0 for the reconciliation. Off-page (true S10) untouched.
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;

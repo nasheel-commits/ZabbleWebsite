@@ -17,6 +17,7 @@ const priorityRoutes = [
   '/', '/systems', '/diagnose', '/contact',
   '/pillars', '/industries', '/insights',
   '/privacy', '/cookie-policy',
+  '/what-we-build', '/what-we-build/bespoke-systems', '/blog', '/blog/rss.xml',
   ...liveSystemRoutes,
 ]
 
@@ -265,20 +266,24 @@ export default defineNuxtConfig({
 
   routeRules: {
     // Marketing / module / tool / hub pages → static HTML.
-    '/':              { prerender: true },
-    '/systems':       { prerender: true },
-    '/systems/**':    { prerender: true },
-    '/pillars':       { prerender: true },
-    '/pillars/**':    { prerender: true },
-    '/industries':    { prerender: true },
-    '/industries/**': { prerender: true },
-    '/insights':      { prerender: true },
-    '/insights/**':   { prerender: true },
-    '/diagnose':      { prerender: true },
-    '/contact':       { prerender: true },
+    '/':                 { prerender: true },
+    '/systems':          { prerender: true },
+    '/systems/**':       { prerender: true },
+    '/pillars':          { prerender: true },
+    '/pillars/**':       { prerender: true },
+    '/industries':       { prerender: true },
+    '/industries/**':    { prerender: true },
+    '/insights':         { prerender: true },
+    '/insights/**':      { prerender: true },
+    '/what-we-build':    { prerender: true },
+    '/what-we-build/**': { prerender: true },
+    '/blog':             { prerender: true },
+    '/blog/**':          { prerender: true },
+    '/diagnose':         { prerender: true },
+    '/contact':          { prerender: true },
     // POPIA legal pages (S09) — server-rendered/prerendered like the rest.
-    '/privacy':       { prerender: true },
-    '/cookie-policy': { prerender: true },
+    '/privacy':          { prerender: true },
+    '/cookie-policy':    { prerender: true },
 
     // Un-published system pages → not prerendered, noindex, served 410 (OR-4).
     ...goneRouteRules,
