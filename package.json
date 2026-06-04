@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test:arch": "node --test tests/architecture.test.mjs",
+    "test": "nuxt generate && node --test tests/architecture.test.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.16.0",
