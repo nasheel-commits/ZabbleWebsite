@@ -5,7 +5,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 
 - **Project:** Zabble — https://zabble.org (pre-launch)
 - **Primary market:** South Africa (`en-ZA`)
-- **Last updated:** 2026-06-04 by S04
+- **Last updated:** 2026-06-04 — integration (merging all discipline branches into main)
 
 ---
 
@@ -20,7 +20,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | S04 | **done** | 00 | **IMPLEMENTED + tested.** 4 pillar hubs live at `/what-we-build/<pillar>`; hub↔member linking; footer + home wired to hubs + `/systems`; `SeoBreadcrumb` + `RelatedSystems` on all templates; faceted `?pillar=` removed from crawl graph; concept pages delinked. `nuxt generate` exit 0 (76 routes); **16/16** arch tests pass (`npm run test:arch`). Audit §8 = impl log. **OR-6/OR-7 now done by S04**; OR-3/OR-4/OR-8 remain (S01/S03). |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
-| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
+| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard + components + **all 32 systems + 4 pillar hubs (`/pillars/*`) + home + `/systems` populated** (answer-first 40–60w + PAA FAQs), byte-verified server-side. **188 vitest regression tests pass; `nuxt generate` clean (76 routes).** Live SA SERP/PAA evidence ($0.081). Audit `audits/07-aeo.md`. **JSON-LD hand-off to S03/S08 logged below (P0).** |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
@@ -69,6 +69,35 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
   reading `definition`/`faqs` straight off `systems.ts` — markup only what's visible.
 - **→ S09 (perf):** generate per-page OG images or ship `/public/og-default.png`
   (referenced by `usePageSeo`).
+### S07 (AEO) cross-session asks — logged 2026-06-04
+> Added by S07 without editing other rows (conventions §2). Each owner: please
+> action and update your own row. Detail in `audits/07-aeo.md` §6.
+- **→ S03 (Schema/JSON-LD owner) — P0 — JSON-LD HAND-OFF, serves S08/GEO.**
+  Emit `FAQPage` JSON-LD on **all 36 answer pages** and `QAPage`/`Question` for
+  each answer block, sourced verbatim from the structured data (so the marked-up
+  text is byte-identical to what renders — proven by `test/aeo-rendered.spec.ts`):
+  - per system: `system.answer` / `system.faqs` (merged onto `SYSTEMS` from
+    `app/data/aeo-content.ts`);
+  - home + `/systems`: `HOME_ANSWER`/`HOME_FAQS` + `SYSTEMS_INDEX_ANSWER`/
+    `SYSTEMS_INDEX_FAQS` (`app/data/site-faqs.ts`);
+  - pillar hubs: `PILLAR_HUBS[slug].answer` / `.faqs` (`app/data/pillar-content.ts`).
+  Types `Faq`/`AnswerBlock` exported from `app/data/systems.ts`. Import the same
+  objects — do not re-type the strings. (The goal brief calls this the "S08"
+  hand-off; in repo numbering S03 owns JSON-LD injection and S08/GEO is the
+  consumer. Logged to both.)
+- **→ S05 (Keywords) — P1.** SA volume + KD for the AEO question set (request
+  appended to `targets/keyword-map.md` §4) to re-rank the page backlog.
+- **→ S08 (GEO) — P1.** AI Overview present on ~33/38 sampled queries; run
+  citation tracking, report whether Zabble is cited. Consume the FAQ/answer
+  JSON-LD (above) as GEO entity signal.
+- **→ S06 (Content) — P1.** All systems now have a baseline answer + FAQ set;
+  extend with deeper long-form/article copy per `content/aeo-standard.md`,
+  keeping the answer-first shape.
+- **→ S10/S08 — P1.** `local_pack` on SA service queries ("custom software
+  development south africa", "who builds custom software…").
+- **→ S02 (On-page) — P2.** New `/pillars/<slug>` hub pages carry a default
+  `useHead` (title/description from `app/data/pillar-content.ts`); finalise their
+  per-page meta + canonicals to your standard.
 
 ---
 

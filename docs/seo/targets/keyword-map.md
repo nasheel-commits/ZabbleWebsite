@@ -92,3 +92,15 @@ problems/pillars — S05 expands each with Labs `keyword_ideas`.
   repetition (anchor-text rule L11). Also confirm pillar head-terms (e.g.
   "business automation south africa") map to the **pillar hubs**
   `/what-we-build/<pillar>`, **not** module pages (cannibalisation guard, §3).
+- **S07 (AEO), 2026-06-04** — need SA `search_volume` + `keyword_difficulty` for
+  the AEO question set so we can re-rank the page backlog by demand (currently
+  prioritised by judgement + SERP-slot presence). Priority questions, each with a
+  confirmed PAA/AI-Overview slot `[E: _evidence/07/serp-advanced__*__za.json]`:
+  `what is a bespoke crm`, `how much does a bespoke crm cost`,
+  `document automation south africa`, `how to automate invoice processing`,
+  `how to automate bank reconciliation`, `what is reconciliation in accounting`,
+  `what is anomaly detection`, `what is workflow automation`,
+  `regulatory reporting software south africa`,
+  `who builds custom software in south africa`,
+  `custom software development south africa`. Layer for all: AEO/GEO
+  (informational/question intent).

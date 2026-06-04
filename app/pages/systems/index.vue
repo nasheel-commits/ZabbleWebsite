@@ -7,6 +7,7 @@ import {
   type PillarSlug,
 } from '~/data/systems'
 import { PILLAR_HUBS } from '~/data/pillars'
+import { SYSTEMS_INDEX_ANSWER, SYSTEMS_INDEX_FAQS } from '~/data/site-faqs'
 
 // Pillar hub / module index (S02 on-page). Canonical is the clean /systems URL,
 // so filtered variants (/systems?pillar=automation) canonicalise here and never
@@ -122,6 +123,40 @@ watch(
         </div>
       </section>
 
+      <!-- AEO answer-first block + pillar hubs (also seeds crawl of /pillars/**) -->
+      <section class="relative mt-12 md:mt-16">
+        <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
+          <div v-reveal class="max-w-3xl">
+            <AnswerBlock
+              :question="SYSTEMS_INDEX_ANSWER.question"
+              :answer="SYSTEMS_INDEX_ANSWER.answer"
+            />
+          </div>
+          <div v-reveal class="mt-8 md:mt-10">
+            <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
+              <span class="dot" />
+              Explore by pillar
+            </div>
+            <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
+              <li v-for="p in PILLARS" :key="p.slug">
+                <NuxtLink
+                  :to="`/pillars/${p.slug}`"
+                  class="group flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 hover:border-cyan-brand/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+                >
+                  <span
+                    class="inline-flex items-center justify-center h-8 w-8 rounded-lg bg-cyan-brand/10 text-cyan-brand-deep ring-1 ring-cyan-brand/25"
+                    aria-hidden="true"
+                  >
+                    <component :is="p.icon" :size="16" :stroke-width="1.9" />
+                  </span>
+                  <span class="font-display text-[15.5px] text-ink">{{ p.label }}</span>
+                </NuxtLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- Filter + grid -->
       <section class="relative mt-12 md:mt-16">
         <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
@@ -177,6 +212,14 @@ watch(
               to tell us what you'd like to see.
             </p>
           </div>
+        </div>
+      </section>
+
+      <!-- AEO FAQ block: answers the "which system do I need?" intent in an
+           extractable place (the /diagnose flow itself stays uncluttered). -->
+      <section class="mx-auto max-w-4xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24">
+        <div v-reveal>
+          <FaqList :items="SYSTEMS_INDEX_FAQS" />
         </div>
       </section>
 

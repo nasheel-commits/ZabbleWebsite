@@ -6,6 +6,12 @@
 
 import { Workflow, ShieldCheck, Radar, BarChart3 } from '@lucide/vue'
 import type { Component } from 'vue'
+import { AEO_CONTENT, type AnswerBlock, type Faq } from './aeo-content'
+
+// Re-export the AEO types so existing `~/data/systems` consumers (site-faqs.ts,
+// components, tests) keep importing them from here. Content itself lives in
+// ./aeo-content.ts (one editable source for all per-system answer blocks + FAQs).
+export type { AnswerBlock, Faq } from './aeo-content'
 
 export type PillarSlug =
   | 'automation'
@@ -139,7 +145,7 @@ export interface System {
    */
   pillarHeading?: string
 
-  // ── SEO / AEO slots (added by S02 on-page; populated by S05/S06/S07) ──
+  // ── SEO / AEO slots (S02 on-page interface; populated by S05/S06/S07) ──
   // All optional and additive: when absent the page falls back to existing copy,
   // so existing entries keep working unchanged. See docs/seo/audits/05-onpage.md.
 
@@ -163,17 +169,24 @@ export interface System {
    */
   keywords?: string[]
   /**
-   * AEO: answer-first definition — 40–60 words answering "What is <name>?" in
-   * plain, declarative, liftable language (featured-snippet / AI-overview shape).
-   * Rendered above the demo when present. Owned by content (S06/S07).
+   * SEO/legacy: short answer-first definition string. Superseded on the detail
+   * page by the richer AEO `answer` block below; retained for any consumer that
+   * reads a plain definition string (kept additive — see audits/05-onpage.md).
    */
   definition?: string
   /**
-   * AEO: FAQ pairs rendered on the page AND mirrored 1:1 into FAQPage JSON-LD by
-   * S08 (schema). Only mark up questions that are visibly on the page. Question
-   * text should match real PAA / SERP phrasing from S05. Owned by content (S06/S07).
+   * AEO answer-first block (S07, owner of AEO answers) — a "What is …?" question
+   * answered in 40–60 words, rendered high on the detail page. Populated from
+   * `AEO_CONTENT` below. Mirrored 1:1 into JSON-LD by S08.
    */
-  faqs?: { q: string; a: string }[]
+  answer?: AnswerBlock
+  /**
+   * AEO FAQ set (S07) — question-shaped Q&A ({ question, answer }) targeting
+   * People Also Ask. Rendered server-side near the foot of the detail page and
+   * exposed for S08 to attach byte-identical FAQPage JSON-LD. Populated from
+   * `AEO_CONTENT` below (single source of truth for FAQ copy).
+   */
+  faqs?: Faq[]
 }
 
 // All six entries are scaffolding. Replace TODO copy as content is finalised.
@@ -1003,9 +1016,13 @@ export const SYSTEMS: System[] = [
 // "X is a system that …" used for the AEO/GEO answer block + (by S08) schema.
 // Final long-form body copy remains S10's; these are the structural SEO assets.
 // ───────────────────────────────────────────────────────────────────────────
+// FAQ copy is owned by S07 (AEO) via AEO_CONTENT below — not duplicated here.
+// SYSTEM_SEO carries on-page metadata only; the AEO loop is the single source
+// of truth for `faqs` (and `answer`), so the on-page + JSON-LD strings stay
+// byte-identical.
 type SystemSeo = Pick<
   System,
-  'seoTitle' | 'seoDescription' | 'keywords' | 'definition' | 'faqs'
+  'seoTitle' | 'seoDescription' | 'keywords' | 'definition'
 >
 
 const SYSTEM_SEO: Record<string, SystemSeo> = {
@@ -1016,10 +1033,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['event management software', 'ai receptionist', 'virtual receptionist software', 'ai voice agent'],
     definition:
       'Kairos is a voice-first automation engine that answers the phone as an AI receptionist, runs the full arc around an event — pre-event outreach, day-of orchestration and post-event follow-up — and logs every call and message with the reasoning that fired it, so no booking is lost to a missed call.',
-    faqs: [
-      { q: 'What is an AI receptionist?', a: 'An AI receptionist is software that answers inbound calls in a natural voice, handles routine requests — bookings, questions, routing — and escalates to a person when needed, so calls never go to voicemail. Kairos does this and also makes outbound calls and updates your CRM.' },
-      { q: 'Can Kairos handle both inbound and outbound calls?', a: 'Yes. The same engine answers inbound as a receptionist and runs outbound sequences — confirmations, reminders, no-show recovery — around an event or appointment, logging every call with the reason it was made.' },
-    ],
   },
   'approval-workflow': {
     seoTitle: 'Approval & Sign-Off Workflow Software',
@@ -1052,9 +1065,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['decision engine software', 'decision management software', 'rules engine software', 'loan decisioning software'],
     definition:
       'A decision engine encodes a policy as a weighted, branching rule set, scores each case in real time and returns the decision, the rate and the reasoning behind it. Routine cases clear automatically; only genuinely ambiguous ones reach a human, and every decision carries its own audit trail.',
-    faqs: [
-      { q: 'What is a decision engine?', a: 'A decision engine is software that turns a repeated judgment call — approve or decline, what rate, what next — into a consistent, explainable output by applying a defined policy to each case. The rules are configuration the business owns, so policy changes ship without re-engineering.' },
-    ],
   },
   'document-intelligence': {
     seoTitle: 'Document Intelligence System',
@@ -1063,10 +1073,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['intelligent document processing', 'ocr automation software', 'invoice data capture software', 'document data extraction'],
     definition:
       'A document intelligence system is an intake pipeline that reads each document as it arrives, classifies it, extracts the fields with OCR, validates the structure — ID checksums, statement totals, signature blocks — and routes it where it belongs, sending only the ambiguous cases to a human review tray with the reason it stopped.',
-    faqs: [
-      { q: 'What is intelligent document processing?', a: 'Intelligent document processing (IDP) is the automated reading of documents — classifying them, extracting the fields, checking them against rules, and routing the result — so a back office stops keying data by hand and only handles the exceptions the system flags.' },
-      { q: 'How do you automate document processing?', a: 'You put a pipeline in front of the inbox: it classifies each document, runs OCR to pull the fields, validates them against rules, and routes the work automatically. Anything it can’t confidently process lands in a review queue with the exact reason attached.' },
-    ],
   },
   'document-assembly': {
     seoTitle: 'Document Assembly System',
@@ -1083,11 +1089,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['crm software in south africa', 'crm software south africa', 'custom crm', 'bespoke crm', 'custom crm development'],
     definition:
       'A bespoke CRM is a customer-relationship system built around one team’s real sales process — its stages, automations and channels — rather than a generic template. Moving a deal between stages fires the right work automatically, and every interaction across every channel lands on one deal timeline.',
-    faqs: [
-      { q: 'What is CRM software?', a: 'CRM (customer relationship management) software is a system that records every interaction with a customer or prospect — calls, emails, deals, tasks — in one place, so a team can see the full relationship and move deals through a pipeline without losing track.' },
-      { q: 'How is a bespoke CRM different from off-the-shelf?', a: 'An off-the-shelf CRM makes you fit your sales process to its template. A bespoke CRM is built around how your team actually sells — your stages, your automations, your channels — so reps stop re-typing into four tools and the pipeline reflects what is really happening.' },
-      { q: 'Is a custom CRM worth it for a South African business?', a: 'When a team has outgrown an off-the-shelf CRM and is patching the gaps with spreadsheets, WhatsApp and shared inboxes, a CRM shaped to its real pipeline usually pays back fast in cleaner forecasting, faster onboarding and deals that stop slipping through the cracks.' },
-    ],
   },
   'customer-360': {
     seoTitle: 'Unified Customer Record (Customer 360)',
@@ -1112,9 +1113,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['lead qualification automation', 'automated lead qualification', 'lead scoring software', 'lead qualification software'],
     definition:
       'A lead qualification engine runs the first conversation with every inbound enquiry across web form, WhatsApp, voicemail and chat, extracts a qualifying brief — intent, scope, timing, budget, urgency — and routes the lead: high-value to a senior rep with context, serious buyers to a booked call, price-shoppers to self-serve.',
-    faqs: [
-      { q: 'How do you automate lead qualification?', a: 'You put an intake in front of the inbox that holds a short structured conversation with each enquiry, extracts the qualifying details, and routes by rule — senior rep for high value, a booked call for serious buyers, self-serve for price-shoppers — so reps only work the leads worth working.' },
-    ],
   },
   'legacy-bridge': {
     seoTitle: 'Legacy Bridge — Connect Old Systems',
@@ -1131,10 +1129,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['inventory management software', 'stock management software', 'rfid inventory system', 'rfid asset tracking'],
     definition:
       'An inventory management system tracks stock levels and movements so the warehouse, the books and the order system stay in agreement. Zabble’s Inventory Clarity System uses RFID readers at every gate and bay to turn each physical movement into a digital event in under two seconds — counted by the building itself.',
-    faqs: [
-      { q: 'What are the main types of inventory management?', a: 'Common approaches include periodic counts, perpetual (real-time) tracking, just-in-time, and ABC analysis. An RFID-driven perpetual system removes manual counting entirely: each physical movement posts itself, so the count is always live.' },
-      { q: 'Can you track inventory with RFID?', a: 'Yes. RFID readers at gates, bays and dispatch lanes detect tagged items as they move, updating the floor plan, the journal entry and the linked order automatically — turning a full-day cycle count into about ten minutes.' },
-    ],
   },
   'client-onboarding': {
     seoTitle: 'Client Onboarding System',
@@ -1151,9 +1145,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['case management system', 'case management software', 'legal case management software', 'matter management software'],
     definition:
       'A case management system owns the full lifecycle of a matter: cases move across a board with SLA timers on every card, advance automatically as events fire, and escalate themselves when a deadline breaches. Every interaction, document and decision lands on one timeline — the audit trail is a by-product of the work.',
-    faqs: [
-      { q: 'What is a case management system?', a: 'A case management system tracks a matter — a legal case, a complaint, a beneficiary file — from open to close, holding every document, deadline, owner and decision on one timeline and advancing the work automatically as events happen, so nothing falls through the cracks.' },
-    ],
   },
   'task-management': {
     seoTitle: 'Task Management for Multi-Step Matters',
@@ -1170,9 +1161,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['field service management software', 'field operations software', 'field service app', 'offline data collection app'],
     definition:
       'A field service management system gives field crews role-specific forms on an offline-first app: every action queues locally and syncs the moment connectivity returns. The back office sees the work as it happens — photo, geo-stamp and signature on file — so tomorrow is planned against what actually happened today.',
-    faqs: [
-      { q: 'What is field service management?', a: 'Field service management is the software a business uses to schedule, dispatch, capture and bill work done away from the office — installs, inspections, deliveries. An offline-first app lets crews record clean data on-site even with no signal, syncing automatically when they reconnect.' },
-    ],
   },
   'analytics-suite': {
     seoTitle: 'Analytics & Decision Support Suite',
@@ -1189,10 +1177,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['accounting software south africa', 'accounting automation software', 'automated accounting software', 'event driven accounting'],
     definition:
       'Zabble’s Accounting Engine is an event-driven accounting layer: operational systems emit events — projects signed, milestones shipped, deposits received — and the engine writes the right artefact, from a deposit invoice to a journal entry to a bank match. Rules are configuration, so VAT treatment and cost-centre splits change without engineering.',
-    faqs: [
-      { q: 'Can accounting be automated?', a: 'Much of it can. When operational systems emit events — a signed project, a shipped milestone, a received deposit — an event-driven engine writes the matching invoice, journal entry or bank match automatically, so the books reconcile to within a day of operations instead of waiting for month-end.' },
-      { q: 'What is event-driven accounting?', a: 'Event-driven accounting posts entries from real business events as they happen, rather than from someone remembering at month-end. Each ledger entry carries the event ID and rule that produced it, so auditors can trace any figure back to what caused it.' },
-    ],
   },
   'compliance-reporting': {
     seoTitle: 'Compliance & Regulatory Reporting Engine',
@@ -1201,11 +1185,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['popia compliance', 'regulatory reporting software', 'regulatory reporting automation', 'compliance reporting software'],
     definition:
       'A regulatory reporting engine knows which systems each submission draws from, pulls the data itself, validates it live against the regulator’s rule pack, and traces every figure back to its source row. The same engine produces a SARB banking return, a POPIA filing, an NGO donor report or a tax submission.',
-    faqs: [
-      { q: 'What is POPIA?', a: 'POPIA is South Africa’s Protection of Personal Information Act — the law governing how organisations collect, store, use and share personal data. It requires lawful, transparent, secure processing and gives people rights over their own information; non-compliance can carry heavy fines.' },
-      { q: 'What are the main principles of the POPI Act?', a: 'POPIA is built on eight conditions for lawful processing: accountability, processing limitation, purpose specification, further-processing limitation, information quality, openness, security safeguards, and data-subject participation.' },
-      { q: 'How do you become POPIA compliant?', a: 'In practice: appoint an Information Officer, map what personal data you hold and why, secure it, limit processing to stated purposes, enable data-subject requests, and keep records you can produce on demand. A reporting engine makes the last part — evidencing compliance — routine rather than a scramble.' },
-    ],
   },
   'continuous-assurance': {
     seoTitle: 'Continuous Assurance Engine',
@@ -1214,10 +1193,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['transaction monitoring software', 'continuous monitoring software', 'aml transaction monitoring'],
     definition:
       'A continuous assurance engine monitors a high-traffic stream of activity — card transactions, CRM events, sensor telemetry — applies the right detector to each event, and surfaces only the cases that matter, each with its rule, history and suggested action recorded in an immutable, case-keyed audit trail.',
-    faqs: [
-      { q: 'What is anomaly detection?', a: 'Anomaly detection is software that learns the shape of normal activity and flags the unusual — fraud, error, drift, equipment failure — before it becomes a problem. It lets a team monitor a stream too large to watch by hand, surfacing only the cases that need a human.' },
-      { q: 'What is transaction monitoring?', a: 'Transaction monitoring continuously screens transactions for suspicious patterns — fraud, AML red flags, anomalies — and raises a case with the rule that fired and the surrounding history, so investigators receive evidence rather than raw alerts.' },
-    ],
   },
   'pricing-engine': {
     seoTitle: 'Pricing & Quote Engine (CPQ)',
@@ -1226,9 +1201,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['cpq software', 'pricing engine software', 'quote management software', 'quoting software'],
     definition:
       'A pricing and quote (CPQ) engine composes the correct price from every rule that applies — list price, tier discount, volume break, contract override, manual discount — blocks anything below the margin floor, and routes breaches to the right approver before the quote goes out. The audit trail is the quote.',
-    faqs: [
-      { q: 'What is CPQ software?', a: 'CPQ stands for Configure, Price, Quote. It is software that assembles an accurate, approved price for a deal from all the rules that apply — discounts, volume breaks, contract terms — so reps quote fast and finance stops auditing margin after the fact.' },
-    ],
   },
   'reconciliation-engine': {
     seoTitle: 'Reconciliation Engine',
@@ -1237,10 +1209,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['bank reconciliation software', 'reconciliation software', 'automated bank reconciliation', 'account reconciliation software'],
     definition:
       'A reconciliation engine ingests every ledger as it lands — POS, bank, accounting, processor, inventory — matches the easy cases in seconds, and sends only the mismatches that need a human to the queue. Resolve one by hand and it saves the rule, so the same kind of exception auto-clears next time.',
-    faqs: [
-      { q: 'What is reconciliation in accounting?', a: 'Reconciliation is the process of checking that two records of the same transactions agree — for example a bank statement against the accounting ledger — and explaining any differences. Automating it means the system matches the routine entries and only the real exceptions reach a person.' },
-      { q: 'How do you automate bank reconciliation?', a: 'You feed each ledger into an engine that matches entries by rule — identical entries 1:1, combined deposits by sum-and-window, predictable fees by saved rule — and routes only unmatched items to a review queue. Manual resolutions are saved as rules that auto-clear similar cases next time.' },
-    ],
   },
   'data-routing': {
     seoTitle: 'Data Routing Pipeline',
@@ -1273,9 +1241,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['demand forecasting software', 'demand planning software', 'sales forecasting software', 'inventory forecasting software'],
     definition:
       'A demand forecasting system projects a business’s own history forward, taking weather, local events, promotions and trend as inputs the team can adjust, and shows a confidence band that widens when the model is unsure. Its recommendations — orders, rotas, cash buffers — push to the systems the team already uses.',
-    faqs: [
-      { q: 'What is demand forecasting?', a: 'Demand forecasting is predicting future demand — covers, orders, sales, cash — from historical data and known drivers like seasonality, promotions and events, so a business can plan stock, staffing and cash instead of guessing. A good forecast also shows how confident it is.' },
-    ],
   },
   'predictive-maintenance': {
     seoTitle: 'Predictive Maintenance System',
@@ -1284,9 +1249,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['predictive maintenance software', 'condition monitoring software', 'predictive maintenance system', 'machine failure prediction'],
     definition:
       'A predictive maintenance system pulls vibration, temperature, oil-analysis and run-hour data into one model per asset class, predicts days-to-failure with a confidence band, and auto-schedules the intervention at the lowest-cost downtime window — shifting maintenance from calendar-driven to condition-driven.',
-    faqs: [
-      { q: 'What is predictive maintenance?', a: 'Predictive maintenance uses sensor data — vibration, temperature, oil analysis — to predict when a machine will fail and schedule the repair just before it does, instead of on a fixed calendar or after a breakdown. One prevented failure often pays for the system.' },
-    ],
   },
   'master-data-hub': {
     seoTitle: 'Master Data Hub (MDM)',
@@ -1295,9 +1257,6 @@ const SYSTEM_SEO: Record<string, SystemSeo> = {
     keywords: ['mdm software', 'master data management', 'master data management software', 'golden record software'],
     definition:
       'A master data hub holds the golden record for every entity a business runs on — customer, supplier, product, employee, asset — and fans each edit out to every downstream system in under two seconds. A direct edit downstream competes with the hub, and the rule that resolves the conflict is explicit, configurable and audited.',
-    faqs: [
-      { q: 'What is master data management?', a: 'Master data management (MDM) keeps one authoritative record — a golden record — for each core business entity like a customer or product, and synchronises it across every system, so teams stop trusting four slightly different versions of the same data.' },
-    ],
   },
   'notification-orchestration': {
     seoTitle: 'Notification & Alert Orchestration',
@@ -1337,4 +1296,24 @@ const PILLAR_METAS_BY_SYSTEM = new Map<string, PillarMeta[]>(
 
 export function pillarMetasForSystem(system: System): PillarMeta[] {
   return PILLAR_METAS_BY_SYSTEM.get(system.slug) ?? []
+}
+
+// ---------------------------------------------------------------------------
+// AEO content merge (S07).
+//
+// Per-system answer-first blocks + FAQs live in ./aeo-content.ts (AEO_CONTENT),
+// the single editable source authored to docs/seo/content/aeo-standard.md.
+// Questions are shaped from real South-African SERP People-Also-Ask data in
+// docs/seo/_evidence/07/. They are merged onto the matching system objects at
+// module load so a page reads system.answer / system.faqs directly — and the
+// SAME strings are exposed for S03/S08 to attach byte-identical FAQPage /
+// QAPage JSON-LD. Regression tests in test/aeo.spec.ts enforce the 40-60 word
+// budget, the >=3 FAQ minimum, and data<->rendered-HTML byte-consistency.
+// ---------------------------------------------------------------------------
+for (const sys of SYSTEMS) {
+  const aeo = AEO_CONTENT[sys.slug]
+  if (aeo) {
+    sys.answer = aeo.answer
+    sys.faqs = aeo.faqs
+  }
 }

@@ -12,9 +12,12 @@
     "test:vitest": "vitest run",
     "test:node": "node --test tests/architecture.test.mjs",
     "test:scripts": "node scripts/seo-metadata.test.mjs",
+    "test:watch": "vitest",
     "test:unit": "vitest run tests/seo/seo-logic.test.ts",
     "test:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run",
     "test:arch": "node --test tests/architecture.test.mjs",
+    "test:aeo": "vitest run test/aeo-data.spec.ts",
+    "test:aeo:rendered": "vitest run test/aeo-rendered.spec.ts",
     "test:metadata": "node scripts/seo-metadata.test.mjs",
     "verify:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && node scripts/seo-metadata.test.mjs"
   },
@@ -31,6 +34,6 @@
     "@nuxt/fonts": "^0.14.0",
     "cross-env": "^7.0.3",
     "nuxt-link-checker": "^5.0.10",
-    "vitest": "^3.0.0"
+    "vitest": "^3.2.4"
   }
 }

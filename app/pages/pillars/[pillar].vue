@@ -1,37 +1,37 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import {
-  PILLARS,
-  PILLAR_SEO,
-  SYSTEMS,
-  pillarBySlug,
-  type PillarSlug,
-} from '~/data/systems'
+import { ArrowLeft, ArrowRight } from '@lucide/vue'
+
+import { PILLARS, SYSTEMS, pillarBySlug, type PillarSlug } from '~/data/systems'
+import { PILLAR_HUBS } from '~/data/pillar-content'
 
 const route = useRoute()
-const slug = computed(() => String(route.params.pillar ?? ''))
 
-const validSlugs = new Set(PILLARS.map((p) => p.slug))
-if (!validSlugs.has(slug.value as PillarSlug)) {
-  throw createError({ statusCode: 404, statusMessage: 'Pillar not found', fatal: true })
+const slug = computed(() => String(route.params.pillar ?? ''))
+const isValid = computed(() => PILLARS.some((p) => p.slug === slug.value))
+
+// 404 for any non-pillar slug. SSR-friendly: throws server-side too.
+if (!isValid.value) {
+  throw createError({
+    statusCode: 404,
+    statusMessage: 'Pillar not found',
+    fatal: true,
+  })
 }
 
 const pillarSlug = computed(() => slug.value as PillarSlug)
-const pillar = computed(() => pillarBySlug(pillarSlug.value)!)
-const seo = computed(() => PILLAR_SEO[pillarSlug.value])
+const meta = computed(() => pillarBySlug(pillarSlug.value)!)
+const hub = computed(() => PILLAR_HUBS[pillarSlug.value])
 
-// Live modules that deliver on this pillar.
-const modules = computed(() =>
+// Systems that deliver this pillar — only live ones are linked from the hub.
+const memberSystems = computed(() =>
   SYSTEMS.filter((s) => s.status === 'live' && s.pillars.includes(pillarSlug.value)),
 )
 
-usePageSeo(() => ({
-  title: seo.value.seoTitle,
-  description: seo.value.seoDescription,
-  path: `/pillars/${pillarSlug.value}`,
-  ogType: 'website',
-  primaryKeyword: seo.value.keywords[0],
-}))
+useHead({
+  title: () => hub.value.metaTitle,
+  meta: [{ name: 'description', content: () => hub.value.metaDescription }],
+})
 </script>
 
 <template>
@@ -41,71 +41,89 @@ usePageSeo(() => ({
     <main class="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24">
       <!-- Breadcrumb -->
       <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
-        <nav aria-label="Breadcrumb" class="mb-8 md:mb-10 text-[13.5px] font-medium text-mute">
-          <NuxtLink to="/systems" class="hover:text-ink transition-colors">Systems</NuxtLink>
-          <span class="mx-2 text-mute-2">/</span>
-          <span class="text-ink">{{ pillar.label }}</span>
+        <nav aria-label="Breadcrumb" class="mb-8 md:mb-10">
+          <NuxtLink
+            to="/systems"
+            class="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-mute hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
+          >
+            <ArrowLeft :size="14" :stroke-width="2" aria-hidden="true" />
+            All systems
+          </NuxtLink>
         </nav>
       </div>
 
-      <!-- Hero + answer-first definition -->
+      <!-- Hero -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
         <div v-reveal class="max-w-3xl">
           <div class="inline-flex items-center gap-2 text-[12.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
-            <span class="dot" />
-            Pillar
-          </div>
-          <h1 class="mt-5 font-display text-[40px] sm:text-[52px] md:text-[60px] leading-[1.05] tracking-tight text-ink">
-            {{ seo.h1 }}
-          </h1>
-          <p data-answer-first class="mt-6 max-w-2xl text-[16px] md:text-[18px] leading-[1.6] text-ink">
-            {{ seo.definition }}
-          </p>
-          <p class="mt-4 max-w-2xl text-[15.5px] md:text-[16.5px] leading-[1.65] text-mute">
-            {{ seo.blurb }}
-          </p>
-          <div class="mt-7 md:mt-8">
-            <NuxtLink
-              to="/diagnose"
-              class="group inline-flex items-center justify-center gap-2 rounded-lg bg-ink hover:bg-ink-soft text-white text-[15px] font-semibold px-5 py-3.5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            <span
+              class="inline-flex items-center justify-center h-7 w-7 rounded-lg bg-cyan-brand/10 text-cyan-brand-deep ring-1 ring-cyan-brand/25"
+              aria-hidden="true"
             >
-              Book a discovery call
-            </NuxtLink>
+              <component :is="meta.icon" :size="15" :stroke-width="1.9" />
+            </span>
+            One of the four pillars
           </div>
+          <h1
+            class="mt-5 font-display text-[34px] sm:text-[46px] md:text-[56px] leading-[1.06] tracking-tight text-ink"
+          >
+            {{ hub.h1 }}
+          </h1>
+          <p class="mt-5 max-w-2xl text-[16px] md:text-[18.5px] leading-[1.6] text-mute">
+            {{ hub.intro }}
+          </p>
         </div>
       </section>
 
-      <!-- Modules delivering this pillar -->
-      <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-14 md:mt-20">
+      <!-- Answer-first block -->
+      <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-10 md:mt-14">
         <div v-reveal class="max-w-3xl">
-          <h2 class="font-display text-[28px] sm:text-[34px] md:text-[40px] leading-[1.1] tracking-tight text-ink">
-            Systems that deliver {{ pillar.label.toLowerCase() }}
-          </h2>
-          <p class="mt-3 text-[14.5px] md:text-[15px] text-mute">
-            {{ modules.length }} {{ modules.length === 1 ? 'system' : 'systems' }} in the library lead on this pillar. Each is built bespoke — this is the shape, not a product off a shelf.
+          <AnswerBlock :question="hub.answer.question" :answer="hub.answer.answer" />
+        </div>
+      </section>
+
+      <!-- Systems that deliver this pillar (internal linking) -->
+      <section
+        v-if="memberSystems.length"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24"
+      >
+        <div v-reveal class="mb-7 md:mb-9 max-w-2xl">
+          <div class="inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
+            <span class="dot" />
+            Systems that deliver {{ meta.label }}
+          </div>
+          <p class="mt-3 text-[15.5px] md:text-[16px] leading-[1.65] text-ink">
+            A given build leans on one pillar or weaves all four together. These
+            Zabble systems carry the {{ meta.label }} pillar.
           </p>
         </div>
-        <div class="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-          <SystemCard
-            v-for="(s, i) in modules"
-            :key="s.slug"
-            v-reveal:scale="i * 60"
-            :system="s"
-          />
-        </div>
-        <div class="mt-8">
-          <NuxtLink
-            :to="`/systems?pillar=${pillarSlug}`"
-            class="inline-flex items-center gap-1.5 text-[14.5px] font-semibold text-ink hover:text-ink-soft transition-colors"
-          >
-            Filter the full library by {{ pillar.label }} →
-          </NuxtLink>
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          <li v-for="s in memberSystems" :key="s.slug">
+            <NuxtLink
+              :to="`/systems/${s.slug}`"
+              class="group block h-full rounded-2xl border border-line bg-white p-5 md:p-6 hover:border-cyan-brand/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+            >
+              <div class="flex items-center justify-between gap-3">
+                <span class="font-display text-[18px] leading-[1.15] text-ink">{{ s.name }}</span>
+                <ArrowRight :size="15" :stroke-width="2" class="text-mute-2 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+              </div>
+              <p class="mt-2 text-[14px] leading-[1.55] text-mute">{{ s.tagline }}</p>
+            </NuxtLink>
+          </li>
+        </ul>
+      </section>
+
+      <!-- FAQ -->
+      <section class="mx-auto max-w-4xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24">
+        <div v-reveal>
+          <FaqList :items="hub.faqs" />
         </div>
       </section>
 
       <CtaStrip
         eyebrow="Next Step"
-        :heading="`Want ${pillar.label.toLowerCase()} built into your operation?`"
+        heading="Want one built for your business?"
+        body="The first conversation is free. And useful either way."
       />
     </main>
 
