@@ -1,0 +1,91 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "12.1465 sec.",
+    "cost": 0.022281,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041626-1876-0612-0000-949320943b50",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "12.0498 sec.",
+            "cost": 0.022281,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "ai_optimization",
+                "perplexity",
+                "llm_responses",
+                "live"
+            ],
+            "data": {
+                "api": "ai_optimization",
+                "function": "llm_responses",
+                "se": "perplexity",
+                "model_name": "sonar-pro",
+                "user_prompt": "What is Zabble (zabble.org)? What does this company do, what products or systems does it offer, and where is it based?",
+                "web_search": true
+            },
+            "result": [
+                {
+                    "model_name": "sonar-pro",
+                    "input_tokens": 37,
+                    "output_tokens": 1038,
+                    "reasoning_tokens": 0,
+                    "web_search": true,
+                    "money_spent": 0.021681,
+                    "datetime": "2026-06-04 16:26:57 +00:00",
+                    "items": [
+                        {
+                            "type": "message",
+                            "sections": [
+                                {
+                                    "type": "text",
+                                    "text": "Zabble at **zabble.org** is a small digital agency offering **bespoke business solutions focused on data‑driven digital marketing and real‑time analytics**, distinct from Zabble, Inc. (the AI waste‑management company at zabbleinc.com). It appears to be a separate business that is not the same as the zero‑waste SaaS company based in California.[5][7]\n\n### 1. What is Zabble (zabble.org)?\n\n- The site title for **zabble.org** is **“Zabble: Bespoke Business Solutions”** with the tagline **“Smart Data-Driven Digital Marketing & Real-Time Analytics.”**[7]  \n- This indicates it is a **marketing\/analytics services firm**, not the waste‑management technology startup described at zabbleinc.com.[5][1]\n\nBecause the content on zabble.org is very minimal in search previews, most detail must be inferred from that tagline and name, and from clearly distinguishing it from Zabble, Inc. (the zero‑waste AI platform).[1][3][5][8]\n\n### 2. What does this company do? What products or systems does it offer?\n\nBased on the visible tagline and standard industry usage of those terms, Zabble (zabble.org) most likely offers:\n\n- **Digital marketing services**  \n  - The phrase **“Smart Data-Driven Digital Marketing”** implies services such as campaign strategy, performance marketing, or optimization using analytics rather than purely creative branding.[7]\n\n- **Analytics and reporting solutions**  \n  - **“Real-Time Analytics”** indicates they likely provide:\n    - Data collection and dashboards  \n    - Real-time performance tracking of marketing or business KPIs  \n    - Possibly custom reporting tools or integrations with analytics platforms[7]\n\n- **Bespoke \/ custom solutions**  \n  - The phrase **“Bespoke Business Solutions”** suggests they focus on **tailored consulting or custom-built data\/marketing systems** rather than off‑the‑shelf software alone.[7]\n\nNo search result shows a detailed product list, named software platform, or app associated with zabble.org, so there is **no clear evidence of a branded SaaS product** comparable to “Zabble Zero.”[1][2][5] That kind of named platform belongs to **Zabble, Inc.** (zabbleinc.com), which offers an **AI-powered waste analytics platform** called **Zabble Zero** for bin fullness\/contamination monitoring, invoice analytics, and workflow automation.[1][3][4][5]\n\nTo avoid confusion:\n\n| Domain        | Focus \/ Offering                                                                 | Evidence |\n|--------------|-----------------------------------------------------------------------------------|----------|\n| **zabble.org** | Bespoke, data-driven digital marketing and real-time analytics; business solutions | Site title\/tagline: “Bespoke Business Solutions – Smart Data-Driven Digital Marketing & Real-Time Analytics”[7] |\n| **zabbleinc.com** | AI-based zero‑waste SaaS platform (“Zabble Zero”) for waste monitoring, bin analytics, and workflows | Company pages and UC agreement describe AI bin monitoring, invoice analytics, dashboards, alerts, etc.[1][3][4][5][8] |\n\nThe user’s question is about **zabble.org**, so none of the zero‑waste features (bin tagging, waste audits, etc.) can be attributed to zabble.org without evidence; those belong to **Zabble, Inc.**[1][3][4][5].\n\n### 3. Where is it based?\n\n- Publicly available profiles and official addresses in search results refer to **Zabble, Inc.**, whose SBIR profile lists an address in **Walnut Creek, California (581 Center St, Walnut Creek, CA 94595, USA).**[3]\n- That address and SBIR information apply to **ZABBLE, INC.** (the waste‑analytics company), not explicitly to the separate brand at **zabble.org**.[3][5][7]\n\nSince:\n\n- zabble.org’s own page preview does **not** show a physical address or city,[7] and  \n- the only clearly documented address belongs to Zabble, Inc. (which uses a different primary domain and operates in the zero-waste industry),[1][3][5][8]  \n\nthere is **no reliable evidence that zabble.org shares the same legal entity or base location**. Without direct contact information from zabble.org, the safest statement is:\n\n- **The headquarters or base location for the Zabble entity at zabble.org is not clearly documented in accessible search results.**\n\nIf you need precise corporate details (legal entity name, city, or country) for zabble.org specifically, the next step would be to:\n\n- Check the **About**, **Contact**, or **Legal\/Imprint** pages on zabble.org directly, or  \n- Look up the company name plus key staff on professional networks or business registries, ensuring you differentiate it from **ZABBLE, INC.** in California.",
+                                    "annotations": [
+                                        {
+                                            "title": "Careers - Zabble",
+                                            "url": "https:\/\/www.zabbleinc.com\/careers"
+                                        },
+                                        {
+                                            "title": "Zabble - National Zero Waste Conference",
+                                            "url": "https:\/\/zwconference.org\/zabble\/"
+                                        },
+                                        {
+                                            "title": "Company - | SBIR",
+                                            "url": "https:\/\/www.sbir.gov\/portfolio\/1697261"
+                                        },
+                                        {
+                                            "title": "Zabble Inc. Zero Waste AI | UC-Wide Agreement",
+                                            "url": "https:\/\/procurement.ucop.edu\/news\/zabble-inc-zero-waste-ai-uc-wide-agreement"
+                                        },
+                                        {
+                                            "title": "Zabble Transforms Waste Management with Data-Driven Campaigns",
+                                            "url": "https:\/\/www.zabbleinc.com"
+                                        },
+                                        {
+                                            "title": "Digital Transformation of the Waste Industry - Zabble Blog",
+                                            "url": "https:\/\/www.zabbleinc.com\/blog-post\/digital-transformation-of-the-waste-industry"
+                                        },
+                                        {
+                                            "title": "Zabble: Bespoke Business Solutions",
+                                            "url": "https:\/\/zabble.org"
+                                        },
+                                        {
+                                            "title": "Zabble Helps Organizations Reach Zero Waste",
+                                            "url": "https:\/\/www.zabbleinc.com\/company"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "fan_out_queries": null
+                }
+            ]
+        }
+    ]
+}

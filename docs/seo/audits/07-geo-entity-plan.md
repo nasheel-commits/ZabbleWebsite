@@ -53,12 +53,19 @@ and (where space allows) disambiguates from the US firm.
 
 ---
 
-## 2. `Organization` schema + `sameAs` (hand to S03)
+## 2. `Organization` schema + `sameAs` (IMPLEMENTED — S03 to extend)
 
-S03 owns JSON-LD injection. Add this `Organization` node once, site-wide (e.g. in
-`app.vue`/a schema composable), with `@id` so other nodes can reference it. **Only
-include a `sameAs` URL once the profile is live** — a dead/wrong `sameAs` weakens the
-entity. Populate as S10 creates each profile (§4).
+> **Status: implemented on `seo/07-geo`.** The canonical entity now lives in
+> `app/data/organization.ts` and is emitted site-wide as `Organization` JSON-LD via
+> `app/app.vue` (`organizationJsonLd()`), including `disambiguatingDescription`. The
+> `npm run test:geo` suite asserts the different-from/sameAs data is present.
+> **S03 should consume `organization.ts` (not redeclare the Organization)** and add
+> per-page `Service`/`Product`, `FAQPage`, and hub `ItemList` nodes on top.
+> External-account steps are in [`../entity-kit/`](../entity-kit/) (ready to execute).
+
+The shipped node (for reference). **Only add a `sameAs` URL once the profile is
+live** — a dead/wrong `sameAs` weakens the entity; promote each from
+`sameAsTargets` as S10 creates it (§4, and `entity-kit/profiles.md`).
 
 ```json
 {

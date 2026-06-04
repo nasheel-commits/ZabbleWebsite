@@ -3,7 +3,7 @@
 - **Session:** 07-geo
 - **Branch:** seo/07-geo
 - **Owner:** GEO specialist (agent)
-- **Status:** done
+- **Status:** done — audited **and implemented on-site** (see §11)
 - **Date:** 2026-06-04
 - **Depends on:** 00 (knowledge base + DataForSEO access). Soft: 03 (schema),
   05 (keyword map), 07-aeo (answer shape), 10 (off-page/measurement).
@@ -287,7 +287,59 @@ Legend: ✓ meets standard · ~ partial · ✗ missing · "first-party only" = h
 Zabble outcome stat but no third-party corroboration or attribution.
 
 **Reading:** the raw material is strong (liftable answers and first-party stats
-already exist in `systems.ts`), but **0 of the top pages cite a source, carry an
-attributed third-party statistic, a named quote, or a question-shaped heading.**
-That gap — plus the unresolved entity collision (F2/F3) — is why GEO share-of-voice
-is 0%.
+already exist in `systems.ts`), but at the time of the audit **0 of the top pages
+cited a source, carried an attributed third-party statistic, a named quote, or a
+question-shaped heading.** That gap — plus the unresolved entity collision (F2/F3) —
+is why GEO share-of-voice is 0%. **§11 records what was then implemented on-site to
+close it.**
+
+---
+
+## 11. Implementation status (shipped on `seo/07-geo`)
+
+The GEO levers were applied on-site, not just specified. All verified against a
+clean `nuxt generate` (78 routes) and the `npm run test:geo` suite (8/8 pass).
+
+| Area | What shipped | Files | Closes |
+|------|--------------|-------|--------|
+| **Entity (F2/F3)** | Single-source entity (`organization.ts`) → site-wide `Organization` JSON-LD with `disambiguatingDescription` ("not affiliated with Zabble, Inc."); on-page "Zabble (South Africa)" entity section with NAP + cited stat. | `app/data/organization.ts`, `app/app.vue`, `app/components/TheEntity.vue`, `app/pages/index.vue` | G1 (on-site half) |
+| **Pillar hubs (F7)** | 4 question-shaped hubs (`/pillars/<slug>` + `/pillars`), each with a liftable definition, a real cited statistic, and the live modules under it. Home pillar cards link to them. | `app/data/pillars.ts`, `app/pages/pillars/*`, `app/components/TheWhatWeBuild.vue` | G3 (hubs) |
+| **Flagship pages (F7)** | `geo` block (question heading + real cited stat + source link + pillar cross-link) on document-intelligence, continuous-assurance, compliance-reporting, bespoke-crm, reconciliation-engine. | `app/data/systems.ts`, `app/pages/systems/[slug].vue` | G3 (money pages) |
+| **llms.txt (G2)** | `/llms.txt` links the 4 hubs (still <5KB); `/llms-full.txt` regenerated (pillars + 30 modules) via committed `scripts/gen-llms-full.cjs`. | `public/llms.txt`, `public/llms-full.txt`, `scripts/gen-llms-full.cjs` | G2 (llms) |
+| **Tests** | `npm run test:geo`: llms <5KB, brand summary, no-drift vs `systems.ts`, no dead links, every link resolves in the build, entity different-from/sameAs present. | `tests/geo.test.mjs`, `package.json` | — |
+| **Entity kit** | Ready-to-execute Wikidata (`different from` P1889), profiles, and PR-target docs. | `docs/seo/entity-kit/*` | G1 (external half) |
+| **Measurement** | Run-2 re-baseline + living `scorecard.md` (monthly cadence). | `docs/seo/_evidence/07/scorecard.md`, `*__run2.json` | G5 |
+
+**Sources are real and verifiable** — every on-site figure traces to
+`_evidence/07/geo-sources.md` (Gartner 2024, McKinsey 2017, ACFE 2024, POPIA 2013,
+IDC Data Age 2025, Salesforce 2023). **On quotes:** where a named individual is not
+publicly available, on-site quotes are attributed to the authoritative **institution
+or named analyst** behind the figure (e.g. McKinsey Global Institute; Alan Antin,
+VP Analyst, Gartner). No quote or statistic is invented.
+
+**Still pending (needs deploy + external accounts):** the re-baseline is unchanged
+because the build is not yet deployed/recrawled (`scorecard.md`); entity
+corroboration needs the external accounts (entity-kit); S03 should adopt the
+canonical `organization.ts` and add per-page `Service`/`FAQPage`/`ItemList` schema;
+S01 ships the robots policy (ADR-0002) + `site.url`/sitemap.
+
+## 12. Owner action list (single list — external + cross-session)
+
+Everything that needs an owner other than this branch, in priority order:
+
+1. **User / S10 — deploy** `seo/07-geo` to zabble.org (unlocks every GEO signal; the
+   scorecard can't move until the engines recrawl the live changes).
+2. **User / S10 — execute the entity kit** (`docs/seo/entity-kit/`): LinkedIn → Google
+   Business Profile → Crunchbase → Wikidata item with `different from` (P1889) →
+   Zabble, Inc.; then get listed on the cited SA listicles (`pr-and-mentions.md`).
+   As each goes live, add the URL to `organization.ts` `sameAs` + `llms.txt`.
+3. **S01 — robots + sitemap:** ship the GEO-aligned `robots.txt` (ADR-0002), keep AI
+   bots allowed through the pre-launch guard, set `site.url`, emit `sitemap.xml`.
+4. **S03 — schema:** consume `app/data/organization.ts` as the canonical Organization
+   node (don't redeclare); add per-page `Service`/`Product`, `FAQPage`, and hub
+   `ItemList` schema; once a Wikidata QID exists, it's the top `sameAs`.
+5. **S06 / S02 / S07-aeo — content:** extend the GEO standard (§8) to the remaining
+   ~25 module pages and `/diagnose`; add `FAQPage` blocks for the PAA questions.
+6. **S05 — keywords:** research SA volume/intent for the GEO question set
+   (`keyword-map.md` §4).
+7. **GEO/S10 — measurement:** re-run `prompt-set.md` monthly; update `scorecard.md`.
