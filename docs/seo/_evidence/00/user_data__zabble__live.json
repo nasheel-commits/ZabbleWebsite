@@ -1,0 +1,28 @@
+{
+  "version": "0.1.20260525",
+  "status_code": 20000,
+  "status_message": "Ok.",
+  "cost": 0,
+  "tasks": [
+    {
+      "id": "06041418-1876-0064-0000-00820eef4a2c",
+      "status_code": 20000,
+      "path": [
+        "v3",
+        "appendix",
+        "user_data"
+      ],
+      "result": [
+        {
+          "login": "nasheel@zabble.org",
+          "timezone": "Africa/Johannesburg",
+          "money": {
+            "total": 1,
+            "balance": 1
+          },
+          "_note": "rates/limits object omitted for brevity; Authorization header redacted; password never present in this payload."
+        }
+      ]
+    }
+  ]
+}

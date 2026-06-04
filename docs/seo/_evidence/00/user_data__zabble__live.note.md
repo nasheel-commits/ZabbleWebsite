@@ -1,0 +1,8 @@
+- **Endpoint:** GET /v3/appendix/user_data
+- **Request:** `curl --user "$DATAFORSEO_USERNAME:$DATAFORSEO_PASSWORD" https://api.dataforseo.com/v3/appendix/user_data`
+- **Auth:** Basic (redacted)
+- **Captured:** 2026-06-04
+- **Mode:** live
+- **Cost (response.cost):** 0
+- **Read:** Auth valid (`status_code` 20000). `money.balance` = 1 USD (positive — satisfies goal condition 2), `money.total` = 1. Almost certainly the new-account $1 trial credit. Account timezone `Africa/Johannesburg`. API version `0.1.20260525`.
+- **Caveat:** A separate sandbox SERP call the same day returned `40104` "Please verify your account" — data endpoints are gated until account verification, independent of balance.
