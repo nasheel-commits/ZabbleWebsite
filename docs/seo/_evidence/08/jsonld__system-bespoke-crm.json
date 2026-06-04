@@ -1,0 +1,178 @@
+[
+  {
+    "@id": "https://zabble.org/#website",
+    "@type": "WebSite",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Zabble",
+    "url": "https://zabble.org/",
+    "publisher": {
+      "@id": "https://zabble.org/#identity"
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#webpage",
+    "description": "A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.",
+    "name": "Bespoke CRM · Zabble",
+    "url": "https://zabble.org/systems/bespoke-crm",
+    "@type": [
+      "WebPage",
+      "ItemPage",
+      "FAQPage"
+    ],
+    "about": {
+      "@id": "https://zabble.org/#identity"
+    },
+    "breadcrumb": {
+      "@id": "https://zabble.org/systems/bespoke-crm#breadcrumb"
+    },
+    "isPartOf": {
+      "@id": "https://zabble.org/#website"
+    },
+    "mainEntity": [
+      {
+        "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/1"
+      },
+      {
+        "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/2"
+      },
+      {
+        "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/3"
+      },
+      {
+        "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/4"
+      }
+    ],
+    "potentialAction": [
+      {
+        "@type": "ReadAction",
+        "target": [
+          "https://zabble.org/systems/bespoke-crm"
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/#identity",
+    "@type": "Organization",
+    "description": "Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.",
+    "disambiguatingDescription": "Zabble is the South African bespoke operational-systems consultancy at zabble.org; it is unrelated to Zabble, Inc., the United States waste-management software company.",
+    "email": "analytics@zabble.org",
+    "name": "Zabble",
+    "slogan": "We don’t sell software. We build the system your business actually needs.",
+    "url": "https://zabble.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ZA"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      {
+        "@type": "City",
+        "name": "Johannesburg"
+      },
+      {
+        "@type": "City",
+        "name": "Cape Town"
+      },
+      {
+        "@type": "City",
+        "name": "Pretoria"
+      }
+    ],
+    "knowsAbout": [
+      "business process automation",
+      "workflow automation",
+      "audit trails",
+      "anomaly detection",
+      "business analytics",
+      "bespoke software development",
+      "document intelligence",
+      "reconciliation automation",
+      "regulatory reporting automation",
+      "custom CRM"
+    ]
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#breadcrumb",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "name": "Home",
+        "item": "https://zabble.org",
+        "position": 1
+      },
+      {
+        "@type": "ListItem",
+        "name": "Systems",
+        "item": "https://zabble.org/systems",
+        "position": 2
+      },
+      {
+        "@type": "ListItem",
+        "name": "Bespoke CRM",
+        "item": "https://zabble.org/systems/bespoke-crm",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#service",
+    "@type": "Service",
+    "description": "A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.",
+    "name": "Bespoke CRM",
+    "serviceType": "Bespoke operational system",
+    "url": "https://zabble.org/systems/bespoke-crm",
+    "areaServed": {
+      "@type": "Country",
+      "name": "South Africa"
+    },
+    "category": [
+      "Automation",
+      "Audit Trails",
+      "Analytics"
+    ],
+    "provider": {
+      "@id": "https://zabble.org/#identity"
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/1",
+    "@type": "Question",
+    "name": "How is a bespoke CRM different from an off-the-shelf CRM?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "An off-the-shelf CRM makes your team fit its stages and fields. A bespoke CRM is shaped to your real pipeline: stages match how you sell, automations fire at the right step, and every channel lands on one deal timeline. Zabble builds it around your process, not someone else’s playbook."
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/2",
+    "@type": "Question",
+    "name": "When should a business build a bespoke CRM?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Build a bespoke CRM when your pipeline lives in three places that disagree, your stages don’t match how you actually sell, or reps have stopped trusting the system. If an off-the-shelf tool forces workarounds for site visits, quotes, or e-sign steps, a system shaped to your process usually pays back quickly."
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/3",
+    "@type": "Question",
+    "name": "How much does a bespoke CRM cost in South Africa?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Cost depends on how much of the pipeline it automates and how many systems it connects. A focused CRM for one sales team costs far less than one wired into quoting, e-sign, and ops. Zabble scopes it in a discovery session, so the price is set against your process before any build starts."
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/4",
+    "@type": "Question",
+    "name": "Can a bespoke CRM connect to our existing tools?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Zabble builds the CRM to sit on top of the tools you already run — email, WhatsApp, quoting, e-sign, accounting — so every interaction lands on one deal timeline. Where a system can’t be replaced, we bridge to it rather than forcing a migration."
+    }
+  }
+]

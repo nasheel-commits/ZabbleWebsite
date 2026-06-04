@@ -10,13 +10,19 @@
     }
   },
   {
-    "@id": "https://zabble.org/diagnose#webpage",
-    "@type": "WebPage",
-    "description": "A 2-minute diagnostic to find the operational problem that's costing your business the most.",
-    "name": "Diagnose your operations · Zabble",
-    "url": "https://zabble.org/diagnose",
+    "@id": "https://zabble.org/systems/integration-hub#webpage",
+    "description": "The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.",
+    "name": "Integration Hub · Zabble",
+    "url": "https://zabble.org/systems/integration-hub",
+    "@type": [
+      "WebPage",
+      "ItemPage"
+    ],
     "about": {
       "@id": "https://zabble.org/#identity"
+    },
+    "breadcrumb": {
+      "@id": "https://zabble.org/systems/integration-hub#breadcrumb"
     },
     "isPartOf": {
       "@id": "https://zabble.org/#website"
@@ -25,7 +31,7 @@
       {
         "@type": "ReadAction",
         "target": [
-          "https://zabble.org/diagnose"
+          "https://zabble.org/systems/integration-hub"
         ]
       }
     ]
@@ -73,5 +79,48 @@
       "regulatory reporting automation",
       "custom CRM"
     ]
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#breadcrumb",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "name": "Home",
+        "item": "https://zabble.org",
+        "position": 1
+      },
+      {
+        "@type": "ListItem",
+        "name": "Systems",
+        "item": "https://zabble.org/systems",
+        "position": 2
+      },
+      {
+        "@type": "ListItem",
+        "name": "Integration Hub",
+        "item": "https://zabble.org/systems/integration-hub",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#service",
+    "@type": "Service",
+    "description": "The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.",
+    "name": "Integration Hub",
+    "serviceType": "Bespoke operational system",
+    "url": "https://zabble.org/systems/integration-hub",
+    "areaServed": {
+      "@type": "Country",
+      "name": "South Africa"
+    },
+    "category": [
+      "Automation",
+      "Audit Trails"
+    ],
+    "provider": {
+      "@id": "https://zabble.org/#identity"
+    }
   }
 ]

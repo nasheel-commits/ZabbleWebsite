@@ -14,36 +14,55 @@ export default defineNuxtConfig({
   // `site.url` is the canonical absolute-URL source of truth for every JSON-LD
   // `@id` / `url`. Set once here so schema renders correct absolute IDs even
   // before S01 installs the full SEO suite. Coordinate via status.md (§2).
+  // `description` = boilerplate "A" (micro) from the GEO entity standard
+  // (docs/seo/audits/07-geo-entity-plan.md §1) — kept consistent with llms.txt
+  // and the Organization description below so the entity reads as one thing.
   site: {
     url: 'https://zabble.org',
     name: 'Zabble',
     description:
-      'Zabble designs bespoke operational systems — automation, audit trails, ' +
-      'anomaly detection, and analytics — built around the specific problem ' +
-      'slowing your business down.',
+      'Zabble is a South African firm that builds bespoke operational systems — ' +
+      'automation, audit trails, anomaly detection, and analytics.',
   },
 
   // ── Structured data / Schema.org (S03) ─────────────────────────────────────
-  // The site-wide identity. nuxt-schema-org turns this into the root
-  // `Organization` node and auto-creates the interlinked `WebSite` (publisher →
-  // this org) plus a per-route `WebPage` (isPartOf → WebSite, about → org).
-  // The description is kept consistent with the site meta description, the home
-  // page copy, and the business reference doc — corroboration matters for GEO.
+  // Site-wide identity. nuxt-schema-org turns this into the root `Organization`
+  // node (@id …/#identity) and auto-creates the interlinked `WebSite` (publisher
+  // → org) plus a per-route `WebPage` (isPartOf → WebSite, about → org).
   //
-  // `sameAs` is intentionally absent: NO verified Zabble social/authoritative
-  // profiles exist yet. Do not invent URLs — markup must match reality. Populate
-  // from S07/S10's verified-profile list (see audits/08-schema.md cross-asks).
-  // `logo` is likewise deferred until a ≥112×112 brand asset exists in /public.
+  // `description` + `knowsAbout` are byte-identical to the GEO entity standard
+  // (07-geo-entity-plan.md §1–2, boilerplate "B") and public/llms.txt — one
+  // entity, one description, everywhere (divergent descriptions split the
+  // entity for generative engines).
+  //
+  // `disambiguatingDescription` is the entity-disambiguation lever (07-geo §2–3):
+  // generative engines currently confuse this firm with the US "Zabble, Inc."
+  // (zabbleinc.com) [E: 07/llm-response__pplx-sonarpro__brand-zabble.json]. This
+  // is the schema.org-sanctioned "different from" available today; the Wikidata
+  // `different from (P1889)` link is added to `sameAs` once S10 creates the item.
+  //
+  // `sameAs` is intentionally ABSENT: every owned profile (LinkedIn / Crunchbase
+  // / Wikidata / Google Business Profile) is still PENDING (07-geo §2/§4, 04
+  // local plan). A dead or wrong `sameAs` weakens the entity, so each URL is
+  // added only once it is live (S07/S10). `logo` is wired-on-arrival — no
+  // ≥112×112 brand asset exists in /public yet (only favicon.ico); see the LOGO
+  // marker below + 04 GBP plan §2.5. NOT a `LocalBusiness`: no verified NAP
+  // exists (04 local plan blocker B6 — name/address/phone pending). `areaServed`
+  // carries the ZA local signal in the meantime.
   schemaOrg: {
     identity: {
       type: 'Organization',
       name: 'Zabble',
       url: 'https://zabble.org',
       description:
-        'Zabble is a bespoke consulting firm based in South Africa. It designs ' +
-        'and builds operational systems — automation, audit trails, anomaly ' +
-        'detection, and analytics — shaped around the single problem slowing a ' +
-        'specific business down.',
+        'Zabble is a South African consulting firm that builds bespoke ' +
+        'operational systems — automation, audit trails, anomaly detection, and ' +
+        'analytics — shaped around the single problem slowing one specific ' +
+        'business down.',
+      disambiguatingDescription:
+        'Zabble is the South African bespoke operational-systems consultancy at ' +
+        'zabble.org; it is unrelated to Zabble, Inc., the United States ' +
+        'waste-management software company.',
       slogan:
         'We don’t sell software. We build the system your business actually needs.',
       email: 'analytics@zabble.org',
@@ -51,17 +70,39 @@ export default defineNuxtConfig({
         '@type': 'PostalAddress',
         addressCountry: 'ZA',
       },
-      areaServed: {
-        '@type': 'Country',
-        name: 'South Africa',
-      },
-      knowsAbout: [
-        'Business process automation',
-        'Audit trails and operational governance',
-        'Anomaly detection',
-        'Business analytics and decision support',
-        'Bespoke operational software systems',
+      // Country-level certainty + the three metros S04's local plan designates
+      // as service areas (04 local plan §2). No street address is claimed (none
+      // verified — blocker B6).
+      areaServed: [
+        { '@type': 'Country', name: 'South Africa' },
+        { '@type': 'City', name: 'Johannesburg' },
+        { '@type': 'City', name: 'Cape Town' },
+        { '@type': 'City', name: 'Pretoria' },
       ],
+      knowsAbout: [
+        'business process automation',
+        'workflow automation',
+        'audit trails',
+        'anomaly detection',
+        'business analytics',
+        'bespoke software development',
+        'document intelligence',
+        'reconciliation automation',
+        'regulatory reporting automation',
+        'custom CRM',
+      ],
+      // LOGO (wire-on-arrival): uncomment once /public/zabble-logo.png (≥112×112,
+      // on white) exists — schema then gains the logo enhancement. Tracked in
+      // audits/08-schema.md (G2) + 04 GBP plan §2.5.
+      // logo: 'https://zabble.org/zabble-logo.png',
+      //
+      // SAMEAS (wire-on-arrival): add each verified profile URL once it is live
+      // (07-geo §2/§4). Keep absent until then — no fabricated/placeholder URLs.
+      // sameAs: [
+      //   'https://www.linkedin.com/company/<zabble>',
+      //   'https://www.crunchbase.com/organization/<zabble>',
+      //   'https://www.wikidata.org/wiki/<Qid>',
+      // ],
     },
   },
   fonts: {

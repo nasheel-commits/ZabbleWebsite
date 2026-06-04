@@ -1,13 +1,23 @@
 
 ── home (/)
-PASS  [home] unique @id (3 nodes; dupes: none)
+PASS  [home] unique @id (8 nodes; dupes: none)
 PASS  [home] all @id refs resolve in-graph (dangling: none)
 PASS  Organization @id = /#identity
-PASS  Organization name/email/address(ZA)
-PASS  no fabricated sameAs (intentionally absent until verified)
+PASS  Organization name = Zabble
+PASS  Organization description === canonical boilerplate (byte-exact)
+PASS  disambiguatingDescription present (US homonym)
+PASS  areaServed includes South Africa (+ metros)
+PASS  knowsAbout has 10 entries (got 10)
+PASS  no fabricated sameAs (PENDING until profiles live)
+PASS  no fabricated logo (wired-on-arrival; no asset yet)
+PASS  Organization email present
 PASS  WebSite publisher → Organization
 PASS  WebPage about → Organization
 PASS  WebPage isPartOf → WebSite
+PASS  [home] WebPage typed FAQPage
+PASS  [home] Question count (5) === rendered FAQ pairs (5)
+PASS  [home] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [home] FAQPage.mainEntity links exactly the 5 Question node(s)
 
 ── system detail pages
 PASS  [accounting-engine] unique @id (5 nodes; dupes: none)
@@ -16,192 +26,239 @@ PASS  [accounting-engine] Service.description === served <meta description>
 PASS  [accounting-engine] Service provider → Organization
 PASS  [accounting-engine] Service @id page-unique
 PASS  [accounting-engine] last breadcrumb === Service name
+PASS  [accounting-engine] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [analytics-suite] unique @id (5 nodes; dupes: none)
 PASS  [analytics-suite] all @id refs resolve in-graph (dangling: none)
 PASS  [analytics-suite] Service.description === served <meta description>
 PASS  [analytics-suite] Service provider → Organization
 PASS  [analytics-suite] Service @id page-unique
 PASS  [analytics-suite] last breadcrumb === Service name
+PASS  [analytics-suite] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [approval-workflow] unique @id (5 nodes; dupes: none)
 PASS  [approval-workflow] all @id refs resolve in-graph (dangling: none)
 PASS  [approval-workflow] Service.description === served <meta description>
 PASS  [approval-workflow] Service provider → Organization
 PASS  [approval-workflow] Service @id page-unique
 PASS  [approval-workflow] last breadcrumb === Service name
-PASS  [bespoke-crm] unique @id (5 nodes; dupes: none)
+PASS  [approval-workflow] no FAQPage/Question when page has no FAQ (no markup-only claim)
+PASS  [bespoke-crm] unique @id (9 nodes; dupes: none)
 PASS  [bespoke-crm] all @id refs resolve in-graph (dangling: none)
 PASS  [bespoke-crm] Service.description === served <meta description>
 PASS  [bespoke-crm] Service provider → Organization
 PASS  [bespoke-crm] Service @id page-unique
 PASS  [bespoke-crm] last breadcrumb === Service name
+PASS  [bespoke-crm] WebPage typed FAQPage
+PASS  [bespoke-crm] Question count (4) === rendered FAQ pairs (4)
+PASS  [bespoke-crm] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [bespoke-crm] FAQPage.mainEntity links exactly the 4 Question node(s)
 PASS  [case-management] unique @id (5 nodes; dupes: none)
 PASS  [case-management] all @id refs resolve in-graph (dangling: none)
 PASS  [case-management] Service.description === served <meta description>
 PASS  [case-management] Service provider → Organization
 PASS  [case-management] Service @id page-unique
 PASS  [case-management] last breadcrumb === Service name
+PASS  [case-management] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [client-onboarding] unique @id (5 nodes; dupes: none)
 PASS  [client-onboarding] all @id refs resolve in-graph (dangling: none)
 PASS  [client-onboarding] Service.description === served <meta description>
 PASS  [client-onboarding] Service provider → Organization
 PASS  [client-onboarding] Service @id page-unique
 PASS  [client-onboarding] last breadcrumb === Service name
-PASS  [compliance-reporting] unique @id (5 nodes; dupes: none)
+PASS  [client-onboarding] no FAQPage/Question when page has no FAQ (no markup-only claim)
+PASS  [compliance-reporting] unique @id (8 nodes; dupes: none)
 PASS  [compliance-reporting] all @id refs resolve in-graph (dangling: none)
 PASS  [compliance-reporting] Service.description === served <meta description>
 PASS  [compliance-reporting] Service provider → Organization
 PASS  [compliance-reporting] Service @id page-unique
 PASS  [compliance-reporting] last breadcrumb === Service name
-PASS  [continuous-assurance] unique @id (5 nodes; dupes: none)
+PASS  [compliance-reporting] WebPage typed FAQPage
+PASS  [compliance-reporting] Question count (3) === rendered FAQ pairs (3)
+PASS  [compliance-reporting] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [compliance-reporting] FAQPage.mainEntity links exactly the 3 Question node(s)
+PASS  [continuous-assurance] unique @id (9 nodes; dupes: none)
 PASS  [continuous-assurance] all @id refs resolve in-graph (dangling: none)
 PASS  [continuous-assurance] Service.description === served <meta description>
 PASS  [continuous-assurance] Service provider → Organization
 PASS  [continuous-assurance] Service @id page-unique
 PASS  [continuous-assurance] last breadcrumb === Service name
+PASS  [continuous-assurance] WebPage typed FAQPage
+PASS  [continuous-assurance] Question count (4) === rendered FAQ pairs (4)
+PASS  [continuous-assurance] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [continuous-assurance] FAQPage.mainEntity links exactly the 4 Question node(s)
 PASS  [cross-system-sync] unique @id (5 nodes; dupes: none)
 PASS  [cross-system-sync] all @id refs resolve in-graph (dangling: none)
 PASS  [cross-system-sync] Service.description === served <meta description>
 PASS  [cross-system-sync] Service provider → Organization
 PASS  [cross-system-sync] Service @id page-unique
 PASS  [cross-system-sync] last breadcrumb === Service name
+PASS  [cross-system-sync] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [customer-360] unique @id (5 nodes; dupes: none)
 PASS  [customer-360] all @id refs resolve in-graph (dangling: none)
 PASS  [customer-360] Service.description === served <meta description>
 PASS  [customer-360] Service provider → Organization
 PASS  [customer-360] Service @id page-unique
 PASS  [customer-360] last breadcrumb === Service name
+PASS  [customer-360] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [data-routing] unique @id (5 nodes; dupes: none)
 PASS  [data-routing] all @id refs resolve in-graph (dangling: none)
 PASS  [data-routing] Service.description === served <meta description>
 PASS  [data-routing] Service provider → Organization
 PASS  [data-routing] Service @id page-unique
 PASS  [data-routing] last breadcrumb === Service name
+PASS  [data-routing] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [decision-engine] unique @id (5 nodes; dupes: none)
 PASS  [decision-engine] all @id refs resolve in-graph (dangling: none)
 PASS  [decision-engine] Service.description === served <meta description>
 PASS  [decision-engine] Service provider → Organization
 PASS  [decision-engine] Service @id page-unique
 PASS  [decision-engine] last breadcrumb === Service name
+PASS  [decision-engine] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [document-assembly] unique @id (5 nodes; dupes: none)
 PASS  [document-assembly] all @id refs resolve in-graph (dangling: none)
 PASS  [document-assembly] Service.description === served <meta description>
 PASS  [document-assembly] Service provider → Organization
 PASS  [document-assembly] Service @id page-unique
 PASS  [document-assembly] last breadcrumb === Service name
-PASS  [document-intelligence] unique @id (5 nodes; dupes: none)
+PASS  [document-assembly] no FAQPage/Question when page has no FAQ (no markup-only claim)
+PASS  [document-intelligence] unique @id (9 nodes; dupes: none)
 PASS  [document-intelligence] all @id refs resolve in-graph (dangling: none)
 PASS  [document-intelligence] Service.description === served <meta description>
 PASS  [document-intelligence] Service provider → Organization
 PASS  [document-intelligence] Service @id page-unique
 PASS  [document-intelligence] last breadcrumb === Service name
+PASS  [document-intelligence] WebPage typed FAQPage
+PASS  [document-intelligence] Question count (4) === rendered FAQ pairs (4)
+PASS  [document-intelligence] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [document-intelligence] FAQPage.mainEntity links exactly the 4 Question node(s)
 PASS  [field-ops-app] unique @id (5 nodes; dupes: none)
 PASS  [field-ops-app] all @id refs resolve in-graph (dangling: none)
 PASS  [field-ops-app] Service.description === served <meta description>
 PASS  [field-ops-app] Service provider → Organization
 PASS  [field-ops-app] Service @id page-unique
 PASS  [field-ops-app] last breadcrumb === Service name
+PASS  [field-ops-app] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [forecasting] unique @id (5 nodes; dupes: none)
 PASS  [forecasting] all @id refs resolve in-graph (dangling: none)
 PASS  [forecasting] Service.description === served <meta description>
 PASS  [forecasting] Service provider → Organization
 PASS  [forecasting] Service @id page-unique
 PASS  [forecasting] last breadcrumb === Service name
+PASS  [forecasting] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [integration-hub] unique @id (5 nodes; dupes: none)
 PASS  [integration-hub] all @id refs resolve in-graph (dangling: none)
 PASS  [integration-hub] Service.description === served <meta description>
 PASS  [integration-hub] Service provider → Organization
 PASS  [integration-hub] Service @id page-unique
 PASS  [integration-hub] last breadcrumb === Service name
+PASS  [integration-hub] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [inventory-clarity] unique @id (5 nodes; dupes: none)
 PASS  [inventory-clarity] all @id refs resolve in-graph (dangling: none)
 PASS  [inventory-clarity] Service.description === served <meta description>
 PASS  [inventory-clarity] Service provider → Organization
 PASS  [inventory-clarity] Service @id page-unique
 PASS  [inventory-clarity] last breadcrumb === Service name
-PASS  [kairos] unique @id (5 nodes; dupes: none)
+PASS  [inventory-clarity] no FAQPage/Question when page has no FAQ (no markup-only claim)
+PASS  [kairos] unique @id (8 nodes; dupes: none)
 PASS  [kairos] all @id refs resolve in-graph (dangling: none)
 PASS  [kairos] Service.description === served <meta description>
 PASS  [kairos] Service provider → Organization
 PASS  [kairos] Service @id page-unique
 PASS  [kairos] last breadcrumb === Service name
+PASS  [kairos] WebPage typed FAQPage
+PASS  [kairos] Question count (3) === rendered FAQ pairs (3)
+PASS  [kairos] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [kairos] FAQPage.mainEntity links exactly the 3 Question node(s)
 PASS  [knowledge-assistant] unique @id (5 nodes; dupes: none)
 PASS  [knowledge-assistant] all @id refs resolve in-graph (dangling: none)
 PASS  [knowledge-assistant] Service.description === served <meta description>
 PASS  [knowledge-assistant] Service provider → Organization
 PASS  [knowledge-assistant] Service @id page-unique
 PASS  [knowledge-assistant] last breadcrumb === Service name
+PASS  [knowledge-assistant] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [lead-qualifier] unique @id (5 nodes; dupes: none)
 PASS  [lead-qualifier] all @id refs resolve in-graph (dangling: none)
 PASS  [lead-qualifier] Service.description === served <meta description>
 PASS  [lead-qualifier] Service provider → Organization
 PASS  [lead-qualifier] Service @id page-unique
 PASS  [lead-qualifier] last breadcrumb === Service name
+PASS  [lead-qualifier] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [legacy-bridge] unique @id (5 nodes; dupes: none)
 PASS  [legacy-bridge] all @id refs resolve in-graph (dangling: none)
 PASS  [legacy-bridge] Service.description === served <meta description>
 PASS  [legacy-bridge] Service provider → Organization
 PASS  [legacy-bridge] Service @id page-unique
 PASS  [legacy-bridge] last breadcrumb === Service name
+PASS  [legacy-bridge] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [master-data-hub] unique @id (5 nodes; dupes: none)
 PASS  [master-data-hub] all @id refs resolve in-graph (dangling: none)
 PASS  [master-data-hub] Service.description === served <meta description>
 PASS  [master-data-hub] Service provider → Organization
 PASS  [master-data-hub] Service @id page-unique
 PASS  [master-data-hub] last breadcrumb === Service name
+PASS  [master-data-hub] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [multi-channel-inbox] unique @id (5 nodes; dupes: none)
 PASS  [multi-channel-inbox] all @id refs resolve in-graph (dangling: none)
 PASS  [multi-channel-inbox] Service.description === served <meta description>
 PASS  [multi-channel-inbox] Service provider → Organization
 PASS  [multi-channel-inbox] Service @id page-unique
 PASS  [multi-channel-inbox] last breadcrumb === Service name
+PASS  [multi-channel-inbox] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [notification-orchestration] unique @id (5 nodes; dupes: none)
 PASS  [notification-orchestration] all @id refs resolve in-graph (dangling: none)
 PASS  [notification-orchestration] Service.description === served <meta description>
 PASS  [notification-orchestration] Service provider → Organization
 PASS  [notification-orchestration] Service @id page-unique
 PASS  [notification-orchestration] last breadcrumb === Service name
+PASS  [notification-orchestration] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [predictive-maintenance] unique @id (5 nodes; dupes: none)
 PASS  [predictive-maintenance] all @id refs resolve in-graph (dangling: none)
 PASS  [predictive-maintenance] Service.description === served <meta description>
 PASS  [predictive-maintenance] Service provider → Organization
 PASS  [predictive-maintenance] Service @id page-unique
 PASS  [predictive-maintenance] last breadcrumb === Service name
+PASS  [predictive-maintenance] no FAQPage/Question when page has no FAQ (no markup-only claim)
 PASS  [pricing-engine] unique @id (5 nodes; dupes: none)
 PASS  [pricing-engine] all @id refs resolve in-graph (dangling: none)
 PASS  [pricing-engine] Service.description === served <meta description>
 PASS  [pricing-engine] Service provider → Organization
 PASS  [pricing-engine] Service @id page-unique
 PASS  [pricing-engine] last breadcrumb === Service name
-PASS  [reconciliation-engine] unique @id (5 nodes; dupes: none)
+PASS  [pricing-engine] no FAQPage/Question when page has no FAQ (no markup-only claim)
+PASS  [reconciliation-engine] unique @id (9 nodes; dupes: none)
 PASS  [reconciliation-engine] all @id refs resolve in-graph (dangling: none)
 PASS  [reconciliation-engine] Service.description === served <meta description>
 PASS  [reconciliation-engine] Service provider → Organization
 PASS  [reconciliation-engine] Service @id page-unique
 PASS  [reconciliation-engine] last breadcrumb === Service name
+PASS  [reconciliation-engine] WebPage typed FAQPage
+PASS  [reconciliation-engine] Question count (4) === rendered FAQ pairs (4)
+PASS  [reconciliation-engine] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [reconciliation-engine] FAQPage.mainEntity links exactly the 4 Question node(s)
 PASS  [task-management] unique @id (5 nodes; dupes: none)
 PASS  [task-management] all @id refs resolve in-graph (dangling: none)
 PASS  [task-management] Service.description === served <meta description>
 PASS  [task-management] Service provider → Organization
 PASS  [task-management] Service @id page-unique
 PASS  [task-management] last breadcrumb === Service name
-PASS  [workflow-orchestrator] unique @id (5 nodes; dupes: none)
+PASS  [task-management] no FAQPage/Question when page has no FAQ (no markup-only claim)
+PASS  [workflow-orchestrator] unique @id (8 nodes; dupes: none)
 PASS  [workflow-orchestrator] all @id refs resolve in-graph (dangling: none)
 PASS  [workflow-orchestrator] Service.description === served <meta description>
 PASS  [workflow-orchestrator] Service provider → Organization
 PASS  [workflow-orchestrator] Service @id page-unique
 PASS  [workflow-orchestrator] last breadcrumb === Service name
-   systems with Service (live/content): 30
-   systems without Service (concept/TODO): 0 
+PASS  [workflow-orchestrator] WebPage typed FAQPage
+PASS  [workflow-orchestrator] Question count (3) === rendered FAQ pairs (3)
+PASS  [workflow-orchestrator] FAQ JSON-LD text === rendered <dt>/<dd> text, byte-for-byte
+PASS  [workflow-orchestrator] FAQPage.mainEntity links exactly the 3 Question node(s)
+   Service nodes: 30 | FAQ pages: 7 [bespoke-crm, compliance-reporting, continuous-assurance, document-intelligence, kairos, reconciliation-engine, workflow-orchestrator] | non-FAQ: 23
 
 ── systems index (/systems)
 PASS  [systems-index] unique @id (5 nodes; dupes: none)
 PASS  [systems-index] all @id refs resolve in-graph (dangling: none)
 PASS  WebPage typed CollectionPage
-PASS  breadcrumb has 2 items (Home → Systems)
-PASS  has ItemList
-PASS  ItemList length (30) === # content-bearing system pages (30)
-PASS  every content-bearing system is listed in ItemList
-PASS  no concept/TODO system leaked into ItemList
+PASS  breadcrumb has 2 items
+PASS  ItemList length (30) === content-bearing system pages (30)
 PASS  ItemList positions are 1..N sequential
 
 ── diagnose (/diagnose)

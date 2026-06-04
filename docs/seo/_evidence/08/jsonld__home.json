@@ -2,7 +2,7 @@
   {
     "@id": "https://zabble.org/#website",
     "@type": "WebSite",
-    "description": "Zabble designs bespoke operational systems — automation, audit trails, anomaly detection, and analytics — built around the specific problem slowing your business down.",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
     "name": "Zabble",
     "url": "https://zabble.org/",
     "publisher": {
@@ -11,16 +11,36 @@
   },
   {
     "@id": "https://zabble.org/#webpage",
-    "@type": "WebPage",
-    "description": "Zabble designs bespoke operational systems — automation, audit trails, anomaly detection, and analytics — built around the specific problem slowing your business down.",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
     "name": "Zabble · Bespoke Digital Systems",
     "url": "https://zabble.org/",
+    "@type": [
+      "WebPage",
+      "FAQPage"
+    ],
     "about": {
       "@id": "https://zabble.org/#identity"
     },
     "isPartOf": {
       "@id": "https://zabble.org/#website"
     },
+    "mainEntity": [
+      {
+        "@id": "https://zabble.org/#/schema/question/1"
+      },
+      {
+        "@id": "https://zabble.org/#/schema/question/2"
+      },
+      {
+        "@id": "https://zabble.org/#/schema/question/3"
+      },
+      {
+        "@id": "https://zabble.org/#/schema/question/4"
+      },
+      {
+        "@id": "https://zabble.org/#/schema/question/5"
+      }
+    ],
     "potentialAction": [
       {
         "@type": "ReadAction",
@@ -33,7 +53,8 @@
   {
     "@id": "https://zabble.org/#identity",
     "@type": "Organization",
-    "description": "Zabble is a bespoke consulting firm based in South Africa. It designs and builds operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing a specific business down.",
+    "description": "Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.",
+    "disambiguatingDescription": "Zabble is the South African bespoke operational-systems consultancy at zabble.org; it is unrelated to Zabble, Inc., the United States waste-management software company.",
     "email": "analytics@zabble.org",
     "name": "Zabble",
     "slogan": "We don’t sell software. We build the system your business actually needs.",
@@ -42,16 +63,80 @@
       "@type": "PostalAddress",
       "addressCountry": "ZA"
     },
-    "areaServed": {
-      "@type": "Country",
-      "name": "South Africa"
-    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      {
+        "@type": "City",
+        "name": "Johannesburg"
+      },
+      {
+        "@type": "City",
+        "name": "Cape Town"
+      },
+      {
+        "@type": "City",
+        "name": "Pretoria"
+      }
+    ],
     "knowsAbout": [
-      "Business process automation",
-      "Audit trails and operational governance",
-      "Anomaly detection",
-      "Business analytics and decision support",
-      "Bespoke operational software systems"
+      "business process automation",
+      "workflow automation",
+      "audit trails",
+      "anomaly detection",
+      "business analytics",
+      "bespoke software development",
+      "document intelligence",
+      "reconciliation automation",
+      "regulatory reporting automation",
+      "custom CRM"
     ]
+  },
+  {
+    "@id": "https://zabble.org/#/schema/question/1",
+    "@type": "Question",
+    "name": "Who builds custom business software in South Africa?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Zabble builds custom business software and operational systems in South Africa. We work with banks, NGOs, hotels, law firms, suppliers, and small businesses — designing bespoke automation, audit trails, anomaly detection, and analytics around each client’s biggest operational problem, rather than selling a fixed product. Every system is built for one business and no one else."
+    }
+  },
+  {
+    "@id": "https://zabble.org/#/schema/question/2",
+    "@type": "Question",
+    "name": "What is a bespoke system?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A bespoke system is operational software built around one business’s specific workflows, instead of a generic off-the-shelf tool everyone else also uses. Zabble assembles bespoke systems from modules — automation, audit trails, anomaly detection, analytics — chosen in a discovery session to fix the problem costing a business the most."
+    }
+  },
+  {
+    "@id": "https://zabble.org/#/schema/question/3",
+    "@type": "Question",
+    "name": "Bespoke software or off-the-shelf — which is better?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Off-the-shelf software is faster to buy and fits common needs; bespoke software is built around how your business actually works. Off-the-shelf wins for standard tasks. Bespoke wins when a business has outgrown generic tools and one workflow — reconciliation, approvals, intake — is quietly costing more than the rest combined."
+    }
+  },
+  {
+    "@id": "https://zabble.org/#/schema/question/4",
+    "@type": "Question",
+    "name": "How much does a bespoke business system cost?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A bespoke system’s cost depends on the problem it solves and the number of modules it needs — a single workflow costs far less than a multi-system build. Zabble scopes each engagement during a discovery session, so you see the cost against the problem before any build starts. The first conversation is free."
+    }
+  },
+  {
+    "@id": "https://zabble.org/#/schema/question/5",
+    "@type": "Question",
+    "name": "How does Zabble build a system for my business?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "In three steps. First we sit with your team, tools, and data until we can point to the operational problem costing the most. Then we build a system tailored to that problem — not your industry, your business. Then you run it: workflows run themselves, risk gets caught early, and decisions get easier."
+    }
   }
 ]

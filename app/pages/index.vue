@@ -1,3 +1,16 @@
+<script setup lang="ts">
+import { HOME_FAQS } from '~/data/site-faqs'
+
+// ── Structured data / JSON-LD (S03) ────────────────────────────────────────
+// Home FAQPage. The page renders <TheFaq> → <FaqList :items="HOME_FAQS">; this
+// emits the matching FAQPage Question nodes from the SAME HOME_FAQS array, so
+// the JSON-LD Q&A is byte-identical to the on-page Q&A (the AnswerBlock "What
+// does Zabble do?" lead is intentionally left out — FAQPage mirrors the FAQ
+// list, not the page's primary heading). Site-wide Organization + WebSite +
+// WebPage identity is injected globally in nuxt.config.
+useFaqSchema(HOME_FAQS)
+</script>
+
 <template>
   <div class="min-h-screen bg-surface text-ink antialiased">
     <TheScrollProgress />
@@ -9,6 +22,7 @@
       <ThePlan />
       <TheWhatWeBuild />
       <TheDoNothing />
+      <TheFaq />
       <div class="cta-bleed-wrap">
         <div class="cta-bleed-overlay" aria-hidden="true" />
         <TheWhenItWorks />

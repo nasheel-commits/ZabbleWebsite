@@ -40,18 +40,22 @@ useHead({
 })
 
 // ── Structured data / JSON-LD (S03) ────────────────────────────────────────
-// Per-module markup: a WebPage (ItemPage) + the breadcrumb trail + a Service
-// node describing the system as an entity, with provider → the Zabble
-// Organization (@id interlink). Service — not Product/SoftwareApplication —
-// because Zabble delivers a bespoke build/consulting engagement, not a priced,
-// off-the-shelf product (see audits/08-schema.md §type-choice).
+// Per-module markup: WebPage (ItemPage; also FAQPage when the page renders a
+// FAQ block) + the breadcrumb trail + a Service node (provider → the Zabble
+// Organization). Service — not Product/SoftwareApplication — because Zabble
+// delivers a bespoke build/consulting engagement, not a priced, off-the-shelf
+// product (audits/08-schema.md §type-choice). Service is emitted only for
+// systems with real, signed-off copy; concept/TODO entries make no claims.
 //
-// The Service node is emitted ONLY for systems with real, signed-off copy.
-// Concept/TODO entries are excluded so we never mark up placeholder text
-// (markup must match visible content). Description is the on-page tagline.
+// FAQ: when `sys.faqs` exists the page renders <FaqList :items="sys.faqs"> (the
+// AEO block above). The SAME array drives the FAQPage Question nodes here, so
+// the JSON-LD Q&A is byte-identical to the visible Q&A by construction
+// (asserted in scripts/validate-schema.mjs: schema text == rendered <dt>/<dd>).
 const s = sys.value
+const faqs = s.faqs ?? []
+const webPageTypes = ['WebPage', 'ItemPage', ...(faqs.length ? ['FAQPage'] : [])]
 useSchemaOrg([
-  defineWebPage({ '@type': ['WebPage', 'ItemPage'] }),
+  defineWebPage({ '@type': webPageTypes }),
   defineBreadcrumb({
     itemListElement: [
       { name: 'Home', item: '/' },
@@ -59,8 +63,8 @@ useSchemaOrg([
       { name: s.name, item: `/systems/${s.slug}` },
     ],
   }),
-  // Service emitted as a raw graph node: @unhead/schema-org's Vue build doesn't
-  // ship a `defineService` helper, but a typed Service node with an explicit,
+  // Service emitted as a raw graph node: @unhead/schema-org's Vue build has no
+  // `defineService` helper, but a typed Service node with an explicit,
   // page-unique @id resolves identically. provider → the Zabble Organization.
   ...(s.status !== 'concept'
     ? [
@@ -77,6 +81,10 @@ useSchemaOrg([
         },
       ]
     : []),
+  // FAQPage Question nodes — 1:1, byte-identical to the rendered FaqList items.
+  ...faqs.map((f) =>
+    defineQuestion({ name: f.question, acceptedAnswer: f.answer }),
+  ),
 ])
 
 </script>
@@ -102,6 +110,17 @@ useSchemaOrg([
       <!-- Hero -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
         <SystemHero :system="sys" />
+      </section>
+
+      <!-- AEO answer-first block: "What is …?" answered in 40–60 words, placed
+           high so the definition is the first prose an answer engine lifts. -->
+      <section
+        v-if="sys.answer"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-12 md:mt-16"
+      >
+        <div v-reveal class="max-w-3xl">
+          <AnswerBlock :question="sys.answer.question" :answer="sys.answer.answer" />
+        </div>
       </section>
 
       <!-- Triptych -->
@@ -236,6 +255,17 @@ useSchemaOrg([
               }}
             </p>
           </article>
+        </div>
+      </section>
+
+      <!-- AEO FAQ block: question-shaped Q&A targeting People Also Ask. Server-
+           rendered; the same data is exposed for S03 to attach FAQPage JSON-LD. -->
+      <section
+        v-if="sys.faqs?.length"
+        class="mx-auto max-w-4xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24"
+      >
+        <div v-reveal>
+          <FaqList :items="sys.faqs" />
         </div>
       </section>
 
