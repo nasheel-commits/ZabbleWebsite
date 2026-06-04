@@ -1,0 +1,109 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "12.6357 sec.",
+    "cost": 0.0209026,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041513-1876-0612-0000-d18cc91b10e8",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "12.5689 sec.",
+            "cost": 0.0209026,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "ai_optimization",
+                "chat_gpt",
+                "llm_responses",
+                "live"
+            ],
+            "data": {
+                "api": "ai_optimization",
+                "function": "llm_responses",
+                "se": "chat_gpt",
+                "model_name": "o4-mini",
+                "user_prompt": "Who builds bespoke business automation and custom operational software for companies in South Africa? Name specific firms and their websites.",
+                "web_search": true
+            },
+            "result": [
+                {
+                    "model_name": "o4-mini-2025-04-16",
+                    "input_tokens": 5710,
+                    "output_tokens": 914,
+                    "reasoning_tokens": 192,
+                    "web_search": true,
+                    "money_spent": 0.0203026,
+                    "datetime": "2026-06-04 15:13:58 +00:00",
+                    "items": [
+                        {
+                            "type": "reasoning",
+                            "sections": null
+                        },
+                        {
+                            "type": "reasoning",
+                            "sections": null
+                        },
+                        {
+                            "type": "message",
+                            "sections": [
+                                {
+                                    "type": "text",
+                                    "text": "Here are several South African–based firms that specialise in building bespoke business-automation and operational software solutions, along with their websites:\n\n• NORSIT  \n  Specialty: Custom CRMs, ERP systems, workflow and field-team automation, plus real-time tracking and AI-enabled features.  \n  Website: https:\/\/www.norsit.co.za\/ ([norsit.co.za](https:\/\/www.norsit.co.za\/?utm_source=openai))\n\n• OpuWeb  \n  Specialty: End-to-end digital transformation—custom ERPs\/CRMs\/portals, workflow automation, cloud infrastructure and intelligent (WhatsApp) assistants.  \n  Website: https:\/\/opuweb.app\/ ([opuweb.app](https:\/\/opuweb.app\/?utm_source=openai))\n\n• DPSOFT (PTY) LTD  \n  Specialty: Fixed-scope, sprint-based delivery of custom software, AI systems and business-automation tools (web & mobile).  \n  Website: https:\/\/dpsoft.co.za\/ ([dpsoft.co.za](https:\/\/dpsoft.co.za\/?utm_source=openai))\n\n• FINTIQ  \n  Specialty: System integration, workflow automation, internal tools, dashboards and operational platforms tailored to your processes.  \n  Website: https:\/\/fintiq.co.za\/ ([fintiq.co.za](https:\/\/fintiq.co.za\/?utm_source=openai))\n\n• Imbali Customised Solutions  \n  Specialty: Business-process automation and modernisation via custom-built enterprise applications.  \n  Website: https:\/\/www.imbalics.co.za\/ ([imbalics.co.za](https:\/\/www.imbalics.co.za\/?utm_source=openai))\n\n• Nuvio Software  \n  Specialty: Bespoke web apps, industrial IoT platforms and AI-driven automation for production-critical operations.  \n  Website: https:\/\/nuvio.co.za\/ ([nuvio.co.za](https:\/\/nuvio.co.za\/?utm_source=openai))\n\n• Twipsi Digital  \n  Specialty: Laravel-based custom CRMs\/ERPs and AI-powered agents that replace spreadsheets and manual workflows.  \n  Website: https:\/\/twipsi.com\/ ([twipsi.com](https:\/\/twipsi.com\/?utm_source=openai))\n\n• ShiftBridge  \n  Specialty: Platform engineering, systems integration (Sage, Xero, MS 365, CRMs) and IoT-enabled operational platforms.  \n  Website: https:\/\/www.shiftbridge.co.za\/ ([shiftbridge.co.za](https:\/\/www.shiftbridge.co.za\/?utm_source=openai))\n\n• Excentra Solutions  \n  Specialty: Bespoke business software (CRMs, inventory, quoting\/invoicing, portals) and process-digitisation for Johannesburg SMBs.  \n  Website: https:\/\/www.excentrasolutions.co.za\/ ([excentrasolutions.co.za](https:\/\/www.excentrasolutions.co.za\/?utm_source=openai))\n\n• Luna Software Solutions  \n  Specialty: Fixed-price, full-stack bespoke software, mobile apps and AI-powered operational dashboards and process-tracking systems.  \n  Website: https:\/\/www.lunasoft.co.za\/ ([lunasoft.co.za](https:\/\/www.lunasoft.co.za\/?utm_source=openai))",
+                                    "annotations": [
+                                        {
+                                            "title": "NORSIT - Custom Software & AI Automation for Businesses",
+                                            "url": "https:\/\/www.norsit.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "OpuWeb — Custom Business Systems & Digital Transformation Agency",
+                                            "url": "https:\/\/opuweb.app\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "DPSOFT (PTY) LTD — Custom AI & Software Development | South Africa",
+                                            "url": "https:\/\/dpsoft.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "FINTIQ | System Integration, Automation and Custom Software",
+                                            "url": "https:\/\/fintiq.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "Imbali Customized Solutions",
+                                            "url": "https:\/\/www.imbalics.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "Nuvio Software · Custom software for serious business",
+                                            "url": "https:\/\/nuvio.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "Twipsi Digital | Custom Laravel Software & AI Agent Development in South Africa",
+                                            "url": "https:\/\/twipsi.com\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "ShiftBridge — Integrated Business Solutions",
+                                            "url": "https:\/\/www.shiftbridge.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "Custom Software & IT Services Johannesburg | Excentra Solutions",
+                                            "url": "https:\/\/www.excentrasolutions.co.za\/?utm_source=openai"
+                                        },
+                                        {
+                                            "title": "Luna Software Solutions | Bespoke Software, AI-Powered",
+                                            "url": "https:\/\/www.lunasoft.co.za\/?utm_source=openai"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "fan_out_queries": [
+                        "South Africa bespoke business automation custom operational software firms"
+                    ]
+                }
+            ]
+        }
+    ]
+}

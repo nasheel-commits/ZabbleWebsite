@@ -83,4 +83,13 @@ problems/pillars — S05 expands each with Labs `keyword_ideas`.
 > S02/S06/S07/S08: add the keyword/intent you need researched and your session #.
 > S05 picks these up. Do not edit the tables above.
 
-- _(none yet)_
+- **[S07-geo]** GEO question/entity targets — research SA volume + intent so we know
+  which AI-answer questions are worth owning (these are the fixed GEO measurement
+  prompts; `_evidence/07/prompt-set.md`). Evidence: AI Overviews already present for
+  the first three `[E: 07/serp-ai-overview__*.json]`.
+  - `who builds custom business software in south africa` (informational/commercial → GEO/SEO)
+  - `business process automation south africa` (commercial → SEO/GEO; **has AI Overview**)
+  - `bespoke crm south africa` (commercial → SEO; **has AI Overview**)
+  - `business automation company south africa` (commercial → SEO; **has local_pack**)
+  - `what software detects fraud / anomalies in transactions south africa` (informational → AEO/GEO)
+  - `zabble` (navigational/brand → GEO entity; currently conflated with US "Zabble, Inc.")

@@ -1,0 +1,95 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "12.6346 sec.",
+    "cost": 0.025626,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041513-1876-0612-0000-9588bfdde084",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "12.6241 sec.",
+            "cost": 0.025626,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "ai_optimization",
+                "perplexity",
+                "llm_responses",
+                "live"
+            ],
+            "data": {
+                "api": "ai_optimization",
+                "function": "llm_responses",
+                "se": "perplexity",
+                "model_name": "sonar-pro",
+                "user_prompt": "Who builds bespoke business automation and custom operational software (workflow automation, audit trails, anomaly detection, analytics) for companies in South Africa? Name specific firms and their websites.",
+                "web_search": true
+            },
+            "result": [
+                {
+                    "model_name": "sonar-pro",
+                    "input_tokens": 42,
+                    "output_tokens": 1260,
+                    "reasoning_tokens": 0,
+                    "web_search": true,
+                    "money_spent": 0.025026,
+                    "datetime": "2026-06-04 15:13:38 +00:00",
+                    "items": [
+                        {
+                            "type": "message",
+                            "sections": [
+                                {
+                                    "type": "text",
+                                    "text": "Here are **South African firms that build bespoke business automation and custom operational software** (workflow automation, audit trails, anomaly detection, analytics), plus their websites.\n\n---\n\n### 1. Business Automation\n\n- **What they do:** As the name suggests, they focus specifically on **bespoke business automation** solutions in South Africa, with examples across sectors like golf clubs, property administration, and fire services.[1]  \n- **Relevance to you:** Custom back-office systems, workflow automation, admin systems, and operational tools tailored to specific industries.[1]  \n- **Website:** **business-automation.co.za**[1]\n\n---\n\n### 2. Co-Foundry\n\n- **What they do:** South African firm specializing in **custom workflow automation and business process software**, with a full team of developers, designers and project managers.[3]  \n- **Relevance:** Custom workflow automation systems, operational platforms and internal tools for companies needing tailored software rather than off‑the‑shelf products.[3]  \n- **Website:** **co-foundry.co.za**[3]\n\n---\n\n### 3. Haefele Software\n\n- **What they do:** **Software engineering consultancy** with offices in South Africa and the UK, experienced in Microsoft tech and both **legacy and greenfield systems**.[3]  \n- **Relevance:** Good fit for **workflow automation**, integration with existing Microsoft stacks, and custom line-of-business apps.[3]  \n- **Website:** **haefele.io** (domain referenced via the Co‑Foundry comparison list).[3]\n\n---\n\n### 4. KRS (Khanyisa Real Systems)\n\n- **What they do:** Long-established **Agile custom software development house** in South Africa (operating since 1987), specialising in Microsoft technologies.[3]  \n- **Relevance:** Custom enterprise systems, **workflow automation**, analytics dashboards, and operational tools for medium–large organisations.[3]  \n- **Website:** **krs.co.za**[3]\n\n---\n\n### 5. SIVOXI\n\n- **What they do:** South African **software development powerhouse** offering custom software, **AI, machine learning and robotics**, with ISO 9001:2015 certification.[3][4]  \n- **Relevance:** Ideal if you want **AI‑driven workflow automation**, anomaly detection, predictive analytics or intelligent audit\/monitoring systems.[3][4]  \n- **Website:** **sivoxi.com**[3][4]\n\n---\n\n### 6. Specno\n\n- **What they do:** Primarily a **mobile app and web application developer** that also offers **digital transformation and workflow automation** services.[3]  \n- **Relevance:** Good if your workflow or operational system needs strong mobile UX plus ongoing support.[3]  \n- **Website:** **specno.com**[3]\n\n---\n\n### 7. Signature Business Solutions (Signature Group)\n\n- **What they do:** Fintech‑oriented **business automation** and reporting solutions.[5] They provide dashboards, **business activity monitoring, automated alerts, threshold reporting, pattern recognition**, financial reporting packs and more.[5]  \n- **Relevance:** Strong fit if you need **anomaly detection in financial\/transactional data**, automated reconciliations, KPI dashboards, and audit‑friendly reporting in large organisations.[5]  \n- **Website:** **signaturegroup.co.za**[5]\n\n---\n\n### 8. AI Automated Solutions\n\n- **What they do:** South African **AI automation consultancy** focused on agentic AI agents, chatbots, WhatsApp bots, CRM automation and **custom AI‑driven software** for local businesses.[6]  \n- **Relevance:** Good for **AI‑based workflow automation**, automated customer journeys, CRM updates, lead handling, and back‑office automations; they also quote on **larger custom CRM\/back‑office builds**.[6]  \n- **Website:** **aiautomatedsolutions.co.za**[6]\n\n---\n\n### 9. Ditstek Innovations (South Africa presence)\n\n- **What they do:** **Custom software development company** with operations in South Africa, delivering AI‑powered, scalable and secure tailored solutions.[9]  \n- **Relevance:** Bespoke web and enterprise applications, potentially including **workflow automation, analytics and AI\/ML components** depending on your brief.[9]  \n- **Website:** **ditstek.com** (South Africa section).[9]\n\n---\n\n### 10. Additional South African bespoke\/BPM-focused providers\n\nFrom a business process management and custom solutions directory, these companies are listed as South African providers delivering **bespoke software or business process optimisation**, which often includes workflow automation and operational platforms:[7]\n\n- **Dariel Software** – “South African tech experts delivering **bespoke software solutions**, unlocking business potential through digital acceleration.”[7]  \n  - Website: **dariel.co.za**[7]\n\n- **Ovations** – Focuses on **value‑driven technological evolution of core business**, including BPM and process solutions.[7]  \n  - Website: **ovationsgroup.com**[7]\n\n- **Ulwembu Business Services** – Management consulting and ICT services helping organisations become **optimised, digitised businesses**.[7]  \n  - Website: **ulwembu.com**[7]\n\n- **emediaIT** – Technology solutions and **software development company** providing custom solutions and support.[7]  \n  - Website: **emediait.com**[7]\n\n- **Twenty57** – Develops **industrial-strength applications and software for the financial services industry**, often with strong data and workflow components.[7]  \n  - Website: **twenty57.com**[7]\n\nThese are particularly relevant if you are in financial services, corporates, or need heavier BPM\/enterprise architecture around your automation.\n\n---\n\nIf you tell me your industry, team size, and whether you prioritise AI\/anomaly detection vs. classic workflow + audit trails, I can narrow this list to a short “best‑fit” subset and suggest who to contact first.",
+                                    "annotations": [
+                                        {
+                                            "title": "Bespoke Examples - Business Automation",
+                                            "url": "https:\/\/www.business-automation.co.za\/bespoke-examples\/"
+                                        },
+                                        {
+                                            "title": "SME Business Consulting Services in South Africa - Bad Robot",
+                                            "url": "https:\/\/www.badrobot.co.za\/sme-business-consulting-south-africa"
+                                        },
+                                        {
+                                            "title": "Top business workflow automation companies in South Africa",
+                                            "url": "https:\/\/co-foundry.co.za\/top-business-workflow-automation-companies-in-south-africa\/"
+                                        },
+                                        {
+                                            "title": "AI-Powered Automation: A Game-Changer for South African ... - sivoxi",
+                                            "url": "https:\/\/www.sivoxi.com\/ai-automation-a-game-changer-for-south-africans\/"
+                                        },
+                                        {
+                                            "title": "BUSINESS AUTOMATION - Signature Business Solutions",
+                                            "url": "https:\/\/signaturegroup.co.za\/business-automation\/"
+                                        },
+                                        {
+                                            "title": "AI Automated Solutions | AI Automation Agents Agentic WhatsApp AI ...",
+                                            "url": "https:\/\/aiautomatedsolutions.co.za"
+                                        },
+                                        {
+                                            "title": "Best Business Process Management solutions companies in South ...",
+                                            "url": "https:\/\/elioplus.com\/africa\/south-africa\/channel-partners\/business_process_management"
+                                        },
+                                        {
+                                            "title": "The best marketing automation companies in South Africa",
+                                            "url": "https:\/\/www.mo.agency\/blog\/best-marketing-automation-companies-south-africa"
+                                        },
+                                        {
+                                            "title": "Custom Software Development Company in South Africa",
+                                            "url": "https:\/\/www.ditstek.com\/south-africa"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "fan_out_queries": null
+                }
+            ]
+        }
+    ]
+}

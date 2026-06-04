@@ -5,7 +5,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 
 - **Project:** Zabble — https://zabble.org (pre-launch)
 - **Primary market:** South Africa (`en-ZA`)
-- **Last updated:** 2026-06-04 by S00
+- **Last updated:** 2026-06-04 by S07-geo (GEO)
 
 ---
 
@@ -22,6 +22,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
+| 07′ | GEO (commissioned on `seo/07-geo`) | `seo/07-geo` | GEO agent | **done** | 00 | `/llms.txt` + `/llms-full.txt` live (build clean); `audits/07-geo.md` + entity plan + ADR-0002 (AI-crawler policy) + AI-citation baseline (`_evidence/07/`). SOV 0% baseline; entity conflated w/ Zabble Inc (US). |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
 
@@ -69,6 +70,25 @@ DataForSEO account verified + funded ($50.998), live + sandbox calls return
 DataForSEO access is fully live — all 10 sessions can start. **Each new Claude
 Code session must launch with env loaded** (access doc §3) so the MCP tools
 authenticate.
+
+---
+
+## Cross-session asks (from S07-geo / GEO)
+
+Logged here so nothing depends on a verbal handoff (conventions §4.7). Source:
+[`audits/07-geo.md`](audits/07-geo.md) §6 + [`07-geo-entity-plan.md`](audits/07-geo-entity-plan.md).
+
+| To | Ask | Priority | Where |
+|----|-----|----------|-------|
+| **S01** (robots, indexing, sitemap) | Replace `public/robots.txt` with the GEO-aligned policy; ensure the pre-launch `noindex` guard does **not** block AI crawlers; set `site.url` + emit `sitemap.xml`. | P0 | [ADR-0002](decisions/0002-ai-crawler-policy.md) |
+| **S03** (schema) | Implement the `Organization` JSON-LD + `sameAs` + disambiguating `description` (verbatim object provided). | P0 | entity-plan §2 |
+| **S06 / S02 / S07-aeo** (content/on-page/AEO) | Adopt the GEO content standard as the money-page editorial bar; apply the worked examples. | P1 | 07-geo §8–9 |
+| **S10** (off-page/local/measurement) | Wikidata item + cross-web profiles (LinkedIn/GBP/Crunchbase/directories) using the brand-description standard; pursue the brand-mention target list; wire monthly AI-citation tracking + AI referral analytics. | P0–P2 | entity-plan §3–5 |
+| **S05** (keywords) | Research SA volume/intent for the GEO question targets (appended to `targets/keyword-map.md` §4). | P1 | keyword-map §4 |
+
+> Note: `/llms.txt` must stay crawlable under whatever robots policy S01 ships (it
+> is covered by the default allow). `llms.txt` `sameAs`/contact links should be
+> refreshed as S10 brings profiles live.
 
 ---
 

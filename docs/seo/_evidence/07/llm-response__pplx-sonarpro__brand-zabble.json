@@ -1,0 +1,91 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "4.2629 sec.",
+    "cost": 0.013506,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041513-1876-0612-0000-f9cb428125cf",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "4.2152 sec.",
+            "cost": 0.013506,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "ai_optimization",
+                "perplexity",
+                "llm_responses",
+                "live"
+            ],
+            "data": {
+                "api": "ai_optimization",
+                "function": "llm_responses",
+                "se": "perplexity",
+                "model_name": "sonar-pro",
+                "user_prompt": "What is Zabble (zabble.org)? What does this company do, what products or systems does it offer, and where is it based?",
+                "web_search": true
+            },
+            "result": [
+                {
+                    "model_name": "sonar-pro",
+                    "input_tokens": 37,
+                    "output_tokens": 453,
+                    "reasoning_tokens": 0,
+                    "web_search": true,
+                    "money_spent": 0.012906,
+                    "datetime": "2026-06-04 15:13:44 +00:00",
+                    "items": [
+                        {
+                            "type": "message",
+                            "sections": [
+                                {
+                                    "type": "text",
+                                    "text": "Zabble appears to be a **waste-analytics and zero-waste software company** that helps organizations measure, manage, and reduce waste using an **AI-enabled SaaS platform** and mobile tools.[1][2][4] The company’s core product is **Zabble Zero™**, which provides real-time waste-stream visibility, AI-powered audits, analytics, and workflow support for sustainability teams.[2][4][5]\n\nWhat it does:\n- Helps organizations pursue **zero waste** by collecting and analyzing waste data in real time.[1][2]\n- Uses AI to identify **bin fullness**, **contamination**, and issues from photos, and to analyze **hauler invoices** for anomalies and right-sizing opportunities.[1][4]\n- Supports sustainability managers with **building- and floor-level insights**, progress tracking, and targeted awareness campaigns.[2]\n- In some materials, Zabble also says it offers tools for **hospitals** and **corporate campuses** to reduce contamination, fines, hauling costs, and landfill waste.[5][6]\n\nWhat products or systems it offers:\n- **Zabble Zero™** mobile\/platform software for waste management and analytics.[2][5][6]\n- An **AI-powered SaaS platform** for real-time actionable insights and end-to-end waste analytics.[1][4]\n- Features such as **AI audits**, **real-time analytics**, **anomaly detection on hauler invoices**, and workflow\/feedback-loop tools.[1][4]\n\nWhere it is based:\n- Zabble, Inc. is listed as being in **Walnut Creek, California, USA**.[1][3]\n- One source gives the address as **581 Center St, Walnut Creek, CA 94595-1329**.[1]\n- Another source lists a headquarters at **1966 Tice Valley Blvd #105, Walnut Creek, California**.[3]\n\nOne note of ambiguity: the domain **zabble.org** shows “Smart Data-Driven Digital Marketing & Real-Time Analytics,” but the company information and product descriptions in the search results consistently point to **Zabble, Inc.** as a **waste-management\/zero-waste analytics company** based in Walnut Creek.[1][2][4][7]",
+                                    "annotations": [
+                                        {
+                                            "title": "Company - | SBIR",
+                                            "url": "https:\/\/www.sbir.gov\/portfolio\/1697261"
+                                        },
+                                        {
+                                            "title": "Zabble - National Zero Waste Conference",
+                                            "url": "https:\/\/zwconference.org\/zabble\/"
+                                        },
+                                        {
+                                            "title": "Zabble - Overview, News & Similar companies | ZoomInfo.com",
+                                            "url": "https:\/\/www.zoominfo.com\/c\/zabble-inc\/450266016"
+                                        },
+                                        {
+                                            "title": "Zabble Transforms Waste Management with Data-Driven Campaigns",
+                                            "url": "https:\/\/www.zabbleinc.com"
+                                        },
+                                        {
+                                            "title": "Upgrade Hospital Waste Management With Zabble Zero™",
+                                            "url": "https:\/\/www.zabbleinc.com\/hospitals"
+                                        },
+                                        {
+                                            "title": "Optimize Corporate Campus Waste Management with Data ... - Zabble",
+                                            "url": "https:\/\/www.zabbleinc.com\/corporate-campus"
+                                        },
+                                        {
+                                            "title": "Zabble: Bespoke Business Solutions",
+                                            "url": "https:\/\/zabble.org"
+                                        },
+                                        {
+                                            "title": "Zabble Helps Organizations Reach Zero Waste",
+                                            "url": "https:\/\/www.zabbleinc.com\/company"
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ],
+                    "fan_out_queries": null
+                }
+            ]
+        }
+    ]
+}
