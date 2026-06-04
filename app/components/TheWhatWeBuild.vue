@@ -6,6 +6,7 @@ const pillars = [
   {
     slug: 'automation',
     icon: Workflow,
+    slug: 'automation',
     title: 'Automation',
     lede: 'Stop doing it by hand.',
     body: "Every business runs on workflows. The same spreadsheet, filled out every week. The same data, copied between two systems that don't talk. The same decisions, made on the same handful of inputs. We automate the parts of your business that shouldn't need a human anymore, so the people you have can focus on the work only people can do.",
@@ -13,6 +14,7 @@ const pillars = [
   {
     slug: 'audit-trails',
     icon: ShieldCheck,
+    slug: 'audit-trails',
     title: 'Audit Trails',
     lede: "You can't manage what you can't see.",
     body: 'We build visibility and governance into your operations, so you know who did what, when, and why. The result: faster reviews, cleaner audits, and confidence that what’s supposed to happen actually did.',
@@ -20,6 +22,7 @@ const pillars = [
   {
     slug: 'anomaly-detection',
     icon: Radar,
+    slug: 'anomaly-detection',
     title: 'Anomaly Detection',
     lede: "The risks that hurt most are the ones you don't see coming.",
     body: 'We build systems that watch your operations in the background and flag what’s unusual: the fraud, the error, the drift, the outlier. All before it becomes a problem. This is how you scale without losing control.',
@@ -27,6 +30,7 @@ const pillars = [
   {
     slug: 'analytics',
     icon: BarChart3,
+    slug: 'analytics',
     title: 'Analytics',
     lede: 'Every business has more data than it uses.',
     body: "We turn yours into a clear picture of what's happening and what matters, so you can stop making decisions on hunches and start making them on facts.",

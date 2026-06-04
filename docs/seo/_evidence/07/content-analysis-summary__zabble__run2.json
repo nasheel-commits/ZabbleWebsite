@@ -1,0 +1,318 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.6161 sec.",
+    "cost": 0.02003,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041626-1876-0464-0000-5f916267305d",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.5628 sec.",
+            "cost": 0.02003,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "content_analysis",
+                "summary",
+                "live"
+            ],
+            "data": {
+                "api": "content_analysis",
+                "function": "summary",
+                "keyword": "zabble"
+            },
+            "result": [
+                {
+                    "type": "content_analysis_summary",
+                    "total_count": 400,
+                    "rank": 231,
+                    "top_domains": [
+                        {
+                            "domain": "aashe.org",
+                            "count": 24
+                        },
+                        {
+                            "domain": "jooble.org",
+                            "count": 24
+                        },
+                        {
+                            "domain": "financialcontent.com",
+                            "count": 16
+                        },
+                        {
+                            "domain": "ncrarecycles.org",
+                            "count": 16
+                        },
+                        {
+                            "domain": "rausgegangen.de",
+                            "count": 16
+                        },
+                        {
+                            "domain": "speyer.de",
+                            "count": 16
+                        },
+                        {
+                            "domain": "am-news.com",
+                            "count": 8
+                        },
+                        {
+                            "domain": "amandala.com.bz",
+                            "count": 8
+                        },
+                        {
+                            "domain": "australianmanufacturing.com.au",
+                            "count": 8
+                        },
+                        {
+                            "domain": "bestforyall.com",
+                            "count": 8
+                        }
+                    ],
+                    "sentiment_connotations": {
+                        "anger": 0,
+                        "happiness": 24,
+                        "love": 16,
+                        "sadness": 0,
+                        "share": 0,
+                        "fun": 0
+                    },
+                    "connotation_types": {
+                        "positive": 248,
+                        "negative": 96,
+                        "neutral": 56
+                    },
+                    "text_categories": [
+                        {
+                            "category": [
+                                10108,
+                                10004,
+                                13804,
+                                10276
+                            ],
+                            "count": 56
+                        },
+                        {
+                            "category": [
+                                10108,
+                                13691,
+                                10013,
+                                10103,
+                                10556
+                            ],
+                            "count": 32
+                        },
+                        {
+                            "category": null,
+                            "count": 24
+                        },
+                        {
+                            "category": [
+                                10004,
+                                10013,
+                                10108
+                            ],
+                            "count": 16
+                        },
+                        {
+                            "category": [
+                                10004,
+                                13804,
+                                10108
+                            ],
+                            "count": 16
+                        },
+                        {
+                            "category": [
+                                10013,
+                                10108,
+                                13691,
+                                10103,
+                                10556
+                            ],
+                            "count": 16
+                        },
+                        {
+                            "category": [
+                                10108,
+                                10013,
+                                10004
+                            ],
+                            "count": 16
+                        },
+                        {
+                            "category": [
+                                10108,
+                                10016,
+                                10139,
+                                10746,
+                                10004,
+                                10273
+                            ],
+                            "count": 16
+                        },
+                        {
+                            "category": [
+                                10002,
+                                10028,
+                                10222,
+                                13813,
+                                10019,
+                                10167,
+                                10013
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10002,
+                                10028,
+                                11077,
+                                10013,
+                                10108,
+                                13691
+                            ],
+                            "count": 8
+                        }
+                    ],
+                    "page_categories": [
+                        {
+                            "category": null,
+                            "count": 104
+                        },
+                        {
+                            "category": [
+                                10108,
+                                10756,
+                                10017,
+                                10142,
+                                10769,
+                                12067
+                            ],
+                            "count": 56
+                        },
+                        {
+                            "category": [
+                                10016,
+                                10139,
+                                10746,
+                                10011,
+                                12035
+                            ],
+                            "count": 24
+                        },
+                        {
+                            "category": [
+                                10002,
+                                10028,
+                                11077,
+                                10019,
+                                10167,
+                                10108,
+                                10756
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10002,
+                                10030,
+                                10236,
+                                10021,
+                                10171,
+                                10893,
+                                12233,
+                                10016,
+                                10141,
+                                11029
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10004,
+                                10282,
+                                11141,
+                                10013,
+                                10109,
+                                10017,
+                                10145,
+                                13582
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10004,
+                                13464,
+                                10306,
+                                10018,
+                                13414,
+                                13876,
+                                10295,
+                                11388,
+                                12706
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10007,
+                                13418,
+                                10013,
+                                10004
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10011,
+                                10089,
+                                11772,
+                                12928,
+                                10002,
+                                10028,
+                                10227,
+                                11008,
+                                12359
+                            ],
+                            "count": 8
+                        },
+                        {
+                            "category": [
+                                10013,
+                                10108,
+                                13691,
+                                10103,
+                                10556
+                            ],
+                            "count": 8
+                        }
+                    ],
+                    "page_types": {
+                        "blogs": 168,
+                        "organization": 152,
+                        "news": 128,
+                        "message-boards": 32,
+                        "ecommerce": 56
+                    },
+                    "countries": {
+                        "US": 152,
+                        "DE": 32,
+                        "WW": 32,
+                        "AU": 8,
+                        "BZ": 8,
+                        "CH": 8
+                    },
+                    "languages": {
+                        "en": 368,
+                        "de": 32
+                    }
+                }
+            ]
+        }
+    ]
+}

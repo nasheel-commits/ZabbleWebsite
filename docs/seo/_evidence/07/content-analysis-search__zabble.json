@@ -1,0 +1,1061 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "1.8932 sec.",
+    "cost": 0.02045,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041513-1876-0463-0000-3c8a991bbe5b",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "1.8826 sec.",
+            "cost": 0.02045,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "content_analysis",
+                "search",
+                "live"
+            ],
+            "data": {
+                "api": "content_analysis",
+                "function": "search",
+                "keyword": "zabble",
+                "limit": 15,
+                "search_mode": "one_per_domain"
+            },
+            "result": [
+                {
+                    "offset_token": "eyJDdXJyZW50T2Zmc2V0IjoxNSwiUmF3UmVxdWVzdCI6eyJrZXl3b3JkIjoiemFiYmxlIiwic2VhcmNoX21vZGUiOiJvbmVfcGVyX2RvbWFpbiIsImxpbWl0IjoxNSwicmFua19zY2FsZSI6Im9uZV90aG91c2FuZCIsImFpZCI6MTg3NjI4LCJ0YXNrX2lkIjoiMDYwNDE1MTMtMTg3Ni0wNDYzLTAwMDAtM2M4YTk5MWJiZTViIn0sIlNlYXJjaEFmdGVyRGF0YSI6eyJWZXJzaW9uIjoxLCJTZWFyY2hBZnRlclZhbHVlcyI6eyJfc2NvcmUiOjM0NzEwLjYxNywidXJsX2hhc2giOiI1Mjc5NjQyOTg0MzIyODg0NzE0In0sIlRva2VuUmVhbE9mZnNldCI6MH19",
+                    "total_count": 107,
+                    "items_count": 15,
+                    "items": [
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/www.speyer.de\/de\/kalender\/veranstaltungen-kultur\/2025-10-18-babble-zabble-mit-dj-floe-und-peter-roth\/",
+                            "domain": "www.speyer.de",
+                            "main_domain": "speyer.de",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 419,
+                            "fetch_time": "2025-11-05 08:29:28 +00:00",
+                            "country": "DE",
+                            "language": null,
+                            "score": 313430.6,
+                            "page_category": null,
+                            "page_types": [
+                                "cms",
+                                "ecommerce"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Babble & Zabble mit DJ Flö und Peter Roth",
+                                "main_title": "Babble & Zabble mit DJ Flö und Peter Roth",
+                                "previous_title": "Babble & Zabble mit DJ Flö und Peter Roth",
+                                "level": 2,
+                                "author": null,
+                                "snippet": "Die Babble & Zabble-Reihe im Industriehof.\nDJ Flö und Peter Roth sind wieder am Mischpult und lassen euch tanzen!\nTickets gibt es für 10 € im Vorverkauf und an der Abendkasse.\nSchankteam - ein Teil der Foonax GmbH",
+                                "snippet_length": 213,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "de",
+                                "sentiment_connotations": {
+                                    "anger": 0.03447338938713074,
+                                    "happiness": 0.40266144275665283,
+                                    "love": 0.2272101491689682,
+                                    "sadness": 0.026134030893445015,
+                                    "share": 0.040572162717580795,
+                                    "fun": 0.2690088748931885
+                                },
+                                "connotation_types": {
+                                    "positive": 0.20167699456214905,
+                                    "negative": 0.5468329191207886,
+                                    "neutral": 0.2515201270580292
+                                },
+                                "text_category": null,
+                                "date_published": null,
+                                "content_quality_score": 95,
+                                "semantic_location": "main",
+                                "rating": null,
+                                "group_date": "2025-11-05 08:29:28 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/resource-recycling.com\/recycling\/author\/jared-paben\/",
+                            "domain": "resource-recycling.com",
+                            "main_domain": "resource-recycling.com",
+                            "url_rank": 105,
+                            "spam_score": 0,
+                            "domain_rank": 387,
+                            "fetch_time": "2025-11-05 02:18:11 +00:00",
+                            "country": "US",
+                            "language": "en",
+                            "score": 176024.56,
+                            "page_category": null,
+                            "page_types": [
+                                "cms",
+                                "blogs"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Software brings efficient data to organics collection",
+                                "main_title": "Author Archives: Jared Paben",
+                                "previous_title": "Haulers continue to see recycling revenue drops",
+                                "level": 1,
+                                "author": null,
+                                "snippet": "Now that California has mandated organics collection by local governments, Zabble hopes to see growing demand for its contamination monitoring tools. | Courtesy of Zabble\nWhen Zabble interviewed dozens of municipal recycling stakeholders in California, one of the issues the company heard about was the inability to use contamination monitoring mobile device software in the field when there’s no network signal. Continue Reading",
+                                "snippet_length": 429,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.10533232986927032,
+                                    "happiness": 0.25521355867385864,
+                                    "love": 0.10519737750291824,
+                                    "sadness": 0.13321740925312042,
+                                    "share": 0.24227182567119598,
+                                    "fun": 0.1588274985551834
+                                },
+                                "connotation_types": {
+                                    "positive": 0.22646945714950562,
+                                    "negative": 0.28890129923820496,
+                                    "neutral": 0.4846592843532562
+                                },
+                                "text_category": [
+                                    10004,
+                                    13804,
+                                    10108,
+                                    13426
+                                ],
+                                "date_published": "2023-10-30 19:00:31 +00:00",
+                                "content_quality_score": 93,
+                                "semantic_location": "article",
+                                "rating": null,
+                                "group_date": "2023-10-30 19:00:31 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/www.mein-event.shop\/produkt\/babble-und-zabble-140123\/",
+                            "domain": "www.mein-event.shop",
+                            "main_domain": "mein-event.shop",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 211,
+                            "fetch_time": "2024-02-10 17:30:24 +00:00",
+                            "country": null,
+                            "language": "de",
+                            "score": 160369.92,
+                            "page_category": [
+                                10013,
+                                10111,
+                                10017,
+                                10142,
+                                10769,
+                                12067,
+                                10020,
+                                13439
+                            ],
+                            "page_types": [
+                                "ecommerce"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Der gewohnte Mix aus Musik von früher und heute",
+                                "main_title": "Babble & Zabble – Januar 2023",
+                                "previous_title": "Die Babble & Zabble im neuen Jahr",
+                                "level": 3,
+                                "author": null,
+                                "snippet": "Euch erwartet vertrautes Babble & Zabble-Feeling mit toller Musik, netten Menschen und jeder Menge Spaß.\nWir freuen uns schon sehr!",
+                                "snippet_length": 131,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "de",
+                                "sentiment_connotations": {
+                                    "anger": null,
+                                    "happiness": 0.2761613428592682,
+                                    "love": 0.4389265179634094,
+                                    "sadness": null,
+                                    "share": 0.010814257897436619,
+                                    "fun": 0.2644934058189392
+                                },
+                                "connotation_types": {
+                                    "positive": 0.8788481950759888,
+                                    "negative": 0,
+                                    "neutral": 0.11770045012235641
+                                },
+                                "text_category": [
+                                    10017,
+                                    10142,
+                                    10769,
+                                    12067,
+                                    10013,
+                                    10020,
+                                    13439
+                                ],
+                                "date_published": "2022-05-20 13:10:59 +00:00",
+                                "content_quality_score": 100,
+                                "semantic_location": "main",
+                                "rating": null,
+                                "group_date": "2022-05-20 13:10:59 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/govtjobs.us\/job\/moseley-technical-services-hiring-for-cl-muos-advanced-software-engineer-at-scottsdale-az\/",
+                            "domain": "govtjobs.us",
+                            "main_domain": "govtjobs.us",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 470,
+                            "fetch_time": "2025-05-30 06:07:38 +00:00",
+                            "country": "US",
+                            "language": "en",
+                            "score": 145212.34,
+                            "page_category": [
+                                10016,
+                                10139,
+                                10746,
+                                10011,
+                                10004
+                            ],
+                            "page_types": [
+                                "cms",
+                                "blogs",
+                                "organization"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Zabble Hiring for React Front End Developer (Contract to Full Time) at Remote Full Time",
+                                "main_title": "Moseley Technical Services Hiring For CL – MUOS Advanced Software Engineer at Scottsdale, AZ Full Time",
+                                "previous_title": "Idaho Central Credit Union Hiring for Software Developer Manager – Chubbuck at Chubbuck, ID Full Time",
+                                "level": 4,
+                                "author": "https:\/\/www.facebook.com\/onlinecareer360",
+                                "snippet": "Front End Developer Zabble is looking for a Front End Developer, who likes working at early stage startups and can...",
+                                "snippet_length": 117,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.0334489569067955,
+                                    "happiness": 0.4139804244041443,
+                                    "love": 0.06988049298524857,
+                                    "sadness": 0.07362798601388931,
+                                    "share": 0.16776376962661743,
+                                    "fun": 0.24135836958885193
+                                },
+                                "connotation_types": {
+                                    "positive": 0.5732864141464233,
+                                    "negative": 0.046910107135772705,
+                                    "neutral": 0.37983348965644836
+                                },
+                                "text_category": [
+                                    10016,
+                                    10139,
+                                    10746,
+                                    10007,
+                                    13418,
+                                    11496,
+                                    12029
+                                ],
+                                "date_published": "2021-12-16 14:07:38 +00:00",
+                                "content_quality_score": 90,
+                                "semantic_location": null,
+                                "rating": null,
+                                "group_date": "2021-12-16 14:07:38 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/techstartups.com\/2020\/05\/01\/zero-waste-zero-spread-zabble-deploys-suite-free-monitoring-tools-stop-coronavirus-spread-hospitals-essential-businesses\/",
+                            "domain": "techstartups.com",
+                            "main_domain": "techstartups.com",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 373,
+                            "fetch_time": "2026-04-10 02:21:12 +00:00",
+                            "country": "US",
+                            "language": "en",
+                            "score": 143633.8,
+                            "page_category": [
+                                10007,
+                                13418,
+                                10013,
+                                10004
+                            ],
+                            "page_types": [
+                                "cms",
+                                "blogs",
+                                "organization"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "From zero waste to zero spread: Zabble deploys suite of free monitoring tools to stop coronavirus spread from hospitals and essential businesses",
+                                "main_title": "From zero waste to zero spread: Zabble deploys suite of free monitoring tools to stop coronavirus spread from hospitals and essential businesses",
+                                "previous_title": null,
+                                "level": 1,
+                                "author": "Tech Startups | Tech Companies | Startups News",
+                                "snippet": "Zabble is a provider of real-time analytics for zero waste programs to institutions and corporations to help monitor their zero waste programs. Now, the company is helping medical organizations and businesses identify protective gear shortages and potential contamination. As coronavirus spreads around the country, the startup further decided to retool its Zabble Zero app to help medical organizations and essential businesses prevent the spread of COVID-19 in their facilities.\nToday, Zabble announced it is dedicating its expertise and offering free tools to combat the spread of COVID-19 in multiple ways. To further help hospitals and businesses, Zabble is also offering custom sign-generating software and downloadable information for managers to display crucial information in the workplace.\nThe company is tackling one opaque, yet possibly significant vector for viral spread: discarded personal protective equipment (PPE) and cleaning items from medical facilities and essential services like grocery stores, food distributors and online retailers\nFounded in 2106, the San Francisco, California-based Zabble’s mobile technology empowers building and sustainability managers to track the success of their zero waste programs. Its cloud-based enterprise mobile platform digitizes and streamlines waste data collection and maintenance process for waste management field professionals, connect back office systems and uses machine learning algorithms so supervisors can get real-time actionable insights and recommendations that speed up their processes by more than four times.\n“PPE disposal is already a significant part of the hospital waste stream, with one study finding that PPE accounted for 43% of all solid waste from hospitals,” said Nik Balachandran, Zabble’s CEO. “With hospitals and essential businesses facing significant stress on their service capacity, PPE may be incorrectly disposed of. Hospital staff are working long hours to save lives, while workers at essential businesses put in extra shifts to keep shelves stocked and ship out goods. If infected PPE ends up in the wrong bin, COVID-19 could unknowingly spread to workers who sort solid waste by hand.”\nFlattening the curve of viral spread means not only social distancing, but also closing off each path that COVID-19 can spread through, including the waste stream from hospitals and essential businesses.",
+                                "snippet_length": 2388,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.10813799500465393,
+                                    "happiness": 0.25278013944625854,
+                                    "love": 0.20601195096969604,
+                                    "sadness": 0.12614938616752625,
+                                    "share": 0.16930150985717773,
+                                    "fun": 0.13767901062965393
+                                },
+                                "connotation_types": {
+                                    "positive": 0.41128599643707275,
+                                    "negative": 0.4508761465549469,
+                                    "neutral": 0.13786792755126953
+                                },
+                                "text_category": [
+                                    10004,
+                                    10013,
+                                    10108
+                                ],
+                                "date_published": "2020-05-01 11:56:57 +00:00",
+                                "content_quality_score": 94,
+                                "semantic_location": null,
+                                "rating": null,
+                                "group_date": "2020-05-01 11:56:57 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/rausgegangen.de\/en\/events\/babble-zabble-mit-dj-flo-und-peter-roth-7\/",
+                            "domain": "rausgegangen.de",
+                            "main_domain": "rausgegangen.de",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 527,
+                            "fetch_time": "2026-01-29 08:40:24 +00:00",
+                            "country": "DE",
+                            "language": "en",
+                            "score": 113556.695,
+                            "page_category": [
+                                10013,
+                                10109,
+                                13540,
+                                10108,
+                                10112,
+                                10590
+                            ],
+                            "page_types": [
+                                "ecommerce",
+                                "organization"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "In the organizer's words:",
+                                "main_title": "Babble & Zabble mit DJ Flö und Peter Roth",
+                                "previous_title": "Skandal im Walzensaal",
+                                "level": 6,
+                                "author": null,
+                                "snippet": "The Babble & Zabble series at the Industriehof.\nDJ Flö and Peter Roth are back at the mixer and will make you dance!\nTickets are available for €12 in advance and at the Box Office.",
+                                "snippet_length": 180,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.06762374192476273,
+                                    "happiness": 0.2848159968852997,
+                                    "love": 0.191278874874115,
+                                    "sadness": 0.105592742562294,
+                                    "share": 0.15470939874649048,
+                                    "fun": 0.19603925943374634
+                                },
+                                "connotation_types": {
+                                    "positive": 0.40833890438079834,
+                                    "negative": 0.2900073826313019,
+                                    "neutral": 0.3016837537288666
+                                },
+                                "text_category": [
+                                    10017,
+                                    10142,
+                                    10769,
+                                    12067,
+                                    10108,
+                                    10584,
+                                    10019,
+                                    10167
+                                ],
+                                "date_published": null,
+                                "content_quality_score": 90,
+                                "semantic_location": null,
+                                "rating": null,
+                                "group_date": "2026-01-29 08:40:24 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/www.waste360.com\/fleet-technology\/zero-waste-software-company-retools-platform-to-aid-in-covid-19-crisis",
+                            "domain": "www.waste360.com",
+                            "main_domain": "waste360.com",
+                            "url_rank": 124,
+                            "spam_score": 0,
+                            "domain_rank": 356,
+                            "fetch_time": "2026-04-16 04:10:16 +00:00",
+                            "country": "WW",
+                            "language": "en",
+                            "score": 101612.91,
+                            "page_category": [
+                                10016,
+                                10141,
+                                10763,
+                                10004,
+                                10276,
+                                11084,
+                                10108
+                            ],
+                            "page_types": [
+                                "news",
+                                "organization"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Zero Waste Software Company Retools Platform to Aid in COVID-19 Crisis",
+                                "main_title": "Zero Waste Software Company Retools Platform to Aid in COVID-19 Crisis",
+                                "previous_title": null,
+                                "level": 1,
+                                "author": "Megan Greenwalt",
+                                "snippet": "Before the COVID-19 outbreak, personal protective equipment (PPE) was a significant part of total waste volume for hospitals, with one study from the American Nurses Association finding that PPE accounted for 43 percent of solid waste from hospitals during infectious disease procedures.\nMedical staff are working long hours to save lives, while workers at essential businesses must put in extra shifts to keep shelves stocked and ship out goods. Facing these strains on their service capacity, PPE may be incorrectly disposed at higher rates than usual.\nA zero-waste software company is helping control the spread of COVID-19 at hospitals and essential businesses by offering tracking software for PPE.\nSince March, the majority of the workforce began working from home resulting in commercial waste collections dropping significantly. Immediately sensing the need to be a part of the solution to the pandemic, Zabble pivoted to helping medical facilities and essential businesses monitor contamination of PPE and wipes to reduce exposure to workers handling solid waste.\nZabble is offering its retooled Zabble Zero app and ready-to-print signs for free and adjusting its “Zero Waste” motto to “Zero Spread” for this campaign.\n“We also created targeted signage to complement that message and allow facilities to share correct information on how to dispose of potentially infectious items correctly and safeguard workers handling waste,” says Nikhil Balachandran, CEO of Zabble.\nZabble also is offering sign-generating software and ready to print posters with guidelines for safely disposing of waste during the pandemic, in addition to its mobile app and web dashboard to identify, track and respond quickly when PPE is placed in the wrong bin.\n“During this COVID-19 pandemic time and the subsequent recovery phase, we're dedicating our expertise and offering our Zabble Zero suite of software tools for free to organizations deemed essential,” says Balachandran.\nZabble’s mobile app and web dashboard to identify, track and respond when PPE is placed in the wrong bin. Using Zabble Zero, facility staff can tag PPE or other potentially infected items in the wrong bin, and specify the location by building, department, floor or individual waste receptacle. An automated workflow starting with an email is sent to the right department or staff member in real-time with all the necessary information to remediate the issue.\n“ We have built a closed loop system for generators to not only identify contamination, maintenance and operational information around waste within their facility but also communicate that in real-time to the right stakeholders for on-going education and remediation,” says Balachandran.\nZabble Zero is a cloud-based waste tracking and workflow automation software with real-time analytics for zero waste programs for generators. The software has been designed to assimilate and aggregate in real-time different types and sources of data such as items found in receptacles located inside or outside the building, metadata on the bins themselves, their location, fullness, contamination, context within the building, images, timestamps and service levels from hauler invoice data.\n“Essentially, each generator can design their own end-end software platform to monitor all operational information related to waste without having to spend 100s of thousands of dollars or rely on spreadsheets from different sources to fully analyze and contextualize their zero waste program,” says Balachandran.\nAn intuitive workflow allows the user to tag the contaminants along with location and temporal contextual information after taking a picture as evidence. Zabble tracks all the items accepted or rejected by local jurisdictions and haulers where the facility is based. A user can tag an image with any type of item such as plastic bags, food scraps or Styrofoam found in their waste streams.\n“However, for COVID-19, we have created some pre-set templates based on recommendations from the Solid Waste Association of North America (SWANA) and local jurisdictions to properly dispose of single-use PPE and cleaning material,” says Balachandran. “The generator decides the granularity of details within a contamination family. For example, an image can be tagged as containing PPE or can be further broken down to indicate the presence of masks, gloves, face shields, etc.”\nDaniel Chau, recycling and waste reduction program manager for the University of California San Francisco, has the tool installed for designated staff who sort waste or perform quality checks at the loading docks of all buildings to look for contamination and usage. The tool allows the university to track contamination, (pre- and post-) diversion rates of specific buildings, missed pickups by the waste hauler, and reporting illegal dumping.\n“With a single platform, the combination of issues can be reported easily and I will receive notifications so they can be dealt with quickly,” says Chau. “The Recycling Program had been collecting all this data before but it was via text or noting on sheets and would need to be reported after the route was completed. There was a lot of room for improving the efficiency and that was what Zabble had offered. The savings from staff time balanced out the cost of the platform and it also freed up more time for the staff to focus on other tasks.”\nWith the COVID-19 crisis, the app has allowed the University of California San Francisco to track PPE contamination in the waste stream. The platform also offers informational posters focused on PPE and cleaning supplies that are commonly tossed into the wrong waste stream. It is currently being offered for those in the university’s Medical Center, as they have seen high contamination rates.\nZabble has help streamline a number of processes for the Recycling Program.\n“The customization that the platform can offer makes it really useful as it fits the needs of the program,” says Chau. “Zabble is constantly asking what problems the program is currently working on and they look for solutions to help us in any way they can. The attention to details of discussing issues to finding the solutions reflects well in the product.”\nZabble’s software platform is specifically meant for large organizations with zero waste goals that own, manage or operate multiple buildings who need a platform to organize their waste and operational data to maintain progress toward those goals.\n“During the COVID-19 pandemic time, we are offering our software for free to hospitals, medical facilities, labs and other essential businesses that either need to communicate to staff handling waste or to their tenants, occupants and visitors,” says Balachandran.\nChau says that within the waste industry, technology has always been behind as metrics for water and energy can be measured and reported to great details.\n“Zabble has been able to provide us with a tool that puts on that same plane as my colleagues in the other fields. Being able to look into the details on a granular level or from a higher perspective helps us create outreach to the community and also propose new programs,” says Chau.",
+                                "snippet_length": 7161,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.11051789671182632,
+                                    "happiness": 0.25384315848350525,
+                                    "love": 0.1484399437904358,
+                                    "sadness": 0.1344049572944641,
+                                    "share": 0.1873258352279663,
+                                    "fun": 0.16552813351154327
+                                },
+                                "connotation_types": {
+                                    "positive": 0.2647927403450012,
+                                    "negative": 0.4044126570224762,
+                                    "neutral": 0.3308245539665222
+                                },
+                                "text_category": [
+                                    10108,
+                                    10004,
+                                    10011
+                                ],
+                                "date_published": "2020-05-22 09:45:00 +00:00",
+                                "content_quality_score": 95,
+                                "semantic_location": "section",
+                                "rating": null,
+                                "group_date": "2020-05-22 09:45:00 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/queencitysounds.org\/tag\/zabble-dub-empty-cans-in-outer-space-song\/",
+                            "domain": "queencitysounds.org",
+                            "main_domain": "queencitysounds.org",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 146,
+                            "fetch_time": "2026-05-17 22:08:58 +00:00",
+                            "country": null,
+                            "language": "en",
+                            "score": 92066.01,
+                            "page_category": [
+                                10108,
+                                13691,
+                                10013,
+                                10103,
+                                10556,
+                                10109,
+                                13560,
+                                13565
+                            ],
+                            "page_types": [
+                                "cms",
+                                "blogs"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Empty Cans In Outer Space Soundtrack the Wonder and Perils of Early Space Travel on “Zabble Dub”",
+                                "main_title": "Tag: \"Zabble Dub\" (Empty Cans In Outer Space song)",
+                                "previous_title": "Tag: \"Zabble Dub\" (Empty Cans In Outer Space song)",
+                                "level": 2,
+                                "author": null,
+                                "snippet": "Empty Cans In Outer Space’s video for “Zabble Dub” is paired well with the cosmic, IDM dub of the song in its depiction in black and white what looks like training for a space program. The steady electronic percussion makes the brighter tones seem to shine brighter and the warping drones and near white noise shimmering sound drift by and flow freely with a hint of the melancholic and mysterious. When the rocket ship takes off from the launchpad the sounds go more direct. The moment where we watch someone watching the rocket launch is wonderfully meta and not long after we see the first hint of color outside the black and white with the images going red and then the images of astronauts dead with only their skulls visible through the helmets as they sit like Major Tom but in geosynchronous orbit beyond the practical effort to recover, casualties of humankind’s tentative forays beyond the earth, victims of unfortunate circumstances. There was a hint of a tragic and mournful undertone to the song and by the end of the video we find out one possible explanation and yet there is a stark yet richly realized beauty to every aspect of the video and of the music itself. Watch the video for yourself on YouTube and follow Empty Cans In Outer Space on Spotify.",
+                                "snippet_length": 1268,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.08059842139482498,
+                                    "happiness": 0.2274932563304901,
+                                    "love": 0.1596556156873703,
+                                    "sadness": 0.1692906618118286,
+                                    "share": 0.18863725662231445,
+                                    "fun": 0.17438486218452454
+                                },
+                                "connotation_types": {
+                                    "positive": 0.18052159249782562,
+                                    "negative": 0.36242416501045227,
+                                    "neutral": 0.45708417892456055
+                                },
+                                "text_category": [
+                                    10108,
+                                    13691,
+                                    10013,
+                                    10103,
+                                    10556
+                                ],
+                                "date_published": null,
+                                "content_quality_score": 93,
+                                "semantic_location": "header",
+                                "rating": null,
+                                "group_date": "2025-09-22 00:56:34 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/recyclenewmexico.com\/recycling_conference\/",
+                            "domain": "recyclenewmexico.com",
+                            "main_domain": "recyclenewmexico.com",
+                            "url_rank": 118,
+                            "spam_score": 0,
+                            "domain_rank": 221,
+                            "fetch_time": "2026-04-19 23:10:17 +00:00",
+                            "country": null,
+                            "language": "en",
+                            "score": 76322.35,
+                            "page_category": [
+                                10004,
+                                13464,
+                                10306,
+                                10018,
+                                13414,
+                                13876,
+                                10295,
+                                11388,
+                                12706
+                            ],
+                            "page_types": [
+                                "cms",
+                                "blogs"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Breakout Session B - September 30, 2025",
+                                "main_title": "NM Recycling & Solid Waste Conference: Circularity in Action",
+                                "previous_title": "Breakout Session A - September 30, 2025",
+                                "level": 4,
+                                "author": null,
+                                "snippet": "Solid Waste In-Depth!\nAquifer Storage, Transfer and Recovery - Challenges and Potential Benefits for Groundwater Quality Protection, Andrew Yuhas, Parkhill\nReimagining and Repurposing Closed Landfills: Transforming Liabilities into Beneficial Use, Sonia Samir, Parkhill\nRecycling In-Depth!\nBuilding Public Confidence in Recycling, Alec Cooley, Busch Systems\nWhat's in a bin: Mechanisms to reduce curbside contamination, Nikhil Balachandran, Zabble Inc",
+                                "snippet_length": 451,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.07523762434720993,
+                                    "happiness": 0.2735326886177063,
+                                    "love": 0.21451404690742493,
+                                    "sadness": 0.0825357511639595,
+                                    "share": 0.19580167531967163,
+                                    "fun": 0.15843822062015533
+                                },
+                                "connotation_types": {
+                                    "positive": 0.6670920252799988,
+                                    "negative": 0.12758728861808777,
+                                    "neutral": 0.20535071194171906
+                                },
+                                "text_category": [
+                                    10004,
+                                    10108,
+                                    13804
+                                ],
+                                "date_published": "2025-03-21 02:44:31 +00:00",
+                                "content_quality_score": 95,
+                                "semantic_location": "article",
+                                "rating": null,
+                                "group_date": "2025-03-21 02:44:31 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/remotejobscape.com\/jobs\/senior-ux-ui-designer-3-6-month-contract-zabble\/",
+                            "domain": "remotejobscape.com",
+                            "main_domain": "remotejobscape.com",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 261,
+                            "fetch_time": "2025-03-20 19:20:04 +00:00",
+                            "country": null,
+                            "language": "en",
+                            "score": 75024.46,
+                            "page_category": [
+                                10016,
+                                10139,
+                                10746,
+                                10004,
+                                10108
+                            ],
+                            "page_types": [
+                                "cms",
+                                "blogs",
+                                "organization"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Senior UX\/UI Designer (3-6 month contract) | Zabble",
+                                "main_title": "Senior UX\/UI Designer (3-6 month contract) | Zabble",
+                                "previous_title": null,
+                                "level": 1,
+                                "author": "Remote Jobscape",
+                                "snippet": "Job title: Senior UX\/UI Designer (3-6 month contract)\nJob description : Zabble is looking for an experienced UX\/UI designer interested in joining a small, mission-oriented, stable and growing tech company with patented solutions for the waste industry. This is a 3-6 month contract position at a minimum of 20 hours per week, with the goal of helping us redesign our mobile and web applications for a superior user experience. *** Due to U.S. government grant restrictions, applicants must also currently be U.S. citizens or U.S. permanent residents *** ABOUT YOU You are sharp, creative and detail-oriented. You’re an outstanding listener and collaborator, who can successfully undertake design projects of large scope and complexity. WIth your strong knowledge of UX\/UI principles and techniques, you are skilled at designing intuitive, best-in-class user experiences for web and mobile platforms. ABOUT THE ROLE You will be responsible for redesigning Zabble’s platform on mobile and web. This means you will:\nDrive the end-to-end UX\/UI design process for 1-2 projects at a time, optimizing for usability and overall customer experience\nBuild a new design system, working with Marketing and Product to maintain brand consistency\nQuickly create wireframes, prototypes, and pixel-perfect designs in Figma that balance functionality and aesthetics\nCollaborate cross-functionally with the Zabble team, including developers, customer success, and leadership\nReview a wealth of existing user research and feedback based on Zabble’s 5+ years of experience to support the redesign\nParticipate or lead in new user research, usability testing, and data-driven decision-making to refine and enhance designs\nConduct internal meetings to explore pain points and align on solutions\nMaintain a growth mindset, providing and receiving constructive feedback while refining design solutions\nMeticulously document and consolidate feedback from several sources including Slack, Jira and virtual meetings\nPresent design concepts and decisions clearly and thoroughly, providing detailed rationale and supporting information.\nHere are the skills and experiences you’ll need:\n7+ years of UX\/UI design experience for web and mobile, with a strong portfolio showcasing user-centered design solutions.\n3+ years specifically focused on mobile apps, especially iOS native\nExperience working on SaaS platforms\nExperience conducting usability testing and user research to make data-driven design decisions\nDemonstrated ability to understand technical constraints and limitations as they apply to design decisions\nExperience collaborating directly with developers for implementation of designs\nAbility to deliver UX\/UI solutions for projects of large scope and complexity\nExperience owning projects, communicating timelines, and executing independently\nExpertise with using Figma for design and prototyping\nExperience developing design systems.\nBonus if you also have:\nExperience working in a small start-up environment\nBackground knowledge of charts and data visualizations to highlight insights through data\nExperience working on an AI-based application\nHourly rate between $50-$75 depending on location and experience\nThis is a remote position; applicants must have flexibility to collaborate with colleagues working in multiple time zones\nDue to U.S. government grant restrictions, applicants must currently be U.S. citizens or U.S. permanent residents\nThis position reports to the Director of Product\nExpected salary : $50 – 75 per hour\nJob date : Thu, 20 Feb 2025 23:48:00 GMT",
+                                "snippet_length": 3553,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.05934135615825653,
+                                    "happiness": 0.3307740390300751,
+                                    "love": 0.16435790061950684,
+                                    "sadness": 0.07596941292285919,
+                                    "share": 0.19770339131355286,
+                                    "fun": 0.17191393673419952
+                                },
+                                "connotation_types": {
+                                    "positive": 0.541157066822052,
+                                    "negative": 0.18506082892417908,
+                                    "neutral": 0.2738121449947357
+                                },
+                                "text_category": [
+                                    10016,
+                                    10139,
+                                    10746,
+                                    10013,
+                                    13388,
+                                    10004,
+                                    10276
+                                ],
+                                "date_published": "2025-03-06 22:29:33 +00:00",
+                                "content_quality_score": 94,
+                                "semantic_location": "header",
+                                "rating": null,
+                                "group_date": "2025-03-06 22:29:33 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/jooble.org\/jobs-online-computer-teacher\/Remote",
+                            "domain": "jooble.org",
+                            "main_domain": "jooble.org",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 700,
+                            "fetch_time": "2024-05-09 15:04:43 +00:00",
+                            "country": "US",
+                            "language": "en",
+                            "score": 70608.625,
+                            "page_category": [
+                                10016,
+                                10139,
+                                10746,
+                                10011,
+                                12035
+                            ],
+                            "page_types": [
+                                "message-boards"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "AI\/Computer Vision Engineer",
+                                "main_title": "Online Software and Computing Tutor",
+                                "previous_title": "Computer and Information Systems Manager",
+                                "level": 2,
+                                "author": null,
+                                "snippet": "... AI\/ Computer Vision Engineer Zabble is looking for an AI\/Computer Vision Engineer who is interested in working with a small, mission-oriented, stable and growing tech company with patented solutions for the waste industry. Can you help us elevate our users' experience...",
+                                "snippet_length": 275,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.057886116206645966,
+                                    "happiness": 0.29831185936927795,
+                                    "love": 0.10721496492624283,
+                                    "sadness": 0.11666352301836014,
+                                    "share": 0.24362123012542725,
+                                    "fun": 0.17636233568191528
+                                },
+                                "connotation_types": {
+                                    "positive": 0.4012211561203003,
+                                    "negative": 0.41713517904281616,
+                                    "neutral": 0.18167367577552795
+                                },
+                                "text_category": [
+                                    10108,
+                                    10016,
+                                    10139,
+                                    10746,
+                                    10004,
+                                    10273
+                                ],
+                                "date_published": null,
+                                "content_quality_score": 92,
+                                "semantic_location": "main",
+                                "rating": null,
+                                "group_date": "2022-04-07 19:10:28 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/www.musikhug.ch\/fr\/noten\/musikbuecher\/cds\/andrew-bond-pfoschteschuss-cd-_original_--744027.html",
+                            "domain": "www.musikhug.ch",
+                            "main_domain": "musikhug.ch",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 315,
+                            "fetch_time": "2025-02-26 09:23:40 +00:00",
+                            "country": "CH",
+                            "language": "fr",
+                            "score": 61898.746,
+                            "page_category": [
+                                10108,
+                                13691,
+                                10013,
+                                10109,
+                                10592,
+                                11879
+                            ],
+                            "page_types": [
+                                "ecommerce"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Contenu",
+                                "main_title": "Bond Pfoschteschuss",
+                                "previous_title": "Disponibilité en magasin",
+                                "level": 4,
+                                "author": null,
+                                "snippet": "Zabble mit de Bei\nMir Fans sind top\nVerlore, verspielt und verseit",
+                                "snippet_length": 66,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "de",
+                                "sentiment_connotations": {
+                                    "anger": 0.13924163579940796,
+                                    "happiness": 0.1563033014535904,
+                                    "love": 0.18803812563419342,
+                                    "sadness": 0.23800526559352875,
+                                    "share": 0.12107991427183151,
+                                    "fun": 0.1573917418718338
+                                },
+                                "connotation_types": {
+                                    "positive": 0.5495824813842773,
+                                    "negative": 0.054115671664476395,
+                                    "neutral": 0.3963318467140198
+                                },
+                                "text_category": [
+                                    10108,
+                                    10004,
+                                    10014,
+                                    13605,
+                                    13608
+                                ],
+                                "date_published": null,
+                                "content_quality_score": 80,
+                                "semantic_location": "section",
+                                "rating": null,
+                                "group_date": "2022-09-17 12:34:56 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/blackhollywood.news\/epa-awards-phase-ii-award-to-zabble-to-develop-advanced-ai-powered-contamination-monitoring-technology\/",
+                            "domain": "blackhollywood.news",
+                            "main_domain": "blackhollywood.news",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 0,
+                            "fetch_time": "2025-08-07 01:31:03 +00:00",
+                            "country": null,
+                            "language": "en",
+                            "score": 57966.37,
+                            "page_category": null,
+                            "page_types": [
+                                "cms",
+                                "news"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "EPA Awards Phase II Award to Zabble to Develop Advanced AI-Powered Contamination Monitoring Technology",
+                                "main_title": "EPA Awards Phase II Award to Zabble to Develop Advanced AI-Powered Contamination Monitoring Technology",
+                                "previous_title": null,
+                                "level": 1,
+                                "author": null,
+                                "snippet": "Zabble Zero Mobile Tagging – AI-powered platform for contamination monitoring\nZabble today announced that it has been awarded a Phase II award from the USEPA to further to develop its innovative AI-powered Mobile Tagging platform.\n— Nik Balachandran\nWALNUT CREEK, CA, US, March 14, 2024 \/ EINPresswire.com \/ — Zabble, a leading provider of AI-powered zero waste technology solutions for businesses and cities, today announced that it has been awarded a Phase II award from the U.S. Environmental Protection Agency (EPA) further to develop its innovative Mobile Tagging platform.\nThe award, granted through the EPA’s Small Business Innovation Research (SBIR) program, will provide Zabble with funding to develop new features to help California jurisdictions, haulers, and consultants meet the contamination monitoring requirements of Senate Bill 1383 (SB1383).\nThe award, granted through the EPA’s Small Business Innovation Research (SBIR) program, will provide Zabble with funding to develop new features to help California jurisdictions, haulers, and consultants meet the contamination monitoring requirements of Senate Bill 1383 (SB1383) to reduce waste and climate pollution.\nSB1383 reduces short lived climate pollutants like organic waste — including food scraps, yard trimmings, paper, and cardboard – by keeping the materials out of landfills. Organic waste in landfills emits:\n– 20% of the state’s methane, a climate super pollutant 84 times more potent than carbon\n– Air pollutants like PM 2.5, which contributes to health conditions like asthma.\n“This additional award from the EPA is a testament to Zabble’s dedication to transforming waste operations through AI”, said Nik Balachandran, CEO of Zabble. We’re excited to leverage the support to further enhance our technology, empowering communities and waste management stakeholders to combat contamination effectively while meeting all regulatory requirements.”\nZabble’s Mobile Tagging platform is a patented system that uses computer vision artificial intelligence to track and monitor waste bin fullness, contamination levels, and contents–with or without a wireless connection–for residential route reviews and commercial site visits. The collected data includes the date and time of the route review or site visit, fullness and contamination percentage of the container, associated contamination items, and customer notification activity.\nThis solution streamlines required data collection and packages it for SB 1383 reporting requirements, enabling jurisdictions to do three times as many lid flips than previous manual methods. By tracking systematic program information and contamination and outreach side-by-side, jurisdictions are able to correlate their outreach to tangible outcomes to reduce system wide contamination and, therefore, reduce costs to waste generators.\nIn Phase II of the project, Zabble will focus on the following four objectives:\n– Develop an Outreach Tracker feature to automate education and outreach activities related to waste contamination.\n– Integrate with jurisdictions’ and haulers’ commercial and residential account databases to provide a more holistic view of waste management data.\n– Advance Zabble AI to more accurately identify and target critical contamination monitoring priorities.\n– Integrate with third-party truck cameras to provide real-time data on waste bin contents and contamination levels.\n“By achieving these objectives, Zabble will create a more robust and effective solution for contamination monitoring, one of a handful of critical pillars within the legislation,” said Balachandran. “This not only helps jurisdictions comply with SB1383, but it also helps to reduce the environmental impact of waste contamination.”\nZabble’s work on this project has already received positive feedback from several jurisdictions in the Bay Area that have been using the Zabble platform for contamination monitoring since August 2023 with many of those successfully completing the required legislation.\nZabble invites jurisdictions who wish to start tracking contamination to reach out to Zabble to get their route reviews started early in the year and participate in building the next generation of tools for effective program management.\nNikhil Balachandran\n+1 925-289-9345",
+                                "snippet_length": 4282,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.0764436200261116,
+                                    "happiness": 0.31524989008903503,
+                                    "love": 0.15077289938926697,
+                                    "sadness": 0.08456314355134964,
+                                    "share": 0.19642549753189087,
+                                    "fun": 0.1766049712896347
+                                },
+                                "connotation_types": {
+                                    "positive": 0.4170941710472107,
+                                    "negative": 0.2934988737106323,
+                                    "neutral": 0.289436936378479
+                                },
+                                "text_category": [
+                                    10108,
+                                    10004,
+                                    10017,
+                                    10142,
+                                    10769,
+                                    12067
+                                ],
+                                "date_published": "2024-03-14 15:00:00 +00:00",
+                                "content_quality_score": 94,
+                                "semantic_location": "header",
+                                "rating": null,
+                                "group_date": "2024-03-14 15:00:00 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/howtoanswers.store\/fc7161d8806919",
+                            "domain": "howtoanswers.store",
+                            "main_domain": "howtoanswers.store",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 522,
+                            "fetch_time": "2024-12-20 06:43:54 +00:00",
+                            "country": null,
+                            "language": "en",
+                            "score": 52260.453,
+                            "page_category": [
+                                10013,
+                                10108,
+                                13691,
+                                10103,
+                                10556
+                            ],
+                            "page_types": [
+                                "message-boards"
+                            ],
+                            "ratings": null,
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "Here is an extract from a webpage: \"Deep in the Shallows of the World\nVisiting Professor of Art History, Hunter College, New York\nPublished in of Giants and Dwarfs, Ewing Gallery of Art and Architecture\nUniversity of Tennessee, Knoxville\nImagine a world in which somber monolithic structures cast heavy, oppressive shadows across desolate landscapes. Imagine further this world inhabited by fantastical creatures as convincing as they are dreamlike, and wherein a disquieting stillness has taken hold and mysterious forces seem at play. This is a world built not upon the foundation of reason but rather the broken line of dreams and nightmarish visions. It is the world of Michael Zansky.\nHis is an enigmatic universe: inscrutable, claustrophobic, and expressed with a hallucinatory clarity. Fragmentary doll-like figures populate landscapes scattered with mysterious debris and dulled by the deleterious effects of time. Rich colors and sharp contrasts of light and shadow lend an aura of Baroque g",
+                                "main_title": "Here is an extract from a webpage: \"Deep in the Shallows of the World\nVisiting Professor of Art History, Hunter College, New York\nPublished in of Giants and Dwarfs, Ewing Gallery of Art and Architecture\nUniversity of Tennessee, Knoxville\nImagine a world in which somber monolithic structures cast heavy, oppressive shadows across desolate landscapes. Imagine further this world inhabited by fantastical creatures as convincing as they are dreamlike, and wherein a disquieting stillness has taken hold and mysterious forces seem at play. This is a world built not upon the foundation of reason but rather the broken line of dreams and nightmarish visions. It is the world of Michael Zansky.\nHis is an enigmatic universe: inscrutable, claustrophobic, and expressed with a hallucinatory clarity. Fragmentary doll-like figures populate landscapes scattered with mysterious debris and dulled by the deleterious effects of time. Rich colors and sharp contrasts of light and shadow lend an aura of Baroque g",
+                                "previous_title": null,
+                                "level": 1,
+                                "author": null,
+                                "snippet": "GPT 4o\nOnce upon a time, in a world called Zibbledy-Zabble, there lived funny little creatures called the Zibs and the Zabs. The Zibs were tall and thin like pencils, while the Zabs were short and round like balls. They all had big eyes, bright colors, and silly grins.\nIn Zibbledy-Zabble, everything was made up of shapes and colors! There were squares, circles, triangles, and lines that formed houses, trees, clouds, and rivers. Even the Zibs and Zabs were made of different shapes! Can you point to a square or a circle where you're sitting?\nOne day, a mischievous Zib named Zippy decided to paint himself blue and roll down a hill. He wanted to see if he could become a blur of color! When he reached the bottom, he saw his friend Zably, a Zab who loved bouncing around. But poor Zably looked sad because she couldn't reach her favorite fruit hanging high up in a tree.\n\"Hello, Zably!\" said Zippy. \"Why so glum?\"\n\"I can't reach my tasty-twirly-fruit!\" cried Zably.\nZippy had an idea. Using his painter skills, he drew a long ladder for Zably to climb. Together, they learned how combining shapes (lines and rectangles) created useful tools! With excitement, Zably climbed the ladder and picked her yummy treat. Yay!\nNow it was time to clean up. How do we pick up things we drop? Easy! We bend our knees and reach out with our hands. So, Zippy and Zably bent down, picked up the paints, brushes, and even the fallen tasty-twirly-fruit. Afterward, they shared it, laughing and enjoying each other's company.\nFrom then on, whenever someone needed help, Zippy and Zably would work together using their creativity and teamwork—sharing laughter, lessons, and friendship throughout Zibbledy-Zabble! And every evening before sunset, they gathered all the shapes and colors back into one place, forming beautiful pictures of their wonderful adventures.\nAnd now, dear child, what shape are your toes? Let's count them together! Remember, learning about forms and shapes makes playing and helping friends much more fun!",
+                                "snippet_length": 2013,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.048787202686071396,
+                                    "happiness": 0.24934083223342896,
+                                    "love": 0.22014956176280975,
+                                    "sadness": 0.1076844111084938,
+                                    "share": 0.10381903499364853,
+                                    "fun": 0.2702788710594177
+                                },
+                                "connotation_types": {
+                                    "positive": 0.49666333198547363,
+                                    "negative": 0.23828427493572235,
+                                    "neutral": 0.2650824189186096
+                                },
+                                "text_category": [
+                                    10013,
+                                    10108,
+                                    13691,
+                                    10103,
+                                    10556
+                                ],
+                                "date_published": null,
+                                "content_quality_score": 95,
+                                "semantic_location": "article",
+                                "rating": null,
+                                "group_date": "2024-12-20 06:43:54 +00:00"
+                            }
+                        },
+                        {
+                            "type": "content_analysis_search",
+                            "url": "https:\/\/bestforyall.com\/clothing-shoes-jewelry\/luggage-travel-gear\/waist-packs\/bucky-travel-pillow-for-kids",
+                            "domain": "bestforyall.com",
+                            "main_domain": "bestforyall.com",
+                            "url_rank": 0,
+                            "spam_score": 0,
+                            "domain_rank": 61,
+                            "fetch_time": "2026-05-05 15:08:43 +00:00",
+                            "country": null,
+                            "language": "en",
+                            "score": 34710.617,
+                            "page_category": [
+                                10108,
+                                10013,
+                                10111,
+                                10014
+                            ],
+                            "page_types": [
+                                "ecommerce",
+                                "organization"
+                            ],
+                            "ratings": [
+                                {
+                                    "name": null,
+                                    "rating_value": 4.2,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.8400000000000001
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.8
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.3,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.86
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.3,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.86
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.7,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.9400000000000001
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.4,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.8800000000000001
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 3.4,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.6799999999999999
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.3,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.86
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.6,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.9199999999999999
+                                },
+                                {
+                                    "name": null,
+                                    "rating_value": 4.2,
+                                    "max_rating_value": 5,
+                                    "rating_count": 250,
+                                    "relative_rating": 0.8400000000000001
+                                }
+                            ],
+                            "social_metrics": null,
+                            "content_info": {
+                                "content_type": "page_content",
+                                "title": "From the Manufacturer",
+                                "main_title": "10 best bucky travel pillow for kids",
+                                "previous_title": "Product description",
+                                "level": 3,
+                                "author": null,
+                                "snippet": "Woopsies to the Rescue! (\"Zabble\") Zabble is Zibble's twin sister. She thinks Zibble is too quiet. Zabble loves parties especially ones with balloons to pop! Fun, friendly, always ready to soothe life's little bumps and bruises. Six unique personalities, but they all like heat and cold. Warm in the microwave or chill in the freezer as the owie demands. Comfortable embroidered covers of super-soft, very comfortable terrycloth. Premium whole buckwheat seed filling. Machine washable cover. Ages 3+.\n74% Rayon\/23% Polyester\/3% Spandex; Liner: 100% Cotton\nCHILD SIZE COMFORT - Zabble to the rescue! Soft and huggable Woopsies characters are 5.5x6\" in size, perfect sized to offer comfort to children\nMATERIALS & CARE - Cover: 74% viscose from bamboo 23% polyester, 3% spandex, Liner: 100% cotton, Filling: 100% buckwheat, Remove cover and empty liner before washing, Machine wash cold, Tumble dry low, Do not wash filling, Filling can be placed in freezer for freshening\nRELAX IN COMFORT - Chillable cold therapy offers relief from insect bites, bumps & bruises, sunburns, headaches, fevers, and the summer heat\nADORABLE CHARACTER COMPANION - When used hot Purple Zabble Woopsie character radiates soothing heat providing relief for tension, stress and pain\nEXPLORE BUCKY PRODUCTS – Bucky offers delightful travel and personal care products including U shaped neck pillows, duo hot & cold therapy wraps, and extra soft toddler sized pillows, click the Bucky link at the top of the page to explore our collections",
+                                "snippet_length": 1512,
+                                "social_metrics": null,
+                                "highlighted_text": null,
+                                "language": "en",
+                                "sentiment_connotations": {
+                                    "anger": 0.06129153445363045,
+                                    "happiness": 0.2919924259185791,
+                                    "love": 0.24689316749572754,
+                                    "sadness": 0.1392105221748352,
+                                    "share": 0.10351026058197021,
+                                    "fun": 0.1571621149778366
+                                },
+                                "connotation_types": {
+                                    "positive": 0.6681792140007019,
+                                    "negative": 0.051595963537693024,
+                                    "neutral": 0.28025487065315247
+                                },
+                                "text_category": [
+                                    10004,
+                                    10013,
+                                    10108
+                                ],
+                                "date_published": null,
+                                "content_quality_score": 95,
+                                "semantic_location": "main",
+                                "rating": null,
+                                "group_date": "2024-10-04 20:16:12 +00:00"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

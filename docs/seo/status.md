@@ -22,6 +22,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard + components + **all 32 systems + 4 pillar hubs (`/pillars/*`) + home + `/systems` populated** (answer-first 40–60w + PAA FAQs), byte-verified server-side. **188 vitest regression tests pass; `nuxt generate` clean (76 routes).** Live SA SERP/PAA evidence ($0.081). Audit `audits/07-aeo.md`. **JSON-LD hand-off to S03/S08 logged below (P0).** |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
+| 07′ | GEO (commissioned on `seo/07-geo`) | `seo/07-geo` | GEO agent | **done** | 00 | **Implemented on-site:** Organization JSON-LD + disambiguation (`organization.ts`/`app.vue`), home entity section, 4 pillar hubs (`/pillars/*`) + cited GEO blocks on 5 flagship pages (real sources: McKinsey/ACFE/POPIA/IDC/Salesforce), `/llms.txt`+`/llms-full.txt`, `npm run test:geo` (8/8), entity kit + ADR-0002 + AI-citation baseline (`_evidence/07/`). 78 routes prerender clean. Baseline SOV 0% / entity conflated w/ Zabble Inc — flips after deploy + entity-kit. |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
 
@@ -155,6 +156,26 @@ Owners: please action on your branch and tick here.
 | OR-8 | S03 | `BreadcrumbList` JSON-LD matching the visible `SeoBreadcrumb` 1:1 on all non-home pages; hub schema for pillar/industry pages. | P1 |
 | OR-5 | S02 | Upgrade `SystemCard` anchor to use the **module name** as link text; review breadcrumb/related blocks S04 added to `systems/index.vue` + `[slug].vue` (navigation regions only — `useHead`/meta untouched). | P2 |
 | OR-9 | S05 | Verify 10 seed anchor clusters (`internal-linking.md` §2.2) + one "…South Africa" variant per module. *(Also appended to `targets/keyword-map.md` §4.)* | P1 |
+## Cross-session asks (from S07-geo / GEO)
+
+Logged here so nothing depends on a verbal handoff (conventions §4.7). Source:
+[`audits/07-geo.md`](audits/07-geo.md) §6 + [`07-geo-entity-plan.md`](audits/07-geo-entity-plan.md).
+
+| To | Ask | Priority | Where |
+|----|-----|----------|-------|
+| **S01** (robots, indexing, sitemap) | Replace `public/robots.txt` with the GEO-aligned policy; ensure the pre-launch `noindex` guard does **not** block AI crawlers; set `site.url` + emit `sitemap.xml`. | P0 | [ADR-0002](decisions/0002-ai-crawler-policy.md) |
+| **S03** (schema) | Organization JSON-LD is **implemented** (`app/data/organization.ts` → `app.vue`). **Consume it (don't redeclare);** add per-page `Service`/`Product`, `FAQPage`, hub `ItemList`. | P0 | entity-plan §2 |
+| **S06 / S02 / S07-aeo** (content/on-page/AEO) | Adopt the GEO content standard as the money-page editorial bar; apply the worked examples. | P1 | 07-geo §8–9 |
+| **S10** (off-page/local/measurement) | Wikidata item + cross-web profiles (LinkedIn/GBP/Crunchbase/directories) using the brand-description standard; pursue the brand-mention target list; wire monthly AI-citation tracking + AI referral analytics. | P0–P2 | entity-plan §3–5 |
+| **S05** (keywords) | Research SA volume/intent for the GEO question targets (appended to `targets/keyword-map.md` §4). | P1 | keyword-map §4 |
+
+> Note: `/llms.txt` must stay crawlable under whatever robots policy S01 ships (it
+> is covered by the default allow). `llms.txt` `sameAs`/contact links should be
+> refreshed as S10 brings profiles live.
+>
+> **Single consolidated owner-action list** (deploy + external accounts + every
+> cross-session ask, prioritised): [`audits/07-geo.md`](audits/07-geo.md) §12.
+> External-account steps are copy-paste ready in [`entity-kit/`](entity-kit/).
 
 ---
 

@@ -187,6 +187,20 @@ export interface System {
    * `AEO_CONTENT` below (single source of truth for FAQ copy).
    */
   faqs?: Faq[]
+  /**
+   * GEO block (S07-geo): a question-shaped heading + one real, cited statistic
+   * (number + source + year), rendered on the detail page so generative engines
+   * can lift an authoritative, attributed answer. Sources are verifiable — see
+   * docs/seo/_evidence/07/geo-sources.md. Never invent a figure.
+   */
+  geo?: {
+    /** Question a buyer asks — used as the section heading. */
+    question: string
+    /** The cited statistic. */
+    stat: { text: string; source: string; url: string }
+    /** The pillar this system most clearly delivers (links to the hub). */
+    pillar?: PillarSlug
+  }
 }
 
 // All six entries are scaffolding. Replace TODO copy as content is finalised.
@@ -351,6 +365,15 @@ export const SYSTEMS: System[] = [
   {
     slug: 'document-intelligence',
     name: 'Document Intelligence System',
+    geo: {
+      question: 'What is a document intelligence system?',
+      stat: {
+        text: 'About 80% of the world’s data is unstructured — the contracts, statements, and forms a document intelligence system reads, validates, and routes.',
+        source: 'IDC, Data Age 2025',
+        url: 'https://www.seagate.com/files/www-content/our-story/trends/files/idc-seagate-dataage-whitepaper.pdf',
+      },
+      pillar: 'automation',
+    },
     tagline:
       'The intake desk reads every document. It pulls the fields, checks the maths, routes the work. Humans only see the exceptions.',
     pillars: ['automation', 'audit-trails'],
@@ -398,6 +421,15 @@ export const SYSTEMS: System[] = [
   {
     slug: 'bespoke-crm',
     name: 'Bespoke CRM',
+    geo: {
+      question: 'What is a bespoke CRM?',
+      stat: {
+        text: 'Sales reps spend less than 30% of their time actually selling — the rest goes to admin, data entry, and internal meetings.',
+        source: 'Salesforce, State of Sales, 2023',
+        url: 'https://www.salesforce.com/news/stories/sales-research-2023/',
+      },
+      pillar: 'automation',
+    },
     tagline: 'A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.',
     pillars: ['automation', 'analytics', 'audit-trails'],
     industry: 'B2B sales teams (equipment, agency, consulting)',
@@ -709,6 +741,15 @@ export const SYSTEMS: System[] = [
   {
     slug: 'compliance-reporting',
     name: 'Compliance & Regulatory Reporting Engine',
+    geo: {
+      question: 'What does a compliance and regulatory reporting engine do?',
+      stat: {
+        text: 'Under South Africa’s POPIA, a wrong or late submission can carry penalties of up to R10 million or 10 years’ imprisonment.',
+        source: 'Protection of Personal Information Act 4 of 2013, ss. 107 & 109',
+        url: 'https://popia.co.za/section-107-penalties/',
+      },
+      pillar: 'audit-trails',
+    },
     tagline:
       'The submissions regulators, auditors, donors, and boards expect — assembled from the data you already generate, no quarter-end scramble.',
     pillars: ['automation', 'audit-trails', 'anomaly-detection'],
@@ -737,6 +778,15 @@ export const SYSTEMS: System[] = [
   {
     slug: 'continuous-assurance',
     name: 'Continuous Assurance Engine',
+    geo: {
+      question: 'What is continuous assurance?',
+      stat: {
+        text: 'A typical organization loses 5% of its revenue to occupational fraud every year, and the median scheme runs about 12 months before it is caught.',
+        source: 'ACFE, Occupational Fraud 2024: A Report to the Nations',
+        url: 'https://legacy.acfe.com/report-to-the-nations/2024/',
+      },
+      pillar: 'anomaly-detection',
+    },
     tagline:
       'Background monitoring across a stream of activity no human could realistically watch — only the things that matter surface, with their evidence already attached.',
     pillars: ['anomaly-detection', 'audit-trails', 'analytics'],
@@ -792,6 +842,15 @@ export const SYSTEMS: System[] = [
   {
     slug: 'reconciliation-engine',
     name: 'Reconciliation Engine',
+    geo: {
+      question: 'What is reconciliation automation?',
+      stat: {
+        text: 'Collecting and processing data is among the most automatable work there is — about 60% of occupations have at least 30% of activities that could be automated.',
+        source: 'McKinsey Global Institute, A Future That Works, 2017',
+        url: 'https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages',
+      },
+      pillar: 'automation',
+    },
     tagline:
       'Stop chasing the agreement between systems. The engine matches the ledgers in the background and only surfaces what needs a human.',
     pillars: ['automation', 'audit-trails', 'anomaly-detection'],

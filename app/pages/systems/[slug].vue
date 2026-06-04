@@ -51,6 +51,11 @@ const breadcrumbs = computed(() => [
   { label: sys.value.name },
 ])
 
+// GEO (S07-geo): label of the pillar the cited stat block links to.
+const geoPillarLabel = computed(
+  () => PILLARS.find((p) => p.slug === sys.value.geo?.pillar)?.label ?? '',
+)
+
 // Per-page SEO (S02 on-page, owner of per-page meta). Distinct title +
 // description per module, derived from the data file: SEO-specific overrides
 // (seoTitle/seoDescription from S06) when present, else name/tagline. ogType
@@ -141,6 +146,42 @@ usePageSeo(() => ({
               {{ sys.whatChanged }}
             </p>
           </article>
+        </div>
+      </section>
+
+      <!-- GEO: question-shaped heading + one real, cited statistic.
+           Only renders on flagship pages that define a `geo` block. -->
+      <section
+        v-if="sys.geo"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24"
+      >
+        <div v-reveal class="max-w-3xl">
+          <h2
+            class="font-display text-[28px] sm:text-[34px] md:text-[40px] leading-[1.1] tracking-tight text-ink"
+          >
+            {{ sys.geo.question }}
+          </h2>
+          <figure class="mt-6 rounded-2xl border border-line bg-surface-alt/60 p-6 md:p-7">
+            <p class="text-[18px] md:text-[20px] leading-[1.5] text-ink font-display">
+              {{ sys.geo.stat.text }}
+            </p>
+            <figcaption class="mt-3 text-[14px] text-mute">
+              <a
+                :href="sys.geo.stat.url"
+                target="_blank"
+                rel="noopener"
+                class="text-cyan-brand-deep hover:text-ink underline underline-offset-2 transition"
+              >{{ sys.geo.stat.source }}</a>
+            </figcaption>
+          </figure>
+          <NuxtLink
+            v-if="sys.geo.pillar"
+            :to="`/pillars/${sys.geo.pillar}`"
+            class="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-cyan-brand-deep hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
+          >
+            More on {{ geoPillarLabel.toLowerCase() }}
+            <ArrowRight :size="15" :stroke-width="2" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+          </NuxtLink>
         </div>
       </section>
 

@@ -23,6 +23,7 @@ usePageSeo({
       <TheMeet />
       <ThePlan />
       <TheWhatWeBuild />
+      <TheEntity />
       <TheDoNothing />
       <TheFaq />
       <div class="cta-bleed-wrap">

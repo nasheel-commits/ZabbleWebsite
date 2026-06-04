@@ -1,14 +1,23 @@
 <script setup lang="ts">
-import { PILLARS, PILLAR_SEO } from '~/data/systems'
+import { ArrowRight, ArrowLeft } from '@lucide/vue'
+import { PILLAR_HUBS, systemsForPillar, pillarIcon } from '~/data/pillars'
 
-usePageSeo({
-  title: 'The Four Pillars We Build',
-  description:
-    'Every Zabble system delivers on four pillars — automation, audit trails, anomaly detection and analytics. Explore each and the systems behind it.',
-  path: '/pillars',
-  ogType: 'website',
-  primaryKeyword: 'business operations pillars',
+useHead({
+  title: 'The four pillars — Automation, Audit Trails, Anomaly Detection, Analytics · Zabble',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'The four pillars Zabble builds around every business: automation, audit trails, anomaly detection, and analytics. What each one is, and the South African systems that deliver it.',
+    },
+  ],
 })
+
+const hubs = PILLAR_HUBS.map((h) => ({
+  ...h,
+  icon: pillarIcon(h.slug),
+  count: systemsForPillar(h.slug).length,
+}))
 </script>
 
 <template>
@@ -16,46 +25,57 @@ usePageSeo({
     <TheNav />
 
     <main class="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24">
-      <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
-        <div v-reveal class="max-w-3xl">
+      <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
+        <nav aria-label="Breadcrumb" class="mb-8 md:mb-10">
+          <NuxtLink
+            to="/"
+            class="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-mute hover:text-ink transition-colors rounded"
+          >
+            <ArrowLeft :size="14" :stroke-width="2" aria-hidden="true" />
+            Home
+          </NuxtLink>
+        </nav>
+
+        <header class="max-w-3xl">
           <div class="inline-flex items-center gap-2 text-[12.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">
             <span class="dot" />
-            What we build
+            The Four Pillars
           </div>
-          <h1 class="mt-5 font-display text-[40px] sm:text-[52px] md:text-[64px] leading-[1.04] tracking-tight text-ink">
-            Four things every modern business needs.
-          </h1>
-          <p data-answer-first class="mt-6 max-w-2xl text-[16px] md:text-[18px] leading-[1.6] text-ink">
-            Zabble builds on four pillars — automation, audit trails, anomaly detection and analytics. A given system might lean on one or weave all four together. They are the lens we bring to every build: stop doing it by hand, see who did what, catch what’s unusual, and decide on facts.
-          </p>
-        </div>
-
-        <div class="mt-10 md:mt-14 grid grid-cols-1 sm:grid-cols-2 gap-5 md:gap-6">
-          <NuxtLink
-            v-for="(p, i) in PILLARS"
-            :key="p.slug"
-            v-reveal:scale="i * 60"
-            :to="`/pillars/${p.slug}`"
-            class="group rounded-2xl border border-line bg-white p-6 md:p-8 transition-all duration-300 hover:-translate-y-1 hover:border-cyan-brand/40 hover:shadow-[0_24px_60px_-32px_rgba(15,23,42,0.18)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60"
+          <h1
+            class="mt-5 md:mt-6 font-display text-[34px] sm:text-[44px] md:text-[56px] leading-[1.06] tracking-tight text-ink"
           >
-            <div class="flex items-center gap-3">
-              <span class="inline-flex items-center justify-center h-10 w-10 rounded-lg bg-cyan-brand/10 text-cyan-brand-deep ring-1 ring-cyan-brand/25">
-                <component :is="p.icon" :size="20" :stroke-width="1.9" />
-              </span>
-              <span class="font-display text-[22px] md:text-[24px] leading-[1.1] text-ink">{{ PILLAR_SEO[p.slug].h1 }}</span>
+            Four things every modern business needs.
+            <span class="cyan-underline">We build them around yours.</span>
+          </h1>
+          <p class="mt-6 text-[17px] md:text-[19px] leading-[1.7] text-mute">
+            The pillars are the objective; our 30 modules are how we get there. A given
+            build might lean on one pillar or weave all four together.
+          </p>
+        </header>
+
+        <div class="mt-12 md:mt-14 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
+          <NuxtLink
+            v-for="h in hubs"
+            :key="h.slug"
+            :to="`/pillars/${h.slug}`"
+            class="group relative rounded-2xl border border-line bg-white p-8 md:p-9 transition hover:border-cyan-brand/50 hover:shadow-[0_24px_60px_-32px_rgba(1,219,241,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          >
+            <div class="flex items-start justify-between gap-6">
+              <div class="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-cyan-brand/10 text-cyan-brand-deep ring-1 ring-cyan-brand/25">
+                <component :is="h.icon" :size="22" aria-hidden="true" />
+              </div>
+              <ArrowRight :size="18" class="mt-2 text-mute-2 transition group-hover:translate-x-0.5 group-hover:text-ink" />
             </div>
-            <p class="mt-4 text-[14.5px] md:text-[15.5px] leading-[1.6] text-mute">
-              {{ PILLAR_SEO[p.slug].definition }}
+            <h2 class="mt-7 font-display text-[28px] md:text-[30px] leading-[1.1] text-ink">{{ h.label }}</h2>
+            <p class="mt-3 text-[16px] leading-[1.6] text-mute">{{ h.definition }}</p>
+            <p class="mt-4 text-[13px] uppercase tracking-[0.18em] font-semibold text-cyan-brand-deep">
+              {{ h.count }} systems
             </p>
-            <span class="mt-5 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-ink">
-              Explore {{ p.label }}
-              <span class="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
-            </span>
           </NuxtLink>
         </div>
-      </section>
+      </div>
 
-      <CtaStrip eyebrow="Next Step" heading="Not sure which pillar you need most?" body="The 2-minute diagnostic points you at the one costing you the most." />
+      <CtaStrip />
     </main>
 
     <TheFooter />
