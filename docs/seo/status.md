@@ -24,7 +24,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
-| 09a | Analytics, Measurement & Indexing | `seo/09-analytics` | analytics eng | **done** | 00; coord 01, 10 | GA4/GTM/Clarity + Consent Mode v2 (POPIA opt-in) + key events wired (no-op until env ids); IndexNow key + ping; GSC/Bing documented. `build`+`generate` clean. Awaiting ids + DNS (B4). See `audits/09-analytics.md`, `measurement-plan.md`, `id-secret-registry.md`, ADR 0002. |
+| 09a | Analytics, Measurement & Indexing | `seo/09-analytics` | analytics eng | **done** | 00; coord 01, 10 | GA4/GTM/Clarity + Consent Mode v2 (POPIA opt-in) + key events (no-op until env ids); **`/privacy` + `/cookie-policy`** built + CMP/footer-linked; in-code **GSC/Bing verification meta**; IndexNow key + ping; **`npm test` 21/21** (consent/events/IndexNow/static-HTML). `build`+`generate`+`test` clean. Only launch dep: ids + DNS/meta (B4) — see audit §8 owner list. Docs: `audits/09-analytics.md`, `measurement-plan.md`, `id-secret-registry.md`, ADR 0002. |
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;

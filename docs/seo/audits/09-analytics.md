@@ -20,20 +20,27 @@
 - **POPIA Consent Mode v2**: four signals default-**denied** → **update** on
   opt-in; region-scoped to ZA + global; a first-party CMP banner; opt-in (no
   non-essential tag before consent).
+- **POPIA pages**: real, server-rendered **`/privacy`** (POPIA notice) and
+  **`/cookie-policy`** (cookie categories + manage control), linked from the CMP
+  banner/dialog and the footer.
 - **Microsoft Clarity** first-party, consent-gated, GA4-linkable.
-- **Indexing**: IndexNow key hosted + publish-time ping script; GSC Domain
-  (DNS TXT) + Bing Webmaster Tools setup **documented** (need DNS/account access).
-- A **measurement plan**, an **ID/secret registry**, and a **pre-launch → launch
-  checklist** (`measurement-plan.md`, `id-secret-registry.md`, this audit §5).
+- **Indexing**: IndexNow key hosted + publish-time ping script; **in-code GSC +
+  Bing verification** meta (env fallback to DNS TXT); GSC Domain (DNS TXT) + Bing
+  Webmaster Tools setup **documented** (need DNS/account access).
+- **Automated test harness** (`npm test`, node:test, zero deps): consent defaults,
+  opt-in gating, key-event wiring, IndexNow staging-refusal + payload, and
+  zero-tags-in-static-HTML — 21 checks, self-contained.
+- A **measurement plan**, an **ID/secret registry**, a **consolidated owner list**
+  (§8), and a **pre-launch → launch checklist** (`measurement-plan.md`,
+  `id-secret-registry.md`, this audit §5/§8).
 - ADR `decisions/0002-analytics-stack-and-consent.md`.
 
 **Does NOT cover (hand-offs):**
 - `robots.txt`, `sitemap.xml`, `site.url`, staging `noindex` → **S01**. This
   session only *reads* the generated sitemap; it never edits robots/sitemap.
-- Per-page `useSeoMeta`/canonicals → S02; JSON-LD → S03. Untouched.
+- Per-page `useSeoMeta`/canonicals for the *marketing* pages → S02; JSON-LD → S03.
+  Untouched. (The new legal pages carry their own minimal `useHead`.)
 - Ongoing rank/AI tracking via DataForSEO → S10/S08.
-- A **privacy/cookie policy page** (`/privacy`) — not yet in the app; a launch
-  blocker for POPIA (cross-session ask, §6).
 
 ## 2. Method
 
@@ -47,10 +54,13 @@
   is currently **no `tel:`** and **no file download** on the site (handlers added
   for future-proofing).
 - Implemented a hand-rolled, env-driven, consent-first measurement layer (see
-  ADR 0002 for why hand-rolled over `@nuxt/scripts`).
-- Verified with `npm run build` (exit 0) and `npm run generate` (exit 0, 68
-  routes, 33 HTML pages) in an **isolated git worktree** (the shared checkout is
-  thrashed by the other parallel-session agents). Evidence in `_evidence/09/`.
+  ADR 0002 for why hand-rolled over `@nuxt/scripts`), the two POPIA pages, a
+  universal verification-meta plugin, and a node:test harness.
+- Verified with `npm run build` (exit 0), `npm run generate` (exit 0, **72
+  routes / 35 HTML pages** incl. `/privacy` + `/cookie-policy`), and **`npm test`
+  (21/21, self-contained cold run)** in an **isolated git worktree outside
+  OneDrive** (the shared checkout is thrashed by the other parallel-session
+  agents). Evidence in `_evidence/09/`.
 
 ## 3. Current state (findings)
 
@@ -75,7 +85,7 @@ measured against this zero.
 | **P0** | POPIA: must not load non-essential tags before opt-in. | Consent Mode v2 default-denied + first-party CMP (done). |
 | **P0** | Not in GSC/Bing → won't be discovered/measured. | Verify GSC Domain (DNS TXT) + Bing import (needs access). |
 | **P1** | Slow organic discovery on publish. | IndexNow key + publish-time ping (done; runs at launch). |
-| **P1** | No `/privacy` cookie policy for the CMP to link. | Add `/privacy` page (cross-session ask, §6). |
+| ~~P1~~ | ~~No `/privacy` / cookie policy for the CMP to link.~~ **RESOLVED** | `/privacy` + `/cookie-policy` built + linked (done). |
 | **P1** | GA4 ↔ GSC + GA4 ↔ Clarity links give cross-tool insight. | Link in GA4/Clarity UIs at launch (checklist). |
 | **P2** | Estimated **lead value** (ZAR) for `generate_lead` ROI. | Agree a value; set in GA4 (checklist). |
 
@@ -86,11 +96,12 @@ measured against this zero.
 | R1 | P0 | Create GTM container + GA4 property (TZ Africa/Johannesburg, currency ZAR), set ids in env (`.env`). | User → env; `id-secret-registry.md` | — |
 | R2 | P0 | Build GA4/Clarity tags + Consent Mode + the 6 key-event triggers inside GTM per the container spec. | `measurement-plan.md` §GTM | — |
 | R3 | P0 | Verify **GSC Domain** property for `zabble.org` via DNS TXT; submit S01's sitemap once live. | User (DNS) → S01 sitemap | `measurement-plan.md` §Indexing |
-| R4 | P0 | POPIA: keep opt-in CMP; mark non-essential tags consent-gated in GTM; ship `/privacy`. | done + cross-session `/privacy` | `[E: 09/static-html-and-consent.note.md]` |
-| R5 | P1 | Bing Webmaster Tools — import from GSC; confirm sitemap. | User | `measurement-plan.md` §Indexing |
-| R6 | P1 | At each publish: `node scripts/indexnow-ping.mjs` after `nuxt generate` (prod host only). | `scripts/indexnow-ping.mjs` | `[E: 09/static-html-and-consent.note.md]` |
+| R4 | P0 | POPIA: opt-in CMP + `/privacy` + `/cookie-policy` shipped; mark non-essential tags consent-gated in GTM. | **done** (this session) | `[E: 09/test-harness-and-pages.note.md]` |
+| R5 | P1 | Bing Webmaster Tools — import from GSC; confirm sitemap. (Or set `NUXT_PUBLIC_VERIFICATION_BING` for the meta-tag method.) | User | `measurement-plan.md` §Indexing |
+| R6 | P1 | At each publish: `node scripts/indexnow-ping.mjs` after `nuxt generate` (prod host only). | `scripts/indexnow-ping.mjs` | `[E: 09/test-harness-and-pages.note.md]` |
 | R7 | P1 | Link **GA4 ↔ GSC** and **GA4 ↔ Clarity** in the respective UIs. | User | `measurement-plan.md` |
-| R8 | P2 | Configure AI-engine referral tracking (chatgpt/perplexity/gemini/copilot) as a GA4 channel group / exploration. | S10 | `measurement-plan.md` |
+| R8 | P1 | Verify GSC/Bing via DNS TXT (preferred) **or** the in-code meta tags (`NUXT_PUBLIC_VERIFICATION_*`). | User | `[E: 09/test-harness-and-pages.note.md]` |
+| R9 | P2 | Configure AI-engine referral tracking (chatgpt/perplexity/gemini/copilot) as a GA4 channel group / exploration. | S10 | `measurement-plan.md` |
 
 ### Pre-launch → launch checklist (condensed; full version in `measurement-plan.md` §Checklist)
 
@@ -101,19 +112,20 @@ measured against this zero.
 - [ ] Clarity project created; default consent off; GA4 integration enabled. _(user)_
 - [ ] ids placed in env (`NUXT_PUBLIC_ANALYTICS_*`); never in git. _(user)_
 - [x] App code: consent-gated loader + CMP + key events implemented + build-clean. _(this session)_
-- [ ] GSC Domain property added; DNS TXT record published; verified. _(user — DNS)_
-- [ ] Bing Webmaster Tools — import from GSC. _(user)_
-- [x] IndexNow key hosted at `/<key>.txt` + ping script ready. _(this session)_
-- [ ] `/privacy` cookie/POPIA policy page exists + linked from CMP. _(cross-session)_
+- [x] POPIA `/privacy` + `/cookie-policy` pages built + linked from CMP + footer. _(this session)_
+- [x] In-code GSC/Bing verification meta + IndexNow key + ping script + tests. _(this session)_
+- [ ] GSC Domain property added; DNS TXT record published; verified _(user — DNS)_,
+      **or** set `NUXT_PUBLIC_VERIFICATION_GOOGLE` for the HTML-tag fallback.
+- [ ] Bing Webmaster Tools — import from GSC _(user)_, **or** set `NUXT_PUBLIC_VERIFICATION_BING`.
 - [ ] Staging stays `noindex` (S01) — **never** submit staging URLs.
 
 **At launch (production cutover):**
 - [ ] Flip env to production ids; deploy.
 - [ ] Tag Assistant / GA DebugView: confirm denied-by-default, then events fire
       only after "Accept". _(see measurement-plan §Verification)_
-- [ ] GSC: submit `https://zabble.org/sitemap.xml`; URL-inspect + request
-      indexing for `/`, `/systems`, top money pages.
-- [ ] `node scripts/indexnow-ping.mjs` (prod). 
+- [ ] GSC: **submit the sitemap** `https://zabble.org/sitemap.xml` (S01's); URL-inspect
+      + request indexing for `/`, `/systems`, top money pages.
+- [ ] `node scripts/indexnow-ping.mjs` (prod) after `nuxt generate`.
 - [ ] Link GA4↔GSC and GA4↔Clarity. Mark the 6 events as **Key events** in GA4.
 - [ ] Record the zero→first-data baseline in `_evidence/09/` + S10.
 
@@ -122,14 +134,36 @@ measured against this zero.
 | Ask | Owner | Mirrored in |
 |-----|-------|-------------|
 | Confirm `site.url=https://zabble.org`, robots `Sitemap:` line, and **staging `noindex`** so IndexNow/GSC never see staging. Provide the generated `sitemap.xml` path. | **S01** | status.md S01 notes |
-| Add a **`/privacy`** (POPIA/cookie) policy page; the CMP + footer should link it. (Not added here to avoid a prerender 404 and S02's metadata ownership.) | **S02/S06 + owner** | status.md notes |
 | Fold the 6 key events + AI-referral channel into the launch **KPI set**. | **S10** | status.md S10 notes |
-| Provide GA4 id, GTM id, Clarity id, and **DNS access** for the GSC TXT record. | **User** | status.md blockers B4 |
+| Provide GA4/GTM/Clarity ids + **DNS access** (or verification meta values) — see the owner list §8. | **User** | status.md blockers B4 |
+
+> The earlier `/privacy` cross-session ask is **resolved** — both POPIA pages are
+> now built and linked in-session.
 
 ## 7. Evidence index
 
 - `_evidence/09/build-generate-verification.note.md` — `npm run build` + `generate`
-  both exit 0; 68 routes / 33 HTML pages; warnings are pre-existing framework noise.
-- `_evidence/09/static-html-and-consent.note.md` — proves: no analytics/dataLayer
-  in static HTML (POPIA), key-event + consent logic compiled into the client
-  bundle, and env→runtimeConfig→client id wiring (test id `GTM-TEST123`).
+  both exit 0; warnings are pre-existing framework noise.
+- `_evidence/09/static-html-and-consent.note.md` — no analytics/dataLayer in static
+  HTML (POPIA); key-event + consent logic in the client bundle; env→runtimeConfig→
+  client id wiring (test id `GTM-TEST123`).
+- `_evidence/09/test-harness-and-pages.note.md` — `npm test` 21/21 (cold,
+  self-contained); verification meta renders from env; POPIA pages prerendered +
+  linked; IndexNow dry-run payload + staging refusal.
+
+## 8. Consolidated owner list — what the user must provide for launch
+
+Everything below is the **only** remaining launch dependency. Drop the ids into
+`.env` and publish one DNS record, and the stack goes live as documented. None of
+these are committed to git.
+
+| # | Item | Where it goes | Notes |
+|---|------|---------------|-------|
+| 1 | **GA4 Measurement ID** (`G-XXXXXXXXXX`) | `.env` → `NUXT_PUBLIC_ANALYTICS_GA4_ID` | Create GA4 property: **TZ Africa/Johannesburg, currency ZAR**, enhanced measurement on (incl. SPA history). Only needed directly if not using GTM. |
+| 2 | **GTM container ID** (`GTM-XXXXXXX`) | `.env` → `NUXT_PUBLIC_ANALYTICS_GTM_ID` | Build the container per `measurement-plan.md` §3 (GA4 + 6 key-event tags + Consent Mode). Primary path. |
+| 3 | **Clarity project ID** | `.env` → `NUXT_PUBLIC_ANALYTICS_CLARITY_ID` | Microsoft Clarity → enable the **GA4 integration**. |
+| 4 | **GSC verification** | DNS **TXT** on `zabble.org` (preferred) **or** `.env` → `NUXT_PUBLIC_VERIFICATION_GOOGLE` | Domain property works pre-launch; the meta tag is the in-code fallback. |
+| 5 | **Bing verification** | Import from GSC (carries it) **or** `.env` → `NUXT_PUBLIC_VERIFICATION_BING` | — |
+| 6 | **Google Business Profile (GBP)** | Google Business Profile console | Local-SEO entity for "South Africa" + map pack; primarily **S10**'s, surfaced here so it isn't missed at launch. |
+| 7 | **GA4↔GSC + GA4↔Clarity links** | GA4 Admin / Clarity Settings | One-time UI links at launch. |
+| 8 | **Estimated lead value (ZAR)** _(optional)_ | GA4 key-event default value, or `value` in `diagnose.vue` | For ROI on `generate_lead`. Currently `0`. |

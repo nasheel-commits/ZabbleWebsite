@@ -162,15 +162,23 @@ The code loads GTM and feeds it the dataLayer; the container does the routing.
 2. Copy the `google-site-verification=…` **TXT** record Google shows.
 3. Add it at the DNS host (a `TXT` on the apex `zabble.org`). Wait for propagation; **Verify**.
    (Domain property covers http/https + all subdomains and works **pre-launch**.)
-4. After launch: **Sitemaps** → submit `https://zabble.org/sitemap.xml` (S01).
+4. After launch: **Sitemaps** → **submit** `https://zabble.org/sitemap.xml` (S01's).
    **URL Inspection** → request indexing for `/`, `/systems`, top money pages.
 5. Watch **Pages**: "Discovered – not indexed" on system pages would confirm the
    thin/duplicate risk (S02/S06 copy work).
+
+> **In-code fallback (no DNS):** GSC also offers an **HTML tag** method (URL-prefix
+> property). Paste the tag's `content` value into `.env` →
+> `NUXT_PUBLIC_VERIFICATION_GOOGLE`; `app/plugins/seo-verification.ts` renders
+> `<meta name="google-site-verification" …>` into the prerendered HTML. DNS TXT is
+> still preferred (covers the whole domain, pre-launch).
 
 ### Bing Webmaster Tools (user)
 - bing.com/webmasters → Add site → **Import from Google Search Console** (fast
   path; carries verification + sitemap). Confirm the sitemap. Bing also feeds
   Copilot (a GEO signal).
+- **In-code fallback:** Bing's "Add a meta tag" method → put the `msvalidate.01`
+  content value in `.env` → `NUXT_PUBLIC_VERIFICATION_BING` (same plugin renders it).
 
 ---
 
@@ -188,17 +196,45 @@ The code loads GTM and feeds it the dataLayer; the container does the routing.
 5. Confirm `https://zabble.org/<key>.txt` returns the key (IndexNow), then run
    the ping and check Bing's IndexNow report.
 
+### Automated regression guard — `npm test` (node:test, zero deps)
+
+What a browser can't check pre-launch, the suite asserts on every run (21 checks,
+self-contained — it regenerates the site with placeholder ids if needed):
+
+- `tests/analytics-source.test.mjs` — Consent Mode v2 four signals **denied** by
+  default, region **ZA**, opt-in gating (tags load only on grant), gtag pushes
+  `arguments`, every key event wired, `generate_lead` (ZAR) + `schedule_call`.
+- `tests/indexnow.test.mjs` — ping **refuses** staging/preview/localhost and emits
+  a correct, host-scoped payload (`--force` overrides for the real cutover).
+- `tests/static-html.test.mjs` — with placeholder ids set, prerendered HTML has
+  **zero** tags/dataLayer yet the id reaches the client payload; verification meta
+  render from env; `/privacy` + `/cookie-policy` prerendered + footer-linked.
+
+`npm run test:source` runs the 15 build-free checks; `npm test` runs all 21.
+
 ---
 
-## 8. Pre-launch → launch checklist
+## 9. POPIA pages
 
-See `audits/09-analytics.md` §5 for the authoritative checklist. In short:
-**pre-launch** — create GA4 (TZ/ZAR) + GTM + Clarity, set env ids, verify GSC
-(DNS TXT) + Bing, ship `/privacy`, keep staging `noindex`; **launch** — switch to
-prod ids, verify with Tag Assistant/DebugView, submit sitemap + request indexing,
-run IndexNow, link GA4↔GSC + GA4↔Clarity, mark key events, record the baseline.
+`/privacy` (privacy/POPIA notice — responsible party, info collected, lawful
+bases, operators, cross-border, retention, **data-subject rights**, Information
+Regulator) and `/cookie-policy` (categories table, opt-in explanation, a working
+**Manage cookie settings** control that re-opens the CMP). Both are real,
+prerendered pages, linked from the CMP banner/dialog and the footer.
 
-## 9. Sources
+---
+
+## 10. Pre-launch → launch checklist
+
+See `audits/09-analytics.md` §5 for the authoritative checklist, and §8 there for
+the **consolidated owner list**. In short: **pre-launch** — create GA4 (TZ/ZAR) +
+GTM + Clarity, set env ids, verify GSC (DNS TXT or meta) + Bing, keep staging
+`noindex` ( `/privacy` + `/cookie-policy` are already built); **launch** — switch
+to prod ids, verify with Tag Assistant/DebugView + `npm test`, **submit the
+sitemap** + request indexing, run IndexNow, link GA4↔GSC + GA4↔Clarity, mark key
+events, record the baseline.
+
+## 11. Sources
 - Consent Mode v2: https://developers.google.com/tag-platform/security/guides/consent
 - GA4 SPA / history: https://support.google.com/analytics/answer/9216061
 - GTM: https://support.google.com/tagmanager

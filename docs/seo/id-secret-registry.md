@@ -21,10 +21,12 @@ production differ and ids never hard-code into source.
 | GA4 measurement id | `NUXT_PUBLIC_ANALYTICS_GA4_ID` | `analytics.ga4Id` | `G-XXXXXXXXXX` | GA4 → Admin → Data streams (only needed if no GTM) |
 | Clarity project id | `NUXT_PUBLIC_ANALYTICS_CLARITY_ID` | `analytics.clarityId` | short alnum | clarity.microsoft.com → project |
 | Debug tracing | `NUXT_PUBLIC_ANALYTICS_DEBUG` | `analytics.debug` | `true`/`false` | dev convenience |
+| GSC verification (meta) | `NUXT_PUBLIC_VERIFICATION_GOOGLE` | `verification.google` | token | GSC → HTML-tag method (fallback to DNS TXT) |
+| Bing verification (meta) | `NUXT_PUBLIC_VERIFICATION_BING` | `verification.bing` | token | Bing Webmaster → "Add a meta tag" |
 | Prod origin | `NUXT_PUBLIC_SITE_URL` | (script) | URL | fixed: `https://zabble.org` |
 
-- **Declared (no value)** in `nuxt.config.ts → runtimeConfig.public.analytics`
-  and documented in `.env.example`. Empty id ⇒ that tag never loads.
+- **Declared (no value)** in `nuxt.config.ts → runtimeConfig.public.{analytics,verification}`
+  and documented in `.env.example`. Empty id ⇒ that tag/meta never renders.
 - **Status:** all **empty pre-launch** — user to create the properties and place
   ids in `.env`.
 
