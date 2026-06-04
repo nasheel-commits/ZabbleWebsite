@@ -14,7 +14,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | # | Session | Branch | Owner | Status | Depends on | PR / outcome |
 |---|---------|--------|-------|--------|------------|--------------|
 | 00 | Setup & access foundation | `seo/00-setup` | SEO lead | **done** | — | docs/seo built; MCP ✓ Connected; account verified + funded ($50.998); live + sandbox `20000`. |
-| 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
+| 01 | Technical SEO & Crawlability | `seo/01-technical` | S01 | **done** | 00 | `@nuxtjs/seo` (sitemap+robots) wired; `site.url` set; prerender 35 priority routes → full HTML; robots allows AI bots + `Sitemap:` line (ADR-0002); fail-closed staging-noindex guard (Vercel-env aware); canonicals non-www; custom 404; `vercel.json`. CWV (prod) all good: LCP 1.77s/CLS 0/TBT 137ms. **Discovered: app is LIVE on Vercel (apex 308→www).** Open: B5 (Vercel primary→apex). Audit: `audits/01-technical.md`. |
 | 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
@@ -59,8 +59,9 @@ DataForSEO account verified + funded ($50.998), live + sandbox calls return
 |----|------|-----|--------|--------|
 | ~~B1~~ | ~~Verify DataForSEO account~~ — **RESOLVED 2026-06-04** (sandbox + live now `20000`). | User ✅ | — | `00-access-and-credentials.md` §2 |
 | ~~B2~~ | ~~Fund the account~~ — **RESOLVED 2026-06-04** (balance $50.998). Keep an eye on burn as S05 runs at volume. | User ✅ | — | `00-access-and-credentials.md` §1 |
-| B3 | **Staging URL** not provided. Needed so S01 can set the pre-launch `noindex` guard before any indexing happens. | User → S01 | S01 (P1) | `reference/nuxt-seo-implementation.md` §5 |
-| B4 | **GSC + Bing + analytics access** (DNS for `zabble.org` domain verification; POPIA-compliant analytics choice). | User → S10/S01 | S10 measurement, launch indexing | `reference/measurement-indexing.md` §7 |
+| ~~B3~~ | ~~Staging URL~~ — **OBSOLETED 2026-06-04 (S01).** The app is **already deployed to production on Vercel** (`zabble.org` 308→`www.zabble.org`). S01 implemented a **fail-closed, Vercel-env-aware noindex guard** instead (`VERCEL_ENV==='production'` → indexable; preview/staging → `Disallow: /` + noindex). No separate staging URL needed. | — | — | `audits/01-technical.md` §6 |
+| B4 | **GSC + Bing + analytics access** (DNS for `zabble.org` domain verification; POPIA-compliant analytics choice). **Now urgent — site is LIVE + indexable.** | User → S10/S01 | S10 measurement, launch indexing | `reference/measurement-indexing.md` §7 |
+| B5 | **Vercel Primary Domain** is `www` → apex 308-redirects to www, conflicting with the non-www canonical (S01 docs + tags). Set Primary Domain = `zabble.org` (apex) in Vercel → Settings → Domains. 30-sec dashboard toggle. | User/devops → S01 | S01 (P1, F2) | `decisions/0003-redirect-map.md` |
 
 ### Still needed from the user (not blocking session start)
 1. **Staging URL** (B3) — for S01's pre-launch `noindex` guard.

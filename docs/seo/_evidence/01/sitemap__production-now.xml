@@ -1,0 +1,10 @@
+{
+  "error": true,
+  "url": "https://www.zabble.org/sitemap.xml",
+  "statusCode": 404,
+  "statusMessage": "Page not found: /sitemap.xml",
+  "message": "Page not found: /sitemap.xml",
+  "data": {
+    "path": "/sitemap.xml"
+  }
+}
