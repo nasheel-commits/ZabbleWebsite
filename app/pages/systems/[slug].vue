@@ -64,6 +64,17 @@ useHead({
         <SystemHero :system="sys" />
       </section>
 
+      <!-- AEO answer-first block: "What is …?" answered in 40–60 words, placed
+           high so the definition is the first prose an answer engine lifts. -->
+      <section
+        v-if="sys.answer"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-12 md:mt-16"
+      >
+        <div v-reveal class="max-w-3xl">
+          <AnswerBlock :question="sys.answer.question" :answer="sys.answer.answer" />
+        </div>
+      </section>
+
       <!-- Triptych -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24">
         <div v-reveal class="mb-7 md:mb-9 max-w-2xl">
@@ -196,6 +207,17 @@ useHead({
               }}
             </p>
           </article>
+        </div>
+      </section>
+
+      <!-- AEO FAQ block: question-shaped Q&A targeting People Also Ask. Server-
+           rendered; the same data is exposed for S03 to attach FAQPage JSON-LD. -->
+      <section
+        v-if="sys.faqs?.length"
+        class="mx-auto max-w-4xl px-5 md:px-8 lg:px-12 mt-16 md:mt-24"
+      >
+        <div v-reveal>
+          <FaqList :items="sys.faqs" />
         </div>
       </section>
 

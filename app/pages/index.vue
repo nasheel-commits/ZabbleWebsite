@@ -9,6 +9,7 @@
       <ThePlan />
       <TheWhatWeBuild />
       <TheDoNothing />
+      <TheFaq />
       <div class="cta-bleed-wrap">
         <div class="cta-bleed-overlay" aria-hidden="true" />
         <TheWhenItWorks />

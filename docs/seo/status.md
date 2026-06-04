@@ -5,7 +5,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 
 - **Project:** Zabble — https://zabble.org (pre-launch)
 - **Primary market:** South Africa (`en-ZA`)
-- **Last updated:** 2026-06-04 by S00
+- **Last updated:** 2026-06-04 by S07 (AEO)
 
 ---
 
@@ -20,7 +20,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
-| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
+| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard (`content/aeo-standard.md`) + answer-block/FAQ components + 8 pages populated (home + 7 systems), SSR-verified; live SA SERP/PAA evidence ($0.0254). Audit `audits/07-aeo.md`. **S03 JSON-LD requested (below).** |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
@@ -33,6 +33,24 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 - **S01 sets `site.url`** — S03's schema and S02's canonicals depend on it. Do S01
   early.
 - **S03 → S07 → S08**: entity/schema foundation feeds AEO, which feeds GEO.
+
+### S07 (AEO) cross-session asks — logged 2026-06-04
+> Added by S07 without editing other rows (conventions §2). Each owner: please
+> action and update your own row. Detail in `audits/07-aeo.md` §6.
+- **→ S03 (Schema) — P0 — JSON-LD REQUEST.** Attach `FAQPage` JSON-LD on the 7
+  populated system pages and `FAQPage` on `/`, sourced from `system.faqs`
+  (`app/data/systems.ts`) and `HOME_FAQS` (`app/data/site-faqs.ts`). Types `Faq`
+  / `AnswerBlock` are exported from `app/data/systems.ts`. On-page text and
+  schema **must be byte-identical** (read the same data). Consider `QAPage` for
+  the answer block. This is the formal hand-off of S07's FAQ/QA data to S03.
+- **→ S05 (Keywords) — P1.** SA volume + KD for the AEO question set (request
+  appended to `targets/keyword-map.md` §4) to re-rank the page backlog.
+- **→ S08 (GEO) — P1.** AI Overview present on 10/12 priority queries; run
+  citation tracking, report whether Zabble is cited.
+- **→ S06 (Content) — P1.** Author `AEO_CONTENT` for the remaining 24 systems
+  via `content/aeo-standard.md`.
+- **→ S10/S08 — P1.** `local_pack` on SA service queries ("custom software
+  development south africa", "who builds custom software…").
 
 ---
 

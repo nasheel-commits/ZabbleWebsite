@@ -1,0 +1,225 @@
+[
+  {
+    "kw": "what is a bespoke crm",
+    "types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask"
+    ],
+    "aio": true,
+    "paa": [
+      "What are the 4 types of CRM?",
+      "How much does a bespoke CRM cost?",
+      "What exactly does a CRM do?",
+      "What is bespoke software and how is it used?",
+      "Which CRM is most used?",
+      "Is Excel a CRM software?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "business process automation south africa",
+    "types": [
+      "organic",
+      "knowledge_graph",
+      "google_reviews"
+    ],
+    "aio": false,
+    "paa": [],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "regulatory reporting software south africa",
+    "types": [
+      "ai_overview",
+      "organic",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "what is anomaly detection",
+    "types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [
+      "What does anomaly detected mean?",
+      "What does an Anomaly Detector do?",
+      "What is the meaning of anomalies identified?",
+      "What is AI anomaly detection?",
+      "Does anomaly mean abnormal?",
+      "What if an anomaly scan is normal?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "what is a crm system",
+    "types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "people_also_search",
+      "video",
+      "short_videos",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [
+      "What is a CRM system with an example?",
+      "What are the 4 types of CRM systems?",
+      "What is the most popular CRM software?",
+      "Is Excel a CRM tool?",
+      "What are the 4 types of CRM?",
+      "Is Excel a CRM tool?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "document automation south africa",
+    "types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [
+      "What is the best document automation software?",
+      "What is a document automation?",
+      "What are the top 5 document management systems?",
+      "What is an example of document automation?",
+      "What are the top 5 automation tools?",
+      "Can ChatGPT create documentation?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "custom software development south africa",
+    "types": [
+      "ai_overview",
+      "organic",
+      "local_pack",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "who builds custom software in south africa",
+    "types": [
+      "local_pack",
+      "organic",
+      "people_also_ask",
+      "related_searches"
+    ],
+    "aio": false,
+    "paa": [
+      "How much does a custom software cost?",
+      "How many software developers are in South Africa?",
+      "How to build a custom software?",
+      "How much does it cost to create an app in SA?",
+      "Can I create my own software?",
+      "Which country is no. 1 in coding?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "how to automate invoice processing",
+    "types": [
+      "ai_overview",
+      "video",
+      "people_also_ask",
+      "organic"
+    ],
+    "aio": true,
+    "paa": [
+      "How do you automate invoice processing?",
+      "Can Chatgpt generate an invoice?",
+      "How to set up automatic invoices?",
+      "Can I automate invoicing with Excel templates?",
+      "What are the 4 stages of process automation?",
+      "What are the top 5 automation tools?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "what is reconciliation in accounting",
+    "types": [
+      "ai_overview",
+      "organic",
+      "people_also_ask",
+      "images",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [
+      "What does reconciliation mean in accounting?",
+      "What is reconciliation in simple words?",
+      "What are the two types of reconciliation?",
+      "What is a reconciliation example?",
+      "What are the four types of reconciliation?",
+      "What is an example of reconciliation?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "how to automate bank reconciliation",
+    "types": [
+      "ai_overview",
+      "video",
+      "organic",
+      "people_also_ask",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [
+      "Can bank reconciliation be automated?",
+      "Can ChatGPT do bank reconciliation?",
+      "How to automate bank reconciliation in Excel?",
+      "Can I use AI for reconciliation?",
+      "Can ChatGPT do bank reconciliation?",
+      "Can I use AI for reconciliation?"
+    ],
+    "featured": null,
+    "answerbox": null
+  },
+  {
+    "kw": "what is workflow automation",
+    "types": [
+      "ai_overview",
+      "people_also_ask",
+      "organic",
+      "video",
+      "people_also_search",
+      "related_searches"
+    ],
+    "aio": true,
+    "paa": [
+      "What are workflow automations?",
+      "What is an example of workflow automation?",
+      "What are the 4 types of automation?",
+      "What is another name for workflow automation?",
+      "What are the 4 types of automation?",
+      "What is an example of workflow automation?"
+    ],
+    "featured": null,
+    "answerbox": null
+  }
+]
