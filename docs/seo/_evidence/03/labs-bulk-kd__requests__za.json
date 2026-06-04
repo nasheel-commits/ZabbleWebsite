@@ -1,0 +1,304 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.2171 sec.",
+    "cost": 0.0143,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041600-1876-0392-0000-6528ca2a519f",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.1245 sec.",
+            "cost": 0.0143,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "bulk_keyword_difficulty",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "bulk_keyword_difficulty",
+                "se_type": "google",
+                "keywords": [
+                    "what is a bespoke crm",
+                    "how much does a bespoke crm cost",
+                    "document automation south africa",
+                    "how to automate invoice processing",
+                    "how to automate bank reconciliation",
+                    "what is reconciliation in accounting",
+                    "what is anomaly detection",
+                    "what is workflow automation",
+                    "regulatory reporting software south africa",
+                    "who builds custom software in south africa",
+                    "custom software development south africa",
+                    "who builds custom business software in south africa",
+                    "business process automation south africa",
+                    "bespoke crm south africa",
+                    "business automation company south africa",
+                    "transaction fraud detection south africa",
+                    "fraud detection south africa",
+                    "zabble",
+                    "approval workflow software",
+                    "decision engine software",
+                    "order management automation",
+                    "order management software",
+                    "rfid inventory tracking",
+                    "rfid inventory management",
+                    "case management software",
+                    "legal case management software south africa",
+                    "cpq software",
+                    "quote automation software",
+                    "quote automation",
+                    "role based dashboard",
+                    "bi dashboard south africa",
+                    "business intelligence dashboard south africa",
+                    "master data management",
+                    "master data management south africa",
+                    "predictive maintenance",
+                    "predictive maintenance software south africa",
+                    "alert management",
+                    "notification orchestration",
+                    "alert management software south africa",
+                    "invoice data extraction",
+                    "invoice data capture",
+                    "inventory management software south africa",
+                    "stock management software south africa"
+                ],
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "location_code": 2710,
+                    "language_code": "en",
+                    "total_count": 43,
+                    "items_count": 43,
+                    "items": [
+                        {
+                            "se_type": "google",
+                            "keyword": "approval workflow software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "case management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software development south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "decision engine software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to automate invoice processing",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "inventory management software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "master data management",
+                            "keyword_difficulty": 36
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "master data management south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "order management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "predictive maintenance",
+                            "keyword_difficulty": 26
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "rfid inventory management",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "stock management software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is anomaly detection",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is reconciliation in accounting",
+                            "keyword_difficulty": 17
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is workflow automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is a bespoke crm",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how much does a bespoke crm cost",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "document automation south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to automate bank reconciliation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "regulatory reporting software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "who builds custom software in south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "who builds custom business software in south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business process automation south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bespoke crm south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business automation company south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "transaction fraud detection south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "fraud detection south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "zabble",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "order management automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "rfid inventory tracking",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "legal case management software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "cpq software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "quote automation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "quote automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "role based dashboard",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bi dashboard south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business intelligence dashboard south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "predictive maintenance software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "alert management",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "notification orchestration",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "alert management software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "invoice data extraction",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "invoice data capture",
+                            "keyword_difficulty": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

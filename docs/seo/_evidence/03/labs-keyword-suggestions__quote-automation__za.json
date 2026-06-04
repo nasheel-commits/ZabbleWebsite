@@ -1,0 +1,270 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1027 sec.",
+    "cost": 0.0102,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041605-1876-0399-0000-0c942d398534",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.0723 sec.",
+            "cost": 0.0102,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "keyword_suggestions",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "keyword_suggestions",
+                "se_type": "google",
+                "keyword": "quote automation",
+                "location_name": "South Africa",
+                "language_code": "en",
+                "limit": 60,
+                "order_by": [
+                    "keyword_info.search_volume,desc"
+                ]
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "seed_keyword": "quote automation",
+                    "seed_keyword_data": null,
+                    "location_code": 2710,
+                    "language_code": "en",
+                    "total_count": 2,
+                    "items_count": 2,
+                    "offset": 0,
+                    "offset_token": "eyJDdXJyZW50T2Zmc2V0IjoyLCJSZXF1ZXN0RGF0YSI6eyJrZXl3b3JkIjoicXVvdGUgYXV0b21hdGlvbiIsImluY2x1ZGVfc2VlZF9rZXl3b3JkIjpmYWxzZSwiZnVsbF9tYXRjaCI6ZmFsc2UsImxvYWRfc2VycF9pbmZvIjpmYWxzZSwic2VhcmNoX2FmdGVyX3Rva2VuIjpudWxsLCJpZ25vcmVfc3lub255bXMiOmZhbHNlLCJsYW5ndWFnZSI6ImVuIiwic2VhcmNoX2VuZ2luZSI6Imdvb2dsZSIsImxvY2F0aW9uIjoyNzEwLCJ1c2VfbmV3X2NhdGVnb3JpZXMiOnRydWUsIm9yZGVyX2J5Ijp7Im9yZGVyX2ZpZWxkIjoia2V5d29yZF9pbmZvLnNlYXJjaF92b2x1bWUiLCJvcmRlcl90eXBlIjoiRGVzYyIsIm5leHQiOm51bGx9LCJsaW1pdCI6NjAsIm9mZnNldCI6MCwiYWlkIjoxODc2MjgsInVzZV9jYWNoZSI6dHJ1ZSwidGFza19pZCI6IjA2MDQxNjA1LTE4NzYtMDM5OS0wMDAwLTBjOTQyZDM5ODUzNCIsImZsYWdzIjpudWxsfSwiUmF3UXVlcnkiOm51bGwsIklkIjoiZTkwMGRlZDUtMDRmOC00ODY2LWFlZTgtOTY3ODRiMzM0MWYyIiwiU2VhcmNoQWZ0ZXJEYXRhIjpbMCwiNGJiMjEwOWQtOTVlMC04YTkyLTkxYTAtMWIwMTg3NjFkNGIzIl0sIkV4ZWN1dG9yIjotOTE4NDQwNTk0MDQ0NDUxNzYzM30=",
+                    "items": [
+                        {
+                            "se_type": "google",
+                            "keyword": "quote to cash automation",
+                            "location_code": 2710,
+                            "language_code": "en",
+                            "keyword_info": {
+                                "se_type": "google",
+                                "last_updated_time": "2026-05-23 11:07:06 +00:00",
+                                "competition": null,
+                                "competition_level": null,
+                                "cpc": null,
+                                "search_volume": 10,
+                                "low_top_of_page_bid": null,
+                                "high_top_of_page_bid": null,
+                                "categories": [
+                                    10004,
+                                    10290,
+                                    11233
+                                ],
+                                "monthly_searches": [
+                                    {
+                                        "year": 2026,
+                                        "month": 4,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2026,
+                                        "month": 3,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2026,
+                                        "month": 2,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2026,
+                                        "month": 1,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 12,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 11,
+                                        "search_volume": 10
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 10,
+                                        "search_volume": 10
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 9,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 8,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 7,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 6,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 5,
+                                        "search_volume": 0
+                                    }
+                                ],
+                                "search_volume_trend": {
+                                    "monthly": 0,
+                                    "quarterly": 0,
+                                    "yearly": 0
+                                }
+                            },
+                            "keyword_info_normalized_with_bing": null,
+                            "keyword_info_normalized_with_clickstream": null,
+                            "clickstream_keyword_info": null,
+                            "keyword_properties": {
+                                "se_type": "google",
+                                "core_keyword": null,
+                                "synonym_clustering_algorithm": null,
+                                "keyword_difficulty": null,
+                                "detected_language": "en",
+                                "is_another_language": false,
+                                "words_count": 4
+                            },
+                            "serp_info": null,
+                            "avg_backlinks_info": null,
+                            "search_intent_info": {
+                                "se_type": "google",
+                                "main_intent": "commercial",
+                                "foreign_intent": null,
+                                "last_updated_time": "2026-04-29 19:39:55 +00:00"
+                            }
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bill gates automation quote",
+                            "location_code": 2710,
+                            "language_code": "en",
+                            "keyword_info": {
+                                "se_type": "google",
+                                "last_updated_time": "2026-05-23 17:52:15 +00:00",
+                                "competition": null,
+                                "competition_level": null,
+                                "cpc": null,
+                                "search_volume": 0,
+                                "low_top_of_page_bid": null,
+                                "high_top_of_page_bid": null,
+                                "categories": [
+                                    10004,
+                                    10306,
+                                    12566,
+                                    13464
+                                ],
+                                "monthly_searches": [
+                                    {
+                                        "year": 2026,
+                                        "month": 4,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2026,
+                                        "month": 3,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2026,
+                                        "month": 2,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2026,
+                                        "month": 1,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 12,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 11,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 10,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 9,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 8,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 7,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 6,
+                                        "search_volume": 0
+                                    },
+                                    {
+                                        "year": 2025,
+                                        "month": 5,
+                                        "search_volume": 0
+                                    }
+                                ],
+                                "search_volume_trend": {
+                                    "monthly": 0,
+                                    "quarterly": 0,
+                                    "yearly": 0
+                                }
+                            },
+                            "keyword_info_normalized_with_bing": null,
+                            "keyword_info_normalized_with_clickstream": null,
+                            "clickstream_keyword_info": null,
+                            "keyword_properties": {
+                                "se_type": "google",
+                                "core_keyword": null,
+                                "synonym_clustering_algorithm": null,
+                                "keyword_difficulty": null,
+                                "detected_language": "en",
+                                "is_another_language": false,
+                                "words_count": 4
+                            },
+                            "serp_info": null,
+                            "avg_backlinks_info": null,
+                            "search_intent_info": {
+                                "se_type": "google",
+                                "main_intent": "informational",
+                                "foreign_intent": null,
+                                "last_updated_time": "2026-04-29 12:26:41 +00:00"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

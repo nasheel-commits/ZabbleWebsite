@@ -1,0 +1,640 @@
+[
+  {
+    "keyword": "what is a bespoke crm",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "informational",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What does \"bespoke CRM\" mean?",
+      "What does CRM stand for?",
+      "What is the most common CRM used in South Africa?",
+      "What are the top 5 CRMs?"
+    ]
+  },
+  {
+    "keyword": "how much does a bespoke crm cost",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "How much does it cost to build a custom CRM?",
+      "How much does bespoke software cost?",
+      "How much does a CRM cost?",
+      "What is a bespoke CRM?"
+    ]
+  },
+  {
+    "keyword": "document automation south africa",
+    "requesters": "S07-aeo",
+    "layer": "AEO/SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What is the best document automation software?",
+      "What is a document automation?",
+      "What are the top 5 document management systems?",
+      "What is an example of document automation?"
+    ]
+  },
+  {
+    "keyword": "how to automate invoice processing",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "MEDIUM",
+    "kd": null,
+    "intent": "informational",
+    "serp": "AIO, PAA, Video",
+    "paa": [
+      "How do you automate invoice processing?",
+      "Can Chatgpt generate an invoice?",
+      "How to set up automatic invoices?",
+      "Can I automate invoicing with Excel templates?"
+    ]
+  },
+  {
+    "keyword": "how to automate bank reconciliation",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "informational",
+    "serp": "AIO, PAA, Video",
+    "paa": [
+      "Can bank reconciliation be automated?",
+      "Can ChatGPT do bank reconciliation?",
+      "How to automate bank reconciliation in Excel?",
+      "Can I use AI for reconciliation?"
+    ]
+  },
+  {
+    "keyword": "what is reconciliation in accounting",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": 140,
+    "cpc": 0.01,
+    "comp": "LOW",
+    "kd": 17,
+    "intent": "informational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "what is anomaly detection",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "informational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "what is workflow automation",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "informational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "regulatory reporting software south africa",
+    "requesters": "S07-aeo",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What is the regulatory reporting system?",
+      "What is regulatory software?",
+      "How to do regulatory reporting?",
+      "What is the regulatory compliance framework in South Africa?"
+    ]
+  },
+  {
+    "keyword": "who builds custom software in south africa",
+    "requesters": "S07-aeo;S07-geo",
+    "layer": "GEO/SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA, LocalPack",
+    "paa": [
+      "How much does it cost to develop custom software?",
+      "Who is the biggest IT company in South Africa?",
+      "How much does it cost to create an app in SA?",
+      "How to build a custom software?"
+    ]
+  },
+  {
+    "keyword": "custom software development south africa",
+    "requesters": "S07-aeo",
+    "layer": "SEO",
+    "vol": 20,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "who builds custom business software in south africa",
+    "requesters": "S07-geo",
+    "layer": "GEO/SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "How much does it cost to develop custom software?",
+      "How to build a custom software?",
+      "How much does it cost to create an app in SA?",
+      "How do I build my own software company?"
+    ]
+  },
+  {
+    "keyword": "business process automation south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO/GEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "PAA",
+    "paa": [
+      "Is RPA outdated?",
+      "What are the 5 stages of BPM?",
+      "What is the top 3 RPA software?",
+      "What's the difference between BPR and BPM?"
+    ]
+  },
+  {
+    "keyword": "bespoke crm south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "How much does a bespoke CRM cost?",
+      "What CRM system is used in South Africa?",
+      "What is a bespoke CRM?",
+      "What are the 4 types of CRM systems?"
+    ]
+  },
+  {
+    "keyword": "business automation company south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO/GEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "navigational",
+    "serp": "PAA, LocalPack",
+    "paa": [
+      "Which company is best for automation?",
+      "What does business automation do?",
+      "How much do automation engineers earn in South Africa?",
+      "Which business is booming in South Africa?"
+    ]
+  },
+  {
+    "keyword": "transaction fraud detection south africa",
+    "requesters": "S07-geo",
+    "layer": "AEO/GEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "How do I get my money back from a scammer in South Africa?",
+      "What evidence is required to prove fraud?",
+      "How to detect transaction fraud?",
+      "Do banks refund fraud money?"
+    ]
+  },
+  {
+    "keyword": "fraud detection south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "PAA, Video",
+    "paa": [
+      "What evidence is required to prove fraud?",
+      "How do I check if someone is using my identity in South Africa?",
+      "What are the 7 types of fraud?",
+      "How to get someone investigated for fraud?"
+    ]
+  },
+  {
+    "keyword": "zabble",
+    "requesters": "S07-geo",
+    "layer": "GEO/brand",
+    "vol": 10,
+    "cpc": 26.9,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "informational",
+    "serp": "PAA",
+    "paa": [
+      "What does zabble mean?"
+    ]
+  },
+  {
+    "keyword": "approval workflow software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "MEDIUM",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO",
+    "paa": []
+  },
+  {
+    "keyword": "decision engine software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What is decision engine software?",
+      "What are the 7 decision-making tools?",
+      "What is the difference between DSS and AI?",
+      "Is a decision engine AI?"
+    ]
+  },
+  {
+    "keyword": "order management automation",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, Video",
+    "paa": []
+  },
+  {
+    "keyword": "order management software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": 8.12,
+    "comp": "HIGH",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "rfid inventory tracking",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "navigational",
+    "serp": "AIO, PAA, Video",
+    "paa": [
+      "What is RFID for inventory tracking?",
+      "How to do inventory with RFID?",
+      "Can an RFID chip be used to track stock?",
+      "What is RFID inventory system for small business?"
+    ]
+  },
+  {
+    "keyword": "rfid inventory management",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 20,
+    "cpc": 15.7,
+    "comp": "HIGH",
+    "kd": null,
+    "intent": "navigational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "case management software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 30,
+    "cpc": 9.52,
+    "comp": "MEDIUM",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What software is used for case management?",
+      "What is a case management software?",
+      "Is Excel a case management system?",
+      "What CRM do lawyers use?"
+    ]
+  },
+  {
+    "keyword": "legal case management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "cpq software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What is a CPQ software?",
+      "What is replacing CPQ?",
+      "Is Salesforce a CPQ?",
+      "What is the difference between CPQ and CPQ?"
+    ]
+  },
+  {
+    "keyword": "quote automation software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "PAA, Video",
+    "paa": [
+      "What is quote automation?",
+      "Can I use a quote generator for free?",
+      "What is quote software?",
+      "What does CPQ software do?"
+    ]
+  },
+  {
+    "keyword": "quote automation",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "informational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "role based dashboard",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "navigational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "bi dashboard south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "navigational",
+    "serp": "AIO, PAA",
+    "paa": [
+      "Is Power BI still in demand in 2026 and after 2026?",
+      "How much does a Power BI dashboard cost?",
+      "What are the 4 types of dashboards?",
+      "What are the top 5 BI tools?"
+    ]
+  },
+  {
+    "keyword": "business intelligence dashboard south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "navigational",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "master data management",
+    "requesters": "S06",
+    "layer": "SEO/AEO",
+    "vol": 90,
+    "cpc": 0.53,
+    "comp": "LOW",
+    "kd": 36,
+    "intent": "informational",
+    "serp": "AIO, PAA",
+    "paa": [
+      "What are the 4 types of MDM?",
+      "What does a master data management do?",
+      "Is MDM outdated?",
+      "What is the salary of master data management?"
+    ]
+  },
+  {
+    "keyword": "master data management south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "predictive maintenance",
+    "requesters": "S06",
+    "layer": "SEO/AEO",
+    "vol": 210,
+    "cpc": 4.54,
+    "comp": "LOW",
+    "kd": 26,
+    "intent": "commercial",
+    "serp": "AIO, PAA, Video",
+    "paa": [
+      "What is predictive maintenance?",
+      "What are the 4 types of maintenance?",
+      "What are the three types of predictive maintenance?",
+      "What skills do PdM technicians need?"
+    ]
+  },
+  {
+    "keyword": "predictive maintenance software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "alert management",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "informational",
+    "serp": "AIO, PAA, Video",
+    "paa": [
+      "What is alert management?",
+      "What does an alert manager do?",
+      "What is the purpose of alert?",
+      "What is the alert handling process?"
+    ]
+  },
+  {
+    "keyword": "notification orchestration",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "transactional",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "alert management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": null,
+    "cpc": null,
+    "comp": null,
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "invoice data extraction",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "transactional",
+    "serp": "PAA, Video",
+    "paa": [
+      "How to extract data from an invoice?",
+      "What are the two types of data extraction?",
+      "How to extract invoice data from PDF to Excel?",
+      "What is the invoice data?"
+    ]
+  },
+  {
+    "keyword": "invoice data capture",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 10,
+    "cpc": null,
+    "comp": "LOW",
+    "kd": null,
+    "intent": "transactional",
+    "serp": "\u2014",
+    "paa": []
+  },
+  {
+    "keyword": "inventory management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 50,
+    "cpc": 18.95,
+    "comp": "MEDIUM",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "AIO, PAA",
+    "paa": [
+      "Which software is best for inventory management?",
+      "What is the 80/20 rule for inventory?",
+      "Is Zoho inventory really free?",
+      "What are the 4 types of inventory management?"
+    ]
+  },
+  {
+    "keyword": "stock management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "vol": 50,
+    "cpc": 18.95,
+    "comp": "MEDIUM",
+    "kd": null,
+    "intent": "commercial",
+    "serp": "\u2014",
+    "paa": []
+  }
+]
