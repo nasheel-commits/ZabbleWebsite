@@ -5,6 +5,23 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/fonts'],
   css: ['~/assets/css/main.css'],
+
+  // ── Measurement (S09 analytics) ───────────────────────────────────────────
+  // Real IDs come from env only (see .env.example + docs/seo/id-secret-registry.md).
+  // Nuxt maps NUXT_PUBLIC_ANALYTICS_GTM_ID → runtimeConfig.public.analytics.gtmId.
+  // An empty id ⇒ that tag never loads (the correct pre-launch / no-id state).
+  runtimeConfig: {
+    public: {
+      analytics: {
+        gtmId: '',       // GTM-XXXXXXX
+        ga4Id: '',       // G-XXXXXXXXXX  (used only when no GTM container is set)
+        clarityId: '',   // Microsoft Clarity project id
+        consentRegions: ['ZA'],
+        debug: false,    // NUXT_PUBLIC_ANALYTICS_DEBUG=true → console tracing
+      },
+    },
+  },
+
   fonts: {
     families: [
       { name: 'Inter', weights: [400, 500, 600, 700, 800], styles: ['normal'] },

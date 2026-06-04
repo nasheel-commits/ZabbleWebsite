@@ -24,6 +24,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
 | 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
+| 09a | Analytics, Measurement & Indexing | `seo/09-analytics` | analytics eng | **done** | 00; coord 01, 10 | GA4/GTM/Clarity + Consent Mode v2 (POPIA opt-in) + key events wired (no-op until env ids); IndexNow key + ping; GSC/Bing documented. `build`+`generate` clean. Awaiting ids + DNS (B4). See `audits/09-analytics.md`, `measurement-plan.md`, `id-secret-registry.md`, ADR 0002. |
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;
@@ -60,11 +61,16 @@ DataForSEO account verified + funded ($50.998), live + sandbox calls return
 | ~~B1~~ | ~~Verify DataForSEO account~~ — **RESOLVED 2026-06-04** (sandbox + live now `20000`). | User ✅ | — | `00-access-and-credentials.md` §2 |
 | ~~B2~~ | ~~Fund the account~~ — **RESOLVED 2026-06-04** (balance $50.998). Keep an eye on burn as S05 runs at volume. | User ✅ | — | `00-access-and-credentials.md` §1 |
 | B3 | **Staging URL** not provided. Needed so S01 can set the pre-launch `noindex` guard before any indexing happens. | User → S01 | S01 (P1) | `reference/nuxt-seo-implementation.md` §5 |
-| B4 | **GSC + Bing + analytics access** (DNS for `zabble.org` domain verification; POPIA-compliant analytics choice). | User → S10/S01 | S10 measurement, launch indexing | `reference/measurement-indexing.md` §7 |
+| B4 | **GSC + Bing + analytics access**. Analytics **stack now implemented** (S09a) and POPIA-compliant — *unblocked on the code side*. Still needs from the user: **GA4/GTM/Clarity ids** → `.env` (`NUXT_PUBLIC_ANALYTICS_*`), and **DNS access** to publish the GSC `TXT` for the `zabble.org` Domain property. | User → S09a/S10 | launch indexing + live data | `measurement-plan.md`, `id-secret-registry.md` |
 
 ### Still needed from the user (not blocking session start)
 1. **Staging URL** (B3) — for S01's pre-launch `noindex` guard.
-2. **GSC / Bing / analytics access** (B4) — for S10 + launch indexing.
+2. **GA4 / GTM / Clarity ids** (B4) → `.env`; and **DNS access** for the GSC TXT record. Analytics code is done and no-ops until ids are set.
+
+### Cross-session asks from S09a (analytics)
+- **S01:** confirm `site.url`, robots `Sitemap:` line, **staging `noindex`**, and the generated `sitemap.xml` path (IndexNow ping + GSC submit read it; never submit staging).
+- **S02/S06 + owner:** add a **`/privacy`** POPIA/cookie policy page for the CMP + footer to link.
+- **S10:** fold S09a's 6 key events + AI-referral channel into the launch KPI set.
 
 DataForSEO access is fully live — all 10 sessions can start. **Each new Claude
 Code session must launch with env loaded** (access doc §3) so the MCP tools

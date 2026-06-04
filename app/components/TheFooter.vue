@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import { useAnalytics } from '~/composables/useAnalytics'
+
 const year = new Date().getFullYear()
+const analytics = useAnalytics()
 </script>
 
 <template>
@@ -15,6 +18,12 @@ const year = new Date().getFullYear()
         <NuxtLink to="/#what-we-build" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">What We Build</NuxtLink>
         <NuxtLink to="/#meet" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Use Cases</NuxtLink>
         <a href="mailto:analytics@zabble.org" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Contact</a>
+        <button
+          v-if="analytics.enabled"
+          type="button"
+          class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition text-left"
+          @click="analytics.openSettings()"
+        >Cookie settings</button>
       </nav>
 
       <p class="text-[16px] lg:text-[13px] text-mute-2">© {{ year }} Zabble. All rights reserved.</p>
