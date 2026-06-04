@@ -25,11 +25,14 @@ balance**:
 
 | Captured (date) | Endpoint | `status_code` | `money.balance` | `money.total` | Note |
 |-----------------|----------|---------------|-----------------|---------------|------|
-| **2026-06-04** | `GET /v3/appendix/user_data` | `20000` (Ok) | **1** (USD) | 1 | Almost certainly the $1 trial credit that ships with a new account. Positive, but not enough to sustain 10 sessions of live calls. |
+| 2026-06-04 (initial) | `GET /v3/appendix/user_data` | `20000` (Ok) | 1 (USD) | 1 | New-account $1 trial credit. Data endpoints still gated by `40104` at this point. |
+| **2026-06-04 (verified + funded)** | `GET /v3/appendix/user_data` | `20000` (Ok) | **50.998** (USD) | 51 | After account verification + a ~$50 top-up. Live + sandbox data calls now return `20000`. Goal condition 2 fully satisfied. |
 
-Raw response captured at `_evidence/00/user_data__zabble__live.json` (Authorization
-redacted). API version string at capture: `0.1.20260525`. Account timezone:
-`Africa/Johannesburg`.
+Raw responses captured at `_evidence/00/user_data__zabble__live.json` (initial) and
+`_evidence/00/user_data__zabble__live-verified.json` (verified + funded) —
+Authorization redacted. API version at capture: `0.1.20260525`. Account timezone:
+`Africa/Johannesburg`. First live data call confirmed: SERP regular (SA) →
+`20000`, 10 results, cost $0.002 (`_evidence/00/serp-live__bespoke-business-systems__za.note.md`).
 
 > **Re-verify balance** any time with:
 > ```bash
@@ -40,34 +43,20 @@ redacted). API version string at capture: `0.1.20260525`. Account timezone:
 
 ---
 
-## 2. ⚠ BLOCKER — account verification required before any data call
+## 2. ✅ RESOLVED — account verified + funded (2026-06-04)
 
-As of **2026-06-04**, every data endpoint — **including the free sandbox** —
-returns:
+Earlier on 2026-06-04 every data endpoint (including the free sandbox) returned
+`40104 "Please verify your account before using the API."` That blocker is now
+**cleared**: the account was verified in the user panel and funded with a ~$50
+top-up (balance $50.998). Confirmation:
+- Sandbox SERP (SA) → `20000 Ok`.
+- Live SERP regular (SA) → `20000 Ok`, 10 results, cost $0.002.
+- `user_data` → `money.balance` 50.998.
 
-```
-"status_code": 40104,
-"status_message": "Please verify your account before using the API.
-                   You can complete verification in the user panel: https://app.dataforseo.com/"
-```
-
-`user_data` works (auth is valid, balance reads), but SERP / Labs / OnPage /
-sandbox calls are **blocked until the account is verified**.
-
-**What unblocks it (user action — only you can do this):**
-1. Log in at https://app.dataforseo.com.
-2. Complete the account-verification prompt in the user panel (typically email
-   confirmation, and possibly identity/phone or a minimum top-up — DataForSEO
-   gates new accounts this way).
-3. If verification requires funding, that doubles as the funding step. **Confirm
-   the current minimum top-up in the dashboard** — do not trust any figure
-   quoted from memory; pricing/minimums change. Record the figure here with its
-   capture date when you do.
-4. Re-run the sandbox smoke test in §4. When it returns `20000`, the blocker is
-   cleared and goal condition 1 is fully met.
-
-Until this is done, the MCP server **connects** but its tool calls will all
-return `40104`.
+> If you ever see `40104` again on a new/sub account, the fix is: log in at
+> https://app.dataforseo.com and complete the verification prompt. For funding,
+> **confirm the current minimum top-up in the dashboard** (do not trust a figure
+> from memory — pricing/minimums change) and record it here with its date.
 
 ---
 

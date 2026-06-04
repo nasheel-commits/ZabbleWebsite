@@ -3,7 +3,7 @@
 - **Session:** 00
 - **Branch:** seo/00-setup
 - **Owner:** SEO lead (this session)
-- **Status:** done (with one external blocker — see §6)
+- **Status:** done (all 6 goal conditions met; DataForSEO verified + funded + live)
 - **Date:** 2026-06-04
 - **Depends on:** none (this is the foundation the other 10 sessions depend on)
 - **Layer(s):** Foundation
@@ -28,11 +28,12 @@ discipline audit or application/page code changes beyond `.env.example` + `.mcp.
 
 ## 3. Current state (findings)
 - **Auth: valid.** `user_data` → `status_code` 20000. `[E: 00/user_data__zabble__live.json]`
-- **Balance: $1 (positive).** `money.balance = 1`, `money.total = 1`. Likely the
-  new-account trial credit. Satisfies goal condition 2. `[E: 00/user_data__zabble__live.note.md]`
-- **Data endpoints blocked.** Sandbox **and** live SERP/Labs return `40104`
-  "Please verify your account before using the API." Auth is fine; the account
-  itself is unverified.
+- **Balance: $50.998 (verified + funded).** Started at $1 trial; after account
+  verification + a ~$50 top-up, `money.balance = 50.998`, `money.total = 51`.
+  Satisfies goal condition 2. `[E: 00/user_data__zabble__live-verified.json]`
+- **Data endpoints LIVE.** Early calls returned `40104` (account unverified);
+  after verification, sandbox SERP (SA) → `20000` and live SERP regular (SA) →
+  `20000`, 10 results, cost $0.002. `[E: 00/serp-live__bespoke-business-systems__za.note.md]`
 - **MCP: connected.** Active config is the **hosted HTTP server**
   (`https://mcp.dataforseo.com/http`), Basic-auth token injected from `.env`
   (`${DATAFORSEO_BASIC_AUTH}`) — no secret in committed `.mcp.json`.
@@ -63,10 +64,16 @@ discipline audit or application/page code changes beyond `.env.example` + `.mcp.
 | 5 | P2 | Each session reads `00-conventions.md` before starting | all | — |
 
 ## 6. Cross-session asks / blockers
-- **BLOCKER (external):** account verification — every session that calls
-  DataForSEO (S01, S05, S07, S08, S10) is blocked until cleared. Mirrored in
-  `status.md` for those sessions.
+- **B1 (account verification) + B2 (funding): RESOLVED 2026-06-04.** DataForSEO is
+  verified, funded ($50.998), and live. No DataForSEO blocker remains.
+- **Still needed (non-blocking):** staging URL (B3, for S01 noindex guard) and
+  GSC/Bing/analytics access (B4, for S10 + launch). Tracked in `status.md`.
+- **Session note:** the `mcp__dataforseo__*` tools only load in a Claude Code
+  session launched *after* the server was added and *with env loaded* (access doc
+  §3). The setup session that added the server mid-run can't call them in-place.
 
 ## 7. Evidence index
-- `_evidence/00/user_data__zabble__live.json` — redacted `user_data` response; proves auth OK + balance $1.
-- `_evidence/00/user_data__zabble__live.note.md` — capture metadata + reading + the 40104 caveat.
+- `_evidence/00/user_data__zabble__live.json` — initial `user_data`; auth OK, balance $1, 40104 caveat.
+- `_evidence/00/user_data__zabble__live.note.md` — capture metadata + reading.
+- `_evidence/00/user_data__zabble__live-verified.json` — post-verification/funding; balance $50.998.
+- `_evidence/00/serp-live__bespoke-business-systems__za.note.md` — first live SERP (SA) call, `20000`, $0.002.

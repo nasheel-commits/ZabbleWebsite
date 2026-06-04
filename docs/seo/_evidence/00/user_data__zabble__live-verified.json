@@ -1,0 +1,11 @@
+{
+  "version": "0.1.20260525",
+  "status_code": 20000,
+  "captured": "2026-06-04 (post-verification + funding)",
+  "login": "nasheel@zabble.org",
+  "money": {
+    "total": 51,
+    "balance": 50.998
+  },
+  "_note": "limits omitted; Authorization redacted; password never present."
+}
