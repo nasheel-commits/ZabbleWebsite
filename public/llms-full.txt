@@ -2,7 +2,7 @@
 
 > Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software; it assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: analytics@zabble.org
 
-This file lists every live Zabble system with a one-line, self-contained definition and its canonical URL. Each module is a building block; in a discovery session Zabble works out which blocks a business needs and assembles them into one operating system shaped to that business.
+Zabble (South Africa) is an operations-systems consultancy. It is not affiliated with Zabble, Inc., the United States waste-management software company. This file lists Zabble’s four pillars and every live system with a one-line, self-contained definition and its canonical URL.
 
 ## How Zabble works
 
@@ -12,10 +12,21 @@ This file lists every live Zabble system with a one-line, self-contained definit
 
 ## The four pillars
 
-- Automation — stop doing by hand the work that should not need a human.
-- Audit Trails — know who did what, when, and why; turn audit season into a one-click export.
-- Anomaly Detection — catch fraud, error, and drift before they become a problem.
-- Analytics — turn data a business already has into the decisions it actually makes.
+### Automation
+- URL: https://zabble.org/pillars/automation
+- Stop doing by hand the work that should not need a human.
+
+### Audit Trails
+- URL: https://zabble.org/pillars/audit-trails
+- Know who did what, when, and why; turn audit season into a one-click export.
+
+### Anomaly Detection
+- URL: https://zabble.org/pillars/anomaly-detection
+- Catch fraud, error, and drift before they become a problem.
+
+### Analytics
+- URL: https://zabble.org/pillars/analytics
+- Turn data a business already has into the decisions it actually makes.
 
 ## Systems (30 live modules)
 
@@ -173,4 +184,5 @@ This file lists every live Zabble system with a one-line, self-contained definit
 
 - Email: analytics@zabble.org
 - Location: South Africa
+- Pillars: https://zabble.org/pillars
 - Systems library: https://zabble.org/systems

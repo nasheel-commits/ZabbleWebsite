@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "gen:llms": "node scripts/gen-llms-full.cjs",
+    "test:geo": "node --test tests/geo.test.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.16.0",

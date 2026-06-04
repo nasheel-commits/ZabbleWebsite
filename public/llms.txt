@@ -8,14 +8,15 @@ Zabble sits with a business until it can name the one operational problem costin
 
 - [Zabble — home](https://zabble.org): What Zabble is, how we work (sit with you, build it, you run it), and the four pillars.
 - [Systems library](https://zabble.org/systems): The full library of 30 modules we assemble into bespoke operating systems.
+- [The four pillars](https://zabble.org/pillars): Automation, audit trails, anomaly detection, and analytics — what each is, with cited evidence.
 - [Diagnose your business](https://zabble.org/diagnose): A guided question flow that points to the operational problem costing a business the most.
 
 ## The four pillars
 
-- **Automation** — Stop doing by hand the work that should not need a human.
-- **Audit Trails** — Know who did what, when, and why; turn audit season into a one-click export.
-- **Anomaly Detection** — Catch the fraud, error, and drift before they become a problem.
-- **Analytics** — Turn data a business already has into the decisions it actually makes.
+- [Automation](https://zabble.org/pillars/automation): Stop doing by hand the work that should not need a human.
+- [Audit Trails](https://zabble.org/pillars/audit-trails): Know who did what, when, and why; turn audit season into a one-click export.
+- [Anomaly Detection](https://zabble.org/pillars/anomaly-detection): Catch the fraud, error, and drift before they become a problem.
+- [Analytics](https://zabble.org/pillars/analytics): Turn data a business already has into the decisions it actually makes.
 
 ## Flagship systems
 
