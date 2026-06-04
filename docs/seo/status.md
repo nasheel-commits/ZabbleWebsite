@@ -60,6 +60,9 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
   keeping the answer-first shape.
 - **→ S10/S08 — P1.** `local_pack` on SA service queries ("custom software
   development south africa", "who builds custom software…").
+- **→ S02 (On-page) — P2.** New `/pillars/<slug>` hub pages carry a default
+  `useHead` (title/description from `app/data/pillar-content.ts`); finalise their
+  per-page meta + canonicals to your standard.
 
 ---
 

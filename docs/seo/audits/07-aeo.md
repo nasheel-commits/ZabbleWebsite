@@ -246,7 +246,11 @@ Mirrored into each target session's `status.md` notes.
 - **→ S04 (Architecture) — P2.** Answer block sits directly under the hero and
   FAQ above the CTA on `/systems/[slug]`; please keep that order if the page
   template is restructured. `/diagnose` is an AEO asset (rec #8).
-- **→ S02 (On-page) — FYI.** Added page sections (no `useSeoMeta` changes).
+- **→ S02 (On-page) — FYI / P2.** Added answer/FAQ sections to existing pages
+  (no `useSeoMeta` changes there). The **new `/pillars/<slug>` hub pages** ship a
+  default `useHead` (title + description from `PILLAR_HUBS[slug].metaTitle` /
+  `.metaDescription` in `app/data/pillar-content.ts`) so they aren't metaless —
+  please finalise their per-page meta + canonicals to your standard when you run.
 
 ## 7. Evidence index
 
