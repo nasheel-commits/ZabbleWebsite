@@ -74,6 +74,29 @@ const symptoms = [
           <p class="mt-3 text-[16px] lg:text-[15px] text-mute leading-[1.7]">{{ s.body }}</p>
         </div>
       </div>
+
+      <!-- Cited evidence: quantifies the operational drag this section names.
+           Moved here from Meet Zabble's #who-we-are block, where it sat beside
+           the NAP facts and read as an aside rather than problem evidence. -->
+      <figure
+        v-reveal:fade="120"
+        class="mt-16 md:mt-20 max-w-3xl rounded-2xl border border-line bg-white p-6 md:p-7"
+      >
+        <blockquote class="text-[18px] md:text-[20px] leading-[1.55] text-ink font-display">
+          “More occupations will change than will be automated away.”
+        </blockquote>
+        <figcaption class="mt-3 text-[14.5px] text-mute leading-[1.6]">
+          About <strong class="text-ink font-semibold">60% of all occupations</strong>
+          have at least 30% of their activities that could be automated, which is
+          exactly the operational drag we remove.
+          <a
+            href="https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages"
+            target="_blank"
+            rel="noopener"
+            class="text-cyan-brand-deep hover:text-ink underline underline-offset-2 transition"
+          >McKinsey Global Institute, <em>A Future That Works</em>, 2017</a>.
+        </figcaption>
+      </figure>
     </div>
   </section>
 </template>

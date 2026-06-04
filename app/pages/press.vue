@@ -98,8 +98,8 @@ const facts: Array<{ k: string; v: string }> = [
           <article v-reveal:scale class="rounded-2xl border border-line bg-white p-6 md:p-8">
             <div class="text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep font-semibold">Naming</div>
             <p class="mt-3 text-[15px] leading-[1.6] text-ink">
-              Always written <span class="font-semibold">Zabble</span>, one word, capital Z. Not "Zabble Inc",
-              "Zable", or "Zabble Systems".
+              Always written <span class="font-semibold">Zabble</span>, one word, capital Z. Not "Zable"
+              or "Zabble Systems".
             </p>
           </article>
           <article v-reveal:scale="80" class="rounded-2xl border border-line bg-white p-6 md:p-8">

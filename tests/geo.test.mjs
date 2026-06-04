@@ -108,5 +108,7 @@ test('built home page carries the Organization JSON-LD + disambiguation (when bu
   const html = readFileSync(home, 'utf8')
   assert.ok(html.includes('application/ld+json'), 'home must emit JSON-LD')
   assert.ok(html.includes('disambiguatingDescription'), 'JSON-LD must include disambiguatingDescription')
-  assert.ok(html.includes('not affiliated with Zabble, Inc'), 'home must carry the disambiguation line')
+  // Disambiguation now lives in structured data only (the visible homepage line
+  // was repositioned to positive identity copy); the JSON-LD still names the homonym.
+  assert.ok(/Zabble, Inc/.test(html), 'home JSON-LD must still carry the homonym disambiguation')
 })

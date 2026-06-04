@@ -17,8 +17,9 @@ const industries = [
 ]
 
 // Entity-identity facts (NAP), moved here from the former standalone "Who We
-// Are" section (TheEntity). The disambiguation line below the row keeps the
-// "not affiliated with Zabble, Inc" entity signal on the homepage (GEO F2).
+// Are" section (TheEntity). The line below the row is a positive identity
+// statement; the "not Zabble, Inc." disambiguation now lives only in structured
+// data (schemaOrg.identity in nuxt.config + llms.txt), not in visible copy (GEO F2).
 const facts = [
   { icon: Building2, label: 'What', value: 'Operations-systems consultancy' },
   { icon: MapPin, label: 'Where', value: 'South Africa' },
@@ -135,34 +136,14 @@ const { visible: meetVisible } = useInView(meetRef, { threshold: 0.1, rootMargin
         </div>
       </div>
 
-      <!-- Identity & cited evidence, moved from the former standalone "Who We
-           Are" section so Meet Zabble carries the entity facts without repeating
-           the narrative. id retained for any deep links to #who-we-are. -->
+      <!-- Entity-identity facts, moved from the former standalone "Who We Are"
+           section so Meet Zabble carries the NAP without repeating the narrative.
+           id retained for any deep links to #who-we-are. -->
       <div id="who-we-are" class="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-line scroll-mt-24">
-        <figure
-          v-reveal:fade="120"
-          class="max-w-3xl rounded-2xl border border-line bg-surface-alt/60 p-6 md:p-7"
-        >
-          <blockquote class="text-[18px] md:text-[20px] leading-[1.55] text-ink font-display">
-            “More occupations will change than will be automated away.”
-          </blockquote>
-          <figcaption class="mt-3 text-[14.5px] text-mute leading-[1.6]">
-            About <strong class="text-ink font-semibold">60% of all occupations</strong>
-            have at least 30% of their activities that could be automated, which is
-            exactly the operational drag we remove.
-            <a
-              href="https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages"
-              target="_blank"
-              rel="noopener"
-              class="text-cyan-brand-deep hover:text-ink underline underline-offset-2 transition"
-            >McKinsey Global Institute, <em>A Future That Works</em>, 2017</a>.
-          </figcaption>
-        </figure>
-
         <!-- NAP / identity row -->
         <dl
           v-reveal:fade="180"
-          class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl"
+          class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl"
         >
           <div
             v-for="f in facts"
@@ -185,9 +166,8 @@ const { visible: meetVisible } = useInView(meetRef, { threshold: 0.1, rootMargin
         </dl>
 
         <p v-reveal:fade="240" class="mt-6 max-w-3xl text-[13.5px] text-mute-2 leading-[1.6]">
-          Zabble (South Africa) is an operations-systems consultancy. It is not
-          affiliated with Zabble, Inc., the United States waste-management software
-          company.
+          Zabble is a South African operations-systems consultancy — bespoke
+          systems built around the one problem slowing a specific business down.
         </p>
       </div>
     </div>
