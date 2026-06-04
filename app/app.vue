@@ -21,8 +21,9 @@ const canonicalHref = computed(() =>
 // NOT here. A second hand-rolled Organization node (the earlier GEO app.vue
 // block, @id …/#organization) would split the entity against nuxt-schema-org's
 // @id …/#identity, so it was removed. `app/data/organization.ts` is retained for
-// the on-page entity panel (TheEntity.vue) and its content is kept byte-identical
-// to the schemaOrg identity. Per-page Service/FAQPage/Article nodes extend the
+// the on-page entity facts in the Meet Zabble section (TheMeet.vue) and its
+// content is kept byte-identical to the schemaOrg identity. Per-page
+// Service/FAQPage/Article nodes extend the
 // same entity from their pages.
 useHead({
   link: [{ rel: 'canonical', href: canonicalHref }],

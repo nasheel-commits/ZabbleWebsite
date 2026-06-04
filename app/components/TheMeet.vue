@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ArrowRight } from '@lucide/vue'
+import { ArrowRight, MapPin, Mail, Globe, Building2 } from '@lucide/vue'
 
+import { ORGANIZATION } from '~/data/organization'
 import { useInView } from '~/composables/useInView'
 
 const industries = [
@@ -13,6 +14,18 @@ const industries = [
   'Manufacturing',
   'Marketing agencies',
   'Small & medium businesses',
+]
+
+// Entity-identity facts (NAP), moved here from the former standalone "Who We
+// Are" section (TheEntity). The disambiguation line below the row keeps the
+// "not affiliated with Zabble, Inc" entity signal on the homepage (GEO F2).
+const facts = [
+  { icon: Building2, label: 'What', value: 'Operations-systems consultancy' },
+  { icon: MapPin, label: 'Where', value: 'South Africa' },
+  { icon: Mail, label: 'Contact', value: ORGANIZATION.email, href: `mailto:${ORGANIZATION.email}` },
+  // Self-reference to the homepage, kept relative so it isn't flagged as an
+  // absolute internal link (nuxt-link-checker absolute-site-urls).
+  { icon: Globe, label: 'Web', value: 'zabble.org', href: '/' },
 ]
 
 // Gate the CPU SVG's continuous animations (stroke gradient on text + marker
@@ -120,6 +133,62 @@ const { visible: meetVisible } = useInView(meetRef, { threshold: 0.1, rootMargin
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Identity & cited evidence, moved from the former standalone "Who We
+           Are" section so Meet Zabble carries the entity facts without repeating
+           the narrative. id retained for any deep links to #who-we-are. -->
+      <div id="who-we-are" class="mt-16 md:mt-24 pt-12 md:pt-16 border-t border-line scroll-mt-24">
+        <figure
+          v-reveal:fade="120"
+          class="max-w-3xl rounded-2xl border border-line bg-surface-alt/60 p-6 md:p-7"
+        >
+          <blockquote class="text-[18px] md:text-[20px] leading-[1.55] text-ink font-display">
+            “More occupations will change than will be automated away.”
+          </blockquote>
+          <figcaption class="mt-3 text-[14.5px] text-mute leading-[1.6]">
+            About <strong class="text-ink font-semibold">60% of all occupations</strong>
+            have at least 30% of their activities that could be automated, which is
+            exactly the operational drag we remove.
+            <a
+              href="https://www.mckinsey.com/featured-insights/future-of-work/jobs-lost-jobs-gained-what-the-future-of-work-will-mean-for-jobs-skills-and-wages"
+              target="_blank"
+              rel="noopener"
+              class="text-cyan-brand-deep hover:text-ink underline underline-offset-2 transition"
+            >McKinsey Global Institute, <em>A Future That Works</em>, 2017</a>.
+          </figcaption>
+        </figure>
+
+        <!-- NAP / identity row -->
+        <dl
+          v-reveal:fade="180"
+          class="mt-10 grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 max-w-4xl"
+        >
+          <div
+            v-for="f in facts"
+            :key="f.label"
+            class="rounded-xl border border-line bg-white p-4 md:p-5"
+          >
+            <dt class="flex items-center gap-2 text-[12px] uppercase tracking-[0.18em] text-mute-2 font-semibold">
+              <component :is="f.icon" :size="14" :stroke-width="1.9" class="text-cyan-brand-deep" />
+              {{ f.label }}
+            </dt>
+            <dd class="mt-2 text-[15px] md:text-[15.5px] font-medium text-ink leading-snug">
+              <a
+                v-if="f.href"
+                :href="f.href"
+                class="hover:text-cyan-brand-deep transition break-words"
+              >{{ f.value }}</a>
+              <span v-else>{{ f.value }}</span>
+            </dd>
+          </div>
+        </dl>
+
+        <p v-reveal:fade="240" class="mt-6 max-w-3xl text-[13.5px] text-mute-2 leading-[1.6]">
+          Zabble (South Africa) is an operations-systems consultancy. It is not
+          affiliated with Zabble, Inc., the United States waste-management software
+          company.
+        </p>
       </div>
     </div>
   </section>

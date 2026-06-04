@@ -1,7 +1,8 @@
 // Canonical Zabble organization entity, single source of truth.
 //
 // Used by: the site-wide Organization JSON-LD (app.vue), the on-site entity
-// section (TheEntity.vue), llms.txt generation, and the GEO test suite. S03/S08
+// facts in the Meet Zabble section (TheMeet.vue), llms.txt generation, and the
+// GEO test suite. S03/S08
 // (schema) and S10 (off-page profiles) should CONSUME this object rather than
 // re-declaring the entity, so every surface tells generative engines the same
 // thing.
