@@ -22,6 +22,30 @@ usePageSeo({
   primaryKeyword: 'operational systems',
 })
 
+// ── Structured data / JSON-LD (S03) ────────────────────────────────────────
+// CollectionPage + breadcrumb + an ItemList mirroring the live system cards in
+// the gallery. Concept entries are hidden in the UI (only `live` systems render
+// as cards), so they're excluded here too — the list matches what's on screen.
+const liveSystemsForSchema = SYSTEMS.filter((sx) => sx.status === 'live')
+useSchemaOrg([
+  defineWebPage({ '@type': ['WebPage', 'CollectionPage'] }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Systems', item: '/systems' },
+    ],
+  }),
+  defineItemList({
+    name: 'Operational systems built by Zabble',
+    itemListElement: liveSystemsForSchema.map((sx, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: sx.name,
+      url: `https://zabble.org/systems/${sx.slug}`,
+    })),
+  }),
+])
+
 const route = useRoute()
 const router = useRouter()
 

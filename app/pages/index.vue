@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { HOME_FAQS } from '~/data/site-faqs'
+
 // Home — primary intent: the brand entity + core offering "bespoke business
 // systems / custom software, South Africa" (commercial + navigational).
 // Verify volumes against targets/keyword-map.md once S05 completes. (S02 on-page)
@@ -11,6 +13,15 @@ usePageSeo({
   // Primary intent for the home/offering page (keyword-map.md core cluster, S03).
   primaryKeyword: 'software development company south africa',
 })
+
+// ── Structured data / JSON-LD (S03) ────────────────────────────────────────
+// Home FAQPage. The page renders <TheFaq> → <FaqList :items="HOME_FAQS">; this
+// emits the matching FAQPage Question nodes from the SAME HOME_FAQS array, so
+// the JSON-LD Q&A is byte-identical to the on-page Q&A (the AnswerBlock "What
+// does Zabble do?" lead is intentionally left out — FAQPage mirrors the FAQ
+// list, not the page's primary heading). Site-wide Organization + WebSite +
+// WebPage identity is injected globally in nuxt.config.
+useFaqSchema(HOME_FAQS)
 </script>
 
 <template>

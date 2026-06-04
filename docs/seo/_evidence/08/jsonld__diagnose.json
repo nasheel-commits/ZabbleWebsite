@@ -1,0 +1,77 @@
+[
+  {
+    "@id": "https://zabble.org/#website",
+    "@type": "WebSite",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Zabble",
+    "url": "https://zabble.org/",
+    "publisher": {
+      "@id": "https://zabble.org/#identity"
+    }
+  },
+  {
+    "@id": "https://zabble.org/diagnose#webpage",
+    "@type": "WebPage",
+    "description": "A 2-minute diagnostic to find the operational problem that's costing your business the most.",
+    "name": "Diagnose your operations · Zabble",
+    "url": "https://zabble.org/diagnose",
+    "about": {
+      "@id": "https://zabble.org/#identity"
+    },
+    "isPartOf": {
+      "@id": "https://zabble.org/#website"
+    },
+    "potentialAction": [
+      {
+        "@type": "ReadAction",
+        "target": [
+          "https://zabble.org/diagnose"
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/#identity",
+    "@type": "Organization",
+    "description": "Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.",
+    "disambiguatingDescription": "Zabble is the South African bespoke operational-systems consultancy at zabble.org; it is unrelated to Zabble, Inc., the United States waste-management software company.",
+    "email": "analytics@zabble.org",
+    "name": "Zabble",
+    "slogan": "We don’t sell software. We build the system your business actually needs.",
+    "url": "https://zabble.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ZA"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      {
+        "@type": "City",
+        "name": "Johannesburg"
+      },
+      {
+        "@type": "City",
+        "name": "Cape Town"
+      },
+      {
+        "@type": "City",
+        "name": "Pretoria"
+      }
+    ],
+    "knowsAbout": [
+      "business process automation",
+      "workflow automation",
+      "audit trails",
+      "anomaly detection",
+      "business analytics",
+      "bespoke software development",
+      "document intelligence",
+      "reconciliation automation",
+      "regulatory reporting automation",
+      "custom CRM"
+    ]
+  }
+]

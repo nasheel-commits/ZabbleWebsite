@@ -18,6 +18,10 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 02 | On-Page & Metadata | `seo/05-onpage` | on-page agent | **done** | 00, 03-keywords | Branch `seo/05-onpage`. **Full build-out:** unique title/desc/canonical(non-www)/OG/Twitter via `usePageSeo` on **all 52 prerendered pages** (home, /systems, 30 modules, 4 pillar hubs `/pillars/*`, 6 industry pages `/industries/*`, 5 insight explainers `/insights/*`, /diagnose, /contact); `titleTemplate`; `lang=en-ZA`; answer-first slot + `definition`/`faqs` from S03's verified ZA keyword map; one canonical page per primary intent (52/52 unique). Regression test `npm run test:seo` (0 violations) + `nuxt generate` clean. Audit `audits/05-onpage.md` §13. |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | S04 | **done** | 00 | **IMPLEMENTED + tested.** 4 pillar hubs live at `/what-we-build/<pillar>`; hub↔member linking; footer + home wired to hubs + `/systems`; `SeoBreadcrumb` + `RelatedSystems` on all templates; faceted `?pillar=` removed from crawl graph; concept pages delinked. `nuxt generate` exit 0 (76 routes); **16/16** arch tests pass (`npm run test:arch`). Audit §8 = impl log. **OR-6/OR-7 now done by S04**; OR-3/OR-4/OR-8 remain (S01/S03). |
+| 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
+| 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
+| 03 | Structured Data / Schema.org | `seo/08-schema` ‡ | structured-data agent | **done** | 00, 01 (`site.url`) | Organization+WebSite identity + per-template schema (WebPage/CollectionPage/ItemPage, BreadcrumbList, Service, ItemList) via `nuxt-schema-org`; server-rendered, all validated → `_evidence/08/`. See `audits/08-schema.md`. ‡ commissioned on branch `seo/08-schema` (not `seo/03-schema`). |
+| 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard + components + **all 32 systems + 4 pillar hubs (`/pillars/*`) + home + `/systems` populated** (answer-first 40–60w + PAA FAQs), byte-verified server-side. **188 vitest regression tests pass; `nuxt generate` clean (76 routes).** Live SA SERP/PAA evidence ($0.081). Audit `audits/07-aeo.md`. **JSON-LD hand-off to S03/S08 logged below (P0).** |
@@ -99,6 +103,29 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 - **→ S02 (On-page) — P2.** New `/pillars/<slug>` hub pages carry a default
   `useHead` (title/description from `app/data/pillar-content.ts`); finalise their
   per-page meta + canonicals to your standard.
+### Cross-session asks from S03/schema (branch `seo/08-schema`, updated 2026-06-04)
+Schema implemented + validated (all types pass; FAQ byte-identical to on-page text;
+see `audits/08-schema.md`). Markup matches reality — nothing fabricated.
+
+**Resolved this pass:**
+- **S07 (AEO) ✓** — FAQ content delivered + integrated; **`FAQPage` now emits**
+  byte-identically on home + 7 system pages. More systems light up automatically as
+  S07 adds FAQ sets to `AEO_CONTENT`.
+- **S07-geo (entity) ✓ (schema side)** — Organization `description`/`knowsAbout`
+  applied byte-exact to boilerplate B + `llms.txt`; `disambiguatingDescription`
+  carries the "not Zabble, Inc. (US)" signal.
+- **S04 (local) ◑** — `areaServed` = South Africa + Jhb/CPT/Pretoria added.
+
+**Still needed (wired-on-arrival — nothing fabricated until real):**
+- **S10:** verified `sameAs` URLs (LinkedIn/Crunchbase/GBP) + the Wikidata item →
+  uncomment the `sameAs` block in `nuxt.config.ts`. (All PENDING per 07-geo §2/§4.)
+- **S01/design:** a ≥112×112 `/public/zabble-logo.png` → uncomment `logo`.
+- **S04/S10:** verified NAP (blocker **B6**) → upgrade Organization to `LocalBusiness`.
+- **S06/S10:** live blog pages → `Article`/`BlogPosting` via the ready
+  `useContentSchema.ts` (only briefs exist today, no `app/pages` posts).
+- **S01/S10:** run Google Rich Results Test on live URLs at launch — paste from
+  `_evidence/08/rrt-paste-in.md` (no public API; site is pre-launch).
+- **S01:** dedupe `nuxt-schema-org` vs the `@nuxtjs/seo` umbrella on rebase.
 
 ---
 

@@ -69,6 +69,54 @@ usePageSeo(() => ({
   primaryKeyword: sys.value.keywords?.[0],
 }))
 
+// ── Structured data / JSON-LD (S03) ────────────────────────────────────────
+// Per-module markup: WebPage (ItemPage; also FAQPage when the page renders a
+// FAQ block) + the breadcrumb trail + a Service node (provider → the Zabble
+// Organization). Service — not Product/SoftwareApplication — because Zabble
+// delivers a bespoke build/consulting engagement, not a priced, off-the-shelf
+// product (audits/08-schema.md §type-choice). Service is emitted only for
+// systems with real, signed-off copy; concept/TODO entries make no claims.
+//
+// FAQ: when `sys.faqs` exists the page renders <FaqList :items="sys.faqs"> (the
+// AEO block above). The SAME array drives the FAQPage Question nodes here, so
+// the JSON-LD Q&A is byte-identical to the visible Q&A by construction
+// (asserted in scripts/validate-schema.mjs: schema text == rendered <dt>/<dd>).
+const s = sys.value
+const faqs = s.faqs ?? []
+const webPageTypes = ['WebPage', 'ItemPage', ...(faqs.length ? ['FAQPage'] : [])]
+useSchemaOrg([
+  defineWebPage({ '@type': webPageTypes }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Systems', item: '/systems' },
+      { name: s.name, item: `/systems/${s.slug}` },
+    ],
+  }),
+  // Service emitted as a raw graph node: @unhead/schema-org's Vue build has no
+  // `defineService` helper, but a typed Service node with an explicit,
+  // page-unique @id resolves identically. provider → the Zabble Organization.
+  ...(s.status !== 'concept'
+    ? [
+        {
+          '@type': 'Service',
+          '@id': `https://zabble.org/systems/${s.slug}#service`,
+          name: s.name,
+          description: s.tagline,
+          serviceType: 'Bespoke operational system',
+          provider: { '@id': 'https://zabble.org/#identity' },
+          areaServed: { '@type': 'Country', name: 'South Africa' },
+          category: pillarMetas.value.map((p) => p.label),
+          url: `https://zabble.org/systems/${s.slug}`,
+        },
+      ]
+    : []),
+  // FAQPage Question nodes — 1:1, byte-identical to the rendered FaqList items.
+  ...faqs.map((f) =>
+    defineQuestion({ name: f.question, acceptedAnswer: f.answer }),
+  ),
+])
+
 </script>
 
 <template>

@@ -105,6 +105,11 @@ export const PILLAR_SEO: Record<PillarSlug, PillarSeo> = {
 
 export type SystemStatus = 'live' | 'in-progress' | 'concept'
 
+// `AnswerBlock` and `Faq` are defined once in app/data/aeo-content.ts and
+// re-exported at the top of this file (single source of truth for the AEO/FAQ
+// shape, so on-page render and FAQPage JSON-LD stay byte-identical). S03's
+// schema builders import them from here.
+
 export interface System {
   /** URL slug — used for /systems/[slug] route and as DemoSlot registry key. */
   slug: string

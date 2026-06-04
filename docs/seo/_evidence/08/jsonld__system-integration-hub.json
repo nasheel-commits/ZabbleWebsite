@@ -1,0 +1,126 @@
+[
+  {
+    "@id": "https://zabble.org/#website",
+    "@type": "WebSite",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Zabble",
+    "url": "https://zabble.org/",
+    "publisher": {
+      "@id": "https://zabble.org/#identity"
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#webpage",
+    "description": "The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.",
+    "name": "Integration Hub · Zabble",
+    "url": "https://zabble.org/systems/integration-hub",
+    "@type": [
+      "WebPage",
+      "ItemPage"
+    ],
+    "about": {
+      "@id": "https://zabble.org/#identity"
+    },
+    "breadcrumb": {
+      "@id": "https://zabble.org/systems/integration-hub#breadcrumb"
+    },
+    "isPartOf": {
+      "@id": "https://zabble.org/#website"
+    },
+    "potentialAction": [
+      {
+        "@type": "ReadAction",
+        "target": [
+          "https://zabble.org/systems/integration-hub"
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/#identity",
+    "@type": "Organization",
+    "description": "Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down.",
+    "disambiguatingDescription": "Zabble is the South African bespoke operational-systems consultancy at zabble.org; it is unrelated to Zabble, Inc., the United States waste-management software company.",
+    "email": "analytics@zabble.org",
+    "name": "Zabble",
+    "slogan": "We don’t sell software. We build the system your business actually needs.",
+    "url": "https://zabble.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ZA"
+    },
+    "areaServed": [
+      {
+        "@type": "Country",
+        "name": "South Africa"
+      },
+      {
+        "@type": "City",
+        "name": "Johannesburg"
+      },
+      {
+        "@type": "City",
+        "name": "Cape Town"
+      },
+      {
+        "@type": "City",
+        "name": "Pretoria"
+      }
+    ],
+    "knowsAbout": [
+      "business process automation",
+      "workflow automation",
+      "audit trails",
+      "anomaly detection",
+      "business analytics",
+      "bespoke software development",
+      "document intelligence",
+      "reconciliation automation",
+      "regulatory reporting automation",
+      "custom CRM"
+    ]
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#breadcrumb",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "name": "Home",
+        "item": "https://zabble.org",
+        "position": 1
+      },
+      {
+        "@type": "ListItem",
+        "name": "Systems",
+        "item": "https://zabble.org/systems",
+        "position": 2
+      },
+      {
+        "@type": "ListItem",
+        "name": "Integration Hub",
+        "item": "https://zabble.org/systems/integration-hub",
+        "position": 3
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#service",
+    "@type": "Service",
+    "description": "The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.",
+    "name": "Integration Hub",
+    "serviceType": "Bespoke operational system",
+    "url": "https://zabble.org/systems/integration-hub",
+    "areaServed": {
+      "@type": "Country",
+      "name": "South Africa"
+    },
+    "category": [
+      "Automation",
+      "Audit Trails"
+    ],
+    "provider": {
+      "@id": "https://zabble.org/#identity"
+    }
+  }
+]
