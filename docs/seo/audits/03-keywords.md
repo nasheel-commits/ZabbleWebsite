@@ -6,10 +6,15 @@
   `audits/05-keywords.md` is superseded by this file.*
 - **Branch:** `seo/03-keywords` (worked in an isolated git worktree — see §2 / ADR-0002)
 - **Owner:** SEO strategist (keyword research)
-- **Status:** done
-- **Date:** 2026-06-04
+- **Status:** done (Phase 1 research) · done (Phase 2 operationalisation — §8)
+- **Date:** 2026-06-04 (Phase 1) · 2026-06-04 (Phase 2, zabble.org now live)
 - **Depends on:** 00 (DataForSEO verified + funded — both delivered)
 - **Layer(s):** SEO (feeds AEO + GEO)
+
+> **Two phases.** Phase 1 (§§1–7) built the keyword universe + map. Phase 2 (§8) turned the map
+> into the program's living source of truth now that `zabble.org` is live: resolved every
+> cross-session research request, verified live canonical URLs, pulled the launch rank baseline,
+> stood up monthly tracking, and added a passing validator.
 
 ## 1. Scope
 
@@ -126,6 +131,21 @@ are the 10 uber targets in `keyword-map.md` §2.
   (thin-content is the #1 risk). — *Rec 6,7.*
 - **S02 (on-page):** primary-keyword assignment per `intent-clusters.md` §2. — *Rec 1,2.*
 
+### 6.1 URL-coverage escalations (Phase 2 — gaps with proposed canonical URLs)
+
+Every uber + P0 + P1 commercial money-page term maps to a **live** URL; the only gaps are
+to-create hub/index pages. Each is escalated here with a proposed canonical URL (detail +
+affected terms in `keyword-map.md` §7.1):
+
+| Gap (404 today) | Proposed canonical URL(s) | Owning session | Priority terms affected |
+|---|---|---|---|
+| Pillar hubs | `/pillars/{automation,anomaly-detection,analytics,audit-trails}` | **S04 (architecture)** + **S06 (content)** | `business process automation` (U), `fraud detection software` (U), `decision support system` (P0), `robotic process automation` |
+| Industry pages | `/industries/{hospitality,legal,logistics,banking,ngo,manufacturing}` | **S06 (content)** + S04 | `hospitality management software`, `legal practice management software south africa`, `logistics software south africa` (all P1) |
+| Standalone explainers / `/blog`, `/faq` | FAQ blocks on live money pages (+ `FAQPage` schema) — no `/blog` needed yet | **S07 (AEO)** + schema session | AEO question set (`keyword-map.md` §6.1 informational rows) |
+
+Interim: affected terms are routed to the nearest live page (home / the relevant module page)
+in `keyword-map.md` §7 so nothing is unmapped while the hub pages are built.
+
 ## 7. Evidence index (`_evidence/03/`)
 
 - `userdata__balance__live.json` — account balance/health (top status 20000, balance $49.636 post-run).
@@ -139,3 +159,62 @@ are the 10 uber targets in `keyword-map.md` §2.
 - `serp-paa-questions__clusters__za.json` — extracted PAA questions + related searches per query (AEO sets).
 - `consolidated.json` — merged + scored dataset (the source of the map table).
 - `_build_curated.py`, `_merge.py`, `_gen_map.py` — reproducible generators (method, not data).
+
+**Phase 2 (operationalisation) evidence:**
+- `requests-keywords.json` / `requests-resolved.json` — the 43 harvested cross-session requests (provenance) + their merged resolution data.
+- `gads-search-volume__requests__za.json`, `labs-bulk-kd__requests__za.json`, `labs-search-intent__requests__za.json` — trio for the 43 request terms.
+- `serp-advanced__req-*__za.json` — 27 SERP `item_type` pulls for request head terms (AEO slot confirmation).
+- `labs-keyword-suggestions__{master-data-management,quote-automation,bi-dashboard,order-management,predictive-maintenance}__za.json` — S06 long-tail expansions.
+- `url-coverage__zabble-org__live.csv` — HTTP status of every candidate canonical URL (32 module pages live; pillar/industry/blog 404; apex→www).
+- `labs-ranked-keywords__zabble-org__za.json`, `labs-domain-rank-overview__zabble-org__za.json` — launch rank baseline (0 / null).
+- `rank-tracking/2026-06/*` — full baseline tracking run (2 Labs + 22 SERP sweeps; live SERP shows `zabble.org` #1 for brand).
+- `validate_keyword_map.py` — the map validator (652 checks, PASS). `run_rank_tracking.py` — monthly runner (smoke-tested live).
+- `_gen_ops.py`, `_inject_map.py` — Phase-2 fragment generators.
+
+## 8. Operational phase (2026-06-04, Phase 2) — map → living source of truth
+
+**Trigger:** `zabble.org` is live. Goal: resolve the cross-session research requests, confirm
+canonical URLs, baseline live rank/visibility, and stand up tracking.
+
+### 8.1 Method
+Same SA/en, sandbox-shaped → live-with-limits discipline. Worked in the isolated worktree
+`C:/Users/nashe/zabble-seo-03-keywords`; committed frequently. Balance checked first
+($49.55 → $49.21 after this phase).
+1. **Harvested** the open §4 requests from sibling branches' copies of `keyword-map.md`
+   (`git show <branch>:…`) — S07-aeo (11 AEO question terms), S07-geo (8 entity/question terms),
+   S06/S10-content (Wave-2/3 set + long-tail expansions).
+2. **Resolved** them: `google_ads/search_volume` + `bulk_keyword_difficulty` + `search_intent`
+   over the 43-term union (one call each), + 27 `serp/google/organic/live/advanced` pulls for
+   `item_types`, + 5 `keyword_suggestions` expansions. Merged in `_merge_requests.py`.
+3. **URL coverage:** HTTP-status pull of all candidate canonical URLs (`url-coverage…csv`);
+   mapped every uber+P0+P1 cluster to a live URL in `keyword-map.md` §7; escalated gaps (§6.1).
+4. **Live baseline:** `ranked_keywords` + `domain_rank_overview` for `zabble.org` (SA).
+5. **Tracking:** built `targets/rank-tracking.md` (22-term set, monthly cadence, exact calls,
+   seeded log) + a dependency-free runner `run_rank_tracking.py` (smoke-tested live — it
+   produced the 2026-06 baseline folder).
+6. **Test:** `validate_keyword_map.py` (schema + every priority row has target URL + sourced
+   metric + date + live-URL cross-check) — **652 checks, PASS**.
+
+### 8.2 Findings (Phase 2)
+| # | Finding | Evidence |
+|---|---------|----------|
+| F9 | **All 43 cross-session requests resolved.** Highest new demand: `predictive maintenance` 210/mo (KD 26) — promote to P0; `master data management tools` 170 (KD 18); `what is reconciliation in accounting` 140 (KD 17). `quote automation`/CPQ ≈ no ZA volume. | `requests-resolved.json`, `keyword-map.md` §6 |
+| F10 | **Every uber + P0 + P1 commercial term maps to a LIVE canonical page.** All 32 `/systems/<slug>` + `/`, `/systems`, `/diagnose` return 200. | `url-coverage__zabble-org__live.csv`, `keyword-map.md` §7 |
+| F11 | **Gaps are to-create hubs only:** `/pillars/*` and `/industries/*` are 404; `/blog`,`/faq`,`/about`,`/contact` 404. Escalated with proposed URLs (§6.1). | same csv |
+| F12 | **Canonical host = `www.zabble.org`** (apex `zabble.org` 301→www). All target URLs use `www`. | csv `final_url` column |
+| F13 | **Launch rank baseline:** Labs rank-DB shows **0** ranked kw / null domain metrics (DB lags new site), **but the live SERP sweep already ranks `zabble.org` #1 for brand `zabble`**; 21/22 tracked terms not in top 30; AI Overview on ~17/22. | `labs-ranked-keywords…`, `rank-tracking/2026-06/` |
+| F14 | **Entity collision confirmed live:** the `zabble` SERP also carries the US *Zabble, Inc.* homonym. Disambiguation (Organization `sameAs`, GBP, NAP) is a GEO priority. | `rank-tracking/2026-06/serp__zabble__za.json` |
+
+### 8.3 Spend (Phase 2)
+≈ **$0.34** (43-term trio $0.095 + 27 request SERPs $0.095 + 5 expansions $0.09 + baseline
+2×$0.01 + tracking smoke-run ≈$0.10). **Program total ≈ $1.79** (balance $50.998 → $49.21).
+All `cost` fields captured in the evidence JSONs.
+
+### 8.4 Definition-of-done check (Phase 2 goal)
+- [x] Every open §4 request resolved with sourced/dated data, marked resolved (`keyword-map.md` §6).
+- [x] Every priority + uber cluster mapped to a live canonical URL; gaps escalated with proposed URLs (§7, §6.1).
+- [x] Live `ranked_keywords` + `domain_rank_overview` baseline recorded (§8.2 F13).
+- [x] `targets/rank-tracking.md` committed — monthly cadence + exact calls + seeded baseline log.
+- [x] `validate_keyword_map.py` passes (652 checks).
+- [x] Raw exports in `_evidence/03/` with spend recorded (§8.3).
+- [x] Audit (this §8) + `status.md` updated; committed on `seo/03-keywords`.
