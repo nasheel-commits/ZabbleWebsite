@@ -1,0 +1,1324 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.2006 sec.",
+    "cost": 0.0313,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041511-1876-0392-0000-a174ede03516",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.1356 sec.",
+            "cost": 0.0313,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "bulk_keyword_difficulty",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "bulk_keyword_difficulty",
+                "se_type": "google",
+                "keywords": [
+                    "zabble",
+                    "zabble south africa",
+                    "zabble.org",
+                    "kairos voice agent",
+                    "zabble systems",
+                    "custom software development south africa",
+                    "custom software development",
+                    "software development company south africa",
+                    "software development company cape town",
+                    "software development company johannesburg",
+                    "software development company durban",
+                    "bespoke software development",
+                    "bespoke software development south africa",
+                    "bespoke software south africa",
+                    "custom software development company",
+                    "custom business software",
+                    "business process automation south africa",
+                    "business process automation",
+                    "business process automation consultant",
+                    "workflow automation south africa",
+                    "workflow automation",
+                    "business automation",
+                    "business automation south africa",
+                    "business automation consultant",
+                    "automation of business processes",
+                    "digital transformation south africa",
+                    "operational systems",
+                    "custom software development cape town",
+                    "custom software development johannesburg",
+                    "robotic process automation",
+                    "intelligent automation",
+                    "what is business process automation",
+                    "how to automate business processes",
+                    "audit trail software",
+                    "audit management software",
+                    "compliance audit software",
+                    "what is an audit trail",
+                    "anomaly detection software",
+                    "anomaly detection",
+                    "fraud detection software",
+                    "what is anomaly detection",
+                    "business intelligence software",
+                    "data analytics software",
+                    "operational analytics",
+                    "analytics dashboard software",
+                    "decision support system",
+                    "ai receptionist",
+                    "ai voice agent",
+                    "virtual receptionist software",
+                    "ai phone answering service",
+                    "event management software",
+                    "approval workflow software",
+                    "approval management software",
+                    "loan approval workflow",
+                    "sign off workflow software",
+                    "omnichannel inbox",
+                    "shared inbox software",
+                    "unified inbox software",
+                    "multichannel customer support software",
+                    "workflow orchestration software",
+                    "workflow automation software",
+                    "event driven automation",
+                    "business workflow software",
+                    "decision engine software",
+                    "decision management software",
+                    "automated decision making",
+                    "rules engine software",
+                    "loan decisioning software",
+                    "intelligent document processing",
+                    "document data extraction",
+                    "ocr automation software",
+                    "invoice data capture software",
+                    "document automation",
+                    "document assembly software",
+                    "document generation software",
+                    "contract generation software",
+                    "proposal automation software",
+                    "custom crm",
+                    "bespoke crm",
+                    "crm software south africa",
+                    "custom crm development",
+                    "crm software in south africa",
+                    "crm development",
+                    "customer 360 software",
+                    "single customer view",
+                    "unified customer view",
+                    "customer data platform",
+                    "internal knowledge base software",
+                    "ai knowledge assistant",
+                    "sop software",
+                    "company wiki software",
+                    "lead qualification software",
+                    "lead qualification automation",
+                    "automated lead qualification",
+                    "lead scoring software",
+                    "legacy system integration",
+                    "legacy system modernization",
+                    "legacy modernization",
+                    "erp integration software",
+                    "rfid inventory system",
+                    "inventory management software",
+                    "stock management software",
+                    "rfid asset tracking",
+                    "warehouse inventory system",
+                    "client onboarding software",
+                    "customer onboarding software",
+                    "kyc onboarding software",
+                    "digital onboarding software",
+                    "case management software",
+                    "case management system",
+                    "legal case management software",
+                    "matter management software",
+                    "task management software",
+                    "workflow task management",
+                    "conveyancing software",
+                    "field service management software",
+                    "field service app",
+                    "field operations software",
+                    "offline data collection app",
+                    "business intelligence dashboard",
+                    "decision support software",
+                    "operational analytics software",
+                    "business analytics software",
+                    "accounting automation software",
+                    "automated accounting software",
+                    "accounting software south africa",
+                    "event driven accounting",
+                    "regulatory reporting software",
+                    "regulatory reporting automation",
+                    "compliance reporting software",
+                    "popia compliance",
+                    "ba900 reporting",
+                    "tax reporting automation",
+                    "transaction monitoring software",
+                    "continuous monitoring software",
+                    "aml transaction monitoring",
+                    "cpq software",
+                    "pricing engine software",
+                    "quote management software",
+                    "quoting software",
+                    "price configuration software",
+                    "reconciliation software",
+                    "automated bank reconciliation",
+                    "account reconciliation software",
+                    "bank reconciliation software",
+                    "pos reconciliation software",
+                    "data pipeline software",
+                    "data integration platform",
+                    "automated reporting software",
+                    "regulatory reporting pipeline",
+                    "integration platform",
+                    "ipaas",
+                    "system integration software",
+                    "api integration platform",
+                    "business systems integration",
+                    "data synchronization software",
+                    "system sync software",
+                    "two way data sync",
+                    "real time data sync",
+                    "demand forecasting software",
+                    "demand planning software",
+                    "sales forecasting software",
+                    "inventory forecasting software",
+                    "predictive maintenance software",
+                    "condition monitoring software",
+                    "predictive maintenance system",
+                    "machine failure prediction",
+                    "master data management",
+                    "mdm software",
+                    "master data management software",
+                    "golden record software",
+                    "alert management software",
+                    "notification management software",
+                    "incident alerting software",
+                    "alert orchestration software",
+                    "software for law firms south africa",
+                    "legal practice management software south africa",
+                    "banking software development south africa",
+                    "fintech software development south africa",
+                    "ngo management software",
+                    "donor reporting software",
+                    "hospitality management software",
+                    "restaurant management software south africa",
+                    "logistics software south africa",
+                    "manufacturing software south africa",
+                    "warehouse management system south africa",
+                    "what is bespoke software",
+                    "what is custom software development",
+                    "what is workflow automation",
+                    "how much does custom software cost in south africa",
+                    "custom software vs off the shelf",
+                    "bespoke software vs off the shelf software",
+                    "who builds custom software in south africa",
+                    "what is a crm system",
+                    "what is crm software",
+                    "best crm for small business south africa",
+                    "what is intelligent document processing",
+                    "how to automate document processing",
+                    "what is master data management",
+                    "what is a decision engine",
+                    "what is cpq",
+                    "what is reconciliation in accounting",
+                    "how to automate bank reconciliation",
+                    "what is regulatory reporting",
+                    "what is popia",
+                    "popia compliance requirements",
+                    "what is demand forecasting",
+                    "what is predictive maintenance",
+                    "what is field service management",
+                    "how to integrate business systems",
+                    "best accounting software for small business south africa",
+                    "what is a case management system",
+                    "how to automate lead qualification"
+                ],
+                "location_name": "South Africa",
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "se_type": "google",
+                    "location_code": 2710,
+                    "language_code": "en",
+                    "total_count": 213,
+                    "items_count": 213,
+                    "items": [
+                        {
+                            "se_type": "google",
+                            "keyword": "best accounting software for small business south africa",
+                            "keyword_difficulty": 49
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "popia compliance requirements",
+                            "keyword_difficulty": 41
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is a case management system",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is demand forecasting",
+                            "keyword_difficulty": 42
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is field service management",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is popia",
+                            "keyword_difficulty": 25
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is predictive maintenance",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is reconciliation in accounting",
+                            "keyword_difficulty": 17
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is regulatory reporting",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is cpq",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to automate bank reconciliation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to integrate business systems",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to automate lead qualification",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ai knowledge assistant",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ai voice agent",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "analytics dashboard software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "anomaly detection",
+                            "keyword_difficulty": 53
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "anomaly detection software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "approval workflow software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "audit management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "audit trail software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "automated decision making",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "automation of business processes",
+                            "keyword_difficulty": 16
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bespoke software development",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business automation",
+                            "keyword_difficulty": 0
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business automation consultant",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business intelligence software",
+                            "keyword_difficulty": 41
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business process automation",
+                            "keyword_difficulty": 9
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business process automation consultant",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business workflow software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "compliance audit software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "crm development",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "crm software in south africa",
+                            "keyword_difficulty": 2
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "crm software south africa",
+                            "keyword_difficulty": 18
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom business software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom crm",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom crm development",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software development",
+                            "keyword_difficulty": 69
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software development cape town",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software development company",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software development south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "customer 360 software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "customer data platform",
+                            "keyword_difficulty": 57
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "data analytics software",
+                            "keyword_difficulty": 61
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "decision engine software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "decision support system",
+                            "keyword_difficulty": 16
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "digital transformation south africa",
+                            "keyword_difficulty": 42
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "document automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "document data extraction",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "event management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "fraud detection software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to automate business processes",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "intelligent automation",
+                            "keyword_difficulty": 14
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "intelligent document processing",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "internal knowledge base software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "lead qualification software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "lead scoring software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "legacy modernization",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "legacy system integration",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "legacy system modernization",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "omnichannel inbox",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "operational analytics",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "operational systems",
+                            "keyword_difficulty": 32
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "rfid inventory system",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "robotic process automation",
+                            "keyword_difficulty": 38
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "single customer view",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "software development company cape town",
+                            "keyword_difficulty": 47
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "software development company durban",
+                            "keyword_difficulty": 10
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "software development company johannesburg",
+                            "keyword_difficulty": 37
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "software development company south africa",
+                            "keyword_difficulty": 26
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "sop software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "virtual receptionist software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is an audit trail",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is anomaly detection",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is business process automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "workflow automation",
+                            "keyword_difficulty": 46
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "workflow automation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "workflow orchestration software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "zabble",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "zabble south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "zabble.org",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "kairos voice agent",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "zabble systems",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bespoke software development south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bespoke software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business process automation south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "workflow automation south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business automation south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software development johannesburg",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ai receptionist",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ai phone answering service",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "approval management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "loan approval workflow",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "sign off workflow software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "shared inbox software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "unified inbox software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "multichannel customer support software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "event driven automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "decision management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "rules engine software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "loan decisioning software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ocr automation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "invoice data capture software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "document assembly software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "document generation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "contract generation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "proposal automation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bespoke crm",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "unified customer view",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "company wiki software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "lead qualification automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "automated lead qualification",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "erp integration software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "account reconciliation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "accounting automation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "accounting software south africa",
+                            "keyword_difficulty": 25
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "aml transaction monitoring",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "api integration platform",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "automated accounting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "automated bank reconciliation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bank reconciliation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business analytics software",
+                            "keyword_difficulty": 53
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business intelligence dashboard",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "business systems integration",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "case management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "case management system",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "client onboarding software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "compliance reporting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "condition monitoring software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "conveyancing software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "custom software vs off the shelf",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "customer onboarding software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "data integration platform",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "data pipeline software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "demand forecasting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "demand planning software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "digital onboarding software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "field operations software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "field service app",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "field service management software",
+                            "keyword_difficulty": 50
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "integration platform",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "inventory forecasting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "inventory management software",
+                            "keyword_difficulty": 15
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ipaas",
+                            "keyword_difficulty": 64
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "kyc onboarding software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "legal case management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "legal practice management software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "logistics software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "manufacturing software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "master data management",
+                            "keyword_difficulty": 36
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "master data management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "matter management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "mdm software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "operational analytics software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "popia compliance",
+                            "keyword_difficulty": 27
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "predictive maintenance software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "predictive maintenance system",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "quote management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "quoting software",
+                            "keyword_difficulty": 45
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "reconciliation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "regulatory reporting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "rfid asset tracking",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "sales forecasting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "stock management software",
+                            "keyword_difficulty": 27
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "system integration software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "task management software",
+                            "keyword_difficulty": 59
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "transaction monitoring software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "warehouse inventory system",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "warehouse management system south africa",
+                            "keyword_difficulty": 44
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is a crm system",
+                            "keyword_difficulty": 52
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is a decision engine",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is bespoke software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is crm software",
+                            "keyword_difficulty": 33
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is custom software development",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is intelligent document processing",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is master data management",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "what is workflow automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "hospitality management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "workflow task management",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "offline data collection app",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "decision support software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "event driven accounting",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "regulatory reporting automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ba900 reporting",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "tax reporting automation",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "continuous monitoring software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "cpq software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "pricing engine software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "price configuration software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "pos reconciliation software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "automated reporting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "regulatory reporting pipeline",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "data synchronization software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "system sync software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "two way data sync",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "real time data sync",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "machine failure prediction",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "golden record software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "alert management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "notification management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "incident alerting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "alert orchestration software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "software for law firms south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "banking software development south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "fintech software development south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "ngo management software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "donor reporting software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "restaurant management software south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how much does custom software cost in south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "bespoke software vs off the shelf software",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "who builds custom software in south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "best crm for small business south africa",
+                            "keyword_difficulty": null
+                        },
+                        {
+                            "se_type": "google",
+                            "keyword": "how to automate document processing",
+                            "keyword_difficulty": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

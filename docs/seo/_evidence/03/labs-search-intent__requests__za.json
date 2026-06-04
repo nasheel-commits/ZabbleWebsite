@@ -1,0 +1,463 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.2327 sec.",
+    "cost": 0.0053,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041600-1876-0541-0000-000b92624025",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.1672 sec.",
+            "cost": 0.0053,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "search_intent",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "search_intent",
+                "se_type": "google",
+                "keywords": [
+                    "what is a bespoke crm",
+                    "how much does a bespoke crm cost",
+                    "document automation south africa",
+                    "how to automate invoice processing",
+                    "how to automate bank reconciliation",
+                    "what is reconciliation in accounting",
+                    "what is anomaly detection",
+                    "what is workflow automation",
+                    "regulatory reporting software south africa",
+                    "who builds custom software in south africa",
+                    "custom software development south africa",
+                    "who builds custom business software in south africa",
+                    "business process automation south africa",
+                    "bespoke crm south africa",
+                    "business automation company south africa",
+                    "transaction fraud detection south africa",
+                    "fraud detection south africa",
+                    "zabble",
+                    "approval workflow software",
+                    "decision engine software",
+                    "order management automation",
+                    "order management software",
+                    "rfid inventory tracking",
+                    "rfid inventory management",
+                    "case management software",
+                    "legal case management software south africa",
+                    "cpq software",
+                    "quote automation software",
+                    "quote automation",
+                    "role based dashboard",
+                    "bi dashboard south africa",
+                    "business intelligence dashboard south africa",
+                    "master data management",
+                    "master data management south africa",
+                    "predictive maintenance",
+                    "predictive maintenance software south africa",
+                    "alert management",
+                    "notification orchestration",
+                    "alert management software south africa",
+                    "invoice data extraction",
+                    "invoice data capture",
+                    "inventory management software south africa",
+                    "stock management software south africa"
+                ],
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "language_code": "en",
+                    "items_count": 43,
+                    "items": [
+                        {
+                            "keyword": "what is a bespoke crm",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9936
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how much does a bespoke crm cost",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9679
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "document automation south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.891
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to automate invoice processing",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9998
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to automate bank reconciliation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9992
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is reconciliation in accounting",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is anomaly detection",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is workflow automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "regulatory reporting software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9991
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "who builds custom software in south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9914
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software development south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9976
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "who builds custom business software in south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.998
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business process automation south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9329
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bespoke crm south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9902
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business automation company south africa",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.6222
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.3635
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "transaction fraud detection south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9912
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "fraud detection south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9415
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "zabble",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.4145
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "navigational",
+                                    "probability": 0.2725
+                                },
+                                {
+                                    "label": "transactional",
+                                    "probability": 0.2117
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "approval workflow software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9938
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "decision engine software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.961
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "order management automation",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.848
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "order management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8939
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "rfid inventory tracking",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.4234
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "transactional",
+                                    "probability": 0.3359
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "rfid inventory management",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.4626
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.3574
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "case management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9979
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "legal case management software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9997
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "cpq software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.852
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "quote automation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9524
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "quote automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.6348
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "role based dashboard",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.9864
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bi dashboard south africa",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.8842
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business intelligence dashboard south africa",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.9677
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "master data management",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.6843
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "master data management south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7731
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "predictive maintenance",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.5059
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.4934
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "predictive maintenance software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9932
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "alert management",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.707
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "notification orchestration",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.6141
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "alert management software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9916
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "invoice data extraction",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.5917
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.358
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "invoice data capture",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.9381
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "inventory management software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8107
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "stock management software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.997
+                            },
+                            "secondary_keyword_intents": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

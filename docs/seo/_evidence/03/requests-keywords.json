@@ -1,0 +1,260 @@
+[
+  {
+    "keyword": "what is a bespoke crm",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": true
+  },
+  {
+    "keyword": "how much does a bespoke crm cost",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": true
+  },
+  {
+    "keyword": "document automation south africa",
+    "requesters": "S07-aeo",
+    "layer": "AEO/SEO",
+    "serp": true
+  },
+  {
+    "keyword": "how to automate invoice processing",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": true
+  },
+  {
+    "keyword": "how to automate bank reconciliation",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": true
+  },
+  {
+    "keyword": "what is reconciliation in accounting",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": false
+  },
+  {
+    "keyword": "what is anomaly detection",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": false
+  },
+  {
+    "keyword": "what is workflow automation",
+    "requesters": "S07-aeo",
+    "layer": "AEO",
+    "serp": false
+  },
+  {
+    "keyword": "regulatory reporting software south africa",
+    "requesters": "S07-aeo",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "who builds custom software in south africa",
+    "requesters": "S07-aeo;S07-geo",
+    "layer": "GEO/SEO",
+    "serp": true
+  },
+  {
+    "keyword": "custom software development south africa",
+    "requesters": "S07-aeo",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "who builds custom business software in south africa",
+    "requesters": "S07-geo",
+    "layer": "GEO/SEO",
+    "serp": true
+  },
+  {
+    "keyword": "business process automation south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO/GEO",
+    "serp": true
+  },
+  {
+    "keyword": "bespoke crm south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "business automation company south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO/GEO",
+    "serp": true
+  },
+  {
+    "keyword": "transaction fraud detection south africa",
+    "requesters": "S07-geo",
+    "layer": "AEO/GEO",
+    "serp": true
+  },
+  {
+    "keyword": "fraud detection south africa",
+    "requesters": "S07-geo",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "zabble",
+    "requesters": "S07-geo",
+    "layer": "GEO/brand",
+    "serp": true
+  },
+  {
+    "keyword": "approval workflow software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "decision engine software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "order management automation",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "order management software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "rfid inventory tracking",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "rfid inventory management",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "case management software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "legal case management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "cpq software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "quote automation software",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "quote automation",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "role based dashboard",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "bi dashboard south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "business intelligence dashboard south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "master data management",
+    "requesters": "S06",
+    "layer": "SEO/AEO",
+    "serp": true
+  },
+  {
+    "keyword": "master data management south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "predictive maintenance",
+    "requesters": "S06",
+    "layer": "SEO/AEO",
+    "serp": true
+  },
+  {
+    "keyword": "predictive maintenance software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "alert management",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "notification orchestration",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "alert management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "invoice data extraction",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "invoice data capture",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  },
+  {
+    "keyword": "inventory management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": true
+  },
+  {
+    "keyword": "stock management software south africa",
+    "requesters": "S06",
+    "layer": "SEO",
+    "serp": false
+  }
+]

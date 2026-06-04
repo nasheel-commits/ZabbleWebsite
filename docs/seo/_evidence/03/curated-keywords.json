@@ -1,0 +1,1706 @@
+[
+  {
+    "keyword": "zabble",
+    "cluster": "brand",
+    "page": "/",
+    "owner": "brand",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "zabble south africa",
+    "cluster": "brand",
+    "page": "/",
+    "owner": "brand",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "zabble.org",
+    "cluster": "brand",
+    "page": "/",
+    "owner": "brand",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "kairos voice agent",
+    "cluster": "brand",
+    "page": "/",
+    "owner": "brand",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "zabble systems",
+    "cluster": "brand",
+    "page": "/",
+    "owner": "brand",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom software development south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom software development",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "head",
+    "scope": "global"
+  },
+  {
+    "keyword": "software development company south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "software development company cape town",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "software development company johannesburg",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "software development company durban",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "bespoke software development",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "bespoke software development south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "bespoke software south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom software development company",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom business software",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business process automation south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business process automation",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "business process automation consultant",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "workflow automation south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "workflow automation",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "business automation",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "business automation south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business automation consultant",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "automation of business processes",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "digital transformation south africa",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "operational systems",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom software development cape town",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom software development johannesburg",
+    "cluster": "core",
+    "page": "/",
+    "owner": "core",
+    "type": "longtail",
+    "scope": "za"
+  },
+  {
+    "keyword": "robotic process automation",
+    "cluster": "pillar-automation",
+    "page": "/pillars/automation (to-create)",
+    "owner": "automation",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "intelligent automation",
+    "cluster": "pillar-automation",
+    "page": "/pillars/automation (to-create)",
+    "owner": "automation",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is business process automation",
+    "cluster": "pillar-automation",
+    "page": "/pillars/automation (to-create)",
+    "owner": "automation",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "how to automate business processes",
+    "cluster": "pillar-automation",
+    "page": "/pillars/automation (to-create)",
+    "owner": "automation",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "audit trail software",
+    "cluster": "pillar-audit-trails",
+    "page": "/pillars/audit-trails (to-create)",
+    "owner": "audit-trails",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "audit management software",
+    "cluster": "pillar-audit-trails",
+    "page": "/pillars/audit-trails (to-create)",
+    "owner": "audit-trails",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "compliance audit software",
+    "cluster": "pillar-audit-trails",
+    "page": "/pillars/audit-trails (to-create)",
+    "owner": "audit-trails",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is an audit trail",
+    "cluster": "pillar-audit-trails",
+    "page": "/pillars/audit-trails (to-create)",
+    "owner": "audit-trails",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "anomaly detection software",
+    "cluster": "pillar-anomaly-detection",
+    "page": "/pillars/anomaly-detection (to-create)",
+    "owner": "anomaly-detection",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "anomaly detection",
+    "cluster": "pillar-anomaly-detection",
+    "page": "/pillars/anomaly-detection (to-create)",
+    "owner": "anomaly-detection",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "fraud detection software",
+    "cluster": "pillar-anomaly-detection",
+    "page": "/pillars/anomaly-detection (to-create)",
+    "owner": "anomaly-detection",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is anomaly detection",
+    "cluster": "pillar-anomaly-detection",
+    "page": "/pillars/anomaly-detection (to-create)",
+    "owner": "anomaly-detection",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "business intelligence software",
+    "cluster": "pillar-analytics",
+    "page": "/pillars/analytics (to-create)",
+    "owner": "analytics",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "data analytics software",
+    "cluster": "pillar-analytics",
+    "page": "/pillars/analytics (to-create)",
+    "owner": "analytics",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "operational analytics",
+    "cluster": "pillar-analytics",
+    "page": "/pillars/analytics (to-create)",
+    "owner": "analytics",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "analytics dashboard software",
+    "cluster": "pillar-analytics",
+    "page": "/pillars/analytics (to-create)",
+    "owner": "analytics",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "decision support system",
+    "cluster": "pillar-analytics",
+    "page": "/pillars/analytics (to-create)",
+    "owner": "analytics",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "ai receptionist",
+    "cluster": "module-kairos",
+    "page": "/systems/kairos",
+    "owner": "kairos",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "ai voice agent",
+    "cluster": "module-kairos",
+    "page": "/systems/kairos",
+    "owner": "kairos",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "virtual receptionist software",
+    "cluster": "module-kairos",
+    "page": "/systems/kairos",
+    "owner": "kairos",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "ai phone answering service",
+    "cluster": "module-kairos",
+    "page": "/systems/kairos",
+    "owner": "kairos",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "event management software",
+    "cluster": "module-kairos",
+    "page": "/systems/kairos",
+    "owner": "kairos",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "approval workflow software",
+    "cluster": "module-approval-workflow",
+    "page": "/systems/approval-workflow",
+    "owner": "approval-workflow",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "approval management software",
+    "cluster": "module-approval-workflow",
+    "page": "/systems/approval-workflow",
+    "owner": "approval-workflow",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "loan approval workflow",
+    "cluster": "module-approval-workflow",
+    "page": "/systems/approval-workflow",
+    "owner": "approval-workflow",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "sign off workflow software",
+    "cluster": "module-approval-workflow",
+    "page": "/systems/approval-workflow",
+    "owner": "approval-workflow",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "omnichannel inbox",
+    "cluster": "module-multi-channel-inbox",
+    "page": "/systems/multi-channel-inbox",
+    "owner": "multi-channel-inbox",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "shared inbox software",
+    "cluster": "module-multi-channel-inbox",
+    "page": "/systems/multi-channel-inbox",
+    "owner": "multi-channel-inbox",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "unified inbox software",
+    "cluster": "module-multi-channel-inbox",
+    "page": "/systems/multi-channel-inbox",
+    "owner": "multi-channel-inbox",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "multichannel customer support software",
+    "cluster": "module-multi-channel-inbox",
+    "page": "/systems/multi-channel-inbox",
+    "owner": "multi-channel-inbox",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "workflow orchestration software",
+    "cluster": "module-workflow-orchestrator",
+    "page": "/systems/workflow-orchestrator",
+    "owner": "workflow-orchestrator",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "workflow automation software",
+    "cluster": "module-workflow-orchestrator",
+    "page": "/systems/workflow-orchestrator",
+    "owner": "workflow-orchestrator",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "event driven automation",
+    "cluster": "module-workflow-orchestrator",
+    "page": "/systems/workflow-orchestrator",
+    "owner": "workflow-orchestrator",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business workflow software",
+    "cluster": "module-workflow-orchestrator",
+    "page": "/systems/workflow-orchestrator",
+    "owner": "workflow-orchestrator",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "decision engine software",
+    "cluster": "module-decision-engine",
+    "page": "/systems/decision-engine",
+    "owner": "decision-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "decision management software",
+    "cluster": "module-decision-engine",
+    "page": "/systems/decision-engine",
+    "owner": "decision-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "automated decision making",
+    "cluster": "module-decision-engine",
+    "page": "/systems/decision-engine",
+    "owner": "decision-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "rules engine software",
+    "cluster": "module-decision-engine",
+    "page": "/systems/decision-engine",
+    "owner": "decision-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "loan decisioning software",
+    "cluster": "module-decision-engine",
+    "page": "/systems/decision-engine",
+    "owner": "decision-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "intelligent document processing",
+    "cluster": "module-document-intelligence",
+    "page": "/systems/document-intelligence",
+    "owner": "document-intelligence",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "document data extraction",
+    "cluster": "module-document-intelligence",
+    "page": "/systems/document-intelligence",
+    "owner": "document-intelligence",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "ocr automation software",
+    "cluster": "module-document-intelligence",
+    "page": "/systems/document-intelligence",
+    "owner": "document-intelligence",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "invoice data capture software",
+    "cluster": "module-document-intelligence",
+    "page": "/systems/document-intelligence",
+    "owner": "document-intelligence",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "document automation",
+    "cluster": "module-document-intelligence",
+    "page": "/systems/document-intelligence",
+    "owner": "document-intelligence",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "document assembly software",
+    "cluster": "module-document-assembly",
+    "page": "/systems/document-assembly",
+    "owner": "document-assembly",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "document generation software",
+    "cluster": "module-document-assembly",
+    "page": "/systems/document-assembly",
+    "owner": "document-assembly",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "contract generation software",
+    "cluster": "module-document-assembly",
+    "page": "/systems/document-assembly",
+    "owner": "document-assembly",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "proposal automation software",
+    "cluster": "module-document-assembly",
+    "page": "/systems/document-assembly",
+    "owner": "document-assembly",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom crm",
+    "cluster": "module-bespoke-crm",
+    "page": "/systems/bespoke-crm",
+    "owner": "bespoke-crm",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "bespoke crm",
+    "cluster": "module-bespoke-crm",
+    "page": "/systems/bespoke-crm",
+    "owner": "bespoke-crm",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "crm software south africa",
+    "cluster": "module-bespoke-crm",
+    "page": "/systems/bespoke-crm",
+    "owner": "bespoke-crm",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom crm development",
+    "cluster": "module-bespoke-crm",
+    "page": "/systems/bespoke-crm",
+    "owner": "bespoke-crm",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "crm software in south africa",
+    "cluster": "module-bespoke-crm",
+    "page": "/systems/bespoke-crm",
+    "owner": "bespoke-crm",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "crm development",
+    "cluster": "module-bespoke-crm",
+    "page": "/systems/bespoke-crm",
+    "owner": "bespoke-crm",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "customer 360 software",
+    "cluster": "module-customer-360",
+    "page": "/systems/customer-360",
+    "owner": "customer-360",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "single customer view",
+    "cluster": "module-customer-360",
+    "page": "/systems/customer-360",
+    "owner": "customer-360",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "unified customer view",
+    "cluster": "module-customer-360",
+    "page": "/systems/customer-360",
+    "owner": "customer-360",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "customer data platform",
+    "cluster": "module-customer-360",
+    "page": "/systems/customer-360",
+    "owner": "customer-360",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "internal knowledge base software",
+    "cluster": "module-knowledge-assistant",
+    "page": "/systems/knowledge-assistant",
+    "owner": "knowledge-assistant",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "ai knowledge assistant",
+    "cluster": "module-knowledge-assistant",
+    "page": "/systems/knowledge-assistant",
+    "owner": "knowledge-assistant",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "sop software",
+    "cluster": "module-knowledge-assistant",
+    "page": "/systems/knowledge-assistant",
+    "owner": "knowledge-assistant",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "company wiki software",
+    "cluster": "module-knowledge-assistant",
+    "page": "/systems/knowledge-assistant",
+    "owner": "knowledge-assistant",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "lead qualification software",
+    "cluster": "module-lead-qualifier",
+    "page": "/systems/lead-qualifier",
+    "owner": "lead-qualifier",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "lead qualification automation",
+    "cluster": "module-lead-qualifier",
+    "page": "/systems/lead-qualifier",
+    "owner": "lead-qualifier",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "automated lead qualification",
+    "cluster": "module-lead-qualifier",
+    "page": "/systems/lead-qualifier",
+    "owner": "lead-qualifier",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "lead scoring software",
+    "cluster": "module-lead-qualifier",
+    "page": "/systems/lead-qualifier",
+    "owner": "lead-qualifier",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "legacy system integration",
+    "cluster": "module-legacy-bridge",
+    "page": "/systems/legacy-bridge",
+    "owner": "legacy-bridge",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "legacy system modernization",
+    "cluster": "module-legacy-bridge",
+    "page": "/systems/legacy-bridge",
+    "owner": "legacy-bridge",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "legacy modernization",
+    "cluster": "module-legacy-bridge",
+    "page": "/systems/legacy-bridge",
+    "owner": "legacy-bridge",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "erp integration software",
+    "cluster": "module-legacy-bridge",
+    "page": "/systems/legacy-bridge",
+    "owner": "legacy-bridge",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "rfid inventory system",
+    "cluster": "module-inventory-clarity",
+    "page": "/systems/inventory-clarity",
+    "owner": "inventory-clarity",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "inventory management software",
+    "cluster": "module-inventory-clarity",
+    "page": "/systems/inventory-clarity",
+    "owner": "inventory-clarity",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "stock management software",
+    "cluster": "module-inventory-clarity",
+    "page": "/systems/inventory-clarity",
+    "owner": "inventory-clarity",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "rfid asset tracking",
+    "cluster": "module-inventory-clarity",
+    "page": "/systems/inventory-clarity",
+    "owner": "inventory-clarity",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "warehouse inventory system",
+    "cluster": "module-inventory-clarity",
+    "page": "/systems/inventory-clarity",
+    "owner": "inventory-clarity",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "client onboarding software",
+    "cluster": "module-client-onboarding",
+    "page": "/systems/client-onboarding",
+    "owner": "client-onboarding",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "customer onboarding software",
+    "cluster": "module-client-onboarding",
+    "page": "/systems/client-onboarding",
+    "owner": "client-onboarding",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "kyc onboarding software",
+    "cluster": "module-client-onboarding",
+    "page": "/systems/client-onboarding",
+    "owner": "client-onboarding",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "digital onboarding software",
+    "cluster": "module-client-onboarding",
+    "page": "/systems/client-onboarding",
+    "owner": "client-onboarding",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "case management software",
+    "cluster": "module-case-management",
+    "page": "/systems/case-management",
+    "owner": "case-management",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "case management system",
+    "cluster": "module-case-management",
+    "page": "/systems/case-management",
+    "owner": "case-management",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "legal case management software",
+    "cluster": "module-case-management",
+    "page": "/systems/case-management",
+    "owner": "case-management",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "matter management software",
+    "cluster": "module-case-management",
+    "page": "/systems/case-management",
+    "owner": "case-management",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "task management software",
+    "cluster": "module-task-management",
+    "page": "/systems/task-management",
+    "owner": "task-management",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "workflow task management",
+    "cluster": "module-task-management",
+    "page": "/systems/task-management",
+    "owner": "task-management",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "conveyancing software",
+    "cluster": "module-task-management",
+    "page": "/systems/task-management",
+    "owner": "task-management",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "field service management software",
+    "cluster": "module-field-ops-app",
+    "page": "/systems/field-ops-app",
+    "owner": "field-ops-app",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "field service app",
+    "cluster": "module-field-ops-app",
+    "page": "/systems/field-ops-app",
+    "owner": "field-ops-app",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "field operations software",
+    "cluster": "module-field-ops-app",
+    "page": "/systems/field-ops-app",
+    "owner": "field-ops-app",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "offline data collection app",
+    "cluster": "module-field-ops-app",
+    "page": "/systems/field-ops-app",
+    "owner": "field-ops-app",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business intelligence dashboard",
+    "cluster": "module-analytics-suite",
+    "page": "/systems/analytics-suite",
+    "owner": "analytics-suite",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "decision support software",
+    "cluster": "module-analytics-suite",
+    "page": "/systems/analytics-suite",
+    "owner": "analytics-suite",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "operational analytics software",
+    "cluster": "module-analytics-suite",
+    "page": "/systems/analytics-suite",
+    "owner": "analytics-suite",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business analytics software",
+    "cluster": "module-analytics-suite",
+    "page": "/systems/analytics-suite",
+    "owner": "analytics-suite",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "accounting automation software",
+    "cluster": "module-accounting-engine",
+    "page": "/systems/accounting-engine",
+    "owner": "accounting-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "automated accounting software",
+    "cluster": "module-accounting-engine",
+    "page": "/systems/accounting-engine",
+    "owner": "accounting-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "accounting software south africa",
+    "cluster": "module-accounting-engine",
+    "page": "/systems/accounting-engine",
+    "owner": "accounting-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "event driven accounting",
+    "cluster": "module-accounting-engine",
+    "page": "/systems/accounting-engine",
+    "owner": "accounting-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "regulatory reporting software",
+    "cluster": "module-compliance-reporting",
+    "page": "/systems/compliance-reporting",
+    "owner": "compliance-reporting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "regulatory reporting automation",
+    "cluster": "module-compliance-reporting",
+    "page": "/systems/compliance-reporting",
+    "owner": "compliance-reporting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "compliance reporting software",
+    "cluster": "module-compliance-reporting",
+    "page": "/systems/compliance-reporting",
+    "owner": "compliance-reporting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "popia compliance",
+    "cluster": "module-compliance-reporting",
+    "page": "/systems/compliance-reporting",
+    "owner": "compliance-reporting",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "ba900 reporting",
+    "cluster": "module-compliance-reporting",
+    "page": "/systems/compliance-reporting",
+    "owner": "compliance-reporting",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "tax reporting automation",
+    "cluster": "module-compliance-reporting",
+    "page": "/systems/compliance-reporting",
+    "owner": "compliance-reporting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "transaction monitoring software",
+    "cluster": "module-continuous-assurance",
+    "page": "/systems/continuous-assurance",
+    "owner": "continuous-assurance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "continuous monitoring software",
+    "cluster": "module-continuous-assurance",
+    "page": "/systems/continuous-assurance",
+    "owner": "continuous-assurance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "aml transaction monitoring",
+    "cluster": "module-continuous-assurance",
+    "page": "/systems/continuous-assurance",
+    "owner": "continuous-assurance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "cpq software",
+    "cluster": "module-pricing-engine",
+    "page": "/systems/pricing-engine",
+    "owner": "pricing-engine",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "pricing engine software",
+    "cluster": "module-pricing-engine",
+    "page": "/systems/pricing-engine",
+    "owner": "pricing-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "quote management software",
+    "cluster": "module-pricing-engine",
+    "page": "/systems/pricing-engine",
+    "owner": "pricing-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "quoting software",
+    "cluster": "module-pricing-engine",
+    "page": "/systems/pricing-engine",
+    "owner": "pricing-engine",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "price configuration software",
+    "cluster": "module-pricing-engine",
+    "page": "/systems/pricing-engine",
+    "owner": "pricing-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "reconciliation software",
+    "cluster": "module-reconciliation-engine",
+    "page": "/systems/reconciliation-engine",
+    "owner": "reconciliation-engine",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "automated bank reconciliation",
+    "cluster": "module-reconciliation-engine",
+    "page": "/systems/reconciliation-engine",
+    "owner": "reconciliation-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "account reconciliation software",
+    "cluster": "module-reconciliation-engine",
+    "page": "/systems/reconciliation-engine",
+    "owner": "reconciliation-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "bank reconciliation software",
+    "cluster": "module-reconciliation-engine",
+    "page": "/systems/reconciliation-engine",
+    "owner": "reconciliation-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "pos reconciliation software",
+    "cluster": "module-reconciliation-engine",
+    "page": "/systems/reconciliation-engine",
+    "owner": "reconciliation-engine",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "data pipeline software",
+    "cluster": "module-data-routing",
+    "page": "/systems/data-routing",
+    "owner": "data-routing",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "data integration platform",
+    "cluster": "module-data-routing",
+    "page": "/systems/data-routing",
+    "owner": "data-routing",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "automated reporting software",
+    "cluster": "module-data-routing",
+    "page": "/systems/data-routing",
+    "owner": "data-routing",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "regulatory reporting pipeline",
+    "cluster": "module-data-routing",
+    "page": "/systems/data-routing",
+    "owner": "data-routing",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "integration platform",
+    "cluster": "module-integration-hub",
+    "page": "/systems/integration-hub",
+    "owner": "integration-hub",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "ipaas",
+    "cluster": "module-integration-hub",
+    "page": "/systems/integration-hub",
+    "owner": "integration-hub",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "system integration software",
+    "cluster": "module-integration-hub",
+    "page": "/systems/integration-hub",
+    "owner": "integration-hub",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "api integration platform",
+    "cluster": "module-integration-hub",
+    "page": "/systems/integration-hub",
+    "owner": "integration-hub",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "business systems integration",
+    "cluster": "module-integration-hub",
+    "page": "/systems/integration-hub",
+    "owner": "integration-hub",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "data synchronization software",
+    "cluster": "module-cross-system-sync",
+    "page": "/systems/cross-system-sync",
+    "owner": "cross-system-sync",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "system sync software",
+    "cluster": "module-cross-system-sync",
+    "page": "/systems/cross-system-sync",
+    "owner": "cross-system-sync",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "two way data sync",
+    "cluster": "module-cross-system-sync",
+    "page": "/systems/cross-system-sync",
+    "owner": "cross-system-sync",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "real time data sync",
+    "cluster": "module-cross-system-sync",
+    "page": "/systems/cross-system-sync",
+    "owner": "cross-system-sync",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "demand forecasting software",
+    "cluster": "module-forecasting",
+    "page": "/systems/forecasting",
+    "owner": "forecasting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "demand planning software",
+    "cluster": "module-forecasting",
+    "page": "/systems/forecasting",
+    "owner": "forecasting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "sales forecasting software",
+    "cluster": "module-forecasting",
+    "page": "/systems/forecasting",
+    "owner": "forecasting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "inventory forecasting software",
+    "cluster": "module-forecasting",
+    "page": "/systems/forecasting",
+    "owner": "forecasting",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "predictive maintenance software",
+    "cluster": "module-predictive-maintenance",
+    "page": "/systems/predictive-maintenance",
+    "owner": "predictive-maintenance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "condition monitoring software",
+    "cluster": "module-predictive-maintenance",
+    "page": "/systems/predictive-maintenance",
+    "owner": "predictive-maintenance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "predictive maintenance system",
+    "cluster": "module-predictive-maintenance",
+    "page": "/systems/predictive-maintenance",
+    "owner": "predictive-maintenance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "machine failure prediction",
+    "cluster": "module-predictive-maintenance",
+    "page": "/systems/predictive-maintenance",
+    "owner": "predictive-maintenance",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "master data management",
+    "cluster": "module-master-data-hub",
+    "page": "/systems/master-data-hub",
+    "owner": "master-data-hub",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "mdm software",
+    "cluster": "module-master-data-hub",
+    "page": "/systems/master-data-hub",
+    "owner": "master-data-hub",
+    "type": "head",
+    "scope": "za"
+  },
+  {
+    "keyword": "master data management software",
+    "cluster": "module-master-data-hub",
+    "page": "/systems/master-data-hub",
+    "owner": "master-data-hub",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "golden record software",
+    "cluster": "module-master-data-hub",
+    "page": "/systems/master-data-hub",
+    "owner": "master-data-hub",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "alert management software",
+    "cluster": "module-notification-orchestration",
+    "page": "/systems/notification-orchestration",
+    "owner": "notification-orchestration",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "notification management software",
+    "cluster": "module-notification-orchestration",
+    "page": "/systems/notification-orchestration",
+    "owner": "notification-orchestration",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "incident alerting software",
+    "cluster": "module-notification-orchestration",
+    "page": "/systems/notification-orchestration",
+    "owner": "notification-orchestration",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "alert orchestration software",
+    "cluster": "module-notification-orchestration",
+    "page": "/systems/notification-orchestration",
+    "owner": "notification-orchestration",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "software for law firms south africa",
+    "cluster": "industry-legal",
+    "page": "/industries/legal (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "legal practice management software south africa",
+    "cluster": "industry-legal",
+    "page": "/industries/legal (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "banking software development south africa",
+    "cluster": "industry-banking",
+    "page": "/industries/banking (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "fintech software development south africa",
+    "cluster": "industry-banking",
+    "page": "/industries/banking (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "ngo management software",
+    "cluster": "industry-ngo",
+    "page": "/industries/ngo (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "donor reporting software",
+    "cluster": "industry-ngo",
+    "page": "/industries/ngo (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "hospitality management software",
+    "cluster": "industry-hospitality",
+    "page": "/industries/hospitality (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "restaurant management software south africa",
+    "cluster": "industry-hospitality",
+    "page": "/industries/hospitality (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "logistics software south africa",
+    "cluster": "industry-logistics",
+    "page": "/industries/logistics (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "manufacturing software south africa",
+    "cluster": "industry-manufacturing",
+    "page": "/industries/manufacturing (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "warehouse management system south africa",
+    "cluster": "industry-logistics",
+    "page": "/industries/logistics (to-create)",
+    "owner": "industry",
+    "type": "mid",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is bespoke software",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is custom software development",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is workflow automation",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "how much does custom software cost in south africa",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "custom software vs off the shelf",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "bespoke software vs off the shelf software",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "who builds custom software in south africa",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is a crm system",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is crm software",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "best crm for small business south africa",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is intelligent document processing",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "how to automate document processing",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is master data management",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is a decision engine",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is cpq",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is reconciliation in accounting",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "how to automate bank reconciliation",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is regulatory reporting",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is popia",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "popia compliance requirements",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is demand forecasting",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is predictive maintenance",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is field service management",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "how to integrate business systems",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "best accounting software for small business south africa",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "what is a case management system",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  },
+  {
+    "keyword": "how to automate lead qualification",
+    "cluster": "aeo-questions",
+    "page": "(FAQ on money page / blog)",
+    "owner": "aeo",
+    "type": "question",
+    "scope": "za"
+  }
+]

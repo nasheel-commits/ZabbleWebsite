@@ -1,0 +1,11 @@
+{
+  "_captured": "2026-06-04",
+  "_endpoint": "GET /v3/appendix/user_data",
+  "_auth": "Basic (redacted)",
+  "top_status_code": 20000,
+  "login": "nasheel@zabble.org",
+  "money": {
+    "total": 51,
+    "balance": 49.635514
+  }
+}
