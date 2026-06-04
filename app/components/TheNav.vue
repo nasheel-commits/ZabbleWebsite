@@ -44,6 +44,7 @@ type NavTab = { label: string; to: string }
 const tabs: NavTab[] = [
   { label: 'Home', to: '/#home' },
   { label: 'Systems', to: '/systems' },
+  { label: 'Industries', to: '/industries' },
   { label: 'What We Build', to: '/#what-we-build' },
   { label: 'Use Cases', to: '/#meet' },
   { label: 'Contact', to: '/#contact' },
