@@ -1,0 +1,2086 @@
+{
+    "version": "0.1.20260525",
+    "status_code": 20000,
+    "status_message": "Ok.",
+    "time": "0.1504 sec.",
+    "cost": 0.0223,
+    "tasks_count": 1,
+    "tasks_error": 0,
+    "tasks": [
+        {
+            "id": "06041511-1876-0541-0000-f83769d25a11",
+            "status_code": 20000,
+            "status_message": "Ok.",
+            "time": "0.1413 sec.",
+            "cost": 0.0223,
+            "result_count": 1,
+            "path": [
+                "v3",
+                "dataforseo_labs",
+                "google",
+                "search_intent",
+                "live"
+            ],
+            "data": {
+                "api": "dataforseo_labs",
+                "function": "search_intent",
+                "se_type": "google",
+                "keywords": [
+                    "zabble",
+                    "zabble south africa",
+                    "zabble.org",
+                    "kairos voice agent",
+                    "zabble systems",
+                    "custom software development south africa",
+                    "custom software development",
+                    "software development company south africa",
+                    "software development company cape town",
+                    "software development company johannesburg",
+                    "software development company durban",
+                    "bespoke software development",
+                    "bespoke software development south africa",
+                    "bespoke software south africa",
+                    "custom software development company",
+                    "custom business software",
+                    "business process automation south africa",
+                    "business process automation",
+                    "business process automation consultant",
+                    "workflow automation south africa",
+                    "workflow automation",
+                    "business automation",
+                    "business automation south africa",
+                    "business automation consultant",
+                    "automation of business processes",
+                    "digital transformation south africa",
+                    "operational systems",
+                    "custom software development cape town",
+                    "custom software development johannesburg",
+                    "robotic process automation",
+                    "intelligent automation",
+                    "what is business process automation",
+                    "how to automate business processes",
+                    "audit trail software",
+                    "audit management software",
+                    "compliance audit software",
+                    "what is an audit trail",
+                    "anomaly detection software",
+                    "anomaly detection",
+                    "fraud detection software",
+                    "what is anomaly detection",
+                    "business intelligence software",
+                    "data analytics software",
+                    "operational analytics",
+                    "analytics dashboard software",
+                    "decision support system",
+                    "ai receptionist",
+                    "ai voice agent",
+                    "virtual receptionist software",
+                    "ai phone answering service",
+                    "event management software",
+                    "approval workflow software",
+                    "approval management software",
+                    "loan approval workflow",
+                    "sign off workflow software",
+                    "omnichannel inbox",
+                    "shared inbox software",
+                    "unified inbox software",
+                    "multichannel customer support software",
+                    "workflow orchestration software",
+                    "workflow automation software",
+                    "event driven automation",
+                    "business workflow software",
+                    "decision engine software",
+                    "decision management software",
+                    "automated decision making",
+                    "rules engine software",
+                    "loan decisioning software",
+                    "intelligent document processing",
+                    "document data extraction",
+                    "ocr automation software",
+                    "invoice data capture software",
+                    "document automation",
+                    "document assembly software",
+                    "document generation software",
+                    "contract generation software",
+                    "proposal automation software",
+                    "custom crm",
+                    "bespoke crm",
+                    "crm software south africa",
+                    "custom crm development",
+                    "crm software in south africa",
+                    "crm development",
+                    "customer 360 software",
+                    "single customer view",
+                    "unified customer view",
+                    "customer data platform",
+                    "internal knowledge base software",
+                    "ai knowledge assistant",
+                    "sop software",
+                    "company wiki software",
+                    "lead qualification software",
+                    "lead qualification automation",
+                    "automated lead qualification",
+                    "lead scoring software",
+                    "legacy system integration",
+                    "legacy system modernization",
+                    "legacy modernization",
+                    "erp integration software",
+                    "rfid inventory system",
+                    "inventory management software",
+                    "stock management software",
+                    "rfid asset tracking",
+                    "warehouse inventory system",
+                    "client onboarding software",
+                    "customer onboarding software",
+                    "kyc onboarding software",
+                    "digital onboarding software",
+                    "case management software",
+                    "case management system",
+                    "legal case management software",
+                    "matter management software",
+                    "task management software",
+                    "workflow task management",
+                    "conveyancing software",
+                    "field service management software",
+                    "field service app",
+                    "field operations software",
+                    "offline data collection app",
+                    "business intelligence dashboard",
+                    "decision support software",
+                    "operational analytics software",
+                    "business analytics software",
+                    "accounting automation software",
+                    "automated accounting software",
+                    "accounting software south africa",
+                    "event driven accounting",
+                    "regulatory reporting software",
+                    "regulatory reporting automation",
+                    "compliance reporting software",
+                    "popia compliance",
+                    "ba900 reporting",
+                    "tax reporting automation",
+                    "transaction monitoring software",
+                    "continuous monitoring software",
+                    "aml transaction monitoring",
+                    "cpq software",
+                    "pricing engine software",
+                    "quote management software",
+                    "quoting software",
+                    "price configuration software",
+                    "reconciliation software",
+                    "automated bank reconciliation",
+                    "account reconciliation software",
+                    "bank reconciliation software",
+                    "pos reconciliation software",
+                    "data pipeline software",
+                    "data integration platform",
+                    "automated reporting software",
+                    "regulatory reporting pipeline",
+                    "integration platform",
+                    "ipaas",
+                    "system integration software",
+                    "api integration platform",
+                    "business systems integration",
+                    "data synchronization software",
+                    "system sync software",
+                    "two way data sync",
+                    "real time data sync",
+                    "demand forecasting software",
+                    "demand planning software",
+                    "sales forecasting software",
+                    "inventory forecasting software",
+                    "predictive maintenance software",
+                    "condition monitoring software",
+                    "predictive maintenance system",
+                    "machine failure prediction",
+                    "master data management",
+                    "mdm software",
+                    "master data management software",
+                    "golden record software",
+                    "alert management software",
+                    "notification management software",
+                    "incident alerting software",
+                    "alert orchestration software",
+                    "software for law firms south africa",
+                    "legal practice management software south africa",
+                    "banking software development south africa",
+                    "fintech software development south africa",
+                    "ngo management software",
+                    "donor reporting software",
+                    "hospitality management software",
+                    "restaurant management software south africa",
+                    "logistics software south africa",
+                    "manufacturing software south africa",
+                    "warehouse management system south africa",
+                    "what is bespoke software",
+                    "what is custom software development",
+                    "what is workflow automation",
+                    "how much does custom software cost in south africa",
+                    "custom software vs off the shelf",
+                    "bespoke software vs off the shelf software",
+                    "who builds custom software in south africa",
+                    "what is a crm system",
+                    "what is crm software",
+                    "best crm for small business south africa",
+                    "what is intelligent document processing",
+                    "how to automate document processing",
+                    "what is master data management",
+                    "what is a decision engine",
+                    "what is cpq",
+                    "what is reconciliation in accounting",
+                    "how to automate bank reconciliation",
+                    "what is regulatory reporting",
+                    "what is popia",
+                    "popia compliance requirements",
+                    "what is demand forecasting",
+                    "what is predictive maintenance",
+                    "what is field service management",
+                    "how to integrate business systems",
+                    "best accounting software for small business south africa",
+                    "what is a case management system",
+                    "how to automate lead qualification"
+                ],
+                "language_code": "en"
+            },
+            "result": [
+                {
+                    "language_code": "en",
+                    "items_count": 213,
+                    "items": [
+                        {
+                            "keyword": "zabble",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.4163
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "navigational",
+                                    "probability": 0.2712
+                                },
+                                {
+                                    "label": "transactional",
+                                    "probability": 0.2113
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "zabble south africa",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.3989
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.2373
+                                },
+                                {
+                                    "label": "navigational",
+                                    "probability": 0.2133
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "zabble.org",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.5871
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.3514
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "kairos voice agent",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.5161
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.2616
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "zabble systems",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8166
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software development south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9976
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software development",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9975
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "software development company south africa",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.569
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.382
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "software development company cape town",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9641
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "software development company johannesburg",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.993
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "software development company durban",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9948
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bespoke software development",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9959
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bespoke software development south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9959
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bespoke software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9909
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software development company",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9991
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom business software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9988
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business process automation south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9346
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business process automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.5513
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.4389
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "business process automation consultant",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9991
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "workflow automation south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.5461
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "navigational",
+                                    "probability": 0.4008
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "workflow automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.7025
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.7242
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business automation south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9327
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business automation consultant",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9874
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "automation of business processes",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.5791
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.4204
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "digital transformation south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9946
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "operational systems",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9979
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software development cape town",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.988
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software development johannesburg",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9961
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "robotic process automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.6141
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.3608
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "intelligent automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9413
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is business process automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to automate business processes",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "audit trail software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9889
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "audit management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9974
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "compliance audit software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9998
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is an audit trail",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "anomaly detection software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7781
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "anomaly detection",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9745
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "fraud detection software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9933
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is anomaly detection",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business intelligence software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9377
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "data analytics software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9445
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "operational analytics",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9914
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "analytics dashboard software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9976
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "decision support system",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8647
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ai receptionist",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.5452
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.3198
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "ai voice agent",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.66
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "virtual receptionist software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8537
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ai phone answering service",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.8495
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "event management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9936
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "approval workflow software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9939
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "approval management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9961
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "loan approval workflow",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.4747
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "transactional",
+                                    "probability": 0.3605
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "sign off workflow software",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.9136
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "omnichannel inbox",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.7658
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "shared inbox software",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.4129
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.2892
+                                },
+                                {
+                                    "label": "informational",
+                                    "probability": 0.2439
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "unified inbox software",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.8205
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "multichannel customer support software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9929
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "workflow orchestration software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9359
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "workflow automation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8711
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "event driven automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9796
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business workflow software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9134
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "decision engine software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9611
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "decision management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.984
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "automated decision making",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.5602
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.4377
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "rules engine software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8026
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "loan decisioning software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9983
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "intelligent document processing",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9298
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "document data extraction",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.8584
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ocr automation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7856
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "invoice data capture software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9111
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "document automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.7689
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "document assembly software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.5014
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.396
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "document generation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9256
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "contract generation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9968
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "proposal automation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9984
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom crm",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7916
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bespoke crm",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9493
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "crm software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9957
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom crm development",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9933
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "crm software in south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9962
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "crm development",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.783
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "customer 360 software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8095
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "single customer view",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.7925
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "unified customer view",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.4582
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.4358
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "customer data platform",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.6262
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "internal knowledge base software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9757
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ai knowledge assistant",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.6457
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "sop software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8935
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "company wiki software",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.6107
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.3123
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "lead qualification software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9975
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "lead qualification automation",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.534
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.4125
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "automated lead qualification",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.884
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "lead scoring software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9646
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "legacy system integration",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.6199
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.3447
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "legacy system modernization",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.592
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.4076
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "legacy modernization",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9714
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "erp integration software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9927
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "rfid inventory system",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.6816
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "inventory management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9365
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "stock management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9906
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "rfid asset tracking",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.6116
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "warehouse inventory system",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.477
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.2686
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "client onboarding software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9938
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "customer onboarding software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9903
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "kyc onboarding software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9768
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "digital onboarding software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9963
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "case management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9979
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "case management system",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8473
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "legal case management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9999
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "matter management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9985
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "task management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.912
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "workflow task management",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.8591
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "conveyancing software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9862
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "field service management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9985
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "field service app",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.7587
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "field operations software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9357
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "offline data collection app",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.5466
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business intelligence dashboard",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.9561
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "decision support software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9839
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "operational analytics software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9525
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business analytics software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9856
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "accounting automation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9551
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "automated accounting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8868
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "accounting software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9847
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "event driven accounting",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9979
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "regulatory reporting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9997
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "regulatory reporting automation",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9985
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "compliance reporting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9998
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "popia compliance",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.9775
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ba900 reporting",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.4281
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "transactional",
+                                    "probability": 0.4022
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "tax reporting automation",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9963
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "transaction monitoring software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9983
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "continuous monitoring software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9698
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "aml transaction monitoring",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.4662
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "informational",
+                                    "probability": 0.3064
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "cpq software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.8528
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "pricing engine software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9936
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "quote management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9953
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "quoting software",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.6611
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "price configuration software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9975
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "reconciliation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9986
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "automated bank reconciliation",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7403
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "account reconciliation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9988
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bank reconciliation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9985
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "pos reconciliation software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9913
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "data pipeline software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9787
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "data integration platform",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9366
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "automated reporting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9921
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "regulatory reporting pipeline",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9187
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "integration platform",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9667
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ipaas",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.766
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "system integration software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9956
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "api integration platform",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.6303
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "business systems integration",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9918
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "data synchronization software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.988
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "system sync software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9388
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "two way data sync",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9557
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "real time data sync",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.96
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "demand forecasting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9677
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "demand planning software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9599
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "sales forecasting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9528
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "inventory forecasting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9819
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "predictive maintenance software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9938
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "condition monitoring software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9872
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "predictive maintenance system",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.932
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "machine failure prediction",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9065
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "master data management",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.6814
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "mdm software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9734
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "master data management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9193
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "golden record software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7992
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "alert management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9905
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "notification management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9836
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "incident alerting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9947
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "alert orchestration software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9908
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "software for law firms south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9999
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "legal practice management software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9993
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "banking software development south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9996
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "fintech software development south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9998
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "ngo management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9956
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "donor reporting software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9806
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "hospitality management software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9731
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "restaurant management software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9638
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "logistics software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.7185
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "manufacturing software south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9869
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "warehouse management system south africa",
+                            "keyword_intent": {
+                                "label": "navigational",
+                                "probability": 0.9315
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is bespoke software",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9726
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is custom software development",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is workflow automation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how much does custom software cost in south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9892
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "custom software vs off the shelf",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.972
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "bespoke software vs off the shelf software",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9872
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "who builds custom software in south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9915
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is a crm system",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is crm software",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9997
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "best crm for small business south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9671
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is intelligent document processing",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to automate document processing",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9999
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is master data management",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is a decision engine",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is cpq",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9999
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is reconciliation in accounting",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to automate bank reconciliation",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9992
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is regulatory reporting",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is popia",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9998
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "popia compliance requirements",
+                            "keyword_intent": {
+                                "label": "transactional",
+                                "probability": 0.5601
+                            },
+                            "secondary_keyword_intents": [
+                                {
+                                    "label": "commercial",
+                                    "probability": 0.3491
+                                }
+                            ]
+                        },
+                        {
+                            "keyword": "what is demand forecasting",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is predictive maintenance",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is field service management",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to integrate business systems",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 1
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "best accounting software for small business south africa",
+                            "keyword_intent": {
+                                "label": "commercial",
+                                "probability": 0.9951
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "what is a case management system",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9999
+                            },
+                            "secondary_keyword_intents": null
+                        },
+                        {
+                            "keyword": "how to automate lead qualification",
+                            "keyword_intent": {
+                                "label": "informational",
+                                "probability": 0.9941
+                            },
+                            "secondary_keyword_intents": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
