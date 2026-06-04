@@ -155,6 +155,17 @@ export default defineNuxtConfig({
   // Nuxt maps NUXT_PUBLIC_ANALYTICS_GTM_ID → runtimeConfig.public.analytics.gtmId.
   // An empty id ⇒ that tag never loads (the correct pre-launch / no-id state).
   runtimeConfig: {
+    // --- Server-only secrets for the /api/book discovery-call booking -------
+    // Override in production via NUXT_*-prefixed env vars (NUXT_GOOGLE_CLIENT_EMAIL
+    // etc.). Empty ⇒ booking runs in a graceful "not configured" mode (the form
+    // still shows the profile, falls back to mailto). See docs/booking-setup.md.
+    googleClientEmail: '',
+    googlePrivateKey: '',
+    googleImpersonatedUser: 'sales@zabble.org',
+    salesNotifyEmail: 'sales@zabble.org',
+    bookingTimezone: 'Africa/Johannesburg',
+    bookingDurationMinutes: '30',
+
     public: {
       analytics: {
         gtmId: '',       // GTM-XXXXXXX
