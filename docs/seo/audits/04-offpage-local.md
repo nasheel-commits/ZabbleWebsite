@@ -192,3 +192,50 @@ Track the actual curve once **B5 (Backlinks subscription)** is activated — set
 | `_evidence/04/business-listings__software-company-cpt.json` | Cape Town Maps/GBP benchmark. |
 | `_evidence/04/backlinks-bulk-ranks__competitors__za.json` + `backlinks-summary__*.json` | Backlinks API gated (`40204`) — blocker B5. |
 | `_evidence/04/README.note.md` | Full method, request bodies, modes, and per-call costs (~$0.18 total). |
+| `_evidence/04/implementation-build.note.md` | Build + test record for the on-site implementation (52 pages prerendered, 26 SEO checks pass, $0 new spend). |
+
+## 8. Implementation log (2026-06-04)
+
+The recommendations in §5 were **implemented**, not just planned. All on-site assets
+are real, server-rendered (Nitro static prerender), unique-titled, internally linked,
+and covered by an automated check. `nuxt generate` is clean; `npm run test:seo`
+passes 26/26 (52 pages, 0 broken internal links).
+
+### What shipped (code)
+
+| Asset | Files | Recommendation |
+|-------|-------|----------------|
+| **5 ZA metro landings** (Johannesburg, Sandton, Cape Town, Pretoria, Durban) — distinct copy, local economy/sectors, system + industry internal links, schema slots | `app/pages/locations/[city].vue`, `…/index.vue`, `app/data/locations.ts` | R6 #3 (P0) |
+| **8 industry-solution pages** (financial-services, legal, ngos, logistics, hospitality, manufacturing, professional-services, field-services) | `app/pages/industries/[industry].vue`, `…/index.vue`, `app/data/industries.ts` | Cluster C / industry layer |
+| **Linkbait/citation asset** — "The South African Operations-Software Landscape" (11-category taxonomy + build-vs-buy, anchor IDs, free-to-cite) | `app/pages/insights/south-african-operations-software-landscape.vue`, `…/index.vue`, `app/data/landscape.ts` | R2 #4 (P1) |
+| **About** (canonical Organization/entity page, quotable GEO facts) + **Press** (digital-PR media kit) | `app/pages/about.vue`, `app/pages/press.vue` | Conversion + PR assets |
+| **NAP single source of truth** (parameterised on B6) | `app/data/nap.ts` | NAP standard |
+| **Internal-link surface** — footer rebuilt (links every new page → crawlable) + Industries in nav | `app/components/TheFooter.vue`, `TheNav.vue` | internal linking |
+| **Automated SEO checks** (server-render, unique-title, internal-link, link-checker) | `scripts/check-seo.mjs`, `package.json` (`test:seo`, `link-check`, `verify`) | tests (required) |
+
+### What shipped (execute-ready kits — gated on owner input)
+
+| Kit | Files |
+|-----|-------|
+| **Outreach kit** — prospect list, angles, email templates, anchor guidance, velocity plan, tracker | `targets/outreach/*` |
+| **GBP + citation kit** — GBP profile spec, SA citation submission checklist (CSV), review strategy | `targets/local-kit/*` |
+| **LocalBusiness/Organization schema field hand-off** to S08 (exact JSON-LD + field sources) | `targets/localbusiness-schema-fields.md` |
+
+### Deliberately NOT done (ownership / external accounts)
+- **JSON-LD not emitted** — every page carries a marked `SCHEMA SLOT (S08)`; fields
+  handed to S08 (schema write-ownership respected). 
+- **No GBP/citation submissions, no outreach sent** — these need owner accounts +
+  NAP (B6) + GBP login. Kits are ready to execute the moment those land.
+- **No backlink data pulled** — Backlinks API still gated (B5).
+
+### Verification
+- `npm run generate` → 52 routes prerendered, exit 0 (build env: local `node_modules`
+  in the space-free worktree — a junction to the OneDrive repo broke the prerender
+  worker via a percent-encoded build path; see implementation note).
+- `npm run test:seo` → 26/26 pass: 19 required pages server-rendered with content +
+  single `<h1>` + content marker; 52/52 unique titles; required internal links
+  present; 1538 internal links, 0 broken.
+
+### New spend this session
+**$0** new DataForSEO spend — this session is implementation, reusing the evidence
+captured earlier (`_evidence/04/`, ~$0.18 total to date).

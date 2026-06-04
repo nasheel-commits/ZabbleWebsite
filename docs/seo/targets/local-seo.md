@@ -6,6 +6,16 @@ approach. Grounded in a Maps benchmark of SA software companies
 [E: 04/business-listings__software-company-jhb.json; 04/business-listings__software-company-cpt.json]
 captured 2026-06-04. Zabble is **pre-launch with no GBP**, so this is a build plan.
 
+> **✅ Implementation status (2026-06-04).** The on-site parts of this plan are
+> **built**: the 5 metro local-landing pages (§6) are live at `/locations/<city>`
+> (`app/pages/locations/`), server-rendered and tested. The NAP standard (§3) is
+> codified in `app/data/nap.ts` (single source of truth). Ready-to-run kits:
+> **GBP spec** `targets/local-kit/gbp-profile-spec.md`, **citation checklist**
+> `targets/local-kit/citation-checklist.csv`, **review strategy**
+> `targets/local-kit/review-strategy.md`, **schema fields for S08**
+> `targets/localbusiness-schema-fields.md`. Remaining steps are owner-gated (NAP B6,
+> GBP login) — see `status.md` consolidated owner asks. Audit impl-log: `audits/04-offpage-local.md` §8.
+
 > **Inputs needed from the user (blockers for GBP/NAP).** Local SEO depends on a
 > real, consistent physical presence. Before GBP creation, lock:
 > 1. **Registered business name** (exact legal/trading name + entity, e.g.

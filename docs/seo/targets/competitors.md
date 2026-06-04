@@ -123,6 +123,12 @@ angle.
 
 ## 4. What competitors do that Zabble should (evidence-backed playbook)
 
+> **✅ Items 1–3 are now BUILT** (2026-06-04): programmatic local pages →
+> `/locations/<city>` (`app/pages/locations/`); the linkbait asset →
+> `/insights/south-african-operations-software-landscape`; the industry layer →
+> `/industries/<slug>`. All server-rendered + tested (`audits/04-offpage-local.md`
+> §8). Items 4–5 (educational guides, brand-term lock) hand to S06/S08.
+
 From Scrums.com's ranked-keyword footprint — the most SEO-mature peer
 [E: 04/labs-ranked-keywords__scrums__za.json]:
 
