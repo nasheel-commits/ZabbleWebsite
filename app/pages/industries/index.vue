@@ -9,6 +9,19 @@ usePageSeo({
   ogType: 'website',
   primaryKeyword: 'business software by industry south africa',
 })
+
+// The six cards above are our deepest verticals, not the limit of who we build
+// for. These illustrate the broader range the same approach fits.
+const moreSectors = [
+  'Marketing agencies',
+  'Parts & equipment suppliers',
+  'Professional services',
+  'Retail & trade',
+  'Field services',
+  'Property & estates',
+  'Education & training',
+  'Small & medium businesses',
+]
 </script>
 
 <template>
@@ -26,7 +39,7 @@ usePageSeo({
             Built for your industry. Shaped to your business.
           </h1>
           <p data-answer-first class="mt-6 max-w-2xl text-[16px] md:text-[18px] leading-[1.6] text-ink">
-            Zabble has built for NGOs, banks, hotels, law firms, parts suppliers and manufacturers. The industries differ; the pattern doesn’t, every business has one operational problem that costs more than the rest combined. These pages show the systems we typically assemble for each.
+            Zabble has built for NGOs, banks, hotels, law firms, manufacturers and marketing agencies, as well as growing small and mid-sized businesses across many other sectors. We build bespoke systems shaped around your business, not your industry. The sectors differ; the pattern doesn’t, every business has one operational problem that costs more than the rest combined. The six below are where our playbooks run deepest.
           </p>
         </div>
 
@@ -45,6 +58,27 @@ usePageSeo({
               <span class="transition-transform duration-200 group-hover:translate-x-0.5">→</span>
             </span>
           </NuxtLink>
+        </div>
+
+        <div v-reveal class="mt-14 md:mt-20 rounded-2xl border border-line bg-surface-alt/60 p-7 md:p-9 lg:p-10">
+          <h2 class="font-display text-[24px] md:text-[30px] leading-[1.18] tracking-tight text-ink">
+            Built around your business, not your industry
+          </h2>
+          <p class="mt-3 max-w-2xl text-[15px] md:text-[16.5px] leading-[1.6] text-mute">
+            The six above are where our playbooks run deepest, not the limit of what we build. The work is industry-agnostic. We’ve shaped systems for marketing agencies, parts suppliers, professional-services firms and growing small and mid-sized businesses across many other sectors. If your team runs on hand-filled spreadsheets and tools that don’t talk to each other, we can build the system that fixes it.
+          </p>
+          <div class="mt-6 text-[12px] uppercase tracking-[0.2em] text-mute-2 font-semibold">
+            A fit for sectors like
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              v-for="sector in moreSectors"
+              :key="sector"
+              class="inline-flex items-center rounded-full border border-line bg-white px-3.5 py-1.5 text-[13px] text-ink"
+            >
+              {{ sector }}
+            </span>
+          </div>
         </div>
       </section>
 
