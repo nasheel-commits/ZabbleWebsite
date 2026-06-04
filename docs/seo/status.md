@@ -16,7 +16,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 00 | Setup & access foundation | `seo/00-setup` | SEO lead | **done** | — | docs/seo built; MCP ✓ Connected; account verified + funded ($50.998); live + sandbox `20000`. |
 | 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
 | 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
-| 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
+| 03 | Structured Data / Schema.org | `seo/08-schema` ‡ | structured-data agent | **done** | 00, 01 (`site.url`) | Organization+WebSite identity + per-template schema (WebPage/CollectionPage/ItemPage, BreadcrumbList, Service, ItemList) via `nuxt-schema-org`; server-rendered, all validated → `_evidence/08/`. See `audits/08-schema.md`. ‡ commissioned on branch `seo/08-schema` (not `seo/03-schema`). |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
@@ -33,6 +33,20 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 - **S01 sets `site.url`** — S03's schema and S02's canonicals depend on it. Do S01
   early.
 - **S03 → S07 → S08**: entity/schema foundation feeds AEO, which feeds GEO.
+
+### Cross-session asks from S03/schema (branch `seo/08-schema`, 2026-06-04)
+Schema is implemented and validated. To complete the remaining slots (markup must
+match reality — nothing fabricated), the schema session needs:
+- **S01:** added `nuxt-schema-org` + provisional `site` config to `nuxt.config.ts`
+  — dedupe vs the `@nuxtjs/seo` umbrella on rebase; provide a ≥112×112
+  `/public` logo + default OG image so `Organization.logo` can be set.
+- **S07/S10:** verified `sameAs` profile URLs (LinkedIn/directories) → added to the
+  Organization identity. Currently empty by necessity (no profiles exist yet).
+- **S06/S07:** real on-page FAQ Q&A and blog copy → `FAQPage`/`Article` emit via
+  the ready `app/composables/useContentSchema.ts` (1:1 with visible text).
+- **S04/S10:** a verified NAP → upgrade Organization to `LocalBusiness`.
+- **S01/S10:** run Google Rich Results Test against live URLs at launch (no public
+  API; paste from `_evidence/08/`).
 
 ---
 

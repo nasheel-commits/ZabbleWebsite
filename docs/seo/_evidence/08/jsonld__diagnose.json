@@ -1,0 +1,57 @@
+[
+  {
+    "@id": "https://zabble.org/#website",
+    "@type": "WebSite",
+    "description": "Zabble designs bespoke operational systems — automation, audit trails, anomaly detection, and analytics — built around the specific problem slowing your business down.",
+    "name": "Zabble",
+    "url": "https://zabble.org/",
+    "publisher": {
+      "@id": "https://zabble.org/#identity"
+    }
+  },
+  {
+    "@id": "https://zabble.org/diagnose#webpage",
+    "@type": "WebPage",
+    "description": "A 2-minute diagnostic to find the operational problem that's costing your business the most.",
+    "name": "Diagnose your operations · Zabble",
+    "url": "https://zabble.org/diagnose",
+    "about": {
+      "@id": "https://zabble.org/#identity"
+    },
+    "isPartOf": {
+      "@id": "https://zabble.org/#website"
+    },
+    "potentialAction": [
+      {
+        "@type": "ReadAction",
+        "target": [
+          "https://zabble.org/diagnose"
+        ]
+      }
+    ]
+  },
+  {
+    "@id": "https://zabble.org/#identity",
+    "@type": "Organization",
+    "description": "Zabble is a bespoke consulting firm based in South Africa. It designs and builds operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing a specific business down.",
+    "email": "analytics@zabble.org",
+    "name": "Zabble",
+    "slogan": "We don’t sell software. We build the system your business actually needs.",
+    "url": "https://zabble.org",
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "ZA"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "South Africa"
+    },
+    "knowsAbout": [
+      "Business process automation",
+      "Audit trails and operational governance",
+      "Anomaly detection",
+      "Business analytics and decision support",
+      "Bespoke operational software systems"
+    ]
+  }
+]

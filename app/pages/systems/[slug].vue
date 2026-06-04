@@ -39,6 +39,46 @@ useHead({
   ],
 })
 
+// ── Structured data / JSON-LD (S03) ────────────────────────────────────────
+// Per-module markup: a WebPage (ItemPage) + the breadcrumb trail + a Service
+// node describing the system as an entity, with provider → the Zabble
+// Organization (@id interlink). Service — not Product/SoftwareApplication —
+// because Zabble delivers a bespoke build/consulting engagement, not a priced,
+// off-the-shelf product (see audits/08-schema.md §type-choice).
+//
+// The Service node is emitted ONLY for systems with real, signed-off copy.
+// Concept/TODO entries are excluded so we never mark up placeholder text
+// (markup must match visible content). Description is the on-page tagline.
+const s = sys.value
+useSchemaOrg([
+  defineWebPage({ '@type': ['WebPage', 'ItemPage'] }),
+  defineBreadcrumb({
+    itemListElement: [
+      { name: 'Home', item: '/' },
+      { name: 'Systems', item: '/systems' },
+      { name: s.name, item: `/systems/${s.slug}` },
+    ],
+  }),
+  // Service emitted as a raw graph node: @unhead/schema-org's Vue build doesn't
+  // ship a `defineService` helper, but a typed Service node with an explicit,
+  // page-unique @id resolves identically. provider → the Zabble Organization.
+  ...(s.status !== 'concept'
+    ? [
+        {
+          '@type': 'Service',
+          '@id': `https://zabble.org/systems/${s.slug}#service`,
+          name: s.name,
+          description: s.tagline,
+          serviceType: 'Bespoke operational system',
+          provider: { '@id': 'https://zabble.org/#identity' },
+          areaServed: { '@type': 'Country', name: 'South Africa' },
+          category: pillarMetas.value.map((p) => p.label),
+          url: `https://zabble.org/systems/${s.slug}`,
+        },
+      ]
+    : []),
+])
+
 </script>
 
 <template>
