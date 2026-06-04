@@ -34,19 +34,29 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
   early.
 - **S03 → S07 → S08**: entity/schema foundation feeds AEO, which feeds GEO.
 
-### Cross-session asks from S03/schema (branch `seo/08-schema`, 2026-06-04)
-Schema is implemented and validated. To complete the remaining slots (markup must
-match reality — nothing fabricated), the schema session needs:
-- **S01:** added `nuxt-schema-org` + provisional `site` config to `nuxt.config.ts`
-  — dedupe vs the `@nuxtjs/seo` umbrella on rebase; provide a ≥112×112
-  `/public` logo + default OG image so `Organization.logo` can be set.
-- **S07/S10:** verified `sameAs` profile URLs (LinkedIn/directories) → added to the
-  Organization identity. Currently empty by necessity (no profiles exist yet).
-- **S06/S07:** real on-page FAQ Q&A and blog copy → `FAQPage`/`Article` emit via
-  the ready `app/composables/useContentSchema.ts` (1:1 with visible text).
-- **S04/S10:** a verified NAP → upgrade Organization to `LocalBusiness`.
-- **S01/S10:** run Google Rich Results Test against live URLs at launch (no public
-  API; paste from `_evidence/08/`).
+### Cross-session asks from S03/schema (branch `seo/08-schema`, updated 2026-06-04)
+Schema implemented + validated (all types pass; FAQ byte-identical to on-page text;
+see `audits/08-schema.md`). Markup matches reality — nothing fabricated.
+
+**Resolved this pass:**
+- **S07 (AEO) ✓** — FAQ content delivered + integrated; **`FAQPage` now emits**
+  byte-identically on home + 7 system pages. More systems light up automatically as
+  S07 adds FAQ sets to `AEO_CONTENT`.
+- **S07-geo (entity) ✓ (schema side)** — Organization `description`/`knowsAbout`
+  applied byte-exact to boilerplate B + `llms.txt`; `disambiguatingDescription`
+  carries the "not Zabble, Inc. (US)" signal.
+- **S04 (local) ◑** — `areaServed` = South Africa + Jhb/CPT/Pretoria added.
+
+**Still needed (wired-on-arrival — nothing fabricated until real):**
+- **S10:** verified `sameAs` URLs (LinkedIn/Crunchbase/GBP) + the Wikidata item →
+  uncomment the `sameAs` block in `nuxt.config.ts`. (All PENDING per 07-geo §2/§4.)
+- **S01/design:** a ≥112×112 `/public/zabble-logo.png` → uncomment `logo`.
+- **S04/S10:** verified NAP (blocker **B6**) → upgrade Organization to `LocalBusiness`.
+- **S06/S10:** live blog pages → `Article`/`BlogPosting` via the ready
+  `useContentSchema.ts` (only briefs exist today, no `app/pages` posts).
+- **S01/S10:** run Google Rich Results Test on live URLs at launch — paste from
+  `_evidence/08/rrt-paste-in.md` (no public API; site is pre-launch).
+- **S01:** dedupe `nuxt-schema-org` vs the `@nuxtjs/seo` umbrella on rebase.
 
 ---
 
