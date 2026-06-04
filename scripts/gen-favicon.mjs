@@ -2,11 +2,13 @@
 //
 //   node scripts/gen-favicon.mjs
 //
-// Design: an ink (#0A0F1A) rounded tile with a bold geometric "Z". The Z's top
-// bar + diagonal are white; its BOTTOM bar is brand cyan (#01DBF1) — the accent
-// baked into the letterform, echoing the site's serif-headline-with-cyan-
-// underline signature (brand.md §2). Ink tile = visible on both dark browser
-// tabs (light glyph) and light chrome (dark mark). Outputs:
+// Design (light mode — brand is light-mode only, white-heavy; brand.md §1):
+// a WHITE (#FFFFFF) rounded tile with a hairline brand-line (#E2E8F0) border for
+// definition on light chrome, and a refined geometric "Z" — ink (#0A0F1A) top
+// bar + diagonal, brand-cyan (#01DBF1) bottom bar. The cyan accent is baked into
+// the letterform, echoing the site's serif-headline-with-cyan-underline
+// signature. Lighter bar weight + 7-unit padding keep it elegant, not chunky.
+// Outputs:
 //   public/favicon.svg          — scalable, primary for modern browsers
 //   public/favicon.ico          — 16/32/48 PNG-in-ICO, legacy + Google fallback
 //   public/apple-touch-icon.png — 180×180 full-bleed, iOS home screen
@@ -22,27 +24,30 @@ const PUBLIC = join(dirname(fileURLToPath(import.meta.url)), '..', 'public')
 const INK = '#0A0F1A'
 const WHITE = '#FFFFFF'
 const CYAN = '#01DBF1'
+const LINE = '#E2E8F0'
 
-// Geometric "Z" on a 32-unit grid (7-unit inset, 5-unit bar weight) — chunky
-// enough to stay legible at 16px. Single white polygon; the cyan rect recolors
-// the bottom bar (clean seam at y=19, below where the diagonal ends).
-const Z_PATH = 'M7 8 L25 8 L25 13 L16 19 L25 19 L25 24 L7 24 L7 19 L16 13 L7 13 Z'
-const Z_BOTTOM_BAR = '<rect x="7" y="19" width="18" height="5" fill="' + CYAN + '"/>'
+// Refined geometric "Z" on a 32-unit grid: 7-unit padding, 4-unit bar weight
+// (lighter/more elegant than a chunky mark, still legible at 16px). Single ink
+// polygon; the cyan rect recolors the bottom bar (clean seam at y=21, below
+// where the diagonal ends).
+const Z_PATH = 'M7 7 L25 7 L25 11 L16 21 L25 21 L25 25 L7 25 L7 21 L16 11 L7 11 Z'
+const Z_BOTTOM_BAR = '<rect x="7" y="21" width="18" height="4" fill="' + CYAN + '"/>'
 
-const glyph = '<path d="' + Z_PATH + '" fill="' + WHITE + '"/>' + Z_BOTTOM_BAR
+const glyph = '<path d="' + Z_PATH + '" fill="' + INK + '"/>' + Z_BOTTOM_BAR
 
-// Rounded tile (transparent outside the radius) — best for browser tabs.
+// Rounded white tile with hairline border (transparent outside the radius) —
+// best for browser tabs. Stroke inset by 0.5 so its 1-unit width stays on-canvas.
 const svgRounded =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Zabble">' +
-  '<rect width="32" height="32" rx="7" fill="' + INK + '"/>' +
+  '<rect x="0.5" y="0.5" width="31" height="31" rx="8" fill="' + WHITE + '" stroke="' + LINE + '" stroke-width="1"/>' +
   glyph +
   '</svg>\n'
 
-// Full-bleed tile (ink fills the whole square, no transparent corners) — for
-// iOS/Android masks, which apply their own corner rounding.
+// Full-bleed white tile (no transparent corners) — for iOS/Android masks, which
+// apply their own corner rounding.
 const svgFullBleed =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">' +
-  '<rect width="32" height="32" fill="' + INK + '"/>' +
+  '<rect width="32" height="32" fill="' + WHITE + '"/>' +
   glyph +
   '</svg>'
 
