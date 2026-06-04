@@ -6,10 +6,12 @@ import {
   Check,
   X,
   Calendar,
+  CalendarCheck,
   ChevronLeft,
   ChevronRight,
   Clock,
   Loader2,
+  Video,
   Workflow,
   ShieldCheck,
   Radar,
@@ -28,8 +30,8 @@ usePageSeo({
   primaryKeyword: 'business operations diagnostic',
 })
 
-// Measurement (S09). generate_lead fires on contact capture; the book-call CTA
-// is tagged as schedule_call via data-analytics-event in the template.
+// Measurement (S09). generate_lead fires on contact capture; schedule_call
+// fires when the call is booked (see submitContact).
 const analytics = useAnalytics()
 
 type StepKey =
@@ -166,10 +168,9 @@ const stepDefs: StepDef[] = [
   },
   {
     key: 'contact',
-    question:
-      'Where should we send your Operational Pain Profile and the link to book your call?',
+    question: 'Last step — your details and a time that works.',
     helper:
-      "We'll only use this to send your profile and book the call. Nothing else.",
+      "We'll book the call, send a calendar invite with a Google Meet link, and email you your Operational Pain Profile. Nothing else.",
   },
 ]
 
@@ -178,6 +179,32 @@ const direction = ref<'forward' | 'backward'>('forward')
 const completed = ref(false)
 const submitting = ref(false)
 const isAdvancing = ref(false)
+
+// Booking slots are offered in the business's timezone (SAST has no DST).
+const BUSINESS_TZ_LABEL = 'SAST · UTC+2'
+// SAST is a fixed +02:00 offset. Used to place a slot's wall-clock time on the
+// absolute timeline so the "must be at least 1h from now" rule is correct
+// regardless of the visitor's own timezone.
+const BUSINESS_UTC_OFFSET = '+02:00'
+// A slot must start at least this far in the future to be bookable.
+const MIN_LEAD_MS = 60 * 60 * 1000
+
+// Result of a successful /api/book call; null until (and unless) one succeeds.
+const booking = ref<{
+  meetLink: string | null
+  htmlLink: string | null
+  start: { dateLabel: string; timeLabel: string; timeZone: string }
+} | null>(null)
+// True when the booking call failed or isn't configured yet — the result
+// screen then shows the profile plus a mailto fallback instead of "booked".
+const bookingError = ref(false)
+// True when the chosen slot was taken between selection and submit — we keep
+// the user on the form to pick another time rather than showing the result.
+const slotConflict = ref(false)
+
+// Slots that conflict with sales@'s live Google Calendar for the chosen date.
+const unavailableSlots = ref<Set<string>>(new Set())
+const slotsLoading = ref(false)
 
 const answers = reactive({
   businessType: null as string | null,
@@ -244,6 +271,11 @@ function isUnavailable(date: Date) {
 function selectDate(date: Date) {
   if (isUnavailable(date)) return
   answers.contact.preferredDate = new Date(date)
+  // A new date invalidates the prior time + busy map; reload from the calendar.
+  answers.contact.preferredTime = null
+  unavailableSlots.value = new Set()
+  slotConflict.value = false
+  loadAvailability(date)
 }
 function prevMonth() {
   if (!canPrevMonth.value) return
@@ -261,7 +293,67 @@ function nextMonth() {
   )
 }
 function selectTime(slot: string) {
+  if (isSlotUnavailable(slot)) return
   answers.contact.preferredTime = slot
+}
+
+// Absolute (epoch-ms) start of a slot on a given date, in business time.
+function slotStartMs(date: Date, slot: string): number {
+  const dateISO = `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`
+  return Date.parse(`${dateISO}T${slotTo24h(slot)}:00${BUSINESS_UTC_OFFSET}`)
+}
+
+// True when a slot is less than the minimum lead time away (mainly affects
+// today — e.g. at 15:30, every slot before 16:30 is too soon).
+function isTooSoon(slot: string): boolean {
+  const d = answers.contact.preferredDate
+  if (!d) return false
+  return slotStartMs(d, slot) < Date.now() + MIN_LEAD_MS
+}
+
+function isSlotUnavailable(slot: string) {
+  return unavailableSlots.value.has(slot) || isTooSoon(slot)
+}
+
+const blockedSlotsOnDate = computed(() => {
+  if (!answers.contact.preferredDate) return 0
+  return timeSlots.filter((s) => isSlotUnavailable(s)).length
+})
+const allSlotsUnavailable = computed(
+  () => !!answers.contact.preferredDate && blockedSlotsOnDate.value === timeSlots.length,
+)
+
+// Pull sales@'s busy intervals for the chosen day and mark conflicting slots.
+// Fails open: if the lookup errors or isn't configured, all slots stay open and
+// the booking endpoint does the authoritative conflict check on submit.
+async function loadAvailability(date: Date) {
+  const dateISO = `${date.getFullYear()}-${pad2(date.getMonth() + 1)}-${pad2(date.getDate())}`
+  slotsLoading.value = true
+  try {
+    const res = await $fetch<
+      | { ok: true; offset: string; durationMin: number; busy: Array<{ start: string; end: string }> }
+      | { ok: false; reason: string }
+    >('/api/availability', { query: { date: dateISO } })
+    const next = new Set<string>()
+    if (res.ok) {
+      for (const slot of timeSlots) {
+        const start = Date.parse(`${dateISO}T${slotTo24h(slot)}:00${res.offset}`)
+        const end = start + res.durationMin * 60_000
+        if (res.busy.some((b) => start < Date.parse(b.end) && end > Date.parse(b.start))) {
+          next.add(slot)
+        }
+      }
+    }
+    unavailableSlots.value = next
+    // If the previously chosen time just became unavailable, drop it.
+    if (answers.contact.preferredTime && next.has(answers.contact.preferredTime)) {
+      answers.contact.preferredTime = null
+    }
+  } catch {
+    unavailableSlots.value = new Set()
+  } finally {
+    slotsLoading.value = false
+  }
 }
 
 const timeSlots = [
@@ -337,18 +429,42 @@ const contactValid = computed(() => {
   return (
     answers.contact.name.trim().length > 0 &&
     isEmail(answers.contact.email) &&
-    answers.contact.company.trim().length > 0
+    answers.contact.company.trim().length > 0 &&
+    !!answers.contact.preferredDate &&
+    !!answers.contact.preferredTime
   )
 })
 
-function submitContact() {
+// --- Build the naive (zone-less) start time the booking API expects ---------
+function pad2(n: number) {
+  return String(n).padStart(2, '0')
+}
+function slotTo24h(slot: string): string {
+  const m = /(\d+):(\d+)\s*(AM|PM)/i.exec(slot)
+  if (!m) return '09:00'
+  let h = parseInt(m[1], 10)
+  const ap = m[3].toUpperCase()
+  if (ap === 'PM' && h !== 12) h += 12
+  if (ap === 'AM' && h === 12) h = 0
+  return `${pad2(h)}:${m[2]}`
+}
+const startDateTime = computed(() => {
+  const d = answers.contact.preferredDate
+  const t = answers.contact.preferredTime
+  if (!d || !t) return null
+  return `${d.getFullYear()}-${pad2(d.getMonth() + 1)}-${pad2(d.getDate())}T${slotTo24h(t)}:00`
+})
+
+async function submitContact() {
   if (!contactValid.value || submitting.value) return
   submitting.value = true
+  bookingError.value = false
+  slotConflict.value = false
+  booking.value = null
+
+  // Measurement (S09): generate_lead is the primary B2B conversion — fires on
+  // contact capture, independent of whether auto-booking ultimately succeeds.
   if (import.meta.client) {
-    // eslint-disable-next-line no-console
-    console.log('[Zabble Diagnose] Submission', JSON.parse(JSON.stringify(answers)))
-    // Primary B2B conversion — GA4 key event. Value/currency in ZAR (lead value
-    // is configured in GA4; 0 until an estimated lead value is agreed).
     analytics.trackEvent('generate_lead', {
       currency: 'ZAR',
       value: 0,
@@ -358,11 +474,51 @@ function submitContact() {
       timeline: answers.timeline,
     })
   }
-  window.setTimeout(() => {
-    submitting.value = false
-    completed.value = true
-    direction.value = 'forward'
-  }, 700)
+
+  try {
+    const res = await $fetch<
+      | { ok: true; meetLink: string | null; htmlLink: string | null; start: { dateLabel: string; timeLabel: string; timeZone: string } }
+      | { ok: false; reason: string }
+    >('/api/book', {
+      method: 'POST',
+      body: {
+        contact: {
+          name: answers.contact.name.trim(),
+          email: answers.contact.email.trim(),
+          company: answers.contact.company.trim(),
+          phone: answers.contact.phone.trim(),
+          walkAway: answers.contact.walkAway.trim(),
+        },
+        start: {
+          dateTime: startDateTime.value,
+          dateLabel: selectedDateLabel.value,
+          timeLabel: answers.contact.preferredTime,
+        },
+        profileTitle: profile.value.title,
+        summaryLines: summaryLines.value,
+      },
+    })
+    if (res.ok) {
+      booking.value = { meetLink: res.meetLink, htmlLink: res.htmlLink, start: res.start }
+      // schedule_call key event — the call is now actually booked.
+      analytics.trackEvent('schedule_call', { lead_source: 'diagnose_result' })
+    } else if (res.reason === 'slot_taken' || res.reason === 'too_soon') {
+      // Slot got taken, or the 1h lead time lapsed while they filled the form —
+      // refresh the calendar and keep them on the form to repick.
+      slotConflict.value = true
+      if (answers.contact.preferredDate) await loadAvailability(answers.contact.preferredDate)
+      answers.contact.preferredTime = null
+      submitting.value = false
+      return
+    } else {
+      bookingError.value = true
+    }
+  } catch {
+    bookingError.value = true
+  }
+  submitting.value = false
+  completed.value = true
+  direction.value = 'forward'
 }
 
 const progress = computed(() => {
@@ -376,39 +532,42 @@ const progressLabel = computed(() => {
   return `Step ${currentStep.value} of ${totalSteps}`
 })
 
+// The pain profile is a *starting hypothesis*, not a label. Each entry leads
+// with the operational theme the answers point to; the body stays general
+// because the call is where the real, usually broader, scope gets mapped.
 const profileMap = {
   automation: {
-    title: 'a Workflow Automation business',
+    title: 'Too much of your week goes to work a system should be doing.',
     icon: Workflow,
-    body: "Businesses with your profile typically need their core operational workflows automated end-to-end. The highest-value first move is usually identifying the single workflow that costs the most hours every week, and rebuilding it so it runs itself.",
+    body: "When the same manual steps repeat every week, the cost compounds quietly. It's rarely just the hours — it's the focus those hours pull away from the work only your team can do.",
     quote:
       '“Three people were spending half their week on the same spreadsheet. We replaced that whole flow with one system, and those hours came straight back to the business.”',
   },
   audit: {
-    title: 'an Audit Trail business',
+    title: "You're running without one clear view of what's actually happening.",
     icon: ShieldCheck,
-    body: "Your profile points to a visibility problem. Until you can see who did what, when, and why, in one place, every review costs more than it should and every audit feels like a fire drill. The first job is usually consolidating your operational truth into a single source.",
+    body: "When your operational truth is scattered across tools and inboxes, every review, decision, and audit costs more than it should — and confidence is the first thing to go.",
     quote:
       '“We used to scramble for two weeks before every audit. Now the trail is there before we even ask.”',
   },
   risk: {
-    title: 'an Anomaly Detection business',
+    title: "Your real exposure is what you can't see until it's already cost you.",
     icon: Radar,
-    body: "The pattern in your answers is risk that grows quietly as you scale. The right system watches your operations in the background and flags what's unusual: the fraud, the error, the drift. All before it becomes a problem you can't ignore.",
+    body: "Errors, drift, and the occasional bad actor tend to surface late — long after the cheapest moment to catch them has passed. The right system watches quietly in the background and flags what's unusual before it becomes a problem you can't ignore.",
     quote:
       '“We caught a vendor overcharging us 3× the baseline. The system flagged it before the invoice was even approved.”',
   },
   analytics: {
-    title: 'an Analytics business',
+    title: 'You make big calls without the numbers those calls deserve.',
     icon: BarChart3,
-    body: "Your profile is a data-rich business making decisions on hunches. You almost certainly have the inputs you need. They're just trapped in the wrong tools. The first job is usually building the dashboards your leadership team actually opens on Monday morning.",
+    body: "The numbers you'd want almost always already exist. They're just trapped in the wrong tools, so decisions lean on instinct when they could lean on evidence.",
     quote:
       '“For the first time, every meeting starts with the same numbers. Decisions take half as long.”',
   },
   all: {
-    title: 'a Full-System business',
+    title: "The strain isn't in one place — it's in how the whole operation runs.",
     icon: Layers,
-    body: "Your profile says all four of our pillars apply: automation, audit trails, anomaly detection, and analytics. That's common past a certain scale. The real work is sequencing: starting with the pillar that has the biggest dollar impact, then layering the others on top.",
+    body: "Past a certain scale, manual work, blind spots, risk, and thin reporting stop being separate problems and start feeding each other. The work is sequencing the fix — starting where the impact is biggest — not attempting all of it at once.",
     quote:
       '“We didn’t fix everything at once. We fixed the right thing first, and the rest got easier from there.”',
   },
@@ -419,35 +578,89 @@ const profile = computed(() => {
   return profileMap[key] || profileMap.all
 })
 
-const calendarUrl = computed(() => {
+// --- Synthesis: a sentence woven from the *rest* of their answers -----------
+// This is what makes the profile feel earned across the whole form, and sets
+// up the call as the place where the real scope (broader than this) is found.
+const costPhrase: Record<string, string> = {
+  time: 'the cost is showing up mostly as lost time',
+  money: 'the cost is landing mostly as money',
+  risk: "the cost is mostly risk you can't afford to carry",
+  opportunity: 'the cost is mostly opportunities slipping past',
+  unsure: "you're not yet sure where the cost is hiding — itself a telling sign",
+}
+const triedPhrase: Record<string, string> = {
+  saas: "off-the-shelf tools haven't quite fit",
+  hires: "adding people hasn't closed the gap",
+  inhouse: 'an in-house build only got you part of the way',
+  patched: 'spreadsheets and workarounds are holding it together for now',
+  nothing: 'you’re starting fresh, with no fix locked in yet',
+}
+const timelinePhrase: Record<string, string> = {
+  quarter: 'you want it handled this quarter',
+  '3to6': "you're looking at the next three to six months",
+  year: "you'd like it solved within the year",
+  exploring: "you're still exploring what's possible",
+}
+
+const synthesis = computed(() => {
+  const parts: string[] = []
+  if (answers.cost && costPhrase[answers.cost]) parts.push(costPhrase[answers.cost])
+  if (answers.tried && triedPhrase[answers.tried]) parts.push(triedPhrase[answers.tried])
+  if (answers.timeline && timelinePhrase[answers.timeline])
+    parts.push(timelinePhrase[answers.timeline])
+
+  const tail =
+    "the call is where we map the full operational picture, which is almost always broader than a few questions can capture."
+
+  if (!parts.length) {
+    return `From here, ${tail}`
+  }
+  const joined =
+    parts.length === 1
+      ? parts[0]
+      : `${parts.slice(0, -1).join(', ')}, and ${parts[parts.length - 1]}`
+  const sentence = joined.charAt(0).toUpperCase() + joined.slice(1)
+  return `${sentence}. That's a starting point, not a verdict — ${tail}`
+})
+
+// --- Readable summary of every answer, for the API / email / calendar -------
+function labelForStep(key: StepKey, value: string | null): string {
+  if (!value) return '(not answered)'
+  const def = stepDefs.find((s) => s.key === key)
+  const opt = def?.options?.find((o) => o.value === value)
+  return opt?.label ?? value
+}
+
+const summaryLines = computed(() => [
+  `Business: ${labelForStep('businessType', answers.businessType)}`,
+  `Most pressing: ${labelForStep('primaryPain', answers.primaryPain)}`,
+  `Main cost: ${labelForStep('cost', answers.cost)}`,
+  `Tried so far: ${labelForStep('tried', answers.tried)}`,
+  `Timeline: ${labelForStep('timeline', answers.timeline)}`,
+  `Who's involved: ${labelForStep('decisionAuthority', answers.decisionAuthority)}`,
+])
+
+// Fallback only: used when auto-booking can't complete (e.g. before the Google
+// credentials are configured). Pre-fills an email to sales@ with everything.
+const fallbackMailto = computed(() => {
   const preferredWhen =
     answers.contact.preferredDate && answers.contact.preferredTime
-      ? `${selectedDateLabel.value} at ${answers.contact.preferredTime}`
-      : answers.contact.preferredDate
-        ? selectedDateLabel.value
-        : ''
-  const summary = [
-    `Name: ${answers.contact.name}`,
-    `Company: ${answers.contact.company}`,
-    `Business size: ${answers.businessType ?? '(not specified)'}`,
-    `Primary pain: ${answers.primaryPain ?? '(not specified)'}`,
-    `Cost: ${answers.cost ?? '(not specified)'}`,
-    `Tried so far: ${answers.tried ?? '(not specified)'}`,
-    `Timeline: ${answers.timeline ?? '(not specified)'}`,
-    `Decision: ${answers.decisionAuthority ?? '(not specified)'}`,
-    preferredWhen ? `Preferred call time: ${preferredWhen}` : '',
-    answers.contact.walkAway
-      ? `Wants to walk away with: ${answers.contact.walkAway}`
-      : '',
-  ]
-    .filter(Boolean)
-    .join('\n')
-  const body = `Hi Zabble,\n\nI just completed the Operational Pain Profile and I'd like to book the 30-minute discovery call.\n\nMy profile:\n${summary}\n\nThanks,\n${answers.contact.name}`
+      ? `${selectedDateLabel.value} at ${answers.contact.preferredTime} (${BUSINESS_TZ_LABEL})`
+      : ''
+  const summary = summaryLines.value.join('\n')
+  const body =
+    `Hi Zabble,\n\nI just completed the Operational Pain Profile and I'd like to book the 30-minute discovery call` +
+    `${preferredWhen ? ` — my preferred time is ${preferredWhen}` : ''}.\n\n` +
+    `My answers:\n${summary}\n\n` +
+    `Name: ${answers.contact.name}\nCompany: ${answers.contact.company}` +
+    `${answers.contact.phone ? `\nPhone: ${answers.contact.phone}` : ''}` +
+    `${answers.contact.walkAway ? `\n\nWhat I'd like to walk away with: ${answers.contact.walkAway}` : ''}` +
+    `\n\nThanks,\n${answers.contact.name}`
   const params = new URLSearchParams({
     subject: 'Discovery call (from Operational Pain Profile)',
     body,
   })
-  return `mailto:analytics@zabble.org?${params.toString()}`
+  return `mailto:sales@zabble.org?${params.toString()}`
 })
 
 function onKeydown(e: KeyboardEvent) {
@@ -701,8 +914,8 @@ const stepFrame = computed(
                 <div>
                   <div class="flex items-baseline justify-between gap-3 mb-2.5">
                     <span class="block text-[13px] font-semibold text-ink tracking-[0.01em]">
-                      Preferred call time
-                      <span class="font-normal text-mute-2">(optional)</span>
+                      Pick your call time
+                      <span class="font-normal text-mute-2">· times in {{ BUSINESS_TZ_LABEL }}</span>
                     </span>
                     <span
                       v-if="answers.contact.preferredDate && answers.contact.preferredTime"
@@ -780,6 +993,13 @@ const stepFrame = computed(
                           <span class="text-[13px] font-semibold text-ink">
                             {{ selectedDateLabel }}
                           </span>
+                          <span
+                            v-if="slotsLoading"
+                            class="ml-auto inline-flex items-center gap-1.5 text-[11.5px] text-mute-2"
+                          >
+                            <Loader2 :size="12" class="animate-spin" />
+                            Checking calendar…
+                          </span>
                         </div>
                         <div class="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-3 gap-2">
                           <button
@@ -787,10 +1007,14 @@ const stepFrame = computed(
                             :key="slot"
                             type="button"
                             @click="selectTime(slot)"
+                            :disabled="isSlotUnavailable(slot)"
                             :aria-pressed="answers.contact.preferredTime === slot"
+                            :title="isSlotUnavailable(slot) ? 'Already booked' : undefined"
                             :class="[
                               'py-2 rounded-md text-[12.5px] font-semibold transition',
-                              answers.contact.preferredTime === slot
+                              isSlotUnavailable(slot)
+                                ? 'text-mute-2/40 line-through cursor-not-allowed border border-transparent'
+                                : answers.contact.preferredTime === slot
                                 ? 'bg-cyan-brand text-ink ring-1 ring-cyan-brand-deep'
                                 : 'border border-line text-ink hover:border-cyan-brand/55 hover:bg-cyan-brand/[0.04]',
                             ]"
@@ -798,6 +1022,19 @@ const stepFrame = computed(
                             {{ slot }}
                           </button>
                         </div>
+                        <p
+                          v-if="!slotsLoading && allSlotsUnavailable"
+                          class="mt-2.5 text-[11.5px] text-mute-2 leading-relaxed"
+                        >
+                          No more times available on this day — please pick another date.
+                        </p>
+                        <p
+                          v-else-if="!slotsLoading && blockedSlotsOnDate > 0"
+                          class="mt-2.5 text-[11.5px] text-mute-2 leading-relaxed"
+                        >
+                          Crossed-out times aren't available — already booked, or less than an
+                          hour away.
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -816,6 +1053,14 @@ const stepFrame = computed(
                   />
                 </label>
 
+                <p
+                  v-if="slotConflict"
+                  class="rounded-xl border border-cyan-brand/40 bg-cyan-brand/[0.06] px-4 py-3 text-[13.5px] text-ink leading-[1.55]"
+                >
+                  That time just became unavailable — we've refreshed the calendar,
+                  please pick another slot.
+                </p>
+
                 <div class="pt-1">
                   <button
                     type="submit"
@@ -827,9 +1072,12 @@ const stepFrame = computed(
                         : 'bg-line text-mute-2 cursor-not-allowed',
                     ]"
                   >
-                    <Loader2 v-if="submitting" :size="18" class="animate-spin" />
+                    <template v-if="submitting">
+                      <Loader2 :size="18" class="animate-spin" />
+                      Booking your call…
+                    </template>
                     <template v-else>
-                      See my Operational Pain Profile
+                      Book my 30-minute call
                       <ArrowRight
                         :size="18"
                         class="transition group-hover:translate-x-0.5"
@@ -862,42 +1110,92 @@ const stepFrame = computed(
                   Your Operational Pain Profile
                 </div>
                 <h1
-                  class="mt-5 font-display text-[36px] sm:text-[46px] md:text-[56px] leading-[1.05] tracking-tight text-ink"
+                  class="mt-5 font-display text-[32px] sm:text-[42px] md:text-[50px] leading-[1.08] tracking-tight text-ink text-balance"
                 >
-                  You're
-                  <span class="cyan-underline">{{ profile.title }}</span
-                  >.
+                  {{ profile.title }}
                 </h1>
                 <p
                   class="mx-auto mt-7 max-w-2xl text-[17px] md:text-[18.5px] leading-[1.65] text-mute"
                 >
                   {{ profile.body }}
                 </p>
+                <p
+                  class="mx-auto mt-4 max-w-2xl text-[15.5px] md:text-[16.5px] leading-[1.6] text-mute-2"
+                >
+                  {{ synthesis }}
+                </p>
               </div>
 
-              <div class="flex flex-col items-center gap-4">
-                <a
-                  :href="calendarUrl"
-                  data-analytics-event="schedule_call"
-                  data-analytics-lead-source="diagnose_result"
-                  class="group inline-flex items-center justify-center gap-2 rounded-full bg-cyan-brand hover:bg-cyan-brand-deep text-ink text-[16px] font-semibold pl-7 pr-6 py-4 transition shadow-[0_22px_55px_-12px_rgba(1,219,241,0.65)]"
-                >
-                  <Calendar :size="18" />
-                  Book your 30-minute call
-                  <ArrowRight
-                    :size="18"
-                    class="transition group-hover:translate-x-0.5"
-                  />
-                </a>
-                <p class="text-[16px] lg:text-[13.5px] text-mute-2">
-                  First conversation is free. And useful either way.
+              <!-- Booked: the call is confirmed on sales@'s calendar -->
+              <div
+                v-if="booking"
+                class="booked-card mx-auto max-w-xl rounded-2xl border border-cyan-brand/40 bg-cyan-brand/[0.05] p-6 md:p-7"
+              >
+                <div class="flex items-start gap-4">
+                  <span
+                    class="mt-0.5 inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-cyan-brand text-ink shadow-[0_10px_30px_-8px_rgba(1,219,241,0.7)]"
+                  >
+                    <CalendarCheck :size="22" :stroke-width="2" />
+                  </span>
+                  <div class="flex-1 min-w-0">
+                    <h2 class="text-[18px] md:text-[19px] font-semibold text-ink leading-snug">
+                      Your 30-minute call is booked.
+                    </h2>
+                    <p
+                      v-if="booking.start.dateLabel"
+                      class="mt-1 text-[14.5px] text-mute leading-[1.55]"
+                    >
+                      {{ booking.start.dateLabel
+                      }}<template v-if="booking.start.timeLabel">
+                        at {{ booking.start.timeLabel }}</template
+                      >
+                      <span class="text-mute-2">· {{ BUSINESS_TZ_LABEL }}</span>
+                    </p>
+                    <p class="mt-2 text-[14px] text-mute leading-[1.6]">
+                      A calendar invite with the Google Meet link is on its way to
+                      <span class="font-semibold text-ink">{{ answers.contact.email }}</span>.
+                    </p>
+                    <a
+                      v-if="booking.meetLink"
+                      :href="booking.meetLink"
+                      target="_blank"
+                      rel="noopener"
+                      class="group mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-ink hover:bg-ink-soft text-white text-[14.5px] font-semibold pl-5 pr-5 py-3 transition"
+                    >
+                      <Video :size="17" />
+                      Join with Google Meet
+                      <ArrowRight :size="16" class="transition group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Fallback: auto-booking unavailable → let them reach us directly -->
+              <div
+                v-else
+                class="mx-auto max-w-xl rounded-2xl border border-line bg-surface-alt p-6 md:p-7 text-center"
+              >
+                <p class="text-[15.5px] text-ink font-semibold">
+                  We couldn't lock the time in automatically.
                 </p>
+                <p class="mx-auto mt-2 max-w-md text-[14px] text-mute leading-[1.6]">
+                  No problem — your profile is ready below. Send us one click and we'll
+                  confirm your call by hand, usually within a few hours.
+                </p>
+                <a
+                  :href="fallbackMailto"
+                  class="group mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-cyan-brand hover:bg-cyan-brand-deep text-ink text-[15px] font-semibold pl-6 pr-5 py-3.5 transition shadow-[0_18px_45px_-14px_rgba(1,219,241,0.6)]"
+                >
+                  <Calendar :size="17" />
+                  Email us to confirm your call
+                  <ArrowRight :size="16" class="transition group-hover:translate-x-0.5" />
+                </a>
               </div>
 
               <figure
                 class="mt-2 rounded-2xl border border-line bg-white/95 p-7 md:p-9 shadow-[0_24px_60px_-40px_rgba(15,23,42,0.18)]"
               >
-                <blockquote class="diagnose-quote text-[18px] md:text-[20px] text-ink leading-[1.6]">
+                <blockquote class="diagnose-quote text-ink">
                   {{ profile.quote }}
                 </blockquote>
                 <figcaption
@@ -964,12 +1262,16 @@ const stepFrame = computed(
 
 <style scoped>
 .diagnose-quote {
-  font-family: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Source Serif Pro',
-    'Charter', Georgia, 'Times New Roman', serif;
-  font-style: italic;
+  /* Brand display serif (Instrument Serif) — an elegant, editorial pull-quote
+     that reads as considered rather than decorative. */
+  font-family: var(--font-display);
   font-weight: 400;
-  letter-spacing: -0.005em;
+  font-size: clamp(21px, 2.5vw, 29px);
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
   text-wrap: pretty;
+  font-feature-settings: 'liga', 'dlig';
 }
 
 .form-field {

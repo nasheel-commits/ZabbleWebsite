@@ -23,6 +23,10 @@ logs
 .env.*
 !.env.example
 
+# Service-account keys + any other local secrets (booking feature). NEVER commit.
+.secrets/
+*.iam.gserviceaccount.com.json
+
 # Claude Code local (machine-specific) settings — may contain local overrides
 .claude/settings.local.json
 
