@@ -18,7 +18,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
-| 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
+| 05 | Keyword & Market Research (SA) | `seo/03-keywords` *(renumbered, ADR-0002)* | S03 | **done** | 00 | ✅ **Keyword map ready.** `targets/keyword-map.md` (213 kw, ZA, 2026-06-04) + `targets/intent-clusters.md` + uber set + AEO question sets committed. DataForSEO Labs+Keywords+SERP; evidence `_evidence/03/`; spend $1.36. Key reads: ZA bespoke demand thin → win on intent×fit + AEO/GEO; AI Overview on 9/10 SERPs; local pack on core "custom software" terms. |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
 | 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
