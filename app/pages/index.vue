@@ -8,6 +8,7 @@
       <TheMeet />
       <ThePlan />
       <TheWhatWeBuild />
+      <TheEntity />
       <TheDoNothing />
       <div class="cta-bleed-wrap">
         <div class="cta-bleed-overlay" aria-hidden="true" />

@@ -5,24 +5,28 @@ import { ArrowRight, BarChart3, Radar, ShieldCheck, Workflow } from '@lucide/vue
 const pillars = [
   {
     icon: Workflow,
+    slug: 'automation',
     title: 'Automation',
     lede: 'Stop doing it by hand.',
     body: "Every business runs on workflows. The same spreadsheet, filled out every week. The same data, copied between two systems that don't talk. The same decisions, made on the same handful of inputs. We automate the parts of your business that shouldn't need a human anymore, so the people you have can focus on the work only people can do.",
   },
   {
     icon: ShieldCheck,
+    slug: 'audit-trails',
     title: 'Audit Trails',
     lede: "You can't manage what you can't see.",
     body: 'We build visibility and governance into your operations, so you know who did what, when, and why. The result: faster reviews, cleaner audits, and confidence that what’s supposed to happen actually did.',
   },
   {
     icon: Radar,
+    slug: 'anomaly-detection',
     title: 'Anomaly Detection',
     lede: "The risks that hurt most are the ones you don't see coming.",
     body: 'We build systems that watch your operations in the background and flag what’s unusual: the fraud, the error, the drift, the outlier. All before it becomes a problem. This is how you scale without losing control.',
   },
   {
     icon: BarChart3,
+    slug: 'analytics',
     title: 'Analytics',
     lede: 'Every business has more data than it uses.',
     body: "We turn yours into a clear picture of what's happening and what matters, so you can stop making decisions on hunches and start making them on facts.",
@@ -47,11 +51,12 @@ const pillars = [
       </div>
 
       <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-7">
-        <article
+        <NuxtLink
           v-for="(p, i) in pillars"
           :key="p.title"
           v-reveal:scale="i * 110"
-          class="group relative rounded-2xl border border-line bg-white p-8 md:p-9 transition hover:border-cyan-brand/50 hover:shadow-[0_24px_60px_-32px_rgba(1,219,241,0.55)]"
+          :to="`/pillars/${p.slug}`"
+          class="group relative block rounded-2xl border border-line bg-white p-8 md:p-9 transition hover:border-cyan-brand/50 hover:shadow-[0_24px_60px_-32px_rgba(1,219,241,0.55)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         >
           <div class="flex items-start justify-between gap-6">
             <div
@@ -67,7 +72,11 @@ const pillars = [
           <h3 class="mt-7 font-display text-[30px] leading-[1.1] text-ink">{{ p.title }}</h3>
           <p class="mt-3 text-[16px] font-medium text-ink/85 leading-[1.5]">{{ p.lede }}</p>
           <p class="mt-4 text-[16px] lg:text-[15.5px] leading-[1.7] text-mute">{{ p.body }}</p>
-        </article>
+          <span class="mt-5 inline-flex items-center gap-1.5 text-[13.5px] font-semibold text-cyan-brand-deep">
+            Explore {{ p.title.toLowerCase() }}
+            <ArrowRight :size="15" class="transition group-hover:translate-x-0.5" aria-hidden="true" />
+          </span>
+        </NuxtLink>
       </div>
     </div>
   </section>
