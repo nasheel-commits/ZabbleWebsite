@@ -28,12 +28,18 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      title: 'Zabble · Bespoke Digital Systems',
+      // Global title template (S02 / on-page). Pages set a bare, distinct `title`
+      // via usePageSeo / useSeoMeta; this appends the brand → "<title> · Zabble".
+      // The bare `title` below is only the fallback for a route that sets none.
+      titleTemplate: '%s · Zabble',
+      title: 'Bespoke Digital Systems',
       htmlAttrs: {
-        lang: 'en',
+        // en-ZA: English, South Africa primary market (conventions §7).
+        lang: 'en-ZA',
       },
       meta: [
         {
+          // Fallback description only. Per-page descriptions come from usePageSeo.
           name: 'description',
           content:
             'Zabble designs bespoke operational systems: automation, audit trails, anomaly detection, and analytics. Built around the specific problem slowing your business down.',

@@ -7,16 +7,16 @@ import {
   type PillarSlug,
 } from '~/data/systems'
 
-useHead({
-  // TODO: finalise SEO copy once gallery content is real.
-  title: 'Systems · Zabble',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'A gallery of bespoke operational systems built by Zabble — automation, audit trails, anomaly detection, analytics.',
-    },
-  ],
+// Pillar hub / module index (S02 on-page). Canonical is the clean /systems URL,
+// so filtered variants (/systems?pillar=automation) canonicalise here and never
+// cannibalise it. Primary intent: "operational systems / business automation,
+// South Africa" — verify against targets/keyword-map.md once S05 completes.
+usePageSeo({
+  title: 'Operational Systems We Build',
+  description:
+    'The building blocks Zabble assembles into bespoke operating systems for South African businesses — automation, audit trails, anomaly detection and analytics.',
+  path: '/systems',
+  ogType: 'website',
 })
 
 const route = useRoute()

@@ -1,3 +1,16 @@
+<script setup lang="ts">
+// Home — primary intent: the brand entity + core offering "bespoke business
+// systems / custom software, South Africa" (commercial + navigational).
+// Verify volumes against targets/keyword-map.md once S05 completes. (S02 on-page)
+usePageSeo({
+  title: 'Bespoke Business Systems, Built in South Africa',
+  description:
+    'Zabble builds bespoke operational systems — automation, audit trails, anomaly detection and analytics — around the one problem slowing your business down.',
+  path: '/',
+  ogType: 'website',
+})
+</script>
+
 <template>
   <div class="min-h-screen bg-surface text-ink antialiased">
     <TheScrollProgress />

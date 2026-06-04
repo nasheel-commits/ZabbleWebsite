@@ -73,6 +73,42 @@ export interface System {
    * Defaults to "One system, <n> jobs." computed from `pillars.length`.
    */
   pillarHeading?: string
+
+  // ── SEO / AEO slots (added by S02 on-page; populated by S05/S06/S07) ──
+  // All optional and additive: when absent the page falls back to existing copy,
+  // so existing entries keep working unchanged. See docs/seo/audits/05-onpage.md.
+
+  /**
+   * SEO: distinct `<title>` + OG-title fragment for this module page. The global
+   * titleTemplate appends " · Zabble". Falls back to `name`. Keep ≤ ~45 chars so
+   * the full tag stays under ~60. Intent-bearing where it helps (e.g.
+   * "Bespoke CRM, built to your pipeline"). Owned by content (S06), targets from S05.
+   */
+  seoTitle?: string
+  /**
+   * SEO: meta description, 150–160 chars, answer-first, one concrete benefit, ZA
+   * voice. Falls back to `tagline`. Distinct per module (duplicate descriptions
+   * across 30 pages are the #1 on-page risk). Owned by content (S06).
+   */
+  seoDescription?: string
+  /**
+   * SEO: primary + secondary keyword targets for this page, from
+   * targets/keyword-map.md (S05). Reference/QA only — not rendered. First entry
+   * is the canonical primary intent for the cannibalisation guard.
+   */
+  keywords?: string[]
+  /**
+   * AEO: answer-first definition — 40–60 words answering "What is <name>?" in
+   * plain, declarative, liftable language (featured-snippet / AI-overview shape).
+   * Rendered above the demo when present. Owned by content (S06/S07).
+   */
+  definition?: string
+  /**
+   * AEO: FAQ pairs rendered on the page AND mirrored 1:1 into FAQPage JSON-LD by
+   * S08 (schema). Only mark up questions that are visibly on the page. Question
+   * text should match real PAA / SERP phrasing from S05. Owned by content (S06/S07).
+   */
+  faqs?: { q: string; a: string }[]
 }
 
 // All six entries are scaffolding. Replace TODO copy as content is finalised.

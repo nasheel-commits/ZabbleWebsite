@@ -17,15 +17,14 @@ import {
   Layers,
 } from '@lucide/vue'
 
-useHead({
-  title: 'Diagnose your operations · Zabble',
-  meta: [
-    {
-      name: 'description',
-      content:
-        "A 2-minute diagnostic to find the operational problem that's costing your business the most.",
-    },
-  ],
+// Use-case / lead-capture page (S02 on-page). Question-led intent: "how do I
+// know which system my business needs" — an AEO asset. Canonical /diagnose.
+usePageSeo({
+  title: 'Diagnose Your Operations',
+  description:
+    "A free 2-minute diagnostic that finds the operational problem costing your business the most — and the kind of system that fixes it. Built by Zabble, South Africa.",
+  path: '/diagnose',
+  ogType: 'website',
 })
 
 type StepKey =

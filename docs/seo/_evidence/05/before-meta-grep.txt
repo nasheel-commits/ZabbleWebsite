@@ -1,0 +1,23 @@
+Baseline on-page meta state BEFORE this session (2026-06-04) — findings F1–F4, F6, F7.
+
+Source of truth before change:
+- nuxt.config.ts app.head set ONE global title + ONE global description for the
+  whole site:
+    title:       "Zabble · Bespoke Digital Systems"
+    description: "Zabble designs bespoke operational systems: automation, audit
+                  trails, anomaly detection, and analytics. Built around the
+                  specific problem slowing your business down."
+    htmlAttrs.lang = "en"        <-- not en-ZA (F4)
+
+Per-page state:
+- app/pages/index.vue        : NO <script> block at all → home inherited the
+                               global title/description (F1).
+- app/pages/systems/index.vue: useHead title "Systems · Zabble" + one description.
+- app/pages/systems/[slug].vue: useHead title `${name} · Zabble`, description = tagline.
+- app/pages/diagnose.vue     : useHead title "Diagnose your operations · Zabble" + desc.
+
+Missing across ALL pages (F2): no <link rel=canonical>, no Open Graph (og:*),
+no Twitter card, no og:locale. No answer-first definition or FAQ structure (F6).
+Filtered hub URLs /systems?pillar=… had no canonical (F7).
+
+Confirmed by reading the four page components + nuxt.config.ts at commit b2962e1.

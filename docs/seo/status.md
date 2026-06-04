@@ -15,7 +15,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 |---|---------|--------|-------|--------|------------|--------------|
 | 00 | Setup & access foundation | `seo/00-setup` | SEO lead | **done** | — | docs/seo built; MCP ✓ Connected; account verified + funded ($50.998); live + sandbox `20000`. |
 | 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
-| 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
+| 02 | On-Page & Metadata | `seo/05-onpage` | on-page agent | **done** | 00, 05 (soft) | Branch `seo/05-onpage`. Per-page `useSeoMeta`+canonical+OG/Twitter on home/hub/`[slug]`/diagnose; global `titleTemplate`; `lang=en-ZA`; AEO `definition`/`faqs` slots; 7 page blueprints + kw→page map. Audit `audits/05-onpage.md`. Verified in prerendered HTML (`_evidence/05/`). |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
@@ -33,6 +33,27 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 - **S01 sets `site.url`** — S03's schema and S02's canonicals depend on it. Do S01
   early.
 - **S03 → S07 → S08**: entity/schema foundation feeds AEO, which feeds GEO.
+
+### Cross-session asks from On-Page (`seo/05-onpage`, 2026-06-04)
+> Mirrored from `audits/05-onpage.md §11`. Numbers are this board's.
+- **→ S01:** set `site.url='https://zabble.org'`, install `@nuxtjs/seo` (Nuxt-4
+  pin), sitemap from `systems.ts`, robots `Sitemap:` line, **staging `noindex`
+  guard (B3)**. Then `usePageSeo` can drop its manual canonical. *Heads-up:* this
+  session added `titleTemplate`, `lang='en-ZA'` + a fallback `title` to the shared
+  `nuxt.config.ts` `app.head` (small/additive) — **rebase on it**.
+- **→ S05 (keywords):** verify every cluster in `audits/05-onpage.md §9` (SA
+  vol/KD/intent); confirm the **integration family** (integration-hub /
+  cross-system-sync / legacy-bridge / master-data-hub / workflow-orchestrator) and
+  **compliance-reporting vs data-routing** don't cannibalise on SERP.
+- **→ S06 (content):** populate `seoTitle`, `seoDescription` (distinct per
+  module), `definition` (40–60-word answer-first) + `faqs` on `app/data/systems.ts`;
+  write `/solutions/*`, `/insights/*`, `/contact` copy (blueprints in §6).
+- **→ S07 (AEO):** own FAQ question wording (match real PAA/SERP) + the answer-first
+  definitions; confirm snippet-type per target.
+- **→ S03 (schema):** implement per-template JSON-LD (`audits/05-onpage.md §10`)
+  reading `definition`/`faqs` straight off `systems.ts` — markup only what's visible.
+- **→ S09 (perf):** generate per-page OG images or ship `/public/og-default.png`
+  (referenced by `usePageSeo`).
 
 ---
 
