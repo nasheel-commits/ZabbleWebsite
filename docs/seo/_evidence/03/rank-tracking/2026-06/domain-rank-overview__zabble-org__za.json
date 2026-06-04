@@ -1,0 +1,45 @@
+{
+ "version": "0.1.20260525",
+ "status_code": 20000,
+ "status_message": "Ok.",
+ "time": "0.1562 sec.",
+ "cost": 0.01,
+ "tasks_count": 1,
+ "tasks_error": 0,
+ "tasks": [
+  {
+   "id": "06041614-1876-0388-0000-bae78e52aab0",
+   "status_code": 20000,
+   "status_message": "Ok.",
+   "time": "0.0663 sec.",
+   "cost": 0.01,
+   "result_count": 1,
+   "path": [
+    "v3",
+    "dataforseo_labs",
+    "google",
+    "domain_rank_overview",
+    "live"
+   ],
+   "data": {
+    "api": "dataforseo_labs",
+    "function": "domain_rank_overview",
+    "se_type": "google",
+    "target": "zabble.org",
+    "location_name": "South Africa",
+    "language_code": "en"
+   },
+   "result": [
+    {
+     "se_type": "google",
+     "target": "zabble.org",
+     "location_code": 2710,
+     "language_code": "en",
+     "total_count": null,
+     "items_count": 0,
+     "items": null
+    }
+   ]
+  }
+ ]
+}
