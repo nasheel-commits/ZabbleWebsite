@@ -121,6 +121,50 @@ useHead({
         </div>
       </section>
 
+      <!-- AEO answer-first block (S07): question-led, liftable ≤40-word definition
+           of the pillar — placed high for featured-snippet / AI-overview lift. -->
+      <section
+        v-if="pillar.question && pillar.definition"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-12 md:mt-16"
+      >
+        <div v-reveal class="max-w-3xl">
+          <AnswerBlock :question="pillar.question" :answer="pillar.definition" />
+        </div>
+      </section>
+
+      <!-- GEO: one real, cited statistic + optional attributed quote (S07-geo),
+           so generative engines can lift an authoritative, attributed figure. -->
+      <section
+        v-if="pillar.stat"
+        class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-12 md:mt-16"
+      >
+        <figure v-reveal class="max-w-3xl rounded-2xl border border-line bg-surface-alt/60 p-6 md:p-7">
+          <p class="text-[18px] md:text-[20px] leading-[1.5] text-ink font-display">
+            {{ pillar.stat.text }}
+          </p>
+          <figcaption class="mt-3 text-[14px] text-mute">
+            <a
+              :href="pillar.stat.url"
+              target="_blank"
+              rel="noopener"
+              class="text-cyan-brand-deep hover:text-ink underline underline-offset-2 transition"
+            >{{ pillar.stat.source }}</a>
+          </figcaption>
+          <blockquote
+            v-if="pillar.quote"
+            class="mt-5 border-l-2 border-cyan-brand/40 pl-4 text-[15.5px] italic text-mute"
+          >
+            “{{ pillar.quote.text }}” —
+            <a
+              :href="pillar.quote.url"
+              target="_blank"
+              rel="noopener"
+              class="not-italic text-cyan-brand-deep hover:text-ink"
+            >{{ pillar.quote.source }}</a>
+          </blockquote>
+        </figure>
+      </section>
+
       <!-- Member modules (hub -> every member, rule L6) -->
       <section class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 mt-16 md:mt-20" aria-labelledby="members-heading">
         <div v-reveal class="mb-7 md:mb-9 max-w-2xl">

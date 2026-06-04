@@ -18,10 +18,21 @@ export interface Redirect {
   statusCode?: 301 | 308
 }
 
-// The site is pre-launch with new, canonical slugs and no renames yet, so this is
-// empty by design. Add an entry ONLY when a published slug actually changes, e.g.:
-//   { from: '/systems/old-slug', to: '/systems/new-slug' }
-export const REDIRECTS: Redirect[] = []
+// Retired routes 301 → their canonical replacement. `from` paths are NOT
+// prerendered (removed from nitro.routes + routeRules), so these never clobber a
+// live page (ADR-0003).
+//
+// • /pillars/* → /what-we-build/* : the pillar hubs were built at two URLs during
+//   parallel development (S04 /what-we-build, S07 /pillars). /what-we-build is
+//   canonical (IA owner S04, OR-7); the /pillars duplicate is retired here so the
+//   pillar content lives at exactly one URL (no duplicate-content split).
+export const REDIRECTS: Redirect[] = [
+  { from: '/pillars', to: '/what-we-build' },
+  { from: '/pillars/automation', to: '/what-we-build/automation' },
+  { from: '/pillars/audit-trails', to: '/what-we-build/audit-trails' },
+  { from: '/pillars/anomaly-detection', to: '/what-we-build/anomaly-detection' },
+  { from: '/pillars/analytics', to: '/what-we-build/analytics' },
+]
 
 /**
  * Throw if the redirect map is malformed. Guards against the three ways a

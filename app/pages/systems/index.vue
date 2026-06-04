@@ -147,7 +147,7 @@ watch(
         </div>
       </section>
 
-      <!-- AEO answer-first block + pillar hubs (also seeds crawl of /pillars/**) -->
+      <!-- AEO answer-first block + pillar hubs (also seeds crawl of /what-we-build/**) -->
       <section class="relative mt-12 md:mt-16">
         <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
           <div v-reveal class="max-w-3xl">
@@ -164,7 +164,7 @@ watch(
             <ul class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
               <li v-for="p in PILLARS" :key="p.slug">
                 <NuxtLink
-                  :to="`/pillars/${p.slug}`"
+                  :to="`/what-we-build/${p.slug}`"
                   class="group flex items-center gap-3 rounded-xl border border-line bg-white px-4 py-3.5 hover:border-cyan-brand/40 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <span

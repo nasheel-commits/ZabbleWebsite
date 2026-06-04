@@ -15,7 +15,7 @@ import { REDIRECTS, buildRedirectRouteRules } from './app/data/redirects'
 //    in sitemap, noindex, and served 410 by the [slug].vue gate (OR-4).
 const priorityRoutes = [
   '/', '/systems', '/diagnose', '/contact',
-  '/pillars', '/industries', '/insights',
+  '/industries', '/insights',
   '/privacy', '/cookie-policy',
   '/what-we-build', '/what-we-build/bespoke-systems', '/blog', '/blog/rss.xml',
   ...liveSystemRoutes,
@@ -269,8 +269,6 @@ export default defineNuxtConfig({
     '/':                 { prerender: true },
     '/systems':          { prerender: true },
     '/systems/**':       { prerender: true },
-    '/pillars':          { prerender: true },
-    '/pillars/**':       { prerender: true },
     '/industries':       { prerender: true },
     '/industries/**':    { prerender: true },
     '/insights':         { prerender: true },

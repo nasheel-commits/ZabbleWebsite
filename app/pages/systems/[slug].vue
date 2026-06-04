@@ -224,7 +224,7 @@ useSchemaOrg([
           </figure>
           <NuxtLink
             v-if="sys.geo.pillar"
-            :to="`/pillars/${sys.geo.pillar}`"
+            :to="`/what-we-build/${sys.geo.pillar}`"
             class="mt-5 inline-flex items-center gap-1.5 text-[14px] font-semibold text-cyan-brand-deep hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
           >
             More on {{ geoPillarLabel.toLowerCase() }}

@@ -95,7 +95,7 @@ const company = [
         <nav class="flex flex-wrap items-center gap-x-7 gap-y-2 text-[16px] lg:text-[14.5px] font-medium text-mute" aria-label="Footer">
           <NuxtLink to="/" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Home</NuxtLink>
           <NuxtLink to="/systems" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Systems</NuxtLink>
-          <NuxtLink to="/pillars" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Pillars</NuxtLink>
+          <NuxtLink to="/what-we-build" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Pillars</NuxtLink>
           <NuxtLink to="/industries" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Industries</NuxtLink>
           <NuxtLink to="/insights" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Insights</NuxtLink>
           <NuxtLink to="/contact" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Contact</NuxtLink>
