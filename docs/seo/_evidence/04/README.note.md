@@ -1,4 +1,4 @@
-# Evidence index & method — Session 10 (Off-Page, Local SEO & Competitive)
+# Evidence index & method — Session 04 (Off-Page, Local SEO & Competitive)
 
 All calls via **direct DataForSEO REST** (the in-session MCP server returned `401`
 because `DATAFORSEO_BASIC_AUTH` was not in the environment that launched this
@@ -7,10 +7,11 @@ Claude Code session — see access doc §3). Auth: HTTP Basic from `.env`
 `language_code: "en"` (`location_code 2710`). Captured **2026-06-04**, **live**
 (not sandbox). Record the `cost` field per call below.
 
-> Numbering note: the goal that drove this session labelled it "04". Per the
-> **binding** `00-conventions.md` §1, off-page/local/competitive is **Session 10**
-> (`seo/10-offpage-local`, `audits/10-offpage-local.md`, `_evidence/10/`). We
-> followed the convention to avoid colliding with `seo/04-architecture`.
+> Numbering note: this session ran as **Session 04** (`seo/04-offpage-local`,
+> `audits/04-offpage-local.md`, `_evidence/04/`) per the goal brief. The original
+> S00 conventions table numbered off-page/local as "10"; that placeholder
+> (`audits/10-offpage-local.md`) is left untouched. Site Architecture uses its own
+> distinct branch `seo/04-architecture` — no git-ref collision.
 
 ## Calls (endpoint · body · cost · what we read)
 

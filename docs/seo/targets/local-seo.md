@@ -1,9 +1,9 @@
-# Local SEO — South Africa (owned by S10)
+# Local SEO — South Africa (owned by S04)
 
 Google Business Profile setup, the NAP standard everyone must use, the SA
 citation/directory list, a review-generation strategy, and the local-landing-page
 approach. Grounded in a Maps benchmark of SA software companies
-[E: 10/business-listings__software-company-jhb.json; 10/business-listings__software-company-cpt.json]
+[E: 04/business-listings__software-company-jhb.json; 04/business-listings__software-company-cpt.json]
 captured 2026-06-04. Zabble is **pre-launch with no GBP**, so this is a build plan.
 
 > **Inputs needed from the user (blockers for GBP/NAP).** Local SEO depends on a
@@ -24,7 +24,7 @@ captured 2026-06-04. Zabble is **pre-launch with no GBP**, so this is a build pl
 The dominant search pattern in Zabble's market is **geo-modified**: "{software |
 IT | tech} compan{y|ies} + {city}" across every metro (Durban 720, Pretoria 480,
 Cape Town 480, Sandton 260, Joburg 210, Bloemfontein 170)
-[E: 10/labs-domain-intersection__scrums-x-dvt__za.json; 10/labs-ranked-keywords__scrums__za.json].
+[E: 04/labs-domain-intersection__scrums-x-dvt__za.json; 04/labs-ranked-keywords__scrums__za.json].
 Winning these needs **both** a Google Business Profile (for the Map Pack) **and**
 local landing pages (for organic). Competitors do the landing pages; almost none
 of the bespoke-software peers run a strong GBP — **an opening for Zabble.**
@@ -36,7 +36,7 @@ of the bespoke-software peers run a strong GBP — **an opening for Zabble.**
 **Category.** Primary: **Software company**. Secondary (add 2–3):
 *Business management consultant*, *Website designer / Software development*,
 *Business to business service*. (Benchmark listings use "Software company" as the
-ranking category [E: 10/business-listings__software-company-jhb.json].)
+ranking category [E: 04/business-listings__software-company-jhb.json].)
 
 **Profile build (in order):**
 1. **Create + verify** the profile (video/postcard verification). Use the exact
@@ -56,7 +56,7 @@ ranking category [E: 10/business-listings__software-company-jhb.json].)
 8. **Q&A** — seed 5–8 buyer questions and answer them (doubles as AEO).
 
 **Hand-off:** GBP creation is a user/marketing task (needs verification access).
-S10 supplies category, description, services list, and review cadence.
+S04 supplies category, description, services list, and review cadence.
 
 ---
 
@@ -108,12 +108,12 @@ domain. **P0 = do first.** Each must carry the exact NAP from §3.
 | P1 | **Cylex / Yalwa / Tuugo (.co.za)** | SA aggregators | Quick NAP citations. |
 | P2 | **SA Yellow Pages (yellosa / yellowpages.co.za)** | Directory | Legacy but indexed. |
 | P2 | **Hotfrog South Africa** | Directory | Aggregator citation. |
-| P2 | **Bizcommunity company profile** | SA biz media | Also a PR surface (see `audits/10`). |
+| P2 | **Bizcommunity company profile** | SA biz media | Also a PR surface (see `audits/04`). |
 | P2 | **Local chamber / industry body** (e.g. relevant ICT body) | Membership | Authoritative local link if Zabble joins. |
 | P2 | **Facebook / Instagram business** | Social | NAP consistency + brand. |
 
 > The P1 review platforms (Clutch, GoodFirms, DesignRush, Crunchbase) double as the
-> **digital-PR / link targets** in `audits/10` §5 and the **`sameAs` set** handed
+> **digital-PR / link targets** in `audits/04` §5 and the **`sameAs` set** handed
 > to S07/S08 — one action, three layers.
 
 ---
@@ -122,8 +122,8 @@ domain. **P0 = do first.** Each must carry the exact NAP from §3.
 
 **Benchmark** (Maps, "software company", 2026-06-04): directly comparable bespoke
 consultancies sit at **BBD 4.6 (249 reviews)**, **Entelect 4.7 (179)**, **CPI
-Performance 4.7 (157)** [E: 10/business-listings__software-company-jhb.json;
-10/business-listings__software-company-cpt.json]. Product/fintech giants (Cartrack
+Performance 4.7 (157)** [E: 04/business-listings__software-company-jhb.json;
+04/business-listings__software-company-cpt.json]. Product/fintech giants (Cartrack
 3,369; RecoMed 1,659) dominate volume but aren't Zabble's class.
 
 **Target:** reach **20–30 reviews at ≥4.7** in the first two quarters post-launch —
@@ -149,7 +149,7 @@ enough to look credible and verified next to the SME peer tier; then a steady dr
 ## 6. Local-landing-page approach (recommendation)
 
 **Build 5 metro landing pages** mirroring the proven competitor pattern
-[E: 10/labs-ranked-keywords__scrums__za.json] but **distinct, not thin doorway
+[E: 04/labs-ranked-keywords__scrums__za.json] but **distinct, not thin doorway
 pages** (Google penalises near-duplicate local pages — each must carry genuinely
 local content):
 
@@ -172,13 +172,13 @@ local content):
 
 **Sequencing:** Durban + Pretoria first (highest volume, least Zabble-specific
 competition), then Joburg/Sandton/Cape Town. **Owner:** page creation is app-code
-(coordinate via status.md — S02 metadata, S03 schema, S04 internal links). S10
+(coordinate via status.md — S02 metadata, S03 schema, S04 internal links). S04
 supplies targets + structure; **do not ship 5 boilerplate clones.**
 
 ---
 
 ## 7. Evidence
-- `_evidence/10/business-listings__software-company-jhb.json` — Joburg Maps benchmark.
-- `_evidence/10/business-listings__software-company-cpt.json` — Cape Town Maps benchmark.
-- `_evidence/10/labs-ranked-keywords__scrums__za.json` — competitor local-page pattern + geo volumes.
-- Method + costs: `_evidence/10/README.note.md`.
+- `_evidence/04/business-listings__software-company-jhb.json` — Joburg Maps benchmark.
+- `_evidence/04/business-listings__software-company-cpt.json` — Cape Town Maps benchmark.
+- `_evidence/04/labs-ranked-keywords__scrums__za.json` — competitor local-page pattern + geo volumes.
+- Method + costs: `_evidence/04/README.note.md`.

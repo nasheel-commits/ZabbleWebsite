@@ -1,10 +1,10 @@
-# Competitor & SERP Landscape — South Africa (owned by S10)
+# Competitor & SERP Landscape — South Africa (owned by S04)
 
 The true SERP competitors for Zabble's clusters, their visibility, the per-cluster
 gaps, and what they do that Zabble should copy. All metrics from **DataForSEO
 Labs, `location_name: "South Africa"`, `language_code: "en"`, captured
-2026-06-04** (evidence under `../_evidence/10/`). Zabble is a **new domain with
-zero organic keywords** [E: 10/labs-domain-rank-overview__competitors__za.json] —
+2026-06-04** (evidence under `../_evidence/04/`). Zabble is a **new domain with
+zero organic keywords** [E: 04/labs-domain-rank-overview__competitors__za.json] —
 this is competitive intelligence + a build target, not a ranking comparison.
 
 ---
@@ -15,13 +15,13 @@ Seeded `serp_competitors` with 12 core commercial queries spanning Zabble's
 clusters — custom/bespoke software development, business-process & workflow
 automation, custom CRM, system integration, document automation, and the two
 biggest metros (Johannesburg, Cape Town)
-[E: 10/labs-serp-competitors__core-cluster__za.json]. That returned **77 domains**.
+[E: 04/labs-serp-competitors__core-cluster__za.json]. That returned **77 domains**.
 We then **discounted** three groups that rank but aren't competitors Zabble can
 displace by being better — they're a different play:
 
 - **Global B2B directories** — `clutch.co`, `goodfirms.co`, `designrush.com`,
   `topsoftwarecompanies.co`, `lusha.com`. *(These are link/citation **targets**,
-  not rivals — see `local-seo.md` and the digital-PR plan in `audits/10`.)*
+  not rivals — see `local-seo.md` and the digital-PR plan in `audits/04`.)*
 - **SA tech media** — `businesstech.co.za`, `mybroadband.co.za`,
   `bizcommunity.com`. *(Digital-PR **placement** targets, not rivals.)*
 - **Social/jobs** — `facebook.com`, `linkedin.com`, `glassdoor.com`,
@@ -37,7 +37,7 @@ consultancies** with the same buyer and the same money pages as Zabble.
 Organic visibility in **South Africa** (DataForSEO Labs `domain_rank_overview`,
 2026-06-04). `ETV` = estimated organic traffic value/clicks per month; position
 buckets count ranked keywords.
-[E: 10/labs-domain-rank-overview__*__za.json]
+[E: 04/labs-domain-rank-overview__*__za.json]
 
 | Tier | Domain | Org KW | ETV/mo | pos 1 | pos 2–3 | pos 4–10 | What they are |
 |------|--------|-------:|-------:|------:|--------:|---------:|---------------|
@@ -69,7 +69,7 @@ challenger tier within 2–3 quarters. The risk is not a giant competitor; it's
 
 Volumes are **SA monthly** searches; the contested set is the keywords the two
 leaders both rank for plus Scrums.com's ranked terms
-[E: 10/labs-domain-intersection__scrums-x-dvt__za.json; 10/labs-ranked-keywords__scrums__za.json].
+[E: 04/labs-domain-intersection__scrums-x-dvt__za.json; 04/labs-ranked-keywords__scrums__za.json].
 
 ### Cluster A — Core identity (home + `/systems`)
 The head terms of the market. **All winnable** (KD-light, mid CPC = commercial).
@@ -89,7 +89,7 @@ The head terms of the market. **All winnable** (KD-light, mid CPC = commercial).
 ### Cluster B — Local / geo-modified (the dominant intent in this market)
 The single biggest pattern in the SERP. "**{software | IT | tech} compan{y|ies}
 + {city}**" repeats across every metro.
-[E: 10/labs-domain-intersection__scrums-x-dvt__za.json; 10/labs-ranked-keywords__scrums__za.json]
+[E: 04/labs-domain-intersection__scrums-x-dvt__za.json; 04/labs-ranked-keywords__scrums__za.json]
 
 | City | Representative term(s) | SA vol |
 |------|------------------------|-------:|
@@ -107,7 +107,7 @@ The single biggest pattern in the SERP. "**{software | IT | tech} compan{y|ies}
 
 ### Cluster C — Per-module commercial (the 30 `/systems/<slug>` pages)
 Lower individual volume, but 30 pages × distinct intent = the long-tail moat.
-S05 sizes each; S10's note: competitors barely touch module-level terms
+S05 sizes each; S04's note: competitors barely touch module-level terms
 (e.g. "reconciliation automation", "document data extraction", "anomaly
 detection") — **wide-open** for distinct, well-shaped money pages.
 
@@ -124,7 +124,7 @@ angle.
 ## 4. What competitors do that Zabble should (evidence-backed playbook)
 
 From Scrums.com's ranked-keyword footprint — the most SEO-mature peer
-[E: 10/labs-ranked-keywords__scrums__za.json]:
+[E: 04/labs-ranked-keywords__scrums__za.json]:
 
 1. **Programmatic local landing pages** — one page per SA metro targeting
    "{discipline} company {city}". Proven to rank (Cape Town p15–20, Joburg p8,
@@ -135,7 +135,7 @@ From Scrums.com's ranked-keyword footprint — the most SEO-mature peer
    (`investec` 60,500; `yoco` 27,100) and is a natural backlink magnet. → **Zabble:
    build one authoritative, genuinely useful list** (e.g. *"The state of business
    automation in South Africa"* or *"South African operations-software landscape"*).
-   This is the centrepiece of the digital-PR plan in `audits/10` §5.
+   This is the centrepiece of the digital-PR plan in `audits/04` §5.
 3. **Educational guides** that answer buyer questions (testing types, dev tools,
    glossary) — informational traffic + PAA/snippet eligibility + internal-link
    equity into money pages. → **Hand to S06/S07.**
@@ -157,8 +157,8 @@ catch-up: `dvt.co.za`, `synthesis.co.za`, `bbdsoftware.com`, `scrums.com`,
 ---
 
 ## 6. Evidence
-- `_evidence/10/labs-serp-competitors__core-cluster__za.json` — competitor discovery.
-- `_evidence/10/labs-domain-rank-overview__*__za.json` — visibility metrics (zabble.org + 10 competitors).
-- `_evidence/10/labs-domain-intersection__scrums-x-dvt__za.json` — contested keyword space.
-- `_evidence/10/labs-ranked-keywords__scrums__za.json` — competitor content playbook.
-- Method + costs: `_evidence/10/README.note.md`.
+- `_evidence/04/labs-serp-competitors__core-cluster__za.json` — competitor discovery.
+- `_evidence/04/labs-domain-rank-overview__*__za.json` — visibility metrics (zabble.org + 10 competitors).
+- `_evidence/04/labs-domain-intersection__scrums-x-dvt__za.json` — contested keyword space.
+- `_evidence/04/labs-ranked-keywords__scrums__za.json` — competitor content playbook.
+- Method + costs: `_evidence/04/README.note.md`.
