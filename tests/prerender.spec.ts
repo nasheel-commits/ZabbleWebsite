@@ -18,20 +18,37 @@ function htmlFor(canonicalPath: string): string {
   return readFileSync(file, 'utf8')
 }
 
-/** First ~6 alphanumeric words of a string, for a quote-safe contains check. */
+function decodeEntities(s: string): string {
+  return s
+    .replace(/&amp;/g, '&')
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>')
+    .replace(/&nbsp;/g, ' ')
+}
+
+/** Collapse text to a punctuation/tag/entity-insensitive alphanumeric key. */
+function alnum(s: string): string {
+  return decodeEntities(s).toLowerCase().replace(/[^a-z0-9]/g, '')
+}
+
+/** Strip HTML tags, then reduce to an alphanumeric key for robust contains(). */
+function pageKey(html: string): string {
+  return alnum(html.replace(/<[^>]+>/g, ' '))
+}
+
+/** First ~44 alphanumeric chars of a string — survives entities & punctuation. */
 function probe(text: string): string {
-  return text
-    .replace(/[^a-zA-Z0-9 ]/g, ' ')
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 6)
-    .join(' ')
+  return alnum(text).slice(0, 44)
 }
 
 describe.skipIf(!haveBuild)('prerendered article HTML', () => {
   for (const a of ARTICLES) {
     describe(a.canonicalPath, () => {
       const html = haveBuild ? htmlFor(a.canonicalPath) : ''
+      const key = haveBuild ? pageKey(html) : ''
 
       it('was generated to a static index.html', () => {
         expect(existsSync(`${publicDir}${a.canonicalPath}/index.html`)).toBe(true)
@@ -40,15 +57,24 @@ describe.skipIf(!haveBuild)('prerendered article HTML', () => {
         expect(html).toContain(`rel="canonical"`)
         expect(html).toContain(`${SITE_URL}${a.canonicalPath}`)
       })
+      it('server-rendered a meta description', () => {
+        expect(html).toContain('name="description"')
+      })
       it('server-rendered the answer-first block', () => {
         expect(html).toContain('data-answer-first')
-        expect(html).toContain(probe(a.answer))
+        expect(key).toContain(probe(a.answer))
       })
       it('server-rendered the FAQ block', () => {
         expect(html).toContain('Frequently asked questions')
+        // first FAQ question text present
+        expect(key).toContain(probe(a.faq[0]!.q))
       })
       it('server-rendered the title text', () => {
-        expect(html).toContain(probe(a.title))
+        expect(key).toContain(probe(a.title))
+      })
+      it('server-rendered at least one source citation', () => {
+        expect(html).toContain('Sources')
+        expect(key).toContain(probe(a.sources[0]!.publisher))
       })
     })
   }
