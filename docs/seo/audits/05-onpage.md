@@ -396,3 +396,84 @@ List of files under `_evidence/05/` (this session):
   title/description/canonical/OG/Twitter on home, hub, 3 module pages, diagnose;
   `?pillar` canonical fold (goal condition 2).
 - `build.txt` — `npm run generate` tail showing a clean prerender of all routes.
+
+---
+
+## 13. Implementation log — full build-out (2026-06-04, pass 2)
+
+Pass 1 (above) wired metadata on the 4 then-live templates and wrote the
+blueprints/mapping/formulas. **Pass 2 applied the blueprints to *every* live page,
+built the to-create templates, integrated S03's verified keyword targets, and
+added automated regression tests.** All on `seo/05-onpage`.
+
+### 13.1 What shipped
+- **Verified targets integrated.** S03 (`seo/03-keywords`) completed its research
+  (213 ZA keywords; `keyword-map.md` + `intent-clusters.md`). Every page's
+  `primaryKeyword` + `seoTitle`/`seoDescription` now come from that map's
+  **designated primary per page**, not the seed guesses. Items still `n/d` in ZA
+  (most module heads) are intentionally targeted as AEO/GEO + global-English per
+  S03 §7 — flagged, not dropped.
+- **`usePageSeo` (composable).** Added `primaryKeyword` → renders
+  `<meta name="zabble:primary-kw">`, the QA signal the cannibalisation test reads.
+  Canonical remains **non-www** `https://zabble.org` (B5: the live apex 308-redirects
+  to `www`; S01 must set the apex as Vercel Primary Domain so the canonical and the
+  served host agree).
+- **`app/data/systems.ts`.** `SYSTEM_SEO` map (all 30 live modules:
+  `seoTitle`, `seoDescription` ≤160, `keywords` [primary first], answer-first
+  `definition`; `faqs` on the 16 PAA/volume-backed modules) merged onto entries at
+  load. `PILLAR_SEO` (4 pillar hubs: h1, blurb, title/desc, keywords, definition).
+- **New templates (the to-create blueprints §6.2/6.4/6.6/6.7 → live):**
+  - `/pillars` + `/pillars/[pillar]` (4 hubs) — owns the pillar head terms
+    (business process automation, audit trail software, fraud detection software,
+    decision support system); lists member modules; answer-first definition.
+  - `/industries` + `/industries/[slug]` (6 verticals: legal, hospitality,
+    logistics, manufacturing, banking, ngo) — `app/data/industries.ts`; assembles
+    each vertical's modules; problem→build→change triptych; ZA industry primary.
+  - `/insights` + `/insights/[slug]` (5 AEO explainers) — `app/data/insights.ts`;
+    question-led H1, answer-first intro (the liftable answer), H2 structure (bodies
+    = S10), internal link to the money page each supports.
+  - `/contact` — `ContactPage`/local entity; NAP line; diagnostic + email CTAs.
+- **Existing pages.** Home, `/systems`, `/systems/[slug]`, `/diagnose` all carry
+  `primaryKeyword` + a `data-answer-first` slot. Home's answer-first is the existing
+  `TheHero` definition line (marked, not duplicated).
+- **Internal links + crawl.** Footer now links Home/Systems/Pillars/Industries/
+  Insights/Contact (every page); `nuxt.config` prerenders the new hubs and
+  `crawlLinks` discovers the dynamic children.
+- **Cannibalisation resolved.** S03 had already split the integration family by
+  head term (integration-hub=`integration platform`, cross-system-sync=`data
+  synchronization software`, legacy-bridge=`legacy system integration`,
+  master-data-hub=`mdm software`, workflow-orchestrator=`workflow orchestration
+  software`). Test confirms **52/52 unique primary intents** — zero collisions.
+
+### 13.2 Tests (required deliverable)
+`scripts/seo-metadata.test.mjs` (zero-dependency Node) parses every prerendered
+`.output/public/**/index.html` and asserts: unique + length-valid title (≤60,
+with ` · Zabble`) and description (50–160); canonical present, https, **non-www**,
+query-free, route-matching; OG + Twitter present; `og:url` non-www; `<html
+lang="en-ZA">`; **answer-first slot on every money page**; and **no two pages share
+a primary intent**. Wired as `npm run test:seo` and `npm run verify:seo`
+(generate + test). **Result: 52 routes, 0 violations.**
+
+### 13.3 Gotcha recorded for other sessions
+`nuxt generate` failed with `[500]` on every route + `Only URLs with a scheme in:
+file, data, node … Received protocol 'c:'` when the worktree's `node_modules` was a
+**junction into the OneDrive path with a space** (`Our%20Website`): Nuxt's buildDir
+resolves under `node_modules/.cache/nuxt/.nuxt` and the prerender worker can't load
+the percent-encoded manifest. **Fix: a real `npm install` in the worktree** (deps
+local, space-free). No dependencies were added (only `scripts`); `package-lock.json`
+left unchanged.
+
+### 13.4 Cross-session asks (this pass) — also mirrored in status.md
+- **Schema (S08 / board S03)** — implement per-template JSON-LD (§10) reading
+  `definition`/`faqs` off `systems.ts`, `INDUSTRIES`, `INSIGHTS`; add
+  `Article`/`BlogPosting` for `/insights/*`, `ContactPage` for `/contact`,
+  `CollectionPage`+`ItemList` for the hubs, `Service` for pillar/industry pages.
+- **Content (S10 / board S06)** — write the long-form body under each `/insights`
+  heading (answer-first intros are done) and the `/industries` long copy; refine
+  module FAQs/definitions where a sharper claim helps. All structure + the
+  answer-first first-sentences are in place.
+- **OG image (S09)** — generate per-page images or ship `/public/og-default.png`
+  (referenced by `usePageSeo`); currently the only known broken-ref.
+- **Technical (S01)** — set the apex as Vercel Primary Domain so non-www canonical
+  matches the served host (B5); install `@nuxtjs/seo` + `site.url` so `usePageSeo`
+  can defer canonical/OG-image to the module and the sitemap enumerates all 52 URLs.

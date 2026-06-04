@@ -15,7 +15,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 |---|---------|--------|-------|--------|------------|--------------|
 | 00 | Setup & access foundation | `seo/00-setup` | SEO lead | **done** | — | docs/seo built; MCP ✓ Connected; account verified + funded ($50.998); live + sandbox `20000`. |
 | 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
-| 02 | On-Page & Metadata | `seo/05-onpage` | on-page agent | **done** | 00, 05 (soft) | Branch `seo/05-onpage`. Per-page `useSeoMeta`+canonical+OG/Twitter on home/hub/`[slug]`/diagnose; global `titleTemplate`; `lang=en-ZA`; AEO `definition`/`faqs` slots; 7 page blueprints + kw→page map. Audit `audits/05-onpage.md`. Verified in prerendered HTML (`_evidence/05/`). |
+| 02 | On-Page & Metadata | `seo/05-onpage` | on-page agent | **done** | 00, 03-keywords | Branch `seo/05-onpage`. **Full build-out:** unique title/desc/canonical(non-www)/OG/Twitter via `usePageSeo` on **all 52 prerendered pages** (home, /systems, 30 modules, 4 pillar hubs `/pillars/*`, 6 industry pages `/industries/*`, 5 insight explainers `/insights/*`, /diagnose, /contact); `titleTemplate`; `lang=en-ZA`; answer-first slot + `definition`/`faqs` from S03's verified ZA keyword map; one canonical page per primary intent (52/52 unique). Regression test `npm run test:seo` (0 violations) + `nuxt generate` clean. Audit `audits/05-onpage.md` §13. |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
@@ -34,8 +34,23 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
   early.
 - **S03 → S07 → S08**: entity/schema foundation feeds AEO, which feeds GEO.
 
-### Cross-session asks from On-Page (`seo/05-onpage`, 2026-06-04)
-> Mirrored from `audits/05-onpage.md §11`. Numbers are this board's.
+### Cross-session asks from On-Page (`seo/05-onpage`, 2026-06-04 — build-out complete)
+> Mirrored from `audits/05-onpage.md §11 + §13.4`. Numbers are this board's.
+> **Now live for downstream sessions:** 52 pages with answer-first `definition`s,
+> `faqs`, `keywords[]` on `app/data/{systems,industries,insights}.ts` + `PILLAR_SEO`;
+> routes `/pillars/*`, `/industries/*`, `/insights/*`, `/contact`.
+- **→ S03 schema** — per-template JSON-LD reading `definition`/`faqs`/`keywords`
+  off the data files: `Service`+`FAQPage`+`Breadcrumb` (modules, pillars,
+  industries), `Article`/`BlogPosting` (`/insights/*`), `ContactPage` (`/contact`),
+  `CollectionPage`+`ItemList` (hubs), `Organization`/`WebSite` site-wide.
+- **→ S10 content** — long-form body under each `/insights` heading + `/industries`
+  copy (answer-first intros + headings already in place); sharpen module FAQs.
+- **→ S09 perf** — generate per-page OG images / ship `/public/og-default.png`
+  (only known broken asset ref).
+- **→ S01 technical** — set apex as Vercel **Primary Domain** so non-www canonical
+  matches the served host (**B5**); install `@nuxtjs/seo` + `site.url` so
+  `usePageSeo` can defer canonical/OG to the module and the sitemap enumerates all
+  52 URLs.
 - **→ S01:** set `site.url='https://zabble.org'`, install `@nuxtjs/seo` (Nuxt-4
   pin), sitemap from `systems.ts`, robots `Sitemap:` line, **staging `noindex`
   guard (B3)**. Then `usePageSeo` can drop its manual canonical. *Heads-up:* this

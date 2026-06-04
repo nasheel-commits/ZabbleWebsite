@@ -1,0 +1,34 @@
+Rendered tags for the NEW page types (build-out, 2026-06-04). Full assertions: seo-test-output.txt.
+
+==== /pillars/automation ====
+title    : Business Process Automation · Zabble
+desc     : Automate the manual workflows running your South African business — the spreadsheets, the re-keying, the copy-paste. Built around how you actually work.
+canonical: https://zabble.org/pillars/automation
+primary  : business process automation
+og:type  : website
+answer1st: present
+
+==== /industries/legal ====
+title    : Legal Practice Management Software, SA · Zabble
+desc     : Bespoke systems for South African law firms — document intake, case and matter management, conveyancing tasks and client onboarding in one operating system.
+canonical: https://zabble.org/industries/legal
+primary  : legal practice management software south africa
+og:type  : article
+answer1st: present
+
+==== /insights/what-is-popia ====
+title    : What is POPIA? A Plain-English Guide · Zabble
+desc     : POPIA is South Africa’s data-protection law. Here’s what it governs, its eight conditions for lawful processing, and what compliance requires of you.
+canonical: https://zabble.org/insights/what-is-popia
+primary  : what is popia
+og:type  : article
+answer1st: present
+
+==== /contact ====
+title    : Contact Zabble · Zabble
+desc     : Talk to Zabble about a bespoke system for your South African business. The first conversation is free. Email analytics@zabble.org or book a call.
+canonical: https://zabble.org/contact
+primary  : zabble contact
+og:type  : website
+answer1st: present
+
