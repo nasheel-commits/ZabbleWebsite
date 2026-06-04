@@ -16,6 +16,8 @@ let mouseY = 0
 let pointerX = 0
 let pointerY = 0
 let inSection = false
+let hasMouse = false
+let snapPending = false
 let cleanup: (() => void) | null = null
 
 const EASE = 0.18
@@ -25,6 +27,7 @@ const HIDE_FAR = 900
 function onMove(e: MouseEvent) {
   mouseX = e.clientX
   mouseY = e.clientY
+  hasMouse = true
 }
 
 function distanceToRect(x: number, y: number, rect: DOMRect) {
@@ -99,8 +102,17 @@ function tick() {
   }
   const rect = buttonEl.getBoundingClientRect()
   const target = targetOnRectEdge(rect)
-  pointerX += (target.x - pointerX) * EASE
-  pointerY += (target.y - pointerY) * EASE
+  // After (re)entering the section — e.g. a fast scroll or a button that jumps
+  // straight here — snap the arrow head onto the target instead of easing in
+  // from a stale position, so it points at the button the instant it appears.
+  if (snapPending) {
+    pointerX = target.x
+    pointerY = target.y
+    snapPending = false
+  } else {
+    pointerX += (target.x - pointerX) * EASE
+    pointerY += (target.y - pointerY) * EASE
+  }
 
   pathRef.value.setAttribute('d', buildPath(mouseX, mouseY, pointerX, pointerY))
 
@@ -110,8 +122,10 @@ function tick() {
     : Math.atan2(pointerY - mouseY, pointerX - mouseX)
   headRef.value.setAttribute('d', buildHead(pointerX, pointerY, angle))
 
+  // Don't draw until we've seen a real cursor position — otherwise the arrow
+  // would render from the screen-center default before the first mousemove.
   const dist = distanceToRect(mouseX, mouseY, rect)
-  const shouldShow = dist > HIDE_NEAR && dist < HIDE_FAR
+  const shouldShow = hasMouse && dist > HIDE_NEAR && dist < HIDE_FAR
   if (arrowVisible.value !== shouldShow) arrowVisible.value = shouldShow
 
   rafId = requestAnimationFrame(tick)
@@ -126,6 +140,7 @@ function start() {
   pointerY = window.innerHeight / 2
   mouseX = pointerX
   mouseY = pointerY
+  snapPending = true
 
   window.addEventListener('mousemove', onMove, { passive: true })
 
@@ -137,6 +152,9 @@ function start() {
         // Resume the rAF loop only on re-entry; tick() returns early when
         // inSection flips false, so no extra work happens while scrolled away.
         if (inSection && !wasIn && rafId === null) {
+          // Snap the head onto the button on the first frame after re-entry so
+          // it never eases in from a stale, offset position.
+          snapPending = true
           rafId = requestAnimationFrame(tick)
         }
       }
@@ -269,22 +287,31 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <div
-      class="cursor-arrow"
-      :class="{ 'is-visible': arrowVisible }"
-      aria-hidden="true"
-    >
-      <svg class="cursor-arrow__svg" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="zabbleArrowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#01DBF1" />
-            <stop offset="100%" stop-color="#00B8CC" />
-          </linearGradient>
-        </defs>
-        <path ref="pathRef" class="cursor-arrow__path" d="M0,0" />
-        <path ref="headRef" class="cursor-arrow__head" d="M0,0" />
-      </svg>
-    </div>
+    <!--
+      Teleport to <body> so the arrow's `position: fixed` is anchored to the
+      viewport, not to this section. The section carries `content-visibility:
+      auto` (.lazy-section), which implies `contain: layout paint` — that would
+      otherwise make the section the containing block for the fixed arrow and
+      clip it, shifting the whole arrow by the section's scroll offset.
+    -->
+    <Teleport to="body">
+      <div
+        class="cursor-arrow"
+        :class="{ 'is-visible': arrowVisible }"
+        aria-hidden="true"
+      >
+        <svg class="cursor-arrow__svg" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="zabbleArrowGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#01DBF1" />
+              <stop offset="100%" stop-color="#00B8CC" />
+            </linearGradient>
+          </defs>
+          <path ref="pathRef" class="cursor-arrow__path" d="M0,0" />
+          <path ref="headRef" class="cursor-arrow__head" d="M0,0" />
+        </svg>
+      </div>
+    </Teleport>
   </section>
 </template>
 

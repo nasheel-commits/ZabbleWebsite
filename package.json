@@ -8,9 +8,13 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "test": "vitest run",
+    "test": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && npm run test:vitest && npm run test:node && npm run test:scripts",
+    "test:vitest": "vitest run",
+    "test:node": "node --test tests/architecture.test.mjs",
+    "test:scripts": "echo no-standalone-scripts-yet",
     "test:unit": "vitest run tests/seo/seo-logic.test.ts",
-    "test:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run"
+    "test:seo": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && vitest run",
+    "test:arch": "node --test tests/architecture.test.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.16.0",

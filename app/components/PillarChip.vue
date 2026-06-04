@@ -1,8 +1,14 @@
 <script setup lang="ts">
 // Small chip representing a pillar. Two render modes:
 //
-//   <PillarChip :pillar="meta" />               -> <span>  (decorative, e.g. inside SystemHero)
-//   <PillarChip :pillar="meta" link />          -> <a>     (jumps to /systems?pillar=<slug>)
+//   <PillarChip :pillar="meta" />               -> <span>      (decorative, e.g. inside SystemHero)
+//   <PillarChip :pillar="meta" link />          -> <NuxtLink>  (jumps to the pillar hub)
+//
+// In link mode the chip points at the canonical pillar hub
+// /what-we-build/<slug> (NOT the old faceted /systems?pillar= view). This makes
+// every pillar chip a module->pillar internal link (rules L2/L6) and removes the
+// faceted URLs from the crawlable graph (audit A5; coordinate canonical with
+// S01 OR-3).
 //
 // The visual style matches the site's eyebrow + chip language (cyan-tinted
 // rounded-full pill, no new tokens). Icon is rendered at chip scale.
@@ -13,7 +19,7 @@ import { computed } from 'vue'
 const props = withDefaults(
   defineProps<{
     pillar: PillarMeta
-    /** When true, render as <a> linking to the filtered gallery. */
+    /** When true, render as a link to the pillar hub. */
     link?: boolean
     /** Compact = no icon, tighter padding. Use inside dense card footers. */
     compact?: boolean
@@ -23,7 +29,7 @@ const props = withDefaults(
   { link: false, compact: false, selected: false },
 )
 
-const href = computed(() => `/systems?pillar=${props.pillar.slug}`)
+const href = computed(() => `/what-we-build/${props.pillar.slug}`)
 
 const baseClasses =
   'inline-flex items-center gap-1.5 rounded-full border text-[12px] font-semibold tracking-[0.04em] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-1 focus-visible:ring-offset-white'
@@ -40,9 +46,10 @@ const sizeClasses = computed(() =>
 </script>
 
 <template>
-  <component
-    :is="link ? 'a' : 'span'"
-    :href="link ? href : undefined"
+  <NuxtLink
+    v-if="link"
+    :to="href"
+    :aria-label="`${pillar.label} systems`"
     :class="[baseClasses, stateClasses, sizeClasses]"
   >
     <component
@@ -53,5 +60,15 @@ const sizeClasses = computed(() =>
       aria-hidden="true"
     />
     <span>{{ pillar.short }}</span>
-  </component>
+  </NuxtLink>
+  <span v-else :class="[baseClasses, stateClasses, sizeClasses]">
+    <component
+      v-if="!compact"
+      :is="pillar.icon"
+      :size="13"
+      :stroke-width="2"
+      aria-hidden="true"
+    />
+    <span>{{ pillar.short }}</span>
+  </span>
 </template>

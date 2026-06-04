@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ArrowLeft, ArrowRight } from '@lucide/vue'
+import { ArrowRight } from '@lucide/vue'
 
 import { PILLARS, systemBySlug } from '~/data/systems'
 import { isSystemPublished } from '~/utils/seo'
@@ -42,6 +42,15 @@ const pillarJobsWord = computed(
   () => PILLAR_WORDS[pillarMetas.value.length] ?? 'four',
 )
 
+// Breadcrumb spine: /systems is the canonical parent of every module page
+// (site-architecture.md §2.2). The visible trail must stay 1:1 with the
+// BreadcrumbList JSON-LD S03 emits.
+const breadcrumbs = computed(() => [
+  { label: 'Home', to: '/' },
+  { label: 'Systems', to: '/systems' },
+  { label: sys.value.name },
+])
+
 useHead({
   title: () => `${sys.value.name} · Zabble`,
   meta: [
@@ -61,15 +70,7 @@ useHead({
     <main class="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24">
       <!-- Breadcrumb -->
       <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
-        <nav aria-label="Breadcrumb" class="mb-8 md:mb-10">
-          <NuxtLink
-            to="/systems"
-            class="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-mute hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
-          >
-            <ArrowLeft :size="14" :stroke-width="2" aria-hidden="true" />
-            All systems
-          </NuxtLink>
-        </nav>
+        <SeoBreadcrumb :items="breadcrumbs" />
       </div>
 
       <!-- Hero -->
@@ -174,14 +175,18 @@ useHead({
         </div>
 
         <div class="mt-8 md:mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-          <article
+          <!-- Owned pillars link UP to their hub (module -> pillar, rules L2/L6);
+               non-owned pillars render as dimmed, non-interactive cards. -->
+          <component
+            :is="sys.pillars.includes(p.slug) ? 'NuxtLink' : 'article'"
             v-for="(p, i) in PILLARS"
             :key="p.slug"
+            :to="sys.pillars.includes(p.slug) ? `/what-we-build/${p.slug}` : undefined"
             v-reveal:scale="i * 60"
             :class="[
-              'relative rounded-2xl border bg-white p-5 md:p-6 transition-colors',
+              'group relative block rounded-2xl border bg-white p-5 md:p-6 transition-colors',
               sys.pillars.includes(p.slug)
-                ? 'border-cyan-brand/40 ring-1 ring-cyan-brand/20'
+                ? 'border-cyan-brand/40 ring-1 ring-cyan-brand/20 hover:border-cyan-brand/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white'
                 : 'border-line opacity-60',
             ]"
             :aria-disabled="!sys.pillars.includes(p.slug)"
@@ -208,9 +213,20 @@ useHead({
                     : 'Not the primary focus for this system.')
               }}
             </p>
-          </article>
+            <span
+              v-if="sys.pillars.includes(p.slug)"
+              class="mt-3 inline-flex items-center gap-1 text-[12.5px] font-semibold text-cyan-brand-deep"
+            >
+              Explore {{ p.label }}
+              <ArrowRight :size="13" :stroke-width="2" class="transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden="true" />
+            </span>
+          </component>
         </div>
       </section>
+
+      <!-- Related systems: links each module to shared-pillar siblings so no
+           page is a dead-end (internal-linking rule L5). -->
+      <RelatedSystems :system="sys" />
 
       <CtaStrip
         eyebrow="Next Step"

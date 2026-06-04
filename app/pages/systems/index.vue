@@ -6,6 +6,7 @@ import {
   filterSystemsByPillars,
   type PillarSlug,
 } from '~/data/systems'
+import { PILLAR_HUBS } from '~/data/pillars'
 
 useHead({
   // TODO: finalise SEO copy once gallery content is real.
@@ -79,6 +80,11 @@ watch(
     <TheNav />
 
     <main class="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24">
+      <!-- Breadcrumb -->
+      <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
+        <SeoBreadcrumb :items="[{ label: 'Home', to: '/' }, { label: 'Systems' }]" />
+      </div>
+
       <!-- Hero -->
       <section class="relative">
         <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
@@ -117,6 +123,18 @@ watch(
       <!-- Filter + grid -->
       <section class="relative mt-12 md:mt-16">
         <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
+          <!-- Browse by pillar: links to the canonical pillar hubs (rule L6
+               reciprocal — /systems -> hubs). The filter bar below is on-page UX. -->
+          <nav aria-label="Browse by pillar" class="mb-6 flex flex-wrap items-center gap-2">
+            <span class="text-mute-2 font-semibold uppercase tracking-[0.16em] text-[11px] mr-1">Browse by pillar</span>
+            <NuxtLink
+              v-for="hub in PILLAR_HUBS"
+              :key="hub.slug"
+              :to="`/what-we-build/${hub.slug}`"
+              class="inline-flex items-center rounded-full border border-line bg-white px-3 py-1.5 text-[13px] font-medium text-mute hover:text-ink hover:border-cyan-brand/40 transition"
+            >{{ hub.label }}</NuxtLink>
+          </nav>
+
           <PillarFilterBar :active="activePillars" @update:active="setActive" />
 
           <p

@@ -14,6 +14,11 @@ export default defineConfig({
   },
   test: {
     environment: 'node',
-    include: ['tests/**/*.test.ts'],
+    // Unified suite across sessions: technical (tests/seo/*.test.ts),
+    // content (tests/*.spec.ts), AEO (test/*.spec.ts). `.ts`-only by design so
+    // the node:test `.mjs` suites (architecture, geo, analytics) are NOT picked
+    // up here — those run via `npm run test:node`.
+    include: ['tests/**/*.{test,spec}.ts', 'test/**/*.{test,spec}.ts'],
+    exclude: ['**/node_modules/**', '**/.nuxt/**', '**/.output/**', '**/dist/**'],
   },
 })
