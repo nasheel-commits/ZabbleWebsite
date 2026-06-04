@@ -6,12 +6,13 @@ import { useInView } from '~/composables/useInView'
 
 const industries = [
   'NGOs',
-  'Banks',
-  'Hotels',
+  'Banks & FSPs',
+  'Hospitality',
   'Law firms',
-  'Parts suppliers',
+  'Logistics & warehousing',
+  'Manufacturing',
   'Marketing agencies',
-  'Small businesses',
+  'Small & medium businesses',
 ]
 
 // Gate the CPU SVG's continuous animations (stroke gradient on text + marker
@@ -41,8 +42,9 @@ const { visible: meetVisible } = useInView(meetRef, { threshold: 0.1, rootMargin
         <div v-reveal:left="100" class="lg:col-span-7 space-y-6 text-[17px] md:text-[18px] leading-[1.7] text-mute">
           <p>
             We build bespoke operational systems for businesses that have outgrown off-the-shelf tools.
-            We've worked with NGOs, banks, hotels, law firms, parts suppliers, marketing agencies, and
-            small businesses.
+            We've worked with NGOs, banks and financial services providers, hospitality, law firms,
+            logistics and warehousing, manufacturers, marketing agencies, and growing small and
+            mid-sized businesses across a range of industries.
           </p>
           <p>
             The industries differ. The pattern doesn't:
@@ -111,6 +113,10 @@ const { visible: meetVisible } = useInView(meetRef, { threshold: 0.1, rootMargin
                   {{ i }}
                 </span>
               </div>
+              <p class="mt-4 text-[13px] leading-[1.6] text-mute-2">
+                A snapshot, not a menu. We build for any business with the right problem to solve,
+                shaped around how you work, not your industry.
+              </p>
             </div>
           </div>
         </div>
