@@ -16,6 +16,7 @@ import { REDIRECTS, buildRedirectRouteRules } from './app/data/redirects'
 const priorityRoutes = [
   '/', '/systems', '/diagnose', '/contact',
   '/pillars', '/industries', '/insights',
+  '/privacy', '/cookie-policy',
   ...liveSystemRoutes,
 ]
 
@@ -148,6 +149,29 @@ export default defineNuxtConfig({
     },
   },
 
+  // ── Measurement (S09 analytics) ───────────────────────────────────────────
+  // Real IDs come from env only (see .env.example + docs/seo/id-secret-registry.md).
+  // Nuxt maps NUXT_PUBLIC_ANALYTICS_GTM_ID → runtimeConfig.public.analytics.gtmId.
+  // An empty id ⇒ that tag never loads (the correct pre-launch / no-id state).
+  runtimeConfig: {
+    public: {
+      analytics: {
+        gtmId: '',       // GTM-XXXXXXX
+        ga4Id: '',       // G-XXXXXXXXXX  (used only when no GTM container is set)
+        clarityId: '',   // Microsoft Clarity project id
+        consentRegions: ['ZA'],
+        debug: false,    // NUXT_PUBLIC_ANALYTICS_DEBUG=true → console tracing
+      },
+      // Search-engine site verification (rendered into <head> by
+      // app/plugins/seo-verification.ts). DNS TXT is preferred; these meta-tag
+      // values are the in-code fallback. Empty ⇒ no tag. Not secrets.
+      verification: {
+        google: '', // NUXT_PUBLIC_VERIFICATION_GOOGLE — GSC HTML-tag method
+        bing: '',   // NUXT_PUBLIC_VERIFICATION_BING   — Bing msvalidate.01
+      },
+    },
+  },
+
   fonts: {
     families: [
       { name: 'Inter', weights: [400, 500, 600, 700, 800], styles: ['normal'] },
@@ -228,9 +252,10 @@ export default defineNuxtConfig({
     prerender: {
       crawlLinks: true,             // discover any linked routes automatically
       // priorityRoutes (top of file) now includes the S02 hub entry points
-      // (/contact, /pillars, /industries, /insights) alongside the live system
-      // money pages — so prerender + sitemap never miss a hub. crawlLinks then
-      // discovers the dynamic children from those hubs + footer links.
+      // (/contact, /pillars, /industries, /insights) + the S09 POPIA legal pages
+      // (/privacy, /cookie-policy) alongside the live system money pages — so
+      // prerender + sitemap never miss one. crawlLinks then discovers the
+      // dynamic children from those hubs + footer links.
       routes: priorityRoutes,       // belt-and-suspenders explicit list (live only)
       ignore: goneSystemRoutes,     // never prerender concept pages, even if linked
       // A single broken link should not fail the whole static build.
@@ -251,6 +276,9 @@ export default defineNuxtConfig({
     '/insights/**':   { prerender: true },
     '/diagnose':      { prerender: true },
     '/contact':       { prerender: true },
+    // POPIA legal pages (S09) — server-rendered/prerendered like the rest.
+    '/privacy':       { prerender: true },
+    '/cookie-policy': { prerender: true },
 
     // Un-published system pages → not prerendered, noindex, served 410 (OR-4).
     ...goneRouteRules,

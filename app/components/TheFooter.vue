@@ -4,8 +4,10 @@
 // every page, so every money page and hub sits <=2 clicks from anywhere.
 
 import { PILLAR_HUBS } from '~/data/pillars'
+import { useAnalytics } from '~/composables/useAnalytics'
 
 const year = new Date().getFullYear()
+const analytics = useAnalytics()
 </script>
 
 <template>
@@ -53,7 +55,8 @@ const year = new Date().getFullYear()
       </div>
 
       <div class="mt-12 pt-7 border-t border-line flex flex-col gap-5">
-        <!-- Footer nav (S02): hub links for crawl depth + internal linking (OR-6). -->
+        <!-- Footer nav: hub links for crawl depth + internal linking (OR-6, S02)
+             plus the POPIA legal pages + consent re-open control (S09). -->
         <nav class="flex flex-wrap items-center gap-x-7 gap-y-2 text-[16px] lg:text-[14.5px] font-medium text-mute" aria-label="Footer">
           <NuxtLink to="/" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Home</NuxtLink>
           <NuxtLink to="/systems" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Systems</NuxtLink>
@@ -61,6 +64,14 @@ const year = new Date().getFullYear()
           <NuxtLink to="/industries" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Industries</NuxtLink>
           <NuxtLink to="/insights" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Insights</NuxtLink>
           <NuxtLink to="/contact" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Contact</NuxtLink>
+          <NuxtLink to="/privacy" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Privacy</NuxtLink>
+          <NuxtLink to="/cookie-policy" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Cookies</NuxtLink>
+          <button
+            v-if="analytics.enabled"
+            type="button"
+            class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition text-left"
+            @click="analytics.openSettings()"
+          >Cookie settings</button>
         </nav>
         <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p class="text-[15px] lg:text-[13px] text-mute-2">© {{ year }} Zabble. All rights reserved.</p>

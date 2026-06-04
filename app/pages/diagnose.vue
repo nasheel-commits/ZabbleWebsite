@@ -28,6 +28,10 @@ usePageSeo({
   primaryKeyword: 'business operations diagnostic',
 })
 
+// Measurement (S09). generate_lead fires on contact capture; the book-call CTA
+// is tagged as schedule_call via data-analytics-event in the template.
+const analytics = useAnalytics()
+
 type StepKey =
   | 'businessType'
   | 'primaryPain'
@@ -343,6 +347,16 @@ function submitContact() {
   if (import.meta.client) {
     // eslint-disable-next-line no-console
     console.log('[Zabble Diagnose] Submission', JSON.parse(JSON.stringify(answers)))
+    // Primary B2B conversion — GA4 key event. Value/currency in ZAR (lead value
+    // is configured in GA4; 0 until an estimated lead value is agreed).
+    analytics.trackEvent('generate_lead', {
+      currency: 'ZAR',
+      value: 0,
+      lead_source: 'diagnose',
+      business_type: answers.businessType,
+      primary_pain: answers.primaryPain,
+      timeline: answers.timeline,
+    })
   }
   window.setTimeout(() => {
     submitting.value = false
@@ -864,6 +878,8 @@ const stepFrame = computed(
               <div class="flex flex-col items-center gap-4">
                 <a
                   :href="calendarUrl"
+                  data-analytics-event="schedule_call"
+                  data-analytics-lead-source="diagnose_result"
                   class="group inline-flex items-center justify-center gap-2 rounded-full bg-cyan-brand hover:bg-cyan-brand-deep text-ink text-[16px] font-semibold pl-7 pr-6 py-4 transition shadow-[0_22px_55px_-12px_rgba(1,219,241,0.65)]"
                 >
                   <Calendar :size="18" />
