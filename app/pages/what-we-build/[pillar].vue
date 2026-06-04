@@ -44,12 +44,16 @@ const breadcrumbs = computed(() => [
   { label: pillar.value.label },
 ])
 
-// Page metadata. New page → ships with sensible meta; S02 may refine via
-// useSeoMeta (coordinate — see audit OR-5).
-useHead({
-  title: () => pillar.value.seoTitle,
-  meta: [{ name: 'description', content: () => pillar.value.seoDescription }],
-})
+// Per-page SEO (S02 standard): full title/description/canonical/OG/Twitter via
+// usePageSeo, so the pillar hubs carry the same complete metadata as every other
+// indexable page. ogType 'website' — a hub/section, not an article.
+usePageSeo(() => ({
+  title: pillar.value.seoTitle,
+  description: pillar.value.seoDescription,
+  path: `/what-we-build/${pillar.value.slug}`,
+  ogType: 'website',
+  primaryKeyword: pillar.value.headTerm,
+}))
 </script>
 
 <template>

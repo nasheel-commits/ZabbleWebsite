@@ -84,8 +84,15 @@ function fileToRoute(file) {
 /** Normalize an href to a canonical internal route, or null if not an internal page. */
 function hrefToRoute(href) {
   if (!href) return null
-  // strip the canonical origin if present
-  href = href.replace(/^https?:\/\/[^/]+/i, '')
+  // Absolute URLs: strip ONLY our own origin; any other host is external (e.g.
+  // the cited source links in /blog articles — 411locals.us, apqc.org, …). The
+  // earlier blanket strip of `https?://[^/]+` mis-read external citation paths as
+  // internal and reported them as broken.
+  const m = href.match(/^https?:\/\/([^/]+)(\/.*)?$/i)
+  if (m) {
+    if (!/(^|\.)zabble\.org$/i.test(m[1])) return null // external domain
+    href = m[2] || '/'
+  }
   if (!href.startsWith('/')) return null // relative #hash, mailto:, tel:, external
   if (href.startsWith('/_') || href.startsWith('/api/')) return null // assets / api
   // drop query + hash

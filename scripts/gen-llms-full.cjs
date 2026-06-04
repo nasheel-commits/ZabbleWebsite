@@ -63,7 +63,7 @@ const pillarBlurb = {
 }
 for (const p of PILLARS) {
   L.push(`### ${p.label}`)
-  L.push(`- URL: https://zabble.org/pillars/${p.slug}`)
+  L.push(`- URL: https://zabble.org/what-we-build/${p.slug}`)
   if (pillarBlurb[p.slug]) L.push(`- ${pillarBlurb[p.slug]}`)
   L.push('')
 }
@@ -79,7 +79,7 @@ for (const s of live) {
 L.push('## Contact', '')
 L.push('- Email: analytics@zabble.org')
 L.push('- Location: South Africa')
-L.push('- Pillars: https://zabble.org/pillars')
+L.push('- Pillars: https://zabble.org/what-we-build')
 L.push('- Systems library: https://zabble.org/systems', '')
 
 fs.writeFileSync(OUT, L.join('\n'))

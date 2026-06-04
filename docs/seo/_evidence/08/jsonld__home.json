@@ -3,6 +3,7 @@
     "@id": "https://zabble.org/#website",
     "@type": "WebSite",
     "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "inLanguage": "en",
     "name": "Zabble",
     "url": "https://zabble.org/",
     "publisher": {
@@ -12,7 +13,7 @@
   {
     "@id": "https://zabble.org/#webpage",
     "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
-    "name": "Zabble · Bespoke Digital Systems",
+    "name": "Bespoke Business Systems, Built in South Africa",
     "url": "https://zabble.org/",
     "@type": [
       "WebPage",
@@ -97,6 +98,7 @@
   {
     "@id": "https://zabble.org/#/schema/question/1",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "Who builds custom business software in South Africa?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -106,6 +108,7 @@
   {
     "@id": "https://zabble.org/#/schema/question/2",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "What is a bespoke system?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -115,6 +118,7 @@
   {
     "@id": "https://zabble.org/#/schema/question/3",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "Bespoke software or off-the-shelf — which is better?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -124,6 +128,7 @@
   {
     "@id": "https://zabble.org/#/schema/question/4",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "How much does a bespoke business system cost?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -133,6 +138,7 @@
   {
     "@id": "https://zabble.org/#/schema/question/5",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "How does Zabble build a system for my business?",
     "acceptedAnswer": {
       "@type": "Answer",

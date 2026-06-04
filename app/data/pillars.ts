@@ -99,7 +99,7 @@ export const PILLAR_HUBS: PillarHub[] = [
     flagship: ['workflow-orchestrator', 'integration-hub', 'document-intelligence', 'bespoke-crm'],
     seoTitle: 'Business Process Automation — Zabble',
     seoDescription:
-      'Bespoke business process automation for South African operators: workflow orchestration, document intelligence, integrations and more — built around the work your business actually does.',
+      'Bespoke business process automation for South Africa — workflow orchestration, document intelligence and integrations, built around how your business works.',
     question: 'What is business process automation?',
     definition:
       'Business process automation is using software to run the repeatable parts of a business — the data entry, the hand-offs, the routine decisions — without a human in the loop, so people do only the work that needs them.',
@@ -136,7 +136,7 @@ export const PILLAR_HUBS: PillarHub[] = [
     flagship: ['approval-workflow', 'case-management', 'compliance-reporting', 'continuous-assurance'],
     seoTitle: 'Audit Trails & Operational Governance — Zabble',
     seoDescription:
-      'Bespoke audit-trail and governance systems: approvals, case lifecycles, regulatory reporting and continuous assurance — every action who/what/when/why, captured as it happens.',
+      'Bespoke audit-trail & governance systems: approvals, case lifecycles, regulatory reporting and continuous assurance — who did what, when and why, captured live.',
     question: 'What is an audit trail, and why does it matter?',
     definition:
       'An audit trail is a complete, tamper-evident record of who did what, when, and why across a business’s operations — so any decision can be reconstructed and proven later, not just remembered.',
@@ -168,7 +168,7 @@ export const PILLAR_HUBS: PillarHub[] = [
     flagship: ['continuous-assurance', 'predictive-maintenance', 'reconciliation-engine', 'compliance-reporting'],
     seoTitle: 'Anomaly Detection for Operations — Zabble',
     seoDescription:
-      'Bespoke anomaly-detection systems: continuous assurance, predictive maintenance, reconciliation and reporting checks that catch fraud, error and drift before they cost you.',
+      'Bespoke anomaly detection: continuous assurance, predictive maintenance and reconciliation checks that catch fraud, error and drift before they cost you.',
     question: 'What is anomaly detection in business operations?',
     definition:
       'Anomaly detection is software that watches a stream of business activity in the background and flags what’s unusual — the fraud, the error, the drift, the outlier — before it becomes a loss.',
@@ -200,7 +200,7 @@ export const PILLAR_HUBS: PillarHub[] = [
     flagship: ['analytics-suite', 'forecasting', 'bespoke-crm', 'accounting-engine'],
     seoTitle: 'Analytics & Decision Support — Zabble',
     seoDescription:
-      'Bespoke analytics and decision-support systems: role-shaped dashboards, demand forecasting and live operational reporting — built on the systems already running your business.',
+      'Bespoke analytics & decision support: role-shaped dashboards, demand forecasting and live operational reporting, built on the systems you already run.',
     question: 'What is operational analytics?',
     definition:
       'Operational analytics turns the data a business already generates into a clear, role-specific picture of what is happening and what to do next — so decisions get made on facts, not hunches.',

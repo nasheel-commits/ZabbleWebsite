@@ -2,25 +2,20 @@
 import { computed } from 'vue'
 import { ArrowRight, ArrowLeft } from '@lucide/vue'
 
-import { CLUSTER_ARTICLES, MARKET_LABEL, SITE_URL } from '~/data/articles'
+import { CLUSTER_ARTICLES, MARKET_LABEL } from '~/data/articles'
 
 const posts = computed(() =>
   [...CLUSTER_ARTICLES].sort((a, b) => (a.publishedISO < b.publishedISO ? 1 : -1)),
 )
 
-useHead({
-  title: 'Insights · Zabble',
-  link: [{ rel: 'canonical', href: `${SITE_URL}/blog` }],
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Practical, South-Africa-first guides on automation, audit trails, anomaly detection and analytics — how to fix the operational problem costing your business the most.',
-    },
-    { property: 'og:title', content: 'Insights · Zabble' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: `${SITE_URL}/blog` },
-  ],
+// Per-page SEO (S02 standard): bare title (titleTemplate adds " · Zabble"),
+// canonical, OG + Twitter. Editorial hub for the /blog articles.
+usePageSeo({
+  title: 'Insights',
+  description:
+    'Practical, South-Africa-first guides on automation, audit trails, anomaly detection and analytics — fix the problem costing your business the most.',
+  path: '/blog',
+  ogType: 'website',
 })
 </script>
 

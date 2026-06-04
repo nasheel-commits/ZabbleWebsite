@@ -3,6 +3,7 @@
     "@id": "https://zabble.org/#website",
     "@type": "WebSite",
     "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "inLanguage": "en",
     "name": "Zabble",
     "url": "https://zabble.org/",
     "publisher": {
@@ -12,8 +13,8 @@
   {
     "@id": "https://zabble.org/diagnose#webpage",
     "@type": "WebPage",
-    "description": "A 2-minute diagnostic to find the operational problem that's costing your business the most.",
-    "name": "Diagnose your operations · Zabble",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Diagnose Your Operations",
     "url": "https://zabble.org/diagnose",
     "about": {
       "@id": "https://zabble.org/#identity"

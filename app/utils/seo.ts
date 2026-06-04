@@ -38,7 +38,10 @@ export function canonicalUrl(path: string, siteUrl: string = CANONICAL_SITE_URL)
   const base = siteUrl.replace(/\/+$/, '')
   const pathOnly = path.replace(/[?#].*$/, '')
   const clean = pathOnly === '/' ? '' : pathOnly.replace(/\/+$/, '')
-  return `${base}${clean}` || `${base}/`
+  // Root is the one exception and keeps its slash (`https://zabble.org/`) — this
+  // matches what the @nuxtjs/seo modules render for the homepage. Every non-root
+  // path is emitted without a trailing slash.
+  return clean === '' ? `${base}/` : `${base}${clean}`
 }
 
 /**

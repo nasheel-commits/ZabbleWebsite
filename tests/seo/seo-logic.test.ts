@@ -22,8 +22,8 @@ import {
 import { SYSTEMS } from '../../app/data/systems'
 
 describe('canonicalUrl (OR-1 trailing-slash + non-www + OR-3 facet strip)', () => {
-  it('home canonicalises to the bare non-www origin', () => {
-    expect(canonicalUrl('/')).toBe('https://zabble.org')
+  it('home canonicalises to the non-www origin with the root slash (the one exception)', () => {
+    expect(canonicalUrl('/')).toBe('https://zabble.org/')
   })
   it('keeps deep paths, no trailing slash', () => {
     expect(canonicalUrl('/systems')).toBe('https://zabble.org/systems')

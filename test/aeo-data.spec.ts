@@ -10,7 +10,7 @@ import { SYSTEMS } from '~/data/systems'
 import { AEO_UNITS, wordCount } from './aeo-helpers'
 
 describe('AEO content coverage', () => {
-  it('covers every live system + four pillar hubs + the money pages', () => {
+  it('covers every live system + the money pages', () => {
     const liveSystems = SYSTEMS.filter((s) => s.status === 'live')
     const systemUnits = AEO_UNITS.filter((u) => u.kind === 'system')
     const liveSystemUnits = systemUnits.filter((u) =>
@@ -19,10 +19,12 @@ describe('AEO content coverage', () => {
 
     // Every live system has AEO content.
     expect(liveSystemUnits.length).toBe(liveSystems.length)
-    // Four pillar hubs.
-    expect(AEO_UNITS.filter((u) => u.kind === 'pillar-hub').length).toBe(4)
     // Money pages: home + systems index.
     expect(AEO_UNITS.filter((u) => u.kind === 'money-page').length).toBe(2)
+    // Pillar hubs (/what-we-build/<pillar>) are served by the canonical
+    // structural template (answer-first + cited GEO stat, not an FAQ page), so
+    // they are intentionally NOT AEO FAQ units anymore — see test/aeo-helpers.ts.
+    expect(AEO_UNITS.some((u) => u.kind === ('pillar-hub' as string))).toBe(false)
   })
 
   it('every live system in the data file has an answer + FAQs', () => {

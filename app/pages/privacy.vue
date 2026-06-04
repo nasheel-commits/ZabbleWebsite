@@ -7,20 +7,17 @@ import { useAnalytics } from '~/composables/useAnalytics'
 const analytics = useAnalytics()
 const lastUpdated = '4 June 2026'
 
-useHead({
-  title: 'Privacy Notice · Zabble',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'How Zabble collects, uses, and protects personal information under South Africa\'s ' +
-        'Protection of Personal Information Act (POPIA), and the rights you have over your data.',
-    },
-    // Legal pages add no SEO value as ranking targets; keep them out of the index
-    // race without blocking access. (S01 owns global robots; this is page-level.)
-    { name: 'robots', content: 'noindex, follow' },
-  ],
+// Per-page SEO (S02 standard): bare title + canonical + OG/Twitter via usePageSeo.
+usePageSeo({
+  title: 'Privacy Notice',
+  description:
+    'How Zabble collects, uses and protects personal information under South Africa’s Protection of Personal Information Act (POPIA), and your rights over your data.',
+  path: '/privacy',
+  ogType: 'website',
 })
+// Legal pages add no SEO value as ranking targets; keep them out of the index
+// race without blocking access. (S01 owns global robots; this is page-level.)
+useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
 </script>
 
 <template>

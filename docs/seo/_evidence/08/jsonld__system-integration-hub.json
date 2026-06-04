@@ -3,6 +3,7 @@
     "@id": "https://zabble.org/#website",
     "@type": "WebSite",
     "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "inLanguage": "en",
     "name": "Zabble",
     "url": "https://zabble.org/",
     "publisher": {
@@ -11,12 +12,13 @@
   },
   {
     "@id": "https://zabble.org/systems/integration-hub#webpage",
-    "description": "The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.",
-    "name": "Integration Hub · Zabble",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Integration Hub",
     "url": "https://zabble.org/systems/integration-hub",
     "@type": [
       "WebPage",
-      "ItemPage"
+      "ItemPage",
+      "FAQPage"
     ],
     "about": {
       "@id": "https://zabble.org/#identity"
@@ -27,6 +29,17 @@
     "isPartOf": {
       "@id": "https://zabble.org/#website"
     },
+    "mainEntity": [
+      {
+        "@id": "https://zabble.org/systems/integration-hub#/schema/question/1"
+      },
+      {
+        "@id": "https://zabble.org/systems/integration-hub#/schema/question/2"
+      },
+      {
+        "@id": "https://zabble.org/systems/integration-hub#/schema/question/3"
+      }
+    ],
     "potentialAction": [
       {
         "@type": "ReadAction",
@@ -107,7 +120,7 @@
   {
     "@id": "https://zabble.org/systems/integration-hub#service",
     "@type": "Service",
-    "description": "The connective tissue between the tools you already run. New booking, new order, new lead — every system that should know, knows, the moment it happens.",
+    "description": "The connective tissue between the tools you already run — a new booking, order or lead reaches every system that should know, the moment it happens.",
     "name": "Integration Hub",
     "serviceType": "Bespoke operational system",
     "url": "https://zabble.org/systems/integration-hub",
@@ -121,6 +134,36 @@
     ],
     "provider": {
       "@id": "https://zabble.org/#identity"
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#/schema/question/1",
+    "@type": "Question",
+    "inLanguage": "en",
+    "name": "What is iPaaS?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "iPaaS — integration platform as a service — connects separate business tools so they share events automatically, instead of a person copying data between them. Zabble’s hub forwards each event to every system that should know, so a stack of eight tools stops behaving like eight islands."
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#/schema/question/2",
+    "@type": "Question",
+    "inLanguage": "en",
+    "name": "How does an integration hub work?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Each tool emits the events it already knows about; the hub transforms each event and forwards it to every other tool that should react. New bridges are point-and-click — no glue scripts, no fragile zaps — and every event carries its trail for audit."
+    }
+  },
+  {
+    "@id": "https://zabble.org/systems/integration-hub#/schema/question/3",
+    "@type": "Question",
+    "inLanguage": "en",
+    "name": "What changes once it’s in place?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The team stops copying data between tools. A booking lands once and ripples everywhere it should within seconds, and new tools slot into the hub the day they arrive instead of becoming the next island."
     }
   }
 ]

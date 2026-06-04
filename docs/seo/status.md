@@ -16,21 +16,11 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 00 | Setup & access foundation | `seo/00-setup` | SEO lead | **done** | — | docs/seo built; MCP ✓ Connected; account verified + funded ($50.998); live + sandbox `20000`. |
 | 01 | Technical SEO & Crawlability | `seo/01-technical` | S01 | **done** | 00 | Foundation + **all S01 Open Requests resolved**. `@nuxtjs/seo` (sitemap+robots+link-checker) wired; `site.url` non-www; prerender live routes → full HTML; robots allows AI bots + `Sitemap:` (ADR-0002); fail-closed Vercel-env staging guard; canonicals non-www/no-trailing-slash. **OR-4 (P0):** 2 concept pages → 410 + `X-Robots-Tag` + sitemap-excluded (verified on hybrid server). **OR-3:** `?pillar=` → canonical `/systems`. **OR-2:** slug-immutability + validated 301 redirect-map (ADR-0004). **OR-1:** trailing-slash policy enforced. **SEO-regression vitest suite (29 tests) + nuxt-link-checker** green. CWV (prod, post-impl) good: LCP 1.97s/CLS 0/TBT 0ms. **Only open item: B5** (Vercel Primary Domain → apex; human). Audit: `audits/01-technical.md` §10–11. |
 | 02 | On-Page & Metadata | `seo/05-onpage` | on-page agent | **done** | 00, 03-keywords | Branch `seo/05-onpage`. **Full build-out:** unique title/desc/canonical(non-www)/OG/Twitter via `usePageSeo` on **all 52 prerendered pages** (home, /systems, 30 modules, 4 pillar hubs `/pillars/*`, 6 industry pages `/industries/*`, 5 insight explainers `/insights/*`, /diagnose, /contact); `titleTemplate`; `lang=en-ZA`; answer-first slot + `definition`/`faqs` from S03's verified ZA keyword map; one canonical page per primary intent (52/52 unique). Regression test `npm run test:seo` (0 violations) + `nuxt generate` clean. Audit `audits/05-onpage.md` §13. |
-| 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
 | 04 | Site Architecture & Internal Linking | `seo/04-architecture` | S04 | **done** | 00 | **IMPLEMENTED + tested.** 4 pillar hubs live at `/what-we-build/<pillar>`; hub↔member linking; footer + home wired to hubs + `/systems`; `SeoBreadcrumb` + `RelatedSystems` on all templates; faceted `?pillar=` removed from crawl graph; concept pages delinked. `nuxt generate` exit 0 (76 routes); **16/16** arch tests pass (`npm run test:arch`). Audit §8 = impl log. **OR-6/OR-7 now done by S04**; OR-3/OR-4/OR-8 remain (S01/S03). |
-| 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
-| 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
 | 03 | Structured Data / Schema.org | `seo/08-schema` ‡ | structured-data agent | **done** | 00, 01 (`site.url`) | Organization+WebSite identity + per-template schema (WebPage/CollectionPage/ItemPage, BreadcrumbList, Service, ItemList) via `nuxt-schema-org`; server-rendered, all validated → `_evidence/08/`. See `audits/08-schema.md`. ‡ commissioned on branch `seo/08-schema` (not `seo/03-schema`). |
-| 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
-| 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
-| 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | AEO agent | **done** | 00 ✓, 03 (ask), 05 (soft) | `seo/07-aeo` — AEO standard + components + **all 32 systems + 4 pillar hubs (`/pillars/*`) + home + `/systems` populated** (answer-first 40–60w + PAA FAQs), byte-verified server-side. **188 vitest regression tests pass; `nuxt generate` clean (76 routes).** Live SA SERP/PAA evidence ($0.081). Audit `audits/07-aeo.md`. **JSON-LD hand-off to S03/S08 logged below (P0).** |
 | 06 | Content Strategy & Editorial | `seo/10-content`¹ | Content strategist | **done** | 00, 05 (used spot-research) | Strategy + **published articles**. Topical model + calendar (`content/editorial-calendar.md`) + 15 briefs. **All 15 first-wave articles now written & shipped as server-rendered pages** (`app/data/articles.ts`; `/blog/*`, `/what-we-build/*`, `/blog/rss.xml`) with real cited sources, answer-first intros, PAA FAQs + Zabble voice. `nuxt generate` clean (107 routes); `vitest` 231 green (content + link-checker + prerender). Audit/coverage §9 in `audits/10-content.md`. **Hand-offs → S03/S08:** Article+FAQPage JSON-LD ready to generate from `articles.ts` fields. **→ S09:** per-article OG images (og:image omitted). **→ S04:** nav adds Insights + links `/what-we-build`. |
-| 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
-| 08 | GEO — Generative Engine Optimization | `seo/08-geo` | _unassigned_ | pending | 00, 03, 05, 07 | — |
 | 07′ | GEO (commissioned on `seo/07-geo`) | `seo/07-geo` | GEO agent | **done** | 00 | **Implemented on-site:** Organization JSON-LD + disambiguation (`organization.ts`/`app.vue`), home entity section, 4 pillar hubs (`/pillars/*`) + cited GEO blocks on 5 flagship pages (real sources: McKinsey/ACFE/POPIA/IDC/Salesforce), `/llms.txt`+`/llms-full.txt`, `npm run test:geo` (8/8), entity kit + ADR-0002 + AI-citation baseline (`_evidence/07/`). 78 routes prerender clean. Baseline SOV 0% / entity conflated w/ Zabble Inc — flips after deploy + entity-kit. |
-| 09 | Performance & Core Web Vitals | `seo/09-performance` | _unassigned_ | pending | 00 | — |
-| 10 | Off-Page, Local SEO & Measurement | `seo/10-offpage-local` | _unassigned_ | pending | 00, 05 | — |
 | 09a | Analytics, Measurement & Indexing | `seo/09-analytics` | analytics eng | **done** | 00; coord 01, 10 | GA4/GTM/Clarity + Consent Mode v2 (POPIA opt-in) + key events (no-op until env ids); **`/privacy` + `/cookie-policy`** built + CMP/footer-linked; in-code **GSC/Bing verification meta**; IndexNow key + ping; **`npm test` 21/21** (consent/events/IndexNow/static-HTML). `build`+`generate`+`test` clean. Only launch dep: ids + DNS/meta (B4) — see audit §8 owner list. Docs: `audits/09-analytics.md`, `measurement-plan.md`, `id-secret-registry.md`, ADR 0002. |
 
 > ¹ The content-strategy task was **issued as "S10 content"** on branch
@@ -38,6 +28,15 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 > satisfy the issued goal; functionally this is session 06. See
 > `audits/10-content.md` §0 for the reconciliation. Off-page (true S10) untouched.
 | 10 | Off-Page, Local SEO & Measurement | `seo/04-offpage-local` | S04 | **done** (audit + **on-site implementation**) | 00, 05 | **Audit:** competitor map, content/link gaps, digital-PR + velocity plan. **Built + tested:** 5 ZA metro landings + 8 industry pages + linkbait asset + About/Press (all server-rendered, 52 pages, `nuxt generate` clean, `test:seo` 26/26, 0 broken links); outreach + GBP/citation kits; LocalBusiness fields handed to S08. Branch `seo/04-offpage-local`. Spend ~$0.18 (no new spend this session). _B4/B5/B6 still owner-gated._ |
+| 05 | Keyword & Market Research (SA) | `seo/03-keywords` | keyword agent | **done** | 00 | Keyword→URL→intent→layer→priority map operationalised (`targets/keyword-map.md`): SA volume/KD per cluster, full URL coverage of the money set, rank baseline + tracking list + a validator. Evidence in `_evidence/03|05/`. Feeds S02/S06/S07/S08 (OR-9 anchor/“…South Africa” clusters verified). |
+| 09 | Performance & Core Web Vitals | _folded into S01_ | S01 | **done** | 00 | No separate branch was commissioned; CWV is owned within S01 (Technical). Production CWV measured **good** (LCP 1.97s / CLS 0 / TBT 0ms) for this static-generated codebase; integration added only static pages + **consent-gated/deferred** analytics (no tags pre-consent), so no perf regression. Re-run Lighthouse on the live deploy post-env-vars (launch-checklist). |
+
+> **INTEGRATION (2026-06-04):** all 10 discipline branches merged into `main`
+> (backup tag `pre-integration-backup`). Conflicts resolved by union; integration
+> points reconciled (pillar hubs consolidated to `/what-we-build`, single
+> Organization entity, FAQ↔FAQPage byte-match, llms.txt refreshed, metadata
+> standardised). Full sanity suite green — see `launch-checklist.md`. Remaining
+> work is **owner/DNS only** — see `owner-actions.md`.
 
 ### Dependency notes
 - **Everything depends on S00** (this knowledge base + access). S00 is **done**;
@@ -244,17 +243,19 @@ Raised 2026-06-04 by S04. Full detail in `audits/04-architecture.md` §6;
 taxonomy in `targets/site-architecture.md`; rules in `targets/internal-linking.md`.
 Owners: please action on your branch and tick here.
 
-| Ref | To | Ask | Pri |
-|---|----|-----|-----|
-| **OR-4** | **S01** (+S06) | **P0 — indexing guard (delinking already done by S04).** S04 removed the 2 concept pages from every link surface, so `crawlLinks` no longer generates them (verified by test). **Still needed:** `noindex` + sitemap-exclude (and ideally a 404/410 route guard) so they can never be indexed even if hit directly **or** S06 publishes real copy. | **P0** |
-| OR-3 | S01 + S03 | Faceted `/systems?pillar=` → canonical `/systems` (or `noindex,follow`); not the sole path to a pillar. | P1 |
-| OR-2 | S01 | Adopt "published slugs immutable; rename ⇒ 301" + redirect-map mechanism. | P1 |
-| OR-1 | S01 | Decide/document trailing-slash policy + clean-URL canonical form for the taxonomy. | P2 |
-| ~~OR-6~~ | S04 ✓ | **DONE by S04** — footer block + home "What We Build" → hubs implemented & tested. S06: optional copy polish only. | done |
-| ~~OR-7~~ | S04 ✓ | **DONE by S04** — 4 pillar hubs live with full membership linking. S06: optional hub-prose enrichment; S01: optionally add `/what-we-build/*` to `sitemap.xml` (auto-discovered via `crawlLinks` today). | done |
-| OR-8 | S03 | `BreadcrumbList` JSON-LD matching the visible `SeoBreadcrumb` 1:1 on all non-home pages; hub schema for pillar/industry pages. | P1 |
-| OR-5 | S02 | Upgrade `SystemCard` anchor to use the **module name** as link text; review breadcrumb/related blocks S04 added to `systems/index.vue` + `[slug].vue` (navigation regions only — `useHead`/meta untouched). | P2 |
-| OR-9 | S05 | Verify 10 seed anchor clusters (`internal-linking.md` §2.2) + one "…South Africa" variant per module. *(Also appended to `targets/keyword-map.md` §4.)* | P1 |
+**ALL CLOSED at integration (2026-06-04).** No dangling P0/P1.
+
+| Ref | To | Ask | Pri | Status |
+|---|----|-----|-----|--------|
+| ~~OR-4~~ | S01 | **P0** — indexing guard for the 2 concept pages. | P0 | ✅ **CLOSED** — delinked (S04) + `noindex,nofollow` + `X-Robots-Tag` routeRules + prerender-excluded + served **410** by the `[slug].vue` gate; excluded from sitemap. Verified by the architecture suite (“concept/thin pages are delinked, not generated”). |
+| ~~OR-3~~ | S01+S03 | Faceted `?pillar=` → canonical `/systems`. | P1 | ✅ **CLOSED** — `canonicalUrl` strips query → `/systems`; verified in `seo-logic.test.ts`. |
+| ~~OR-2~~ | S01 | Slug-immutability + 301 redirect-map. | P1 | ✅ **CLOSED** — ADR-0004 + `app/data/redirects.ts` (`validateRedirects` guards loops/chains); host-layer structural redirects in `vercel.json`. |
+| ~~OR-1~~ | S01 | Trailing-slash + clean-URL policy. | P2 | ✅ **CLOSED** — non-www, no trailing slash except root (`https://zabble.org/`); `cleanUrls`+`trailingSlash:false` in `vercel.json`; asserted in `seo-logic.test.ts` + `prerender.test.ts`. |
+| ~~OR-6~~ | S04 | Footer + home → hubs/`/systems`. | P1 | ✅ **CLOSED** (S04) — footer hub block + home “What We Build” wired to `/what-we-build/*` + `/systems`. |
+| ~~OR-7~~ | S04/S06 | 4 pillar hubs at `/what-we-build/<pillar>`. | P1 | ✅ **CLOSED** — canonical hubs live (the parallel `/pillars/*` duplicate was consolidated → `/what-we-build` + 301 at integration); in sitemap. |
+| ~~OR-8~~ | S03 | `BreadcrumbList` JSON-LD 1:1 with visible breadcrumb. | P1 | ✅ **CLOSED** — `defineBreadcrumb` per template; `validate-schema.mjs` asserts breadcrumb item count + in-graph `@id` resolution. |
+| ~~OR-5~~ | S02 | `SystemCard` module-name anchor + review S04 nav blocks. | P2 | ✅ **CLOSED** — module-name anchors verified by the architecture suite (“descriptive in-body anchors, not ‘view system’”). |
+| ~~OR-9~~ | S05 | Verify seed anchor clusters + “…South Africa” variants. | P1 | ✅ **CLOSED** (S05/keywords) — clusters verified in `targets/keyword-map.md`; one ZA variant per module. |
 ## Cross-session asks (from S07-geo / GEO)
 
 Logged here so nothing depends on a verbal handoff (conventions §4.7). Source:

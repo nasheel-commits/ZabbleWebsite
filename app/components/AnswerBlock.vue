@@ -45,7 +45,7 @@ withDefaults(
     >
       {{ question }}
     </component>
-    <p class="mt-3 max-w-2xl text-[15.5px] md:text-[16.5px] leading-[1.65] text-ink">
+    <p data-answer-first class="mt-3 max-w-2xl text-[15.5px] md:text-[16.5px] leading-[1.65] text-ink">
       {{ answer }}
     </p>
   </section>

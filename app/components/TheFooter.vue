@@ -13,16 +13,19 @@ import { useAnalytics } from '~/composables/useAnalytics'
 const year = new Date().getFullYear()
 const analytics = useAnalytics()
 
+// /blog is the canonical editorial hub ("Insights", matches the nav + RSS);
+// /insights is the short keyword-targeted explainer set, labelled "Guides" so
+// the two sections are distinct and consistently linked (no label collision).
 const explore = [
   { to: '/systems', label: 'All systems' },
   { to: '/industries', label: 'Industries' },
   { to: '/locations', label: 'Locations' },
-  { to: '/insights', label: 'Insights' },
+  { to: '/insights', label: 'Guides' },
 ]
 const company = [
   { to: '/about', label: 'About' },
   { to: '/press', label: 'Press' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/blog', label: 'Insights' },
   { to: '/diagnose', label: 'Book a call' },
 ]
 </script>

@@ -30,16 +30,18 @@ const REQUIRED = [
   ['/locations/cape-town', 'Cape Town'],
   ['/locations/pretoria', 'Pretoria'],
   ['/locations/durban', 'Durban'],
-  ['/industries', 'shaped to your world'],
-  ['/industries/financial-services', 'financial services'],
-  ['/industries/legal', 'run the matter'],
-  ['/industries/ngos', 'funders trust'],
-  ['/industries/logistics', 'physical and the digital'],
-  ['/industries/hospitality', 'lean hospitality team'],
-  ['/industries/manufacturing', 'factory floor'],
-  ['/industries/professional-services', 'bill its expertise'],
-  ['/industries/field-services', 'signal drops out'],
-  ['/insights', 'Useful by design'],
+  // Industries: the canonical /industries taxonomy is S02's (app/data/industries.ts) —
+  // legal/hospitality/logistics/manufacturing/banking/ngo. (S10's richer
+  // angle-linked industry data is an owner-checklist enhancement to fold in later;
+  // see docs/seo/status.md integration notes.)
+  ['/industries', 'Shaped to your business'],
+  ['/industries/legal', 'South African law firms'],
+  ['/industries/hospitality', 'hospitality'],
+  ['/industries/logistics', 'logistics'],
+  ['/industries/manufacturing', 'manufacturing'],
+  ['/industries/banking', 'financial services'],
+  ['/industries/ngo', 'NGOs'],
+  ['/insights', 'questions buyers actually ask'],
   ['/insights/south-african-operations-software-landscape', 'Operations-Software Landscape'],
 ]
 

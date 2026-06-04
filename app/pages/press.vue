@@ -6,15 +6,15 @@ import { LOCATIONS } from '~/data/locations'
 
 const liveCount = SYSTEMS.filter((s) => s.status === 'live').length
 
-useSeoMeta({
-  title: 'Press & Media Kit — Zabble',
+// Per-page SEO (S02 standard): bare title (titleTemplate brands once), canonical,
+// OG + Twitter. Organization/press schema slot below.
+usePageSeo({
+  title: 'Press & Media Kit',
   description:
-    'Press resources for Zabble: company boilerplate, fast facts, brand basics and media contact. Zabble builds bespoke operational systems for South African businesses.',
-  ogTitle: 'Zabble — Press & Media Kit',
-  ogDescription: NAP.description,
+    'Press resources for Zabble: boilerplate, fast facts, brand basics and media contact. Zabble builds bespoke operational systems for South African businesses.',
+  path: '/press',
   ogType: 'website',
 })
-useHead({ link: [{ rel: 'canonical', href: `${NAP.url}/press` }] })
 
 // SCHEMA SLOT (S08): `Organization` with contactPoint (contactType "press"),
 // logo, sameAs = NAP.sameAs. See localbusiness-schema-fields.md.

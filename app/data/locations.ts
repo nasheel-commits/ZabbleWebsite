@@ -67,7 +67,7 @@ export const LOCATIONS: Location[] = [
     city: 'Johannesburg',
     province: 'Gauteng',
     region: 'Gauteng',
-    metaTitle: 'Custom Software & Business Automation in Johannesburg | Zabble',
+    metaTitle: 'Custom Software & Automation in Johannesburg | Zabble',
     metaDescription:
       'Bespoke operational systems for Johannesburg businesses — automation, audit trails and analytics built around the problem slowing your operation down.',
     h1: 'Bespoke operational systems for Johannesburg businesses',
@@ -96,7 +96,7 @@ export const LOCATIONS: Location[] = [
     city: 'Sandton',
     province: 'Gauteng',
     region: 'Gauteng',
-    metaTitle: 'Custom Software for Sandton Financial & Professional Firms | Zabble',
+    metaTitle: 'Custom Software for Sandton Financial Firms | Zabble',
     metaDescription:
       'Bespoke systems for Sandton\'s banks, asset managers and professional firms — audit-grade automation, compliance reporting and decision engines, built to fit.',
     h1: 'Custom systems for Sandton\'s financial and professional firms',
@@ -156,7 +156,7 @@ export const LOCATIONS: Location[] = [
     region: 'Gauteng',
     metaTitle: 'Custom Software & Compliance Systems in Pretoria | Zabble',
     metaDescription:
-      'Bespoke operational systems for Pretoria\'s regulated, public-sector-adjacent and manufacturing operators — audit-grade automation and compliance reporting, built to fit.',
+      'Bespoke operational systems for Pretoria’s regulated and manufacturing operators — audit-grade automation and compliance reporting, built to fit.',
     h1: 'Custom systems for Pretoria\'s regulated and industrial operators',
     kicker: 'Pretoria · Gauteng',
     intro:
@@ -183,9 +183,9 @@ export const LOCATIONS: Location[] = [
     city: 'Durban',
     province: 'KwaZulu-Natal',
     region: 'KwaZulu-Natal',
-    metaTitle: 'Custom Software for Durban Logistics & Manufacturing | Zabble',
+    metaTitle: 'Custom Software for Durban Logistics & Industry | Zabble',
     metaDescription:
-      'Bespoke operational systems for Durban\'s ports, logistics and manufacturing operators — automation, inventory clarity and field-ops, built around how the work moves.',
+      'Bespoke operational systems for Durban’s ports, logistics and manufacturing operators — automation, inventory clarity and field-ops, built around the work.',
     h1: 'Custom systems for Durban\'s logistics and manufacturing operators',
     kicker: 'Durban · KwaZulu-Natal',
     intro:

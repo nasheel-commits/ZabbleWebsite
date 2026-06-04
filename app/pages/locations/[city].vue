@@ -28,17 +28,14 @@ const industries = computed(() =>
   loc.value.industrySlugs.map((s) => industryBySlug(s)).filter(Boolean),
 )
 
-useSeoMeta({
-  title: loc.value.metaTitle,
+// Per-page SEO (S02 standard): bare title (titleTemplate brands once), canonical,
+// OG + Twitter. metaTitle is de-branded so the global template doesn't double it.
+usePageSeo(() => ({
+  title: loc.value.metaTitle.replace(/\s*[|·–-]\s*Zabble\s*$/i, '').trim(),
   description: loc.value.metaDescription,
-  ogTitle: loc.value.metaTitle,
-  ogDescription: loc.value.metaDescription,
+  path: `/locations/${loc.value.slug}`,
   ogType: 'website',
-  ogUrl: () => `${NAP.url}/locations/${loc.value.slug}`,
-})
-useHead({
-  link: [{ rel: 'canonical', href: `${NAP.url}/locations/${loc.value.slug}` }],
-})
+}))
 
 // SCHEMA SLOT (S08): emit a `LocalBusiness` (areaServed = this city + nearbyAreas,
 // geo = loc.geo, NAP from data/nap.ts) and breadcrumb here. Fields + exact JSON-LD

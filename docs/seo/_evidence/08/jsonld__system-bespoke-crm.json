@@ -3,6 +3,7 @@
     "@id": "https://zabble.org/#website",
     "@type": "WebSite",
     "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "inLanguage": "en",
     "name": "Zabble",
     "url": "https://zabble.org/",
     "publisher": {
@@ -11,8 +12,8 @@
   },
   {
     "@id": "https://zabble.org/systems/bespoke-crm#webpage",
-    "description": "A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.",
-    "name": "Bespoke CRM · Zabble",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Bespoke CRM — Built to Your Pipeline",
     "url": "https://zabble.org/systems/bespoke-crm",
     "@type": [
       "WebPage",
@@ -122,7 +123,7 @@
   {
     "@id": "https://zabble.org/systems/bespoke-crm#service",
     "@type": "Service",
-    "description": "A CRM shaped around how your team actually sells — stages, automations, channels and dashboards that mirror your business, not someone else’s playbook.",
+    "description": "A CRM shaped to how your team actually sells — stages, automations and dashboards that mirror your pipeline, not a vendor’s template. Built in South Africa.",
     "name": "Bespoke CRM",
     "serviceType": "Bespoke operational system",
     "url": "https://zabble.org/systems/bespoke-crm",
@@ -142,6 +143,7 @@
   {
     "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/1",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "How is a bespoke CRM different from an off-the-shelf CRM?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -151,6 +153,7 @@
   {
     "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/2",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "When should a business build a bespoke CRM?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -160,6 +163,7 @@
   {
     "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/3",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "How much does a bespoke CRM cost in South Africa?",
     "acceptedAnswer": {
       "@type": "Answer",
@@ -169,6 +173,7 @@
   {
     "@id": "https://zabble.org/systems/bespoke-crm#/schema/question/4",
     "@type": "Question",
+    "inLanguage": "en",
     "name": "Can a bespoke CRM connect to our existing tools?",
     "acceptedAnswer": {
       "@type": "Answer",

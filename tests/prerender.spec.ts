@@ -44,8 +44,22 @@ function probe(text: string): string {
   return alnum(text).slice(0, 44)
 }
 
+// The four pillar hubs (/what-we-build/<pillar>) render via the canonical
+// structural hub template (S04 IA owner) — answer-first block + cited GEO stat
+// + member systems — NOT the article template, so they are excluded from the
+// article-HTML assertions here. Their integrity is covered by the architecture
+// suite (members/breadcrumbs/orphans/depth) + geo suite (cited stat). The
+// editorial articles (/blog/*) and the bespoke-systems thesis still render via
+// ArticleView and are asserted below.
+const PILLAR_HUB_PATHS = new Set([
+  '/what-we-build/automation',
+  '/what-we-build/audit-trails',
+  '/what-we-build/anomaly-detection',
+  '/what-we-build/analytics',
+])
+
 describe.skipIf(!haveBuild)('prerendered article HTML', () => {
-  for (const a of ARTICLES) {
+  for (const a of ARTICLES.filter((a) => !PILLAR_HUB_PATHS.has(a.canonicalPath))) {
     describe(a.canonicalPath, () => {
       const html = haveBuild ? htmlFor(a.canonicalPath) : ''
       const key = haveBuild ? pageKey(html) : ''

@@ -4,15 +4,15 @@ import { PILLARS } from '~/data/systems'
 import { NAP } from '~/data/nap'
 import { LOCATIONS } from '~/data/locations'
 
-useSeoMeta({
-  title: 'About Zabble — Bespoke Operational Systems, South Africa | Zabble',
+// Per-page SEO (S02 standard): bare title (titleTemplate brands once), canonical,
+// OG + Twitter. This is the canonical Organization page (schema slot below).
+usePageSeo({
+  title: 'About Zabble — Bespoke Operational Systems',
   description:
-    'Zabble is a South African software consultancy building bespoke operational systems — automation, audit trails, anomaly detection and analytics — around the problem slowing your business down.',
-  ogTitle: 'About Zabble — bespoke operational systems, South Africa',
-  ogDescription: NAP.description,
+    'Zabble is a South African software consultancy building bespoke operational systems — automation, audit trails, anomaly detection and analytics.',
+  path: '/about',
   ogType: 'website',
 })
-useHead({ link: [{ rel: 'canonical', href: `${NAP.url}/about` }] })
 
 // SCHEMA SLOT (S08): this is the canonical `Organization` page. Emit Organization
 // (name, url, description = NAP.description, areaServed, sameAs = NAP.sameAs, founder/

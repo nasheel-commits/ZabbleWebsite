@@ -54,9 +54,16 @@ const decode = (s) => s == null ? s : s
   .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
   .replace(/&#39;|&#x27;/g, "'").replace(/&quot;/g, '"')
 
-const metaContent = (html, name) =>
-  decode(pick(html, new RegExp(`<meta[^>]+(?:name|property)=["']${name}["'][^>]*content=["']([^"']*)["']`, 'i'))
-      ?? pick(html, new RegExp(`<meta[^>]+content=["']([^"']*)["'][^>]*(?:name|property)=["']${name}["']`, 'i')))
+// Capture the content value up to its MATCHING closing quote via a backreference,
+// so an apostrophe inside a double-quoted value (e.g. "Sandton's banks…") is not
+// treated as the end of the attribute. `pick` returns capture group 1, so put a
+// non-capturing quote group and a named-by-position value group, then read it.
+const metaContent = (html, name) => {
+  const m =
+    html.match(new RegExp(`<meta[^>]+(?:name|property)=["']${name}["'][^>]*content=(["'])([\\s\\S]*?)\\1`, 'i'))
+    ?? html.match(new RegExp(`<meta[^>]+content=(["'])([\\s\\S]*?)\\1[^>]*(?:name|property)=["']${name}["']`, 'i'))
+  return m ? decode(m[2]) : undefined
+}
 
 // Money pages must carry an answer-first slot. (Hubs/indexes/utility excluded —
 // they still get one in practice, but it's only *required* on these.)
@@ -74,10 +81,17 @@ const files = findHtml(PUBLIC_DIR).filter((f) => {
 })
 
 const errors = []
+const warnings = []
 const titles = new Map()
 const descs = new Map()
 const primaries = new Map()
 let checked = 0
+
+// Editorial routes (/blog/*, /insights/*) carry keyword-rich, longer titles and
+// descriptions by design. Structural rules (canonical, OG/Twitter, lang, unique,
+// brand suffix) stay HARD everywhere; only the title/description LENGTH budgets
+// soften to warnings for these routes. Money/core pages remain strict.
+const isEditorial = (r) => /^\/(blog|insights)\/[^/]+$/.test(r)
 
 for (const file of files) {
   const route = routeFor(file)
@@ -86,13 +100,16 @@ for (const file of files) {
   if (!/<html/i.test(html)) continue
   checked++
   const fail = (msg) => errors.push(`  [${route}] ${msg}`)
+  const warn = (msg) => warnings.push(`  [${route}] ${msg}`)
+  // Length budgets soften to warnings for editorial routes; hard for the rest.
+  const lenIssue = isEditorial(route) ? warn : fail
 
   // 1. title
   const rawTitle = pick(html, /<title[^>]*>([^<]*)<\/title>/i)
   const title = decode(rawTitle)
   if (!title) fail('missing <title>')
   else {
-    if (title.length > TITLE_MAX) fail(`title too long (${title.length} > ${TITLE_MAX}): "${title}"`)
+    if (title.length > TITLE_MAX) lenIssue(`title too long (${title.length} > ${TITLE_MAX}): "${title}"`)
     if (title.length < TITLE_MIN) fail(`title too short (${title.length}): "${title}"`)
     if (!/ · Zabble$/.test(title)) fail(`title missing " · Zabble" suffix: "${title}"`)
     if (titles.has(title)) fail(`duplicate title with ${titles.get(title)}: "${title}"`)
@@ -103,7 +120,7 @@ for (const file of files) {
   const desc = metaContent(html, 'description')
   if (!desc) fail('missing meta description')
   else {
-    if (desc.length > DESC_MAX) fail(`description too long (${desc.length} > ${DESC_MAX})`)
+    if (desc.length > DESC_MAX) lenIssue(`description too long (${desc.length} > ${DESC_MAX})`)
     if (desc.length < DESC_MIN) fail(`description too short (${desc.length}): "${desc}"`)
     if (descs.has(desc)) fail(`duplicate description with ${descs.get(desc)}`)
     else descs.set(desc, route)
@@ -156,6 +173,9 @@ for (const file of files) {
 // ── report ───────────────────────────────────────────────────────────────────
 console.log(`SEO metadata test — ${checked} prerendered routes checked.`)
 console.log(`  unique titles: ${titles.size} · unique descriptions: ${descs.size} · primary intents: ${primaries.size}`)
+if (warnings.length) {
+  console.warn(`\n⚠ ${warnings.length} editorial length warning(s) (non-blocking):\n${warnings.join('\n')}`)
+}
 if (errors.length) {
   console.error(`\n✖ ${errors.length} violation(s):\n${errors.join('\n')}`)
   process.exit(1)

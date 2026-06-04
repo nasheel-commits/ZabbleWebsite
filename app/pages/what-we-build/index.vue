@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { ArrowLeft, ArrowRight, BarChart3, Radar, ShieldCheck, Workflow } from '@lucide/vue'
 
-import { SITE_URL } from '~/data/articles'
-
 const hubs = [
   {
     href: '/what-we-build/bespoke-systems',
@@ -36,19 +34,14 @@ const hubs = [
   },
 ]
 
-useHead({
-  title: 'What We Build · Zabble',
-  link: [{ rel: 'canonical', href: `${SITE_URL}/what-we-build` }],
-  meta: [
-    {
-      name: 'description',
-      content:
-        'Zabble builds bespoke operational systems across four pillars — automation, audit trails, anomaly detection and analytics — for South African businesses.',
-    },
-    { property: 'og:title', content: 'What We Build · Zabble' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: `${SITE_URL}/what-we-build` },
-  ],
+// Per-page SEO (S02 standard): full title/description/canonical/OG/Twitter. The
+// bare title gets the global " · Zabble" suffix from titleTemplate.
+usePageSeo({
+  title: 'What We Build',
+  description:
+    'Zabble builds bespoke operational systems across four pillars — automation, audit trails, anomaly detection and analytics — for South African businesses.',
+  path: '/what-we-build',
+  ogType: 'website',
 })
 </script>
 

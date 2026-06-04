@@ -13,11 +13,10 @@ import {
   SYSTEMS_INDEX_ANSWER,
   SYSTEMS_INDEX_FAQS,
 } from '~/data/site-faqs'
-import { PILLAR_HUBS } from '~/data/pillar-content'
 
 export interface AeoUnit {
   id: string
-  kind: 'system' | 'pillar-hub' | 'money-page'
+  kind: 'system' | 'money-page'
   /** Path of the prerendered HTML, relative to .output/public. */
   htmlPath: string
   /** True if the page is linked/prerendered (so its HTML exists to check). */
@@ -39,16 +38,11 @@ function liveSystemUnits(): AeoUnit[] {
   }))
 }
 
-function pillarHubUnits(): AeoUnit[] {
-  return Object.values(PILLAR_HUBS).map((h) => ({
-    id: `pillar-hub:${h.slug}`,
-    kind: 'pillar-hub' as const,
-    htmlPath: `pillars/${h.slug}/index.html`,
-    prerendered: true,
-    answer: h.answer,
-    faqs: h.faqs,
-  }))
-}
+// Pillar hubs are served by the canonical structural template at
+// /what-we-build/<slug> (S04 IA) — an answer-first block + a cited GEO stat,
+// NOT an FAQ page — so they are no longer AEO FAQ units. Their answer-block
+// integrity is covered by the architecture + geo suites. (The earlier
+// /pillars/<slug> + pillar-content.ts hub was retired in the integration.)
 
 function moneyPageUnits(): AeoUnit[] {
   return [
@@ -73,7 +67,6 @@ function moneyPageUnits(): AeoUnit[] {
 
 export const AEO_UNITS: AeoUnit[] = [
   ...moneyPageUnits(),
-  ...pillarHubUnits(),
   ...liveSystemUnits(),
 ]
 

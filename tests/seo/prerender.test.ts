@@ -67,11 +67,14 @@ describe.skipIf(!built)('built static output (.output/public)', () => {
   it('sitemap lists every live priority URL with lastmod, excludes gone pages (OR-4)', () => {
     expect(read('sitemap.xml')).toContain('<lastmod>')
     const locs = sitemapLocs()
+    // sitemapLocs() trailing-slash-normalises every loc (home → bare origin);
+    // canonicalUrl keeps the root slash, so normalise the expected the same way.
+    const norm = (u: string) => u.replace(/\/+$/, '') || u
     for (const route of ['/', '/systems', '/diagnose', ...liveSystemRoutes]) {
-      expect(locs, `sitemap missing ${route}`).toContain(canonicalUrl(route))
+      expect(locs, `sitemap missing ${route}`).toContain(norm(canonicalUrl(route)))
     }
     for (const route of goneSystemRoutes) {
-      expect(locs, `sitemap must exclude ${route}`).not.toContain(canonicalUrl(route))
+      expect(locs, `sitemap must exclude ${route}`).not.toContain(norm(canonicalUrl(route)))
     }
   })
 

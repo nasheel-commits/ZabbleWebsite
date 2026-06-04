@@ -13,19 +13,19 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 ## The four pillars
 
 ### Automation
-- URL: https://zabble.org/pillars/automation
+- URL: https://zabble.org/what-we-build/automation
 - Stop doing by hand the work that should not need a human.
 
 ### Audit Trails
-- URL: https://zabble.org/pillars/audit-trails
+- URL: https://zabble.org/what-we-build/audit-trails
 - Know who did what, when, and why; turn audit season into a one-click export.
 
 ### Anomaly Detection
-- URL: https://zabble.org/pillars/anomaly-detection
+- URL: https://zabble.org/what-we-build/anomaly-detection
 - Catch fraud, error, and drift before they become a problem.
 
 ### Analytics
-- URL: https://zabble.org/pillars/analytics
+- URL: https://zabble.org/what-we-build/analytics
 - Turn data a business already has into the decisions it actually makes.
 
 ## Systems (30 live modules)
@@ -184,5 +184,5 @@ Zabble (South Africa) is an operations-systems consultancy. It is not affiliated
 
 - Email: analytics@zabble.org
 - Location: South Africa
-- Pillars: https://zabble.org/pillars
+- Pillars: https://zabble.org/what-we-build
 - Systems library: https://zabble.org/systems

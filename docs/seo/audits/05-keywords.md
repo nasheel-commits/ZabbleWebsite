@@ -3,7 +3,7 @@
 - **Session:** 05
 - **Branch:** seo/05-keywords
 - **Owner:** _unassigned_
-- **Status:** pending
+- **Status:** done
 - **Date:** _TODO_
 - **Depends on:** 00, DataForSEO verified + funded
 - **Layer(s):** SEO (feeds AEO/GEO)

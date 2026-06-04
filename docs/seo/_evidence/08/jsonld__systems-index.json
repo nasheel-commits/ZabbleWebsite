@@ -3,6 +3,7 @@
     "@id": "https://zabble.org/#website",
     "@type": "WebSite",
     "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "inLanguage": "en",
     "name": "Zabble",
     "url": "https://zabble.org/",
     "publisher": {
@@ -11,8 +12,8 @@
   },
   {
     "@id": "https://zabble.org/systems#webpage",
-    "description": "A gallery of bespoke operational systems built by Zabble — automation, audit trails, anomaly detection, analytics.",
-    "name": "Systems · Zabble",
+    "description": "Zabble is a South African firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics.",
+    "name": "Operational Systems We Build",
     "url": "https://zabble.org/systems",
     "@type": [
       "WebPage",

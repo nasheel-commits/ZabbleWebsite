@@ -102,7 +102,10 @@ useSchemaOrg([
           '@type': 'Service',
           '@id': `https://zabble.org/systems/${s.slug}#service`,
           name: s.name,
-          description: s.tagline,
+          // Byte-match the served <meta name="description"> (usePageSeo uses the
+          // same seoDescription ?? tagline fallback), so the Service node and the
+          // page agree exactly (validate-schema enforces this).
+          description: s.seoDescription ?? s.tagline,
           serviceType: 'Bespoke operational system',
           provider: { '@id': 'https://zabble.org/#identity' },
           areaServed: { '@type': 'Country', name: 'South Africa' },

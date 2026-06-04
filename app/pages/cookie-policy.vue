@@ -6,18 +6,15 @@ import { useAnalytics } from '~/composables/useAnalytics'
 const analytics = useAnalytics()
 const lastUpdated = '4 June 2026'
 
-useHead({
-  title: 'Cookie Policy · Zabble',
-  meta: [
-    {
-      name: 'description',
-      content:
-        'The cookies Zabble uses, why, and how to control them. Opt-in by design under POPIA — ' +
-        'nothing non-essential loads until you accept.',
-    },
-    { name: 'robots', content: 'noindex, follow' },
-  ],
+// Per-page SEO (S02 standard): bare title + canonical + OG/Twitter via usePageSeo.
+usePageSeo({
+  title: 'Cookie Policy',
+  description:
+    'The cookies Zabble uses, why, and how to control them. Opt-in by design under POPIA — nothing non-essential loads until you accept.',
+  path: '/cookie-policy',
+  ogType: 'website',
 })
+useHead({ meta: [{ name: 'robots', content: 'noindex, follow' }] })
 </script>
 
 <template>

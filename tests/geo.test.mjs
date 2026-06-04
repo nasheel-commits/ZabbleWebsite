@@ -40,7 +40,9 @@ const pillars = parsePillarSlugs(systemsSrc)
 
 const urlsIn = (txt) => [...new Set([...txt.matchAll(/https:\/\/zabble\.org[^\s)>\]]*/g)].map((m) => m[0]))]
 const systemSlugsIn = (txt) => [...txt.matchAll(/zabble\.org\/systems\/([a-z0-9-]+)/g)].map((m) => m[1])
-const pillarSlugsIn = (txt) => [...txt.matchAll(/zabble\.org\/pillars\/([a-z0-9-]+)/g)].map((m) => m[1])
+// Pillar hubs are canonical at /what-we-build/<slug> (consolidated from the
+// earlier /pillars/* duplicate, which now 301s here).
+const pillarSlugsIn = (txt) => [...txt.matchAll(/zabble\.org\/what-we-build\/([a-z0-9-]+)/g)].map((m) => m[1])
 
 test('llms.txt is under 5 KB', () => {
   const bytes = Buffer.byteLength(llms, 'utf8')

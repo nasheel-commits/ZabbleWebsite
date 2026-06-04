@@ -6,17 +6,16 @@ import { NAP } from '~/data/nap'
 
 const PATH = '/insights/south-african-operations-software-landscape'
 
-useSeoMeta({
-  title: 'The South African Operations-Software Landscape | Zabble',
+// Per-page SEO (S02 standard): bare title + canonical + OG/Twitter + primary
+// intent (this linkbait asset owns "operations software south africa").
+usePageSeo({
+  title: 'The South African Operations-Software Landscape',
   description:
-    'A reference map of how South African businesses run their operations: the categories of operational software, what each does, and where bespoke fits. Free to cite.',
-  ogTitle: 'The South African Operations-Software Landscape',
-  ogDescription:
-    'The categories of operational software a South African business runs — and where off-the-shelf stops and bespoke begins.',
+    'A reference map of how South African businesses run their operations: the categories of operational software, what each does, and where bespoke fits.',
+  path: PATH,
   ogType: 'article',
-  ogUrl: `${NAP.url}${PATH}`,
+  primaryKeyword: 'operations software south africa',
 })
-useHead({ link: [{ rel: 'canonical', href: `${NAP.url}${PATH}` }] })
 
 // SCHEMA SLOT (S08): emit `Article` (author = Organization, about = the categories
 // as an ItemList, isAccessibleForFree true) + breadcrumb. See
@@ -56,7 +55,7 @@ const citation = `Zabble (2026). The South African Operations-Software Landscape
           <h1 class="mt-5 font-display text-[36px] sm:text-[46px] md:text-[56px] leading-[1.06] tracking-tight text-ink">
             The South African Operations-Software Landscape
           </h1>
-          <p class="mt-6 text-[16px] md:text-[19px] leading-[1.65] text-mute">
+          <p data-answer-first class="mt-6 text-[16px] md:text-[19px] leading-[1.65] text-mute">
             A plain map of how South African businesses run their operations: the categories of operational
             software, what each one does, and the point where off-the-shelf tools stop and bespoke earns its
             keep. Built as a reference — quote it, link it, use it.

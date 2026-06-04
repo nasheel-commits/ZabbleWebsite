@@ -3,16 +3,14 @@ import { ArrowRight, MapPin } from '@lucide/vue'
 import { LOCATIONS } from '~/data/locations'
 import { NAP } from '~/data/nap'
 
-useSeoMeta({
-  title: 'Where Zabble Works — Custom Software Across South Africa | Zabble',
+// Per-page SEO (S02 standard): bare title + canonical + OG/Twitter via usePageSeo.
+usePageSeo({
+  title: 'Custom Software Across South Africa',
   description:
     'Zabble builds bespoke operational systems for businesses across South Africa — Johannesburg, Sandton, Cape Town, Pretoria and Durban. Find your city.',
-  ogTitle: 'Custom software & automation across South Africa | Zabble',
-  ogDescription:
-    'Bespoke operational systems for businesses in Johannesburg, Sandton, Cape Town, Pretoria and Durban.',
+  path: '/locations',
   ogType: 'website',
 })
-useHead({ link: [{ rel: 'canonical', href: `${NAP.url}/locations` }] })
 
 // SCHEMA SLOT (S08): emit `Organization` + an `ItemList` of the location pages.
 </script>
