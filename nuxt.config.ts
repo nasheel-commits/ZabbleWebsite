@@ -19,6 +19,13 @@ export default defineNuxtConfig({
         consentRegions: ['ZA'],
         debug: false,    // NUXT_PUBLIC_ANALYTICS_DEBUG=true → console tracing
       },
+      // Search-engine site verification (rendered into <head> by
+      // app/plugins/seo-verification.ts). DNS TXT is preferred; these meta-tag
+      // values are the in-code fallback. Empty ⇒ no tag. Not secrets.
+      verification: {
+        google: '', // NUXT_PUBLIC_VERIFICATION_GOOGLE — GSC HTML-tag method
+        bing: '',   // NUXT_PUBLIC_VERIFICATION_BING   — Bing msvalidate.01
+      },
     },
   },
 
@@ -31,14 +38,17 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/systems', '/diagnose'],
+      routes: ['/', '/systems', '/diagnose', '/privacy', '/cookie-policy'],
     },
   },
   routeRules: {
-    '/':           { prerender: true },
-    '/systems':    { prerender: true },
-    '/systems/**': { prerender: true },
-    '/diagnose':   { prerender: true },
+    '/':               { prerender: true },
+    '/systems':        { prerender: true },
+    '/systems/**':     { prerender: true },
+    '/diagnose':       { prerender: true },
+    // POPIA legal pages (S09) — server-rendered/prerendered like the rest.
+    '/privacy':        { prerender: true },
+    '/cookie-policy':  { prerender: true },
   },
   vite: {
     plugins: [tailwindcss()],

@@ -7,7 +7,10 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "test": "node --test tests/analytics-source.test.mjs tests/indexnow.test.mjs tests/static-html.test.mjs",
+    "test:source": "node --test tests/analytics-source.test.mjs tests/indexnow.test.mjs",
+    "indexnow": "node scripts/indexnow-ping.mjs"
   },
   "dependencies": {
     "@lucide/vue": "^1.16.0",

@@ -18,6 +18,8 @@ const analytics = useAnalytics()
         <NuxtLink to="/#what-we-build" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">What We Build</NuxtLink>
         <NuxtLink to="/#meet" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Use Cases</NuxtLink>
         <a href="mailto:analytics@zabble.org" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Contact</a>
+        <NuxtLink to="/privacy" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Privacy</NuxtLink>
+        <NuxtLink to="/cookie-policy" class="px-2 py-3 lg:px-0 lg:py-0 hover:text-ink transition">Cookies</NuxtLink>
         <button
           v-if="analytics.enabled"
           type="button"

@@ -70,7 +70,10 @@ function savePrefs() {
               <p class="text-[14px] font-semibold text-ink">We respect your privacy</p>
               <p class="mt-1 text-[13.5px] leading-[1.55] text-mute">
                 We'd like to measure how this site performs so we can improve it. Under POPIA,
-                nothing loads until you choose. You can change this anytime.
+                nothing loads until you choose. You can change this anytime. See our
+                <NuxtLink to="/cookie-policy" class="underline underline-offset-2 decoration-cyan-brand hover:text-ink">Cookie Policy</NuxtLink>
+                and
+                <NuxtLink to="/privacy" class="underline underline-offset-2 decoration-cyan-brand hover:text-ink">Privacy Notice</NuxtLink>.
               </p>
               <div class="mt-4 flex flex-col sm:flex-row sm:items-center gap-2.5">
                 <button
@@ -127,7 +130,8 @@ function savePrefs() {
               <h2 class="font-display text-[22px] leading-tight text-ink">Cookie preferences</h2>
               <p class="mt-1 text-[13.5px] text-mute leading-[1.55]">
                 Choose what you're comfortable with. Strictly-necessary cookies keep the site
-                working and can't be switched off.
+                working and can't be switched off. More in our
+                <NuxtLink to="/cookie-policy" class="underline underline-offset-2 decoration-cyan-brand hover:text-ink" @click="analytics.closeSettings()">Cookie Policy</NuxtLink>.
               </p>
             </div>
             <button
