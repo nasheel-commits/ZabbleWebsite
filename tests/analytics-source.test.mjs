@@ -75,5 +75,8 @@ test('all auto-captured key events are wired', () => {
 test('generate_lead + schedule_call are wired into the diagnose conversion', () => {
   assert.match(diagnose, /trackEvent\('generate_lead'/)
   assert.match(diagnose, /currency:\s*'ZAR'/)
-  assert.match(diagnose, /data-analytics-event="schedule_call"/)
+  // schedule_call fires programmatically only after /api/book confirms the
+  // booking (res.ok branch), so it counts real bookings, not click intent.
+  // (Superseded the earlier data-analytics-event="schedule_call" click attr.)
+  assert.match(diagnose, /trackEvent\('schedule_call'/)
 })
