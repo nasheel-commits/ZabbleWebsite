@@ -18,8 +18,8 @@ const industries = [
 
 // Entity-identity facts (NAP), moved here from the former standalone "Who We
 // Are" section (TheEntity). The line below the row is a positive identity
-// statement; the "not Zabble, Inc." disambiguation now lives only in structured
-// data (schemaOrg.identity in nuxt.config + llms.txt), not in visible copy (GEO F2).
+// statement; entity disambiguation is positive-only (country + sector + metros)
+// across visible copy and structured data — the site names no homonym (GEO F2).
 const facts = [
   { icon: Building2, label: 'What', value: 'Operations-systems consultancy' },
   { icon: MapPin, label: 'Where', value: 'South Africa' },

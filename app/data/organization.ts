@@ -8,20 +8,9 @@
 // thing.
 //
 // GEO purpose: make "Zabble" an unambiguous entity, a South African
-// operations-systems consultancy, and explicitly distinct from the US homonym
-// "Zabble, Inc." (zabbleinc.com), which generative engines currently conflate it
-// with (see audits/07-geo.md finding F2).
-
-export interface DifferentFrom {
-  /** The homonym we must not be confused with. */
-  name: string
-  description: string
-  url: string
-  /** Wikidata QID once the US entity's item is identified (for P1889). */
-  wikidata: string | null
-  /** Wikidata property that encodes the relationship. */
-  property: string
-}
+// operations-systems consultancy, via strong positive identity signals
+// (country, metros, sector, knowsAbout). The site names no homonym; positive
+// disambiguation carries the distinction (see audits/07-geo.md finding F2).
 
 export interface OrgEntity {
   name: string
@@ -31,7 +20,7 @@ export interface OrgEntity {
   email: string
   /** Authoritative one-paragraph description, kept byte-identical across surfaces. */
   description: string
-  /** Schema.org disambiguatingDescription, the on-site "we are not them" signal. */
+  /** Schema.org disambiguatingDescription, the positive on-site identity signal. */
   disambiguatingDescription: string
   slogan: string
   areaServed: string
@@ -43,8 +32,6 @@ export interface OrgEntity {
   sameAs: string[]
   /** Planned profiles S10 must create, then move into `sameAs`. */
   sameAsTargets: string[]
-  /** The homonym to disambiguate from (Wikidata P1889 + on-site signal). */
-  differentFrom: DifferentFrom
 }
 
 export const ORGANIZATION: OrgEntity = {
@@ -56,7 +43,7 @@ export const ORGANIZATION: OrgEntity = {
   description:
     'Zabble is a South African consulting firm that builds bespoke operational systems, automation, audit trails, anomaly detection, and analytics, shaped around the single problem slowing one specific business down.',
   disambiguatingDescription:
-    'Zabble is a South African operations-systems consultancy. It is not affiliated with Zabble, Inc., the United States waste-management software company.',
+    'Zabble is the South African bespoke operational-systems consultancy at zabble.org, serving Johannesburg, Cape Town and Pretoria.',
   slogan: "We don't sell software. We build the system your business actually needs.",
   areaServed: 'South Africa',
   addressCountry: 'ZA',
@@ -82,13 +69,6 @@ export const ORGANIZATION: OrgEntity = {
     'https://www.crunchbase.com/organization/zabble',
     'https://www.wikidata.org/wiki/SPECIAL:NewItem', // create the Zabble (SA) item → replace with QID
   ],
-  differentFrom: {
-    name: 'Zabble, Inc.',
-    description: 'United States waste-management / zero-waste software company',
-    url: 'https://www.zabbleinc.com',
-    wikidata: null, // identify/create the Zabble, Inc. item, then set its QID for P1889
-    property: 'P1889 (different from)',
-  },
 }
 
 /**

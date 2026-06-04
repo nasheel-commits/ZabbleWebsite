@@ -49,7 +49,7 @@ const live = systems.filter((s) => s.status === 'live')
 const L = []
 L.push('# Zabble — Full Reference for Language Models', '')
 L.push('> Zabble is a South African consulting firm that builds bespoke operational systems — automation, audit trails, anomaly detection, and analytics — shaped around the single problem slowing one specific business down. Zabble does not sell off-the-shelf software; it assembles a library of 30 modules into one operating system, built for one business and no other. Based in South Africa. Contact: sales@zabble.org', '')
-L.push('Zabble (South Africa) is an operations-systems consultancy. It is not affiliated with Zabble, Inc., the United States waste-management software company. This file lists Zabble’s four pillars and every live system with a one-line, self-contained definition and its canonical URL.', '')
+L.push('Zabble (South Africa) is a bespoke operational-systems consultancy serving Johannesburg, Cape Town and Pretoria. This file lists Zabble’s four pillars and every live system with a one-line, self-contained definition and its canonical URL.', '')
 L.push('## How Zabble works', '')
 L.push('1. We sit with you. We spend time inside the business until we can name the operational problem costing the most.')
 L.push('2. We build it. We design and deliver a system tailored to that business — not its industry, not businesses like it. It.')

@@ -126,8 +126,10 @@ console.log('\n── home (/)')
   log(org?.['@id'] === 'https://zabble.org/#identity', 'Organization @id = /#identity')
   log(org?.name === 'Zabble', 'Organization name = Zabble')
   log(org?.description === CANON_DESC, 'Organization description === canonical boilerplate (byte-exact)')
-  log(typeof org?.disambiguatingDescription === 'string' && /Zabble, Inc\./.test(org.disambiguatingDescription),
-    'disambiguatingDescription present (US homonym)')
+  log(typeof org?.disambiguatingDescription === 'string'
+    && /South African/.test(org.disambiguatingDescription)
+    && !/Zabble, ?Inc/.test(org.disambiguatingDescription),
+    'disambiguatingDescription present (positive-only identity, no homonym)')
   log(Array.isArray(org?.areaServed) && org.areaServed.some((a) => a.name === 'South Africa'),
     'areaServed includes South Africa (+ metros)')
   log(Array.isArray(org?.knowsAbout) && org.knowsAbout.length === 10, `knowsAbout has 10 entries (got ${org?.knowsAbout?.length})`)

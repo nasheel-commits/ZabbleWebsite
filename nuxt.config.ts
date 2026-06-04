@@ -80,10 +80,9 @@ export default defineNuxtConfig({
   // entity for generative engines).
   //
   // `disambiguatingDescription` is the entity-disambiguation lever (07-geo §2–3):
-  // generative engines currently confuse this firm with the US "Zabble, Inc."
-  // (zabbleinc.com) [E: 07/llm-response__pplx-sonarpro__brand-zabble.json]. This
-  // is the schema.org-sanctioned "different from" available today; the Wikidata
-  // `different from (P1889)` link is added to `sameAs` once S10 creates the item.
+  // a positive-only identity assertion (country + sector + domain + metros). It
+  // deliberately names NO homonym — the site references no other company; strong
+  // positive signals carry the distinction on their own.
   //
   // `sameAs` is intentionally ABSENT: every owned profile (LinkedIn / Crunchbase
   // / Wikidata / Google Business Profile) is still PENDING (07-geo §2/§4, 04
@@ -105,8 +104,7 @@ export default defineNuxtConfig({
         'business down.',
       disambiguatingDescription:
         'Zabble is the South African bespoke operational-systems consultancy at ' +
-        'zabble.org; it is unrelated to Zabble, Inc., the United States ' +
-        'waste-management software company.',
+        'zabble.org, serving Johannesburg, Cape Town and Pretoria.',
       slogan:
         'We don’t sell software. We build the system your business actually needs.',
       email: 'sales@zabble.org',

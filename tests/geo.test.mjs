@@ -73,13 +73,13 @@ test('no dead links: every system link in llms.txt is a live system', () => {
   for (const slug of systemSlugsIn(llms)) assert.ok(live.includes(slug), `llms.txt links a non-live system: ${slug}`)
 })
 
-test('entity disambiguation data is present for S08 (different-from + sameAs)', () => {
+test('entity disambiguation is positive-only (no homonym named anywhere in the entity)', () => {
   const org = read('app/data/organization.ts')
-  assert.ok(org.includes('zabbleinc.com'), 'organization.ts must name the homonym domain')
-  assert.ok(org.includes('Zabble, Inc.'), 'organization.ts must name Zabble, Inc.')
-  assert.ok(/P1889/.test(org), 'organization.ts must reference Wikidata P1889 (different from)')
   assert.ok(org.includes('disambiguatingDescription'), 'organization.ts must define disambiguatingDescription')
+  assert.ok(/South African/.test(org), 'disambiguation must assert the South African identity')
   assert.ok(org.includes('sameAsTargets'), 'organization.ts must define the sameAs target set for S10')
+  // Policy: the site names no homonym; positive signals carry the distinction.
+  assert.ok(!/Zabble, ?Inc|zabbleinc|waste-management/i.test(org), 'organization.ts must not name the US homonym')
 })
 
 test('every llms link resolves to a prerendered file in the build output', (t) => {
@@ -108,7 +108,8 @@ test('built home page carries the Organization JSON-LD + disambiguation (when bu
   const html = readFileSync(home, 'utf8')
   assert.ok(html.includes('application/ld+json'), 'home must emit JSON-LD')
   assert.ok(html.includes('disambiguatingDescription'), 'JSON-LD must include disambiguatingDescription')
-  // Disambiguation now lives in structured data only (the visible homepage line
-  // was repositioned to positive identity copy); the JSON-LD still names the homonym.
-  assert.ok(/Zabble, Inc/.test(html), 'home JSON-LD must still carry the homonym disambiguation')
+  // Positive-only disambiguation: the JSON-LD asserts the SA identity and names
+  // no homonym (the site references no other company).
+  assert.ok(/South African/.test(html), 'home JSON-LD must carry the positive SA identity')
+  assert.ok(!/Zabble, ?Inc|waste-management/i.test(html), 'home must not name the US homonym')
 })
