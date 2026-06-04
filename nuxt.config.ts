@@ -14,14 +14,18 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/', '/systems', '/diagnose'],
+      routes: ['/', '/systems', '/diagnose', '/blog', '/what-we-build', '/blog/rss.xml'],
     },
   },
   routeRules: {
-    '/':           { prerender: true },
-    '/systems':    { prerender: true },
-    '/systems/**': { prerender: true },
-    '/diagnose':   { prerender: true },
+    '/':                 { prerender: true },
+    '/systems':          { prerender: true },
+    '/systems/**':       { prerender: true },
+    '/diagnose':         { prerender: true },
+    '/blog':             { prerender: true },
+    '/blog/**':          { prerender: true },
+    '/what-we-build':    { prerender: true },
+    '/what-we-build/**': { prerender: true },
   },
   vite: {
     plugins: [tailwindcss()],

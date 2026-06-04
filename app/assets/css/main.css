@@ -238,3 +238,77 @@ p {
     contain-intrinsic-size: 1px 800px;
   }
 }
+
+/* ---- Article prose (rendered via v-html, so styles must be global) ---- */
+.article-prose {
+  font-size: 16.5px;
+  line-height: 1.72;
+  color: var(--color-mute);
+}
+.article-prose > * + * { margin-top: 1.15em; }
+.article-prose p { text-wrap: pretty; }
+.article-prose h2 {
+  font-family: var(--font-display);
+  font-size: 27px;
+  line-height: 1.15;
+  letter-spacing: -0.012em;
+  color: var(--color-ink);
+  margin-top: 2.2em;
+  scroll-margin-top: 7rem;
+}
+.article-prose h3 {
+  font-size: 18.5px;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-top: 1.7em;
+  scroll-margin-top: 7rem;
+}
+.article-prose strong { color: var(--color-ink); font-weight: 600; }
+.article-prose em { font-style: italic; }
+.article-prose a {
+  color: var(--color-cyan-brand-deep);
+  text-decoration: underline;
+  text-decoration-color: rgba(1, 219, 241, 0.4);
+  text-underline-offset: 2px;
+  transition: text-decoration-color 150ms ease;
+}
+.article-prose a:hover { text-decoration-color: var(--color-cyan-brand); }
+.article-prose ul,
+.article-prose ol { padding-left: 1.25em; }
+.article-prose ul { list-style: disc; }
+.article-prose ol { list-style: decimal; }
+.article-prose li { margin-top: 0.4em; }
+.article-prose li::marker { color: var(--color-cyan-brand-deep); }
+
+.article-prose sup.cite { line-height: 0; }
+.article-prose sup.cite a {
+  font-size: 11px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--color-cyan-brand-deep);
+  padding: 0 1px;
+}
+
+.article-prose blockquote.pull-quote {
+  margin: 1.8em 0;
+  padding: 1.1em 1.3em;
+  border-left: 3px solid var(--color-cyan-brand);
+  background: var(--color-surface-alt);
+  border-radius: 0 0.75rem 0.75rem 0;
+}
+.article-prose blockquote.pull-quote p {
+  font-family: var(--font-display);
+  font-size: 21px;
+  line-height: 1.4;
+  color: var(--color-ink);
+}
+.article-prose blockquote.pull-quote cite {
+  display: block;
+  margin-top: 0.7em;
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-mute-2);
+}
