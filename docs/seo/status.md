@@ -17,7 +17,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
 | 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
-| 04 | Site Architecture & Internal Linking | `seo/04-architecture` | S04 | **done** | 00 | IA + taxonomy + sitemap tree + internal-linking rules (L1–L12) + anchor strategy committed; `SeoBreadcrumb`/`RelatedSystems` built + wired (build ✓); link graph (static, pre-launch) in `_evidence/04/`. **9 Open Requests below** (OR-4 is P0 for S01). |
+| 04 | Site Architecture & Internal Linking | `seo/04-architecture` | S04 | **done** | 00 | **IMPLEMENTED + tested.** 4 pillar hubs live at `/what-we-build/<pillar>`; hub↔member linking; footer + home wired to hubs + `/systems`; `SeoBreadcrumb` + `RelatedSystems` on all templates; faceted `?pillar=` removed from crawl graph; concept pages delinked. `nuxt generate` exit 0 (76 routes); **16/16** arch tests pass (`npm run test:arch`). Audit §8 = impl log. **OR-6/OR-7 now done by S04**; OR-3/OR-4/OR-8 remain (S01/S03). |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
@@ -80,12 +80,12 @@ Owners: please action on your branch and tick here.
 
 | Ref | To | Ask | Pri |
 |---|----|-----|-----|
-| **OR-4** | **S01** (+S06) | **P0 — de-orphan/thin:** `noindex` + sitemap-exclude `/systems/legal-intake-automation` & `/systems/hospitality-booking-marketing-dashboard`; gate `[slug].vue` to non-`live` slugs (404/410) **or** S06 publishes real copy. They render 200 with TODO placeholder + are linked from nowhere. | **P0** |
+| **OR-4** | **S01** (+S06) | **P0 — indexing guard (delinking already done by S04).** S04 removed the 2 concept pages from every link surface, so `crawlLinks` no longer generates them (verified by test). **Still needed:** `noindex` + sitemap-exclude (and ideally a 404/410 route guard) so they can never be indexed even if hit directly **or** S06 publishes real copy. | **P0** |
 | OR-3 | S01 + S03 | Faceted `/systems?pillar=` → canonical `/systems` (or `noindex,follow`); not the sole path to a pillar. | P1 |
 | OR-2 | S01 | Adopt "published slugs immutable; rename ⇒ 301" + redirect-map mechanism. | P1 |
 | OR-1 | S01 | Decide/document trailing-slash policy + clean-URL canonical form for the taxonomy. | P2 |
-| OR-6 | S02 + S06 | Footer block (`/systems` + 4 pillar hubs) and home "What We Build" → pillar hubs + `/systems` (today both link nothing to the money set). | P1 |
-| OR-7 | S06 + S01 | Create 4 pillar hubs `/what-we-build/<pillar>` (copy + route); link membership per `site-architecture.md` §3.1. | P1 |
+| ~~OR-6~~ | S04 ✓ | **DONE by S04** — footer block + home "What We Build" → hubs implemented & tested. S06: optional copy polish only. | done |
+| ~~OR-7~~ | S04 ✓ | **DONE by S04** — 4 pillar hubs live with full membership linking. S06: optional hub-prose enrichment; S01: optionally add `/what-we-build/*` to `sitemap.xml` (auto-discovered via `crawlLinks` today). | done |
 | OR-8 | S03 | `BreadcrumbList` JSON-LD matching the visible `SeoBreadcrumb` 1:1 on all non-home pages; hub schema for pillar/industry pages. | P1 |
 | OR-5 | S02 | Upgrade `SystemCard` anchor to use the **module name** as link text; review breadcrumb/related blocks S04 added to `systems/index.vue` + `[slug].vue` (navigation regions only — `useHead`/meta untouched). | P2 |
 | OR-9 | S05 | Verify 10 seed anchor clusters (`internal-linking.md` §2.2) + one "…South Africa" variant per module. *(Also appended to `targets/keyword-map.md` §4.)* | P1 |

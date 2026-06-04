@@ -121,14 +121,31 @@ use-cases, blog prose). Cross-ref `keyword-map.md` §2 seeds.
 
 ## 4. Implementation status
 
-| Piece | State | Owner |
-|---|---|---|
-| `SeoBreadcrumb.vue` (Home›Systems›Name, a11y nav) | **built** (this branch) | S04 |
-| `RelatedSystems.vue` + `useRelatedSystems` (shared-pillar siblings) | **built** (this branch) | S04 |
-| Wire breadcrumb + related into `[slug].vue` / `index.vue` | **specced** (ask OR-5) — page `<script>`/template SEO regions are S02's; files also carry uncommitted WIP | S02 |
-| Footer pillar/module block (L7) | **specced** (ask OR-6) | S02/S06 |
-| Home "What We Build" → pillar-hub links (L8) | **specced** (ask OR-6) | S06 |
-| `BreadcrumbList` + hub schema (L4) | **handed to S03** | S03 |
-| Facet canonical/noindex (L10) | **handed to S01/S03** (OR-3) | S01/S03 |
+**Fully implemented and tested on `seo/04-architecture`** (commits `bbec6b7`,
+`5b86c9b`, `3e1df3b`). `nuxt generate` exits 0 (76 routes); 16 automated checks
+in `tests/architecture.test.mjs` assert the rules below against the real
+generated `.output/public`.
 
-See `../audits/04-architecture.md` §6 for the full cross-session ask list.
+| Piece | Rule | State |
+|---|---|---|
+| `SeoBreadcrumb.vue` (Home›Systems›Name, a11y nav) | L4 | **DONE** — on `/systems`, every module page, every pillar hub |
+| `RelatedSystems.vue` + `useRelatedSystems` (coverage-balanced siblings) | L5/L2 | **DONE** — on every module page; inbound balanced so each module has in-degree ≥4 |
+| 4 pillar hubs `/what-we-build/<pillar>` (`pillars.ts` + `[pillar].vue`) | L6 | **DONE** — hub→all members + other 3 hubs + `/systems` |
+| Module → pillar-hub back-links (owned-pillar cards) | L2/L6 | **DONE** — `systems/[slug].vue` |
+| Footer pillar/module block (`/systems` + 4 hubs, sitewide) | L7 | **DONE** — `TheFooter.vue` |
+| Home "What We Build" → pillar-hub links | L8 | **DONE** — `TheWhatWeBuild.vue` |
+| `/systems` "Browse by pillar" → hubs | L6 | **DONE** — `systems/index.vue` |
+| `PillarChip` link mode → hub (faceted `?pillar=` removed from crawl graph) | L10 | **DONE** — `PillarChip.vue` |
+| Concept/thin pages delinked (not generated, zero inbound) | L3 | **DONE** — verified by test |
+| Descriptive, varied anchors from keyword clusters | L11 | **DONE** — hub flagship prose + module-name anchors; seeds pending S05 verify (OR-9) |
+
+**Still cross-session (not S04 code):**
+
+| Piece | Owner | Ask |
+|---|---|---|
+| `BreadcrumbList` + hub/Service JSON-LD matching the visible breadcrumb 1:1 | S03 | OR-8 |
+| Faceted `?pillar=` canonical/noindex + `/what-we-build/*` in sitemap | S01/S03 | OR-3 |
+| Concept pages `noindex` + sitemap-exclude (delinked here; indexing guard there) | S01 | OR-4 |
+| Verify the 10 seed anchor clusters + SA variants | S05 | OR-9 |
+
+See `../audits/04-architecture.md` §6 (asks) and §8 (implementation log).

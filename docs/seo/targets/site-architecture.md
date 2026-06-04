@@ -44,7 +44,7 @@ slash** (trailing-slash policy is **S01's** to set in `nuxt.config`/`routeRules`
 | Home / brand | `/` | `/` | live | S02 copy |
 | Modules hub | `/systems` | `/systems` | live | S04 nav / S06 copy |
 | **Module (money page)** | `/systems/<module>` | `/systems/bespoke-crm` | live ×30 | data `systems.ts` + S02/S06 |
-| **Pillar hub** | `/what-we-build/<pillar>` | `/what-we-build/automation` | **planned ×4** | S06 copy / S04 links |
+| **Pillar hub** | `/what-we-build/<pillar>` | `/what-we-build/automation` | **LIVE ×4** | S04 (`pillars.ts` + `[pillar].vue`) |
 | **Industry hub** | `/solutions/<industry>` | `/solutions/ngos` | **planned** | S06 |
 | **Use-case** | `/use-cases/<slug>` | `/use-cases/automated-bank-reconciliation` | **planned** | S06 |
 | Blog post | `/blog/<slug>` | `/blog/popia-reporting-checklist` | **planned** | S06 |
@@ -134,10 +134,10 @@ multi-pillar topical density through links.
 │   ├── /systems/legal-intake-automation     [CONCEPT/THIN → noindex+exclude until real copy — ask OR-4]
 │   └── /systems/hospitality-booking-marketing-dashboard  [CONCEPT/THIN → noindex+exclude — ask OR-4]
 │
-├── /what-we-build/automation               [planned]  Pillar hub → 28 member modules
-├── /what-we-build/audit-trails             [planned]  Pillar hub → 27 member modules
-├── /what-we-build/anomaly-detection        [planned]  Pillar hub → 10 member modules
-├── /what-we-build/analytics                [planned]  Pillar hub → 14 member modules
+├── /what-we-build/automation               [LIVE]     Pillar hub → 28 member modules
+├── /what-we-build/audit-trails             [LIVE]     Pillar hub → 27 member modules
+├── /what-we-build/anomaly-detection        [LIVE]     Pillar hub → 10 member modules
+├── /what-we-build/analytics                [LIVE]     Pillar hub → 14 member modules
 │
 ├── /solutions/ngos                         [planned]  Industry hub
 ├── /solutions/banks                        [planned]
@@ -194,32 +194,35 @@ From the `industry`/`bestFor`/`Where it fits` fields. S06 confirms; S05 sizes.
 
 | URL | Type | State | Disposition |
 |---|---|---|---|
-| `/` | home | live | Keep. Add body links to 4 pillar hubs + `/systems` (issue A2/A3). |
-| `/systems` | hub | live | Keep. Finalise copy (currently TODO). Add breadcrumb. |
-| `/systems/<30 live>` | money | live | Keep. Add breadcrumb + related-systems + pillar-hub links. |
-| `/systems/legal-intake-automation` | money | **concept/thin** | **noindex + sitemap-exclude** now; publish or 410 later (OR-4). |
-| `/systems/hospitality-booking-marketing-dashboard` | money | **concept/thin** | **noindex + sitemap-exclude** now; publish or 410 later (OR-4). |
-| `/systems?pillar=<4>` | facet | live | **Canonical→`/systems`** or `noindex,follow` (OR-3). Not a money page. |
-| `/diagnose` | conversion | live | Keep. Consider `noindex` (S01/S02 decide). |
-| `/what-we-build/<4 pillars>` | hub | **create** | New pillar hubs (P1). |
+| `/` | home | live | **DONE** — body now links 4 pillar hubs + `/systems` (TheWhatWeBuild + footer). |
+| `/systems` | hub | live | **DONE** — breadcrumb + "Browse by pillar" hub links added. |
+| `/systems/<30 live>` | money | live | **DONE** — breadcrumb + related-systems + pillar-hub back-links wired. |
+| `/systems/legal-intake-automation` | money | **concept/thin** | **Delinked + not generated** (verified by test). S01: `noindex`/410 the indexing guard (OR-4). |
+| `/systems/hospitality-booking-marketing-dashboard` | money | **concept/thin** | **Delinked + not generated** (verified by test). S01: `noindex`/410 (OR-4). |
+| `/systems?pillar=<4>` | facet | live | **Removed from crawl graph** — `PillarChip` now links hubs; filter is button-only UX. S01: canonical (OR-3). |
+| `/diagnose` | conversion | live | Keep (chrome-less funnel, link sink — rule L9). Consider `noindex` (S01/S02). |
+| `/what-we-build/<4 pillars>` | hub | **LIVE** | **DONE** — server-rendered hubs (`[pillar].vue`), link all members + back. |
 | `/solutions/<7 industries>` | hub | **create** | New industry hubs (P2). |
 | `/use-cases/<n>` | content | **create** | New, as S06 content lands (P2). |
 | `/blog/<n>` | content | **create** | New, when editorial starts (P2). |
 
 ---
 
-## 5. Crawl-depth proof (target IA)
+## 5. Crawl-depth proof (ACHIEVED — asserted by tests)
 
-| Page set | Depth from `/` (current) | Depth from `/` (target IA) |
+`tests/architecture.test.mjs` runs BFS over the real generated `.output/public`
+and asserts depth ≤3 + zero orphans on every build.
+
+| Page set | Depth from `/` (before S04) | Depth from `/` (now, verified) |
 |---|---|---|
 | `/systems` | 1 (nav) | 1 |
-| 30 live module pages | 2 (card only) | **1–2** (card + footer module block + pillar hub) |
-| 2 concept pages | ∞ (orphan) | excluded (noindex) — no longer money pages |
-| pillar hubs | n/a | 1 (home + nav + footer) |
-| industry hubs | n/a | 2 (footer + pillar/module cross-links) |
-| use-cases | n/a | 2 (module + industry + pillar links) |
-| blog posts | n/a | 2 (blog index + contextual) |
+| 30 live module pages | 2 (card only; in-degree 1) | **2** (card + 4-hub footer + pillar hub + related); in-degree ≥4 |
+| 2 concept pages | ∞ (orphan) | **delinked + not generated** (zero inbound) |
+| 4 pillar hubs | n/a (didn't exist) | **1** (home + footer, sitewide) |
+| industry hubs | n/a | 2 (planned — footer/pillar/module cross-links) |
+| use-cases | n/a | 2 (planned — module + industry + pillar links) |
+| blog posts | n/a | 2 (planned — blog index + contextual) |
 
-All money + hub pages stay **≤3 clicks**; orphans removed from the money set.
-See `internal-linking.md` for the link rules that guarantee this and
-`../audits/04-architecture.md` for the severity-ranked issues behind it.
+All money + hub pages are **≤3 clicks** with **zero orphans** — proven by the
+test suite, not just intended. See `internal-linking.md` for the rules and
+`../audits/04-architecture.md` §8 for the implementation log.

@@ -148,8 +148,8 @@ gets in-degree ≥4 (rule L2), all hubs sit at depth 1, and AI engines can read 
 | **OR-3** | S01 + S03 | **Faceted `/systems?pillar=` → canonical `/systems`** (or `noindex,follow`); ensure not the sole path to a pillar. | P1 |
 | **OR-4** | S01 (+ S06) | **noindex + sitemap-exclude** `legal-intake-automation` & `hospitality-booking-marketing-dashboard`; gate `[slug].vue` to non-`live` slugs (404/410) or have S06 publish copy. | **P0** |
 | **OR-5** | S02 | Upgrade `SystemCard` anchor so the **module name** is the link text (A6/R8); review the breadcrumb/related blocks S04 added to page templates (navigation regions only — meta blocks untouched). | P2 |
-| **OR-6** | S02 + S06 | **Footer block** (`/systems` + 4 pillar hubs) and **home "What We Build" → pillar hubs + `/systems`** links (R4/R5). | P1 |
-| **OR-7** | S06 + S01 | **Create 4 pillar hubs** `/what-we-build/<pillar>` (copy + route); link membership per `site-architecture.md` §3.1. | P1 |
+| ~~**OR-6**~~ | S04 ✓ | **DONE by S04** — footer block (`/systems` + 4 hubs) and home "What We Build" → hubs implemented (§8). S06 may refine footer copy only. | ~~P1~~ |
+| ~~**OR-7**~~ | S04 ✓ | **DONE by S04** — 4 pillar hubs live at `/what-we-build/<pillar>` with full membership linking (§8). S06 may enrich hub prose; S01 may add hubs to `sitemap.xml` (currently auto-discovered via `crawlLinks`). | ~~P1~~ |
 | **OR-8** | S03 | **`BreadcrumbList` JSON-LD** matching the visible `SeoBreadcrumb` 1:1 on all non-home pages; hub schema for pillar/industry pages. | P1 |
 | **OR-9** | S05 | **Verify the 10 seed anchor clusters** (`internal-linking.md` §2.2) + one "…South Africa" variant per module, for non-repeating geo-anchors. (Also appended to `keyword-map.md` §4.) | P1 |
 
@@ -164,3 +164,49 @@ Files under `../_evidence/04/`:
   method; what to re-run once B3 lands.
 - `on-page-instant__zabble-org__live-401.note.md` — record of the live DataForSEO
   On-Page attempt returning HTTP 401 (env not loaded) + pre-launch context.
+
+## 8. Implementation log (the audit, built)
+
+The recommendations above are **implemented, tested, and committed** on
+`seo/04-architecture` (built in an isolated git worktree outside OneDrive with a
+dedicated `node_modules`, so concurrent sessions' edits to the shared checkout
+could not affect the build). `nuxt generate` exits **0** (76 routes, 39 HTML
+pages); **16/16** automated checks pass.
+
+**Commits:** `bbec6b7` (audit + targets + breadcrumb/related components),
+`5b86c9b` (pillar hubs + nav wiring), `3e1df3b` (balanced related + tests).
+
+### What was built
+
+| Rec | Built | Files |
+|---|---|---|
+| R3 (P1) — 4 pillar hubs | **DONE** — real server-rendered hubs at `/what-we-build/<pillar>`; each introduces the pillar and links every live member; prerendered via `crawlLinks`. | `app/data/pillars.ts`, `app/pages/what-we-build/[pillar].vue` |
+| R2 (P0) — related-systems on every module | **DONE** — `RelatedSystems` wired into `[slug].vue`; selection is **coverage-balanced** so inbound is even and every module has in-degree ≥4 (the naive top-N left 8 niche modules at 3). | `RelatedSystems.vue`, `useRelatedSystems.ts`, `systems/[slug].vue` |
+| R4 (P1) — footer hub block | **DONE** — sitewide footer links `/systems` + 4 hubs (L7). | `TheFooter.vue` |
+| R5 (P1) — home → hubs | **DONE** — "What We Build" cards link the 4 hubs (L8). | `TheWhatWeBuild.vue` |
+| R6 (P1) — contain facets | **DONE (S04 side)** — `PillarChip` link mode now targets `/what-we-build/<slug>`; faceted `?pillar=` links removed from the crawl graph (filter bar is button-only UX). Canonical/robots remains S01 (OR-3). | `PillarChip.vue` |
+| R7 (P1) — breadcrumbs | **DONE** — `SeoBreadcrumb` on `/systems`, every module page, every pillar hub; `BreadcrumbList` JSON-LD still S03 (OR-8). | `SeoBreadcrumb.vue`, `systems/index.vue`, `systems/[slug].vue`, `[pillar].vue` |
+| R1 (P0) — de-orphan concept pages | **DONE (S04 side)** — concept pages excluded from every link surface; `crawlLinks` no longer generates them (verified by test). Indexing guard (`noindex`/410/sitemap) remains S01 (OR-4). | `pillars.ts` (live-only members), `systems/index.vue` (live-only grid) |
+| — module → pillar back-links | **DONE** — owned-pillar cards on the module page link up to their hub (L2/L6). | `systems/[slug].vue` |
+| — `/systems` → hubs | **DONE** — "Browse by pillar" row (L6 reciprocal). | `systems/index.vue` |
+
+### Tests (`tests/architecture.test.mjs`, `npm run test:arch`)
+
+Dependency-free (`node:test`), run against the generated `.output/public`:
+zero orphans (L3), depth ≤3 (L1), breadcrumbs on every relevant template (L4),
+hub↔member closure (L6/L2), module in-degree ≥4 (L2), ≥3 related siblings per
+module (L5), `/diagnose` is a link sink (L9), no faceted `?pillar=` links (L10),
+concept pages delinked + not generated, descriptive hub anchors (L11), and a full
+internal link-checker. `npm test` re-generates then asserts.
+
+### Design decisions worth recording
+- **`/diagnose` is exempt** from breadcrumb and the sitewide footer block: it is a
+  full-screen conversion funnel with its own minimal chrome and is a deliberate
+  link **sink** (L9). It stays reachable (depth 1) and links home. The tests
+  encode this exemption explicitly.
+- **Pillar = cross-cutting cluster, not breadcrumb spine.** Module breadcrumb
+  stays `Home › Systems › <Module>`; pillar hubs are reached via footer/home/chips
+  and link bidirectionally. A module belongs to 2–4 hubs (union membership),
+  which is exactly what raises its in-degree.
+- **Coverage-balanced related selection** is the non-obvious fix that makes L2
+  (in-degree ≥4) hold for *every* module rather than only the popular ones.
