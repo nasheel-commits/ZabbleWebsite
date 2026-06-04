@@ -89,10 +89,11 @@ const finale = {
 
         <div v-reveal:scale="540" class="block md:col-span-2">
           <article
-            class="win-card win-card--finale group relative rounded-2xl border border-cyan-brand/20 bg-white overflow-hidden p-10 md:p-14 text-center"
+            class="win-card win-card--finale group relative rounded-[1.75rem] overflow-hidden p-10 md:p-16 text-center"
           >
+            <span class="finale-topline" aria-hidden="true" />
             <div
-              class="absolute -top-24 left-1/2 -translate-x-1/2 h-[320px] w-[640px] rounded-full bg-cyan-brand/10 blur-[100px] pointer-events-none"
+              class="absolute -top-28 left-1/2 -translate-x-1/2 h-[360px] w-[720px] rounded-full bg-cyan-brand/10 blur-[110px] pointer-events-none"
               aria-hidden="true"
             />
 
@@ -101,16 +102,17 @@ const finale = {
                 <Sparkles :size="28" :stroke-width="1.75" />
               </span>
               <div
-                class="mt-7 inline-flex items-center gap-1.5 text-[11.5px] uppercase tracking-[0.22em] text-cyan-brand-deep/80 font-semibold"
+                class="mt-8 inline-flex items-center gap-2 text-[11.5px] uppercase tracking-[0.24em] text-cyan-brand-deep font-semibold"
               >
-                <Sparkles :size="13" :stroke-width="2" />
+                <span class="finale-rule" aria-hidden="true" />
                 {{ finale.eyebrow }}
+                <span class="finale-rule" aria-hidden="true" />
               </div>
               <p
-                class="mt-5 font-display text-[26px] sm:text-[32px] md:text-[38px] leading-[1.2] text-ink max-w-3xl text-center"
+                class="mt-6 font-display text-[27px] sm:text-[34px] md:text-[40px] leading-[1.18] text-ink max-w-3xl text-center text-balance"
               >
                 {{ finale.text }}
-                <span class="block mt-2">
+                <span class="block mt-2.5">
                   <span class="wiw-highlight">{{ finale.highlight }}</span>
                 </span>
               </p>
@@ -136,10 +138,60 @@ const finale = {
   background-color: rgba(255, 255, 255, 1);
   box-shadow: 0 24px 50px -28px rgba(1, 219, 241, 0.25);
 }
+.win-card--finale {
+  background:
+    radial-gradient(
+      120% 120% at 50% -10%,
+      rgba(1, 219, 241, 0.07) 0%,
+      rgba(246, 248, 251, 0) 55%
+    ),
+    linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
+  border: 1px solid rgba(1, 219, 241, 0.18);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 28px 60px -34px rgba(10, 15, 26, 0.28),
+    0 10px 24px -18px rgba(1, 219, 241, 0.22);
+}
 .win-card--finale:hover {
-  transform: translateY(-3px);
-  border-color: rgba(1, 219, 241, 0.45);
-  box-shadow: 0 30px 70px -28px rgba(1, 219, 241, 0.3);
+  transform: translateY(-4px);
+  border-color: rgba(1, 219, 241, 0.4);
+  box-shadow:
+    0 1px 0 0 rgba(255, 255, 255, 0.9) inset,
+    0 40px 80px -34px rgba(10, 15, 26, 0.32),
+    0 18px 44px -22px rgba(1, 219, 241, 0.34);
+}
+
+/* Hairline gradient accent across the top edge */
+.finale-topline {
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(1, 219, 241, 0.55) 30%,
+    rgba(1, 219, 241, 0.7) 50%,
+    rgba(1, 219, 241, 0.55) 70%,
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* Short decorative rules flanking the eyebrow */
+.finale-rule {
+  display: inline-block;
+  height: 1px;
+  width: 1.75rem;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(0, 184, 204, 0.5)
+  );
+}
+.finale-rule:last-of-type {
+  background: linear-gradient(90deg, rgba(0, 184, 204, 0.5), transparent);
 }
 
 .win-icon {
@@ -168,6 +220,7 @@ const finale = {
 }
 
 .finale-icon {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -179,6 +232,29 @@ const finale = {
   box-shadow:
     0 18px 40px -15px rgba(1, 219, 241, 0.5),
     inset 0 1px 0 0 rgba(255, 255, 255, 0.45);
+  transition:
+    transform 480ms cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 480ms ease;
+}
+/* Soft halo ring around the finale icon */
+.finale-icon::before {
+  content: '';
+  position: absolute;
+  inset: -7px;
+  border-radius: inherit;
+  border: 1px solid rgba(1, 219, 241, 0.22);
+  background: radial-gradient(
+    closest-side,
+    rgba(1, 219, 241, 0.12),
+    transparent
+  );
+  pointer-events: none;
+}
+.win-card--finale:hover .finale-icon {
+  transform: scale(1.05);
+  box-shadow:
+    0 24px 50px -16px rgba(1, 219, 241, 0.6),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
 }
 
 .wiw-highlight {
@@ -213,7 +289,8 @@ const finale = {
     animation: none !important;
   }
   .win-card,
-  .win-icon {
+  .win-icon,
+  .finale-icon {
     transition: none !important;
   }
 }
