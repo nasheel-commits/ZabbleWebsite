@@ -5,7 +5,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 
 - **Project:** Zabble — https://zabble.org (pre-launch)
 - **Primary market:** South Africa (`en-ZA`)
-- **Last updated:** 2026-06-04 by S00
+- **Last updated:** 2026-06-04 by S04
 
 ---
 
@@ -17,7 +17,7 @@ it honest: `pending` → `in_progress` → `blocked` → `done`.
 | 01 | Technical SEO & Crawlability | `seo/01-technical` | _unassigned_ | pending | 00 | — |
 | 02 | On-Page & Metadata | `seo/02-onpage` | _unassigned_ | pending | 00, 05 (soft) | — |
 | 03 | Structured Data / Schema.org | `seo/03-schema` | _unassigned_ | pending | 00, 01 (`site.url`) | — |
-| 04 | Site Architecture & Internal Linking | `seo/04-architecture` | _unassigned_ | pending | 00 | — |
+| 04 | Site Architecture & Internal Linking | `seo/04-architecture` | S04 | **done** | 00 | IA + taxonomy + sitemap tree + internal-linking rules (L1–L12) + anchor strategy committed; `SeoBreadcrumb`/`RelatedSystems` built + wired (build ✓); link graph (static, pre-launch) in `_evidence/04/`. **9 Open Requests below** (OR-4 is P0 for S01). |
 | 05 | Keyword & Market Research (SA) | `seo/05-keywords` | _unassigned_ | pending (unblocked) | 00 | — |
 | 06 | Content Strategy & Editorial | `seo/06-content` | _unassigned_ | pending | 00, 05 | — |
 | 07 | AEO — Answer Engine Optimization | `seo/07-aeo` | _unassigned_ | pending | 00, 03, 05 | — |
@@ -69,6 +69,26 @@ DataForSEO account verified + funded ($50.998), live + sandbox calls return
 DataForSEO access is fully live — all 10 sessions can start. **Each new Claude
 Code session must launch with env loaded** (access doc §3) so the MCP tools
 authenticate.
+
+---
+
+## Open requests — S04 (Architecture) → other sessions
+
+Raised 2026-06-04 by S04. Full detail in `audits/04-architecture.md` §6;
+taxonomy in `targets/site-architecture.md`; rules in `targets/internal-linking.md`.
+Owners: please action on your branch and tick here.
+
+| Ref | To | Ask | Pri |
+|---|----|-----|-----|
+| **OR-4** | **S01** (+S06) | **P0 — de-orphan/thin:** `noindex` + sitemap-exclude `/systems/legal-intake-automation` & `/systems/hospitality-booking-marketing-dashboard`; gate `[slug].vue` to non-`live` slugs (404/410) **or** S06 publishes real copy. They render 200 with TODO placeholder + are linked from nowhere. | **P0** |
+| OR-3 | S01 + S03 | Faceted `/systems?pillar=` → canonical `/systems` (or `noindex,follow`); not the sole path to a pillar. | P1 |
+| OR-2 | S01 | Adopt "published slugs immutable; rename ⇒ 301" + redirect-map mechanism. | P1 |
+| OR-1 | S01 | Decide/document trailing-slash policy + clean-URL canonical form for the taxonomy. | P2 |
+| OR-6 | S02 + S06 | Footer block (`/systems` + 4 pillar hubs) and home "What We Build" → pillar hubs + `/systems` (today both link nothing to the money set). | P1 |
+| OR-7 | S06 + S01 | Create 4 pillar hubs `/what-we-build/<pillar>` (copy + route); link membership per `site-architecture.md` §3.1. | P1 |
+| OR-8 | S03 | `BreadcrumbList` JSON-LD matching the visible `SeoBreadcrumb` 1:1 on all non-home pages; hub schema for pillar/industry pages. | P1 |
+| OR-5 | S02 | Upgrade `SystemCard` anchor to use the **module name** as link text; review breadcrumb/related blocks S04 added to `systems/index.vue` + `[slug].vue` (navigation regions only — `useHead`/meta untouched). | P2 |
+| OR-9 | S05 | Verify 10 seed anchor clusters (`internal-linking.md` §2.2) + one "…South Africa" variant per module. *(Also appended to `targets/keyword-map.md` §4.)* | P1 |
 
 ---
 

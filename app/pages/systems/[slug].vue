@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import { ArrowLeft, ArrowRight } from '@lucide/vue'
+import { ArrowRight } from '@lucide/vue'
 
 import { PILLARS, systemBySlug } from '~/data/systems'
 
@@ -29,6 +29,15 @@ const pillarJobsWord = computed(
   () => PILLAR_WORDS[pillarMetas.value.length] ?? 'four',
 )
 
+// Breadcrumb spine: /systems is the canonical parent of every module page
+// (site-architecture.md §2.2). The visible trail must stay 1:1 with the
+// BreadcrumbList JSON-LD S03 emits.
+const breadcrumbs = computed(() => [
+  { label: 'Home', to: '/' },
+  { label: 'Systems', to: '/systems' },
+  { label: sys.value.name },
+])
+
 useHead({
   title: () => `${sys.value.name} · Zabble`,
   meta: [
@@ -48,15 +57,7 @@ useHead({
     <main class="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24">
       <!-- Breadcrumb -->
       <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
-        <nav aria-label="Breadcrumb" class="mb-8 md:mb-10">
-          <NuxtLink
-            to="/systems"
-            class="inline-flex items-center gap-1.5 text-[13.5px] font-medium text-mute hover:text-ink transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded"
-          >
-            <ArrowLeft :size="14" :stroke-width="2" aria-hidden="true" />
-            All systems
-          </NuxtLink>
-        </nav>
+        <SeoBreadcrumb :items="breadcrumbs" />
       </div>
 
       <!-- Hero -->
@@ -198,6 +199,10 @@ useHead({
           </article>
         </div>
       </section>
+
+      <!-- Related systems: links each module to shared-pillar siblings so no
+           page is a dead-end (internal-linking rule L5). -->
+      <RelatedSystems :system="sys" />
 
       <CtaStrip
         eyebrow="Next Step"

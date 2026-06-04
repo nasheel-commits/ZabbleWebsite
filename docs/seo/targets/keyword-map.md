@@ -83,4 +83,12 @@ problems/pillars — S05 expands each with Labs `keyword_ideas`.
 > S02/S06/S07/S08: add the keyword/intent you need researched and your session #.
 > S05 picks these up. Do not edit the tables above.
 
-- _(none yet)_
+- **S04 (Architecture) — OR-9, P1:** verify the 10 seed **anchor-text clusters**
+  in `internal-linking.md` §2.2 (bespoke-crm, reconciliation-engine,
+  document-intelligence, pricing-engine, compliance-reporting,
+  continuous-assurance, kairos, lead-qualifier, integration-hub, forecasting) and
+  expand to all 30 modules. For each module also return **one natural "…South
+  Africa" variant**, so S04 can place exactly one geo-anchor per cluster without
+  repetition (anchor-text rule L11). Also confirm pillar head-terms (e.g.
+  "business automation south africa") map to the **pillar hubs**
+  `/what-we-build/<pillar>`, **not** module pages (cannibalisation guard, §3).

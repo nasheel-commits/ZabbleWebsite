@@ -1,0 +1,61 @@
+{
+  "$comment": "Current-state internal link graph for the Zabble pre-launch Nuxt site. Derived by STATIC ANALYSIS of the prerender source (app/pages/**, app/components/**, app/data/systems.ts) because no crawlable build exists yet (pre-launch; staging URL is blocker B3; live DataForSEO On-Page returned HTTP 401 in this session — env not loaded). The prerendered HTML is generated deterministically from these files, so source analysis is the authoritative pre-launch method. See link-graph__zabble__static.note.md for method + reproduction.",
+  "captured": "2026-06-04",
+  "method": "static-source-analysis",
+  "site_url": "https://zabble.org",
+  "routes": {
+    "/": { "file": "app/pages/index.vue", "depth_from_home": 0, "indexable_intent": "money/brand", "status": "live" },
+    "/systems": { "file": "app/pages/systems/index.vue", "depth_from_home": 1, "indexable_intent": "hub", "status": "live" },
+    "/systems/[slug]": { "file": "app/pages/systems/[slug].vue", "depth_from_home": 2, "indexable_intent": "money", "status": "live", "instances_live": 30, "instances_concept_thin": 2 },
+    "/diagnose": { "file": "app/pages/diagnose.vue", "depth_from_home": 1, "indexable_intent": "conversion", "status": "live" },
+    "/systems?pillar=<slug>": { "file": "app/pages/systems/index.vue (faceted)", "depth_from_home": 2, "indexable_intent": "faceted-duplicate", "status": "live", "instances": 4 }
+  },
+  "sitewide_components": {
+    "TheNav": {
+      "present_on": ["/", "/systems", "/systems/[slug]", "/diagnose"],
+      "edges": ["/#home", "/systems", "/#what-we-build", "/#meet", "/#contact", "/diagnose"],
+      "note": "Logo + 'Home'/'What We Build'/'Use Cases'/'Contact' resolve to '/' via hash. 'Systems' -> /systems. CTA -> /diagnose. No module-level links."
+    },
+    "TheFooter": {
+      "present_on": ["/", "/systems", "/systems/[slug]", "/diagnose"],
+      "edges": ["/#home", "/#what-we-build", "/#meet", "mailto:analytics@zabble.org"],
+      "note": "CRITICAL: footer has NO link to /systems and NO module links. Footer link equity never reaches the money-page cluster."
+    }
+  },
+  "page_edges": {
+    "/": {
+      "body_edges": ["/diagnose", "mailto:analytics@zabble.org", "/#plan", "/#contact"],
+      "note": "Home BODY links only to /diagnose + same-page anchors. TheWhatWeBuild (the 4-pillar section) links to NOTHING. Only Home->/systems edge is the global nav. No body link to any module or pillar.",
+      "out_to_modules": 0,
+      "out_to_pillars": 0
+    },
+    "/systems": {
+      "body_edges_modules": ["/systems/kairos", "/systems/approval-workflow", "/systems/multi-channel-inbox", "/systems/workflow-orchestrator", "/systems/decision-engine", "/systems/document-intelligence", "/systems/document-assembly", "/systems/bespoke-crm", "/systems/customer-360", "/systems/knowledge-assistant", "/systems/lead-qualifier", "/systems/legacy-bridge", "/systems/inventory-clarity", "/systems/client-onboarding", "/systems/case-management", "/systems/task-management", "/systems/field-ops-app", "/systems/analytics-suite", "/systems/accounting-engine", "/systems/compliance-reporting", "/systems/continuous-assurance", "/systems/pricing-engine", "/systems/reconciliation-engine", "/systems/data-routing", "/systems/integration-hub", "/systems/cross-system-sync", "/systems/forecasting", "/systems/predictive-maintenance", "/systems/master-data-hub", "/systems/notification-orchestration"],
+      "body_edges_facets": ["/systems?pillar=automation", "/systems?pillar=audit-trails", "/systems?pillar=anomaly-detection", "/systems?pillar=analytics"],
+      "body_edges_other": ["/diagnose"],
+      "note": "Only LIVE systems are rendered (index.vue line 50: filter status==='live'). The 2 concept systems are NOT linked here. Card anchor text is generic ('View system' / aria 'View <name>'). Pillar chips link to faceted query-param URLs, not hub pages."
+    },
+    "/systems/[slug]": {
+      "body_edges": ["/systems", "/diagnose", "/systems?pillar=<each-pillar-of-this-system>"],
+      "note": "Breadcrumb is a single back-link '<- All systems' (NOT a Home>Systems>Name trail, no BreadcrumbList schema). SystemHero pillar chips -> faceted /systems?pillar=. ZERO links to sibling/related modules. Each module page is a near-dead-end.",
+      "out_to_sibling_modules": 0
+    }
+  },
+  "in_degree_summary": {
+    "/": "sitewide (nav logo + footer on every page)",
+    "/systems": "sitewide nav on every page = well linked",
+    "/diagnose": "sitewide nav CTA + multiple body CTAs on every page = over-linked relative to money pages",
+    "each_live_module": 1,
+    "each_concept_module": 0,
+    "each_pillar_facet": "4 (chips on /systems + chips on each module hero)"
+  },
+  "issues_detected": [
+    { "id": "A1", "severity": "P0", "type": "orphan", "detail": "2 concept pages (/systems/legal-intake-automation, /systems/hospitality-booking-marketing-dashboard) render with TODO placeholder copy but are linked from nowhere; [slug].vue has no status guard so they resolve (200) with thin content." },
+    { "id": "A2", "severity": "P0", "type": "weak-cluster", "detail": "Every live module page has in-degree 1 (single card on /systems) and out-degree 0 to siblings. No hub-and-spoke depth; link equity cannot flow between related modules; no topical clustering by pillar." },
+    { "id": "A3", "severity": "P1", "type": "missing-hub", "detail": "No indexable pillar hub URLs. The 4 pillars exist only as faceted ?pillar= filters with no unique content; topical authority for Automation/Audit Trails/Anomaly Detection/Analytics has no anchor page." },
+    { "id": "A4", "severity": "P1", "type": "footer-gap", "detail": "Footer omits /systems and all modules; a sitewide module/pillar link block is the cheapest way to raise module in-degree and flatten depth." },
+    { "id": "A5", "severity": "P1", "type": "faceted-duplicate", "detail": "/systems?pillar=<slug> (x4) are crawlable filtered duplicates of /systems with no unique content -> dilution / potential cannibalisation of /systems." },
+    { "id": "A6", "severity": "P2", "type": "anchor-text", "detail": "Primary money-page anchor is generic ('View system' / 'View <name>'); no descriptive, keyword-aligned anchor text into module pages." },
+    { "id": "A7", "severity": "P2", "type": "thin-meta", "detail": "/systems index title 'Systems · Zabble' + module meta derive from tagline only (handed to S02/S06); structural risk of thin/duplicate meta across 30 same-shaped pages." }
+  ]
+}

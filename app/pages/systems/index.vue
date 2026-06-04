@@ -79,6 +79,11 @@ watch(
     <TheNav />
 
     <main class="pt-24 md:pt-28 lg:pt-32 pb-16 md:pb-20 lg:pb-24">
+      <!-- Breadcrumb -->
+      <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
+        <SeoBreadcrumb :items="[{ label: 'Home', to: '/' }, { label: 'Systems' }]" />
+      </div>
+
       <!-- Hero -->
       <section class="relative">
         <div class="mx-auto max-w-7xl px-5 md:px-8 lg:px-12">
