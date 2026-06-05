@@ -672,8 +672,10 @@ function actionIcon(k: ActionEvent['icon']) {
           Interactive Demo · Kairos
         </span>
         <p class="kairos-head__sub">
-          Same engine. Two deployments. The administrative work runs itself -
-          your team handles the work humans should.
+          One engine, configured to the job. Here it runs two ways - an event
+          coordinator and an AI receptionist - two of the ways a Kairos voice
+          agent gets deployed. The admin runs itself; your team handles the
+          work humans should.
         </p>
       </div>
 
@@ -704,6 +706,21 @@ function actionIcon(k: ActionEvent['icon']) {
         </button>
       </div>
     </header>
+
+    <!-- Use-case strip: the two tabs are examples, not the limit. Kairos is
+         set up to whatever calls a business needs made or answered. -->
+    <div class="kairos-usecases" aria-label="Example Kairos deployments">
+      <span class="kairos-usecases__label">Set up for</span>
+      <ul class="kairos-usecases__list">
+        <li>Receptionist</li>
+        <li>Event orchestration</li>
+        <li>No-show recovery</li>
+        <li>After-hours overflow</li>
+        <li>Outbound qualification</li>
+        <li>Booking &amp; reminders</li>
+        <li class="is-more">…and whatever your business needs</li>
+      </ul>
+    </div>
 
     <!-- ====================================================================
          EVENT COORDINATOR
@@ -1235,7 +1252,7 @@ function actionIcon(k: ActionEvent['icon']) {
 
       <p class="kairos-recep__foot">
         <Workflow :size="13" :stroke-width="2" aria-hidden="true" />
-        Same engine as Event Coordinator. The deployment is what changes, receptionists, clinics, service businesses, sales lines.
+        Same engine as Event Coordinator. Only the deployment changes, reception and after-hours overflow, no-show recovery, outbound qualification, booking and reminders, clinics, service businesses, sales lines.
       </p>
     </section>
   </div>
@@ -1333,6 +1350,54 @@ function actionIcon(k: ActionEvent['icon']) {
 .kairos-toggle__btn:focus-visible {
   outline: none;
   box-shadow: 0 0 0 3px rgba(1, 219, 241, 0.4);
+}
+
+/* ---- use-case strip ---- */
+.kairos-usecases {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  border: 1px solid var(--kairos-line);
+  border-radius: var(--kairos-radius-sm);
+  background: var(--kairos-surface-alt);
+}
+
+.kairos-usecases__label {
+  font-size: 10.5px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--kairos-mute-2);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.kairos-usecases__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.kairos-usecases__list li {
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--kairos-ink);
+  background: var(--kairos-surface);
+  border: 1px solid var(--kairos-line);
+  border-radius: 9999px;
+}
+
+.kairos-usecases__list li.is-more {
+  color: var(--kairos-cyan-deep);
+  background: rgba(1, 219, 241, 0.06);
+  border-color: rgba(1, 219, 241, 0.25);
+  font-style: italic;
 }
 
 /* ---- event sub-header strip ---- */

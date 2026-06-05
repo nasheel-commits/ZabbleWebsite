@@ -149,6 +149,11 @@ export interface System {
    * Defaults to "One system, <n> jobs." computed from `pillars.length`.
    */
   pillarHeading?: string
+  /**
+   * Optional collaboration credit rendered as a subtle linked line in the
+   * detail-page hero. Use when a module was built with an external partner.
+   */
+  partner?: { name: string; url: string }
 
   // ── SEO / AEO slots (S02 on-page interface; populated by S05/S06/S07) ──
   // All optional and additive: when absent the page falls back to existing copy,
@@ -215,28 +220,29 @@ export const SYSTEMS: System[] = [
     slug: 'kairos',
     name: 'Kairos',
     tagline:
-      'Your team stops being a switchboard. Outreach, day-of orchestration and follow-up run themselves, so they can do the work humans should.',
+      'An AI voice agent, shaped to your business. Kairos answers the calls, makes the calls, and runs the relationship admin around them, so your team stops being a switchboard and does the work humans should.',
     pillars: ['automation', 'audit-trails', 'analytics'],
-    industry: 'Events, conferences, service businesses, clinics',
+    industry: 'Any business with a phone line and a relationship to manage, clinics, events, service firms, sales teams',
     bestFor:
-      'Operators whose calendars, inboxes, and phone lines outpace a single coordinator',
+      'Operators whose phone lines, inboxes, and calendars outpace a single coordinator, inbound, outbound, or both',
     status: 'live',
     problem:
-      'A conference with hundreds of registrants needs a coordinator chasing confirmations, fielding calls, calming no-shows, and running follow-up, for weeks. By Thursday you\'re the bottleneck, answering inbound while the next sponsor email sits unread, watching the no-show risk grow and not knowing who to call first. The work that gets dropped is the work that costs you the next event.',
+      'Somewhere in your business a person is the switchboard. Confirmations to chase, calls to field, no-shows to calm, follow-up to run, all of it landing on one calendar. By Thursday they\'re the bottleneck, answering inbound while the next thing that matters sits unread, watching the risk grow and not knowing who to call first. The work that gets dropped is the work that costs you the next customer, the next event, the next renewal.',
     whatWeBuilt:
-      'Kairos runs the full 21-day arc: pre-event outreach, day-of orchestration, post-event re-engagement. The same engine answers the phone as an AI receptionist. Every message, call and CRM update is logged with the reasoning that fired it. Built with KnvilLabs.',
+      'Kairos is one AI voice-agent engine we configure to your situation, inbound, outbound, or a full campaign around a moment that matters. The example here runs a 21-day event arc: pre-event outreach, day-of orchestration, post-event re-engagement. The same engine answers the phone as a receptionist. Every message, call and CRM update is logged with the reasoning that fired it.',
     whatChanged:
-      'Coordinators stopped being switchboards. No-show rates dropped because the system called every at-risk attendee on the morning of the event. Inbound calls to the business stopped going to voicemail. The administrative work that normally consumes a person now runs itself.',
+      'Teams stopped being switchboards. No-show rates dropped because the system called every at-risk person itself. Inbound calls stopped going to voicemail. The administrative work that normally consumes a person now runs itself, set up to the exact calls a business needs made or answered.',
     pillarNotes: {
       'automation':
         'Touchpoints fire on time, in order, without a human in the loop. Confirmations, reminders, last-mile directions, recovery calls, follow-up sequences, all on rails. The same engine handles inbound calls, books appointments and updates the CRM.',
       'audit-trails':
-        'The system logs every outbound message, every inbound call and every CRM mutation with the reasoning that fired it. A coordinator can replay the system\'s decisions end to end.',
+        'The system logs every outbound message, every inbound call and every CRM mutation with the reasoning that fired it. Your team can replay the system\'s decisions end to end.',
       'analytics':
-        'Live attendance, RSVP conversion, call outcomes and recovery rates feed one dashboard. The next event is planned against what actually happened, not what was hoped for.',
+        'Live outcomes, conversion, call results and recovery rates feed one dashboard. The next run is planned against what actually happened, not what was hoped for.',
     },
     demoFraming:
-      'One example deployment, a UK financial-adviser forum running on Kairos. Yours would be shaped to the work your business actually does.',
+      'Two example deployments, an event coordinator and an AI receptionist, on one Kairos engine. Yours would be set up to the calls your business actually needs made or answered.',
+    partner: { name: 'KNVI Labs', url: 'https://www.knvilabs.com' },
   },
   {
     slug: 'approval-workflow',
@@ -1091,12 +1097,12 @@ type SystemSeo = Pick<
 
 const SYSTEM_SEO: Record<string, SystemSeo> = {
   'kairos': {
-    seoTitle: 'Kairos, AI Receptionist & Event Engine',
+    seoTitle: 'Kairos, AI Voice Agent & Receptionist',
     seoDescription:
-      'An AI voice agent and event-orchestration engine that answers every call, chases confirmations and recovers no-shows, so your team stops being the switchboard.',
-    keywords: ['event management software', 'ai receptionist', 'virtual receptionist software', 'ai voice agent'],
+      'A configurable AI voice agent, set up to your business. Kairos answers and makes calls, runs reception, events and no-show recovery, and never goes to voicemail.',
+    keywords: ['ai voice agent', 'ai receptionist', 'virtual receptionist software', 'event management software'],
     definition:
-      'Kairos is a voice-first automation engine that answers the phone as an AI receptionist, runs the full arc around an event, pre-event outreach, day-of orchestration and post-event follow-up, and logs every call and message with the reasoning that fired it, so no booking is lost to a missed call.',
+      'Kairos is a configurable AI voice agent, one engine set up to a business\'s circumstances that answers and makes calls and runs the relationship admin around any moment that benefits from a voice, as a receptionist, an event coordinator or an outbound caller, logging every call and message with the reasoning that fired it, so no booking is lost to a missed call.',
   },
   'approval-workflow': {
     seoTitle: 'Approval & Sign-Off Workflow Software',

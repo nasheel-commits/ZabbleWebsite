@@ -4,6 +4,7 @@
 // large display heading + body paragraph).
 
 import { computed } from 'vue'
+import { ArrowUpRight } from '@lucide/vue'
 import { PILLARS, type System } from '~/data/systems'
 
 const props = defineProps<{ system: System }>()
@@ -63,6 +64,22 @@ const statusLabel = computed(() => {
     <div class="mt-6 flex flex-wrap gap-1.5">
       <PillarChip v-for="p in pillarMetas" :key="p.slug" :pillar="p" link />
     </div>
+
+    <p
+      v-if="system.partner"
+      class="mt-5 text-[13px] text-mute-2"
+    >
+      In collaboration with
+      <a
+        :href="system.partner.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-0.5 font-semibold text-ink underline decoration-line underline-offset-2 transition-colors hover:text-cyan-brand-deep hover:decoration-cyan-brand/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-brand/60 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-sm"
+      >
+        {{ system.partner.name }}
+        <ArrowUpRight :size="13" :stroke-width="2" aria-hidden="true" />
+      </a>
+    </p>
 
     <dl
       v-if="system.industry || system.bestFor"
