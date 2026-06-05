@@ -43,7 +43,7 @@ the switchboard."* Then the arc.
 ## Required statistics / sources (GEO)
 - 1 stat on cost of missed calls / no-shows (cite + year).
 - Internal proof: "calls every at-risk attendee the morning of the event", "every call logged with the reasoning that fired it".
-- **Expert-quote slot:** Zabble lead on relationship admin ("it does the admin that normally consumes a person, and never sends a call to voicemail"). Note Kairos built with KnvilLabs.
+- **Expert-quote slot:** Zabble lead on relationship admin ("it does the admin that normally consumes a person, and never sends a call to voicemail"). Note Kairos built in collaboration with KNVI Labs (knvilabs.com).
 
 ## FAQ (AEO — seeded from live SA PAA)
 1. **What do AI receptionists do?** *(PAA)*
