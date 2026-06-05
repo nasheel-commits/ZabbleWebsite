@@ -496,6 +496,17 @@ async function submitContact() {
         },
         profileTitle: profile.value.title,
         summaryLines: summaryLines.value,
+        // Structured answers for the internal Zabble Tasks webhook (human labels).
+        diagnostic: {
+          pain_profile: profile.value.title,
+          business: labelForStep('businessType', answers.businessType),
+          most_pressing: labelForStep('primaryPain', answers.primaryPain),
+          main_cost: labelForStep('cost', answers.cost),
+          tried_so_far: labelForStep('tried', answers.tried),
+          timeline: labelForStep('timeline', answers.timeline),
+          who_is_involved: labelForStep('decisionAuthority', answers.decisionAuthority),
+          wants: answers.contact.walkAway.trim(),
+        },
       },
     })
     if (res.ok) {

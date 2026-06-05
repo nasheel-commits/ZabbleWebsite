@@ -11,7 +11,15 @@
 // Auth + config live in server/utils/booking.ts (NUXT_GOOGLE_* env vars).
 // Until those are set the endpoint returns { ok:false, reason:'not_configured' }
 // and the UI falls back to a mailto. See docs/booking-setup.md.
+//
+// After a successful booking we also POST the lead to the internal Zabble Tasks
+// webhook (HMAC-signed, fire-and-forget). See server/utils/zabble-tasks.mjs.
 // ---------------------------------------------------------------------------
+
+import {
+  buildDiagnosticLeadPayload,
+  postDiagnosticLeadToZabbleTasks,
+} from '../utils/zabble-tasks.mjs'
 
 interface BookBody {
   contact?: {
@@ -30,6 +38,18 @@ interface BookBody {
   }
   profileTitle?: string
   summaryLines?: string[]
+  // Structured diagnostic answers (human labels) for the Zabble Tasks webhook.
+  // Optional + additive: the email/calendar paths still rely on summaryLines.
+  diagnostic?: {
+    pain_profile?: string
+    business?: string
+    most_pressing?: string
+    main_cost?: string
+    tried_so_far?: string
+    timeline?: string
+    who_is_involved?: string
+    wants?: string
+  }
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -281,6 +301,35 @@ export default defineEventHandler(async (event) => {
       `New call booked — ${name}${company ? `, ${company}` : ''}`,
       internalLead({ booked: true, meetLink, htmlLink: eventRes.htmlLink ?? null }),
     )
+
+    // --- Internal ops: POST the booking to Zabble Tasks (fire-and-forget) --
+    // Runs only after the calendar event + emails succeeded. HMAC-signed,
+    // ~5s timeout, fully caught — it can NEVER block or fail the booking.
+    // booking_id = the raw Google event id, so resends/retries dedupe server-side.
+    const zabbleTask = postDiagnosticLeadToZabbleTasks(
+      buildDiagnosticLeadPayload({
+        bookingId: eventRes.id || requestId,
+        submittedAt: new Date().toISOString(),
+        name,
+        email,
+        phone: phone || null,
+        companyName: company,
+        requestedTime: `${startDateTime}${offset}`,
+        timezoneLabel: tzLabel,
+        meetUrl: meetLink,
+        googleCalendarId: c.organizer, // the calendar the event is created on
+        googleEventId: eventRes.id ?? null, // raw id, not the base64 "eid" blob
+        calendarEventUrl: eventRes.htmlLink ?? null,
+        diagnostic: body?.diagnostic ?? {},
+      }),
+    )
+    // Don't await: the user's booking is already done. Keep the function warm
+    // on platforms that support it (Vercel waitUntil); otherwise fire-and-forget.
+    if (typeof event.waitUntil === 'function') {
+      event.waitUntil(zabbleTask)
+    } else {
+      void zabbleTask
+    }
 
     return {
       ok: true as const,
