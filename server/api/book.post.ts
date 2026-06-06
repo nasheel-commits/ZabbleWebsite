@@ -302,11 +302,19 @@ export default defineEventHandler(async (event) => {
       internalLead({ booked: true, meetLink, htmlLink: eventRes.htmlLink ?? null }),
     )
 
-    // --- Internal ops: POST the booking to Zabble Tasks (fire-and-forget) --
+    // --- Internal ops: POST the booking to Zabble Tasks --------------------
     // Runs only after the calendar event + emails succeeded. HMAC-signed,
-    // ~5s timeout, fully caught — it can NEVER block or fail the booking.
-    // booking_id = the raw Google event id, so resends/retries dedupe server-side.
-    const zabbleTask = postDiagnosticLeadToZabbleTasks(
+    // ~5s timeout, fully caught — it returns a result object, never throws,
+    // so it can't fail the booking. booking_id = the raw Google event id, so
+    // resends/retries dedupe server-side.
+    //
+    // We AWAIT this rather than fire-and-forget: on serverless (Vercel) the
+    // function is frozen the instant the response returns, which drops any
+    // un-awaited work — and `event.waitUntil` is not reliably wired through
+    // Nitro's Node Vercel preset. Awaiting guarantees the POST completes within
+    // the invocation. It's bounded + caught, so worst case is a few hundred ms
+    // (≤5s if the endpoint is unreachable), never a failure surfaced to the user.
+    const zabbleResult = await postDiagnosticLeadToZabbleTasks(
       buildDiagnosticLeadPayload({
         bookingId: eventRes.id || requestId,
         submittedAt: new Date().toISOString(),
@@ -323,12 +331,8 @@ export default defineEventHandler(async (event) => {
         diagnostic: body?.diagnostic ?? {},
       }),
     )
-    // Don't await: the user's booking is already done. Keep the function warm
-    // on platforms that support it (Vercel waitUntil); otherwise fire-and-forget.
-    if (typeof event.waitUntil === 'function') {
-      event.waitUntil(zabbleTask)
-    } else {
-      void zabbleTask
+    if (!zabbleResult.ok && !zabbleResult.skipped) {
+      console.warn('[book] Zabble Tasks webhook did not confirm the lead (non-fatal):', zabbleResult)
     }
 
     return {
