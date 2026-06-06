@@ -23,6 +23,7 @@
     "test:geo": "node --test tests/geo.test.mjs",
     "test:source": "node --test tests/analytics-source.test.mjs tests/indexnow.test.mjs",
     "test:webhook": "node --test tests/zabble-tasks-webhook.test.mjs",
+    "smoke:webhook": "node scripts/zabble-tasks-smoke.mjs",
     "test:metadata": "node scripts/seo-metadata.test.mjs",
     "link-check": "node scripts/check-seo.mjs",
     "verify": "cross-env NUXT_SITE_INDEXABLE=true nuxt generate && node scripts/check-seo.mjs",
